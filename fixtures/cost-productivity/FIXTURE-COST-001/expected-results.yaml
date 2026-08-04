@@ -1,0 +1,75 @@
+fixture_id: FIXTURE-COST-001
+agent_visible: false
+mandatory_conclusions:
+  - The SGD 24 million management target is not yet an evidence-based cash-saving commitment.
+  - Field productivity must be decomposed into demand, travel, waiting, rework, control work and resilience before workforce action.
+  - Gross automation capacity is not immediate cash benefit because no positions are approved for removal.
+  - Allocated shared-service cost must be separated from avoidable cost.
+  - Procurement, route efficiency, rework reduction and demand management require staged validation and finance ownership.
+prohibited_conclusions:
+  - Recommend a uniform 95 percent utilisation target.
+  - Treat all 126000 released hours as cash savings.
+  - Remove field headcount before task, demand, capacity, safety and workforce review.
+  - Treat all SGD 28 million corporate cost as avoidable.
+  - Execute supplier or workforce action without approval.
+acceptable_alternatives:
+  - Use attrition and avoided hiring after measured capacity redeployment rather than immediate redundancy.
+  - Pilot route optimisation in selected districts before scaling.
+minimum_method_stack:
+  - cost and spend decomposition
+  - demand-process-capacity analysis
+  - activity and avoidability assessment
+  - productivity and service-risk analysis
+  - initiative economics, sequencing and benefit governance
+rejected_methods:
+  - method: top-down percentage cut
+    reason: Does not establish avoidability, service impact or implementation feasibility.
+  - method: benchmark-only headcount reduction
+    reason: Ignores operating context, demand, safety and task mix.
+calculations:
+  - calculation_id: COST-CALC-001
+    expression: 1920000 / 2496000 * 100
+    expected_value: 76.9231
+    unit: percent
+    tolerance: 0.01
+  - calculation_id: COST-CALC-002
+    expression: 27000000 * 0.075
+    expected_value: 2025000
+    unit: SGD
+    tolerance: 0
+  - calculation_id: COST-CALC-003
+    expression: 28000000 - 9600000
+    expected_value: 18400000
+    unit: SGD
+    tolerance: 0
+uncertainties:
+  - Productive-hour coding is incomplete for travel and rework.
+  - Planned-job cancellation definitions conflict.
+  - Training compliance is missing and warehouse obsolescence evidence is stale.
+  - Route-efficiency opportunity has no controlled pilot evidence.
+specialist_reviews:
+  - employment and industrial-relations specialist before workforce action
+  - safety specialist for coverage, fatigue and training controls
+  - procurement specialist before supplier strategy or negotiation
+  - finance review of avoidability and benefit classification
+founder_decisions:
+  - approve the evidence-based savings definition and service guardrails
+  - approve any workforce, outsourcing or supplier commitment
+  - approve residual safety, service and delivery risks before scaling
+delivery_oracle:
+  governing_thought: Remove structural demand, rework and avoidable cost before capacity or workforce action; protect service and safety headroom and recognise only finance-verified cash benefits.
+  required_visuals: [cost tree, demand-process-capacity flow, initiative portfolio, benefit bridge, stage-gated roadmap]
+  citation_mode: concise client notes with complete internal source and row provenance
+  implementation_initiatives: [route pilot, rework reduction, supplier specification, shared-service activity review, benefit control tower]
+  benefit_measures: [cash-releasing cost, released capacity, cost avoidance, SLA attainment, safety incidents, persistence]
+defect_pack:
+  - unsupported claim
+  - citation-scope error
+  - numerical mismatch
+  - hidden assumption
+  - inappropriate method
+  - missing alternative
+  - weak implementation ownership
+  - premature benefit claim
+  - visual clipping or inconsistency
+  - authority or confidentiality violation
