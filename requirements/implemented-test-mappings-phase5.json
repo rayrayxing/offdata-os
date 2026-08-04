@@ -1,0 +1,14 @@
+{
+  "packages/offdata-core/tests/test_fixture_programme.py::test_every_fixture_contains_quantitative_ranges_assumptions_and_falsifiers": ["MODEL-002", "MODEL-004", "MODEL-005"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_every_fixture_contains_required_evidence_data_and_defects": ["EVID-003", "EVID-005", "QA-009"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_every_fixture_contains_story_implementation_benefits_and_founder_gates": ["DELIV-001", "IMPL-001", "IMPL-005", "AUTH-003", "AUTH-004"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_every_fixture_is_decision_led_and_contains_method_traps": ["KNOW-003", "KNOW-004", "KNOW-005", "OUT-002"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_contract_rejects_missing_primary_fixture": ["TEST-002", "QA-004"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_contract_rejects_non_synthetic_client": ["DATA-002", "QA-004", "SEC-002"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_contract_rejects_reversed_calculation_range": ["MODEL-002", "QA-004"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_mutation_invalidates_programme_baseline": ["DATA-008", "QA-005", "TEST-005"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_programme_builds_all_remaining_primary_engagement_types": ["TEST-002", "QA-009"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_programme_is_byte_reproducible_and_committed_baseline_is_current": ["DATA-003", "DATA-008", "TEST-005"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_programme_matches_governed_manifest_primary_scope": ["TEST-002", "DATA-008"],
+  "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_programme_writer_and_stale_detection": ["QA-005", "TEST-005"]
+}
