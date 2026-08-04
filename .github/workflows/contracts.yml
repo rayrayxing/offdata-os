@@ -1,4 +1,4 @@
-name: Machine contracts
+name: Machine contracts and agent system
 
 on:
   push:
@@ -11,50 +11,42 @@ permissions:
 
 jobs:
   validate-contracts:
-    name: Generate and validate machine contracts
+    name: Generate and validate machine contracts and agents
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
           cache-dependency-path: packages/offdata-core/pyproject.toml
-
       - name: Install offdata-core validation dependencies
         run: python -m pip install --upgrade pip && python -m pip install -e "packages/offdata-core[dev]"
-
       - name: Build requirement test registry
         run: python scripts/build_test_registry.py
-
       - name: Generate schemas, catalogues and OpenAPI
         run: python scripts/export_machine_contracts.py
-
       - name: Validate Phase 1 contract release
         run: python scripts/validate_phase1_contracts.py
-
+      - name: Validate Phase 2 agent system
+        run: python scripts/validate_phase2_agents.py
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
         run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
-
       - name: Compile Python sources
         run: python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
-
       - name: Enforce static lint baseline
         run: ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts
-
       - name: Enforce type-check baseline
         working-directory: packages/offdata-core
         run: mypy src
-
-      - name: Retain generated machine contracts
+      - name: Retain generated contracts and agent release
         uses: actions/upload-artifact@v4
         with:
-          name: offdata-machine-contracts-${{ github.sha }}
+          name: offdata-chat-first-release-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           path: |
@@ -62,5 +54,8 @@ jobs:
             schemas/*.json
             contracts/*.json
             requirements/test-registry.json
+            requirements/implemented-test-mappings*.json
+            requirements/completed-planned-tests*.json
             configs/*.yaml
+            agents/**/SKILL.md
             database/migrations/*.sql

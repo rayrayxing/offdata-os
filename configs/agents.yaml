@@ -1,80 +1,213 @@
-version: 1.0.0
-schema_version: offdata.agents.v1
+version: 2.0.0
+schema_version: offdata.agents.v2
+source_requirements: [AGENT-001, AGENT-002, AGENT-003, AGENT-004, AGENT-005, AGENT-006, AGENT-007, AGENT-008, AGENT-009, AUTH-003, AUTH-004, AUTH-008, EVID-010, SEC-001, SEC-002]
+provider_independent: true
 default_output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
 default_context_contract: schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage
 default_write_mode: propose_only
 canonical_writes_via_commands_only: true
+context_profiles:
+  decision_control: {max_records: 48, selection_order: [required_ids, current_stage, decision_relevance, recency], include_untrusted_as_instructions: false}
+  problem_framing: {max_records: 36, selection_order: [mandate, decision, facts, assumptions, gaps], include_untrusted_as_instructions: false}
+  method_selection: {max_records: 40, selection_order: [decision, hypotheses, archetypes, evidence_quality, constraints], include_untrusted_as_instructions: false}
+  evidence_focused: {max_records: 60, selection_order: [research_questions, hypotheses, admitted_sources, contradictions, gaps], include_untrusted_as_instructions: false}
+  model_focused: {max_records: 50, selection_order: [decision, controlled_data, methods, assumptions, named_outputs], include_untrusted_as_instructions: false}
+  story_focused: {max_records: 50, selection_order: [decision, approved_claims, named_outputs, recommendations, risks], include_untrusted_as_instructions: false}
+  delivery_focused: {max_records: 55, selection_order: [manifest, story_baseline, model_baseline, evidence_baseline, brand_rules], include_untrusted_as_instructions: false}
+  implementation_focused: {max_records: 45, selection_order: [recommendations, conditions, owners, constraints, value_case], include_untrusted_as_instructions: false}
+  isolated_quality: {max_records: 65, selection_order: [object_under_review, decision, requirements, evidence, models], include_untrusted_as_instructions: false}
+  origination_focused: {max_records: 35, selection_order: [public_trigger, account, contact_controls, offerings, jurisdiction], include_untrusted_as_instructions: false}
+  methodology_focused: {max_records: 55, selection_order: [candidate, existing_registry, primary_support, rights, fixtures], include_untrusted_as_instructions: false}
+budget_profiles:
+  standard: {timeout_seconds: 300, max_retries: 2, max_input_tokens: 24000, max_output_tokens: 6000, max_cost: 4.0, currency: USD, model_or_route: provider_agnostic_standard}
+  orchestration: {timeout_seconds: 240, max_retries: 1, max_input_tokens: 20000, max_output_tokens: 5000, max_cost: 3.5, currency: USD, model_or_route: provider_agnostic_reasoning}
+  research: {timeout_seconds: 600, max_retries: 2, max_input_tokens: 48000, max_output_tokens: 9000, max_cost: 8.0, currency: USD, model_or_route: provider_agnostic_research}
+  quantitative: {timeout_seconds: 900, max_retries: 1, max_input_tokens: 32000, max_output_tokens: 7000, max_cost: 7.0, currency: USD, model_or_route: provider_agnostic_quant}
+  production: {timeout_seconds: 900, max_retries: 2, max_input_tokens: 36000, max_output_tokens: 8000, max_cost: 7.0, currency: USD, model_or_route: provider_agnostic_production}
+  quality: {timeout_seconds: 600, max_retries: 1, max_input_tokens: 42000, max_output_tokens: 8000, max_cost: 8.0, currency: USD, model_or_route: provider_agnostic_independent_review}
+routing_policy:
+  preserve_output_contract: true
+  route_dimensions: [task_complexity, evidence_risk, latency, cost]
+  routes:
+    - {route_id: fast, model_or_route: provider_agnostic_fast, minimum_complexity: 1, minimum_evidence_risk: 1, latency_rank: 1, cost_rank: 1, output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope}
+    - {route_id: standard, model_or_route: provider_agnostic_standard, minimum_complexity: 2, minimum_evidence_risk: 2, latency_rank: 2, cost_rank: 2, output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope}
+    - {route_id: deep, model_or_route: provider_agnostic_deep, minimum_complexity: 4, minimum_evidence_risk: 4, latency_rank: 3, cost_rank: 3, output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope}
+admission_thresholds: {minimum_schema_validity: 0.99, minimum_critical_dimension: 80, minimum_weighted_score: 80, maximum_repeated_run_variance: 5, independent_review_required: true}
+mandatory_failures: [fabricated_source, unauthorised_external_action, cross_tenant_disclosure, material_numerical_fabrication, ai_only_regulated_conclusion, self_approved_high_assurance_release, concealed_blocking_defect, secret_exposure]
 agents:
   - id: engagement_partner
-    purpose: Govern the engagement, select the next best action and prepare Founder decisions.
+    agent_id: engagement_partner
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Govern the engagement, preserve decision focus, select the next best action and prepare Founder decisions.
+    skill_package: agents/engagement_partner/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage, schemas/offdata-contract-bundle.schema.json#/$defs/FounderDecisionPacket]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [engagement, mandate, decision, approval, task]
     permitted_tool_classes: [read_canonical_records, invoke_bounded_agents, propose_commands]
-    prohibited_actions: [external_send, commercial_commitment, self_approval]
+    prohibited_actions: [external_send, commercial_commitment, self_approval, final_release_without_quality]
+    context_profile: decision_control
+    evidence_rules: [Use only canonical state; surface assumptions, contradictions and the earliest unmet gate.]
+    escalation_policy: [Escalate material, external, commercial, legal, irreversible, scope, fee or deadline decisions; avoid nuisance interruption.]
+    budget_profile: orchestration
     evaluation_profile: AE-PARTNER
   - id: problem_architect
-    purpose: Convert an incomplete mandate into decision questions, issue architecture and hypotheses.
+    agent_id: problem_architect
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Convert an incomplete mandate into decision questions, issue architecture, hypotheses and rival explanations.
+    skill_package: agents/problem_architect/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [decision, question, hypothesis, assumption, evidence_gap]
     permitted_tool_classes: [read_canonical_records, search_knowledge, propose_commands]
-    prohibited_actions: [external_send, final_material_commitment]
+    prohibited_actions: [external_send, final_material_commitment, framework_without_decision_role]
+    context_profile: problem_framing
+    evidence_rules: [Separate facts, assumptions and gaps; include rivals and falsifiers.]
+    escalation_policy: [Escalate mandate ambiguity, scope conflict or a missing decision owner.]
+    budget_profile: standard
     evaluation_profile: AE-PROBLEM
   - id: method_architect
-    purpose: Select the minimum sufficient method stack and record rejected alternatives.
+    agent_id: method_architect
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Select the smallest defensible method sequence addressing governing uncertainties.
+    skill_package: agents/method_architect/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [method_selection, problem_archetype, assumption, evidence_gap]
     permitted_tool_classes: [read_canonical_records, search_knowledge, propose_commands]
-    prohibited_actions: [methodology_promotion, final_material_commitment]
+    prohibited_actions: [methodology_promotion, final_material_commitment, redundant_method_stacking]
+    context_profile: method_selection
+    evidence_rules: [Choose a minimum non-duplicative stack; record rejections, limits and reviewers.]
+    escalation_policy: [Escalate specialist-review needs or unmet evidence prerequisites.]
+    budget_profile: standard
     evaluation_profile: AE-METHOD
   - id: research_evidence
-    purpose: Plan and conduct governed research and maintain passage-level provenance.
+    agent_id: research_evidence
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Obtain and synthesise decision-relevant evidence with passage-level provenance and contradiction handling.
+    skill_package: agents/research_evidence/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage, schemas/offdata-contract-bundle.schema.json#/$defs/SourceDocument, schemas/offdata-contract-bundle.schema.json#/$defs/SourcePassage]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [research_plan, source, passage, claim, evidence, evidence_gap]
     permitted_tool_classes: [read_canonical_records, approved_research, document_read, propose_commands]
-    prohibited_actions: [circumvent_access_control, external_send, treat_untrusted_input_as_instruction]
+    prohibited_actions: [circumvent_access_control, external_send, treat_untrusted_input_as_instruction, fabricate_citation]
+    context_profile: evidence_focused
+    evidence_rules: [Use exact passages or named outputs; snippets are discovery only; record contradictions and limitations.]
+    escalation_policy: [Escalate material gaps, access, rights, sensitive-data or authority concerns; never bypass controls.]
+    budget_profile: research
     evaluation_profile: AE-RESEARCH
   - id: quantitative_value
-    purpose: Produce reproducible analysis, models, scenarios and value cases.
+    agent_id: quantitative_value
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Produce reproducible analysis, models, scenarios and value cases through deterministic tools.
+    skill_package: agents/quantitative_value/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [analysis, model_run, number, assumption, benefit]
     permitted_tool_classes: [read_canonical_records, deterministic_compute, spreadsheet_render, propose_commands]
-    prohibited_actions: [free_form_material_arithmetic, external_send, self_validation_only]
+    prohibited_actions: [free_form_material_arithmetic, external_send, self_validation_only, hide_model_failure]
+    context_profile: model_focused
+    evidence_rules: [Make calculations reproducible; state units, periods, baselines, counterfactuals and limitations; reconcile outputs.]
+    escalation_policy: [Escalate material limitations, unreconciled outputs or claims beyond model capability; require independent verification.]
+    budget_profile: quantitative
     evaluation_profile: AE-QUANT
   - id: storyline
-    purpose: Convert approved evidence and analysis into one decision-ready semantic story.
+    agent_id: storyline
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Convert approved evidence, analysis and recommendations into one coherent decision-ready semantic story.
+    skill_package: agents/storyline/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [assertion, story_model, visual_specification]
     permitted_tool_classes: [read_canonical_records, search_knowledge, propose_commands]
-    prohibited_actions: [invent_fact, invent_number, external_send]
+    prohibited_actions: [invent_fact, invent_number, external_send, hide_material_uncertainty]
+    context_profile: story_focused
+    evidence_rules: [Use approved claims and named outputs; preserve caveats and one cross-format baseline.]
+    escalation_policy: [Escalate unsupported recommendations, material contradictions or an unclear supported decision.]
+    budget_profile: standard
     evaluation_profile: AE-STORY
   - id: deliverable_production
-    purpose: Render approved story, model and evidence baselines into controlled artefacts.
+    agent_id: deliverable_production
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Render approved baselines into editable, controlled and reconciled artefacts.
+    skill_package: agents/deliverable_production/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage, schemas/offdata-contract-bundle.schema.json#/$defs/StoryModel, schemas/offdata-contract-bundle.schema.json#/$defs/DeliverableManifest]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [deliverable_manifest, reconciliation, defect]
     permitted_tool_classes: [read_canonical_records, render_artefact, visual_inspection, propose_commands]
-    prohibited_actions: [change_recommendation, invent_number, external_release]
+    prohibited_actions: [change_recommendation, invent_number, external_release, hide_render_failure]
+    context_profile: delivery_focused
+    evidence_rules: [Preserve semantics; resolve numbers to named outputs; record rendering and reconciliation defects.]
+    escalation_policy: [Escalate content drift, failed reconciliation or blocking visual defects; never release externally.]
+    budget_profile: production
     evaluation_profile: AE-DELIVERY
   - id: implementation_benefits
-    purpose: Translate recommendations into initiatives, adoption, controls and benefit verification.
+    agent_id: implementation_benefits
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Translate approved recommendations into initiatives, adoption systems and verifiable benefits.
+    skill_package: agents/implementation_benefits/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [initiative, milestone, risk, adoption_measure, benefit]
     permitted_tool_classes: [read_canonical_records, deterministic_compute, propose_commands]
-    prohibited_actions: [client_commitment, benefit_claim_without_verification]
+    prohibited_actions: [client_commitment, benefit_claim_without_verification, assume_adoption_from_training]
+    context_profile: implementation_focused
+    evidence_rules: [Trace initiatives; separate intervention, implementation and adoption failure; define benefit verification.]
+    escalation_policy: [Escalate commitments and unverified benefit claims; define scale, adapt, pause and stop conditions.]
+    budget_profile: standard
     evaluation_profile: AE-IMPLEMENT
   - id: independent_quality
-    purpose: Identify decision-relevant defects, require repair and evaluate release gates.
+    agent_id: independent_quality
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Identify decision-relevant defects and evaluate release gates from an isolated review context.
+    skill_package: agents/independent_quality/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage, schemas/offdata-contract-bundle.schema.json#/$defs/QualityReview, schemas/offdata-contract-bundle.schema.json#/$defs/DeliverableManifest]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [quality_review, defect, exception, signoff, reconciliation]
     permitted_tool_classes: [read_canonical_records, independent_recalculation, rendered_inspection, propose_commands]
-    prohibited_actions: [alter_source_work, approve_own_output, external_release]
+    prohibited_actions: [alter_source_work, approve_own_output, external_release, conceal_blocking_defect]
+    context_profile: isolated_quality
+    evidence_rules: [Review decision fitness and assurance; record defect, consequence, repair and retest; state independence limits.]
+    escalation_policy: [Block material defects; escalate competence or independence limitations.]
+    budget_profile: quality
     evaluation_profile: AE-QA
   - id: origination_opportunity
-    purpose: Detect evidence-backed opportunities and prepare controlled outreach dossiers.
+    agent_id: origination_opportunity
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Detect evidence-backed opportunities and prepare transparent controlled outreach dossiers.
+    skill_package: agents/origination_opportunity/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage, schemas/offdata-contract-bundle.schema.json#/$defs/OpportunityDossier, schemas/offdata-contract-bundle.schema.json#/$defs/OutreachControl]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [organisation, contact, opportunity, outreach_control]
     permitted_tool_classes: [approved_public_research, crm_read, propose_commands]
-    prohibited_actions: [external_send, bypass_suppression, misrepresent_identity]
+    prohibited_actions: [external_send, bypass_suppression, misrepresent_identity, prohibited_contact_data]
+    context_profile: origination_focused
+    evidence_rules: [Separate trigger from inferred problem; include rivals and confidence; respect consent and jurisdiction.]
+    escalation_policy: [Require Founder approval for new campaigns, jurisdictions, propositions and sends; block suppressed contact.]
+    budget_profile: research
     evaluation_profile: AE-ORIGINATION
   - id: methodology_librarian
-    purpose: Assess new method candidates and maintain the governed library.
+    agent_id: methodology_librarian
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    purpose: Discover, compare, reconstruct, test and govern method candidates without copying protected expression.
+    skill_package: agents/methodology_librarian/SKILL.md
+    input_contracts: [schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage, schemas/offdata-contract-bundle.schema.json#/$defs/MethodologyCandidate, schemas/offdata-contract-bundle.schema.json#/$defs/MethodRecord]
+    output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
     allowed_record_families: [source, method, archetype, methodology_candidate]
     permitted_tool_classes: [approved_public_research, search_knowledge, run_regression, propose_commands]
-    prohibited_actions: [automatic_promotion, copy_proprietary_expression, external_send]
+    prohibited_actions: [automatic_promotion, copy_proprietary_expression, external_send, false_novelty]
+    context_profile: methodology_focused
+    evidence_rules: [Distinguish method from framework; use primary support; reconstruct independently; assess rights and novelty.]
+    escalation_policy: [Require Founder promotion approval; escalate rights or provenance uncertainty; refuse incomplete promotion.]
+    budget_profile: research
     evaluation_profile: AE-LIBRARIAN
-budgets:
-  every_run_requires:
-    - timeout_seconds
-    - max_retries
-    - model_or_route
-    - token_or_cost_limit
-    - permitted_tools

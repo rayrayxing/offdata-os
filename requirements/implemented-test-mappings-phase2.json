@@ -1,0 +1,81 @@
+{
+  "packages/offdata-core/tests/test_agent_system.py::test_agent_configuration_preserves_propose_only_writes_and_provider_independence": [
+    "AGENT-003",
+    "AGENT-009"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_agent_manifest_has_complete_versioned_definitions": [
+    "AGENT-001",
+    "AGENT-009"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_agent_skill_packages_exist_and_contain_required_sections": [
+    "AGENT-001",
+    "AGENT-009"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_budget_exhaustion_and_evidence_gaps_trigger_material_escalation": [
+    "AGENT-006",
+    "AUTH-003"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_budget_policy_detects_every_exceeded_dimension": [
+    "AGENT-006",
+    "LIFE-008"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_context_compiler_isolates_untrusted_instruction_like_content": [
+    "AGENT-002",
+    "AGENT-007",
+    "EVID-010"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_context_compiler_rejects_cross_tenant_and_cross_engagement_records": [
+    "AGENT-002",
+    "AGENT-004",
+    "DATA-002"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_context_compiler_selects_required_then_highest_relevance": [
+    "AGENT-002"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_critical_dimension_threshold_rejects_polished_but_unsafe_agent": [
+    "AGENT-001",
+    "QA-001"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_evaluation_manifest_has_positive_negative_and_adversarial_cases": [
+    "AGENT-001",
+    "AGENT-007"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_injection_assessment_never_grants_authority": [
+    "AGENT-007",
+    "EVID-010",
+    "SEC-001"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_mandatory_failure_rejects_admission_regardless_of_score": [
+    "AGENT-001",
+    "AGENT-007"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_nonzero_variance_requires_independent_review_even_when_thresholds_pass": [
+    "AGENT-001",
+    "AUTH-008",
+    "AGENT-009"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_provider_route_preserves_output_contract_and_uses_risk": [
+    "AGENT-008",
+    "AGENT-009"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_provider_route_rejects_contract_drift": [
+    "AGENT-008",
+    "AGENT-009"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_record_write_is_propose_only_and_command_mediated": [
+    "AGENT-003",
+    "AGENT-004"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_repeatable_high_quality_result_is_admitted": [
+    "AGENT-001",
+    "AGENT-009"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_tool_permission_blocks_direct_external_effects_and_canonical_writes": [
+    "AGENT-003",
+    "AGENT-004",
+    "AUTH-004"
+  ],
+  "packages/offdata-core/tests/test_agent_system.py::test_tool_permission_requires_agent_and_run_allowlists": [
+    "AGENT-004"
+  ]
+}
