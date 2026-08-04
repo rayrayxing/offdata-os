@@ -8,6 +8,8 @@ This document tells Codex and the Founder how to use the offdata Build Pack.
 
 The repository is in **Phase 0: controlled project foundation**. No production infrastructure, real client data, external outreach or paid service activation is authorised.
 
+A deterministic starter package now exists in `packages/offdata-core/`. Codex must validate and integrate it during Phase 0 rather than re-deriving lifecycle and approval rules from scratch.
+
 ## Canonical repository
 
 `rayrayxing/offdata-os` is the only controlling build repository.
@@ -37,6 +39,15 @@ Do not merge their specifications into this project unless a proposal is separat
 14. `12-APPROVAL-MATRIX.md`
 15. `13-FOUNDER-OPERATING-GUIDE.md`
 16. `14-CODEX-KICKOFF.md`
+17. `15-CHAT-FIRST-DEVELOPMENT-PLAN.md`
+18. `16-REQUIREMENTS-CATALOGUE.md`
+19. `17-THIRD-PARTY-TOOL-REGISTRY.md`
+20. `config/lifecycle.yaml`
+21. `config/policy-matrix.yaml`
+22. `config/agent-roster.yaml`
+23. `fixtures/manifest.yaml`
+24. `schemas/`
+25. `packages/offdata-core/`
 
 ## Build sequence
 
@@ -57,6 +68,12 @@ The system is designed as a whole but built in gated phases:
 - Phase 12 — synthetic pilot suite and launch gate
 
 Codex must stop after each phase and obtain Founder approval.
+
+## Chat-first work allocation
+
+Architecture, requirements, schemas, deterministic policy logic, fixture design and review may be developed through ChatGPT and committed to this repository. Codex should focus on work that requires a real computer environment: installation, integration, execution, debugging, OAuth, rendering and deployment.
+
+All chat-built source code remains provisional until Codex runs the repository tests in the approved macOS environment and reports the result.
 
 ## Build Pack source context
 
@@ -95,6 +112,13 @@ Codex:
 - Creates documentation and rollback points.
 - Reports issues in plain English.
 - Stops for required Founder decisions.
+
+ChatGPT:
+
+- Develops and reviews architecture, requirements, schemas, policies, fixtures and bounded starter code.
+- Pushes approved textual and deterministic development into GitHub.
+- Reviews Codex pull requests and test evidence when requested.
+- Does not replace computer-environment validation.
 
 ## Definition of done for any phase
 
