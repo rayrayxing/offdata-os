@@ -1,0 +1,195 @@
+version: 0.1.0
+status: awaiting_original_file_import
+manifest_owner: Founder / Methodology Library Owner
+rules:
+  preserve_original_file_unchanged: true
+  checksum_algorithm: sha256
+  checksum_status: pending_codex_import
+  declared_ids_are_authoritative_when_present: true
+  source_ids_are_repository_identifiers_not_replacements_for_declared_ids: true
+  unresolved_cross_references_must_not_be_invented: true
+  client_content_allowed: false
+  default_classification: internal_methodology
+  global_retrieval_allowed_after_review: true
+
+canonical_core_sources:
+  - source_id: SOURCE-CORE-001
+    original_filename: 01-CONSULTING-LIFECYCLE(2).md
+    preferred_repository_filename: 01-CONSULTING-LIFECYCLE.md
+    declared_title: AI-Enabled Consulting Engagement Lifecycle
+    declared_file_id: LIB-CONSULT-01
+    declared_version: 1.0.0
+    declared_status: canonical
+    source_type: markdown
+    role: lifecycle_control
+  - source_id: SOURCE-CORE-002
+    original_filename: 02-PROBLEM-AND-FRAMEWORK-REGISTRY(2).md
+    preferred_repository_filename: 02-PROBLEM-AND-FRAMEWORK-REGISTRY.md
+    declared_title: Problem and Framework Registry
+    declared_file_id: 02-PROBLEM-AND-FRAMEWORK-REGISTRY
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: problem_and_method_selection_registry
+  - source_id: SOURCE-CORE-003
+    original_filename: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING(2).md
+    preferred_repository_filename: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING.md
+    declared_title: Hypothesis-Driven Problem Solving
+    declared_file_id: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: problem_solving_and_hypothesis_control
+  - source_id: SOURCE-CORE-004
+    original_filename: 04-RESEARCH-AND-EVIDENCE-STANDARD(2).md
+    preferred_repository_filename: 04-RESEARCH-AND-EVIDENCE-STANDARD.md
+    declared_title: Research and Evidence Standard
+    declared_file_id: KNOW-RES-004
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: research_evidence_and_provenance
+  - source_id: SOURCE-CORE-005
+    original_filename: 05-METHODOLOGY-AND-APPROACH-DESIGN(2).md
+    preferred_repository_filename: 05-METHODOLOGY-AND-APPROACH-DESIGN.md
+    declared_title: Methodology and Approach Design
+    declared_file_id: 05-METHODOLOGY-AND-APPROACH-DESIGN
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: methodology_and_engagement_design
+  - source_id: SOURCE-CORE-006
+    original_filename: 06-STORYLINE-AND-PROPOSITION-STANDARD(2).md
+    preferred_repository_filename: 06-STORYLINE-AND-PROPOSITION-STANDARD.md
+    declared_title: Storyline and Proposition Standard
+    declared_file_id: 06-STORYLINE-AND-PROPOSITION-STANDARD
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: storyline_and_cross_deliverable_contract
+  - source_id: SOURCE-CORE-007
+    original_filename: 07-VALUE-CASE-AND-FINANCIAL-MODELLING(3).md
+    preferred_repository_filename: 07-VALUE-CASE-AND-FINANCIAL-MODELLING.md
+    declared_title: Value Case and Financial Modelling
+    declared_file_id: 07-VALUE-CASE-AND-FINANCIAL-MODELLING
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: value_case_and_model_control
+  - source_id: SOURCE-CORE-008
+    original_filename: 08-IMPLEMENTATION-AND-CHANGE(2).md
+    preferred_repository_filename: 08-IMPLEMENTATION-AND-CHANGE.md
+    declared_title: Implementation and Change
+    declared_file_id: 08-IMPLEMENTATION-AND-CHANGE
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: implementation_adoption_and_benefits_bridge
+  - source_id: SOURCE-CORE-009
+    original_filename: 09-RED-TEAM-AND-QUALITY-RUBRIC(2).md
+    preferred_repository_filename: 09-RED-TEAM-AND-QUALITY-RUBRIC.md
+    declared_title: Red-Team and Quality Rubric
+    declared_file_id: KNOW-09-RTQR
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: independent_quality_and_release_control
+  - source_id: SOURCE-CORE-010
+    original_filename: 10-SECTOR-OVERLAYS(2).md
+    preferred_repository_filename: 10-SECTOR-OVERLAYS.md
+    declared_title: Sector Overlays: Industry Economics, Regulation, Operations, Metrics and Evidence
+    declared_file_id: 10-SECTOR-OVERLAYS
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: sector_and_geographic_adaptation
+  - source_id: SOURCE-CORE-011
+    original_filename: 11-SANITISED-ENGAGEMENT-EXEMPLARS(2).md
+    preferred_repository_filename: 11-SANITISED-ENGAGEMENT-EXEMPLARS.md
+    declared_title: Sanitised Engagement Exemplars
+    declared_file_id: 11-SANITISED-ENGAGEMENT-EXEMPLARS
+    declared_version: 1.0.0
+    declared_status: canonical
+    role: behavioural_examples_and_regression_sources
+
+domain_methodology_sources:
+  - source_id: SOURCE-DOMAIN-STRATEGY
+    original_filename: Corporate and Business-Unit Strategy Methodology Reference.docx
+    preferred_repository_filename: corporate-and-business-unit-strategy.docx
+    declared_title: Corporate and Business-Unit Strategy Methodology Reference
+    declared_file_id: null
+    domain: corporate_and_business_unit_strategy
+  - source_id: SOURCE-DOMAIN-GROWTH
+    original_filename: Growth and Commercial Strategy Methodology Reference.docx
+    preferred_repository_filename: growth-and-commercial-strategy.docx
+    declared_title: Growth and Commercial Strategy Methodology Reference
+    declared_file_id: null
+    domain: growth_and_commercial_strategy
+  - source_id: SOURCE-DOMAIN-COST
+    original_filename: Cost and Productivity — Decision-Led Methodology Reference.docx
+    preferred_repository_filename: cost-and-productivity.docx
+    declared_title: Cost and Productivity — Decision-Led Methodology Reference
+    declared_file_id: null
+    domain: cost_and_productivity
+  - source_id: SOURCE-DOMAIN-CX
+    original_filename: Customer Experience Methodology Reference.docx
+    preferred_repository_filename: customer-experience.docx
+    declared_title: Customer Experience Methodology Reference
+    declared_file_id: null
+    domain: customer_experience
+  - source_id: SOURCE-DOMAIN-OPERATING-MODEL
+    original_filename: Operating Model Transformation Methodology Reference.docx
+    preferred_repository_filename: operating-model-transformation.docx
+    declared_title: Operating Model Transformation Methodology Reference
+    declared_file_id: null
+    domain: operating_model_transformation
+  - source_id: SOURCE-DOMAIN-WORKFORCE
+    original_filename: Organisation and Workforce Methodology Reference.docx
+    preferred_repository_filename: organisation-and-workforce.docx
+    declared_title: Organisation and Workforce Methodology Reference
+    declared_file_id: null
+    domain: organisation_and_workforce
+  - source_id: SOURCE-DOMAIN-DIGITAL-AI
+    original_filename: Digital and AI Transformation Methodology.docx
+    preferred_repository_filename: digital-and-ai-transformation.docx
+    declared_title: Digital and AI Transformation
+    declared_file_id: null
+    domain: digital_and_ai_transformation
+  - source_id: SOURCE-DOMAIN-RISK
+    original_filename: Risk and Controls Methodology Reference.docx
+    preferred_repository_filename: risk-and-controls.docx
+    declared_title: Risk and Controls Methodology Reference
+    declared_file_id: null
+    domain: risk_and_controls
+  - source_id: SOURCE-DOMAIN-MA
+    original_filename: M&A, Carve-out and Integration Decision-Led Methodology Reference.docx
+    preferred_repository_filename: ma-carve-out-and-integration.docx
+    declared_title: M&A, Carve-out and Integration Decision-Led Methodology Reference
+    declared_file_id: null
+    domain: ma_carve_out_and_integration
+  - source_id: SOURCE-DOMAIN-IPO
+    original_filename: IPO Valuation and Capital Strategy.docx
+    preferred_repository_filename: ipo-valuation-and-capital-strategy.docx
+    declared_title: IPO, Valuation and Capital Strategy
+    declared_file_id: null
+    domain: ipo_valuation_and_capital_strategy
+  - source_id: SOURCE-DOMAIN-CHANGE
+    original_filename: Implementation and Change Methodology Reference.docx
+    preferred_repository_filename: implementation-and-change-methodology.docx
+    declared_title: Implementation and Change Methodology Reference
+    declared_file_id: null
+    domain: implementation_and_change
+  - source_id: SOURCE-DOMAIN-BENEFITS
+    original_filename: Benefits Realisation and Performance Improvement.docx
+    preferred_repository_filename: benefits-realisation-and-performance-improvement.docx
+    declared_title: Benefits Realisation and Performance Improvement
+    declared_file_id: null
+    domain: benefits_realisation_and_performance_improvement
+
+import_destination:
+  original_files: knowledge/source/original/
+  extracted_text: knowledge/source/extracted/
+  generated_records: knowledge/registry/
+  quarantine: knowledge/quarantine/
+
+required_import_outputs:
+  - checksum_sha256
+  - byte_size
+  - imported_at
+  - importer_version
+  - extraction_status
+  - extraction_warnings
+  - confidentiality_review
+  - usage_rights_review
+  - source_passage_count
