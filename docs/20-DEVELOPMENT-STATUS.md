@@ -96,6 +96,54 @@ See:
 - `docs/36-PHASE-4-DELIVERABLE-SEMANTIC-MODEL-COMPLETION.md`
 - `reports/phase4-validation-evidence.md`
 
+### Phase 5 — Additional engagement fixtures
+
+Status: **chat-first completion and independent CI gate passed on the review branch**.
+
+The governed release adds the next two primary synthetic engagements:
+
+- `FIXTURE-STRAT-001` — HarborPeak corporate portfolio and capital allocation;
+- `FIXTURE-COST-001` — Meridian recurring cost and productivity.
+
+Committed release includes:
+
+- fourteen deterministic agent-visible inputs per fixture;
+- source manifests, data dictionaries, interviews, controlled CSV and YAML evidence, CRM context, implementation roadmaps and benefit plans;
+- one explicitly untrusted adversarial input per fixture;
+- restricted expected results and byte-reproducible fixture baselines excluded from normal agent context;
+- corporate-strategy analysis covering portfolio choices, parenting advantage, business-unit economics, scenarios, capital allocation and implementation commitments;
+- cost-productivity analysis covering relevant cost, practical capacity, failure demand, flow, service constraints, benefit classification and implementation ownership;
+- six selected and three rejected strategy method identifiers;
+- six selected and three rejected cost-productivity method identifiers;
+- 144 independent fixture-grade checks;
+- twenty-two additional executable test nodes;
+- deterministic regeneration that cannot overwrite restricted evaluation material;
+- a read-only clean-generation gate covering both fixture packs, their restricted baselines and all prior governed records.
+
+Latest complete independent validation:
+
+- Phase 1 regression gate passed;
+- Phase 2 regression gate passed;
+- Phase 3 oracle gate passed;
+- Phase 4 semantic-model gate passed;
+- Phase 5 fixture-suite gate passed;
+- three of thirteen primary fixtures built;
+- 168 implemented test nodes and 57 remaining planned tests;
+- all 123 requirements mapped;
+- 170 runtime tests passed;
+- 92.84 percent coverage against a 90 percent floor;
+- Python compilation passed;
+- Ruff passed;
+- strict MyPy passed across 28 source files;
+- 69-file release artefact retained for 30 days.
+
+The Phase 5 boundary is the next fixture tranche, not the complete fixture programme. Ten primary fixtures and all five compound fixtures remain future work; `E2E-PRIMARY-FIXTURES-001` remains planned.
+
+See:
+
+- `docs/37-PHASE-5-ADDITIONAL-ENGAGEMENT-FIXTURES-COMPLETION.md`
+- `reports/phase5-validation-evidence.md`
+
 ### Deterministic consulting kernel
 
 - Lifecycle and transition logic.
@@ -114,7 +162,10 @@ See:
 
 - Thirteen-primary and five-compound fixture programme.
 - Complete synthetic Northstar SME AI-audit evidence room.
-- Deterministic fixture, oracle and semantic tests covering evidence, calculations, controls, contradictions, prompt injection, answer-key separation, missing observations, recommendation mutations and cross-format consistency.
+- Corporate-strategy fixture for portfolio, ownership advantage, capital allocation, scenarios and implementation commitments.
+- Cost-productivity fixture for relevant cost, capacity, failure demand, service constraints, benefit classification and implementation ownership.
+- Three of thirteen primary fixtures built; ten primary and five compound fixtures remain.
+- Deterministic fixture, oracle and semantic tests covering evidence, calculations, controls, contradictions, prompt injection, answer-key separation, missing observations, recommendation mutations, benefit classification and cross-format consistency.
 
 ## Current strategy
 
@@ -134,4 +185,4 @@ Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack 
 
 ## Current Codex gate
 
-Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1–4, applying the database migration in a disposable environment, rebuilding restricted baselines without exposing them to normal agent context and reporting discrepancies without silently changing governing contracts, fixture evidence, answer keys, semantic conclusions or Founder authority boundaries.
+Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1–5, applying the database migration in a disposable environment, rebuilding restricted baselines without exposing them to normal agent context and reporting discrepancies without silently changing governing contracts, fixture evidence, answer keys, semantic conclusions or Founder authority boundaries.
