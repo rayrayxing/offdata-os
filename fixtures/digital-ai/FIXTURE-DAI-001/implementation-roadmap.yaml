@@ -1,0 +1,186 @@
+fixture_id: FIXTURE-DAI-001
+classification: synthetic_client_visible_reference
+recommended_pilot:
+  use_case_id: UC-001
+  title: AI-assisted quotation preparation
+  duration_months: 6
+  maximum_cash_commitment_sgd: 120000
+principles:
+  - Augment bounded information and drafting work before automating accountable decisions.
+  - Preserve human technical pricing and external-release authority.
+  - Include a non-AI process-improvement comparator.
+  - Establish controlled identity data source logging and incident foundations before pilot use.
+  - Scale only from observed outcome control and adoption evidence.
+workstreams:
+  - workstream_id: WS-001
+    name: Pilot governance and decision control
+    owner_role: CEO_sponsor
+    outputs:
+      - pilot charter and approved scope
+      - decision rights and approval matrix
+      - risk acceptance and stop authority
+      - weekly pilot review routine
+    dependencies: []
+  - workstream_id: WS-002
+    name: Process and non-AI simplification
+    owner_role: Sales_operations_manager
+    outputs:
+      - standard enquiry template
+      - documented quotation complexity segments
+      - current discount and technical approval routing
+      - baseline delay and rework measures
+    dependencies: [WS-001]
+  - workstream_id: WS-003
+    name: Data and approved knowledge
+    owner_role: Product_data_owner
+    outputs:
+      - approved product source registry
+      - prior quotation eligibility and expiry rules
+      - product master duplicate remediation
+      - customer pricing access boundary
+    dependencies: [WS-001, WS-002]
+  - workstream_id: WS-004
+    name: Controlled AI environment and integration
+    owner_role: IT_manager
+    outputs:
+      - named identity and role access
+      - controlled retrieval and model environment
+      - audit logging and source display
+      - external-send disablement
+      - kill switch and incident process
+    dependencies: [WS-001, WS-003]
+  - workstream_id: WS-005
+    name: User workflow and capability
+    owner_role: Sales_operations_manager
+    outputs:
+      - human decision and correction workflow
+      - role-based training
+      - adoption and correction measurement
+      - workforce communication and feedback
+    dependencies: [WS-002, WS-004]
+  - workstream_id: WS-006
+    name: Pilot experiment and evaluation
+    owner_role: CFO_and_Sales_director
+    outputs:
+      - comparison cohort and baseline
+      - outcome and control dashboard
+      - independent quality sampling
+      - updated value case
+      - scale adapt pause or stop recommendation
+    dependencies: [WS-002, WS-003, WS-004, WS-005]
+phases:
+  - phase_id: PH-01
+    name: Authorise and baseline
+    months: [1]
+    milestones:
+      - Founder and client approve pilot charter and commitment ceiling
+      - Baseline data and measurement plan approved
+      - Non-AI comparator defined
+    gate:
+      decision: proceed_conditionally_or_stop
+      mandatory_evidence:
+        - complete decision rights
+        - measurable baseline
+        - no unresolved critical scope defect
+  - phase_id: PH-02
+    name: Prepare process data and controls
+    months: [1, 2]
+    milestones:
+      - enquiry and approval workflow standardised
+      - approved source registry created
+      - identity and access design tested
+      - threat and prompt-injection cases passed in development
+    gate:
+      decision: build_pilot_or_recycle
+      mandatory_evidence:
+        - source and access boundaries
+        - rollback and kill switch
+        - product and pricing authority preserved
+  - phase_id: PH-03
+    name: Build and dry run
+    months: [2, 3]
+    milestones:
+      - extraction retrieval and drafting functions operational
+      - synthetic and historical dry-run test set completed
+      - material errors recorded and repaired
+      - user workflow and training accepted
+    gate:
+      decision: limited_live_pilot_or_recycle
+      mandatory_evidence:
+        - grounding and control thresholds
+        - no external automatic send
+        - acceptable correction effort
+  - phase_id: PH-04
+    name: Controlled live pilot
+    months: [3, 4, 5]
+    milestones:
+      - selected users and quotation segments active
+      - weekly outcome and defect review
+      - incident and override records maintained
+      - capacity use and customer activity tracked
+    gate:
+      decision: expand_cohort_adapt_pause_or_stop
+      mandatory_evidence:
+        - outcome by complexity segment
+        - error and control performance
+        - adoption and correction effort
+  - phase_id: PH-05
+    name: Evaluate and decide scale
+    months: [6]
+    milestones:
+      - independent evaluation completed
+      - value case updated using observed evidence
+      - workforce and operating-model implications assessed
+      - scale adapt pause or stop decision packet issued
+    gate:
+      decision: scale_adapt_pause_or_stop
+      mandatory_evidence:
+        - approved outcome and control thresholds
+        - operating owner and support model
+        - residual risk acceptance
+benefit_records:
+  - benefit_id: BEN-DAI-001
+    name: Quotation handling capacity released
+    benefit_type: released_capacity
+    owner_role: Sales_operations_manager
+    baseline: segmented annual quotation touch hours
+    counterfactual: existing process plus approved non-AI improvements
+    measure: net human hours released after correction and additional review
+    verification_threshold: at least 15 percent reduction for eligible segments without material error increase
+    cash_releasing: false
+  - benefit_id: BEN-DAI-002
+    name: Faster eligible quotation response
+    benefit_type: operational_outcome
+    owner_role: Sales_director
+    baseline: elapsed time by complexity and delay cause
+    counterfactual: existing process plus approved non-AI improvements
+    measure: median and percentile elapsed time for eligible quotations
+    verification_threshold: at least 20 percent improvement for eligible segments
+    cash_releasing: false
+  - benefit_id: BEN-DAI-003
+    name: Incremental gross margin from improved commercial response
+    benefit_type: potential_incremental_margin
+    owner_role: CFO
+    baseline: win rate and gross margin for comparable eligible quotations
+    counterfactual: matched or staged comparison
+    measure: incremental won gross margin with uncertainty interval
+    verification_threshold: credible positive effect after controlling for segment and period
+    cash_releasing: true
+    note: Must not be declared from response-time improvement alone.
+  - benefit_id: BEN-DAI-004
+    name: Reduced quotation rework and data errors
+    benefit_type: quality_and_risk_avoidance
+    owner_role: Sales_operations_manager
+    baseline: rework and data error rate by segment
+    counterfactual: existing process plus non-AI comparator
+    measure: avoided corrections and associated handling cost
+    verification_threshold: no material increase and target reduction agreed after baseline validation
+    cash_releasing: conditional
+stop_conditions:
+  - critical confidentiality or cross-customer exposure
+  - unauthorised technical pricing or external-release decision
+  - material increase in quotation errors
+  - correction and review effort eliminates expected capacity benefit
+  - low adoption caused by unresolved workflow or workforce harm
+  - pilot cost forecast exceeds SGD 120000 without Founder approval
+  - no credible path to measurable value after the approved learning period
