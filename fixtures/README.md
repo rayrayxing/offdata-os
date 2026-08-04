@@ -2,122 +2,60 @@
 
 ## Purpose
 
-Fixtures are controlled synthetic engagements used to test the complete offdata lifecycle, method selection, evidence handling, quantitative analysis, deliverable production, implementation planning and benefits verification.
+Fixtures are controlled synthetic engagements used to test the complete offdata lifecycle, method selection, evidence handling, quantitative analysis, deliverable semantics, implementation planning and benefits verification. No real client data is permitted in the initial suite.
 
-No real client data should be used in the initial fixture suite.
+## Current governed coverage
 
-## Primary fixtures
+| Fixture | Engagement type | Status |
+|---|---|---|
+| `FIXTURE-DAI-001` | Digital and AI transformation | Built foundation; analytical oracle and semantic model complete |
+| `FIXTURE-STRAT-001` | Corporate and business-unit strategy | Built foundation in Phase 5 |
+| `FIXTURE-COST-001` | Cost and productivity | Built foundation in Phase 5 |
+| Remaining ten primary fixtures | Other governed engagement types | Planned |
+| Compound fixtures | Cross-domain engagements | Planned |
 
-Create one fixture for each engagement type:
+Phase 5 deliberately adds the two fixtures next in the canonical build order. It does not claim completion of the full thirteen-fixture end-to-end suite.
 
-1. `corporate-strategy/`
-2. `growth-commercial/`
-3. `cost-productivity/`
-4. `customer-experience/`
-5. `operating-model/`
-6. `organisation-workforce/`
-7. `digital-ai/`
-8. `risk-controls/`
-9. `ma-integration/`
-10. `carveout-separation/`
-11. `ipo-valuation-capital/`
-12. `implementation-change/`
-13. `benefits-performance/`
+## Primary fixture programme
 
-## Compound fixtures
+1. `corporate-strategy/FIXTURE-STRAT-001`
+2. `growth-commercial/FIXTURE-GROWTH-001`
+3. `cost-productivity/FIXTURE-COST-001`
+4. `customer-experience/FIXTURE-CX-001`
+5. `operating-model/FIXTURE-OM-001`
+6. `organisation-workforce/FIXTURE-WF-001`
+7. `digital-ai/FIXTURE-DAI-001`
+8. `risk-controls/FIXTURE-RISK-001`
+9. `ma-integration/FIXTURE-MA-001`
+10. `carveout-separation/FIXTURE-CARVE-001`
+11. `ipo-valuation-capital/FIXTURE-IPO-001`
+12. `implementation-change/FIXTURE-CHANGE-001`
+13. `benefits-performance/FIXTURE-BEN-001`
 
-After primary fixtures:
+Legacy IDs are retained as aliases in `fixtures/manifest.yaml` rather than silently discarded.
 
-- `compound-ai-workforce-operating-model/`
-- `compound-ma-technology-benefits/`
-- `compound-growth-cx-pricing/`
-- `compound-cost-risk-controls/`
-- `compound-strategy-capital-implementation/`
+## Governed Phase 5 fixture contract
 
-## Fixture structure
+Each built fixture contains:
 
-```text
-fixture-name/
-├── manifest.yaml
-├── mandate/
-├── crm/
-├── interviews/
-├── documents/
-├── data/
-├── evidence/
-├── expected/
-│   ├── framing.yaml
-│   ├── method-selection.yaml
-│   ├── calculations/
-│   ├── recommendation.yaml
-│   ├── storyline.yaml
-│   ├── implementation.yaml
-│   └── benefits.yaml
-├── defects/
-└── artefact-baselines/
-```
+- a synthetic client profile, mandate, decision owner and Founder gates;
+- opportunity and CRM continuity records;
+- stakeholder interviews and meeting evidence;
+- structured datasets with intentional defects and contradictions;
+- a source manifest with scope, limitations, rights and one adversarial source;
+- expected problem and method choices, including rejected method traps;
+- independently recalculable metrics and tolerances;
+- a preferred recommendation, credible alternative and prohibited choices;
+- governing uncertainties and falsifiers;
+- implementation initiatives linked to recommendation actions;
+- benefit records linked to initiatives, owners and verification thresholds;
+- semantic output expectations for PPTX, DOCX, XLSX, PDF, SVG and HTML;
+- a restricted answer key and reproducible restricted fixture baseline.
 
-## Fixture manifest
+The client-visible fixture generator never reads or writes restricted expected results. Golden expectations define invariants and ranges, not an exact prose answer.
 
-```yaml
-fixture:
-  id:
-  name:
-  engagement_types:
-  decision:
-  synthetic_client:
-  difficulty:
-  material_risks:
-  intentional_data_issues:
-  expected_problem_archetypes:
-  acceptable_method_stacks:
-  unacceptable_methods:
-  required_escalations:
-  expected_output_formats:
-  version:
-```
+## Evaluation boundaries
 
-## Design requirements
+`expected-results.yaml`, `fixture-baseline.json` and the suite baseline are restricted evaluation material and must not enter normal agent context. A failing implementation must be investigated rather than repaired by weakening a golden expectation. Changes to material expectations require a rationale and Founder review.
 
-Each fixture must contain:
-
-- A credible client and commercial context
-- An incomplete initial mandate
-- Ambiguous or contradictory evidence
-- At least one tempting but incorrect method choice
-- Material assumptions and falsifiers
-- Quantitative data with known expected ranges
-- Data-quality defects
-- An alternative to the preferred recommendation
-- Implementation constraints
-- Benefits timing and attribution issues
-- Visual and deliverable requirements
-
-## Golden expectations
-
-Golden expectations should define:
-
-- Required invariants
-- Acceptable ranges
-- Required records and traceability
-- Prohibited conclusions
-- Material defects that must be detected
-- Visual and technical artefact checks
-
-Do not require one exact prose formulation. Do not change a golden expectation solely to make a failing implementation pass.
-
-## First pilot
-
-The first fixture should be a fictional small or medium-sized business considering an AI programme. It should exercise:
-
-- Opportunity and CRM conversion
-- AI audit mandate
-- Strategy and value framing
-- AI use-case selection
-- Data and technology readiness
-- Risk and controls
-- Workforce and operating-model effects
-- Pilot design
-- Value case
-- Executive deck, report, model and interactive summary
-- Implementation roadmap and benefit measures
+Physical Office and browser artefacts, visual regression, full lifecycle execution and the remaining ten primary fixtures are outside this Phase 5 tranche.

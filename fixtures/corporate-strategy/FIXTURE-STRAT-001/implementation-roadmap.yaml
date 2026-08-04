@@ -1,0 +1,46 @@
+fixture_id: FIXTURE-STRAT-001
+initiatives:
+- initiative_id: INIT-STR-001
+  recommendation_action_id: ACT-STR-001
+  owner: Field Services MD
+  output: growth-capacity plan
+  acceptance_criteria: technician density and remote-support capacity approved without
+    breaching resilience thresholds
+  dependencies:
+  - board capital approval
+  decision_gate: FDG-STR-001
+- initiative_id: INIT-STR-002
+  recommendation_action_id: ACT-STR-003
+  owner: Precision Components MD
+  output: focused product and footprint reset
+  acceptance_criteria: low-return variants exited and ROIC improvement milestones
+    baselined
+  dependencies:
+  - customer profitability validation
+  decision_gate: FDG-STR-001
+- initiative_id: INIT-STR-003
+  recommendation_action_id: ACT-STR-006
+  owner: Group Strategy Director
+  output: staged Energy Systems partnership
+  acceptance_criteria: partner terms preserve customer access and downside exposure
+    remains within approved limit
+  dependencies:
+  - specialist transaction review
+  decision_gate: FDG-STR-002
+- initiative_id: INIT-STR-004
+  recommendation_action_id: ACT-STR-009
+  owner: Digital Monitoring Lead
+  output: partnered incubation plan
+  acceptance_criteria: churn baseline, reference customers and unit economics validated
+    before scale
+  dependencies:
+  - data remediation
+  decision_gate: FDG-STR-001
+- initiative_id: INIT-STR-005
+  recommendation_action_id: ACT-STR-012
+  owner: Group CFO
+  output: controlled Legacy Fabrication divestiture
+  acceptance_criteria: net proceeds and stranded costs independently validated
+  dependencies:
+  - environmental and legal diligence
+  decision_gate: FDG-STR-002

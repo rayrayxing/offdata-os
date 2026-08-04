@@ -1,0 +1,14 @@
+option_id,business_unit_id,action,incremental_investment_sgd_m,divest_proceeds_sgd_m,base_npv_sgd_m,downside_npv_sgd_m,strategic_fit_score,parenting_advantage_score,capability_readiness_score,execution_risk_score,management_preference
+ACT-STR-001,BU-STR-001,invest_for_growth,8.0,0.0,18.0,6.0,9.0,9.0,8.0,4.0,yes
+ACT-STR-002,BU-STR-001,hold_current_course,0.0,0.0,3.0,-2.0,5.0,5.0,8.0,3.0,no
+ACT-STR-003,BU-STR-002,restructure_and_focus,3.0,0.0,7.0,1.0,7.0,8.0,7.0,4.0,yes
+ACT-STR-004,BU-STR-002,divest,1.0,10.0,5.0,3.0,4.0,2.0,8.0,5.0,no
+ACT-STR-005,BU-STR-003,full_expansion,18.0,0.0,24.0,-14.0,7.0,5.0,4.0,8.0,yes
+ACT-STR-006,BU-STR-003,partner_and_stage,6.0,0.0,12.0,-2.0,8.0,7.0,6.0,5.0,no
+ACT-STR-007,BU-STR-003,defer,0.0,0.0,2.0,0.0,4.0,4.0,4.0,2.0,no
+ACT-STR-008,BU-STR-004,build_internally,12.0,0.0,16.0,-9.0,8.0,7.0,4.0,8.0,yes
+ACT-STR-009,BU-STR-004,partner_and_incubate,5.0,0.0,11.0,1.0,8.0,8.0,6.0,4.0,no
+ACT-STR-010,BU-STR-004,close,1.0,0.0,-2.0,-3.0,2.0,2.0,5.0,5.0,no
+ACT-STR-011,BU-STR-005,retain,0.0,0.0,-8.0,-12.0,2.0,2.0,6.0,6.0,yes
+ACT-STR-012,BU-STR-005,divest,1.0,5.0,6.0,2.0,5.0,3.0,7.0,5.0,no
+ACT-STR-013,BU-STR-005,close,2.0,1.0,4.0,1.0,3.0,2.0,6.0,6.0,no

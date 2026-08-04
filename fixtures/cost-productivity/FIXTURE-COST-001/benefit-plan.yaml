@@ -1,0 +1,38 @@
+fixture_id: FIXTURE-COST-001
+benefits:
+- benefit_id: BEN-COST-001
+  initiative_ids:
+  - INIT-COST-001
+  - INIT-COST-002
+  - INIT-COST-003
+  owner: CFO
+  measure: net recurring cash benefit
+  baseline: controlled site cost baseline
+  counterfactual: uniform budget cut
+  timing: monthly after implementation with twelve-month persistence test
+  attribution: initiative ledger with overlap reconciliation
+  verification_threshold: cash ledger confirms net recurring benefit after recurring
+    cost
+- benefit_id: BEN-COST-002
+  initiative_ids:
+  - INIT-COST-001
+  - INIT-COST-002
+  - INIT-COST-003
+  owner: Service Director
+  measure: released capacity hours
+  baseline: activity and practical-capacity baseline
+  counterfactual: current operating model
+  timing: monthly
+  attribution: time-driven activity measurement
+  verification_threshold: released hours are measured and separately classified from
+    payroll savings
+- benefit_id: BEN-COST-003
+  initiative_ids:
+  - INIT-COST-004
+  owner: Procurement Director
+  measure: contractor cash saving
+  baseline: approved contractor and standby spend
+  counterfactual: current contract
+  timing: after contract effective date
+  attribution: invoice comparison adjusted for demand and coverage
+  verification_threshold: coverage maintained and invoices reconcile to approved terms

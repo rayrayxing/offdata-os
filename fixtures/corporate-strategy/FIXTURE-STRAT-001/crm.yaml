@@ -1,0 +1,11 @@
+organisation_id: CRM-ORG-STR-001
+opportunity_id: CRM-OPP-STR-001
+engagement_id: ENG-STR-001
+pipeline_stage: mandate_confirmed
+commercial_assumptions:
+  currency: SGD
+  fee_basis: synthetic_fixed_fee
+  fee_sgd: 165000
+  external_commitment_allowed: false
+relationship_summary: Synthetic board-sponsored portfolio review following uneven
+  returns and competing capital requests.

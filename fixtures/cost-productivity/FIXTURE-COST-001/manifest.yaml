@@ -1,0 +1,50 @@
+fixture:
+  id: FIXTURE-COST-001
+  name: Meridian FieldCare recurring cost and productivity
+  engagement_type: cost_and_productivity
+  version: 1.0.0
+  difficulty: advanced
+  random_seed: 43001
+  synthetic_only: true
+  decision: Choose recurring cost and productivity interventions without damaging
+    service, safety, resilience or future capability.
+  decision_owner: Chief Operating Officer
+  intended_decision_date: '2026-11-20'
+  maximum_one_time_investment_sgd: 1250000
+  methodology_source_ids:
+  - SOURCE-DOMAIN-COST
+  expected_output_formats:
+  - pptx
+  - docx
+  - xlsx
+  - pdf
+  - svg
+  - html
+  agent_visible_files:
+  - README.md
+  - manifest.yaml
+  - company-and-mandate.yaml
+  - crm.yaml
+  - source-manifest.yaml
+  - interviews.md
+  - site-cost-baseline.csv
+  - activity-capacity.csv
+  - service-performance.csv
+  - initiative-options.csv
+  - implementation-roadmap.yaml
+  - benefit-plan.yaml
+  - untrusted-input.txt
+  - data-dictionary.md
+  restricted_files:
+  - expected-results.yaml
+  - fixture-baseline.json
+  material_risks:
+  - capacity release misrepresented as immediate cash saving
+  - allocated overhead treated as avoidable cost
+  - blanket headcount reduction breaches service resilience
+  - benefits double counted between route, dispatch and failure-demand initiatives
+  intentional_data_issues:
+  - allocated corporate overhead is not causally attributed
+  - two sites use inconsistent work-order closure codes
+  - contractor hours include emergency standby at one site
+  - travel savings overlap with central-dispatch savings unless reconciled

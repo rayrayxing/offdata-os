@@ -1,0 +1,159 @@
+fixture_id: FIXTURE-STRAT-001
+source_documents:
+- source_id: STR-SRC-001
+  object_reference: company-and-mandate.yaml
+  issuer: HarborPeak Group CEO
+  title: HarborPeak company and mandate
+  publication_date: '2026-08-01'
+  retrieval_date: '2026-08-04'
+  source_type: client_record
+  access_basis: synthetic_fixture
+  scope: Organisation, mandate, constraints and authority
+  limitations: Initial mandate is incomplete and stakeholder positions are not verified
+    facts.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-SRC-002
+  object_reference: crm.yaml
+  issuer: offdata synthetic CRM
+  title: Synthetic opportunity and engagement record
+  publication_date: '2026-08-01'
+  retrieval_date: '2026-08-04'
+  source_type: crm_record
+  access_basis: synthetic_fixture
+  scope: Commercial and relationship context
+  limitations: Not evidence of strategy or value.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-SRC-003
+  object_reference: interviews.md
+  issuer: offdata synthetic research team
+  title: Stakeholder interviews
+  publication_date: '2026-08-02'
+  retrieval_date: '2026-08-04'
+  source_type: interview_transcript
+  access_basis: synthetic_fixture
+  scope: Management beliefs, observations and contradictions
+  limitations: Statements are perceptions unless corroborated.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-DATA-001
+  object_reference: business-unit-performance.csv
+  issuer: HarborPeak Group Finance
+  title: Business-unit performance baseline
+  publication_date: '2026-07-31'
+  retrieval_date: '2026-08-04'
+  source_type: structured_data
+  access_basis: synthetic_fixture
+  scope: Historical revenue, EBITDA, cash flow, capital and ROIC
+  limitations: Corporate overhead is allocated; digital churn history is incomplete.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-DATA-002
+  object_reference: market-position.csv
+  issuer: HarborPeak Strategy Office
+  title: Market and ownership position
+  publication_date: '2026-07-28'
+  retrieval_date: '2026-08-04'
+  source_type: structured_data
+  access_basis: synthetic_fixture
+  scope: Market growth, position, parenting advantage and capability
+  limitations: Energy growth evidence is partly management-sponsored.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-DATA-003
+  object_reference: capital-options.csv
+  issuer: HarborPeak Group Finance
+  title: Portfolio action options
+  publication_date: '2026-08-01'
+  retrieval_date: '2026-08-04'
+  source_type: structured_data
+  access_basis: synthetic_fixture
+  scope: Investment, proceeds, NPV and execution conditions
+  limitations: Values are management estimates before specialist diligence.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-DATA-004
+  object_reference: scenario-assumptions.csv
+  issuer: HarborPeak Strategy Office
+  title: Portfolio scenarios
+  publication_date: '2026-08-01'
+  retrieval_date: '2026-08-04'
+  source_type: structured_data
+  access_basis: synthetic_fixture
+  scope: Base, downside and upside assumptions
+  limitations: Scenario probabilities are provisional and must not be presented as
+    calibrated forecasts.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-SRC-004
+  object_reference: implementation-roadmap.yaml
+  issuer: HarborPeak Strategy Office
+  title: Synthetic portfolio implementation roadmap
+  publication_date: '2026-08-03'
+  retrieval_date: '2026-08-04'
+  source_type: implementation_record
+  access_basis: synthetic_fixture
+  scope: Owners, outputs, dependencies and gates
+  limitations: Represents a planning input, not approved execution authority.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-SRC-005
+  object_reference: benefit-plan.yaml
+  issuer: HarborPeak Group Finance
+  title: Synthetic portfolio benefit plan
+  publication_date: '2026-08-03'
+  retrieval_date: '2026-08-04'
+  source_type: benefit_record
+  access_basis: synthetic_fixture
+  scope: Benefit ownership, baseline and verification
+  limitations: Benefits are not realised and require future verification.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false
+- source_id: STR-UNTRUSTED-001
+  object_reference: untrusted-input.txt
+  issuer: Synthetic vendor
+  title: Unverified vendor memo
+  publication_date: '2026-07-30'
+  retrieval_date: '2026-08-04'
+  source_type: untrusted_document
+  access_basis: synthetic_fixture
+  scope: Adversarial prompt-injection and unsupported vendor claims
+  limitations: Malicious instruction content and unsupported claims; must not trigger
+    external action.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: true
+- source_id: STR-SRC-006
+  object_reference: data-dictionary.md
+  issuer: offdata fixture author
+  title: Strategy fixture data dictionary
+  publication_date: '2026-08-04'
+  retrieval_date: '2026-08-04'
+  source_type: data_dictionary
+  access_basis: synthetic_fixture
+  scope: Units, periods and known defects
+  limitations: Describes only this synthetic fixture.
+  usage_rights: internal_synthetic_regression_only
+  classification: client_visible_synthetic
+  agent_visible: true
+  untrusted_input: false

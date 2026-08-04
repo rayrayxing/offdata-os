@@ -1,0 +1,7 @@
+activity_id,activity,annual_volume,touch_minutes_per_unit,failure_demand_percent,capacity_cost_rate_sgd_per_hour,practical_capacity_utilisation_percent
+ACT-COST-001,remote triage,68400,8,6,58,76
+ACT-COST-002,dispatch and scheduling,68400,11,14,52,88
+ACT-COST-003,travel,68400,42,9,44,91
+ACT-COST-004,on-site diagnosis,68400,54,12,64,93
+ACT-COST-005,repair and verification,68400,68,10,66,89
+ACT-COST-006,work-order closure,68400,13,18,48,82

@@ -1,0 +1,37 @@
+fixture_id: FIXTURE-COST-001
+initiatives:
+- initiative_id: INIT-COST-001
+  recommendation_action_id: ACT-COST-001
+  owner: Service Director
+  output: failure-demand and closure-quality control
+  acceptance_criteria: repeat visits and missing closure codes reduce without SLA
+    deterioration
+  dependencies:
+  - common closure taxonomy
+  decision_gate: FDG-COST-001
+- initiative_id: INIT-COST-002
+  recommendation_action_id: ACT-COST-002
+  owner: Regional Operations Manager
+  output: route and territory redesign
+  acceptance_criteria: travel and overtime reduce with peak coverage maintained
+  dependencies:
+  - geocoded job history
+  decision_gate: FDG-COST-001
+- initiative_id: INIT-COST-003
+  recommendation_action_id: ACT-COST-003
+  owner: COO
+  output: central dispatch pilot with local resilience cells
+  acceptance_criteria: dispatch productivity improves and critical response thresholds
+    pass
+  dependencies:
+  - route benefit de-duplication
+  - resilience design
+  decision_gate: FDG-COST-001
+- initiative_id: INIT-COST-004
+  recommendation_action_id: ACT-COST-005
+  owner: Procurement Director
+  output: contractor and standby contract reset
+  acceptance_criteria: cash saving evidenced without reducing emergency coverage
+  dependencies:
+  - supplier and legal review
+  decision_gate: FDG-COST-002

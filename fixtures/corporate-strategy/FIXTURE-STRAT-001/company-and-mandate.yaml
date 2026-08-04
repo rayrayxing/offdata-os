@@ -1,0 +1,74 @@
+fixture_id: FIXTURE-STRAT-001
+organisation:
+  name: HarborPeak Industrial Group Pte. Ltd.
+  fictional: true
+  headquarters: Singapore
+  footprint:
+  - Singapore
+  - Malaysia
+  - Thailand
+  - Indonesia
+  sector: industrial equipment and lifecycle services
+  employees: 1180
+  group_revenue_sgd_m: 148.0
+  ownership: founder-controlled private group
+mandate:
+  initial_request: Prepare a growth strategy and recommend where to invest the next
+    SGD 20 million.
+  governing_decision: Which business units should receive growth capital, be restructured,
+    partnered, divested or closed over the next three years?
+  decision_owner: Group Chief Executive Officer
+  decision_date: '2026-10-30'
+  constraints:
+  - Net new capital commitment must not exceed SGD 20 million before Founder approval.
+  - No action may reduce safety-critical field-service coverage below current resilience
+    thresholds.
+  - No legal, tax, environmental or transaction conclusion may be issued without specialist
+    review.
+  - The recommendation must include at least one credible alternative portfolio.
+  scope:
+  - five operating business units
+  - three-year portfolio and capital-allocation horizon
+  - corporate advantage and parenting logic
+  - base, downside and switching conditions
+  - implementation commitments and benefit verification
+  exclusions:
+  - formal fairness opinion
+  - binding valuation or transaction advice
+  - legal entity restructuring
+  - named buyer outreach
+  counterfactual: Continue the current equal-allocation policy and approve business-unit
+    proposals independently.
+  governing_uncertainties:
+  - Which businesses create value after capital intensity and cost of capital?
+  - Where does HarborPeak have parenting or ownership advantage rather than market
+    exposure alone?
+  - Which portfolio remains acceptable in the downside scenario and within the net
+    capital ceiling?
+  - What staged evidence should trigger scale, partnership, divestiture or stop decisions?
+stakeholders:
+- stakeholder_id: STK-STR-001
+  role: Group CEO
+  position: Favors full Energy Systems expansion.
+- stakeholder_id: STK-STR-002
+  role: Group CFO
+  position: Wants capital discipline and divestiture proceeds.
+- stakeholder_id: STK-STR-003
+  role: Field Services MD
+  position: Requests investment in technician density and remote support.
+- stakeholder_id: STK-STR-004
+  role: Energy Systems MD
+  position: Cites double-digit market growth as sufficient evidence.
+- stakeholder_id: STK-STR-005
+  role: Board Risk Chair
+  position: Requires downside and environmental closure analysis.
+founder_decision_gates:
+- gate_id: FDG-STR-001
+  decision: Approve the preferred portfolio and maximum net capital commitment.
+  class: DEC-MATERIAL
+- gate_id: FDG-STR-002
+  decision: Approve any external partner, buyer or transaction outreach.
+  class: DEC-EXTERNAL
+- gate_id: FDG-STR-003
+  decision: Accept material environmental, valuation or execution risk.
+  class: DEC-IRREVERSIBLE

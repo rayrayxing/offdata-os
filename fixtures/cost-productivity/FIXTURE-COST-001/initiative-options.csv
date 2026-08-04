@@ -1,0 +1,7 @@
+option_id,initiative,gross_cash_savings_sgd,recurring_cost_sgd,one_time_cost_sgd,released_capacity_hours,cost_avoidance_sgd,quality_risk_score,resilience_risk_score,implementation_readiness_score,earliest_cash_month,requires_headcount_reduction,overlap_group,overlap_adjustment_sgd
+ACT-COST-001,failure-demand triage and closure-quality reset,250000,100000,350000,9000,120000,3,2,8,7,no,failure_demand,0
+ACT-COST-002,route and territory optimisation,420000,60000,200000,5000,90000,3,3,8,5,no,travel_dispatch,0
+ACT-COST-003,central dispatch with local resilience cells,380000,180000,450000,4000,150000,5,5,6,10,no,travel_dispatch,120000
+ACT-COST-004,uniform twelve percent technician headcount reduction,1800000,0,600000,0,0,9,10,7,4,yes,workforce,0
+ACT-COST-005,contractor and standby contract reset,220000,0,100000,0,90000,4,5,7,6,no,contractor,0
+ACT-COST-006,enterprise field-service platform replacement,300000,420000,2100000,2500,50000,7,7,3,24,no,technology,0

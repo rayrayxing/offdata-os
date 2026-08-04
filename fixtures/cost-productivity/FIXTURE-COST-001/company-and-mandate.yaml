@@ -1,0 +1,72 @@
+fixture_id: FIXTURE-COST-001
+organisation:
+  name: Meridian FieldCare Pte. Ltd.
+  fictional: true
+  headquarters: Singapore
+  footprint:
+  - Singapore
+  - Malaysia
+  - Indonesia
+  - Thailand
+  sector: multi-site technical field services
+  employees: 940
+  annual_service_jobs: 68400
+  ownership: private regional services company
+mandate:
+  initial_request: Remove ten percent of cost before the next budget cycle.
+  governing_decision: Where can recurring cost be removed without damaging service,
+    safety, resilience or future capability?
+  decision_owner: Chief Operating Officer
+  decision_date: '2026-11-20'
+  constraints:
+  - One-time implementation cost must not exceed SGD 1.25 million before Founder approval.
+  - No recommended action may reduce critical peak coverage below the approved resilience
+    floor.
+  - Capacity release must be distinguished from cash-releasing benefit and cost avoidance.
+  - No workforce action may proceed without role-level demand, process and transition
+    evidence.
+  scope:
+  - six operating sites
+  - service demand, failure demand and practical capacity
+  - direct, contractor, overtime, travel and allocated cost
+  - recurring cash, capacity, cost avoidance and one-time cost
+  - implementation ownership and benefit verification
+  exclusions:
+  - collective bargaining advice
+  - employment-law conclusions
+  - supplier termination
+  - external workforce communication
+  counterfactual: Apply a uniform ten percent budget cut and allow each site to choose
+    the means.
+  governing_uncertainties:
+  - Which costs are causally avoidable rather than allocated or capacity-valued?
+  - Which operational mechanisms create repeat visits, travel, overtime and contractor
+    cost?
+  - Which interventions preserve service, safety and peak resilience?
+  - When do capacity, cost avoidance and recurring cash benefits become verifiable?
+stakeholders:
+- stakeholder_id: STK-COST-001
+  role: COO
+  position: Requests a ten percent run-rate reduction.
+- stakeholder_id: STK-COST-002
+  role: CFO
+  position: Treats released hours as payroll savings in the draft case.
+- stakeholder_id: STK-COST-003
+  role: Service Director
+  position: Warns peak utilisation and repeat visits constrain headcount action.
+- stakeholder_id: STK-COST-004
+  role: Regional Operations Manager
+  position: Supports central dispatch and route redesign.
+- stakeholder_id: STK-COST-005
+  role: Safety Lead
+  position: Requires coverage and fatigue thresholds.
+founder_decision_gates:
+- gate_id: FDG-COST-001
+  decision: Approve the intervention portfolio and one-time commitment.
+  class: DEC-MATERIAL
+- gate_id: FDG-COST-002
+  decision: Approve any role removal, external communication or supplier commitment.
+  class: DEC-EXTERNAL
+- gate_id: FDG-COST-003
+  decision: Accept any residual safety, resilience or service risk.
+  class: DEC-IRREVERSIBLE

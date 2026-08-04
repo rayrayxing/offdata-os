@@ -1,0 +1,11 @@
+organisation_id: CRM-ORG-COST-001
+opportunity_id: CRM-OPP-COST-001
+engagement_id: ENG-COST-001
+pipeline_stage: mandate_confirmed
+commercial_assumptions:
+  currency: SGD
+  fee_basis: synthetic_fixed_fee
+  fee_sgd: 145000
+  external_commitment_allowed: false
+relationship_summary: Synthetic COO-sponsored productivity review after margin compression
+  and inconsistent site performance.

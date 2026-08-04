@@ -1,0 +1,51 @@
+fixture:
+  id: FIXTURE-STRAT-001
+  name: HarborPeak portfolio and capital allocation
+  engagement_type: corporate_and_business_unit_strategy
+  version: 1.0.0
+  difficulty: advanced
+  random_seed: 41001
+  synthetic_only: true
+  decision: Choose which business units to invest in, restructure, partner, divest
+    or close over the next three years.
+  decision_owner: Group Chief Executive Officer
+  intended_decision_date: '2026-10-30'
+  maximum_net_capital_commitment_sgd_m: 20.0
+  methodology_source_ids:
+  - SOURCE-DOMAIN-STRATEGY
+  expected_output_formats:
+  - pptx
+  - docx
+  - xlsx
+  - pdf
+  - svg
+  - html
+  agent_visible_files:
+  - README.md
+  - manifest.yaml
+  - company-and-mandate.yaml
+  - crm.yaml
+  - source-manifest.yaml
+  - interviews.md
+  - business-unit-performance.csv
+  - market-position.csv
+  - capital-options.csv
+  - scenario-assumptions.csv
+  - implementation-roadmap.yaml
+  - benefit-plan.yaml
+  - untrusted-input.txt
+  - data-dictionary.md
+  restricted_files:
+  - expected-results.yaml
+  - fixture-baseline.json
+  material_risks:
+  - capital committed to an attractive market without ownership advantage
+  - divestiture proceeds or stranded costs overstated
+  - management preference substituted for evidence
+  - portfolio actions exceed the approved net capital ceiling
+  intentional_data_issues:
+  - one market-growth estimate is management-sponsored and not independently triangulated
+  - legacy-fabrication environmental closure provision is a range rather than an agreed
+    amount
+  - digital-monitoring churn is missing for the first two quarters
+  - corporate overhead is allocated but not attributed to business-unit causation

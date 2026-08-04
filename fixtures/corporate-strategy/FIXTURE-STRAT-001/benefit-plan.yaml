@@ -1,0 +1,35 @@
+fixture_id: FIXTURE-STRAT-001
+benefits:
+- benefit_id: BEN-STR-001
+  initiative_ids:
+  - INIT-STR-001
+  owner: Group CFO
+  measure: Field Services economic profit
+  baseline: ROIC 24 percent on SGD 25 million capital employed
+  counterfactual: hold-current-course option
+  timing: quarterly for 36 months
+  attribution: unit economics and approved capital ledger
+  verification_threshold: ROIC remains above WACC and downside service thresholds
+    are met
+- benefit_id: BEN-STR-002
+  initiative_ids:
+  - INIT-STR-003
+  - INIT-STR-004
+  owner: Group Strategy Director
+  measure: option value validated
+  baseline: unproven partnership economics
+  counterfactual: full internal build
+  timing: stage gates at months 6, 12 and 18
+  attribution: milestone evidence and revised NPV
+  verification_threshold: positive downside-adjusted NPV before further capital
+- benefit_id: BEN-STR-003
+  initiative_ids:
+  - INIT-STR-005
+  owner: Group CFO
+  measure: net divestiture proceeds after stranded cost
+  baseline: negative free cash flow and 3 percent ROIC
+  counterfactual: retain option
+  timing: after completion and twelve-month stranded-cost review
+  attribution: transaction ledger and cost run-rate
+  verification_threshold: realised net proceeds and cost removal reconcile to approved
+    model

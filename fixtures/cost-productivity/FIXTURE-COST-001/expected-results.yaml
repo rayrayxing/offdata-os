@@ -1,0 +1,137 @@
+fixture_id: FIXTURE-COST-001
+version: 1.0.0
+agent_visible: false
+expected_metrics:
+  - metric_id: CALC-COST-001
+    expected_value: 37090000.0
+    unit: SGD
+    tolerance: 0.0
+  - metric_id: CALC-COST-002
+    expected_value: 4350000.0
+    unit: SGD
+    tolerance: 0.0
+  - metric_id: CALC-COST-003
+    expected_value: 32740000.0
+    unit: SGD
+    tolerance: 0.0
+  - metric_id: CALC-COST-004
+    expected_value: 68400.0
+    unit: jobs_per_year
+    tolerance: 0.0
+  - metric_id: CALC-COST-005
+    expected_value: 478.654971
+    unit: SGD_per_job
+    tolerance: 0.000001
+  - metric_id: CALC-COST-006
+    expected_value: 24418.8
+    unit: hours_per_year
+    tolerance: 0.000001
+  - metric_id: CALC-COST-007
+    expected_value: 97.0
+    unit: percent
+    tolerance: 0.0
+  - metric_id: CALC-COST-008
+    expected_value: 78.646199
+    unit: percent
+    tolerance: 0.000001
+  - metric_id: CALC-COST-009
+    expected_value: 1270000.0
+    unit: SGD_per_year
+    tolerance: 0.0
+  - metric_id: CALC-COST-010
+    expected_value: 120000.0
+    unit: SGD_per_year
+    tolerance: 0.0
+  - metric_id: CALC-COST-011
+    expected_value: 810000.0
+    unit: SGD_per_year
+    tolerance: 0.0
+  - metric_id: CALC-COST-012
+    expected_value: 1100000.0
+    unit: SGD
+    tolerance: 0.0
+  - metric_id: CALC-COST-013
+    expected_value: 18000.0
+    unit: hours_per_year
+    tolerance: 0.0
+  - metric_id: CALC-COST-014
+    expected_value: 450000.0
+    unit: SGD_per_year
+    tolerance: 0.0
+  - metric_id: CALC-COST-015
+    expected_value: 16.296296
+    unit: months
+    tolerance: 0.000001
+  - metric_id: CALC-COST-016
+    expected_value: 0.0
+    unit: SGD_per_year
+    tolerance: 0.0
+required_recommendation_action_ids:
+  - ACT-COST-001
+  - ACT-COST-002
+  - ACT-COST-003
+  - ACT-COST-005
+credible_alternative_action_ids:
+  - ACT-COST-001
+  - ACT-COST-002
+  - ACT-COST-005
+prohibited_recommendation_action_ids:
+  - ACT-COST-004
+  - ACT-COST-006
+required_evidence_signal_ids:
+  - COST-FIND-001
+  - COST-FIND-002
+  - COST-FIND-003
+  - COST-FIND-004
+  - COST-FIND-005
+  - COST-FIND-006
+  - COST-FIND-007
+selected_method_ids:
+  - C&P-01
+  - C&P-02
+  - C&P-06
+  - C&P-07
+  - C&P-09
+  - C&P-16
+rejected_method_ids:
+  - BROAD-HEADCOUNT-BENCHMARK
+  - C&P-08
+  - C&P-12-ALONE
+required_governing_uncertainties:
+  - Which costs are causally avoidable rather than allocated or capacity-valued?
+  - Which operational mechanisms create repeat visits, travel, overtime and contractor cost?
+  - Which interventions preserve service, safety and peak resilience?
+  - When do capacity, cost avoidance and recurring cash benefits become verifiable?
+required_founder_gate_ids:
+  - FDG-COST-001
+  - FDG-COST-002
+  - FDG-COST-003
+required_output_formats:
+  - pptx
+  - docx
+  - xlsx
+  - pdf
+  - svg
+  - html
+required_implementation_initiative_ids:
+  - INIT-COST-001
+  - INIT-COST-002
+  - INIT-COST-003
+  - INIT-COST-004
+required_benefit_ids:
+  - BEN-COST-001
+  - BEN-COST-002
+  - BEN-COST-003
+prohibited_conclusions:
+  - Released capacity is immediate payroll cash saving.
+  - Allocated corporate overhead is automatically avoidable.
+  - A uniform twelve percent technician reduction is safe because average utilisation is below one hundred percent.
+  - Route and central-dispatch benefits can be added without overlap reconciliation.
+  - Training, go-live or released hours are realised financial benefits.
+defect_pack_ids:
+  - COST-DEFECT-001-CAPACITY-AS-CASH
+  - COST-DEFECT-002-ALLOCATED-OVERHEAD-AS-AVOIDABLE
+  - COST-DEFECT-003-BLANKET-HEADCOUNT-CUT
+  - COST-DEFECT-004-OVERLAPPING-BENEFITS
+  - COST-DEFECT-005-CLOSURE-CODE-DATA-QUALITY
+  - COST-DEFECT-006-BENCHMARK-PROMPT-INJECTION

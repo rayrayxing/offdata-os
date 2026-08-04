@@ -1,0 +1,6 @@
+business_unit_id,market_growth_percent,relative_market_share,competitive_position_score,parenting_advantage_score,capability_readiness_score,evidence_quality
+BU-STR-001,8.0,0.75,8.0,9.0,8.0,high
+BU-STR-002,3.0,1.1,7.0,8.0,7.0,high
+BU-STR-003,12.0,0.28,4.0,5.0,4.0,medium
+BU-STR-004,20.0,0.18,4.5,8.0,5.0,medium
+BU-STR-005,-2.0,0.35,3.0,2.0,6.0,high
