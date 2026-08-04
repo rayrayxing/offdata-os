@@ -39,17 +39,15 @@ jobs:
 
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
-        run: pytest --cov=offdata_core --cov-report=term-missing
+        run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
 
       - name: Compile Python sources
         run: python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
 
-      - name: Static lint advisory baseline
-        continue-on-error: true
+      - name: Enforce static lint baseline
         run: ruff check packages/offdata-core/src packages/offdata-core/tests scripts
 
-      - name: Type-check advisory baseline
-        continue-on-error: true
+      - name: Enforce type-check baseline
         working-directory: packages/offdata-core
         run: mypy src
 
