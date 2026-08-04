@@ -1,0 +1,151 @@
+version: 1.0.0
+status: baseline
+rules:
+  mandatory_requirement_must_have_test: true
+  test_must_reference_requirement: true
+  retained_evidence_required: true
+  founder_gate_must_have_approval_record: true
+families:
+  lifecycle:
+    requirements: [LIFE-001, LIFE-002, LIFE-003, LIFE-004, LIFE-005, LIFE-006, LIFE-007, LIFE-008, LIFE-009]
+    artefacts:
+      - configs/lifecycle.yaml
+      - packages/offdata-core/src/offdata_core/lifecycle.py
+    tests:
+      - UT-LIFE-001
+      - UT-LIFE-002
+      - UT-LIFE-003
+      - UT-LIFE-004
+      - UT-LIFE-005
+      - UT-NBA-001
+      - IT-RECOVERY-001
+      - UT-RETRY-001
+      - IT-KILL-001
+  authority:
+    requirements: [AUTH-001, AUTH-002, AUTH-003, AUTH-004, AUTH-005, AUTH-006, AUTH-007, AUTH-008, AUTH-009, AUTH-010]
+    artefacts:
+      - configs/policy.yaml
+      - packages/offdata-core/src/offdata_core/policy.py
+      - schemas/founder-decision-packet.schema.json
+    tests:
+      - UT-AUTH-001
+      - UT-AUTH-002
+      - UT-AUTH-003
+      - UT-AUTH-004
+      - UT-AUTH-005
+      - UT-AUTH-006
+      - UT-AUTH-007
+      - UT-QA-INDEP-001
+      - UT-PACKET-001
+      - AE-PARTNER-003
+  knowledge:
+    requirements: [KNOW-001, KNOW-002, KNOW-003, KNOW-004, KNOW-005, KNOW-006, KNOW-007, KNOW-008, KNOW-009, KNOW-010]
+    artefacts:
+      - packages/offdata-core/src/offdata_core/knowledge.py
+      - knowledge/source-import-manifest.yaml
+      - knowledge/source-alias-map.yaml
+      - docs/23-METHODOLOGY-RADAR-SPECIFICATION.md
+    tests:
+      - IT-INGEST-001
+      - UT-ALIAS-001
+      - UT-METHOD-001
+      - UT-SELECT-001
+      - UT-SELECT-002
+      - UT-OVERLAY-001
+      - UT-RADAR-001
+      - UT-RIGHTS-001
+      - IT-RADAR-002
+      - UT-SUPERSEDE-001
+  evidence:
+    requirements: [EVID-001, EVID-002, EVID-003, EVID-004, EVID-005, EVID-006, EVID-007, EVID-008, EVID-009, EVID-010]
+    artefacts:
+      - packages/offdata-core/src/offdata_core/knowledge.py
+      - docs/03-ARCHITECTURE.md
+    tests:
+      - AE-RESEARCH-001
+      - UT-SOURCE-001
+      - UT-PASSAGE-001
+      - AE-RESEARCH-002
+      - AE-EVIDENCE-003
+      - UT-BURDEN-001
+      - IT-STALENESS-001
+      - AE-RESEARCH-003
+      - VIS-CITATION-001
+      - SEC-INJECTION-001
+  agents:
+    requirements: [AGENT-001, AGENT-002, AGENT-003, AGENT-004, AGENT-005, AGENT-006, AGENT-007, AGENT-008, AGENT-009]
+    artefacts:
+      - configs/agents.yaml
+      - packages/offdata-core/src/offdata_core/contracts.py
+      - docs/29-AGENT-PROMPT-AND-EVALUATION-PACK.md
+    tests:
+      - UT-AGENT-001
+      - UT-CONTEXT-001
+      - IT-AGENT-WRITE-001
+      - SEC-TOOL-001
+      - UT-ENVELOPE-001
+      - UT-BUDGET-001
+      - SEC-INJECTION-001
+      - AE-ROUTING-001
+      - IT-ADAPTER-001
+  quality:
+    requirements: [QA-001, QA-002, QA-003, QA-004, QA-005, QA-006, QA-007, QA-008, QA-009]
+    artefacts:
+      - packages/offdata-core/src/offdata_core/quality.py
+      - docs/24-QUALITY-FIXTURE-CATALOGUE.md
+    tests:
+      - AE-QA-001
+      - UT-QA-001
+      - UT-DEFECT-001
+      - UT-DEFECT-002
+      - IT-REPAIR-001
+      - UT-EXCEPTION-001
+      - UT-SIGNOFF-001
+      - UT-QA-INDEP-001
+      - IT-FIXTURE-001
+  delivery:
+    requirements: [DELIV-001, DELIV-002, DELIV-003, DELIV-004, DELIV-005, DELIV-006, DELIV-007, DELIV-008, DELIV-009, DELIV-010]
+    artefacts:
+      - packages/offdata-core/src/offdata_core/delivery.py
+      - docs/25-VISUAL-AND-INFOGRAPHIC-ARCHETYPE-SPEC.md
+    tests:
+      - UT-STORY-001
+      - AE-STORY-001
+      - UT-RECON-001
+      - VIS-EDIT-001
+      - UT-VISUAL-001
+      - UT-VISUAL-002
+      - VIS-PPTX-001
+      - UT-RECON-002
+      - VIS-CITATION-001
+      - UT-ARTEFACT-001
+  crm_and_origination:
+    requirements: [CRM-001, CRM-002, CRM-003, ORIG-001, ORIG-002, ORIG-003, ORIG-004]
+    artefacts:
+      - packages/offdata-core/src/offdata_core/crm.py
+      - docs/22-CRM-AND-ORIGINATION-FIELD-MAPPING.md
+    tests:
+      - IT-CRM-001
+      - IT-CRM-002
+      - SEC-CRM-001
+      - UT-ORIG-001
+      - UT-OUTREACH-001
+      - UT-SUPPRESSION-001
+      - AE-OUTREACH-001
+fixtures:
+  FIXTURE-DAI-001:
+    path: fixtures/digital-ai/FIXTURE-DAI-001
+    required_tests:
+      - E2E-DAI-001
+      - AE-PARTNER-DAI-001
+      - AE-PROBLEM-DAI-001
+      - AE-METHOD-DAI-001
+      - AE-RESEARCH-DAI-001
+      - AE-QUANT-DAI-001
+      - AE-STORY-DAI-001
+      - AE-DELIV-DAI-001
+      - AE-IMPLEMENT-DAI-001
+      - AE-QA-DAI-001
+      - SEC-INJECTION-DAI-001
+    answer_key: fixtures/digital-ai/FIXTURE-DAI-001/expected-results.yaml
+    answer_key_agent_visible: false
