@@ -1,4 +1,4 @@
-name: Machine contracts, agents, oracle and semantic deliverables
+name: Machine contracts, agents, oracle, semantic deliverables and fixtures
 
 on:
   push:
@@ -11,9 +11,9 @@ permissions:
 
 jobs:
   validate-contracts:
-    name: Validate contracts, agents, oracle and semantic deliverables
+    name: Validate contracts, agents, oracle, semantic deliverables and fixtures
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -39,10 +39,12 @@ jobs:
         run: python scripts/validate_phase3_ai_audit_oracle.py
       - name: Build Phase 4 deliverable semantic model
         run: python scripts/build_phase4_deliverable_semantic_model.py
-      - name: Enforce clean generated Phase 1–4 records
-        run: git diff --exit-code -- requirements/test-registry.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json
       - name: Validate Phase 4 deliverable semantic model
         run: python scripts/validate_phase4_deliverable_semantic_model.py
+      - name: Validate Phase 5 additional engagement fixtures
+        run: python scripts/validate_phase5_additional_fixtures.py
+      - name: Enforce clean generated Phase 1–5 records
+        run: git diff --exit-code -- requirements/test-registry.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
         run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
@@ -70,4 +72,6 @@ jobs:
             agents/**/SKILL.md
             fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
             fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json
+            fixtures/strategy/FIXTURE-STRAT-001/**
+            fixtures/cost-productivity/FIXTURE-COST-001/**
             database/migrations/*.sql
