@@ -1,0 +1,11 @@
+process_id,process_name,annual_volume,primary_owner,systems,median_touch_minutes,median_elapsed_hours,manual_rekey_percent,exception_percent,decision_judgement_level,data_quality_score_10,control_sensitivity,known_bottleneck
+PROC-001,capture_customer_enquiry,12540,sales_operations,email_and_spreadsheet,6,1.2,74.0,19.0,low,6.5,medium,Incomplete item quantity unit and delivery information
+PROC-002,identify_product_and_compatibility,12540,product_specialist,shared_folders_and_ERP,12,8.4,18.0,31.0,high,5.8,critical,Ambiguous part numbers old documents and specialist queues
+PROC-003,determine_price_and_discount,12540,finance_and_sales_manager,ERP_and_spreadsheets,8,5.7,41.0,24.0,high,5.6,critical,Customer-specific rules and delegated authority not embedded consistently
+PROC-004,create_and_release_quotation,12540,quotation_coordinator,ERP_and_email,8,3.9,67.0,17.0,medium,7.1,high,Re-keying correction and manual release
+PROC-005,respond_to_order_status,4421,customer_service,ERP_and_email,7,4.6,36.0,22.0,medium,7.4,high,Changing supplier dates and customer authentication
+PROC-006,respond_to_product_compatibility,3316,technical_support,knowledge_folders_and_ERP,24,21.0,12.0,61.0,high,4.9,critical,Category mixes simple confirmation and engineering judgement
+PROC-007,forecast_and_replenish_inventory,28500,purchasing,ERP_and_spreadsheets,16,48.0,43.0,27.0,high,4.1,high,Project demand substitutions lost sales and changing lead time
+PROC-008,maintain_product_master,28500,product_data_team,ERP_and_supplier_files,9,72.0,58.0,21.0,medium,4.7,high,Duplicate items incomplete attributes and inconsistent document version
+PROC-009,draft_internal_documents_and_email,employee_productivity,Microsoft_365_and_public_AI,11,2.0,0.0,8.0,medium,6.8,high,Unapproved public AI use and no prompt or data inventory
+PROC-010,review_and_approve_AI_output,0,not_defined,none,0,0,0.0,0.0,high,0.0,critical,No approved process competency standard or accountable owner
