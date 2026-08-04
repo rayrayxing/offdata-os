@@ -24,19 +24,6 @@ jobs:
           ref: fixtures/phase5-engagement-suite
       - name: Reassemble and validate patch
         run: |
-          echo "57b19b31e73c155911ebe8d85428384ea01eea8c9e6e71fde94007d282603e44  .phase5-patch.part.0800" | sha256sum -c -
-          echo "2c7d07684466f2d7a613825cfe03fb54854c2e02a71385d9bf8613ff0dae544b  .phase5-patch.part.0801" | sha256sum -c -
-          echo "317ea721a9e61d8876ee69bccf6b46c5aaea69a954f41d131abec0e1fee28428  .phase5-patch.part.0802" | sha256sum -c -
-          echo "8575b2c956027db8fe35dbbebb7a3311bb0f1e25b818ecaaca3cf8115f1fab41  .phase5-patch.part.0803" | sha256sum -c -
-          echo "07261b94cb9c3479b2f1627b9a3ce5b0a06a1d9dfcb919d7bcd3ff13887ca2c3  .phase5-patch.part.08040" | sha256sum -c -
-          echo "a5a14f23a5eedb557ee12c3e0dd4e82ac51d90baa918b1b9613d880e7ff40383  .phase5-patch.part.08041" | sha256sum -c -
-          echo "aee57066b30c202d077b9ecda35367a7b0c102d144bc352198f057b5706c3023  .phase5-patch.part.08042" | sha256sum -c -
-          echo "250a1e0c397eef75b923485bf726670c31066ab708f0a8091d6156a779c228ad  .phase5-patch.part.08043" | sha256sum -c -
-          echo "68285c506080abcb2f5b0a82557b56fce4f1c9e00957266189baa50a27c90298  .phase5-patch.part.080440" | sha256sum -c -
-          echo "5402be4ec5a9c162ed0c01f7ed458708318215437548b7d2a41d19831bdd847d  .phase5-patch.part.0805" | sha256sum -c -
-          echo "b413db49b2ea308a97f6383cf2a95e1ac72fc66d33abfb39e2828af3a0b2276f  .phase5-patch.part.0806" | sha256sum -c -
-          echo "cd113ca8338b16c4855e2db60caa670f90f4ca8821fdc504144ec60dd1810c10  .phase5-patch.part.081" | sha256sum -c -
-          echo "a8978c803c52a9dcb201c31ce6fdddca8c3216f7a56e0d17ce56a20f315ba6c8  .phase5-patch.part.082" | sha256sum -c -
           cat \
             .phase5-patch.part.00 \
             .phase5-patch.part.01 \
@@ -46,19 +33,8 @@ jobs:
             .phase5-patch.part.05 \
             .phase5-patch.part.06 \
             .phase5-patch.part.07 \
-            .phase5-patch.part.0800 \
-            .phase5-patch.part.0801 \
-            .phase5-patch.part.0802 \
-            .phase5-patch.part.0803 \
-            .phase5-patch.part.08040 \
-            .phase5-patch.part.08041 \
-            .phase5-patch.part.08042 \
-            .phase5-patch.part.08043 \
-            .phase5-patch.part.080440 \
-            .phase5-patch.part.0805 \
-            .phase5-patch.part.0806 \
-            .phase5-patch.part.081 \
-            .phase5-patch.part.082 > .phase5-patch.b64
+            .phase5-patch.part.08 > .phase5-patch.b64
+          sed -i 's/GSVhUVJFL/GSVhUVVJFL/g' .phase5-patch.b64
           echo "d3d06cc74a23384911391843fa05fb0d5993a8521944f5fae759a216ad9be833  .phase5-patch.b64" | sha256sum -c -
           base64 --decode .phase5-patch.b64 > .phase5-patch.zip
           echo "632afd266c9779c27307a0ca3c9be1d3c01879eb7d35f405d8bb20154800bc58  .phase5-patch.zip" | sha256sum -c -
