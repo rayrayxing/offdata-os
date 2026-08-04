@@ -16,6 +16,23 @@ from .ai_audit_models import (
 )
 
 
+def _weighted_available(
+    rows: Sequence[Mapping[str, str]], value_key: str, weight_key: str
+) -> float:
+    """Weight only observations containing a valid numeric value; never impute missing evidence."""
+
+    available: list[Mapping[str, str]] = []
+    for row in rows:
+        try:
+            float(row[value_key])
+        except (KeyError, TypeError, ValueError):
+            continue
+        available.append(row)
+    if not available:
+        raise ValueError(f"No valid observations available for {value_key}.")
+    return _weighted(available, value_key, weight_key)
+
+
 def _quotation_analysis(rows: Sequence[Mapping[str, str]]) -> QuotationAnalysis:
     by_segment: dict[str, list[Mapping[str, str]]] = defaultdict(list)
     for row in rows:
@@ -69,7 +86,7 @@ def _quotation_analysis(rows: Sequence[Mapping[str, str]]) -> QuotationAnalysis:
                     _weighted(segment_rows, "data_error_percent", "quotation_count")
                 ),
                 weighted_extraction_candidate_percent=_round(
-                    _weighted(
+                    _weighted_available(
                         segment_rows,
                         "automated_extraction_candidate_percent",
                         "quotation_count",
@@ -99,7 +116,8 @@ def _quotation_analysis(rows: Sequence[Mapping[str, str]]) -> QuotationAnalysis:
         conclusion=(
             "Quotation workload is material and segmented, but elapsed time is dominated by "
             "different combinations of active handling and waiting; the leadership estimate "
-            "of half of seller time is not established by the available evidence."
+            "of half of seller time is not established by the available evidence. One extraction-"
+            "candidate observation is structurally missing and is excluded rather than imputed."
         ),
     )
 
