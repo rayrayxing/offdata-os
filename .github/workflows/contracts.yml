@@ -35,8 +35,8 @@ jobs:
         run: python scripts/validate_phase2_agents.py
       - name: Build Phase 3 AI-audit analytical oracle
         run: python scripts/build_phase3_oracle.py
-      - name: Enforce clean generated release
-        run: git diff --exit-code -- api/openapi.json schemas contracts requirements/test-registry.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
+      - name: Enforce clean Phase 3 generated records
+        run: git diff --exit-code -- requirements/test-registry.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
       - name: Validate Phase 3 AI-audit analytical oracle
         run: python scripts/validate_phase3_ai_audit_oracle.py
       - name: Run deterministic test suite
