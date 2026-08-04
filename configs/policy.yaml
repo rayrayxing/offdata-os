@@ -1,0 +1,101 @@
+version: 1.0.0
+schema_version: offdata.policy.v1
+source_requirements:
+  - AUTH-001
+  - AUTH-002
+  - AUTH-003
+  - AUTH-004
+  - AUTH-005
+  - AUTH-006
+  - AUTH-007
+  - AUTH-008
+  - AUTH-009
+  - AUTH-010
+decision_classes:
+  DEC-ROUTINE:
+    minimum_evidence: E1
+    default_authority: auto_execute
+  DEC-MATERIAL:
+    minimum_evidence: E2
+    default_authority: founder_or_delegated_accountable_human
+  DEC-EXTERNAL:
+    minimum_evidence: E2
+    default_authority: founder_or_delegated_external_action_approver
+  DEC-COMMERCIAL:
+    minimum_evidence: E3
+    default_authority: founder
+  DEC-LEGALREG:
+    minimum_evidence: E3
+    default_authority:
+      - founder
+      - qualified_specialist
+  DEC-IRREVERSIBLE:
+    minimum_evidence: E4
+    default_authority: founder
+strictest_class_governs: true
+actions:
+  internal_research:
+    inferred_classes: [DEC-ROUTINE]
+    default_decision: auto_execute
+  internal_draft:
+    inferred_classes: [DEC-ROUTINE]
+    default_decision: auto_execute
+  client_facing_draft:
+    inferred_classes: [DEC-EXTERNAL]
+    external_send_permitted: false
+    required_conditions:
+      - draft_marked_not_approved
+  use_client_data:
+    required_conditions:
+      - data_access_authorised
+      - purpose_and_retention_known
+  export_internal_artefact:
+    required_conditions:
+      - internal_destination_approved
+      - versioned_inputs
+  send_external:
+    inferred_classes: [DEC-EXTERNAL]
+    required_conditions:
+      - source_rights_checked
+      - confidentiality_reviewed
+      - external_release_authorised
+      - idempotency_key_present
+  commercial_commitment:
+    inferred_classes: [DEC-COMMERCIAL]
+    required_conditions:
+      - founder_approved
+  legal_regulatory_conclusion:
+    inferred_classes: [DEC-LEGALREG]
+    required_conditions:
+      - qualified_specialist_review
+      - founder_approved
+    ai_only_conclusion_prohibited: true
+  production_or_destructive_change:
+    inferred_classes: [DEC-IRREVERSIBLE]
+    required_conditions:
+      - independent_challenge_complete
+      - founder_approved
+      - idempotency_key_present
+  methodology_promotion:
+    inferred_classes: [DEC-MATERIAL]
+    required_conditions:
+      - provenance_review_complete
+      - regression_tests_passed
+      - founder_approved
+founder_packet:
+  minimum_options: 2
+  required_fields:
+    - decision_required
+    - latest_responsible_date
+    - decision_classes
+    - reserved_reason
+    - facts
+    - evidence_gaps
+    - assumptions
+    - options
+    - recommendation
+    - resulting_action
+    - fallback
+no_self_approval:
+  material_elements: true
+  high_assurance_review_requires_isolated_context: true
