@@ -1,0 +1,125 @@
+version: 0.1.0
+review_owner: Founder
+installation_defaults:
+  scope: project
+  synthetic_data_only_until_approved: true
+  global_installation_requires_reason: true
+  unreviewed_hooks_trusted: false
+entries:
+  - tool: GitHub
+    layer: engineering_control
+    status: approved-foundation
+    purpose: Canonical repository, issues, pull requests and CI.
+  - tool: Codex
+    layer: engineering_worker
+    status: approved-foundation
+    purpose: Primary implementation, computer execution and test operator.
+  - tool: Pydantic
+    layer: typed_contracts
+    status: approved-foundation
+    purpose: Runtime validation for records and agent envelopes.
+  - tool: Playwright
+    layer: browser_quality
+    status: approved-foundation
+    purpose: Browser, accessibility and visual-regression tests.
+  - tool: Promptfoo
+    layer: agent_evaluation
+    status: approved-foundation
+    purpose: Prompt, agent, retrieval and red-team evaluation.
+  - tool: Agent Skills
+    layer: capability_packaging
+    status: approved-foundation
+    purpose: Portable domain and method capabilities.
+  - tool: Restate
+    layer: durable_execution
+    status: approved-later
+    purpose: Durable workflow, approval waits, retries and recovery.
+  - tool: LangGraph
+    layer: graph_runtime
+    status: watch
+    purpose: Alternative where explicit graph complexity justifies it.
+  - tool: Pydantic AI
+    layer: agent_framework
+    status: approved-later
+    purpose: Typed multi-provider agent services.
+  - tool: OpenClaw
+    layer: gateway
+    status: trial
+    purpose: Operator gateway, schedules and bounded multi-agent access.
+    constraints:
+      - synthetic_data_only
+      - not_canonical_state
+  - tool: Hermes Agent
+    layer: partner_agent
+    status: watch
+    purpose: Persistent personal Engagement Partner interface.
+  - tool: Buzz.xyz
+    layer: collaboration
+    status: watch
+    purpose: Human-agent engagement workroom.
+  - tool: Conductor.build
+    layer: engineering_console
+    status: trial
+    purpose: Multi-harness coding-agent supervision.
+    constraints:
+      - synthetic_data_only
+      - compare_against_codex_app
+  - tool: Reasonix
+    layer: engineering_worker
+    status: watch
+    purpose: Lower-cost bounded coding worker.
+  - tool: Pi
+    layer: engineering_worker
+    status: watch
+    purpose: Lightweight embeddable coding worker.
+  - tool: Super Simple Software Factory
+    layer: reference_pattern
+    status: watch
+    purpose: Deterministic phases, typed envelopes and code-owned gates.
+    decision: adopt_principles_not_implementation
+  - tool: Impeccable
+    layer: frontend_design_quality
+    status: approved-later
+    purpose: Project-scoped design guidance and deterministic UI detectors.
+  - tool: Taste Skill
+    layer: visual_exploration
+    status: trial
+    purpose: Isolated brand and reference-image exploration.
+  - tool: Figma MCP
+    layer: design_canvas
+    status: approved-later
+    purpose: Editable interface, infographic and design-system work.
+  - tool: HubSpot Free
+    layer: crm
+    status: approved-later
+    purpose: Organisations, contacts, opportunities and relationship continuity.
+  - tool: Supabase
+    layer: managed_data_platform
+    status: trial
+    purpose: Singapore staging candidate for PostgreSQL, auth and storage.
+  - tool: Vercel
+    layer: web_hosting
+    status: trial
+    purpose: Staging and eventual commercial web deployment candidate.
+  - tool: n8n
+    layer: integration_automation
+    status: watch
+    purpose: Bounded deterministic integrations and notifications.
+required_fields_for_new_entries:
+  - tool
+  - purpose
+  - layer
+  - status
+  - version_or_commit
+  - licence
+  - installation_scope
+  - permissions
+  - data_exposure
+  - residency
+  - secrets
+  - cost
+  - benchmark
+  - acceptance_tests
+  - rollback
+  - owner
+  - review_date
