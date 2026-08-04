@@ -291,14 +291,14 @@ def baseline_document(fixture_dir: Path) -> dict[str, Any]:
     expected_path = fixture_dir / ANSWER_KEY_NAME
     expected = _read_yaml(expected_path)
     expected_counterfactual = str(expected["mandatory_decision_frame"]["counterfactual"])
-    source_discrepancies: tuple[str, ...] = ()
+    source_discrepancies: list[str] = []
     if result.counterfactual != expected_counterfactual:
-        source_discrepancies = (
+        source_discrepancies = [
             "The client-visible mandate says 'Continue process and data improvement without an AI "
             "pilot'; the restricted answer key says 'Continue non-AI process and data improvements "
             "without an AI pilot'. The mandate wording is preserved and the equivalent intent is "
-            "graded through a documented normalisation.",
-        )
+            "graded through a documented normalisation."
+        ]
     grade = grade_ai_audit_oracle(result, expected_path)
     if not grade.passed:
         raise ValueError(f"Analytical oracle does not match answer key: {grade.failures}")
