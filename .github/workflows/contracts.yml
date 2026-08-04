@@ -1,4 +1,4 @@
-name: Machine contracts, agents and AI-audit oracle
+name: Machine contracts, agents, oracle and semantic deliverables
 
 on:
   push:
@@ -11,9 +11,9 @@ permissions:
 
 jobs:
   validate-contracts:
-    name: Validate contracts, agents and analytical oracle
+    name: Validate contracts, agents, oracle and semantic deliverables
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -39,6 +39,10 @@ jobs:
         run: git diff --exit-code -- requirements/test-registry.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
       - name: Validate Phase 3 AI-audit analytical oracle
         run: python scripts/validate_phase3_ai_audit_oracle.py
+      - name: Build Phase 4 deliverable semantic model
+        run: python scripts/build_phase4_deliverable_semantic_model.py
+      - name: Validate Phase 4 deliverable semantic model
+        run: python scripts/validate_phase4_deliverable_semantic_model.py
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
         run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
@@ -65,4 +69,5 @@ jobs:
             configs/*.yaml
             agents/**/SKILL.md
             fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
+            fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json
             database/migrations/*.sql
