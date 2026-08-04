@@ -1,0 +1,363 @@
+version: 1.0.0
+case_count: 46
+rules:
+  exact_source_identity_required: true
+  exact_heading_anchor_required: true
+  prohibited_source_return_fails: true
+  search_snippet_is_not_evidence: true
+cases:
+- case_id: RET-CORE-01-A
+  query: Which canonical record governs METHOD-LIFE-001 — Gate-controlled consulting
+    lifecycle?
+  expected_source_ids:
+  - SOURCE-CORE-001
+  expected_heading_anchors:
+  - METHOD-LIFE-001 — Gate-controlled consulting lifecycle
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-01-B
+  query: Find the source section for LIFE-PRIN-05 — Bounded autonomy.
+  expected_source_ids:
+  - SOURCE-CORE-001
+  expected_heading_anchors:
+  - LIFE-PRIN-05 — Bounded autonomy
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-02-A
+  query: Which canonical record governs 1. Executive-decision taxonomy?
+  expected_source_ids:
+  - SOURCE-CORE-002
+  expected_heading_anchors:
+  - 1. Executive-decision taxonomy
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-02-B
+  query: Find the source section for 3. Canonical method record schema.
+  expected_source_ids:
+  - SOURCE-CORE-002
+  expected_heading_anchors:
+  - 3. Canonical method record schema
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-03-A
+  query: Which canonical record governs LIFE-STAGE-02 — Define the decision question?
+  expected_source_ids:
+  - SOURCE-CORE-003
+  expected_heading_anchors:
+  - LIFE-STAGE-02 — Define the decision question
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-03-B
+  query: Find the source section for LIFE-STAGE-06 — Test and update.
+  expected_source_ids:
+  - SOURCE-CORE-003
+  expected_heading_anchors:
+  - LIFE-STAGE-06 — Test and update
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-04-A
+  query: Which canonical record governs LIFE-RES-01 — Governed research lifecycle?
+  expected_source_ids:
+  - SOURCE-CORE-004
+  expected_heading_anchors:
+  - LIFE-RES-01 — Governed research lifecycle
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-04-B
+  query: Find the source section for MANDATE-RES-01 — Minimum fields.
+  expected_source_ids:
+  - SOURCE-CORE-004
+  expected_heading_anchors:
+  - MANDATE-RES-01 — Minimum fields
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-05-A
+  query: Which canonical record governs MAP-MANDATE-01 — Mandate-to-analysis mapping?
+  expected_source_ids:
+  - SOURCE-CORE-005
+  expected_heading_anchors:
+  - MAP-MANDATE-01 — Mandate-to-analysis mapping
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-05-B
+  query: Find the source section for EVID-POS-01 — Fact, inference, assumption and
+    evidence gap.
+  expected_source_ids:
+  - SOURCE-CORE-005
+  expected_heading_anchors:
+  - EVID-POS-01 — Fact, inference, assumption and evidence gap
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-06-A
+  query: Which canonical record governs PRINC-STORY-001 — Start from the executive
+    decision?
+  expected_source_ids:
+  - SOURCE-CORE-006
+  expected_heading_anchors:
+  - PRINC-STORY-001 — Start from the executive decision
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-06-B
+  query: Find the source section for GATE-STORY-01 — Mandate-to-story gate.
+  expected_source_ids:
+  - SOURCE-CORE-006
+  expected_heading_anchors:
+  - GATE-STORY-01 — Mandate-to-story gate
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-07-A
+  query: Which canonical record governs DECISION-VC-001?
+  expected_source_ids:
+  - SOURCE-CORE-007
+  expected_heading_anchors:
+  - DECISION-VC-001
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-07-B
+  query: Find the source section for METHOD-VALUE-001.
+  expected_source_ids:
+  - SOURCE-CORE-007
+  expected_heading_anchors:
+  - METHOD-VALUE-001
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-08-A
+  query: Which canonical record governs 3. Lifecycle, horizons and stage gates?
+  expected_source_ids:
+  - SOURCE-CORE-008
+  expected_heading_anchors:
+  - 3. Lifecycle, horizons and stage gates
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-08-B
+  query: Find the source section for 4. Recommendation-to-execution architecture.
+  expected_source_ids:
+  - SOURCE-CORE-008
+  expected_heading_anchors:
+  - 4. Recommendation-to-execution architecture
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-09-A
+  query: Which canonical record governs QA-PRIN-001 — Decision fitness precedes polish?
+  expected_source_ids:
+  - SOURCE-CORE-009
+  expected_heading_anchors:
+  - QA-PRIN-001 — Decision fitness precedes polish
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-09-B
+  query: Find the source section for QA-SYS-002 — Assurance tiers.
+  expected_source_ids:
+  - SOURCE-CORE-009
+  expected_heading_anchors:
+  - QA-SYS-002 — Assurance tiers
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-10-A
+  query: Which canonical record governs METHOD-SECT-001 — Select the overlay set?
+  expected_source_ids:
+  - SOURCE-CORE-010
+  expected_heading_anchors:
+  - METHOD-SECT-001 — Select the overlay set
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-10-B
+  query: Find the source section for METHOD-SECT-003 — Adapt analytics and KPIs.
+  expected_source_ids:
+  - SOURCE-CORE-010
+  expected_heading_anchors:
+  - METHOD-SECT-003 — Adapt analytics and KPIs
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-CORE-11-A
+  query: Which canonical record governs EXEMPLAR-SCHEMA-001 — Sanitised case record?
+  expected_source_ids:
+  - SOURCE-CORE-011
+  expected_heading_anchors:
+  - EXEMPLAR-SCHEMA-001 — Sanitised case record
+  decision_use: Retrieve the exact core control rather than a title-similar source.
+- case_id: RET-CORE-11-B
+  query: Find the source section for 2. Reusable exemplar schema.
+  expected_source_ids:
+  - SOURCE-CORE-011
+  expected_heading_anchors:
+  - 2. Reusable exemplar schema
+  decision_use: Provide exact source and heading provenance for implementation.
+- case_id: RET-DOMAIN-01-A
+  query: Which domain method addresses Benefits dependency mapping?
+  expected_source_ids:
+  - SOURCE-DOMAIN-BENEFITS
+  expected_heading_anchors:
+  - M01 — Benefits dependency mapping
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-01-B
+  query: Which domain method addresses Theory of Change and logic modelling?
+  expected_source_ids:
+  - SOURCE-DOMAIN-BENEFITS
+  expected_heading_anchors:
+  - M02 — Theory of Change and logic modelling
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-02-A
+  query: Which domain method addresses Decision Framing and Option Architecture?
+  expected_source_ids:
+  - SOURCE-DOMAIN-STRATEGY
+  expected_heading_anchors:
+  - STR-01 — Decision Framing and Option Architecture
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-02-B
+  query: Which domain method addresses Market Definition, Sizing and Growth-Pool Analysis?
+  expected_source_ids:
+  - SOURCE-DOMAIN-STRATEGY
+  expected_heading_anchors:
+  - STR-02 — Market Definition, Sizing and Growth-Pool Analysis
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-03-A
+  query: Which domain method addresses Cost-driver tree and relevant-cost analysis?
+  expected_source_ids:
+  - SOURCE-DOMAIN-COST
+  expected_heading_anchors:
+  - C&P-01 — Cost-driver tree and relevant-cost analysis
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-03-B
+  query: Which domain method addresses Activity-based costing and time-driven activity-based
+    costing?
+  expected_source_ids:
+  - SOURCE-DOMAIN-COST
+  expected_heading_anchors:
+  - C&P-02 — Activity-based costing and time-driven activity-based costing
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-04-A
+  query: Which domain method addresses CX Measurement Architecture?
+  expected_source_ids:
+  - SOURCE-DOMAIN-CX
+  expected_heading_anchors:
+  - M01 — CX Measurement Architecture
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-04-B
+  query: Which domain method addresses Critical-Incident and Complaint Analysis?
+  expected_source_ids:
+  - SOURCE-DOMAIN-CX
+  expected_heading_anchors:
+  - M02 — Critical-Incident and Complaint Analysis
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-05-A
+  query: Which domain method addresses Decision framing and benefits logic?
+  expected_source_ids:
+  - SOURCE-DOMAIN-DIGITAL-AI
+  expected_heading_anchors:
+  - DAI-01 — Decision framing and benefits logic
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-05-B
+  query: Which domain method addresses Strategic capability and operating-model diagnosis?
+  expected_source_ids:
+  - SOURCE-DOMAIN-DIGITAL-AI
+  expected_heading_anchors:
+  - DAI-02 — Strategic capability and operating-model diagnosis
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-06-A
+  query: Which domain method addresses Revenue and growth decomposition?
+  expected_source_ids:
+  - SOURCE-DOMAIN-GROWTH
+  expected_heading_anchors:
+  - GCS-01 — Revenue and growth decomposition
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-06-B
+  query: Which domain method addresses Market sizing and addressable opportunity?
+  expected_source_ids:
+  - SOURCE-DOMAIN-GROWTH
+  expected_heading_anchors:
+  - GCS-02 — Market sizing and addressable opportunity
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-07-A
+  query: Which domain method addresses IPO Pathway and Public-Company Readiness Diagnostic?
+  expected_source_ids:
+  - SOURCE-DOMAIN-IPO
+  expected_heading_anchors:
+  - M01 — IPO Pathway and Public-Company Readiness Diagnostic
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-07-B
+  query: Which domain method addresses Equity Story, KPI and Disclosure Architecture?
+  expected_source_ids:
+  - SOURCE-DOMAIN-IPO
+  expected_heading_anchors:
+  - M02 — Equity Story, KPI and Disclosure Architecture
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-08-A
+  query: Which domain method addresses Causal Pathway and Theory of Change?
+  expected_source_ids:
+  - SOURCE-DOMAIN-CHANGE
+  expected_heading_anchors:
+  - IC-01 — Causal Pathway and Theory of Change
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+  prohibited_source_ids:
+  - SOURCE-CORE-008
+- case_id: RET-DOMAIN-08-B
+  query: Which domain method addresses Context and Determinant Diagnosis using CFIR?
+  expected_source_ids:
+  - SOURCE-DOMAIN-CHANGE
+  expected_heading_anchors:
+  - IC-02 — Context and Determinant Diagnosis using CFIR
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-09-A
+  query: Which domain method addresses Decision Architecture and Counterfactual Hypothesis
+    Map?
+  expected_source_ids:
+  - SOURCE-DOMAIN-MA
+  expected_heading_anchors:
+  - M&A-01 — Decision Architecture and Counterfactual Hypothesis Map
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-09-B
+  query: Which domain method addresses Standalone Valuation Triangulation?
+  expected_source_ids:
+  - SOURCE-DOMAIN-MA
+  expected_heading_anchors:
+  - M&A-02 — Standalone Valuation Triangulation
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-10-A
+  query: Which domain method addresses Strategic Capability and Operating-Model Requirements
+    Analysis?
+  expected_source_ids:
+  - SOURCE-DOMAIN-OPERATING-MODEL
+  expected_heading_anchors:
+  - OMT-01 — Strategic Capability and Operating-Model Requirements Analysis
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-10-B
+  query: Which domain method addresses End-to-End Value-Stream and Process Analysis?
+  expected_source_ids:
+  - SOURCE-DOMAIN-OPERATING-MODEL
+  expected_heading_anchors:
+  - OMT-02 — End-to-End Value-Stream and Process Analysis
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-11-A
+  query: Which domain method addresses Strategic workforce scenario and gap analysis?
+  expected_source_ids:
+  - SOURCE-DOMAIN-WORKFORCE
+  expected_heading_anchors:
+  - M01 — Strategic workforce scenario and gap analysis
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-11-B
+  query: Which domain method addresses Contingency-based organisation and operating-model
+    design?
+  expected_source_ids:
+  - SOURCE-DOMAIN-WORKFORCE
+  expected_heading_anchors:
+  - M02 — Contingency-based organisation and operating-model design
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-12-A
+  query: Which domain method addresses Decision-linked enterprise risk assessment?
+  expected_source_ids:
+  - SOURCE-DOMAIN-RISK
+  expected_heading_anchors:
+  - 'RM-01: Decision-linked enterprise risk assessment'
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.
+- case_id: RET-DOMAIN-12-B
+  query: Which domain method addresses Risk appetite, tolerance, and limit architecture?
+  expected_source_ids:
+  - SOURCE-DOMAIN-RISK
+  expected_heading_anchors:
+  - 'RM-02: Risk appetite, tolerance, and limit architecture'
+  decision_use: Select a source-grounded method candidate without automatic canonical
+    promotion.

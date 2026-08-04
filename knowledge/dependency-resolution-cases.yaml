@@ -1,0 +1,109 @@
+version: 1.0.0
+rules:
+  unresolved_dependencies_are_not_invented: true
+  ambiguous_dependencies_are_quarantined: true
+  source_bytes_are_not_changed: true
+cases:
+- case_id: DEP-EXACT-01
+  query: SOURCE-CORE-001
+  expected_state: resolved
+  reason: Exact repository source ID wins.
+  expected_source_id: SOURCE-CORE-001
+- case_id: DEP-EXACT-02
+  query: SOURCE-CORE-004
+  expected_state: resolved
+  reason: Exact repository source ID wins.
+  expected_source_id: SOURCE-CORE-004
+- case_id: DEP-EXACT-03
+  query: SOURCE-DOMAIN-DIGITAL-AI
+  expected_state: resolved
+  reason: Exact repository source ID wins.
+  expected_source_id: SOURCE-DOMAIN-DIGITAL-AI
+- case_id: DEP-EXACT-04
+  query: SOURCE-DOMAIN-RISK
+  expected_state: resolved
+  reason: Exact repository source ID wins.
+  expected_source_id: SOURCE-DOMAIN-RISK
+- case_id: DEP-ORIGINAL-01
+  query: 07-VALUE-CASE-AND-FINANCIAL-MODELLING(3).md
+  expected_state: resolved
+  reason: Founder-supplied original filename resolves without renaming the source.
+  expected_source_id: SOURCE-CORE-007
+- case_id: DEP-ORIGINAL-02
+  query: Corporate and Business-Unit Strategy Methodology Reference.docx
+  expected_state: resolved
+  reason: Founder-supplied original filename resolves without renaming the source.
+  expected_source_id: SOURCE-DOMAIN-STRATEGY
+- case_id: DEP-ORIGINAL-03
+  query: Cost and Productivity — Decision-Led Methodology Reference.docx
+  expected_state: resolved
+  reason: Founder-supplied original filename resolves without renaming the source.
+  expected_source_id: SOURCE-DOMAIN-COST
+- case_id: DEP-ORIGINAL-04
+  query: M&A, Carve-out and Integration Decision-Led Methodology Reference.docx
+  expected_state: resolved
+  reason: Founder-supplied original filename resolves without renaming the source.
+  expected_source_id: SOURCE-DOMAIN-MA
+- case_id: DEP-PREFERRED-01
+  query: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING.md
+  expected_state: resolved
+  reason: Preferred repository name is a navigation alias.
+  expected_source_id: SOURCE-CORE-003
+- case_id: DEP-PREFERRED-02
+  query: customer-experience.docx
+  expected_state: resolved
+  reason: Preferred repository name is a navigation alias.
+  expected_source_id: SOURCE-DOMAIN-CX
+- case_id: DEP-PREFERRED-03
+  query: ipo-valuation-and-capital-strategy.docx
+  expected_state: resolved
+  reason: Preferred repository name is a navigation alias.
+  expected_source_id: SOURCE-DOMAIN-IPO
+- case_id: DEP-PREFERRED-04
+  query: benefits-realisation-and-performance-improvement.docx
+  expected_state: resolved
+  reason: Preferred repository name is a navigation alias.
+  expected_source_id: SOURCE-DOMAIN-BENEFITS
+- case_id: DEP-NORMALISE-01
+  query: 07 VALUE CASE AND FINANCIAL MODELLING (3).md
+  expected_state: resolved
+  reason: Unicode, copy suffix and separators normalize deterministically.
+  expected_source_id: SOURCE-CORE-007
+- case_id: DEP-HISTORICAL-01
+  query: 03-EVIDENCE-AND-RESEARCH-STANDARD.md
+  expected_state: resolved
+  reason: Approved historical alias resolves to the canonical evidence source.
+  expected_source_id: SOURCE-CORE-004
+- case_id: DEP-HISTORICAL-02
+  query: 10-METHOD-CARDS.md
+  expected_state: resolved
+  reason: Alias resolves only to methods actually present in the framework registry.
+  expected_source_id: SOURCE-CORE-002
+- case_id: DEP-AMBIGUOUS-01
+  query: Implementation and Change
+  expected_state: ambiguous
+  reason: Generic title matches a core standard and a domain pack; human review is
+    required.
+- case_id: DEP-GAP-01
+  query: 09-AI-GOVERNANCE.md
+  expected_state: quarantined
+  reason: Expected module is a recorded gap and cannot be invented.
+- case_id: DEP-GAP-02
+  query: 06-DELIVERY-ARTEFACTS.md
+  expected_state: quarantined
+  reason: Renderer engineering rules are not silently mapped to storyline guidance.
+- case_id: DEP-GAP-03
+  query: unknown-proprietary-method-card.docx
+  expected_state: quarantined
+  reason: No approved source or alias exists.
+- case_id: DEP-CROSS-01
+  query: 08-BENEFITS-REALISATION-AND-PMO.md
+  expected_state: resolved
+  reason: Core implementation source resolves; detailed benefits dependency remains
+    separately documented.
+  expected_source_id: SOURCE-CORE-008
+- case_id: DEP-CROSS-02
+  query: Benefits Realisation and Performance Improvement.docx
+  expected_state: resolved
+  reason: Domain methodology resolves independently of the core implementation source.
+  expected_source_id: SOURCE-DOMAIN-BENEFITS

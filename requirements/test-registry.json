@@ -1175,6 +1175,214 @@
     {
       "evidence_status": "executable_in_chat_and_codex",
       "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_alias_resolution_quarantines_ambiguity_and_unknown_dependencies",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-002",
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_alias_resolution_supports_exact_ids_original_names_preferred_names_and_history",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_collision_map_flags_overlap_without_automatic_merge",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-003",
+        "KNOW-004",
+        "KNOW-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_dependency_resolution_cases_match_the_governed_alias_engine",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-002",
+        "DATA-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_docx_ooxml_extraction_preserves_heading_and_paragraph_order",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-001",
+        "EVID-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_domain_method_index_contains_154_source_headings_without_promotion",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-003",
+        "KNOW-007",
+        "KNOW-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_domain_overlays_add_context_without_pre_deciding_the_answer",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-006",
+        "OUT-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_filename_normalisation_handles_unicode_spacing_and_copy_suffixes",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_instruction_like_source_content_is_flagged_but_not_executed",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-010",
+        "AGENT-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_invalid_docx_is_quarantinable",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-001",
+        "EVID-010",
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_knowledge_baseline_is_byte_reproducible_and_current",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-003",
+        "DATA-008",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_knowledge_baseline_writer_and_stale_detection",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-005",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_markdown_extraction_and_chunk_identity_are_deterministic",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-001",
+        "EVID-003",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_method_record_examples_satisfy_full_canonical_contract",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-003",
+        "KNOW-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_radar_taxonomy_has_volatility_rights_and_no_self_promotion",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-007",
+        "KNOW-008",
+        "KNOW-009",
+        "KNOW-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_retrieval_gold_cases_require_source_heading_and_prohibited_source_controls",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-003",
+        "EVID-005",
+        "KNOW-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_rights_policy_allows_internal_use_and_blocks_redistribution",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-008",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_source_profile_mutation_invalidates_baseline",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-008",
+        "QA-005",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_source_profile_seed_covers_all_founder_supplied_sources_with_real_checksums",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-001",
+        "KNOW-002",
+        "KNOW-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_source_profiles_do_not_claim_original_files_are_committed_or_imported",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-001",
+        "SEC-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
       "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_compressed_stage_can_be_skipped_for_detection",
       "phase": "chat-first",
       "requirements": [
@@ -1953,15 +2161,6 @@
     {
       "evidence_status": "planned_not_executed",
       "kind": "unit",
-      "phase": "knowledge-ingestion",
-      "requirements": [
-        "KNOW-002"
-      ],
-      "test_id": "UT-ALIAS-001"
-    },
-    {
-      "evidence_status": "planned_not_executed",
-      "kind": "unit",
       "phase": "codex-or-later",
       "requirements": [
         "IMPL-005",
@@ -2027,15 +2226,6 @@
     {
       "evidence_status": "planned_not_executed",
       "kind": "unit",
-      "phase": "knowledge-ingestion",
-      "requirements": [
-        "KNOW-006"
-      ],
-      "test_id": "UT-OVERLAY-001"
-    },
-    {
-      "evidence_status": "planned_not_executed",
-      "kind": "unit",
       "phase": "codex-or-later",
       "requirements": [
         "COST-004"
@@ -2079,15 +2269,6 @@
         "LIFE-008"
       ],
       "test_id": "UT-RETRY-001"
-    },
-    {
-      "evidence_status": "planned_not_executed",
-      "kind": "unit",
-      "phase": "knowledge-ingestion",
-      "requirements": [
-        "KNOW-008"
-      ],
-      "test_id": "UT-RIGHTS-001"
     },
     {
       "evidence_status": "planned_not_executed",

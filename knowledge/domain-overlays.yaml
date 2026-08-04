@@ -1,0 +1,253 @@
+version: 1.0.0
+rules:
+  overlays_modify_context_not_answer: true
+  recommended_answer_prohibited: true
+  preferred_option_prohibited: true
+overlays:
+- overlay_id: OVERLAY-01
+  domain: corporate_and_business_unit_strategy
+  hypothesis_additions:
+  - strategic choice may be constrained by industry structure or parenting advantage
+  evidence_additions:
+  - market, competitor, capability and business-unit economics
+  method_additions:
+  - market sizing
+  - industry structure
+  - portfolio analysis
+  metric_additions:
+  - market growth
+  - relative position
+  - ROIC
+  constraint_additions:
+  - capital and commitment constraints
+  reviewer_additions:
+  - strategy and finance reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-02
+  domain: growth_and_commercial_strategy
+  hypothesis_additions:
+  - growth may be acquisition, retention, price, volume or mix rather than one aggregate
+    engine
+  evidence_additions:
+  - customer, transaction, price, channel and cohort evidence
+  method_additions:
+  - growth decomposition
+  - segmentation
+  - pricing
+  metric_additions:
+  - revenue bridge
+  - retention
+  - contribution margin
+  constraint_additions:
+  - consent and channel constraints
+  reviewer_additions:
+  - commercial and finance reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-03
+  domain: cost_and_productivity
+  hypothesis_additions:
+  - reported cost may not equal avoidable cash cost
+  evidence_additions:
+  - ledger, volume, process and capacity evidence
+  method_additions:
+  - cost-driver tree
+  - value-stream analysis
+  - capacity analysis
+  metric_additions:
+  - unit cost
+  - touch time
+  - avoidable cost
+  constraint_additions:
+  - service and control floors
+  reviewer_additions:
+  - finance and operations reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-04
+  domain: customer_experience
+  hypothesis_additions:
+  - experience failure may arise from journey, expectation, service quality, usability
+    or operational flow
+  evidence_additions:
+  - voice of customer, complaints, journey events and service levels
+  method_additions:
+  - journey analysis
+  - service blueprint
+  - driver modelling
+  metric_additions:
+  - effort
+  - resolution
+  - retention
+  constraint_additions:
+  - accessibility and privacy
+  reviewer_additions:
+  - CX, accessibility and privacy reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-05
+  domain: operating_model_transformation
+  hypothesis_additions:
+  - performance gaps may reflect capability, process, decision rights, footprint or
+    management system
+  evidence_additions:
+  - strategy, value stream, governance, capacity and technology evidence
+  method_additions:
+  - capability analysis
+  - value stream
+  - decision rights
+  metric_additions:
+  - cycle time
+  - decision latency
+  - service cost
+  constraint_additions:
+  - regulatory and control obligations
+  reviewer_additions:
+  - operating-model and risk reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-06
+  domain: organisation_and_workforce
+  hypothesis_additions:
+  - workforce gap may concern capability, capacity, flow, structure or fairness
+  evidence_additions:
+  - demand, headcount, skills, workload, attrition and labour-market evidence
+  method_additions:
+  - workforce scenarios
+  - capacity analysis
+  - skills adjacency
+  metric_additions:
+  - capacity gap
+  - critical skill coverage
+  - attrition
+  constraint_additions:
+  - employment law, fairness and privacy
+  reviewer_additions:
+  - HR, finance and employment reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-07
+  domain: digital_and_ai_transformation
+  hypothesis_additions:
+  - AI may not be the minimum sufficient intervention
+  evidence_additions:
+  - process, data, technology, risk, workforce and outcome evidence
+  method_additions:
+  - decision framing
+  - use-case prioritisation
+  - readiness and risk
+  metric_additions:
+  - outcome
+  - control failure
+  - adoption
+  - value
+  constraint_additions:
+  - privacy, safety, model risk and human authority
+  reviewer_additions:
+  - AI risk, legal and domain reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-08
+  domain: risk_and_controls
+  hypothesis_additions:
+  - risk labels may conceal different causal paths and control states
+  evidence_additions:
+  - objectives, incidents, controls, scenarios and assurance evidence
+  method_additions:
+  - risk assessment
+  - control effectiveness
+  - bow-tie
+  metric_additions:
+  - inherent risk
+  - residual risk
+  - control performance
+  constraint_additions:
+  - risk appetite and regulated obligations
+  reviewer_additions:
+  - risk owner and qualified specialist
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-09
+  domain: ma_carve_out_and_integration
+  hypothesis_additions:
+  - deal value depends on standalone counterfactual, synergies, execution and separation
+    dependencies
+  evidence_additions:
+  - strategy, valuation, diligence, customer, talent, technology and regulatory evidence
+  method_additions:
+  - decision architecture
+  - valuation
+  - synergy and integration analysis
+  metric_additions:
+  - standalone value
+  - synergy
+  - dis-synergy
+  - TSA exit
+  constraint_additions:
+  - clean-team, competition and disclosure controls
+  reviewer_additions:
+  - legal, competition, finance and technology reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-10
+  domain: ipo_valuation_and_capital_strategy
+  hypothesis_additions:
+  - public pathway depends on readiness, valuation, funding need and fallback routes
+  evidence_additions:
+  - financial, governance, control, legal, tax and market evidence
+  method_additions:
+  - readiness diagnostic
+  - valuation triangulation
+  - capital structure
+  metric_additions:
+  - valuation range
+  - runway
+  - dilution
+  - readiness gaps
+  constraint_additions:
+  - securities, audit, legal and tax controls
+  reviewer_additions:
+  - qualified legal, audit, tax and capital-markets reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-11
+  domain: implementation_and_change
+  hypothesis_additions:
+  - intervention logic may be sound while context, readiness or adoption fails
+  evidence_additions:
+  - causal pathway, determinants, workflow, stakeholder and adoption evidence
+  method_additions:
+  - theory of change
+  - readiness
+  - implementation strategy mapping
+  metric_additions:
+  - fidelity
+  - adoption
+  - implementation outcome
+  constraint_additions:
+  - ethical, operational and change-burden constraints
+  reviewer_additions:
+  - change, operations and subject-matter reviewer
+  recommended_answer: null
+  preferred_option: null
+- overlay_id: OVERLAY-12
+  domain: benefits_realisation_and_performance_improvement
+  hypothesis_additions:
+  - project output is not a realised benefit
+  evidence_additions:
+  - baseline, counterfactual, owner, dependency, outcome and finance evidence
+  method_additions:
+  - benefits dependency mapping
+  - benefit profiles
+  - causal impact
+  metric_additions:
+  - realised outcome
+  - attributed benefit
+  - leakage
+  constraint_additions:
+  - recognition, attribution and double-counting controls
+  reviewer_additions:
+  - finance and benefit owner review
+  recommended_answer: null
+  preferred_option: null

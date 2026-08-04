@@ -1,0 +1,215 @@
+version: 1.0.0
+purpose: Flag likely semantic overlap without automatically merging or promoting methods.
+collision_families:
+- collision_id: COLLISION-DECISION-FRAMING
+  family: Decision framing and option architecture
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-STRATEGY-METHOD-001
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-001
+  - SOURCE-DOMAIN-MA-METHOD-001
+  review_dimensions:
+  - governing decision
+  - counterfactual
+  - option breadth
+  - transaction specificity
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-MARKET-SIZING
+  family: Market sizing and opportunity
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-GROWTH-METHOD-002
+  review_dimensions:
+  - market boundary
+  - demand evidence
+  - growth pool
+  - addressability
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-JOURNEY
+  family: Customer journey and service blueprint
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-CX-METHOD-003
+  - SOURCE-DOMAIN-CX-METHOD-004
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-003
+  review_dimensions:
+  - unit of journey
+  - frontstage and backstage scope
+  - experience evidence
+  - operational handoffs
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-PROCESS
+  family: Process mining and value-stream analysis
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-BENEFITS-METHOD-006
+  - SOURCE-DOMAIN-BENEFITS-METHOD-007
+  - SOURCE-DOMAIN-COST-METHOD-006
+  - SOURCE-DOMAIN-CX-METHOD-011
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-004
+  - SOURCE-DOMAIN-CHANGE-METHOD-007
+  - SOURCE-DOMAIN-OPERATING-MODEL-METHOD-002
+  review_dimensions:
+  - event-log availability
+  - observed versus designed process
+  - economic scope
+  - conformance need
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-SCENARIO
+  family: Scenario, sensitivity and uncertainty
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-STRATEGY-METHOD-013
+  - SOURCE-DOMAIN-GROWTH-METHOD-003
+  - SOURCE-DOMAIN-IPO-METHOD-007
+  - SOURCE-DOMAIN-MA-METHOD-004
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-001
+  - SOURCE-DOMAIN-RISK-METHOD-008
+  review_dimensions:
+  - uncertainty type
+  - decision reversibility
+  - probability support
+  - switching condition
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-OPERATING-MODEL
+  family: Operating-model and capability design
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-002
+  - SOURCE-DOMAIN-MA-METHOD-007
+  - SOURCE-DOMAIN-OPERATING-MODEL-METHOD-001
+  - SOURCE-DOMAIN-OPERATING-MODEL-METHOD-007
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-002
+  review_dimensions:
+  - capability requirement
+  - decision rights
+  - service delivery
+  - organisation economics
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-WORKFORCE
+  family: Workforce capacity and workload
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-BENEFITS-METHOD-010
+  - SOURCE-DOMAIN-COST-METHOD-007
+  - SOURCE-DOMAIN-COST-METHOD-009
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-012
+  - SOURCE-DOMAIN-GROWTH-METHOD-010
+  - SOURCE-DOMAIN-IPO-METHOD-008
+  - SOURCE-DOMAIN-OPERATING-MODEL-METHOD-006
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-001
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-007
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-008
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-009
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-011
+  review_dimensions:
+  - task unit
+  - demand horizon
+  - skills versus headcount
+  - adoption mechanism
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-RISK-CONTROL
+  family: Risk, control and failure analysis
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-BENEFITS-METHOD-008
+  - SOURCE-DOMAIN-CX-METHOD-014
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-007
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-013
+  - SOURCE-DOMAIN-CHANGE-METHOD-008
+  - SOURCE-DOMAIN-CHANGE-METHOD-009
+  - SOURCE-DOMAIN-MA-METHOD-005
+  - SOURCE-DOMAIN-MA-METHOD-010
+  - SOURCE-DOMAIN-OPERATING-MODEL-METHOD-004
+  - SOURCE-DOMAIN-OPERATING-MODEL-METHOD-009
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-009
+  - SOURCE-DOMAIN-RISK-METHOD-001
+  review_dimensions:
+  - hazard or objective
+  - control design versus operation
+  - causal depth
+  - assurance burden
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-THEORY-CHANGE
+  family: Theory of change and causal pathway
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-BENEFITS-METHOD-002
+  - SOURCE-DOMAIN-CHANGE-METHOD-001
+  review_dimensions:
+  - intervention boundary
+  - causal assumptions
+  - intermediate outcomes
+  - evaluation design
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-BENEFITS
+  family: Benefits and value tracking
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-BENEFITS-METHOD-001
+  - SOURCE-DOMAIN-BENEFITS-METHOD-003
+  - SOURCE-DOMAIN-BENEFITS-METHOD-004
+  - SOURCE-DOMAIN-COST-METHOD-016
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-001
+  - SOURCE-DOMAIN-CHANGE-METHOD-011
+  - SOURCE-DOMAIN-MA-METHOD-003
+  - SOURCE-DOMAIN-MA-METHOD-011
+  - SOURCE-DOMAIN-OPERATING-MODEL-METHOD-009
+  review_dimensions:
+  - benefit classification
+  - baseline and counterfactual
+  - attribution
+  - recognition threshold
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-NETWORK
+  family: Stakeholder and organisation networks
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-CHANGE-METHOD-004
+  - SOURCE-DOMAIN-WORKFORCE-METHOD-010
+  review_dimensions:
+  - node and edge definition
+  - stakeholder versus workflow purpose
+  - privacy
+  - decision use
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.
+- collision_id: COLLISION-EXPERIMENT
+  family: Experiments and causal impact
+  candidate_method_index_ids:
+  - SOURCE-DOMAIN-BENEFITS-METHOD-009
+  - SOURCE-DOMAIN-BENEFITS-METHOD-013
+  - SOURCE-DOMAIN-CX-METHOD-008
+  - SOURCE-DOMAIN-CX-METHOD-014
+  - SOURCE-DOMAIN-DIGITAL-AI-METHOD-011
+  - SOURCE-DOMAIN-GROWTH-METHOD-013
+  review_dimensions:
+  - treatment assignment
+  - counterfactual quality
+  - sample and power
+  - ethical constraints
+  automatic_merge_allowed: false
+  decision_rule: Retain distinct records unless a provenance review proves identical
+    decision, evidence and procedure semantics; aliases may link records without deleting
+    source identity.

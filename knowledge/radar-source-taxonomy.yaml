@@ -1,0 +1,84 @@
+version: 1.0.0
+purpose: Candidate-source taxonomy for scheduled methodology discovery; no source
+  can promote itself.
+promotion_policy:
+  automatic_promotion: false
+  required:
+  - provenance review
+  - novelty comparison
+  - original reconstruction
+  - rights review
+  - fixture evaluation
+  - independent review
+  - Founder approval
+source_categories:
+- category_id: RADAR-REGULATOR
+  name: Regulators and statutory authorities
+  authority_class: primary_binding_or_authoritative
+  volatility: high
+  review_cadence: monthly_and_change_event
+  admission: capture exact issuer, jurisdiction, effective date and supersession status
+  copyright_handling: link and paraphrase; do not redistribute protected compilations
+- category_id: RADAR-GOVERNMENT
+  name: Government and public agencies
+  authority_class: primary_authoritative
+  volatility: medium_high
+  review_cadence: quarterly_and_change_event
+  admission: prefer official publications and datasets
+  copyright_handling: record reuse terms and attribution
+- category_id: RADAR-STANDARD
+  name: Standards bodies
+  authority_class: primary_authoritative
+  volatility: medium
+  review_cadence: quarterly
+  admission: record edition, status and purchase or access basis
+  copyright_handling: do not copy paid standard text or distinctive tables
+- category_id: RADAR-ACADEMIC
+  name: Peer-reviewed and preprint research
+  authority_class: primary_research
+  volatility: medium
+  review_cadence: six_months
+  admission: separate study design, population, findings and limitations
+  copyright_handling: cite and summarize; preserve licence metadata
+- category_id: RADAR-PROFESSIONAL
+  name: Professional bodies and recognised institutions
+  authority_class: secondary_reliable
+  volatility: medium
+  review_cadence: six_months
+  admission: record methodology status and applicable jurisdiction
+  copyright_handling: reconstruct ideas independently; do not copy proprietary templates
+- category_id: RADAR-PRACTITIONER
+  name: Practitioner publications
+  authority_class: practitioner
+  volatility: medium_high
+  review_cadence: six_months
+  admission: candidate evidence only unless independently supported
+  copyright_handling: paraphrase and attribute; no distinctive framework copying
+- category_id: RADAR-VENDOR
+  name: Vendor technical material
+  authority_class: interested_practitioner
+  volatility: high
+  review_cadence: quarterly
+  admission: use for product facts within scope, not independent efficacy claims
+  copyright_handling: link and summarize; do not reproduce marketing assets
+- category_id: RADAR-MARKETING
+  name: Marketing and promotional claims
+  authority_class: marketing
+  volatility: high
+  review_cadence: on_use
+  admission: quarantine as claim requiring corroboration
+  copyright_handling: do not reuse copy, diagrams or brand assets
+- category_id: RADAR-COMMUNITY
+  name: Community discussion and informal practice
+  authority_class: unverified
+  volatility: high
+  review_cadence: on_use
+  admission: discovery lead only; never sole support for material method promotion
+  copyright_handling: do not copy; seek primary source
+- category_id: RADAR-INTERNAL
+  name: Internal offdata methods and evaluation evidence
+  authority_class: governed_internal
+  volatility: controlled
+  review_cadence: annual_and_material_change
+  admission: version, provenance, test and Founder approval required
+  copyright_handling: offdata-owned original expression only
