@@ -39,7 +39,7 @@ Committed source and generation controls include:
 - retained machine-contract artefact;
 - Phase 1 completion and validation reports.
 
-Independent GitHub Actions validation completed:
+Final exact-main GitHub Actions validation completed:
 
 - eight generated contract artefacts;
 - 58 registered models;
@@ -48,10 +48,11 @@ Independent GitHub Actions validation completed:
 - ten commands and fifteen events catalogued;
 - all 123 requirements mapped to implemented or planned tests;
 - 86 deterministic tests passed;
-- 92.67 percent test coverage against a 90 percent mandatory floor;
+- 92.71 percent test coverage against a 90 percent mandatory floor;
 - Python source compilation passed;
-- Ruff linting passed;
-- strict MyPy checking passed across 16 source files;
+- Ruff linting passed without a per-file exception;
+- strict MyPy checking passed across 18 source files without a policy suppression;
+- stable public policy import paths preserved in the generated registry;
 - 13-file generated artefact retained for 30 days.
 
 Deferred integration evidence remains explicit:
