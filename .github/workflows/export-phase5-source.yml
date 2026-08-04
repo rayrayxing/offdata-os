@@ -5,6 +5,9 @@ on:
     branches: [fixtures/phase5-engagement-suite]
     paths:
       - .github/workflows/export-phase5-source.yml
+  pull_request:
+    paths:
+      - .github/workflows/export-phase5-source.yml
 
 permissions:
   contents: read
