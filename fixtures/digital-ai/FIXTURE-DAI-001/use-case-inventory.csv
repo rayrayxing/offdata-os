@@ -1,0 +1,9 @@
+use_case_id,use_case_name,intervention_type,primary_users,annual_volume,addressable_value_score,feasibility_score,data_readiness_score,risk_score,human_judgement_dependency,estimated_pilot_cost_sgd,expected_time_to_evidence_months,recommended_initial_status,notes
+UC-001,AI-assisted quotation preparation,generative_ai_and_workflow,sales_and_quotation,12540,8.2,7.4,6.8,5.2,medium,88000,3,pilot_candidate,Limit to extraction retrieval drafting and approval flags
+UC-002,Internal customer-service knowledge assistant,retrieval_and_generation,customer_service_agents,18420,6.9,6.5,5.4,5.8,medium_high,76000,3,secondary_candidate,Human-mediated responses and approved knowledge only
+UC-003,Autonomous customer-facing chatbot,generative_ai_external,customers,18420,7.4,4.1,4.2,8.7,high,115000,4,defer,Authentication compatibility and external advice risks
+UC-004,Inventory demand forecasting,predictive_analytics,purchasing_and_operations,41200,8.8,4.6,3.5,6.1,medium,108000,6,prepare,Requires demand labels substitutions lost-sales treatment and back-test
+UC-005,Purchase-order exception detection,rules_and_anomaly_detection,purchasing,9600,6.0,7.6,6.9,4.8,medium,52000,2,alternative_pilot,May provide value with less model complexity than forecasting
+UC-006,General employee productivity assistant,generative_ai,all_office_staff,140,5.2,8.3,7.2,6.5,medium,46000,2,foundation_or_controlled_trial,Requires approved environment policy and training
+UC-007,Product-master deduplication,data_quality_and_matching,product_data_team,28500,6.3,7.1,5.8,4.2,medium,61000,3,foundation_candidate,Can improve multiple later use cases
+UC-008,Quotation process simplification without AI,process_and_rules,sales_and_finance,12540,6.8,8.1,8.0,3.1,medium,39000,2,required_comparator,Standard forms approval rules and ERP field improvements
