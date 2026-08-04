@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -50,7 +51,7 @@ class PrimaryFixture(BaseModel):
     stakeholders: tuple[dict[str, Any], ...]
     constraints: tuple[str, ...]
     exclusions: tuple[str, ...]
-    decision_date: str = Field(min_length=10)
+    decision_date: date
     currency: str = Field(min_length=3, max_length=3)
     deliberate_traps: tuple[str, ...]
 
@@ -122,7 +123,11 @@ def ensure_restricted_fixture_isolation(context_paths: tuple[str, ...]) -> None:
 
 
 def validate_primary_fixture(fixture_dir: Path) -> FixtureValidationResult:
-    missing = sorted(name for name in REQUIRED_CLIENT_FILES | RESTRICTED_FILES if not (fixture_dir / name).is_file())
+    missing = sorted(
+        name
+        for name in REQUIRED_CLIENT_FILES | RESTRICTED_FILES
+        if not (fixture_dir / name).is_file()
+    )
     if missing:
         raise ValueError(f"Fixture files missing: {missing}")
 
@@ -169,7 +174,10 @@ def validate_primary_fixture(fixture_dir: Path) -> FixtureValidationResult:
         raise ValueError("Primary fixture requires at least twelve structured evidence rows.")
     if any(row["source_id"] not in source_ids for row in rows):
         raise ValueError("Evidence row references an unknown source ID.")
-    if not any(row["quality_status"] in {"missing", "stale", "contradictory", "estimated"} for row in rows):
+    if not any(
+        row["quality_status"] in {"missing", "stale", "contradictory", "estimated"}
+        for row in rows
+    ):
         raise ValueError("Fixture lacks deliberate evidence-quality variation.")
 
     client_files = tuple(sorted(REQUIRED_CLIENT_FILES))
@@ -211,13 +219,14 @@ def fixture_suite_document(root: Path) -> dict[str, Any]:
         root / "fixtures" / "cost-productivity" / "FIXTURE-COST-001",
     )
     results = [validate_primary_fixture(path) for path in fixture_dirs]
+    result_documents = [result.model_dump(mode="json") for result in results]
     return {
         "suite_version": "1.0.0",
         "fixture_ids": [result.fixture_id for result in results],
-        "fixtures": [result.model_dump(mode="json") for result in results],
+        "fixtures": result_documents,
         "suite_digest": hashlib.sha256(
             json.dumps(
-                [result.model_dump(mode="json") for result in results],
+                result_documents,
                 sort_keys=True,
                 separators=(",", ":"),
             ).encode("utf-8")
