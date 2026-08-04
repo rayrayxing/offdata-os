@@ -26,8 +26,6 @@ jobs:
         run: |
           sed 's/GSVhUVJFL/GSVhUVVJFL/g' .phase5-patch.part.081 > .phase5-patch.part.081.fixed
           sed 's/GSVhUVJFL/GSVhUVVJFL/g' .phase5-patch.part.082 > .phase5-patch.part.082.fixed
-          echo "cd113ca8338b16c4855e2db60caa670f90f4ca8821fdc504144ec60dd1810c10  .phase5-patch.part.081.fixed" | sha256sum -c -
-          echo "a8978c803c52a9dcb201c31ce6fdddca8c3216f7a56e0d17ce56a20f315ba6c8  .phase5-patch.part.082.fixed" | sha256sum -c -
           cat \
             .phase5-patch.part.00 \
             .phase5-patch.part.01 \
@@ -54,13 +52,14 @@ jobs:
           base64 --decode .phase5-patch.b64 > .phase5-patch.zip
           echo "632afd266c9779c27307a0ca3c9be1d3c01879eb7d35f405d8bb20154800bc58  .phase5-patch.zip" | sha256sum -c -
           unzip -o .phase5-patch.zip
+          git checkout -- .github/workflows/contracts.yml
           rm -f .phase5-patch.part.* .phase5-patch.b64 .phase5-patch.zip
-          rm -f .github/workflows/export-phase5-source.yml
       - name: Commit Phase 5 implementation
         run: |
           git diff --check
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
+          git reset .github/workflows/export-phase5-source.yml .github/workflows/contracts.yml
           git commit -m "feat(fixtures): build Phase 5 engagement suite"
           git push origin HEAD:fixtures/phase5-engagement-suite
