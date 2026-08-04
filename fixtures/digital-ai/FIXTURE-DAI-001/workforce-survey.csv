@@ -1,0 +1,7 @@
+row_id,workforce_segment,respondents,public_ai_use_percent,confidence_reviewing_ai_percent,interest_in_training_percent,concern_job_reduction_percent,concern_data_leakage_percent,manager_support_percent,preferred_support,notes
+WF-001,sales,31,29.0,35.0,81.0,58.0,52.0,68.0,role_specific_examples,Sellers value speed but fear activity monitoring
+WF-002,customer_service,22,18.0,27.0,86.0,64.0,61.0,59.0,live_coaching,Agents concerned about accountability for wrong answers
+WF-003,purchasing_and_operations,28,14.0,25.0,71.0,46.0,57.0,52.0,data_and_process_training,Forecasting claims viewed with mixed confidence
+WF-004,finance_and_administration,19,26.0,42.0,79.0,53.0,68.0,63.0,policy_and_approved_tools,Existing public use is mainly writing and summarisation
+WF-005,technical_and_product,13,15.0,38.0,77.0,49.0,73.0,71.0,source_verification,Strong concern about technical hallucination
+WF-006,managers,10,30.0,50.0,90.0,30.0,60.0,80.0,value_and_governance,Several managers expect eventual headcount reduction
