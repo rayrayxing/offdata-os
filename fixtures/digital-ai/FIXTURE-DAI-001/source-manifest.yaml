@@ -1,0 +1,163 @@
+fixture_id: FIXTURE-DAI-001
+version: 1.0.0
+classification: synthetic
+real_client_data: false
+currency: SGD
+source_documents:
+  - source_id: CLIENT-SRC-001
+    title: CEO interview
+    source_type: interview
+    authority_class: client_assertion
+    confidentiality: client_confidential_synthetic
+    object_reference: interviews.md#client-src-001
+    publication_date: 2026-07-02
+    retrieval_date: 2026-08-04
+    time_sensitive: true
+    limitations:
+      - Executive perceptions are not independently verified.
+      - Strong preference for visible AI initiative may bias option assessment.
+  - source_id: CLIENT-SRC-002
+    title: Sales and quotation workshop
+    source_type: workshop
+    authority_class: client_assertion
+    confidentiality: client_confidential_synthetic
+    object_reference: interviews.md#client-src-002
+    publication_date: 2026-07-03
+    retrieval_date: 2026-08-04
+    time_sensitive: true
+    limitations:
+      - Time estimates vary materially between participants.
+      - Workshop participants are not a random workforce sample.
+  - source_id: CLIENT-SRC-003
+    title: Customer service and technical support interviews
+    source_type: interview
+    authority_class: client_assertion
+    confidentiality: client_confidential_synthetic
+    object_reference: interviews.md#client-src-003
+    publication_date: 2026-07-04
+    retrieval_date: 2026-08-04
+    time_sensitive: true
+    limitations:
+      - Ticket categories were discussed before data-quality review.
+  - source_id: CLIENT-SRC-004
+    title: Operations, IT and information security interviews
+    source_type: interview
+    authority_class: client_assertion
+    confidentiality: client_confidential_synthetic
+    object_reference: interviews.md#client-src-004
+    publication_date: 2026-07-05
+    retrieval_date: 2026-08-04
+    time_sensitive: true
+    limitations:
+      - No independent penetration test or architecture verification is included.
+  - source_id: CLIENT-SRC-005
+    title: Finance, HR and workforce interviews
+    source_type: interview
+    authority_class: client_assertion
+    confidentiality: client_confidential_synthetic
+    object_reference: interviews.md#client-src-005
+    publication_date: 2026-07-06
+    retrieval_date: 2026-08-04
+    time_sensitive: true
+    limitations:
+      - Management expectations and workforce concerns conflict.
+  - source_id: CLIENT-DATA-001
+    title: Segmented quotation activity
+    source_type: client_dataset
+    authority_class: client_operational_data
+    confidentiality: client_confidential_synthetic
+    object_reference: quotation-activity.csv
+    period_start: 2026-01-01
+    period_end: 2026-06-30
+    retrieval_date: 2026-08-04
+    rows: 24
+    limitations:
+      - Sample is an aggregate by month and complexity segment.
+      - Specialist waiting time is estimated from event timestamps.
+      - Lost quotations are not consistently coded.
+  - source_id: CLIENT-DATA-002
+    title: Customer service category summary
+    source_type: client_dataset
+    authority_class: client_operational_data
+    confidentiality: client_confidential_synthetic
+    object_reference: customer-service-summary.csv
+    period_start: 2025-07-01
+    period_end: 2026-06-30
+    retrieval_date: 2026-08-04
+    rows: 8
+    limitations:
+      - Resolution code is missing for 28 percent of underlying tickets.
+      - Categories reflect current manual coding practices.
+  - source_id: CLIENT-DATA-003
+    title: AI and automation use-case inventory
+    source_type: client_dataset
+    authority_class: working_synthesis
+    confidentiality: client_confidential_synthetic
+    object_reference: use-case-inventory.csv
+    retrieval_date: 2026-08-04
+    rows: 8
+    limitations:
+      - Value, feasibility and risk scores are initial workshop estimates.
+      - Options include non-AI alternatives for comparison.
+  - source_id: CLIENT-DATA-004
+    title: Workforce AI pulse survey
+    source_type: survey
+    authority_class: client_survey
+    confidentiality: client_confidential_synthetic
+    object_reference: workforce-survey.csv
+    publication_date: 2026-06-24
+    retrieval_date: 2026-08-04
+    respondents: 123
+    response_rate_percent: 66.5
+    limitations:
+      - Self-reported use and confidence may be biased.
+      - Results are aggregated and do not identify individuals.
+  - source_id: CLIENT-DATA-005
+    title: Pilot financial baseline
+    source_type: client_dataset
+    authority_class: management_financial_baseline
+    confidentiality: restricted_synthetic
+    object_reference: financial-baseline.csv
+    retrieval_date: 2026-08-04
+    rows: 16
+    limitations:
+      - Capacity value is not equivalent to cash savings.
+      - Conversion uplift is an unvalidated scenario assumption.
+  - source_id: CLIENT-DATA-006
+    title: AI risk and control register
+    source_type: client_dataset
+    authority_class: working_synthesis
+    confidentiality: restricted_synthetic
+    object_reference: risk-and-controls.csv
+    retrieval_date: 2026-08-04
+    rows: 12
+    limitations:
+      - Design assessment only; operating effectiveness is not tested.
+      - Residual-risk ratings require accountable-human acceptance.
+  - source_id: PUBLIC-SRC-001
+    title: Synthetic authoritative AI governance and security guidance digest
+    source_type: government_or_standard_digest
+    authority_class: synthetic_placeholder
+    confidentiality: public_synthetic
+    object_reference: embedded_fixture_placeholder
+    retrieval_date: 2026-08-04
+    usage_restrictions:
+      - Must be replaced with current controlled public sources before real-client use.
+    limitations:
+      - Contains no real external source text and supports only fixture evaluation logic.
+source_relationships:
+  - statement: Sales leadership estimates administration at roughly half of seller time.
+    source_ids: [CLIENT-SRC-002]
+    status: client_assertion
+  - statement: Activity data indicates quotation work consumes materially less than half of total seller capacity.
+    source_ids: [CLIENT-DATA-001]
+    status: synthetic_operational_evidence
+  - statement: Repeatable customer-service categories do not imply safe autonomous response.
+    source_ids: [CLIENT-DATA-002, CLIENT-SRC-003, CLIENT-DATA-006]
+    status: reasoned_synthesis
+  - statement: Unapproved public AI use is already occurring.
+    source_ids: [CLIENT-DATA-004, CLIENT-SRC-004]
+    status: synthetic_survey_and_interview_evidence
+  - statement: Inventory forecasting is constrained by demand-label and substitution quality.
+    source_ids: [CLIENT-SRC-004, CLIENT-DATA-003]
+    status: synthetic_operational_evidence
