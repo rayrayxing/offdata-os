@@ -1,0 +1,9 @@
+row_id,ticket_category,annual_ticket_count,share_percent,first_contact_resolution_percent,median_handle_minutes,specialist_escalation_percent,approved_knowledge_coverage_percent,autonomous_response_suitability,known_data_quality_issue
+CS-001,order_status,4421,24.0,78.0,7,8.0,82.0,conditional,Delivery context and customer authentication required
+CS-002,product_compatibility,3316,18.0,39.0,24,61.0,46.0,low,Category combines simple confirmation and application engineering
+CS-003,product_document_request,2395,13.0,83.0,6,5.0,71.0,conditional,Document versions and customer-specific restrictions inconsistent
+CS-004,delivery_date_or_delay,2026,11.0,55.0,14,22.0,63.0,low,Supplier dates change and promised dates require context
+CS-005,pricing_or_discount,1658,9.0,47.0,18,34.0,38.0,prohibited,Customer-specific pricing and delegated authority
+CS-006,returns_and_quality,1474,8.0,44.0,27,41.0,52.0,low,Potential product and safety implications
+CS-007,invoice_or_account,1105,6.0,72.0,11,12.0,76.0,conditional,Identity and account access controls required
+CS-008,general_or_uncoded,2025,11.0,49.0,16,28.0,29.0,unknown,Resolution code missing or broad for many underlying tickets
