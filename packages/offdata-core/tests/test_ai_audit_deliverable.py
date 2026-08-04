@@ -324,7 +324,7 @@ def test_fixture_mutation_invalidates_committed_semantic_baseline(tmp_path: Path
     fixture = _copy_fixture(tmp_path)
     financial_path = fixture / "financial-baseline.csv"
     text = financial_path.read_text(encoding="utf-8")
-    financial_path.write_text(text.replace("88000", "89000", 1), encoding="utf-8")
+    financial_path.write_text(text.replace("28000", "29000", 1), encoding="utf-8")
     with pytest.raises(ValueError, match="stale or non-reproducible"):
         verify_committed_deliverable_semantic_baseline(fixture)
 
