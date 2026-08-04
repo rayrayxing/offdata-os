@@ -1,43 +1,58 @@
-version: 1.0.0
-status: baseline
+version: 2.0.0
+status: phase_1_machine_contract_baseline
 rules:
   mandatory_requirement_must_have_test: true
   test_must_reference_requirement: true
-  retained_evidence_required: true
+  planned_test_does_not_count_as_execution_evidence: true
   founder_gate_must_have_approval_record: true
+  generated_registry: requirements/test-registry.json
+  implemented_mapping_source: requirements/implemented-test-mappings.json
+  planned_mapping_source: requirements/planned-test-mappings.json
 families:
+  outcomes:
+    requirements: [OUT-001, OUT-002, OUT-003, OUT-004]
+    artefacts:
+      - docs/16-REQUIREMENTS-CATALOGUE.md
+      - api/openapi.json
+    implemented_tests:
+      - packages/offdata-core/tests/test_machine_contracts.py::test_openapi_is_31_and_has_required_paths
+    planned_tests: [E2E-WORKLOAD-001, UT-DECISION-FITNESS-001, IT-RUNTIME-REPLACE-001]
   lifecycle:
     requirements: [LIFE-001, LIFE-002, LIFE-003, LIFE-004, LIFE-005, LIFE-006, LIFE-007, LIFE-008, LIFE-009]
     artefacts:
       - configs/lifecycle.yaml
       - packages/offdata-core/src/offdata_core/lifecycle.py
-    tests:
-      - UT-LIFE-001
-      - UT-LIFE-002
-      - UT-LIFE-003
-      - UT-LIFE-004
-      - UT-LIFE-005
-      - UT-NBA-001
-      - IT-RECOVERY-001
-      - UT-RETRY-001
-      - IT-KILL-001
+      - packages/offdata-core/src/offdata_core/events.py
+    implemented_tests:
+      - packages/offdata-core/tests/test_lifecycle.py::test_earliest_unmet_gate_selects_stage
+      - packages/offdata-core/tests/test_lifecycle.py::test_documented_compression_allows_skip
+      - packages/offdata-core/tests/test_lifecycle.py::test_recycle_returns_to_earlier_stage
+      - packages/offdata-core/tests/test_machine_contracts.py::test_non_repeatable_commands_require_idempotency
+    planned_tests: [UT-NBA-001, IT-RECOVERY-001, UT-RETRY-001, IT-KILL-001]
   authority:
     requirements: [AUTH-001, AUTH-002, AUTH-003, AUTH-004, AUTH-005, AUTH-006, AUTH-007, AUTH-008, AUTH-009, AUTH-010]
     artefacts:
       - configs/policy.yaml
       - packages/offdata-core/src/offdata_core/policy.py
       - schemas/founder-decision-packet.schema.json
-    tests:
-      - UT-AUTH-001
-      - UT-AUTH-002
-      - UT-AUTH-003
-      - UT-AUTH-004
-      - UT-AUTH-005
-      - UT-AUTH-006
-      - UT-AUTH-007
-      - UT-QA-INDEP-001
-      - UT-PACKET-001
-      - AE-PARTNER-003
+    implemented_tests:
+      - packages/offdata-core/tests/test_policy.py::test_routine_internal_research_auto_executes
+      - packages/offdata-core/tests/test_policy.py::test_external_send_requests_approval
+      - packages/offdata-core/tests/test_policy.py::test_legal_conclusion_without_specialist_is_prohibited
+      - packages/offdata-core/tests/test_contracts.py::test_founder_packet_requires_two_options
+    planned_tests: [UT-QA-INDEP-001]
+  data:
+    requirements: [DATA-001, DATA-002, DATA-003, DATA-004, DATA-005, DATA-006, DATA-007, DATA-008, DATA-009, DATA-010]
+    artefacts:
+      - database/migrations/0001_core.sql
+      - contracts/model-registry.json
+      - contracts/command-event-catalogue.json
+      - schemas/offdata-contract-bundle.schema.json
+    implemented_tests:
+      - packages/offdata-core/tests/test_events.py::test_non_create_command_requires_expected_version
+      - packages/offdata-core/tests/test_machine_contracts.py::test_schema_bundle_is_valid_draft_2020_12
+      - packages/offdata-core/tests/test_machine_contracts.py::test_sql_migration_contains_tenant_scope_event_store_and_idempotency
+    planned_tests: [UT-EPISTEMIC-001, IT-BASELINE-IMMUTABLE-001, IT-RETENTION-001, SEC-REGION-ISOLATION-001]
   knowledge:
     requirements: [KNOW-001, KNOW-002, KNOW-003, KNOW-004, KNOW-005, KNOW-006, KNOW-007, KNOW-008, KNOW-009, KNOW-010]
     artefacts:
@@ -45,97 +60,115 @@ families:
       - knowledge/source-import-manifest.yaml
       - knowledge/source-alias-map.yaml
       - docs/23-METHODOLOGY-RADAR-SPECIFICATION.md
-    tests:
-      - IT-INGEST-001
-      - UT-ALIAS-001
-      - UT-METHOD-001
-      - UT-SELECT-001
-      - UT-SELECT-002
-      - UT-OVERLAY-001
-      - UT-RADAR-001
-      - UT-RIGHTS-001
-      - IT-RADAR-002
-      - UT-SUPERSEDE-001
+    implemented_tests:
+      - packages/offdata-core/tests/test_knowledge.py::test_source_requires_valid_sha256
+      - packages/offdata-core/tests/test_knowledge.py::test_method_requires_substantive_fields
+      - packages/offdata-core/tests/test_knowledge.py::test_candidate_cannot_promote_without_controls
+    planned_tests: [UT-ALIAS-001, UT-OVERLAY-001, UT-RADAR-001, UT-RIGHTS-001, IT-RADAR-002, UT-SUPERSEDE-001]
   evidence:
     requirements: [EVID-001, EVID-002, EVID-003, EVID-004, EVID-005, EVID-006, EVID-007, EVID-008, EVID-009, EVID-010]
     artefacts:
       - packages/offdata-core/src/offdata_core/knowledge.py
-      - docs/03-ARCHITECTURE.md
-    tests:
-      - AE-RESEARCH-001
-      - UT-SOURCE-001
-      - UT-PASSAGE-001
-      - AE-RESEARCH-002
-      - AE-EVIDENCE-003
-      - UT-BURDEN-001
-      - IT-STALENESS-001
-      - AE-RESEARCH-003
-      - VIS-CITATION-001
-      - SEC-INJECTION-001
+      - fixtures/digital-ai/FIXTURE-DAI-001/source-manifest.yaml
+    implemented_tests:
+      - packages/offdata-core/tests/test_knowledge.py::test_passage_requires_location
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_adversarial_document_is_marked_untrusted_and_never_authoritative
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_complex_quotes_have_materially_more_waiting_and_touch_time
+    planned_tests: [AE-RESEARCH-001, AE-RESEARCH-002, AE-EVIDENCE-003, UT-BURDEN-001, IT-STALENESS-001, AE-RESEARCH-003, VIS-CITATION-001]
+  modelling:
+    requirements: [MODEL-001, MODEL-002, MODEL-003, MODEL-004, MODEL-005, MODEL-006, MODEL-007, MODEL-008, MODEL-009]
+    artefacts:
+      - fixtures/digital-ai/FIXTURE-DAI-001/financial-baseline.csv
+      - fixtures/digital-ai/FIXTURE-DAI-001/expected-results.yaml
+    implemented_tests:
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_financial_baseline_separates_value_classes
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_quotation_activity_reconciles_to_six_month_volume
+    planned_tests: [UT-REPRODUCIBILITY-001, IT-INDEPENDENT-RECALC-001, IT-WORKBOOK-ARCH-001]
   agents:
     requirements: [AGENT-001, AGENT-002, AGENT-003, AGENT-004, AGENT-005, AGENT-006, AGENT-007, AGENT-008, AGENT-009]
     artefacts:
       - configs/agents.yaml
       - packages/offdata-core/src/offdata_core/contracts.py
       - docs/29-AGENT-PROMPT-AND-EVALUATION-PACK.md
-    tests:
-      - UT-AGENT-001
-      - UT-CONTEXT-001
-      - IT-AGENT-WRITE-001
-      - SEC-TOOL-001
-      - UT-ENVELOPE-001
-      - UT-BUDGET-001
-      - SEC-INJECTION-001
-      - AE-ROUTING-001
-      - IT-ADAPTER-001
+    implemented_tests:
+      - packages/offdata-core/tests/test_contracts.py::test_context_package_requires_tool_allowlist
+      - packages/offdata-core/tests/test_machine_contracts.py::test_agent_config_has_bounded_roles_and_propose_only_writes
+      - packages/offdata-core/tests/test_machine_contracts.py::test_model_registry_contains_all_public_contract_families
+    planned_tests: [UT-AGENT-001, IT-AGENT-WRITE-001, SEC-TOOL-001, UT-BUDGET-001, SEC-INJECTION-001, AE-ROUTING-001, IT-ADAPTER-001]
   quality:
     requirements: [QA-001, QA-002, QA-003, QA-004, QA-005, QA-006, QA-007, QA-008, QA-009]
     artefacts:
       - packages/offdata-core/src/offdata_core/quality.py
       - docs/24-QUALITY-FIXTURE-CATALOGUE.md
-    tests:
-      - AE-QA-001
-      - UT-QA-001
-      - UT-DEFECT-001
-      - UT-DEFECT-002
-      - IT-REPAIR-001
-      - UT-EXCEPTION-001
-      - UT-SIGNOFF-001
-      - UT-QA-INDEP-001
-      - IT-FIXTURE-001
+    implemented_tests:
+      - packages/offdata-core/tests/test_quality.py::test_founder_ready_passes_at_standard
+      - packages/offdata-core/tests/test_quality.py::test_s2_blocks_founder_ready
+      - packages/offdata-core/tests/test_quality.py::test_s1_self_closure_needs_independent_verification
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_fixture_required_files_exist
+    planned_tests: [AE-QA-001, UT-DEFECT-001, UT-DEFECT-002, IT-REPAIR-001, UT-EXCEPTION-001, UT-SIGNOFF-001, UT-QA-INDEP-001]
   delivery:
     requirements: [DELIV-001, DELIV-002, DELIV-003, DELIV-004, DELIV-005, DELIV-006, DELIV-007, DELIV-008, DELIV-009, DELIV-010]
     artefacts:
       - packages/offdata-core/src/offdata_core/delivery.py
       - docs/25-VISUAL-AND-INFOGRAPHIC-ARCHETYPE-SPEC.md
-    tests:
-      - UT-STORY-001
-      - AE-STORY-001
-      - UT-RECON-001
-      - VIS-EDIT-001
-      - UT-VISUAL-001
-      - UT-VISUAL-002
-      - VIS-PPTX-001
-      - UT-RECON-002
-      - VIS-CITATION-001
-      - UT-ARTEFACT-001
+    implemented_tests:
+      - packages/offdata-core/tests/test_delivery.py::test_story_section_cannot_reference_missing_assertion
+      - packages/offdata-core/tests/test_delivery.py::test_reconciliation_requires_all_eight_checks
+      - packages/offdata-core/tests/test_delivery.py::test_visual_relationship_requires_known_entities
+    planned_tests: [AE-STORY-001, VIS-EDIT-001, UT-VISUAL-002, VIS-PPTX-001, UT-RECON-002, VIS-CITATION-001, UT-ARTEFACT-001]
+  implementation:
+    requirements: [IMPL-001, IMPL-002, IMPL-003, IMPL-004, IMPL-005, IMPL-006]
+    artefacts:
+      - docs/08-IMPLEMENTATION-AND-CHANGE.md
+      - fixtures/digital-ai/FIXTURE-DAI-001/expected-results.yaml
+    implemented_tests:
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_workforce_survey_reconciles_and_surfaces_current_control_gap
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_financial_baseline_separates_value_classes
+    planned_tests: [UT-INITIATIVE-TRACE-001, UT-BENEFIT-GOVERNANCE-001]
   crm_and_origination:
     requirements: [CRM-001, CRM-002, CRM-003, ORIG-001, ORIG-002, ORIG-003, ORIG-004]
     artefacts:
       - packages/offdata-core/src/offdata_core/crm.py
       - docs/22-CRM-AND-ORIGINATION-FIELD-MAPPING.md
-    tests:
-      - IT-CRM-001
-      - IT-CRM-002
-      - SEC-CRM-001
-      - UT-ORIG-001
-      - UT-OUTREACH-001
-      - UT-SUPPRESSION-001
-      - AE-OUTREACH-001
+    implemented_tests:
+      - packages/offdata-core/tests/test_crm.py::test_suppressed_contact_cannot_be_contacted
+      - packages/offdata-core/tests/test_crm.py::test_approved_campaign_authorises_bounded_outreach
+    planned_tests: [IT-CRM-001, IT-CRM-002, SEC-CRM-001, UT-ORIG-001, AE-OUTREACH-001]
+  security:
+    requirements: [SEC-001, SEC-002, SEC-003, SEC-004, SEC-005, SEC-006, SEC-007, SEC-008, SEC-009, SEC-010]
+    artefacts:
+      - docs/07-SECURITY-AND-DATA-RESIDENCY.md
+      - database/migrations/0001_core.sql
+    implemented_tests:
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_adversarial_document_is_marked_untrusted_and_never_authoritative
+      - packages/offdata-core/tests/test_machine_contracts.py::test_sql_migration_contains_tenant_scope_event_store_and_idempotency
+    planned_tests: [IT-ENV-SEPARATION-001, SEC-ENCRYPTION-001, SEC-REGION-ISOLATION-001, IT-BACKUP-RESTORE-001, UT-PROCESSOR-REGISTER-001, SEC-SUPPLY-CHAIN-001, IT-OBSERVABILITY-001, IT-ROLLBACK-001]
+  testing:
+    requirements: [TEST-001, TEST-002, TEST-003, TEST-004, TEST-005, TEST-006]
+    artefacts:
+      - requirements/test-registry.json
+      - docs/10-TESTING-STRATEGY.md
+      - docs/30-SYNTHETIC-ENGAGEMENT-SUITE-PLAN.md
+    implemented_tests:
+      - packages/offdata-core/tests/test_machine_contracts.py::test_every_collected_test_has_requirement_mapping
+      - packages/offdata-core/tests/test_fixture_dai_001.py::test_answer_key_is_restricted_and_requires_quotation_pilot_controls
+    planned_tests: [META-TEST-HIERARCHY-001, E2E-PRIMARY-FIXTURES-001, E2E-COMPOUND-FIXTURES-001, AE-FALSE-TRAPS-001, IT-REPEATABILITY-001, E2E-WORKLOAD-001]
+  cost:
+    requirements: [COST-001, COST-002, COST-003, COST-004]
+    artefacts:
+      - docs/13-FOUNDER-OPERATING-GUIDE.md
+      - configs/agents.yaml
+    implemented_tests:
+      - packages/offdata-core/tests/test_contracts.py::test_context_package_requires_tool_allowlist
+    planned_tests: [IT-LOCAL-FIRST-001, UT-SPEND-CONTROL-001, IT-COST-ATTRIBUTION-001, UT-PAID-DEPENDENCY-001]
 fixtures:
   FIXTURE-DAI-001:
     path: fixtures/digital-ai/FIXTURE-DAI-001
-    required_tests:
+    answer_key: fixtures/digital-ai/FIXTURE-DAI-001/expected-results.yaml
+    answer_key_agent_visible: false
+    implemented_tests:
+      - packages/offdata-core/tests/test_fixture_dai_001.py
+    planned_tests:
       - E2E-DAI-001
       - AE-PARTNER-DAI-001
       - AE-PROBLEM-DAI-001
@@ -147,5 +180,3 @@ fixtures:
       - AE-IMPLEMENT-DAI-001
       - AE-QA-DAI-001
       - SEC-INJECTION-DAI-001
-    answer_key: fixtures/digital-ai/FIXTURE-DAI-001/expected-results.yaml
-    answer_key_agent_visible: false
