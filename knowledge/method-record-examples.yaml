@@ -1,0 +1,896 @@
+version: 1.0.0
+status: representative_source_grounded_original_reconstructions
+rules:
+  one_example_per_domain: true
+  not_canonical_until_review: true
+  protected_expression_not_reproduced: true
+  source_identity_preserved: true
+examples:
+- method_id: METHOD-BENEFITS-M01
+  name: Benefits dependency mapping
+  aliases: []
+  domains:
+  - benefits_realisation_and_performance_improvement
+  method_family: benefits_logic
+  decisions_supported:
+  - Whether an investment has a coherent route from enabling outputs through business
+    change to measurable value.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - technology-enabled transformation
+  - multi-project benefit overlap
+  - cross-functional accountability
+  preconditions:
+  - strategic objectives are stated
+  - business and enabling stakeholders can participate
+  - assumptions may be challenged
+  minimum_evidence: E2
+  inputs:
+  - strategic drivers
+  - investment objectives
+  - candidate outputs
+  - business changes
+  - owners and dependencies
+  procedure:
+  - state objectives and outcomes
+  - map outputs to capabilities and behavioural changes
+  - identify dependencies and owners
+  - test duplicated or missing benefits
+  - define evidence and recognition gates
+  outputs:
+  - benefits dependency map
+  - accountability map
+  - gap and overlap register
+  strengths:
+  - makes hidden dependencies visible
+  limitations:
+  - does not prove causal impact or realised value
+  when_not_to_use:
+  - a single local process improvement with direct measured output
+  alternatives:
+  - theory of change
+  - benefit profile and register
+  compatible_overlays:
+  - benefits_realisation_and_performance_improvement
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - diagramming
+  - structured register
+  specialist_review_requirements:
+  - finance review for material value claims
+  failure_modes:
+  - outputs are treated as benefits
+  - dependencies have no owners
+  quality_tests:
+  - every benefit has a traceable path and owner
+  - overlapping benefits are reconciled
+  falsification_tests:
+  - remove a claimed enabling change and test whether the benefit still follows
+  source_ids:
+  - SOURCE-DOMAIN-BENEFITS
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-BENEFITS-M01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-STRATEGY-STR-01
+  name: Decision Framing and Option Architecture
+  aliases: []
+  domains:
+  - corporate_and_business_unit_strategy
+  method_family: decision_architecture
+  decisions_supported:
+  - What executives must decide, which options are feasible and which uncertainties
+    can change the choice.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - ambiguous mandate
+  - strategy reset
+  - capital allocation
+  - market entry
+  preconditions:
+  - named decision owner
+  - decision gate or date
+  - identifiable baseline
+  - stakeholder access
+  minimum_evidence: E2
+  inputs:
+  - objectives and constraints
+  - existing commitments
+  - decision rights
+  - initial options
+  - market and financial evidence
+  procedure:
+  - write a specific decision statement
+  - separate objectives from proposed solutions
+  - define do-minimum baseline
+  - identify constraints
+  - decompose necessary conditions
+  - broaden then screen options
+  outputs:
+  - decision statement
+  - option architecture
+  - critical uncertainty register
+  strengths:
+  - prevents broad analysis without convergence
+  limitations:
+  - does not provide market or financial evidence by itself
+  when_not_to_use:
+  - the decision and options are already contractually fixed
+  alternatives:
+  - issue tree and hypothesis architecture
+  - multi-criteria decision analysis
+  compatible_overlays:
+  - corporate_and_business_unit_strategy
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - facilitation
+  - option register
+  specialist_review_requirements:
+  - legal or finance review where constraints are binding
+  failure_modes:
+  - solution is embedded in the mandate
+  - do-minimum option omitted
+  quality_tests:
+  - decision fits one sentence
+  - options are mutually distinguishable
+  - uncertainties link to tests
+  falsification_tests:
+  - a credible omitted option changes the decision boundary
+  source_ids:
+  - SOURCE-DOMAIN-STRATEGY
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-STRATEGY-STR-01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-COST-CP-01
+  name: Cost-driver tree and relevant-cost analysis
+  aliases: []
+  domains:
+  - cost_and_productivity
+  method_family: cost_economics
+  decisions_supported:
+  - Which cost drivers and avoidable costs change under pricing, sourcing, redesign,
+    automation or portfolio choices.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - cost opacity
+  - make-or-buy
+  - special-order economics
+  - early cost reduction
+  preconditions:
+  - decision and cost boundary defined
+  - financial and operational volume data available
+  - sunk and avoidable costs distinguishable
+  minimum_evidence: E2
+  inputs:
+  - general ledger
+  - management accounts
+  - transaction volumes
+  - resource consumption
+  - commitment terms
+  procedure:
+  - define cost boundary
+  - construct causal cost-driver tree
+  - classify fixed, committed, avoidable and incremental costs
+  - calculate unit economics
+  - test volume and constraint sensitivities
+  outputs:
+  - driver tree
+  - relevant-cost bridge
+  - unit economics
+  - sensitivity ranges
+  strengths:
+  - connects operational drivers to decision economics
+  limitations:
+  - allocated accounting cost may not equal avoidable cash cost
+  when_not_to_use:
+  - causal attribution requires an experiment or longitudinal design
+  alternatives:
+  - activity-based costing
+  - cost-volume-profit analysis
+  compatible_overlays:
+  - cost_and_productivity
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - spreadsheet or Python model
+  specialist_review_requirements:
+  - finance controller review
+  failure_modes:
+  - sunk cost treated as avoidable
+  - allocation changes mistaken for savings
+  quality_tests:
+  - reconciles to controlled accounts
+  - units and periods are explicit
+  falsification_tests:
+  - remove the assumed volume response and test decision switching
+  source_ids:
+  - SOURCE-DOMAIN-COST
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-COST-CP-01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-CX-M01
+  name: CX Measurement Architecture
+  aliases: []
+  domains:
+  - customer_experience
+  method_family: experience_measurement
+  decisions_supported:
+  - Which experience measures should govern diagnosis and whether observed movement
+    reflects real customer outcomes.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - measurement ambiguity
+  - conflicting customer metrics
+  - local service failure
+  preconditions:
+  - decision and target population are defined
+  - survey and operational measures can be linked
+  minimum_evidence: E2
+  inputs:
+  - customer feedback
+  - complaints
+  - journey events
+  - operational service levels
+  - outcome metrics
+  procedure:
+  - define decision-linked constructs
+  - separate perception, behaviour and operations
+  - map measures to journey stages
+  - test reliability and bias
+  - define reporting and escalation rules
+  outputs:
+  - measurement architecture
+  - metric dictionary
+  - evidence-gap register
+  strengths:
+  - prevents one score from standing in for the full experience
+  limitations:
+  - measurement does not itself identify causal drivers
+  when_not_to_use:
+  - the problem is a known accessibility defect requiring direct remediation
+  alternatives:
+  - critical-incident analysis
+  - driver modelling
+  compatible_overlays:
+  - customer_experience
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - survey analysis
+  - data linkage
+  specialist_review_requirements:
+  - privacy and accessibility review where relevant
+  failure_modes:
+  - vanity metrics dominate
+  - sample bias is hidden
+  quality_tests:
+  - measures link to decision and population
+  - denominators and timing are explicit
+  falsification_tests:
+  - a different sample frame reverses the conclusion
+  source_ids:
+  - SOURCE-DOMAIN-CX
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-CX-M01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-DAI-DAI-01
+  name: Decision framing and benefits logic
+  aliases: []
+  domains:
+  - digital_and_ai_transformation
+  method_family: digital_decision_architecture
+  decisions_supported:
+  - What executives must decide, what outcomes matter and what evidence justifies
+    proceeding.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - ambiguous transformation mandate
+  - solution-first initiative
+  - inflated benefits case
+  - unclear counterfactual
+  preconditions:
+  - decision owner and gate exist
+  - strategic and operational stakeholders are accessible
+  - no-change and minimum-change options are admissible
+  minimum_evidence: E2
+  inputs:
+  - enterprise objectives
+  - stakeholder outcomes
+  - performance measures
+  - technology constraints
+  - risk obligations
+  procedure:
+  - define decision and counterfactual
+  - separate outcome from technology
+  - map benefit mechanisms
+  - identify authority boundaries
+  - set evidence and stop conditions
+  outputs:
+  - decision record
+  - benefits logic
+  - option and evidence map
+  - human authority gates
+  strengths:
+  - keeps AI as an option rather than the predetermined answer
+  limitations:
+  - does not establish technical readiness or model safety
+  when_not_to_use:
+  - the decision is a narrow deterministic automation with no material uncertainty
+  alternatives:
+  - AI use-case portfolio prioritisation
+  - readiness assessment
+  compatible_overlays:
+  - digital_and_ai_transformation
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - decision register
+  - benefit map
+  specialist_review_requirements:
+  - AI risk, privacy or legal review for high-impact use
+  failure_modes:
+  - technology label substitutes for outcome
+  - capacity is called cash saving
+  quality_tests:
+  - non-AI comparator retained
+  - benefits have recognition rules
+  falsification_tests:
+  - a lower-tech option achieves the same outcome at lower risk
+  source_ids:
+  - SOURCE-DOMAIN-DIGITAL-AI
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-DAI-DAI-01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-GROWTH-GCS-01
+  name: Revenue and growth decomposition
+  aliases: []
+  domains:
+  - growth_and_commercial_strategy
+  method_family: commercial_diagnostics
+  decisions_supported:
+  - Which measurable components explain revenue or contribution change and where management
+    should investigate or intervene.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - revenue below plan
+  - share erosion
+  - price-volume-mix question
+  - retention decline
+  preconditions:
+  - metric definitions consistent
+  - defensible comparison period
+  - stable product and customer mappings
+  minimum_evidence: E2
+  inputs:
+  - units or contracts
+  - prices and discounts
+  - customers and cohorts
+  - mix and currency
+  - margin data
+  procedure:
+  - reconcile reported revenue
+  - separate price, volume, mix, acquisition, retention and expansion
+  - segment differences
+  - link drivers to hypotheses
+  - test alternative explanations
+  outputs:
+  - growth bridge
+  - segment driver table
+  - priority hypotheses
+  strengths:
+  - turns topline variance into testable drivers
+  limitations:
+  - decomposition is descriptive and does not prove causes
+  when_not_to_use:
+  - the market boundary or accounting basis is changing too materially to compare
+  alternatives:
+  - market sizing
+  - cohort survival analysis
+  compatible_overlays:
+  - growth_and_commercial_strategy
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - SQL or Python
+  - spreadsheet reconciliation
+  specialist_review_requirements:
+  - finance and commercial owner review
+  failure_modes:
+  - double counting price and mix
+  - currency or acquisition effects ignored
+  quality_tests:
+  - bridge reconciles to accounts
+  - each driver has a defined denominator
+  falsification_tests:
+  - reclassifying a segment removes the apparent driver
+  source_ids:
+  - SOURCE-DOMAIN-GROWTH
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-GROWTH-GCS-01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-IPO-M01
+  name: IPO Pathway and Public-Company Readiness Diagnostic
+  aliases: []
+  domains:
+  - ipo_valuation_and_capital_strategy
+  method_family: capital_pathway
+  decisions_supported:
+  - Whether to pursue a public transaction now, remediate and defer, select another
+    pathway or remain private.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - IPO readiness
+  - venue selection
+  - cross-border offer
+  - spin-off readiness
+  preconditions:
+  - transaction objective defined
+  - candidate route exists
+  - finance, legal, tax, governance and control access
+  - target date and capital need stated
+  minimum_evidence: E2
+  inputs:
+  - strategy and capital need
+  - financial history
+  - governance and controls
+  - legal and tax structure
+  - operating readiness
+  - market conditions
+  procedure:
+  - define pathway options and no-deal fallback
+  - assess eligibility and readiness dimensions
+  - identify critical gaps and lead times
+  - test valuation and funding implications
+  - sequence remediation and gates
+  outputs:
+  - pathway recommendation
+  - readiness heatmap
+  - critical path
+  - fallback capital plan
+  strengths:
+  - integrates operating readiness with capital decision
+  limitations:
+  - cannot replace legal, audit, tax or securities advice
+  when_not_to_use:
+  - qualified advisers have not reviewed regulated conclusions
+  alternatives:
+  - private capital pathway analysis
+  - capital structure analysis
+  compatible_overlays:
+  - ipo_valuation_and_capital_strategy
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - financial model
+  - readiness register
+  specialist_review_requirements:
+  - qualified legal, audit, tax and securities reviewers
+  failure_modes:
+  - readiness score hides blocking defect
+  - market window treated as certain
+  quality_tests:
+  - blocking gaps are explicit
+  - fallback remains viable
+  falsification_tests:
+  - a critical control remediation misses the target window
+  source_ids:
+  - SOURCE-DOMAIN-IPO
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-IPO-M01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-CHANGE-IC-01
+  name: Causal Pathway and Theory of Change
+  aliases: []
+  domains:
+  - implementation_and_change
+  method_family: implementation_causality
+  decisions_supported:
+  - Whether a proposed change has a credible pathway to authorise, fund, redesign,
+    evaluate or stop.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - unclear causal logic
+  - multiple interacting interventions
+  - long outcome lags
+  - evaluation design
+  preconditions:
+  - intervention bounded
+  - target population and outcomes identifiable
+  - delivery and user expertise accessible
+  - assumptions may be exposed
+  minimum_evidence: E2
+  inputs:
+  - objectives
+  - current-state evidence
+  - activities
+  - implementation strategies
+  - outputs and outcomes
+  - disbenefits
+  procedure:
+  - map activities to outputs and intermediate outcomes
+  - state assumptions and contextual conditions
+  - identify disbenefits and failure paths
+  - define indicators and evaluation questions
+  - set adapt and stop gates
+  outputs:
+  - theory-of-change record
+  - assumption register
+  - evaluation plan
+  - stop conditions
+  strengths:
+  - makes implementation assumptions testable
+  limitations:
+  - a diagram alone does not establish causality
+  when_not_to_use:
+  - a simple compliance action has a direct legally prescribed path
+  alternatives:
+  - CFIR determinant diagnosis
+  - PDSA test-and-learn
+  compatible_overlays:
+  - implementation_and_change
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - facilitation
+  - logic model
+  specialist_review_requirements:
+  - subject-matter and evaluation review
+  failure_modes:
+  - activities are confused with outcomes
+  - context conditions omitted
+  quality_tests:
+  - each link has evidence or an assumption
+  - disbenefits and rival paths are present
+  falsification_tests:
+  - an intermediate outcome fails despite implementation fidelity
+  source_ids:
+  - SOURCE-DOMAIN-CHANGE
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-CHANGE-IC-01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-MA-MA-01
+  name: Decision Architecture and Counterfactual Hypothesis Map
+  aliases: []
+  domains:
+  - ma_carve_out_and_integration
+  method_family: transaction_decision_architecture
+  decisions_supported:
+  - Whether to pursue, restructure, defer or reject a transaction and what evidence
+    would change the choice.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - slogan-like deal rationale
+  - competing alternatives
+  - conflated value mechanisms
+  - checklist diligence
+  preconditions:
+  - decision owner and date identified
+  - credible non-transaction alternative exists
+  - stop criteria can be documented
+  minimum_evidence: E2
+  inputs:
+  - corporate strategy
+  - capital-allocation criteria
+  - deal thesis
+  - standalone plans
+  - initial valuation and risks
+  procedure:
+  - state transaction and counterfactual options
+  - separate value mechanisms
+  - build disconfirmable hypotheses
+  - map diligence evidence to decision conditions
+  - define stop and repricing triggers
+  outputs:
+  - decision architecture
+  - hypothesis map
+  - diligence priorities
+  - stop criteria
+  strengths:
+  - converts diligence into a decision process
+  limitations:
+  - does not calculate standalone value or synergies
+  when_not_to_use:
+  - transaction is already legally irrevocable
+  alternatives:
+  - standalone valuation triangulation
+  - synergy model
+  compatible_overlays:
+  - ma_carve_out_and_integration
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - hypothesis register
+  - valuation model interface
+  specialist_review_requirements:
+  - legal, competition and finance reviewers
+  failure_modes:
+  - no-deal option omitted
+  - synergies assumed before evidence
+  quality_tests:
+  - each diligence request links to a decision condition
+  - disconfirming evidence is visible
+  falsification_tests:
+  - standalone performance exceeds the acquisition value case
+  source_ids:
+  - SOURCE-DOMAIN-MA
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-MA-MA-01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-OM-OMT-01
+  name: Strategic Capability and Operating-Model Requirements Analysis
+  aliases: []
+  domains:
+  - operating_model_transformation
+  method_family: capability_requirements
+  decisions_supported:
+  - Which capabilities must change, by how much and with what priority to execute
+    strategy.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - new strategy or channel
+  - enterprise transformation
+  - capability fragmentation
+  - investment portfolio disconnected from outcomes
+  preconditions:
+  - strategic choices explicit
+  - enterprise boundary defined
+  - capabilities separated from current departments and systems
+  - planning horizon known
+  minimum_evidence: E2
+  inputs:
+  - strategic outcomes
+  - value streams
+  - capability baseline
+  - regulatory obligations
+  - investment portfolio
+  procedure:
+  - translate strategy into outcome requirements
+  - identify capabilities and performance levels
+  - assess current gaps and dependencies
+  - classify differentiating and commodity capabilities
+  - prioritise investment and sequencing
+  outputs:
+  - capability map
+  - requirements matrix
+  - gap and investment priorities
+  strengths:
+  - avoids designing the organisation before defining needed capability
+  limitations:
+  - does not by itself define structure, process or technology detail
+  when_not_to_use:
+  - strategy is too ambiguous to establish required outcomes
+  alternatives:
+  - value-stream analysis
+  - decision-rights design
+  compatible_overlays:
+  - operating_model_transformation
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - capability modelling
+  - portfolio analysis
+  specialist_review_requirements:
+  - risk or regulatory review where obligations drive design
+  failure_modes:
+  - current departments are relabelled as capabilities
+  - all gaps are treated as equal
+  quality_tests:
+  - requirements trace to strategy
+  - priority reflects value and dependency
+  falsification_tests:
+  - a strategic option change removes the claimed capability need
+  source_ids:
+  - SOURCE-DOMAIN-OPERATING-MODEL
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-OM-OMT-01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-WORKFORCE-M01
+  name: Strategic workforce scenario and gap analysis
+  aliases: []
+  domains:
+  - organisation_and_workforce
+  method_family: workforce_scenarios
+  decisions_supported:
+  - What capabilities, capacity, locations and employment arrangements are needed
+    under plausible futures and what actions start now.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - strategy-workforce mismatch
+  - capacity uncertainty
+  - technology transformation
+  - location strategy
+  - future skills
+  preconditions:
+  - strategy or service mandate explicit
+  - planning horizon set
+  - material workforce segments agreed
+  - multiple futures accepted
+  - baseline data usable
+  minimum_evidence: E2
+  inputs:
+  - demand drivers
+  - current workforce and costs
+  - flows and attrition
+  - technology roadmap
+  - labour market and regulation
+  - lead times
+  procedure:
+  - define scenarios and workforce segments
+  - translate demand to capability and capacity
+  - model supply flows and lead times
+  - identify gaps and no-regret actions
+  - test sensitivity and transition risk
+  outputs:
+  - scenario workforce demand
+  - gap analysis
+  - action portfolio
+  - risk and lead-time map
+  strengths:
+  - connects strategy to timed workforce decisions
+  limitations:
+  - quality depends on demand and skills data
+  when_not_to_use:
+  - a short-term rostering problem with fixed roles and demand
+  alternatives:
+  - capacity and staffing analysis
+  - skills adjacency analysis
+  compatible_overlays:
+  - organisation_and_workforce
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - workforce model
+  - scenario engine
+  specialist_review_requirements:
+  - HR, finance and employment-law review
+  failure_modes:
+  - headcount substitutes for capability
+  - attrition or lead time ignored
+  quality_tests:
+  - flows reconcile
+  - scenarios have distinct drivers
+  - actions trace to gaps
+  falsification_tests:
+  - productivity or demand assumptions move outside the tested range
+  source_ids:
+  - SOURCE-DOMAIN-WORKFORCE
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-WORKFORCE-M01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.
+- method_id: METHOD-RISK-RM-01
+  name: Decision-linked enterprise risk assessment
+  aliases: []
+  domains:
+  - risk_and_controls
+  method_family: decision_risk
+  decisions_supported:
+  - How risk changes the selection among strategies, investments, operating models,
+    transactions or major changes.
+  inference_types:
+  - descriptive
+  - normative
+  appropriate_problem_types:
+  - portfolio prioritisation
+  - strategy risk
+  - acquisition or entry
+  - transformation
+  - emerging risk
+  preconditions:
+  - objectives clear
+  - decision owner named
+  - horizon and criteria defined
+  - risk statements comparable
+  minimum_evidence: E2
+  inputs:
+  - objectives and alternatives
+  - risk appetite
+  - plans
+  - incident history
+  - external environment
+  - stakeholder obligations
+  - scenarios
+  procedure:
+  - link uncertainties to objectives
+  - write causal risk statements
+  - estimate inherent exposure
+  - identify responses and controls
+  - assess residual exposure
+  - aggregate dependencies and concentration
+  - compare options
+  - set actions and triggers
+  outputs:
+  - decision-risk profile
+  - option comparison
+  - treatment roadmap
+  - residual-risk acceptance record
+  strengths:
+  - connects risk to choices and resource allocation
+  limitations:
+  - does not prove control operation or detailed engineering failure paths
+  when_not_to_use:
+  - the decision needs a specific legal conclusion without qualified review
+  alternatives:
+  - control effectiveness assessment
+  - bow-tie analysis
+  compatible_overlays:
+  - risk_and_controls
+  conflicts: []
+  redundancies: []
+  tool_requirements:
+  - risk register
+  - scenario model
+  specialist_review_requirements:
+  - risk owner and qualified specialist where required
+  failure_modes:
+  - generic risk labels
+  - controls assumed effective
+  - correlated risks summed independently
+  quality_tests:
+  - risk statements contain cause-event-impact
+  - residual risk has evidence and owner
+  falsification_tests:
+  - a control failure or dependency changes the preferred option
+  source_ids:
+  - SOURCE-DOMAIN-RISK
+  usage_rights_status: internal_use_and_original_paraphrase_only_pending_confirmation
+  version: 1.0.0
+  promotion_state: review
+  source_local_method_id: METHOD-RISK-RM-01
+  reconstruction_note: Source-grounded original reconstruction; no protected template,
+    distinctive diagram or extended source wording is reproduced.

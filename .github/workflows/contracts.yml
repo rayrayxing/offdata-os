@@ -1,4 +1,4 @@
-name: Machine contracts, agents, oracle, semantic deliverables and fixtures
+name: Machine contracts, agents, oracle, semantic deliverables, fixtures and knowledge
 
 on:
   push:
@@ -11,9 +11,9 @@ permissions:
 
 jobs:
   validate-contracts:
-    name: Validate contracts, agents, oracle, semantic deliverables and fixtures
+    name: Validate contracts, agents, oracle, semantic deliverables, fixtures and knowledge
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 40
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -43,10 +43,14 @@ jobs:
         run: python scripts/validate_phase4_deliverable_semantic_model.py
       - name: Build Phase 5 additional fixture programme
         run: python scripts/build_phase5_fixture_programme.py
-      - name: Enforce clean generated Phase 1–5 records
-        run: git diff --exit-code -- requirements/test-registry.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json
       - name: Validate Phase 5 additional fixture programme
         run: python scripts/validate_phase5_fixture_programme.py
+      - name: Build Phase 6 knowledge-ingestion intelligence
+        run: python scripts/build_phase6_knowledge_intelligence.py
+      - name: Enforce clean generated Phase 1–6 records
+        run: git diff --exit-code -- requirements/test-registry.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json
+      - name: Validate Phase 6 knowledge-ingestion intelligence
+        run: python scripts/validate_phase6_knowledge_intelligence.py
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
         run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
@@ -76,4 +80,6 @@ jobs:
             fixtures/additional-primary-fixtures.json
             fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
             fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json
+            knowledge/*.yaml
+            knowledge/*.json
             database/migrations/*.sql

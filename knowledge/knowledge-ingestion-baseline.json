@@ -1,0 +1,2658 @@
+{
+  "agent_visible": true,
+  "alias_count": 99,
+  "baseline_digest": "d477a3e1792c89fa9985c5e2da0e47e9e5e836146e8653201e6015af45fb248f",
+  "collision_family_count": 12,
+  "dependency_case_count": 21,
+  "method_digest": "36c8ee6b85f0d96dc0bbb337bd2486991092d0e0e4d1b12872d7949354fe668b",
+  "method_index": [
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M01",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-001",
+      "name": "Benefits dependency mapping",
+      "paragraph_ordinal": 297,
+      "source_heading": "M01 — Benefits dependency mapping",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M02",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-002",
+      "name": "Theory of Change and logic modelling",
+      "paragraph_ordinal": 393,
+      "source_heading": "M02 — Theory of Change and logic modelling",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M03",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-003",
+      "name": "Benefit profiles, register and realisation plan",
+      "paragraph_ordinal": 492,
+      "source_heading": "M03 — Benefit profiles, register and realisation plan",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M04",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-004",
+      "name": "Economic appraisal and cost-benefit analysis",
+      "paragraph_ordinal": 593,
+      "source_heading": "M04 — Economic appraisal and cost-benefit analysis",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M05",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-005",
+      "name": "KPI architecture and driver decomposition",
+      "paragraph_ordinal": 701,
+      "source_heading": "M05 — KPI architecture and driver decomposition",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M06",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-006",
+      "name": "Lean value-stream mapping",
+      "paragraph_ordinal": 804,
+      "source_heading": "M06 — Lean value-stream mapping",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M07",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-007",
+      "name": "Process mining and conformance analysis",
+      "paragraph_ordinal": 907,
+      "source_heading": "M07 — Process mining and conformance analysis",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M08",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-008",
+      "name": "Statistical process control and process capability",
+      "paragraph_ordinal": 1010,
+      "source_heading": "M08 — Statistical process control and process capability",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M09",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-009",
+      "name": "DMAIC and designed improvement experiments",
+      "paragraph_ordinal": 1105,
+      "source_heading": "M09 — DMAIC and designed improvement experiments",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M10",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-010",
+      "name": "Queueing, flow and capacity analysis",
+      "paragraph_ordinal": 1208,
+      "source_heading": "M10 — Queueing, flow and capacity analysis",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M11",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-011",
+      "name": "Peer benchmarking and data envelopment analysis",
+      "paragraph_ordinal": 1313,
+      "source_heading": "M11 — Peer benchmarking and data envelopment analysis",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M12",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-012",
+      "name": "Multi-criteria decision analysis",
+      "paragraph_ordinal": 1414,
+      "source_heading": "M12 — Multi-criteria decision analysis",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M13",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-013",
+      "name": "Causal impact evaluation",
+      "paragraph_ordinal": 1514,
+      "source_heading": "M13 — Causal impact evaluation",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "benefits_realisation_and_performance_improvement",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M14",
+      "method_index_id": "SOURCE-DOMAIN-BENEFITS-METHOD-014",
+      "name": "Adoption, implementation fidelity and sustainability analysis",
+      "paragraph_ordinal": 1630,
+      "source_heading": "M14 — Adoption, implementation fidelity and sustainability analysis",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-01",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-001",
+      "name": "Decision Framing and Option Architecture",
+      "paragraph_ordinal": 188,
+      "source_heading": "STR-01 — Decision Framing and Option Architecture",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-02",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-002",
+      "name": "Market Definition, Sizing and Growth-Pool Analysis",
+      "paragraph_ordinal": 242,
+      "source_heading": "STR-02 — Market Definition, Sizing and Growth-Pool Analysis",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-03",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-003",
+      "name": "Industry Structure and Value-Chain Economics",
+      "paragraph_ordinal": 300,
+      "source_heading": "STR-03 — Industry Structure and Value-Chain Economics",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-04",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-004",
+      "name": "Strategic-Group and Competitive-Position Analysis",
+      "paragraph_ordinal": 359,
+      "source_heading": "STR-04 — Strategic-Group and Competitive-Position Analysis",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-05",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-005",
+      "name": "Customer Segmentation, Willingness-to-Pay and Choice Modeling",
+      "paragraph_ordinal": 416,
+      "source_heading": "STR-05 — Customer Segmentation, Willingness-to-Pay and Choice Modeling",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-06",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-006",
+      "name": "Resource and Capability Advantage Assessment",
+      "paragraph_ordinal": 472,
+      "source_heading": "STR-06 — Resource and Capability Advantage Assessment",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-07",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-007",
+      "name": "Business-Unit Economics and Value-Driver Decomposition",
+      "paragraph_ordinal": 529,
+      "source_heading": "STR-07 — Business-Unit Economics and Value-Driver Decomposition",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-08",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-008",
+      "name": "Growth-Vector and Adjacency Assessment",
+      "paragraph_ordinal": 590,
+      "source_heading": "STR-08 — Growth-Vector and Adjacency Assessment",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-09",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-009",
+      "name": "Corporate Portfolio and Parenting-Advantage Analysis",
+      "paragraph_ordinal": 648,
+      "source_heading": "STR-09 — Corporate Portfolio and Parenting-Advantage Analysis",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-10",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-010",
+      "name": "Make–Buy–Partner and Vertical-Scope Analysis",
+      "paragraph_ordinal": 708,
+      "source_heading": "STR-10 — Make–Buy–Partner and Vertical-Scope Analysis",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-11",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-011",
+      "name": "M&A, Divestiture and Synergy Valuation",
+      "paragraph_ordinal": 769,
+      "source_heading": "STR-11 — M&A, Divestiture and Synergy Valuation",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-12",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-012",
+      "name": "Strategic Interaction and Competitor-Response Analysis",
+      "paragraph_ordinal": 834,
+      "source_heading": "STR-12 — Strategic Interaction and Competitor-Response Analysis",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-13",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-013",
+      "name": "Scenario Stress Testing, Robust Strategy and Real Options",
+      "paragraph_ordinal": 892,
+      "source_heading": "STR-13 — Scenario Stress Testing, Robust Strategy and Real Options",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "corporate_and_business_unit_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "STR-14",
+      "method_index_id": "SOURCE-DOMAIN-STRATEGY-METHOD-014",
+      "name": "Multi-Criteria Strategy Choice and Commitment",
+      "paragraph_ordinal": 953,
+      "source_heading": "STR-14 — Multi-Criteria Strategy Choice and Commitment",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-01",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-001",
+      "name": "Cost-driver tree and relevant-cost analysis",
+      "paragraph_ordinal": 282,
+      "source_heading": "C&P-01 — Cost-driver tree and relevant-cost analysis",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-02",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-002",
+      "name": "Activity-based costing and time-driven activity-based costing",
+      "paragraph_ordinal": 364,
+      "source_heading": "C&P-02 — Activity-based costing and time-driven activity-based costing",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-03",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-003",
+      "name": "Standard costing, flexible budgets and variance decomposition",
+      "paragraph_ordinal": 451,
+      "source_heading": "C&P-03 — Standard costing, flexible budgets and variance decomposition",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-04",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-004",
+      "name": "Cost–volume–profit, relevant margin and constrained-resource analysis",
+      "paragraph_ordinal": 537,
+      "source_heading": "C&P-04 — Cost–volume–profit, relevant margin and constrained-resource analysis",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-05",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-005",
+      "name": "Life-cycle costing and total cost of ownership",
+      "paragraph_ordinal": 623,
+      "source_heading": "C&P-05 — Life-cycle costing and total cost of ownership",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-06",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-006",
+      "name": "Value-stream mapping and end-to-end process economics",
+      "paragraph_ordinal": 713,
+      "source_heading": "C&P-06 — Value-stream mapping and end-to-end process economics",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-07",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-007",
+      "name": "Work measurement and practical-capacity analysis",
+      "paragraph_ordinal": 801,
+      "source_heading": "C&P-07 — Work measurement and practical-capacity analysis",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-08",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-008",
+      "name": "Overall equipment effectiveness and equipment-loss tree",
+      "paragraph_ordinal": 889,
+      "source_heading": "C&P-08 — Overall equipment effectiveness and equipment-loss tree",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-09",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-009",
+      "name": "Queueing, flow and service-capacity analysis",
+      "paragraph_ordinal": 977,
+      "source_heading": "C&P-09 — Queueing, flow and service-capacity analysis",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-10",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-010",
+      "name": "Learning-curve and experience-curve analysis",
+      "paragraph_ordinal": 1066,
+      "source_heading": "C&P-10 — Learning-curve and experience-curve analysis",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-11",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-011",
+      "name": "Parametric and econometric cost modeling",
+      "paragraph_ordinal": 1151,
+      "source_heading": "C&P-11 — Parametric and econometric cost modeling",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-12",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-012",
+      "name": "Normalized unit-cost and performance benchmarking",
+      "paragraph_ordinal": 1243,
+      "source_heading": "C&P-12 — Normalized unit-cost and performance benchmarking",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-13",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-013",
+      "name": "Data envelopment analysis",
+      "paragraph_ordinal": 1331,
+      "source_heading": "C&P-13 — Data envelopment analysis",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-14",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-014",
+      "name": "Stochastic frontier analysis",
+      "paragraph_ordinal": 1418,
+      "source_heading": "C&P-14 — Stochastic frontier analysis",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-15",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-015",
+      "name": "Labor productivity, multifactor productivity and growth accounting",
+      "paragraph_ordinal": 1505,
+      "source_heading": "C&P-15 — Labor productivity, multifactor productivity and growth accounting",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "cost_and_productivity",
+      "extraction_confidence": 1.0,
+      "local_method_id": "C&P-16",
+      "method_index_id": "SOURCE-DOMAIN-COST-METHOD-016",
+      "name": "Cost-effectiveness and cost-benefit analysis",
+      "paragraph_ordinal": 1593,
+      "source_heading": "C&P-16 — Cost-effectiveness and cost-benefit analysis",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M01",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-001",
+      "name": "CX Measurement Architecture",
+      "paragraph_ordinal": 272,
+      "source_heading": "M01 — CX Measurement Architecture",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M02",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-002",
+      "name": "Critical-Incident and Complaint Analysis",
+      "paragraph_ordinal": 358,
+      "source_heading": "M02 — Critical-Incident and Complaint Analysis",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M03",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-003",
+      "name": "Customer-Journey Analysis",
+      "paragraph_ordinal": 447,
+      "source_heading": "M03 — Customer-Journey Analysis",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M04",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-004",
+      "name": "Service Blueprinting",
+      "paragraph_ordinal": 533,
+      "source_heading": "M04 — Service Blueprinting",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M05",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-005",
+      "name": "SERVQUAL or Performance-Based Service-Quality Diagnosis",
+      "paragraph_ordinal": 619,
+      "source_heading": "M05 — SERVQUAL or Performance-Based Service-Quality Diagnosis",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M06",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-006",
+      "name": "Kano Attribute Classification",
+      "paragraph_ordinal": 699,
+      "source_heading": "M06 — Kano Attribute Classification",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M07",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-007",
+      "name": "Best-Worst Scaling / MaxDiff",
+      "paragraph_ordinal": 779,
+      "source_heading": "M07 — Best-Worst Scaling / MaxDiff",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M08",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-008",
+      "name": "Discrete-Choice Experiment / Choice-Based Conjoint",
+      "paragraph_ordinal": 857,
+      "source_heading": "M08 — Discrete-Choice Experiment / Choice-Based Conjoint",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M09",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-009",
+      "name": "Driver Modeling",
+      "paragraph_ordinal": 949,
+      "source_heading": "M09 — Driver Modeling",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M10",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-010",
+      "name": "Quality Function Deployment",
+      "paragraph_ordinal": 1040,
+      "source_heading": "M10 — Quality Function Deployment",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M11",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-011",
+      "name": "Process Mining and Queue Analysis",
+      "paragraph_ordinal": 1123,
+      "source_heading": "M11 — Process Mining and Queue Analysis",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M12",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-012",
+      "name": "Usability and Accessibility Evaluation",
+      "paragraph_ordinal": 1214,
+      "source_heading": "M12 — Usability and Accessibility Evaluation",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M13",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-013",
+      "name": "Retention, Survival, and Customer-Lifetime-Value Analysis",
+      "paragraph_ordinal": 1305,
+      "source_heading": "M13 — Retention, Survival, and Customer-Lifetime-Value Analysis",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "customer_experience",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M14",
+      "method_index_id": "SOURCE-DOMAIN-CX-METHOD-014",
+      "name": "Controlled Experimentation",
+      "paragraph_ordinal": 1400,
+      "source_heading": "M14 — Controlled Experimentation",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-01",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-001",
+      "name": "Decision framing and benefits logic",
+      "paragraph_ordinal": 421,
+      "source_heading": "DAI-01 — Decision framing and benefits logic",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-02",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-002",
+      "name": "Strategic capability and operating-model diagnosis",
+      "paragraph_ordinal": 521,
+      "source_heading": "DAI-02 — Strategic capability and operating-model diagnosis",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-03",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-003",
+      "name": "Customer journey and service-blueprint analysis",
+      "paragraph_ordinal": 639,
+      "source_heading": "DAI-03 — Customer journey and service-blueprint analysis",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-04",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-004",
+      "name": "Process mining and value-stream analysis",
+      "paragraph_ordinal": 756,
+      "source_heading": "DAI-04 — Process mining and value-stream analysis",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-05",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-005",
+      "name": "AI use-case portfolio prioritization",
+      "paragraph_ordinal": 885,
+      "source_heading": "DAI-05 — AI use-case portfolio prioritization",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-06",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-006",
+      "name": "Data, model, and technology readiness assessment",
+      "paragraph_ordinal": 1023,
+      "source_heading": "DAI-06 — Data, model, and technology readiness assessment",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-07",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-007",
+      "name": "AI impact, risk, and control assessment",
+      "paragraph_ordinal": 1160,
+      "source_heading": "DAI-07 — AI impact, risk, and control assessment",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-08",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-008",
+      "name": "Target architecture and technology-option analysis",
+      "paragraph_ordinal": 1320,
+      "source_heading": "DAI-08 — Target architecture and technology-option analysis",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-09",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-009",
+      "name": "Build, buy, partner, and sourcing analysis",
+      "paragraph_ordinal": 1456,
+      "source_heading": "DAI-09 — Build, buy, partner, and sourcing analysis",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-10",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-010",
+      "name": "Economic appraisal and uncertainty valuation",
+      "paragraph_ordinal": 1591,
+      "source_heading": "DAI-10 — Economic appraisal and uncertainty valuation",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-11",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-011",
+      "name": "Pilot, experiment, and causal impact evaluation",
+      "paragraph_ordinal": 1732,
+      "source_heading": "DAI-11 — Pilot, experiment, and causal impact evaluation",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-12",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-012",
+      "name": "Workforce, task, and implementation-readiness analysis",
+      "paragraph_ordinal": 1883,
+      "source_heading": "DAI-12 — Workforce, task, and implementation-readiness analysis",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "digital_and_ai_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "DAI-13",
+      "method_index_id": "SOURCE-DOMAIN-DIGITAL-AI-METHOD-013",
+      "name": "Transformation roadmap, dependency, and schedule-risk analysis",
+      "paragraph_ordinal": 2041,
+      "source_heading": "DAI-13 — Transformation roadmap, dependency, and schedule-risk analysis",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-01",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-001",
+      "name": "Revenue and growth decomposition",
+      "paragraph_ordinal": 129,
+      "source_heading": "GCS-01 — Revenue and growth decomposition",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-02",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-002",
+      "name": "Market sizing and addressable opportunity",
+      "paragraph_ordinal": 220,
+      "source_heading": "GCS-02 — Market sizing and addressable opportunity",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-03",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-003",
+      "name": "Demand forecasting and scenario analysis",
+      "paragraph_ordinal": 326,
+      "source_heading": "GCS-03 — Demand forecasting and scenario analysis",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-04",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-004",
+      "name": "Customer-needs and buying-process research",
+      "paragraph_ordinal": 430,
+      "source_heading": "GCS-04 — Customer-needs and buying-process research",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-05",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-005",
+      "name": "Segmentation, targeting and customer prioritisation",
+      "paragraph_ordinal": 533,
+      "source_heading": "GCS-05 — Segmentation, targeting and customer prioritisation",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-06",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-006",
+      "name": "Market attractiveness, competitive structure and entry analysis",
+      "paragraph_ordinal": 641,
+      "source_heading": "GCS-06 — Market attractiveness, competitive structure and entry analysis",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-07",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-007",
+      "name": "Discrete-choice modelling and offer design",
+      "paragraph_ordinal": 750,
+      "source_heading": "GCS-07 — Discrete-choice modelling and offer design",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-08",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-008",
+      "name": "Price elasticity and pricing architecture",
+      "paragraph_ordinal": 854,
+      "source_heading": "GCS-08 — Price elasticity and pricing architecture",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-09",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-009",
+      "name": "Route-to-market and channel economics",
+      "paragraph_ordinal": 959,
+      "source_heading": "GCS-09 — Route-to-market and channel economics",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-10",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-010",
+      "name": "Commercial funnel, territory and sales-capacity design",
+      "paragraph_ordinal": 1064,
+      "source_heading": "GCS-10 — Commercial funnel, territory and sales-capacity design",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-11",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-011",
+      "name": "Unit economics, customer lifetime value and customer equity",
+      "paragraph_ordinal": 1175,
+      "source_heading": "GCS-11 — Unit economics, customer lifetime value and customer equity",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-12",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-012",
+      "name": "Retention, churn and cohort-survival analysis",
+      "paragraph_ordinal": 1278,
+      "source_heading": "GCS-12 — Retention, churn and cohort-survival analysis",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-13",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-013",
+      "name": "Commercial experimentation and causal inference",
+      "paragraph_ordinal": 1382,
+      "source_heading": "GCS-13 — Commercial experimentation and causal inference",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "growth_and_commercial_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "GCS-14",
+      "method_index_id": "SOURCE-DOMAIN-GROWTH-METHOD-014",
+      "name": "Growth-initiative portfolio and staged-investment analysis",
+      "paragraph_ordinal": 1490,
+      "source_heading": "GCS-14 — Growth-initiative portfolio and staged-investment analysis",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M01",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-001",
+      "name": "IPO Pathway and Public-Company Readiness Diagnostic",
+      "paragraph_ordinal": 271,
+      "source_heading": "M01 — IPO Pathway and Public-Company Readiness Diagnostic",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M02",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-002",
+      "name": "Equity Story, KPI and Disclosure Architecture",
+      "paragraph_ordinal": 375,
+      "source_heading": "M02 — Equity Story, KPI and Disclosure Architecture",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M03",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-003",
+      "name": "Intrinsic Valuation: DCF, DDM and Residual Income",
+      "paragraph_ordinal": 477,
+      "source_heading": "M03 — Intrinsic Valuation: DCF, DDM and Residual Income",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M04",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-004",
+      "name": "Trading Comparables and IPO Peer Benchmarking",
+      "paragraph_ordinal": 597,
+      "source_heading": "M04 — Trading Comparables and IPO Peer Benchmarking",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M05",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-005",
+      "name": "Transaction Evidence and Prior-Financing Analysis",
+      "paragraph_ordinal": 705,
+      "source_heading": "M05 — Transaction Evidence and Prior-Financing Analysis",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M06",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-006",
+      "name": "Sum-of-the-Parts and Adjusted Net Asset Value",
+      "paragraph_ordinal": 802,
+      "source_heading": "M06 — Sum-of-the-Parts and Adjusted Net Asset Value",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M07",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-007",
+      "name": "Scenario, Simulation, Decision-Tree and Real-Options Analysis",
+      "paragraph_ordinal": 903,
+      "source_heading": "M07 — Scenario, Simulation, Decision-Tree and Real-Options Analysis",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M08",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-008",
+      "name": "Capital Structure, Debt Capacity and Financial Resilience",
+      "paragraph_ordinal": 1014,
+      "source_heading": "M08 — Capital Structure, Debt Capacity and Financial Resilience",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M09",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-009",
+      "name": "Capital Source, Instrument and Transaction-Pathway Selection",
+      "paragraph_ordinal": 1131,
+      "source_heading": "M09 — Capital Source, Instrument and Transaction-Pathway Selection",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M10",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-010",
+      "name": "Offer Structure, Dilution and Use-of-Proceeds Analysis",
+      "paragraph_ordinal": 1247,
+      "source_heading": "M10 — Offer Structure, Dilution and Use-of-Proceeds Analysis",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ipo_valuation_and_capital_strategy",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M11",
+      "method_index_id": "SOURCE-DOMAIN-IPO-METHOD-011",
+      "name": "IPO Pricing, Bookbuilding, Allocation and Market-Window Analysis",
+      "paragraph_ordinal": 1359,
+      "source_heading": "M11 — IPO Pricing, Bookbuilding, Allocation and Market-Window Analysis",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-01",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-001",
+      "name": "Causal Pathway and Theory of Change",
+      "paragraph_ordinal": 71,
+      "source_heading": "IC-01 — Causal Pathway and Theory of Change",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-02",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-002",
+      "name": "Context and Determinant Diagnosis using CFIR",
+      "paragraph_ordinal": 150,
+      "source_heading": "IC-02 — Context and Determinant Diagnosis using CFIR",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-03",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-003",
+      "name": "Organizational Readiness for Implementing Change",
+      "paragraph_ordinal": 229,
+      "source_heading": "IC-03 — Organizational Readiness for Implementing Change",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-04",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-004",
+      "name": "Stakeholder, Power, and Influence-Network Analysis",
+      "paragraph_ordinal": 308,
+      "source_heading": "IC-04 — Stakeholder, Power, and Influence-Network Analysis",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-05",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-005",
+      "name": "Behavioural Diagnosis using COM-B",
+      "paragraph_ordinal": 390,
+      "source_heading": "IC-05 — Behavioural Diagnosis using COM-B",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-06",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-006",
+      "name": "Implementation Strategy Mapping",
+      "paragraph_ordinal": 471,
+      "source_heading": "IC-06 — Implementation Strategy Mapping",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-07",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-007",
+      "name": "Workflow Conformance and Process Mining",
+      "paragraph_ordinal": 552,
+      "source_heading": "IC-07 — Workflow Conformance and Process Mining",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-08",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-008",
+      "name": "Prospective Failure Mode and Effects Analysis",
+      "paragraph_ordinal": 632,
+      "source_heading": "IC-08 — Prospective Failure Mode and Effects Analysis",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-09",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-009",
+      "name": "Iterative Test-and-Learn using PDSA and Statistical Process Control",
+      "paragraph_ordinal": 717,
+      "source_heading": "IC-09 — Iterative Test-and-Learn using PDSA and Statistical Process Control",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-10",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-010",
+      "name": "Implementation Outcomes and Scale Evaluation",
+      "paragraph_ordinal": 800,
+      "source_heading": "IC-10 — Implementation Outcomes and Scale Evaluation",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-11",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-011",
+      "name": "Benefits Realization and Value Tracking",
+      "paragraph_ordinal": 885,
+      "source_heading": "IC-11 — Benefits Realization and Value Tracking",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "implementation_and_change",
+      "extraction_confidence": 1.0,
+      "local_method_id": "IC-12",
+      "method_index_id": "SOURCE-DOMAIN-CHANGE-METHOD-012",
+      "name": "Normalization and Sustainment Analysis",
+      "paragraph_ordinal": 970,
+      "source_heading": "IC-12 — Normalization and Sustainment Analysis",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-01",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-001",
+      "name": "Decision Architecture and Counterfactual Hypothesis Map",
+      "paragraph_ordinal": 107,
+      "source_heading": "M&A-01 — Decision Architecture and Counterfactual Hypothesis Map",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-02",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-002",
+      "name": "Standalone Valuation Triangulation",
+      "paragraph_ordinal": 192,
+      "source_heading": "M&A-02 — Standalone Valuation Triangulation",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-03",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-003",
+      "name": "Synergy, Dis-synergy and Value-Capture Model",
+      "paragraph_ordinal": 282,
+      "source_heading": "M&A-03 — Synergy, Dis-synergy and Value-Capture Model",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-04",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-004",
+      "name": "Scenario, Sensitivity and Probabilistic Uncertainty Analysis",
+      "paragraph_ordinal": 396,
+      "source_heading": "M&A-04 — Scenario, Sensitivity and Probabilistic Uncertainty Analysis",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-05",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-005",
+      "name": "Competition and Merger-Control Economic Screen",
+      "paragraph_ordinal": 495,
+      "source_heading": "M&A-05 — Competition and Merger-Control Economic Screen",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-06",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-006",
+      "name": "Commercial and Customer Evidence Model",
+      "paragraph_ordinal": 598,
+      "source_heading": "M&A-06 — Commercial and Customer Evidence Model",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-07",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-007",
+      "name": "Integration Archetype and Target Operating-Model Design",
+      "paragraph_ordinal": 705,
+      "source_heading": "M&A-07 — Integration Archetype and Target Operating-Model Design",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-08",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-008",
+      "name": "Carve-out Perimeter, Standalone-Cost and Stranded-Cost Analysis",
+      "paragraph_ordinal": 810,
+      "source_heading": "M&A-08 — Carve-out Perimeter, Standalone-Cost and Stranded-Cost Analysis",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-09",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-009",
+      "name": "Day-1 Dependency, TSA and Exit-Readiness Analysis",
+      "paragraph_ordinal": 925,
+      "source_heading": "M&A-09 — Day-1 Dependency, TSA and Exit-Readiness Analysis",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-10",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-010",
+      "name": "Clean-Team and Pre-Close Conduct Control",
+      "paragraph_ordinal": 1046,
+      "source_heading": "M&A-10 — Clean-Team and Pre-Close Conduct Control",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-11",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-011",
+      "name": "Integrated Master Plan, Critical Path, Governance and Benefits Realization",
+      "paragraph_ordinal": 1141,
+      "source_heading": "M&A-11 — Integrated Master Plan, Critical Path, Governance and Benefits Realization",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-12",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-012",
+      "name": "Organization, Talent and Culture Integration Analysis",
+      "paragraph_ordinal": 1248,
+      "source_heading": "M&A-12 — Organization, Talent and Culture Integration Analysis",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "ma_carve_out_and_integration",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M&A-13",
+      "method_index_id": "SOURCE-DOMAIN-MA-METHOD-013",
+      "name": "Technology, Data and Cyber Separation/Integration Architecture",
+      "paragraph_ordinal": 1362,
+      "source_heading": "M&A-13 — Technology, Data and Cyber Separation/Integration Architecture",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-01",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-001",
+      "name": "Strategic Capability and Operating-Model Requirements Analysis",
+      "paragraph_ordinal": 91,
+      "source_heading": "OMT-01 — Strategic Capability and Operating-Model Requirements Analysis",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-02",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-002",
+      "name": "End-to-End Value-Stream and Process Analysis",
+      "paragraph_ordinal": 205,
+      "source_heading": "OMT-02 — End-to-End Value-Stream and Process Analysis",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-03",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-003",
+      "name": "Organization Structure and Coordination Design",
+      "paragraph_ordinal": 327,
+      "source_heading": "OMT-03 — Organization Structure and Coordination Design",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-04",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-004",
+      "name": "Decision Rights, Governance, Risk and Control Design",
+      "paragraph_ordinal": 445,
+      "source_heading": "OMT-04 — Decision Rights, Governance, Risk and Control Design",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-05",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-005",
+      "name": "Service-Delivery Footprint and Sourcing Analysis",
+      "paragraph_ordinal": 566,
+      "source_heading": "OMT-05 — Service-Delivery Footprint and Sourcing Analysis",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-06",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-006",
+      "name": "Workforce Capacity, Skills and Organization-Economics Modelling",
+      "paragraph_ordinal": 700,
+      "source_heading": "OMT-06 — Workforce Capacity, Skills and Organization-Economics Modelling",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-07",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-007",
+      "name": "Enterprise Architecture and Operating-Model Alignment",
+      "paragraph_ordinal": 823,
+      "source_heading": "OMT-07 — Enterprise Architecture and Operating-Model Alignment",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-08",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-008",
+      "name": "Performance Architecture and Management-System Design",
+      "paragraph_ordinal": 937,
+      "source_heading": "OMT-08 — Performance Architecture and Management-System Design",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "operating_model_transformation",
+      "extraction_confidence": 1.0,
+      "local_method_id": "OMT-09",
+      "method_index_id": "SOURCE-DOMAIN-OPERATING-MODEL-METHOD-009",
+      "name": "Transition Architecture, Roadmap and Benefits-Risk Validation",
+      "paragraph_ordinal": 1064,
+      "source_heading": "OMT-09 — Transition Architecture, Roadmap and Benefits-Risk Validation",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M01",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-001",
+      "name": "Strategic workforce scenario and gap analysis",
+      "paragraph_ordinal": 188,
+      "source_heading": "M01 — Strategic workforce scenario and gap analysis",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M02",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-002",
+      "name": "Contingency-based organisation and operating-model design",
+      "paragraph_ordinal": 273,
+      "source_heading": "M02 — Contingency-based organisation and operating-model design",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M03",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-003",
+      "name": "Spans, layers and managerial-load analysis",
+      "paragraph_ordinal": 360,
+      "source_heading": "M03 — Spans, layers and managerial-load analysis",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M04",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-004",
+      "name": "Decision-rights, accountability and escalation analysis",
+      "paragraph_ordinal": 444,
+      "source_heading": "M04 — Decision-rights, accountability and escalation analysis",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M05",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-005",
+      "name": "Task, process and job-design analysis",
+      "paragraph_ordinal": 527,
+      "source_heading": "M05 — Task, process and job-design analysis",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M06",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-006",
+      "name": "Skills taxonomy, proficiency and adjacency analysis",
+      "paragraph_ordinal": 616,
+      "source_heading": "M06 — Skills taxonomy, proficiency and adjacency analysis",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M07",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-007",
+      "name": "Demand, capacity, workload and staffing analysis",
+      "paragraph_ordinal": 702,
+      "source_heading": "M07 — Demand, capacity, workload and staffing analysis",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M08",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-008",
+      "name": "Workforce segmentation and sourcing architecture",
+      "paragraph_ordinal": 791,
+      "source_heading": "M08 — Workforce segmentation and sourcing architecture",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M09",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-009",
+      "name": "Workforce flow, attrition and succession-risk modelling",
+      "paragraph_ordinal": 873,
+      "source_heading": "M09 — Workforce flow, attrition and succession-risk modelling",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M10",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-010",
+      "name": "Organisational network analysis",
+      "paragraph_ordinal": 958,
+      "source_heading": "M10 — Organisational network analysis",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M11",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-011",
+      "name": "Employee listening and workforce-driver analysis",
+      "paragraph_ordinal": 1042,
+      "source_heading": "M11 — Employee listening and workforce-driver analysis",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "organisation_and_workforce",
+      "extraction_confidence": 1.0,
+      "local_method_id": "M12",
+      "method_index_id": "SOURCE-DOMAIN-WORKFORCE-METHOD-012",
+      "name": "Workforce fairness, pay-equity and adverse-impact audit",
+      "paragraph_ordinal": 1126,
+      "source_heading": "M12 — Workforce fairness, pay-equity and adverse-impact audit",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-01",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-001",
+      "name": "Decision-linked enterprise risk assessment",
+      "paragraph_ordinal": 313,
+      "source_heading": "RM-01: Decision-linked enterprise risk assessment",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-02",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-002",
+      "name": "Risk appetite, tolerance, and limit architecture",
+      "paragraph_ordinal": 348,
+      "source_heading": "RM-02: Risk appetite, tolerance, and limit architecture",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-03",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-003",
+      "name": "Risk and control self-assessment with process-control mapping",
+      "paragraph_ordinal": 382,
+      "source_heading": "RM-03: Risk and control self-assessment with process-control mapping",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-04",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-004",
+      "name": "Control design and operating-effectiveness assessment",
+      "paragraph_ordinal": 417,
+      "source_heading": "RM-04: Control design and operating-effectiveness assessment",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-05",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-005",
+      "name": "Bow-tie and barrier analysis",
+      "paragraph_ordinal": 452,
+      "source_heading": "RM-05: Bow-tie and barrier analysis",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-06",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-006",
+      "name": "Failure Mode, Effects, and Criticality Analysis",
+      "paragraph_ordinal": 487,
+      "source_heading": "RM-06: Failure Mode, Effects, and Criticality Analysis",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-07",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-007",
+      "name": "Fault-tree, event-tree, and probabilistic risk assessment",
+      "paragraph_ordinal": 521,
+      "source_heading": "RM-07: Fault-tree, event-tree, and probabilistic risk assessment",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-08",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-008",
+      "name": "Scenario analysis, stress testing, and impact-tolerance testing",
+      "paragraph_ordinal": 556,
+      "source_heading": "RM-08: Scenario analysis, stress testing, and impact-tolerance testing",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-09",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-009",
+      "name": "Quantitative uncertainty and Monte Carlo analysis",
+      "paragraph_ordinal": 592,
+      "source_heading": "RM-09: Quantitative uncertainty and Monte Carlo analysis",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-10",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-010",
+      "name": "Continuous control monitoring and risk indicators",
+      "paragraph_ordinal": 628,
+      "source_heading": "RM-10: Continuous control monitoring and risk indicators",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-11",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-011",
+      "name": "Root-cause and causal-factor analysis",
+      "paragraph_ordinal": 663,
+      "source_heading": "RM-11: Root-cause and causal-factor analysis",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    },
+    {
+      "canonicalisation_state": "indexed_not_promoted",
+      "domain": "risk_and_controls",
+      "extraction_confidence": 1.0,
+      "local_method_id": "RM-12",
+      "method_index_id": "SOURCE-DOMAIN-RISK-METHOD-012",
+      "name": "Three Lines and assurance mapping",
+      "paragraph_ordinal": 697,
+      "source_heading": "RM-12: Three Lines and assurance mapping",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    }
+  ],
+  "method_record_example_count": 12,
+  "original_source_files_committed": false,
+  "radar_category_count": 10,
+  "retrieval_cases": [
+    {
+      "case_id": "RET-CORE-01-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "METHOD-LIFE-001 — Gate-controlled consulting lifecycle"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-001"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs METHOD-LIFE-001 — Gate-controlled consulting lifecycle?"
+    },
+    {
+      "case_id": "RET-CORE-01-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "LIFE-PRIN-05 — Bounded autonomy"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-001"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for LIFE-PRIN-05 — Bounded autonomy."
+    },
+    {
+      "case_id": "RET-CORE-02-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "1. Executive-decision taxonomy"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-002"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs 1. Executive-decision taxonomy?"
+    },
+    {
+      "case_id": "RET-CORE-02-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "3. Canonical method record schema"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-002"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for 3. Canonical method record schema."
+    },
+    {
+      "case_id": "RET-CORE-03-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "LIFE-STAGE-02 — Define the decision question"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-003"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs LIFE-STAGE-02 — Define the decision question?"
+    },
+    {
+      "case_id": "RET-CORE-03-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "LIFE-STAGE-06 — Test and update"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-003"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for LIFE-STAGE-06 — Test and update."
+    },
+    {
+      "case_id": "RET-CORE-04-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "LIFE-RES-01 — Governed research lifecycle"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-004"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs LIFE-RES-01 — Governed research lifecycle?"
+    },
+    {
+      "case_id": "RET-CORE-04-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "MANDATE-RES-01 — Minimum fields"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-004"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for MANDATE-RES-01 — Minimum fields."
+    },
+    {
+      "case_id": "RET-CORE-05-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "MAP-MANDATE-01 — Mandate-to-analysis mapping"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-005"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs MAP-MANDATE-01 — Mandate-to-analysis mapping?"
+    },
+    {
+      "case_id": "RET-CORE-05-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "EVID-POS-01 — Fact, inference, assumption and evidence gap"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-005"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for EVID-POS-01 — Fact, inference, assumption and evidence gap."
+    },
+    {
+      "case_id": "RET-CORE-06-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "PRINC-STORY-001 — Start from the executive decision"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-006"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs PRINC-STORY-001 — Start from the executive decision?"
+    },
+    {
+      "case_id": "RET-CORE-06-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "GATE-STORY-01 — Mandate-to-story gate"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-006"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for GATE-STORY-01 — Mandate-to-story gate."
+    },
+    {
+      "case_id": "RET-CORE-07-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "DECISION-VC-001"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-007"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs DECISION-VC-001?"
+    },
+    {
+      "case_id": "RET-CORE-07-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "METHOD-VALUE-001"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-007"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for METHOD-VALUE-001."
+    },
+    {
+      "case_id": "RET-CORE-08-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "3. Lifecycle, horizons and stage gates"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-008"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs 3. Lifecycle, horizons and stage gates?"
+    },
+    {
+      "case_id": "RET-CORE-08-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "4. Recommendation-to-execution architecture"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-008"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for 4. Recommendation-to-execution architecture."
+    },
+    {
+      "case_id": "RET-CORE-09-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "QA-PRIN-001 — Decision fitness precedes polish"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-009"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs QA-PRIN-001 — Decision fitness precedes polish?"
+    },
+    {
+      "case_id": "RET-CORE-09-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "QA-SYS-002 — Assurance tiers"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-009"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for QA-SYS-002 — Assurance tiers."
+    },
+    {
+      "case_id": "RET-CORE-10-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "METHOD-SECT-001 — Select the overlay set"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-010"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs METHOD-SECT-001 — Select the overlay set?"
+    },
+    {
+      "case_id": "RET-CORE-10-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "METHOD-SECT-003 — Adapt analytics and KPIs"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-010"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for METHOD-SECT-003 — Adapt analytics and KPIs."
+    },
+    {
+      "case_id": "RET-CORE-11-A",
+      "decision_use": "Retrieve the exact core control rather than a title-similar source.",
+      "expected_heading_anchors": [
+        "EXEMPLAR-SCHEMA-001 — Sanitised case record"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-011"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which canonical record governs EXEMPLAR-SCHEMA-001 — Sanitised case record?"
+    },
+    {
+      "case_id": "RET-CORE-11-B",
+      "decision_use": "Provide exact source and heading provenance for implementation.",
+      "expected_heading_anchors": [
+        "2. Reusable exemplar schema"
+      ],
+      "expected_source_ids": [
+        "SOURCE-CORE-011"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Find the source section for 2. Reusable exemplar schema."
+    },
+    {
+      "case_id": "RET-DOMAIN-01-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M01 — Benefits dependency mapping"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-BENEFITS"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Benefits dependency mapping?"
+    },
+    {
+      "case_id": "RET-DOMAIN-01-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M02 — Theory of Change and logic modelling"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-BENEFITS"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Theory of Change and logic modelling?"
+    },
+    {
+      "case_id": "RET-DOMAIN-02-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "STR-01 — Decision Framing and Option Architecture"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-STRATEGY"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Decision Framing and Option Architecture?"
+    },
+    {
+      "case_id": "RET-DOMAIN-02-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "STR-02 — Market Definition, Sizing and Growth-Pool Analysis"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-STRATEGY"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Market Definition, Sizing and Growth-Pool Analysis?"
+    },
+    {
+      "case_id": "RET-DOMAIN-03-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "C&P-01 — Cost-driver tree and relevant-cost analysis"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-COST"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Cost-driver tree and relevant-cost analysis?"
+    },
+    {
+      "case_id": "RET-DOMAIN-03-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "C&P-02 — Activity-based costing and time-driven activity-based costing"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-COST"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Activity-based costing and time-driven activity-based costing?"
+    },
+    {
+      "case_id": "RET-DOMAIN-04-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M01 — CX Measurement Architecture"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-CX"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses CX Measurement Architecture?"
+    },
+    {
+      "case_id": "RET-DOMAIN-04-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M02 — Critical-Incident and Complaint Analysis"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-CX"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Critical-Incident and Complaint Analysis?"
+    },
+    {
+      "case_id": "RET-DOMAIN-05-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "DAI-01 — Decision framing and benefits logic"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-DIGITAL-AI"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Decision framing and benefits logic?"
+    },
+    {
+      "case_id": "RET-DOMAIN-05-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "DAI-02 — Strategic capability and operating-model diagnosis"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-DIGITAL-AI"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Strategic capability and operating-model diagnosis?"
+    },
+    {
+      "case_id": "RET-DOMAIN-06-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "GCS-01 — Revenue and growth decomposition"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-GROWTH"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Revenue and growth decomposition?"
+    },
+    {
+      "case_id": "RET-DOMAIN-06-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "GCS-02 — Market sizing and addressable opportunity"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-GROWTH"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Market sizing and addressable opportunity?"
+    },
+    {
+      "case_id": "RET-DOMAIN-07-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M01 — IPO Pathway and Public-Company Readiness Diagnostic"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-IPO"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses IPO Pathway and Public-Company Readiness Diagnostic?"
+    },
+    {
+      "case_id": "RET-DOMAIN-07-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M02 — Equity Story, KPI and Disclosure Architecture"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-IPO"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Equity Story, KPI and Disclosure Architecture?"
+    },
+    {
+      "case_id": "RET-DOMAIN-08-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "IC-01 — Causal Pathway and Theory of Change"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-CHANGE"
+      ],
+      "prohibited_source_ids": [
+        "SOURCE-CORE-008"
+      ],
+      "query": "Which domain method addresses Causal Pathway and Theory of Change?"
+    },
+    {
+      "case_id": "RET-DOMAIN-08-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "IC-02 — Context and Determinant Diagnosis using CFIR"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-CHANGE"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Context and Determinant Diagnosis using CFIR?"
+    },
+    {
+      "case_id": "RET-DOMAIN-09-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M&A-01 — Decision Architecture and Counterfactual Hypothesis Map"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-MA"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Decision Architecture and Counterfactual Hypothesis Map?"
+    },
+    {
+      "case_id": "RET-DOMAIN-09-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M&A-02 — Standalone Valuation Triangulation"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-MA"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Standalone Valuation Triangulation?"
+    },
+    {
+      "case_id": "RET-DOMAIN-10-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "OMT-01 — Strategic Capability and Operating-Model Requirements Analysis"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-OPERATING-MODEL"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Strategic Capability and Operating-Model Requirements Analysis?"
+    },
+    {
+      "case_id": "RET-DOMAIN-10-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "OMT-02 — End-to-End Value-Stream and Process Analysis"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-OPERATING-MODEL"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses End-to-End Value-Stream and Process Analysis?"
+    },
+    {
+      "case_id": "RET-DOMAIN-11-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M01 — Strategic workforce scenario and gap analysis"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-WORKFORCE"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Strategic workforce scenario and gap analysis?"
+    },
+    {
+      "case_id": "RET-DOMAIN-11-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "M02 — Contingency-based organisation and operating-model design"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-WORKFORCE"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Contingency-based organisation and operating-model design?"
+    },
+    {
+      "case_id": "RET-DOMAIN-12-A",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "RM-01: Decision-linked enterprise risk assessment"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-RISK"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Decision-linked enterprise risk assessment?"
+    },
+    {
+      "case_id": "RET-DOMAIN-12-B",
+      "decision_use": "Select a source-grounded method candidate without automatic canonical promotion.",
+      "expected_heading_anchors": [
+        "RM-02: Risk appetite, tolerance, and limit architecture"
+      ],
+      "expected_source_ids": [
+        "SOURCE-DOMAIN-RISK"
+      ],
+      "prohibited_source_ids": [],
+      "query": "Which domain method addresses Risk appetite, tolerance, and limit architecture?"
+    }
+  ],
+  "source_digest": "0c07a91bd8b5122761186109303f359445c63dab0cc5fe001e356dd771418d82",
+  "source_profiles": [
+    {
+      "byte_size": 112064,
+      "checksum_sha256": "c40be56daafd9c3938188d9b80807c73b5c02234a1a2f586610ed52013b8dcb5",
+      "declared_title": "AI-Enabled Consulting Engagement Lifecycle",
+      "external_redistribution_allowed": false,
+      "heading_count": 141,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1821,
+      "method_heading_count": 34,
+      "original_filename": "01-CONSULTING-LIFECYCLE(2).md",
+      "preferred_repository_filename": "01-CONSULTING-LIFECYCLE.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "lifecycle_control",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-001"
+    },
+    {
+      "byte_size": 178528,
+      "checksum_sha256": "52e28cc8948cb970e54a4ff9adcf6feda18e2de7f05e568629742f228ea03ddf",
+      "declared_title": "Problem and Framework Registry",
+      "external_redistribution_allowed": false,
+      "heading_count": 156,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2057,
+      "method_heading_count": 40,
+      "original_filename": "02-PROBLEM-AND-FRAMEWORK-REGISTRY(2).md",
+      "preferred_repository_filename": "02-PROBLEM-AND-FRAMEWORK-REGISTRY.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "problem_and_method_selection_registry",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-002"
+    },
+    {
+      "byte_size": 134428,
+      "checksum_sha256": "7cfa628d3eddfc608a008ccb42237e3255cf9a29ba9cce01572492405f4d1348",
+      "declared_title": "Hypothesis-Driven Problem Solving",
+      "external_redistribution_allowed": false,
+      "heading_count": 171,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2399,
+      "method_heading_count": 35,
+      "original_filename": "03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING(2).md",
+      "preferred_repository_filename": "03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "problem_solving_and_hypothesis_control",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-003"
+    },
+    {
+      "byte_size": 116698,
+      "checksum_sha256": "d72a48129da403c1d759e6203af79b1cf12291444e84454c19e840d3f9770858",
+      "declared_title": "Research and Evidence Standard",
+      "external_redistribution_allowed": false,
+      "heading_count": 224,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2078,
+      "method_heading_count": 55,
+      "original_filename": "04-RESEARCH-AND-EVIDENCE-STANDARD(2).md",
+      "preferred_repository_filename": "04-RESEARCH-AND-EVIDENCE-STANDARD.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "research_evidence_and_provenance",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-004"
+    },
+    {
+      "byte_size": 113529,
+      "checksum_sha256": "b7ead1afb3059278f278331e61ec49bdc07afe61ac30c721e71dc9bb7646c313",
+      "declared_title": "Methodology and Approach Design",
+      "external_redistribution_allowed": false,
+      "heading_count": 145,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1795,
+      "method_heading_count": 27,
+      "original_filename": "05-METHODOLOGY-AND-APPROACH-DESIGN(2).md",
+      "preferred_repository_filename": "05-METHODOLOGY-AND-APPROACH-DESIGN.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "methodology_and_engagement_design",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-005"
+    },
+    {
+      "byte_size": 124522,
+      "checksum_sha256": "2f80187363ebe4709b8d8d3070f4572a2fad0603625a79a785342c77c9c9821d",
+      "declared_title": "Storyline and Proposition Standard",
+      "external_redistribution_allowed": false,
+      "heading_count": 124,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1781,
+      "method_heading_count": 29,
+      "original_filename": "06-STORYLINE-AND-PROPOSITION-STANDARD(2).md",
+      "preferred_repository_filename": "06-STORYLINE-AND-PROPOSITION-STANDARD.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "storyline_and_cross_deliverable_contract",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-006"
+    },
+    {
+      "byte_size": 152672,
+      "checksum_sha256": "5dcde4699b9d63b11d2cefc261e3e19dabc450afc1d0df7bbe9ce728157beda9",
+      "declared_title": "Value Case and Financial Modelling",
+      "external_redistribution_allowed": false,
+      "heading_count": 142,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2660,
+      "method_heading_count": 53,
+      "original_filename": "07-VALUE-CASE-AND-FINANCIAL-MODELLING(3).md",
+      "preferred_repository_filename": "07-VALUE-CASE-AND-FINANCIAL-MODELLING.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "value_case_and_model_control",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-007"
+    },
+    {
+      "byte_size": 172188,
+      "checksum_sha256": "c7f0e732ad366a5e8b20ccc39c47aa4682282259d1a78981e04478f2df8759b2",
+      "declared_title": "Implementation and Change",
+      "external_redistribution_allowed": false,
+      "heading_count": 193,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2350,
+      "method_heading_count": 29,
+      "original_filename": "08-IMPLEMENTATION-AND-CHANGE(2).md",
+      "preferred_repository_filename": "08-IMPLEMENTATION-AND-CHANGE.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "implementation_adoption_and_benefits_bridge",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-008"
+    },
+    {
+      "byte_size": 114898,
+      "checksum_sha256": "8e1bf505f06687cf9f278eaa9d087a731e9bf28984b9674bb78e3f4dae1f816b",
+      "declared_title": "Red-Team and Quality Rubric",
+      "external_redistribution_allowed": false,
+      "heading_count": 175,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1885,
+      "method_heading_count": 41,
+      "original_filename": "09-RED-TEAM-AND-QUALITY-RUBRIC(2).md",
+      "preferred_repository_filename": "09-RED-TEAM-AND-QUALITY-RUBRIC.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "independent_quality_and_release_control",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-009"
+    },
+    {
+      "byte_size": 145769,
+      "checksum_sha256": "00072a2199d6ee130dbce9ba044a8c068db7e5a26eb9fdbac1a209b73cbe5c78",
+      "declared_title": "Sector Overlays",
+      "external_redistribution_allowed": false,
+      "heading_count": 198,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1686,
+      "method_heading_count": 122,
+      "original_filename": "10-SECTOR-OVERLAYS(2).md",
+      "preferred_repository_filename": "10-SECTOR-OVERLAYS.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "sector_and_geographic_adaptation",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-010"
+    },
+    {
+      "byte_size": 224904,
+      "checksum_sha256": "8e70829fd2b79b66f26f6f11e3d21328bed7e3b4290862a125ef71fdd521b5ce",
+      "declared_title": "Sanitised Engagement Exemplars",
+      "external_redistribution_allowed": false,
+      "heading_count": 357,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 3494,
+      "method_heading_count": 26,
+      "original_filename": "11-SANITISED-ENGAGEMENT-EXEMPLARS(2).md",
+      "preferred_repository_filename": "11-SANITISED-ENGAGEMENT-EXEMPLARS.md",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "behavioural_examples_and_regression_sources",
+      "source_format": "markdown",
+      "source_id": "SOURCE-CORE-011"
+    },
+    {
+      "byte_size": 58439,
+      "checksum_sha256": "2d3f0ffad900961de4ab327d68885a21114f4d82a016b0786fdce8e7251e7a59",
+      "declared_title": "Benefits Realisation and Performance Improvement",
+      "external_redistribution_allowed": false,
+      "heading_count": 144,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2296,
+      "method_heading_count": 14,
+      "original_filename": "Benefits Realisation and Performance Improvement.docx",
+      "preferred_repository_filename": "benefits-realisation-and-performance-improvement.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "benefits_realisation_and_performance_improvement",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-BENEFITS"
+    },
+    {
+      "byte_size": 53726,
+      "checksum_sha256": "4aa4266592f26b1f1a93dbe06d83330ef332c7704534d020a2c41835a4ae70a8",
+      "declared_title": "Corporate and Business-Unit Strategy Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 108,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1325,
+      "method_heading_count": 14,
+      "original_filename": "Corporate and Business-Unit Strategy Methodology Reference.docx",
+      "preferred_repository_filename": "corporate-and-business-unit-strategy.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "corporate_and_business_unit_strategy",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-STRATEGY"
+    },
+    {
+      "byte_size": 56285,
+      "checksum_sha256": "505970ab5e6abe80e520b3ec71a364e7ae1ee8ef719f73e5cc18b75048347ad7",
+      "declared_title": "Cost and Productivity — Decision-Led Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 155,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2004,
+      "method_heading_count": 16,
+      "original_filename": "Cost and Productivity — Decision-Led Methodology Reference.docx",
+      "preferred_repository_filename": "cost-and-productivity.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "cost_and_productivity",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-COST"
+    },
+    {
+      "byte_size": 62283,
+      "checksum_sha256": "88b38754c893e65e4f7dd7d44650355d8e9bdc7eac6ae0b613fee4d448b13bab",
+      "declared_title": "Customer Experience Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 151,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2011,
+      "method_heading_count": 14,
+      "original_filename": "Customer Experience Methodology Reference.docx",
+      "preferred_repository_filename": "customer-experience.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "customer_experience",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-CX"
+    },
+    {
+      "byte_size": 67746,
+      "checksum_sha256": "673e7a7804ef218667e364373399d442f4e0ee8634d7205bc2a92c37eb2a5c87",
+      "declared_title": "Digital and AI Transformation",
+      "external_redistribution_allowed": false,
+      "heading_count": 155,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2583,
+      "method_heading_count": 13,
+      "original_filename": "Digital and AI Transformation Methodology.docx",
+      "preferred_repository_filename": "digital-and-ai-transformation.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "digital_and_ai_transformation",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+    },
+    {
+      "byte_size": 61769,
+      "checksum_sha256": "dac9ce93d54a5a590ae25fca8e497b279baa8f13a2c0f831562ed4e13938c3f6",
+      "declared_title": "Growth and Commercial Strategy Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 127,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 2028,
+      "method_heading_count": 14,
+      "original_filename": "Growth and Commercial Strategy Methodology Reference.docx",
+      "preferred_repository_filename": "growth-and-commercial-strategy.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "growth_and_commercial_strategy",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-GROWTH"
+    },
+    {
+      "byte_size": 61419,
+      "checksum_sha256": "b2918d4c445bbe7be923bc79a274bd1be9f48984af17606e5852cf16ef889458",
+      "declared_title": "IPO, Valuation and Capital Strategy",
+      "external_redistribution_allowed": false,
+      "heading_count": 168,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1976,
+      "method_heading_count": 11,
+      "original_filename": "IPO Valuation and Capital Strategy.docx",
+      "preferred_repository_filename": "ipo-valuation-and-capital-strategy.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "ipo_valuation_and_capital_strategy",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-IPO"
+    },
+    {
+      "byte_size": 56191,
+      "checksum_sha256": "ad7742dc830a26337f7cc6a6a5be6634935925b58a8de0b55bb77a9385fc1232",
+      "declared_title": "Implementation and Change Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 136,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1584,
+      "method_heading_count": 12,
+      "original_filename": "Implementation and Change Methodology Reference.docx",
+      "preferred_repository_filename": "implementation-and-change-methodology.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "implementation_and_change",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-CHANGE"
+    },
+    {
+      "byte_size": 62867,
+      "checksum_sha256": "4b8030558237237cebc209f712861b179b97993d7282c384e7d615031d0cf967",
+      "declared_title": "M&A, Carve-out and Integration Decision-Led Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 90,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1726,
+      "method_heading_count": 13,
+      "original_filename": "M&A, Carve-out and Integration Decision-Led Methodology Reference.docx",
+      "preferred_repository_filename": "ma-carve-out-and-integration.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "ma_carve_out_and_integration",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-MA"
+    },
+    {
+      "byte_size": 51858,
+      "checksum_sha256": "70720c4009f50a8ac0c4863f6c75179535d14e1c5fa62df04c22a60cdec15ac8",
+      "declared_title": "Operating Model Transformation Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 95,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1606,
+      "method_heading_count": 9,
+      "original_filename": "Operating Model Transformation Methodology Reference.docx",
+      "preferred_repository_filename": "operating-model-transformation.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "operating_model_transformation",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+    },
+    {
+      "byte_size": 62975,
+      "checksum_sha256": "4ce91eb92db72b4522766854f063b957f66fc9c8cbc1bd990a6c9282282a7cef",
+      "declared_title": "Organisation and Workforce Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 124,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1872,
+      "method_heading_count": 12,
+      "original_filename": "Organisation and Workforce Methodology Reference.docx",
+      "preferred_repository_filename": "organisation-and-workforce.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "organisation_and_workforce",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-WORKFORCE"
+    },
+    {
+      "byte_size": 49161,
+      "checksum_sha256": "3b01e2f88ae99f3bafec4e52b2dc7d649460fdd2aef9c9a8a4e2f26cb4ea69ba",
+      "declared_title": "Risk and Controls Methodology Reference",
+      "external_redistribution_allowed": false,
+      "heading_count": 145,
+      "import_status": "profiled_original_not_committed",
+      "line_or_paragraph_count": 1306,
+      "method_heading_count": 12,
+      "original_filename": "Risk and Controls Methodology Reference.docx",
+      "preferred_repository_filename": "risk-and-controls.docx",
+      "review_cadence": "annual_or_triggered",
+      "rights_status": "founder_supplied_internal_use_pending_confirmation",
+      "role_or_domain": "risk_and_controls",
+      "source_format": "docx",
+      "source_id": "SOURCE-DOMAIN-RISK"
+    }
+  ],
+  "version": "1.0.0"
+}

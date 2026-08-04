@@ -1,113 +1,343 @@
-version: 0.1.0
-status: provisional_until_ingestion_validation
-purpose: Resolve historical or expected dependency names to the actual uploaded canonical source without rewriting original source files.
+version: 1.0.0
+status: governed_chat_first
+purpose: Resolve historical, supplied and preferred source names without rewriting
+  source files or inventing missing dependencies.
 rules:
+  exact_source_id_has_priority: true
   exact_declared_file_id_has_priority: true
   aliases_are_navigation_only: true
   aliases_do_not_create_missing_records: true
+  ambiguous_aliases_enter_quarantine: true
   unresolved_aliases_enter_quarantine: true
-
 aliases:
-  - alias: 01-ENGAGEMENT-LIFECYCLE.md
-    resolves_to_source_id: SOURCE-CORE-001
-  - alias: 01-ENGAGEMENT-LIFECYCLE-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-001
-  - alias: 01-ENGAGEMENT-LIFECYCLE-AND-GOVERNANCE.md
-    resolves_to_source_id: SOURCE-CORE-001
-  - alias: 01-ENGAGEMENT-GOVERNANCE.md
-    resolves_to_source_id: SOURCE-CORE-001
-    resolution_note: Only lifecycle/governance content actually present may be retrieved; absent engagement-control records remain gaps.
-  - alias: 02-PROBLEM-AND-FRAMEWORK-REGISTRY.md
-    resolves_to_source_id: SOURCE-CORE-002
-  - alias: 03-PROBLEM-FRAMING-AND-ISSUE-TREES.md
-    resolves_to_source_id: SOURCE-CORE-003
-  - alias: 03-PROBLEM-FRAMING-AND-TREES.md
-    resolves_to_source_id: SOURCE-CORE-003
-  - alias: 02-MANDATE-AND-DECISION-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-003
-    resolution_note: Retrieve only mandate/problem-framing records actually supported by the source.
-  - alias: 02-MANDATE-AND-DECISION-FRAMING.md
-    resolves_to_source_id: SOURCE-CORE-003
-  - alias: 04-RESEARCH-AND-EVIDENCE-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-004
-  - alias: 03-EVIDENCE-AND-RESEARCH-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-004
-  - alias: 03-EVIDENCE-AND-RESEARCH.md
-    resolves_to_source_id: SOURCE-CORE-004
-  - alias: 02-EVIDENCE-STANDARDS.md
-    resolves_to_source_id: SOURCE-CORE-004
-  - alias: 02-EVIDENCE-AND-SOURCE-CONTROLS.md
-    resolves_to_source_id: SOURCE-CORE-004
-  - alias: 02-EVIDENCE-AND-SOURCE-QUALITY.md
-    resolves_to_source_id: SOURCE-CORE-004
-  - alias: 03-EVIDENCE-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-004
-  - alias: 05-METHODOLOGY-AND-APPROACH-DESIGN.md
-    resolves_to_source_id: SOURCE-CORE-005
-  - alias: 04-METHOD-SELECTION.md
-    resolves_to_source_id: SOURCE-CORE-005
-    resolution_note: The central method catalogue remains SOURCE-CORE-002; approach design and selection procedure are SOURCE-CORE-005.
-  - alias: 04-METHOD-SELECTION-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-005
-  - alias: 04-METHOD-SELECTION-AND-SEQUENCING.md
-    resolves_to_source_id: SOURCE-CORE-005
-  - alias: 06-STORYLINE-AND-PROPOSITION-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-006
-  - alias: 05-PROPOSALS-AND-DELIVERABLES.md
-    resolves_to_source_id: SOURCE-CORE-006
-    resolution_note: Storyline and proposition content resolves here; unsupported commercial or file-rendering controls remain gaps.
-  - alias: 05-PROPOSAL-AND-DELIVERABLE-ARCHITECTURE.md
-    resolves_to_source_id: SOURCE-CORE-006
-  - alias: 06-PROPOSAL-AND-DELIVERABLE-DESIGN.md
-    resolves_to_source_id: SOURCE-CORE-006
-  - alias: 07-VALUE-CASE-AND-FINANCIAL-MODELLING.md
-    resolves_to_source_id: SOURCE-CORE-007
-  - alias: 05-ANALYSIS-AND-MODELLING-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-007
-    resolution_note: Resolve only financial/value modelling records; broader analysis standards may remain unresolved.
-  - alias: 04-ANALYSIS-AND-QUANTIFICATION-STANDARD.md
-    resolves_to_source_id: SOURCE-CORE-007
-  - alias: 08-IMPLEMENTATION-AND-CHANGE.md
-    resolves_to_source_id: SOURCE-CORE-008
-  - alias: 08-BENEFITS-REALISATION-AND-PMO.md
-    resolves_to_source_id: SOURCE-CORE-008
-    resolution_note: Detailed benefit modelling also depends on SOURCE-CORE-007 and SOURCE-DOMAIN-BENEFITS.
-  - alias: 08-OUTCOME-TRACKING.md
-    resolves_to_source_id: SOURCE-CORE-008
-  - alias: 09-RED-TEAM-AND-QUALITY-RUBRIC.md
-    resolves_to_source_id: SOURCE-CORE-009
-  - alias: 06-QUALITY-ASSURANCE-AND-RED-TEAM.md
-    resolves_to_source_id: SOURCE-CORE-009
-  - alias: 07-QUALITY-ASSURANCE.md
-    resolves_to_source_id: SOURCE-CORE-009
-  - alias: 07-QUALITY-ASSURANCE-AND-FOUNDER-REVIEW.md
-    resolves_to_source_id: SOURCE-CORE-009
-  - alias: 06-QUALITY-ASSURANCE-AND-FOUNDER-REVIEW.md
-    resolves_to_source_id: SOURCE-CORE-009
-  - alias: 10-SECTOR-OVERLAYS.md
-    resolves_to_source_id: SOURCE-CORE-010
-  - alias: 11-SANITISED-ENGAGEMENT-EXEMPLARS.md
-    resolves_to_source_id: SOURCE-CORE-011
-  - alias: 10-METHOD-CARDS.md
-    resolves_to_source_id: SOURCE-CORE-002
-    resolution_note: Resolve only method records actually present; this alias does not assert a separate method-card file exists.
-
+- alias: 01-ENGAGEMENT-LIFECYCLE.md
+  resolves_to_source_id: SOURCE-CORE-001
+- alias: 01-ENGAGEMENT-LIFECYCLE-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-001
+- alias: 01-ENGAGEMENT-LIFECYCLE-AND-GOVERNANCE.md
+  resolves_to_source_id: SOURCE-CORE-001
+- alias: 01-ENGAGEMENT-GOVERNANCE.md
+  resolves_to_source_id: SOURCE-CORE-001
+  resolution_note: Only lifecycle and governance content actually present may be retrieved.
+- alias: 02-PROBLEM-AND-FRAMEWORK-REGISTRY.md
+  resolves_to_source_id: SOURCE-CORE-002
+- alias: 03-PROBLEM-FRAMING-AND-ISSUE-TREES.md
+  resolves_to_source_id: SOURCE-CORE-003
+- alias: 03-PROBLEM-FRAMING-AND-TREES.md
+  resolves_to_source_id: SOURCE-CORE-003
+- alias: 02-MANDATE-AND-DECISION-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-003
+  resolution_note: Retrieve only mandate and problem-framing records actually supported
+    by the source.
+- alias: 02-MANDATE-AND-DECISION-FRAMING.md
+  resolves_to_source_id: SOURCE-CORE-003
+- alias: 04-RESEARCH-AND-EVIDENCE-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-004
+- alias: 03-EVIDENCE-AND-RESEARCH-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-004
+- alias: 03-EVIDENCE-AND-RESEARCH.md
+  resolves_to_source_id: SOURCE-CORE-004
+- alias: 02-EVIDENCE-STANDARDS.md
+  resolves_to_source_id: SOURCE-CORE-004
+- alias: 02-EVIDENCE-AND-SOURCE-CONTROLS.md
+  resolves_to_source_id: SOURCE-CORE-004
+- alias: 02-EVIDENCE-AND-SOURCE-QUALITY.md
+  resolves_to_source_id: SOURCE-CORE-004
+- alias: 03-EVIDENCE-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-004
+- alias: 05-METHODOLOGY-AND-APPROACH-DESIGN.md
+  resolves_to_source_id: SOURCE-CORE-005
+- alias: 04-METHOD-SELECTION.md
+  resolves_to_source_id: SOURCE-CORE-005
+  resolution_note: The central method catalogue remains SOURCE-CORE-002; approach
+    design and selection procedure are SOURCE-CORE-005.
+- alias: 04-METHOD-SELECTION-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-005
+- alias: 04-METHOD-SELECTION-AND-SEQUENCING.md
+  resolves_to_source_id: SOURCE-CORE-005
+- alias: 06-STORYLINE-AND-PROPOSITION-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-006
+- alias: 05-PROPOSALS-AND-DELIVERABLES.md
+  resolves_to_source_id: SOURCE-CORE-006
+  resolution_note: Storyline and proposition content resolves here; unsupported commercial
+    or renderer controls remain gaps.
+- alias: 05-PROPOSAL-AND-DELIVERABLE-ARCHITECTURE.md
+  resolves_to_source_id: SOURCE-CORE-006
+- alias: 06-PROPOSAL-AND-DELIVERABLE-DESIGN.md
+  resolves_to_source_id: SOURCE-CORE-006
+- alias: 07-VALUE-CASE-AND-FINANCIAL-MODELLING.md
+  resolves_to_source_id: SOURCE-CORE-007
+- alias: 05-ANALYSIS-AND-MODELLING-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-007
+  resolution_note: Resolve only value and financial modelling records; broader analysis
+    standards may remain unresolved.
+- alias: 04-ANALYSIS-AND-QUANTIFICATION-STANDARD.md
+  resolves_to_source_id: SOURCE-CORE-007
+- alias: 08-IMPLEMENTATION-AND-CHANGE.md
+  resolves_to_source_id: SOURCE-CORE-008
+- alias: 08-BENEFITS-REALISATION-AND-PMO.md
+  resolves_to_source_id: SOURCE-CORE-008
+  resolution_note: Detailed benefit modelling also depends on SOURCE-CORE-007 and
+    SOURCE-DOMAIN-BENEFITS.
+- alias: 08-OUTCOME-TRACKING.md
+  resolves_to_source_id: SOURCE-CORE-008
+- alias: 09-RED-TEAM-AND-QUALITY-RUBRIC.md
+  resolves_to_source_id: SOURCE-CORE-009
+- alias: 06-QUALITY-ASSURANCE-AND-RED-TEAM.md
+  resolves_to_source_id: SOURCE-CORE-009
+- alias: 07-QUALITY-ASSURANCE.md
+  resolves_to_source_id: SOURCE-CORE-009
+- alias: 07-QUALITY-ASSURANCE-AND-FOUNDER-REVIEW.md
+  resolves_to_source_id: SOURCE-CORE-009
+- alias: 06-QUALITY-ASSURANCE-AND-FOUNDER-REVIEW.md
+  resolves_to_source_id: SOURCE-CORE-009
+- alias: 10-SECTOR-OVERLAYS.md
+  resolves_to_source_id: SOURCE-CORE-010
+- alias: 11-SANITISED-ENGAGEMENT-EXEMPLARS.md
+  resolves_to_source_id: SOURCE-CORE-011
+- alias: 10-METHOD-CARDS.md
+  resolves_to_source_id: SOURCE-CORE-002
+  resolution_note: Resolve only method records actually present; this alias does not
+    assert that a separate method-card file exists.
+- alias: 01-CONSULTING-LIFECYCLE(2).md
+  resolves_to_source_id: SOURCE-CORE-001
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: 01-CONSULTING-LIFECYCLE.md
+  resolves_to_source_id: SOURCE-CORE-001
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: AI-Enabled Consulting Engagement Lifecycle
+  resolves_to_source_id: SOURCE-CORE-001
+  resolution_note: Declared source title.
+- alias: 02-PROBLEM-AND-FRAMEWORK-REGISTRY(2).md
+  resolves_to_source_id: SOURCE-CORE-002
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Problem and Framework Registry
+  resolves_to_source_id: SOURCE-CORE-002
+  resolution_note: Declared source title.
+- alias: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING(2).md
+  resolves_to_source_id: SOURCE-CORE-003
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING.md
+  resolves_to_source_id: SOURCE-CORE-003
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Hypothesis-Driven Problem Solving
+  resolves_to_source_id: SOURCE-CORE-003
+  resolution_note: Declared source title.
+- alias: 04-RESEARCH-AND-EVIDENCE-STANDARD(2).md
+  resolves_to_source_id: SOURCE-CORE-004
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Research and Evidence Standard
+  resolves_to_source_id: SOURCE-CORE-004
+  resolution_note: Declared source title.
+- alias: 05-METHODOLOGY-AND-APPROACH-DESIGN(2).md
+  resolves_to_source_id: SOURCE-CORE-005
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Methodology and Approach Design
+  resolves_to_source_id: SOURCE-CORE-005
+  resolution_note: Declared source title.
+- alias: 06-STORYLINE-AND-PROPOSITION-STANDARD(2).md
+  resolves_to_source_id: SOURCE-CORE-006
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Storyline and Proposition Standard
+  resolves_to_source_id: SOURCE-CORE-006
+  resolution_note: Declared source title.
+- alias: 07-VALUE-CASE-AND-FINANCIAL-MODELLING(3).md
+  resolves_to_source_id: SOURCE-CORE-007
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Value Case and Financial Modelling
+  resolves_to_source_id: SOURCE-CORE-007
+  resolution_note: Declared source title.
+- alias: 08-IMPLEMENTATION-AND-CHANGE(2).md
+  resolves_to_source_id: SOURCE-CORE-008
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Implementation and Change
+  resolves_to_source_id: SOURCE-CORE-008
+  resolution_note: Declared source title.
+- alias: 09-RED-TEAM-AND-QUALITY-RUBRIC(2).md
+  resolves_to_source_id: SOURCE-CORE-009
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Red-Team and Quality Rubric
+  resolves_to_source_id: SOURCE-CORE-009
+  resolution_note: Declared source title.
+- alias: 10-SECTOR-OVERLAYS(2).md
+  resolves_to_source_id: SOURCE-CORE-010
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Sector Overlays
+  resolves_to_source_id: SOURCE-CORE-010
+  resolution_note: Declared source title.
+- alias: 11-SANITISED-ENGAGEMENT-EXEMPLARS(2).md
+  resolves_to_source_id: SOURCE-CORE-011
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: Sanitised Engagement Exemplars
+  resolves_to_source_id: SOURCE-CORE-011
+  resolution_note: Declared source title.
+- alias: Benefits Realisation and Performance Improvement.docx
+  resolves_to_source_id: SOURCE-DOMAIN-BENEFITS
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: benefits-realisation-and-performance-improvement.docx
+  resolves_to_source_id: SOURCE-DOMAIN-BENEFITS
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Benefits Realisation and Performance Improvement
+  resolves_to_source_id: SOURCE-DOMAIN-BENEFITS
+  resolution_note: Declared source title.
+- alias: Corporate and Business-Unit Strategy Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-STRATEGY
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: corporate-and-business-unit-strategy.docx
+  resolves_to_source_id: SOURCE-DOMAIN-STRATEGY
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Corporate and Business-Unit Strategy Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-STRATEGY
+  resolution_note: Declared source title.
+- alias: Cost and Productivity — Decision-Led Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-COST
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: cost-and-productivity.docx
+  resolves_to_source_id: SOURCE-DOMAIN-COST
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Cost and Productivity — Decision-Led Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-COST
+  resolution_note: Declared source title.
+- alias: Customer Experience Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-CX
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: customer-experience.docx
+  resolves_to_source_id: SOURCE-DOMAIN-CX
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Customer Experience Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-CX
+  resolution_note: Declared source title.
+- alias: Digital and AI Transformation Methodology.docx
+  resolves_to_source_id: SOURCE-DOMAIN-DIGITAL-AI
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: digital-and-ai-transformation.docx
+  resolves_to_source_id: SOURCE-DOMAIN-DIGITAL-AI
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Digital and AI Transformation
+  resolves_to_source_id: SOURCE-DOMAIN-DIGITAL-AI
+  resolution_note: Declared source title.
+- alias: Growth and Commercial Strategy Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-GROWTH
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: growth-and-commercial-strategy.docx
+  resolves_to_source_id: SOURCE-DOMAIN-GROWTH
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Growth and Commercial Strategy Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-GROWTH
+  resolution_note: Declared source title.
+- alias: IPO Valuation and Capital Strategy.docx
+  resolves_to_source_id: SOURCE-DOMAIN-IPO
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: ipo-valuation-and-capital-strategy.docx
+  resolves_to_source_id: SOURCE-DOMAIN-IPO
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: IPO, Valuation and Capital Strategy
+  resolves_to_source_id: SOURCE-DOMAIN-IPO
+  resolution_note: Declared source title.
+- alias: Implementation and Change Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-CHANGE
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: implementation-and-change-methodology.docx
+  resolves_to_source_id: SOURCE-DOMAIN-CHANGE
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Implementation and Change Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-CHANGE
+  resolution_note: Declared source title.
+- alias: M&A, Carve-out and Integration Decision-Led Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-MA
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: ma-carve-out-and-integration.docx
+  resolves_to_source_id: SOURCE-DOMAIN-MA
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: M&A, Carve-out and Integration Decision-Led Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-MA
+  resolution_note: Declared source title.
+- alias: Operating Model Transformation Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-OPERATING-MODEL
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: operating-model-transformation.docx
+  resolves_to_source_id: SOURCE-DOMAIN-OPERATING-MODEL
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Operating Model Transformation Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-OPERATING-MODEL
+  resolution_note: Declared source title.
+- alias: Organisation and Workforce Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-WORKFORCE
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: organisation-and-workforce.docx
+  resolves_to_source_id: SOURCE-DOMAIN-WORKFORCE
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Organisation and Workforce Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-WORKFORCE
+  resolution_note: Declared source title.
+- alias: Risk and Controls Methodology Reference.docx
+  resolves_to_source_id: SOURCE-DOMAIN-RISK
+  resolution_note: Exact founder-supplied filename; source bytes remain unchanged
+    during import.
+- alias: risk-and-controls.docx
+  resolves_to_source_id: SOURCE-DOMAIN-RISK
+  resolution_note: Canonical repository navigation name; not a rename of the original
+    source.
+- alias: Risk and Controls Methodology Reference
+  resolves_to_source_id: SOURCE-DOMAIN-RISK
+  resolution_note: Declared source title.
+- alias: Implementation and Change
+  resolves_to_source_id: SOURCE-DOMAIN-CHANGE
+  resolution_note: Domain methodology pack; generic title is intentionally also used
+    by a core source and therefore requires review.
 unresolved_expected_modules:
-  - expected_name: 02-ENGAGEMENT-CONTROLS.md
-    required_capability: detailed register schemas, tolerances and governance controls
-  - expected_name: 05-PROPOSALS-AND-COMMERCIALS.md
-    required_capability: pricing, contracting, commercial review and reliance controls
-  - expected_name: 06-DELIVERY-ARTEFACTS.md
-    required_capability: file-production engineering and renderer-specific controls
-  - expected_name: 08-DELIVERABLE-PRODUCTION-STANDARD.md
-    required_capability: software and native Office production rules
-  - expected_name: 09-AI-GOVERNANCE.md
-    required_capability: production model risk, permissions, privacy and monitoring
-  - expected_name: 10-LEGAL-AND-ETHICS.md
-    required_capability: conflicts, confidentiality, professional conduct and specialist escalation
-  - expected_name: 07-PROPOSAL-AND-COMMERCIAL-STANDARD.md
-    required_capability: proposal, fee, scope and contracting controls
-  - expected_name: 08-DATA-CLASSIFICATION-AND-SECURITY.md
-    required_capability: detailed data classification and handling standard
-
-action_for_unresolved_module: Record a controlled design gap and develop an original canonical module; do not fabricate the missing source or silently map unrelated content.
+- expected_name: 02-ENGAGEMENT-CONTROLS.md
+  required_capability: detailed register schemas, tolerances and governance controls
+- expected_name: 05-PROPOSALS-AND-COMMERCIALS.md
+  required_capability: pricing, contracting, commercial review and reliance controls
+- expected_name: 06-DELIVERY-ARTEFACTS.md
+  required_capability: file-production engineering and renderer-specific controls
+- expected_name: 08-DELIVERABLE-PRODUCTION-STANDARD.md
+  required_capability: software and native Office production rules
+- expected_name: 09-AI-GOVERNANCE.md
+  required_capability: production model risk, permissions, privacy and monitoring
+- expected_name: 10-LEGAL-AND-ETHICS.md
+  required_capability: conflicts, confidentiality, professional conduct and specialist
+    escalation
+- expected_name: 07-PROPOSAL-AND-COMMERCIAL-STANDARD.md
+  required_capability: proposal, fee, scope and contracting controls
+- expected_name: 08-DATA-CLASSIFICATION-AND-SECURITY.md
+  required_capability: detailed data classification and handling standard
+action_for_unresolved_module: Record a controlled design gap and develop an original
+  canonical module; do not fabricate the missing source or silently map unrelated
+  content.

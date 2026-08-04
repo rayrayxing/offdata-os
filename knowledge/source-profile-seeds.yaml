@@ -1,21 +1,12 @@
 version: 1.0.0
-status: profiled_awaiting_original_file_import
-manifest_owner: Founder / Methodology Library Owner
-profile_source: knowledge/source-profile-seeds.yaml
-method_index_source: knowledge/domain-method-headings.yaml
+profiled_at: '2026-08-05'
 rules:
-  preserve_original_file_unchanged: true
+  original_files_remain_unchanged: true
+  original_binaries_committed: false
   checksum_algorithm: sha256
-  checksums_profiled_from_founder_supplied_files: true
-  original_source_files_committed: false
-  declared_ids_are_authoritative_when_present: true
-  source_ids_are_repository_identifiers_not_replacements_for_declared_ids: true
-  unresolved_cross_references_must_not_be_invented: true
-  client_content_allowed: false
-  default_classification: internal_methodology
-  global_retrieval_allowed_after_rights_review: true
+  derived_records_do_not_replace_sources: true
   external_redistribution_allowed_by_default: false
-canonical_core_sources:
+sources:
 - source_id: SOURCE-CORE-001
   original_filename: 01-CONSULTING-LIFECYCLE(2).md
   preferred_repository_filename: 01-CONSULTING-LIFECYCLE.md
@@ -24,13 +15,13 @@ canonical_core_sources:
   role_or_domain: lifecycle_control
   checksum_sha256: c40be56daafd9c3938188d9b80807c73b5c02234a1a2f586610ed52013b8dcb5
   byte_size: 112064
+  line_or_paragraph_count: 1821
+  heading_count: 141
+  method_heading_count: 34
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: LIB-CONSULT-01
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-002
   original_filename: 02-PROBLEM-AND-FRAMEWORK-REGISTRY(2).md
   preferred_repository_filename: 02-PROBLEM-AND-FRAMEWORK-REGISTRY.md
@@ -39,13 +30,13 @@ canonical_core_sources:
   role_or_domain: problem_and_method_selection_registry
   checksum_sha256: 52e28cc8948cb970e54a4ff9adcf6feda18e2de7f05e568629742f228ea03ddf
   byte_size: 178528
+  line_or_paragraph_count: 2057
+  heading_count: 156
+  method_heading_count: 40
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: 02-PROBLEM-AND-FRAMEWORK-REGISTRY
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-003
   original_filename: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING(2).md
   preferred_repository_filename: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING.md
@@ -54,13 +45,13 @@ canonical_core_sources:
   role_or_domain: problem_solving_and_hypothesis_control
   checksum_sha256: 7cfa628d3eddfc608a008ccb42237e3255cf9a29ba9cce01572492405f4d1348
   byte_size: 134428
+  line_or_paragraph_count: 2399
+  heading_count: 171
+  method_heading_count: 35
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: 03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-004
   original_filename: 04-RESEARCH-AND-EVIDENCE-STANDARD(2).md
   preferred_repository_filename: 04-RESEARCH-AND-EVIDENCE-STANDARD.md
@@ -69,13 +60,13 @@ canonical_core_sources:
   role_or_domain: research_evidence_and_provenance
   checksum_sha256: d72a48129da403c1d759e6203af79b1cf12291444e84454c19e840d3f9770858
   byte_size: 116698
+  line_or_paragraph_count: 2078
+  heading_count: 224
+  method_heading_count: 55
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: KNOW-RES-004
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-005
   original_filename: 05-METHODOLOGY-AND-APPROACH-DESIGN(2).md
   preferred_repository_filename: 05-METHODOLOGY-AND-APPROACH-DESIGN.md
@@ -84,13 +75,13 @@ canonical_core_sources:
   role_or_domain: methodology_and_engagement_design
   checksum_sha256: b7ead1afb3059278f278331e61ec49bdc07afe61ac30c721e71dc9bb7646c313
   byte_size: 113529
+  line_or_paragraph_count: 1795
+  heading_count: 145
+  method_heading_count: 27
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: 05-METHODOLOGY-AND-APPROACH-DESIGN
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-006
   original_filename: 06-STORYLINE-AND-PROPOSITION-STANDARD(2).md
   preferred_repository_filename: 06-STORYLINE-AND-PROPOSITION-STANDARD.md
@@ -99,13 +90,13 @@ canonical_core_sources:
   role_or_domain: storyline_and_cross_deliverable_contract
   checksum_sha256: 2f80187363ebe4709b8d8d3070f4572a2fad0603625a79a785342c77c9c9821d
   byte_size: 124522
+  line_or_paragraph_count: 1781
+  heading_count: 124
+  method_heading_count: 29
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: 06-STORYLINE-AND-PROPOSITION-STANDARD
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-007
   original_filename: 07-VALUE-CASE-AND-FINANCIAL-MODELLING(3).md
   preferred_repository_filename: 07-VALUE-CASE-AND-FINANCIAL-MODELLING.md
@@ -114,13 +105,13 @@ canonical_core_sources:
   role_or_domain: value_case_and_model_control
   checksum_sha256: 5dcde4699b9d63b11d2cefc261e3e19dabc450afc1d0df7bbe9ce728157beda9
   byte_size: 152672
+  line_or_paragraph_count: 2660
+  heading_count: 142
+  method_heading_count: 53
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: 07-VALUE-CASE-AND-FINANCIAL-MODELLING
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-008
   original_filename: 08-IMPLEMENTATION-AND-CHANGE(2).md
   preferred_repository_filename: 08-IMPLEMENTATION-AND-CHANGE.md
@@ -129,13 +120,13 @@ canonical_core_sources:
   role_or_domain: implementation_adoption_and_benefits_bridge
   checksum_sha256: c7f0e732ad366a5e8b20ccc39c47aa4682282259d1a78981e04478f2df8759b2
   byte_size: 172188
+  line_or_paragraph_count: 2350
+  heading_count: 193
+  method_heading_count: 29
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: 08-IMPLEMENTATION-AND-CHANGE
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-009
   original_filename: 09-RED-TEAM-AND-QUALITY-RUBRIC(2).md
   preferred_repository_filename: 09-RED-TEAM-AND-QUALITY-RUBRIC.md
@@ -144,13 +135,13 @@ canonical_core_sources:
   role_or_domain: independent_quality_and_release_control
   checksum_sha256: 8e1bf505f06687cf9f278eaa9d087a731e9bf28984b9674bb78e3f4dae1f816b
   byte_size: 114898
+  line_or_paragraph_count: 1885
+  heading_count: 175
+  method_heading_count: 41
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: KNOW-09-RTQR
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-010
   original_filename: 10-SECTOR-OVERLAYS(2).md
   preferred_repository_filename: 10-SECTOR-OVERLAYS.md
@@ -159,13 +150,13 @@ canonical_core_sources:
   role_or_domain: sector_and_geographic_adaptation
   checksum_sha256: 00072a2199d6ee130dbce9ba044a8c068db7e5a26eb9fdbac1a209b73cbe5c78
   byte_size: 145769
+  line_or_paragraph_count: 1686
+  heading_count: 198
+  method_heading_count: 122
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: 10-SECTOR-OVERLAYS
-  declared_version: 1.0.0
-  declared_status: canonical
 - source_id: SOURCE-CORE-011
   original_filename: 11-SANITISED-ENGAGEMENT-EXEMPLARS(2).md
   preferred_repository_filename: 11-SANITISED-ENGAGEMENT-EXEMPLARS.md
@@ -174,14 +165,13 @@ canonical_core_sources:
   role_or_domain: behavioural_examples_and_regression_sources
   checksum_sha256: 8e70829fd2b79b66f26f6f11e3d21328bed7e3b4290862a125ef71fdd521b5ce
   byte_size: 224904
+  line_or_paragraph_count: 3494
+  heading_count: 357
+  method_heading_count: 26
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: 11-SANITISED-ENGAGEMENT-EXEMPLARS
-  declared_version: 1.0.0
-  declared_status: canonical
-domain_methodology_sources:
 - source_id: SOURCE-DOMAIN-BENEFITS
   original_filename: Benefits Realisation and Performance Improvement.docx
   preferred_repository_filename: benefits-realisation-and-performance-improvement.docx
@@ -190,11 +180,13 @@ domain_methodology_sources:
   role_or_domain: benefits_realisation_and_performance_improvement
   checksum_sha256: 2d3f0ffad900961de4ab327d68885a21114f4d82a016b0786fdce8e7251e7a59
   byte_size: 58439
+  line_or_paragraph_count: 2296
+  heading_count: 144
+  method_heading_count: 14
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-STRATEGY
   original_filename: Corporate and Business-Unit Strategy Methodology Reference.docx
   preferred_repository_filename: corporate-and-business-unit-strategy.docx
@@ -203,11 +195,13 @@ domain_methodology_sources:
   role_or_domain: corporate_and_business_unit_strategy
   checksum_sha256: 4aa4266592f26b1f1a93dbe06d83330ef332c7704534d020a2c41835a4ae70a8
   byte_size: 53726
+  line_or_paragraph_count: 1325
+  heading_count: 108
+  method_heading_count: 14
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-COST
   original_filename: Cost and Productivity — Decision-Led Methodology Reference.docx
   preferred_repository_filename: cost-and-productivity.docx
@@ -216,11 +210,13 @@ domain_methodology_sources:
   role_or_domain: cost_and_productivity
   checksum_sha256: 505970ab5e6abe80e520b3ec71a364e7ae1ee8ef719f73e5cc18b75048347ad7
   byte_size: 56285
+  line_or_paragraph_count: 2004
+  heading_count: 155
+  method_heading_count: 16
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-CX
   original_filename: Customer Experience Methodology Reference.docx
   preferred_repository_filename: customer-experience.docx
@@ -229,11 +225,13 @@ domain_methodology_sources:
   role_or_domain: customer_experience
   checksum_sha256: 88b38754c893e65e4f7dd7d44650355d8e9bdc7eac6ae0b613fee4d448b13bab
   byte_size: 62283
+  line_or_paragraph_count: 2011
+  heading_count: 151
+  method_heading_count: 14
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-DIGITAL-AI
   original_filename: Digital and AI Transformation Methodology.docx
   preferred_repository_filename: digital-and-ai-transformation.docx
@@ -242,11 +240,13 @@ domain_methodology_sources:
   role_or_domain: digital_and_ai_transformation
   checksum_sha256: 673e7a7804ef218667e364373399d442f4e0ee8634d7205bc2a92c37eb2a5c87
   byte_size: 67746
+  line_or_paragraph_count: 2583
+  heading_count: 155
+  method_heading_count: 13
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-GROWTH
   original_filename: Growth and Commercial Strategy Methodology Reference.docx
   preferred_repository_filename: growth-and-commercial-strategy.docx
@@ -255,11 +255,13 @@ domain_methodology_sources:
   role_or_domain: growth_and_commercial_strategy
   checksum_sha256: dac9ce93d54a5a590ae25fca8e497b279baa8f13a2c0f831562ed4e13938c3f6
   byte_size: 61769
+  line_or_paragraph_count: 2028
+  heading_count: 127
+  method_heading_count: 14
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-IPO
   original_filename: IPO Valuation and Capital Strategy.docx
   preferred_repository_filename: ipo-valuation-and-capital-strategy.docx
@@ -268,11 +270,13 @@ domain_methodology_sources:
   role_or_domain: ipo_valuation_and_capital_strategy
   checksum_sha256: b2918d4c445bbe7be923bc79a274bd1be9f48984af17606e5852cf16ef889458
   byte_size: 61419
+  line_or_paragraph_count: 1976
+  heading_count: 168
+  method_heading_count: 11
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-CHANGE
   original_filename: Implementation and Change Methodology Reference.docx
   preferred_repository_filename: implementation-and-change-methodology.docx
@@ -281,11 +285,13 @@ domain_methodology_sources:
   role_or_domain: implementation_and_change
   checksum_sha256: ad7742dc830a26337f7cc6a6a5be6634935925b58a8de0b55bb77a9385fc1232
   byte_size: 56191
+  line_or_paragraph_count: 1584
+  heading_count: 136
+  method_heading_count: 12
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-MA
   original_filename: M&A, Carve-out and Integration Decision-Led Methodology Reference.docx
   preferred_repository_filename: ma-carve-out-and-integration.docx
@@ -294,11 +300,13 @@ domain_methodology_sources:
   role_or_domain: ma_carve_out_and_integration
   checksum_sha256: 4b8030558237237cebc209f712861b179b97993d7282c384e7d615031d0cf967
   byte_size: 62867
+  line_or_paragraph_count: 1726
+  heading_count: 90
+  method_heading_count: 13
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-OPERATING-MODEL
   original_filename: Operating Model Transformation Methodology Reference.docx
   preferred_repository_filename: operating-model-transformation.docx
@@ -307,11 +315,13 @@ domain_methodology_sources:
   role_or_domain: operating_model_transformation
   checksum_sha256: 70720c4009f50a8ac0c4863f6c75179535d14e1c5fa62df04c22a60cdec15ac8
   byte_size: 51858
+  line_or_paragraph_count: 1606
+  heading_count: 95
+  method_heading_count: 9
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-WORKFORCE
   original_filename: Organisation and Workforce Methodology Reference.docx
   preferred_repository_filename: organisation-and-workforce.docx
@@ -320,11 +330,13 @@ domain_methodology_sources:
   role_or_domain: organisation_and_workforce
   checksum_sha256: 4ce91eb92db72b4522766854f063b957f66fc9c8cbc1bd990a6c9282282a7cef
   byte_size: 62975
+  line_or_paragraph_count: 1872
+  heading_count: 124
+  method_heading_count: 12
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
 - source_id: SOURCE-DOMAIN-RISK
   original_filename: Risk and Controls Methodology Reference.docx
   preferred_repository_filename: risk-and-controls.docx
@@ -333,32 +345,10 @@ domain_methodology_sources:
   role_or_domain: risk_and_controls
   checksum_sha256: 3b01e2f88ae99f3bafec4e52b2dc7d649460fdd2aef9c9a8a4e2f26cb4ea69ba
   byte_size: 49161
+  line_or_paragraph_count: 1306
+  heading_count: 145
+  method_heading_count: 12
   rights_status: founder_supplied_internal_use_pending_confirmation
   external_redistribution_allowed: false
   import_status: profiled_original_not_committed
   review_cadence: annual_or_triggered
-  declared_file_id: null
-import_destination:
-  original_files: knowledge/source/original/
-  extracted_text: knowledge/source/extracted/
-  generated_records: knowledge/registry/
-  quarantine: knowledge/quarantine/
-required_import_outputs:
-- checksum_sha256
-- byte_size
-- imported_at
-- importer_version
-- extraction_status
-- extraction_warnings
-- confidentiality_review
-- usage_rights_review
-- source_passage_count
-physical_import_gate:
-  status: deferred_to_codex
-  planned_test_id: IT-INGEST-001
-  requirements:
-  - original bytes stored unchanged
-  - checksums reverified at import
-  - rights and confidentiality confirmed
-  - deterministic re-ingestion
-  - no source binary added without Founder authority

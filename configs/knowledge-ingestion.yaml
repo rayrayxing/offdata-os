@@ -1,0 +1,92 @@
+version: 1.0.0
+status: governed_chat_first
+scope: knowledge_ingestion_intelligence_without_binary_import
+source_preservation:
+  accepted_formats:
+  - markdown
+  - docx
+  checksum_algorithm: sha256
+  preserve_original_bytes: true
+  rename_original_source: false
+  original_source_files_committed: false
+  actual_import_requires_codex: true
+extraction:
+  markdown: heading_and_paragraph_blocks
+  docx: ooxml_document_paragraphs_and_heading_styles
+  tables: preserve_as_separate_structured_extraction_in_runtime
+  instruction_like_content: mark_untrusted_and_never_execute
+  stable_chunking:
+    basis:
+    - source_id
+    - chunk_ordinal
+    - heading_path
+    - text
+    max_characters: 1600
+  empty_or_malformed_sources: quarantine
+canonical_identity:
+  precedence:
+  - exact_source_id
+  - exact_declared_file_id
+  - normalized_original_filename
+  - normalized_preferred_filename
+  - approved_alias
+  normalisation:
+  - unicode_nfkc
+  - casefold
+  - dash_normalisation
+  - space_and_underscore_collapse
+  - copy_suffix_removal
+  ambiguous_match: quarantine_for_review
+  unresolved_match: record_controlled_gap_do_not_invent
+method_admission:
+  index_all_source_method_headings: true
+  indexed_state: indexed_not_promoted
+  automatic_merge: false
+  automatic_promotion: false
+  promotion_requires:
+  - complete_method_record
+  - provenance_review
+  - copyright_review
+  - evaluation_tests
+  - independent_review
+  - Founder_approval
+  collision_review_dimensions:
+  - decision_supported
+  - problem_type
+  - preconditions
+  - evidence_burden
+  - procedure
+  - outputs
+  - limitations
+  - failure_modes
+rights:
+  default_status: founder_supplied_internal_use_pending_confirmation
+  internal_retrieval: allowed
+  internal_derivation: allowed
+  client_paraphrase: allowed_only_as_original_synthesis_without_protected_expression
+  external_redistribution: blocked_until_explicit_rights_confirmation
+  distinctive_templates_or_diagrams: do_not_copy
+volatility:
+  canonical_internal_methods: annual_or_material_change
+  regulatory_or_standard_guidance: quarterly_or_change_event
+  public_web_practitioner_material: six_months_or_link_change
+  supersession: preserve_prior_version_and_link_successor
+retrieval:
+  hybrid_expected:
+  - lexical
+  - semantic
+  - metadata_filters
+  exact_source_and_heading_anchors_required_for_gold_cases: true
+  tenant_and_engagement_filters_required_for_client_sources: true
+  search_snippets_not_evidence: true
+  full_source_provenance_retained: true
+quarantine_triggers:
+- malformed_package
+- checksum_mismatch
+- ambiguous_alias
+- unresolved_dependency
+- missing_rights_metadata
+- instruction_like_payload
+- duplicate_identity
+- incomplete_method_record
+- unsupported_cross_reference
