@@ -40,6 +40,21 @@ def test_side_effect_command_requires_idempotency() -> None:
             actor=ACTOR,
             tenant_id="TEN-1",
             engagement_id="ENG-1",
+            expected_version=1,
+            correlation_id="COR-1",
+            payload={},
+        )
+
+
+def test_non_create_command_requires_expected_version() -> None:
+    with pytest.raises(ValueError, match="expected_version"):
+        CommandEnvelope(
+            command_id="CMD-3",
+            command_type=CommandType.UPDATE_MANDATE,
+            occurred_at=NOW,
+            actor=ACTOR,
+            tenant_id="TEN-1",
+            engagement_id="ENG-1",
             correlation_id="COR-1",
             payload={},
         )
