@@ -16,6 +16,8 @@ Date: 2026-08-04
 - Python: 3.11.15
 - conclusion: success
 
+The later completion-report commits change documentation only. They do not alter the executable agent system, governed configurations, tests or workflow validated by this run. The pull-request gate is rerun after those documentation commits before merge.
+
 ## Phase 1 regression result
 
 - generated contract files: 8
