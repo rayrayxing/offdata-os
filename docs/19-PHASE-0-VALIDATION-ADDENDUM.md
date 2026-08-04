@@ -24,4 +24,8 @@ Codex must treat the following files as pre-existing implementation inputs durin
 8. Add at least one CI test proving an unauthorised external action cannot auto-execute.
 9. Document any corrections as an architecture or requirements issue rather than silently changing governing intent.
 
-The chat development environment exercised 26 unit tests successfully using the package source on an isolated Python path. This is preliminary evidence only; the authoritative result is the Codex macOS and GitHub Actions run.
+## Current chat-built scope
+
+The committed deterministic package now includes lifecycle, approval policy, typed agent and Founder contracts, knowledge and methodology records, commands and events, quality gates, deliverable reconciliation, CRM and controlled outreach. The repository currently contains 51 unit-test functions across these modules.
+
+Incremental predecessor versions were exercised successfully in the chat development environment. The four latest contract groups were reviewed structurally but have not been executed in the Founder’s macOS environment. The authoritative result is the complete Codex macOS and GitHub Actions run; exact historical test counts in earlier documents are superseded by this addendum.
