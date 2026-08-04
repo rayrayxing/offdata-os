@@ -988,6 +988,136 @@
     },
     {
       "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_every_fixture_contains_quantitative_ranges_assumptions_and_falsifiers",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-002",
+        "MODEL-004",
+        "MODEL-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_every_fixture_contains_required_evidence_data_and_defects",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-003",
+        "EVID-005",
+        "QA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_every_fixture_contains_story_implementation_benefits_and_founder_gates",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-001",
+        "IMPL-001",
+        "IMPL-005",
+        "AUTH-003",
+        "AUTH-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_every_fixture_is_decision_led_and_contains_method_traps",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-003",
+        "KNOW-004",
+        "KNOW-005",
+        "OUT-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_contract_rejects_missing_primary_fixture",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-002",
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_contract_rejects_non_synthetic_client",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002",
+        "QA-004",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_contract_rejects_reversed_calculation_range",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-002",
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_mutation_invalidates_programme_baseline",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-008",
+        "QA-005",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_programme_builds_all_remaining_primary_engagement_types",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-002",
+        "QA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_programme_is_byte_reproducible_and_committed_baseline_is_current",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-003",
+        "DATA-008",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_programme_matches_governed_manifest_primary_scope",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-002",
+        "DATA-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_programme.py::test_fixture_programme_writer_and_stale_detection",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-005",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
       "kind": "unit",
       "node_id": "packages/offdata-core/tests/test_knowledge.py::test_candidate_cannot_promote_without_controls",
       "phase": "chat-first",
