@@ -24,7 +24,13 @@ jobs:
           ref: fixtures/phase5-engagement-suite
       - name: Reassemble and validate patch
         run: |
-          echo "57716dc00219dba4f0bcfc43eab374cbcac8133a5a66412c4c68b02de4c37a99  .phase5-patch.part.080" | sha256sum -c -
+          echo "57b19b31e73c155911ebe8d85428384ea01eea8c9e6e71fde94007d282603e44  .phase5-patch.part.0800" | sha256sum -c -
+          echo "2c7d07684466f2d7a613825cfe03fb54854c2e02a71385d9bf8613ff0dae544b  .phase5-patch.part.0801" | sha256sum -c -
+          echo "317ea721a9e61d8876ee69bccf6b46c5aaea69a954f41d131abec0e1fee28428  .phase5-patch.part.0802" | sha256sum -c -
+          echo "8575b2c956027db8fe35dbbebb7a3311bb0f1e25b818ecaaca3cf8115f1fab41  .phase5-patch.part.0803" | sha256sum -c -
+          echo "d11d2178d5192ec7ae6c8f22e446250e453f83e01c8cd88afffffe484f89c5eb  .phase5-patch.part.0804" | sha256sum -c -
+          echo "5402be4ec5a9c162ed0c01f7ed458708318215437548b7d2a41d19831bdd847d  .phase5-patch.part.0805" | sha256sum -c -
+          echo "b413db49b2ea308a97f6383cf2a95e1ac72fc66d33abfb39e2828af3a0b2276f  .phase5-patch.part.0806" | sha256sum -c -
           echo "cd113ca8338b16c4855e2db60caa670f90f4ca8821fdc504144ec60dd1810c10  .phase5-patch.part.081" | sha256sum -c -
           echo "a8978c803c52a9dcb201c31ce6fdddca8c3216f7a56e0d17ce56a20f315ba6c8  .phase5-patch.part.082" | sha256sum -c -
           cat \
@@ -36,7 +42,13 @@ jobs:
             .phase5-patch.part.05 \
             .phase5-patch.part.06 \
             .phase5-patch.part.07 \
-            .phase5-patch.part.080 \
+            .phase5-patch.part.0800 \
+            .phase5-patch.part.0801 \
+            .phase5-patch.part.0802 \
+            .phase5-patch.part.0803 \
+            .phase5-patch.part.0804 \
+            .phase5-patch.part.0805 \
+            .phase5-patch.part.0806 \
             .phase5-patch.part.081 \
             .phase5-patch.part.082 > .phase5-patch.b64
           echo "d3d06cc74a23384911391843fa05fb0d5993a8521944f5fae759a216ad9be833  .phase5-patch.b64" | sha256sum -c -
