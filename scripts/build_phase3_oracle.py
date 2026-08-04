@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
 
 from offdata_core.ai_audit_oracle import baseline_document, write_oracle_baseline
 
