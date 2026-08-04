@@ -28,13 +28,31 @@ jobs:
           45c2905c367f44f9af94f8a29f88e1fafdf1bcb7852309a3af571f148cb23103  .phase6-bundle/part-02
           aff2e34805dcd60b58a0f4b64edad9247e85a5cf5fa23acc76affde27602286c  .phase6-bundle/part-03
           146f4b0db510c0cf62da51862f7c982ef59b722d77333fa8dae49903d815a6a1  .phase6-bundle/part-04
-          948a3623ffbcfcb431b7d02fe17bf374e6c2edaac0f6a8b3b422c2ab5c3a08a0  .phase6-bundle/part-05
+          83b31af31ed3ff88ed635d8134d93a6a9c249e7cd1e3aa776c994e966144cf91  .phase6-bundle/fix05-00
+          fb44d2cb92b8be38375325b6050bec89f8c683e537207f8277b2b83caee302b2  .phase6-bundle/fix05-01
+          a43902020d87218839e0f42c7bc74a3f1607d20c8fe32d134d40965778286d2c  .phase6-bundle/fix05-02
+          6571cf2e326c12476136e579388f5496e6392dc6a480994206dcf46282750f98  .phase6-bundle/fix05-03
+          591f6e198c9acbb114f0de72399f8df553e1938c4679ef7abf6f27e112d962a4  .phase6-bundle/fix05-04
           4de48ae01de8047ed21300e8d291882270d6f0b1d0c175d13b1bcae67438018f  .phase6-bundle/part-06
           7950c4f3cba6de3804ab23f3c0cc44af15a3889a791e9f1a767896d34ed350b9  .phase6-bundle/part-07
-          6e2e790460fcb187d34d55e0dc4ed92cf159196ddf1c59db02731b12203d6119  .phase6-bundle/part-08
+          cd9d96d758786a2ccba84b55ef0af6abe52c2fa69d738bca706274dc1b6ed79f  .phase6-bundle/fix08-00
+          ba85b84581278413fc549f318363229e6cc9776f7ec5c83fea371a5ec9054574  .phase6-bundle/fix08-01
+          764d2fb997441e6307e75b2f54dfa331da7945d0aa3bb6c29c7a516fb41b5544  .phase6-bundle/fix08-02
+          10dcd2577b0041c67a71e57d05c9413ad5e2124a95fc9a4de88b6860fb861432  .phase6-bundle/fix08-03
+          8c11beae44138e377d3382c0f95b3725164bfe9fb086897050a18987fd26e618  .phase6-bundle/fix08-04
           EOF
           sha256sum --check /tmp/phase6-chunks.sha256
-          cat .phase6-bundle/part-* > /tmp/phase6-bundle.b64
+          cat \
+            .phase6-bundle/part-00 \
+            .phase6-bundle/part-01 \
+            .phase6-bundle/part-02 \
+            .phase6-bundle/part-03 \
+            .phase6-bundle/part-04 \
+            .phase6-bundle/fix05-* \
+            .phase6-bundle/part-06 \
+            .phase6-bundle/part-07 \
+            .phase6-bundle/fix08-* \
+            > /tmp/phase6-bundle.b64
           base64 --decode /tmp/phase6-bundle.b64 > /tmp/phase6-bundle.tar.gz
           tar -xzf /tmp/phase6-bundle.tar.gz -C .
           rm -rf packages/offdata-core/.pytest_cache
