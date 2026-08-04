@@ -2,7 +2,14 @@
 
 from enum import StrEnum
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    field_serializer,
+    field_validator,
+    model_validator,
+)
 
 
 class EpistemicStatus(StrEnum):
@@ -157,6 +164,12 @@ class VisualSpecification(BaseModel):
     accessibility_rules: tuple[str, ...]
     allowed_surfaces: frozenset[DeliverableSurface]
     decorative_image_reference: str | None = None
+
+    @field_serializer("allowed_surfaces")
+    def serialise_allowed_surfaces(
+        self, value: frozenset[DeliverableSurface]
+    ) -> list[str]:
+        return sorted(item.value for item in value)
 
     @model_validator(mode="after")
     def validate_relationship_entities(self) -> "VisualSpecification":
