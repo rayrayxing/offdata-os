@@ -1,0 +1,41 @@
+name: Fix Phase 5 lint
+
+on:
+  push:
+    branches: [fixtures/phase5-engagement-suite]
+    paths:
+      - .github/workflows/fix-phase5-lint.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out Phase 5 branch
+        uses: actions/checkout@v4
+        with:
+          ref: fixtures/phase5-engagement-suite
+      - name: Remove unused validator import
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('packages/offdata-core/src/offdata_core/primary_fixtures.py')
+          text = path.read_text(encoding='utf-8')
+          old = 'from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator'
+          new = 'from pydantic import BaseModel, ConfigDict, Field, model_validator'
+          if text.count(old) != 1:
+              raise SystemExit('Expected exactly one unused import statement.')
+          path.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+          git diff --check
+      - name: Commit lint repair
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/offdata-core/src/offdata_core/primary_fixtures.py
+          git commit -m "fix(fixtures): remove unused validator import"
+          git push origin HEAD:fixtures/phase5-engagement-suite
