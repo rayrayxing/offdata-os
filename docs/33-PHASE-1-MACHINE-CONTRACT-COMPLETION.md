@@ -2,7 +2,7 @@
 
 ## Status
 
-**Chat-first Phase 1: complete.**
+**Chat-first Phase 1: complete and independently CI-validated.**
 
 This release converts the existing offdata methodology, lifecycle, authority, quality, delivery and CRM logic into implementation-ready machine contracts. It does not claim that the contracts have yet been integrated into the Founder’s macOS environment or applied to a real PostgreSQL database.
 
@@ -120,12 +120,12 @@ The migration is deliberately PostgreSQL-specific. It remains a design baseline 
 
 The requirements catalogue contains 123 requirement IDs.
 
-The Phase 1 traceability system now separates:
+The Phase 1 traceability system separates:
 
-- **implemented executable tests** — tests that exist in the repository and can produce evidence now;
+- **implemented executable tests** — tests that exist in the repository and produce evidence now;
 - **planned tests** — integration, recovery, security, agent, artefact, end-to-end and Founder-acceptance tests that require later capabilities.
 
-The deterministic test-registry generator currently produces:
+The deterministic test-registry generator produces:
 
 - 86 implemented test nodes;
 - 72 planned tests;
@@ -139,29 +139,26 @@ Source files:
 - `requirements/traceability.yaml`
 - generated `requirements/test-registry.json`
 
-## 3. Validation performed in the chat development environment
+## 3. Validation evidence
 
-### 3.1 Deterministic Python tests
+### 3.1 Chat development environment
 
-Result:
+Completed before independent CI:
 
-```text
-86 passed
-```
+- 86 deterministic tests passed;
+- eight generated contract artefacts matched their source generators;
+- all governed configurations parsed and validated;
+- Draft 2020-12 JSON Schema self-validation passed;
+- OpenAPI schema references resolved;
+- command and event enum coverage passed;
+- all 123 requirements had implemented or planned test coverage;
+- Python source compilation passed.
 
-The suite covers the existing lifecycle, policy, agent-contract, knowledge, quality, delivery, CRM and synthetic AI-audit fixture tests, plus the new machine-contract tests.
+### 3.2 Independent GitHub Actions validation
 
-### 3.2 Contract exporter drift check
+The final mandatory validation run completed successfully on Ubuntu 24.04 with Python 3.11.15.
 
-Result:
-
-```text
-8 generated contract files are current.
-```
-
-### 3.3 Complete Phase 1 validator
-
-Result:
+Results:
 
 ```text
 PHASE 1 CONTRACT VALIDATION PASSED
@@ -174,55 +171,55 @@ PHASE 1 CONTRACT VALIDATION PASSED
 - catalogue_requirements=123
 - implemented_tests=86
 - planned_tests=72
+- migration_lines=396
 ```
 
-The migration length reported in the chat environment reflected the more detailed local draft. The committed migration is a shorter implementation baseline with the same required tenant, event, approval, idempotency and row-level-security markers. PostgreSQL execution remains pending.
+Additional mandatory gates:
 
-### 3.4 Additional checks
+- deterministic tests: 86 passed;
+- total code coverage: 92.67 percent;
+- enforced coverage minimum: 90 percent;
+- Python compilation: passed;
+- Ruff lint baseline: passed;
+- strict MyPy baseline: passed with no issues across 16 source files;
+- generated contract artefact: retained for 30 days.
 
-Completed:
+The retained artefact contains 13 files, has artefact ID `8891031568`, compressed size 32,171 bytes and SHA-256 digest `bcc2bd233370ba60ef7453446e65eb3d98133d23fa9f2615620796fdc9f6fc22`.
 
-- Python source compilation with `compileall`;
-- JSON parsing of generated contract outputs;
-- YAML parsing and JSON Schema validation of lifecycle, policy, agent and test-registry configuration;
-- Draft 2020-12 JSON Schema self-validation;
-- OpenAPI 3.1 path and external-schema-reference resolution;
-- command and event enum coverage;
-- requirement catalogue coverage;
-- editable package installation using the available local package environment.
+Full evidence is recorded in `reports/phase1-validation-evidence.md`.
 
 ## 4. Checks deliberately deferred to the integration environment
 
 The following are not represented as completed evidence:
 
 - execution on the Founder’s macOS machine;
-- GitHub Actions evidence from the connected repository;
 - applying and rolling back the migration on PostgreSQL 16;
 - database row-level-security penetration tests;
-- official OpenAPI tooling and generated-client compatibility tests;
+- generated-client compatibility tests using selected OpenAPI tooling;
 - browser, Office and artefact rendering;
 - OAuth, CRM, model-provider or cloud integration;
 - recovery of interrupted durable workflows;
 - performance and load testing.
 
-`ruff` and `mypy` were not available in the chat execution environment. The GitHub Actions workflow runs them as an advisory baseline so findings are visible without misrepresenting the existing repository as already type-clean.
+These are integration or runtime checks rather than remaining machine-contract design work.
 
 ## 5. CI contract
 
-`.github/workflows/contracts.yml` performs the following on pushes and pull requests:
+`.github/workflows/contracts.yml` now enforces the following on pushes and pull requests:
 
-1. installs Python 3.11 and the validation dependencies;
-2. builds the test registry;
-3. generates JSON Schema, OpenAPI and catalogue artefacts;
-4. runs the Phase 1 validator;
-5. runs the deterministic test suite with coverage;
-6. compiles Python sources;
-7. runs advisory lint and type checks;
-8. retains generated machine contracts as a 30-day workflow artefact.
+1. Python 3.11 and validation dependency installation;
+2. deterministic test-registry generation;
+3. JSON Schema, OpenAPI and catalogue generation;
+4. complete Phase 1 contract validation;
+5. deterministic test execution with a 90 percent coverage floor;
+6. Python source compilation;
+7. mandatory Ruff linting;
+8. mandatory strict MyPy checking;
+9. 30-day retention of generated machine contracts.
 
 ## 6. Phase gate conclusion
 
-The **chat-first design and deterministic-validation gate for Phase 1 is passed**.
+The **chat-first design, deterministic validation and independent CI gate for Phase 1 is passed**.
 
 This means Codex should not redesign:
 
@@ -235,7 +232,7 @@ This means Codex should not redesign:
 - persistence semantics;
 - requirement and test traceability.
 
-Codex’s later responsibility is to regenerate the artefacts, execute the same tests on macOS and GitHub Actions, apply the migration to PostgreSQL, implement the FastAPI service from the OpenAPI contract and report any integration defect without silently changing the governing contracts.
+Codex’s later responsibility is to regenerate the artefacts, execute the same tests on macOS, apply the migration to PostgreSQL, implement the FastAPI service from the OpenAPI contract and report any integration defect without silently changing the governing contracts.
 
 ## 7. Next chat-first phase
 
