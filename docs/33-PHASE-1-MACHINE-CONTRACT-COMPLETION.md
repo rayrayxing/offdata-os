@@ -29,6 +29,8 @@ Canonical source:
 - `packages/offdata-core/src/offdata_core/registry.py`
 - `packages/offdata-core/src/offdata_core/api_contracts.py`
 
+The approval-policy implementation is fully type checked without a MyPy suppression. The registry preserves the stable public `offdata_core.policy` import path even though typed comparison helpers are maintained in internal modules.
+
 ### 1.2 Generated contract release
 
 A deterministic exporter materialises eight generated contract files:
@@ -156,7 +158,7 @@ Completed before independent CI:
 
 ### 3.2 Independent GitHub Actions validation
 
-The final mandatory validation run completed successfully on Ubuntu 24.04 with Python 3.11.15.
+The final exact-main validation run completed successfully on Ubuntu 24.04 with Python 3.11.15.
 
 Results:
 
@@ -177,14 +179,14 @@ PHASE 1 CONTRACT VALIDATION PASSED
 Additional mandatory gates:
 
 - deterministic tests: 86 passed;
-- total code coverage: 92.67 percent;
+- total code coverage: 92.71 percent;
 - enforced coverage minimum: 90 percent;
 - Python compilation: passed;
-- Ruff lint baseline: passed;
-- strict MyPy baseline: passed with no issues across 16 source files;
+- Ruff lint baseline: passed with no per-file exception;
+- strict MyPy baseline: passed with no issues across 18 source files and no policy suppression;
 - generated contract artefact: retained for 30 days.
 
-The retained artefact contains 13 files, has artefact ID `8891031568`, compressed size 32,171 bytes and SHA-256 digest `bcc2bd233370ba60ef7453446e65eb3d98133d23fa9f2615620796fdc9f6fc22`.
+The retained artefact contains 13 files, has artefact ID `8891437367`, compressed size 32,171 bytes and SHA-256 digest `b4f2fb086b60a29ab50838534ac3f21c74b19463582cdd3129db1542c4efeceb`.
 
 Full evidence is recorded in `reports/phase1-validation-evidence.md`.
 
