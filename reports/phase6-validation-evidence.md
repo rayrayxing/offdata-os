@@ -6,18 +6,18 @@
 
 Date: 2026-08-05
 
-## GitHub Actions evidence
+## Final GitHub Actions evidence
 
 - workflow: `Machine contracts, agents, oracle, semantic deliverables, fixtures and knowledge`
-- run ID: `30959590530`
-- job ID: `92160335027`
-- validated branch head: `adbb1566b8b8074be6c429075c593f1376bae4db`
-- validated pull-request merge reference: `2222d2138806fc7177830fed0f5894b7dbd0f548`
+- run ID: `30959807143`
+- job ID: `92161010021`
+- validated branch head: `5e3714562721b133c232688f9668cc04c062f982`
+- validated pull-request merge reference: `cd18e5511372587fac1a977da492121b0951e31d`
 - runner: Ubuntu 24.04
 - Python: 3.11.15
 - conclusion: success
 
-Completion and development-status records are added after this run. The complete pull-request gate is rerun with those documentation commits included before merge.
+This run includes the Phase 6 completion report, this validation record and the updated development-status document.
 
 ## Prior-phase regression results
 
@@ -115,12 +115,12 @@ The validation confirms:
 - Ruff lint: passed;
 - strict MyPy: passed across 29 source files.
 
-## Retained release artefact
+## Retained final release artefact
 
 - files: 51;
-- artefact ID: `8912417530`;
+- artefact ID: `8912492720`;
 - compressed size: 136,618 bytes;
-- SHA-256: `9ee83d4015b1f96bf35925d3f509d80200167df24a6f277413edfd499ae36087`;
+- SHA-256: `cd78e5e440b1cd5d7fda41d7dbf3b3b3b07bf12ee2df0114985bf137a056ea36`;
 - retention: 30 days.
 
 ## Physical-ingestion boundary
