@@ -18,9 +18,9 @@ Date: 2026-08-04
 
 ### Phase 1 — Machine-readable contracts
 
-Status: **chat-first completion gate passed**.
+Status: **chat-first completion and independent CI gate passed**.
 
-Committed source and generation controls now include:
+Committed source and generation controls include:
 
 - 58 registered Pydantic model contracts;
 - canonical Draft 2020-12 JSON Schema bundle generator;
@@ -35,29 +35,38 @@ Committed source and generation controls now include:
 - deterministic test-registry generation;
 - mappings for 86 implemented tests and 72 planned tests;
 - complete mapping of all 123 requirements;
-- GitHub Actions generation, validation and artefact-retention workflow;
-- Phase 1 completion and validation report.
+- mandatory GitHub Actions generation, validation, coverage, lint and type gates;
+- retained machine-contract artefact;
+- Phase 1 completion and validation reports.
 
-Local chat-environment validation completed:
+Independent GitHub Actions validation completed:
 
+- eight generated contract artefacts;
+- 58 registered models;
+- four governed configuration documents validated;
+- 26 OpenAPI paths and all external schema references resolved;
+- ten commands and fifteen events catalogued;
+- all 123 requirements mapped to implemented or planned tests;
 - 86 deterministic tests passed;
-- eight generated contract artefacts matched their source generators;
-- all four governed configuration documents validated;
-- all OpenAPI external schema references resolved;
-- all command and event enum values were catalogued;
-- all 123 requirements had implemented or planned test coverage;
-- Python source compilation passed.
+- 92.67 percent test coverage against a 90 percent mandatory floor;
+- Python source compilation passed;
+- Ruff linting passed;
+- strict MyPy checking passed across 16 source files;
+- 13-file generated artefact retained for 30 days.
 
-Deferred execution evidence remains explicit:
+Deferred integration evidence remains explicit:
 
 - macOS execution;
-- GitHub Actions retained results;
-- PostgreSQL apply, rollback and row-level-security tests;
-- official OpenAPI client-generation tests;
+- PostgreSQL apply, rollback and row-level-security penetration tests;
+- selected OpenAPI generated-client compatibility tests;
 - browser and Office rendering;
-- OAuth, model-provider, CRM and cloud integration.
+- OAuth, model-provider, CRM and cloud integration;
+- durable-workflow recovery, performance and load tests.
 
-See `docs/33-PHASE-1-MACHINE-CONTRACT-COMPLETION.md`.
+See:
+
+- `docs/33-PHASE-1-MACHINE-CONTRACT-COMPLETION.md`
+- `reports/phase1-validation-evidence.md`
 
 ### Deterministic consulting kernel
 
