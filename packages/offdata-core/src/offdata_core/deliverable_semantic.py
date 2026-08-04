@@ -6,7 +6,7 @@ import hashlib
 import json
 from enum import StrEnum
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_serializer, model_validator
 
 from .delivery import (
     ArtefactApprovalStatus,
@@ -95,6 +95,12 @@ class CitationReference(BaseModel):
     client_note: str = Field(min_length=1)
     presentation_modes: frozenset[CitationPresentation]
     material: bool = True
+
+    @field_serializer("presentation_modes")
+    def serialise_presentation_modes(
+        self, value: frozenset[CitationPresentation]
+    ) -> list[str]:
+        return sorted(item.value for item in value)
 
     @model_validator(mode="after")
     def require_traceable_support(self) -> "CitationReference":
