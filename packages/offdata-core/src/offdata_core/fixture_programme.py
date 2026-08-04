@@ -172,7 +172,7 @@ def _expand_seed(seed: Any, defaults: dict[str, Any], index: int) -> PrimaryEnga
             {"defect_id": f"{fixture_id}-DQ-002", "severity": "medium", "description": "One period or segment contains a missing observation."},
         ),
         expected_problem_archetypes=tuple(seed["problem_archetypes"]),
-        acceptable_method_stacks=(methods, (methods[0], "assumption and falsifier review", "implementation feasibility")),
+        acceptable_method_stacks=(methods + ("decision synthesis",), (methods[0], "assumption and falsifier review", "implementation feasibility")),
         rejected_method_traps=(
             {"candidate": "generic maturity model", "reason": "Does not resolve the executive choice or economics."},
             {"candidate": "framework catalogue", "reason": "Adds breadth without evidence or decision relevance."},
