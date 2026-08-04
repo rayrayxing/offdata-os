@@ -15,7 +15,6 @@ from offdata_core.knowledge_ingestion import (
     DomainOverlay,
     IntendedUse,
     build_baseline,
-    load_source_profiles,
     resolve_alias,
     rights_decision,
     verify_baseline,
