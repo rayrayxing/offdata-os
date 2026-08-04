@@ -16,6 +16,7 @@ dev = [
   "ruff>=0.6",
   "mypy>=1.11",
   "pyyaml>=6.0",
+  "jsonschema>=4.23",
 ]
 
 [tool.setuptools.packages.find]
@@ -31,6 +32,7 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
 
 [tool.mypy]
 python_version = "3.11"
