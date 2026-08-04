@@ -26,9 +26,9 @@ from .agent_system import (
     evaluate_admission,
     evaluate_budget,
 )
+from .ai_audit_models import CustomerServiceAnalysis
 from .ai_audit_oracle import (
     AIAuditOracleResult,
-    CustomerServiceAnalysis,
     EvidenceFinding,
     EvidenceStatus,
     FinancialAnalysis,
