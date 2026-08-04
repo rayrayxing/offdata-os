@@ -2,7 +2,7 @@
 
 ## Status
 
-**PASS** — all mandatory Phase 1 GitHub Actions gates completed successfully.
+**PASS** — all mandatory Phase 1 GitHub Actions gates completed successfully against the exact final `main` state.
 
 Date: 2026-08-04
 
@@ -11,11 +11,12 @@ Validation mechanism: temporary draft pull request against `main`; no validation
 ## GitHub Actions evidence
 
 - Workflow: `Machine contracts`
-- Run ID: `30905935641`
-- Job ID: `91980886780`
+- Run ID: `30906975338`
+- Job ID: `91984219718`
 - Runner: Ubuntu 24.04
 - Python: 3.11.15
 - Result: success
+- Validated merge reference: `dbc9d0aaf2c3f7e54077a9c32642be7b3e6fc44e`
 
 ## Mandatory results
 
@@ -35,22 +36,24 @@ Validation mechanism: temporary draft pull request against `main`; no validation
 ### Deterministic tests
 
 - result: 86 passed
-- duration: 2.35 seconds
-- total coverage: 92.67 percent
+- duration: 1.87 seconds
+- total coverage: 92.71 percent
 - enforced minimum coverage: 90 percent
 
 ### Static controls
 
 - Python source compilation: passed
 - Ruff lint baseline: passed — `All checks passed!`
-- strict MyPy baseline: passed — no issues in 16 source files
+- strict MyPy baseline: passed — no issues in 18 source files
+- MyPy suppression for approval-policy evidence comparison: removed
+- Ruff per-file exception for CRM imports: removed
 
 ### Retained contract artefact
 
 - files: 13
-- artefact ID: `8891031568`
+- artefact ID: `8891437367`
 - compressed size: 32,171 bytes
-- SHA-256: `bcc2bd233370ba60ef7453446e65eb3d98133d23fa9f2615620796fdc9f6fc22`
+- SHA-256: `b4f2fb086b60a29ab50838534ac3f21c74b19463582cdd3129db1542c4efeceb`
 - retention: 30 days
 
 The retained bundle contains:
@@ -61,6 +64,17 @@ The retained bundle contains:
 - generated requirement test registry;
 - governed lifecycle, policy and agent configurations;
 - PostgreSQL migration baseline.
+
+## Contract-stability checks
+
+The final run also confirmed:
+
+- the typed policy implementation retains the stable public `offdata_core.policy` import path in the model registry;
+- all generated schema references resolve;
+- every command and domain event is catalogued;
+- every executable test has requirement mappings;
+- all 123 requirements have implemented or explicitly planned test coverage;
+- no validation-only file entered `main`.
 
 ## Scope boundary
 
