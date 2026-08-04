@@ -1,0 +1,15 @@
+{
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_answer_key_in_source_manifest_fails_closed": ["AGENT-002", "QA-009", "SEC-002"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_contracts_reject_nonfictional_or_agent_visible_records": ["QA-009", "AGENT-005"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_cost_oracle_separates_capacity_avoidability_and_cash_benefit": ["MODEL-003", "MODEL-004", "MODEL-008", "IMPL-005"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_expected_results_are_restricted_and_structurally_complete": ["AGENT-002", "AGENT-004", "QA-009"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_fixtures_are_fictional_advanced_and_have_complete_mandates": ["QA-009", "OUT-002"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_missing_source_file_fails_closed": ["QA-004", "EVID-002"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_restricted_expected_results_cannot_enter_agent_context": ["AGENT-002", "AGENT-004", "SEC-002"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_source_manifests_include_one_untrusted_source_and_exclude_answer_keys": ["AGENT-007", "EVID-010", "QA-009"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_strategy_and_cost_fixtures_pass_complete_contract": ["TEST-002", "QA-009", "DATA-006"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_strategy_oracle_preserves_capital_constraint_and_portfolio_alternatives": ["MODEL-001", "MODEL-004", "KNOW-005", "OUT-002"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_structured_evidence_has_quality_variation_and_known_sources": ["EVID-003", "EVID-005", "DATA-006"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_suite_digest_is_deterministic": ["TEST-005", "MODEL-002", "DATA-008"],
+  "packages/offdata-core/tests/test_additional_fixtures.py::test_unknown_evidence_source_fails_closed": ["EVID-003", "QA-004"]
+}
