@@ -20,19 +20,29 @@ def _read_yaml(path: Path) -> dict[str, Any]:
 
 
 def _read_csv(path: Path) -> list[dict[str, str]]:
+    cleaned_rows: list[dict[str, str]] = []
     with path.open(encoding="utf-8", newline="") as handle:
-        rows = list(csv.DictReader(handle))
-    if not rows:
+        reader = csv.DictReader(handle)
+        if not reader.fieldnames or any(name is None for name in reader.fieldnames):
+            raise ValueError(f"Malformed CSV header: {path}")
+        if len(reader.fieldnames) != len(set(reader.fieldnames)):
+            raise ValueError(f"Duplicate CSV header: {path}")
+        for raw_row in reader:
+            cleaned: dict[str, str] = {}
+            for key, value in raw_row.items():
+                if key is None:
+                    raise ValueError(f"Unexpected extra CSV field: {path}")
+                cleaned[key] = "" if value is None else value
+            cleaned_rows.append(cleaned)
+    if not cleaned_rows:
         raise ValueError(f"Expected non-empty CSV: {path}")
-    if any(value is None for row in rows for value in row.values()):
-        raise ValueError(f"Malformed CSV row: {path}")
-    return rows
+    return cleaned_rows
 
 
 def _float(row: Mapping[str, str], key: str) -> float:
     try:
         return float(row[key])
-    except (KeyError, ValueError) as exc:
+    except (KeyError, TypeError, ValueError) as exc:
         raise ValueError(f"Invalid numeric field {key}: {row}") from exc
 
 
