@@ -1,0 +1,111 @@
+{
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_all_required_surfaces_share_one_story_and_version": [
+    "DELIV-001",
+    "DELIV-003",
+    "DATA-008"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_client_citations_are_proportionate_but_internal_provenance_is_complete": [
+    "EVID-003",
+    "EVID-009",
+    "DELIV-009"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_fixture_mutation_invalidates_committed_semantic_baseline": [
+    "DATA-008",
+    "MODEL-002",
+    "QA-005",
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_founder_review_packet_requests_approval_but_blocks_external_issue": [
+    "AUTH-003",
+    "AUTH-004",
+    "AUTH-009",
+    "DELIV-010"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_material_numbers_reconcile_to_named_approved_oracle_outputs": [
+    "DELIV-003",
+    "DELIV-008",
+    "MODEL-005",
+    "MODEL-008"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_number_mutation_is_detected_by_independent_semantic_grade": [
+    "DELIV-008",
+    "QA-003",
+    "QA-005",
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_prohibited_conclusions_are_absent_from_semantic_story": [
+    "QA-001",
+    "QA-009",
+    "DELIV-002"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_recommendation_comparator_deferrals_and_human_authority_are_preserved": [
+    "OUT-002",
+    "DELIV-003",
+    "AUTH-003",
+    "AUTH-004"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_baseline_and_oracles_are_blocked_from_normal_agent_context": [
+    "AGENT-002",
+    "AGENT-004",
+    "QA-009",
+    "SEC-002"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_baseline_is_byte_reproducible_and_committed_baseline_is_current": [
+    "DATA-003",
+    "DATA-008",
+    "DELIV-001"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_baseline_writer_and_stale_detection": [
+    "DATA-003",
+    "QA-005",
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_contract_rejects_missing_required_surface": [
+    "DELIV-001",
+    "DELIV-003",
+    "QA-004"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_contract_rejects_story_version_drift": [
+    "DATA-008",
+    "DELIV-003"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_contract_rejects_unknown_number_reference": [
+    "DELIV-008",
+    "QA-004"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_digest_changes_when_decision_content_changes": [
+    "DATA-003",
+    "DATA-008",
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_model_builds_from_oracle_and_independent_grade_passes": [
+    "DELIV-001",
+    "OUT-002",
+    "QA-009"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_model_contains_decision_value_control_roadmap_and_appendix_objects": [
+    "DELIV-001",
+    "OUT-003",
+    "IMPL-001"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_story_is_assertion_led_and_decision_first": [
+    "DELIV-002",
+    "QA-001",
+    "OUT-002"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_surface_plans_match_manifest_scope_and_semantic_objects": [
+    "DELIV-001",
+    "DELIV-003",
+    "DELIV-010"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_visual_grammar_is_editable_and_not_raster_only": [
+    "DELIV-004",
+    "DELIV-005",
+    "DELIV-006"
+  ],
+  "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_workbook_semantics_separate_sources_calculations_outputs_and_checks": [
+    "MODEL-007",
+    "MODEL-008",
+    "DELIV-003"
+  ]
+}

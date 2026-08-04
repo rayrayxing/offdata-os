@@ -196,6 +196,241 @@
     {
       "evidence_status": "executable_in_chat_and_codex",
       "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_all_required_surfaces_share_one_story_and_version",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-001",
+        "DELIV-003",
+        "DATA-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_client_citations_are_proportionate_but_internal_provenance_is_complete",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-003",
+        "EVID-009",
+        "DELIV-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_fixture_mutation_invalidates_committed_semantic_baseline",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-008",
+        "MODEL-002",
+        "QA-005",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_founder_review_packet_requests_approval_but_blocks_external_issue",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003",
+        "AUTH-004",
+        "AUTH-009",
+        "DELIV-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_material_numbers_reconcile_to_named_approved_oracle_outputs",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-003",
+        "DELIV-008",
+        "MODEL-005",
+        "MODEL-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_number_mutation_is_detected_by_independent_semantic_grade",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-008",
+        "QA-003",
+        "QA-005",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_prohibited_conclusions_are_absent_from_semantic_story",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-001",
+        "QA-009",
+        "DELIV-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_recommendation_comparator_deferrals_and_human_authority_are_preserved",
+      "phase": "chat-first",
+      "requirements": [
+        "OUT-002",
+        "DELIV-003",
+        "AUTH-003",
+        "AUTH-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_baseline_and_oracles_are_blocked_from_normal_agent_context",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-002",
+        "AGENT-004",
+        "QA-009",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_baseline_is_byte_reproducible_and_committed_baseline_is_current",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-003",
+        "DATA-008",
+        "DELIV-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_baseline_writer_and_stale_detection",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-003",
+        "QA-005",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_contract_rejects_missing_required_surface",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-001",
+        "DELIV-003",
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_contract_rejects_story_version_drift",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-008",
+        "DELIV-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_contract_rejects_unknown_number_reference",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-008",
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_digest_changes_when_decision_content_changes",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-003",
+        "DATA-008",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_model_builds_from_oracle_and_independent_grade_passes",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-001",
+        "OUT-002",
+        "QA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_semantic_model_contains_decision_value_control_roadmap_and_appendix_objects",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-001",
+        "OUT-003",
+        "IMPL-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_story_is_assertion_led_and_decision_first",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-002",
+        "QA-001",
+        "OUT-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_surface_plans_match_manifest_scope_and_semantic_objects",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-001",
+        "DELIV-003",
+        "DELIV-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_visual_grammar_is_editable_and_not_raster_only",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-004",
+        "DELIV-005",
+        "DELIV-006"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_workbook_semantics_separate_sources_calculations_outputs_and_checks",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-007",
+        "MODEL-008",
+        "DELIV-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
       "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_answer_key_and_oracle_are_blocked_from_agent_context",
       "phase": "chat-first",
       "requirements": [
@@ -1322,15 +1557,6 @@
     },
     {
       "evidence_status": "planned_not_executed",
-      "kind": "agent_eval",
-      "phase": "delivery-phase",
-      "requirements": [
-        "DELIV-002"
-      ],
-      "test_id": "AE-STORY-001"
-    },
-    {
-      "evidence_status": "planned_not_executed",
       "kind": "end_to_end",
       "phase": "codex-or-later",
       "requirements": [
@@ -1606,15 +1832,6 @@
     {
       "evidence_status": "planned_not_executed",
       "kind": "unit",
-      "phase": "delivery-phase",
-      "requirements": [
-        "DELIV-010"
-      ],
-      "test_id": "UT-ARTEFACT-001"
-    },
-    {
-      "evidence_status": "planned_not_executed",
-      "kind": "unit",
       "phase": "codex-or-later",
       "requirements": [
         "IMPL-005",
@@ -1727,15 +1944,6 @@
     {
       "evidence_status": "planned_not_executed",
       "kind": "unit",
-      "phase": "delivery-phase",
-      "requirements": [
-        "DELIV-008"
-      ],
-      "test_id": "UT-RECON-002"
-    },
-    {
-      "evidence_status": "planned_not_executed",
-      "kind": "unit",
       "phase": "codex-integration",
       "requirements": [
         "LIFE-008"
@@ -1777,15 +1985,6 @@
         "KNOW-010"
       ],
       "test_id": "UT-SUPERSEDE-001"
-    },
-    {
-      "evidence_status": "planned_not_executed",
-      "kind": "unit",
-      "phase": "delivery-phase",
-      "requirements": [
-        "DELIV-006"
-      ],
-      "test_id": "UT-VISUAL-002"
     },
     {
       "evidence_status": "planned_not_executed",

@@ -1,0 +1,2570 @@
+{
+  "agent_visible": false,
+  "analytical_input_digest": "f706c79ffcf11a43ecf8cc593900c05c9a398f83ecb399095adbc8b985f6f887",
+  "classification": "restricted_evaluation_semantic_model",
+  "grade": {
+    "checks_passed": 115,
+    "checks_run": 115,
+    "failures": [],
+    "passed": true
+  },
+  "semantic_model": {
+    "agent_visible": false,
+    "analytical_baseline_id": "FIXTURE-DAI-001:oracle:1.0.0",
+    "analytical_baseline_version": "1.0.0",
+    "analytical_input_digest": "f706c79ffcf11a43ecf8cc593900c05c9a398f83ecb399095adbc8b985f6f887",
+    "citations": [
+      {
+        "citation_id": "CITE-DAI-001",
+        "client_note": "Company interviews and quotation activity; offdata analysis.",
+        "evidence_finding_ids": [
+          "EXP-EVID-001"
+        ],
+        "internal_provenance": "Quotation activity rows QA-001 to QA-024 and the sales-leadership interview; limitations retained in the evidence ledger.",
+        "material": true,
+        "presentation_modes": [
+          "appendix",
+          "footnote",
+          "on_demand",
+          "source_tab",
+          "speaker_notes"
+        ],
+        "source_ids": [
+          "CLIENT-SRC-002",
+          "CLIENT-DATA-001"
+        ]
+      },
+      {
+        "citation_id": "CITE-DAI-002",
+        "client_note": "Company quotation activity; offdata analysis.",
+        "evidence_finding_ids": [
+          "EXP-EVID-002"
+        ],
+        "internal_provenance": "Quotation timestamps and measured touch-time fields; waiting causes remain partly unresolved.",
+        "material": true,
+        "presentation_modes": [
+          "appendix",
+          "footnote",
+          "on_demand",
+          "source_tab",
+          "speaker_notes"
+        ],
+        "source_ids": [
+          "CLIENT-DATA-001"
+        ]
+      },
+      {
+        "citation_id": "CITE-DAI-003",
+        "client_note": "Company service data and interviews; offdata analysis.",
+        "evidence_finding_ids": [
+          "EXP-EVID-003"
+        ],
+        "internal_provenance": "Customer-service summary, stakeholder interview and risk/control data; missing resolution codes retained as a limitation.",
+        "material": true,
+        "presentation_modes": [
+          "appendix",
+          "footnote",
+          "on_demand",
+          "source_tab",
+          "speaker_notes"
+        ],
+        "source_ids": [
+          "CLIENT-DATA-002",
+          "CLIENT-SRC-003",
+          "CLIENT-DATA-006"
+        ]
+      },
+      {
+        "citation_id": "CITE-DAI-004",
+        "client_note": "Company process and data inventories; offdata analysis.",
+        "evidence_finding_ids": [
+          "EXP-EVID-004"
+        ],
+        "internal_provenance": "Inventory-process, application and data evidence; no controlled Northstar back-test exists.",
+        "material": true,
+        "presentation_modes": [
+          "appendix",
+          "footnote",
+          "on_demand",
+          "source_tab",
+          "speaker_notes"
+        ],
+        "source_ids": [
+          "CLIENT-SRC-004",
+          "CLIENT-DATA-003"
+        ]
+      },
+      {
+        "citation_id": "CITE-DAI-005",
+        "client_note": "Company workforce survey and controls data; offdata analysis.",
+        "evidence_finding_ids": [
+          "EXP-EVID-005"
+        ],
+        "internal_provenance": "Workforce survey, stakeholder interview and risk/control records; survey use is self-reported.",
+        "material": true,
+        "presentation_modes": [
+          "appendix",
+          "footnote",
+          "on_demand",
+          "source_tab",
+          "speaker_notes"
+        ],
+        "source_ids": [
+          "CLIENT-DATA-004",
+          "CLIENT-SRC-004",
+          "CLIENT-DATA-006"
+        ]
+      },
+      {
+        "citation_id": "CITE-DAI-006",
+        "client_note": "Company financial baseline; offdata analysis.",
+        "evidence_finding_ids": [
+          "EXP-EVID-006"
+        ],
+        "internal_provenance": "Management financial case and controlled financial baseline; conversion uplift remains unvalidated.",
+        "material": true,
+        "presentation_modes": [
+          "appendix",
+          "footnote",
+          "on_demand",
+          "source_tab",
+          "speaker_notes"
+        ],
+        "source_ids": [
+          "CLIENT-SRC-005",
+          "CLIENT-DATA-005"
+        ]
+      }
+    ],
+    "fixture_id": "FIXTURE-DAI-001",
+    "founder_review": {
+      "approval_required": true,
+      "client_citation_approach": "Use concise company-data and offdata-analysis notes on executive pages, fuller notes and appendices, and a complete source tab in the workbook.",
+      "decision": "Which one or two AI-enabled interventions should Northstar pilot during the next six months, under what operating and control conditions, and what evidence should be required before scaling?",
+      "exact_release_action": "Approve the semantic model for renderer implementation; do not issue an external client artefact from this phase.",
+      "material_assumptions": [
+        "Released capacity can be redeployed to productive work.",
+        "Any conversion uplift remains unvalidated until the controlled pilot produces evidence."
+      ],
+      "material_uncertainties": [
+        "Quotation activity is aggregated and does not measure total seller capacity.",
+        "Faster quotation response has not been shown to cause conversion uplift.",
+        "Customer-service categories and knowledge coverage contain material coding and version defects.",
+        "Inventory forecasting has no controlled Northstar back-test.",
+        "Workforce use and confidence are self-reported.",
+        "Residual control ratings are design assessments, not operating-effectiveness assurance."
+      ],
+      "open_defect_ids": [],
+      "recommendation": "Approve UC-001 with UC-008 as the mandatory non-AI comparator; defer autonomous chatbot and production inventory forecasting.",
+      "reconciliation_status": "passed",
+      "requested_action": "Approve the bounded UC-001 pilot scope and a maximum initial cash commitment of SGD 120,000, subject to the stated controls and evidence gates."
+    },
+    "numbers": [
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Annualised quotation volume",
+        "number_id": "NUM-DAI-001",
+        "period": "annualised",
+        "source_field": "quotation.annualised_volume",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "quotations",
+        "value": 12520.0
+      },
+      {
+        "approved": true,
+        "display_precision": 1,
+        "label": "Annualised measured quotation touch time",
+        "number_id": "NUM-DAI-002",
+        "period": "annualised",
+        "source_field": "quotation.annualised_touch_hours",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "hours",
+        "value": 6397.7
+      },
+      {
+        "approved": true,
+        "display_precision": 2,
+        "label": "Simple and standard share of quotation volume",
+        "number_id": "NUM-DAI-003",
+        "period": "six_month_observation",
+        "source_field": "quotation.simple_and_standard_volume_share_percent",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "percent",
+        "value": 82.24
+      },
+      {
+        "approved": true,
+        "display_precision": 2,
+        "label": "Complex and engineered share of measured touch time",
+        "number_id": "NUM-DAI-004",
+        "period": "six_month_observation",
+        "source_field": "quotation.complex_and_engineered_touch_share_percent",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "percent",
+        "value": 38.45
+      },
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Annual customer-service tickets",
+        "number_id": "NUM-DAI-005",
+        "period": "annual",
+        "source_field": "customer_service.annual_ticket_count",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "tickets",
+        "value": 18420.0
+      },
+      {
+        "approved": true,
+        "display_precision": 1,
+        "label": "Autonomous-ready customer-service share",
+        "number_id": "NUM-DAI-006",
+        "period": "current",
+        "source_field": "customer_service.autonomous_ready_share_percent",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "percent",
+        "value": 0.0
+      },
+      {
+        "approved": true,
+        "display_precision": 2,
+        "label": "Approved-knowledge coverage",
+        "number_id": "NUM-DAI-007",
+        "period": "current",
+        "source_field": "customer_service.weighted_approved_knowledge_coverage_percent",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "percent",
+        "value": 59.45
+      },
+      {
+        "approved": true,
+        "display_precision": 2,
+        "label": "Public-AI use",
+        "number_id": "NUM-DAI-008",
+        "period": "survey",
+        "source_field": "workforce.weighted_public_ai_use_percent",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "percent",
+        "value": 21.76
+      },
+      {
+        "approved": true,
+        "display_precision": 2,
+        "label": "Interest in AI training",
+        "number_id": "NUM-DAI-009",
+        "period": "survey",
+        "source_field": "workforce.weighted_training_interest_percent",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "percent",
+        "value": 79.62
+      },
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Base pilot cost",
+        "number_id": "NUM-DAI-010",
+        "period": "pilot",
+        "source_field": "financial.base_pilot_cost_sgd",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "SGD",
+        "value": 88000.0
+      },
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Downside pilot cost",
+        "number_id": "NUM-DAI-011",
+        "period": "pilot",
+        "source_field": "financial.downside_pilot_cost_sgd",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "SGD",
+        "value": 118000.0
+      },
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Maximum initial cash commitment",
+        "number_id": "NUM-DAI-012",
+        "period": "pilot",
+        "source_field": "maximum_initial_cash_commitment_sgd",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "SGD",
+        "value": 120000.0
+      },
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Annual addressable capacity value",
+        "number_id": "NUM-DAI-013",
+        "period": "annual",
+        "source_field": "financial.annual_addressable_capacity_value_sgd",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "SGD",
+        "value": 210000.0
+      },
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Potential annual incremental gross margin",
+        "number_id": "NUM-DAI-014",
+        "period": "annual",
+        "source_field": "financial.annual_potential_incremental_gross_margin_sgd",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "SGD",
+        "value": 145000.0
+      },
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Annual platform and support cost",
+        "number_id": "NUM-DAI-015",
+        "period": "annual",
+        "source_field": "financial.annual_platform_and_support_cost_sgd",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "SGD",
+        "value": 36000.0
+      },
+      {
+        "approved": true,
+        "display_precision": 0,
+        "label": "Immediate cash-releasing headcount benefit",
+        "number_id": "NUM-DAI-016",
+        "period": "year_one",
+        "source_field": "financial.immediate_cash_releasing_headcount_benefit_sgd",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "SGD",
+        "value": 0.0
+      },
+      {
+        "approved": true,
+        "display_precision": 2,
+        "label": "Recurring-support break-even capacity redeployment",
+        "number_id": "NUM-DAI-017",
+        "period": "annual",
+        "source_field": "financial.recurring_support_break_even_capacity_redeployment_percent",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "percent",
+        "value": 17.14
+      },
+      {
+        "approved": true,
+        "display_precision": 2,
+        "label": "Year-one pilot-and-support break-even conversion uplift",
+        "number_id": "NUM-DAI-018",
+        "period": "year_one",
+        "source_field": "financial.year_one_pilot_and_support_break_even_conversion_uplift_points",
+        "source_kind": "model_output",
+        "source_record_id": "FIXTURE-DAI-001:oracle:1.0.0",
+        "unit": "percentage_points",
+        "value": 1.71
+      }
+    ],
+    "prohibited_conclusions": [
+      "A fully autonomous customer chatbot is ready for launch.",
+      "Inventory forecasting can be activated immediately because the ERP vendor has an AI module.",
+      "Four jobs can be removed based on the current evidence.",
+      "AI maturity is the principal investment decision criterion.",
+      "Technical compatibility and customer pricing may be approved automatically.",
+      "The current evidence proves a two-percentage-point conversion increase."
+    ],
+    "reconciliation": {
+      "deliverable_ids": [
+        "FILE-DAI-PPTX-001",
+        "FILE-DAI-DOCX-001",
+        "FILE-DAI-XLSX-001",
+        "FILE-DAI-PDF-001",
+        "FILE-DAI-SVG-001",
+        "FILE-DAI-HTML-001"
+      ],
+      "reconciliation_id": "RECON-DAI-001",
+      "results": [
+        {
+          "check": "headline",
+          "defect_ids": [],
+          "details": "All executive surfaces use the approved assertion-led section titles.",
+          "passed": true
+        },
+        {
+          "check": "assumption",
+          "defect_ids": [],
+          "details": "Material assumptions and uncertainties are referenced from one semantic model.",
+          "passed": true
+        },
+        {
+          "check": "number",
+          "defect_ids": [],
+          "details": "All displayed material numbers resolve to approved named oracle fields.",
+          "passed": true
+        },
+        {
+          "check": "recommendation",
+          "defect_ids": [],
+          "details": "UC-001, UC-008 and deferred options are consistent across surfaces.",
+          "passed": true
+        },
+        {
+          "check": "roadmap",
+          "defect_ids": [],
+          "details": "Foundation, pilot, evaluate and scale-or-stop actions share stable IDs.",
+          "passed": true
+        },
+        {
+          "check": "source",
+          "defect_ids": [],
+          "details": "All client notes resolve to the complete internal citation register.",
+          "passed": true
+        },
+        {
+          "check": "version",
+          "defect_ids": [],
+          "details": "Every manifest references STORY-DAI-001 version 1.0.0.",
+          "passed": true
+        },
+        {
+          "check": "rendered_inspection",
+          "defect_ids": [],
+          "details": "Semantic inspection passed; renderer and Office inspection remain a later execution gate.",
+          "passed": true
+        }
+      ],
+      "reviewer_id": "Independent Quality Agent",
+      "story_model_id": "STORY-DAI-001"
+    },
+    "semantic_model_id": "DSM-DAI-001",
+    "semantic_objects": [
+      {
+        "assertion_ids": [],
+        "citation_ids": [],
+        "decision_purpose": "Identify the decision, audience, status and confidentiality of the deliverable.",
+        "kind": "cover",
+        "number_ids": [],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-001",
+        "title": "Northstar AI pilot decision",
+        "uncertainty_ids": [],
+        "visual_specification_ids": []
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-001",
+          "AST-DAI-009",
+          "AST-DAI-010"
+        ],
+        "citation_ids": [
+          "CITE-DAI-001",
+          "CITE-DAI-006"
+        ],
+        "decision_purpose": "Enable the executive decision and commitment request.",
+        "kind": "executive_decision",
+        "number_ids": [
+          "NUM-DAI-010",
+          "NUM-DAI-011",
+          "NUM-DAI-012"
+        ],
+        "recommendation_ids": [
+          "UC-001",
+          "UC-008"
+        ],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-002",
+        "title": "Approve a bounded quotation-drafting pilot—not autonomous AI",
+        "uncertainty_ids": [],
+        "visual_specification_ids": []
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-002",
+          "AST-DAI-003"
+        ],
+        "citation_ids": [
+          "CITE-DAI-001",
+          "CITE-DAI-002"
+        ],
+        "decision_purpose": "Establish the bounded process opportunity without overstating burden or automation potential.",
+        "kind": "analysis",
+        "number_ids": [
+          "NUM-DAI-001",
+          "NUM-DAI-002",
+          "NUM-DAI-003",
+          "NUM-DAI-004"
+        ],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-003",
+        "title": "Quotation work is material, but elapsed time is not automatable touch time",
+        "uncertainty_ids": [
+          "UNC-DAI-001",
+          "UNC-DAI-002"
+        ],
+        "visual_specification_ids": [
+          "VIS-DAI-002"
+        ]
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-004",
+          "AST-DAI-005"
+        ],
+        "citation_ids": [
+          "CITE-DAI-003",
+          "CITE-DAI-004"
+        ],
+        "decision_purpose": "Defer unsafe or unready options while preserving bounded alternatives.",
+        "kind": "evidence",
+        "number_ids": [
+          "NUM-DAI-005",
+          "NUM-DAI-006",
+          "NUM-DAI-007"
+        ],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-004",
+        "title": "Customer service and inventory evidence do not support autonomous deployment",
+        "uncertainty_ids": [
+          "UNC-DAI-003",
+          "UNC-DAI-004"
+        ],
+        "visual_specification_ids": []
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-006"
+        ],
+        "citation_ids": [
+          "CITE-DAI-005"
+        ],
+        "decision_purpose": "Define workforce conditions for safe adoption.",
+        "kind": "evidence",
+        "number_ids": [
+          "NUM-DAI-008",
+          "NUM-DAI-009"
+        ],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-005",
+        "title": "Public-AI use creates a control gap while training interest supports managed adoption",
+        "uncertainty_ids": [
+          "UNC-DAI-005"
+        ],
+        "visual_specification_ids": []
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-001",
+          "AST-DAI-004",
+          "AST-DAI-005"
+        ],
+        "citation_ids": [
+          "CITE-DAI-001",
+          "CITE-DAI-003",
+          "CITE-DAI-004"
+        ],
+        "decision_purpose": "Show the option dispositions and switching logic.",
+        "kind": "options",
+        "number_ids": [],
+        "recommendation_ids": [
+          "UC-001",
+          "UC-008"
+        ],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-006",
+        "title": "UC-001 is the first pilot and UC-008 remains the comparator",
+        "uncertainty_ids": [],
+        "visual_specification_ids": [
+          "VIS-DAI-001"
+        ]
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-007",
+          "AST-DAI-008",
+          "AST-DAI-009"
+        ],
+        "citation_ids": [
+          "CITE-DAI-006"
+        ],
+        "decision_purpose": "Reconcile cost, potential value, break-even conditions and invalid management claims.",
+        "kind": "value_case",
+        "number_ids": [
+          "NUM-DAI-010",
+          "NUM-DAI-011",
+          "NUM-DAI-012",
+          "NUM-DAI-013",
+          "NUM-DAI-014",
+          "NUM-DAI-015",
+          "NUM-DAI-016",
+          "NUM-DAI-017",
+          "NUM-DAI-018"
+        ],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-007",
+        "title": "Value is capacity and potential margin—not immediate cash savings",
+        "uncertainty_ids": [
+          "UNC-DAI-006"
+        ],
+        "visual_specification_ids": [
+          "VIS-DAI-003"
+        ]
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-010",
+          "AST-DAI-011"
+        ],
+        "citation_ids": [
+          "CITE-DAI-003",
+          "CITE-DAI-005"
+        ],
+        "decision_purpose": "Define the minimum operating and control model for the pilot.",
+        "kind": "control_model",
+        "number_ids": [],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-008",
+        "title": "Human authority and foundation controls must remain",
+        "uncertainty_ids": [],
+        "visual_specification_ids": [
+          "VIS-DAI-004"
+        ]
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-012"
+        ],
+        "citation_ids": [
+          "CITE-DAI-003",
+          "CITE-DAI-005",
+          "CITE-DAI-006"
+        ],
+        "decision_purpose": "Specify the implementation sequence, scale gate and stop paths.",
+        "kind": "roadmap",
+        "number_ids": [],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [
+          "ACT-DAI-FOUNDATIONS",
+          "ACT-DAI-PILOT",
+          "ACT-DAI-EVALUATE",
+          "ACT-DAI-SCALE-OR-STOP"
+        ],
+        "semantic_object_id": "SEM-DAI-009",
+        "title": "Scale only after evidence passes—and stop on material harm",
+        "uncertainty_ids": [],
+        "visual_specification_ids": [
+          "VIS-DAI-005",
+          "VIS-DAI-006"
+        ]
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-001",
+          "AST-DAI-009",
+          "AST-DAI-010",
+          "AST-DAI-012"
+        ],
+        "citation_ids": [],
+        "decision_purpose": "Present the exact accountable-human decisions required before execution or release.",
+        "kind": "approval",
+        "number_ids": [
+          "NUM-DAI-011",
+          "NUM-DAI-012"
+        ],
+        "recommendation_ids": [
+          "UC-001"
+        ],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-010",
+        "title": "Founder approval is required for scope, commitment and residual risk",
+        "uncertainty_ids": [],
+        "visual_specification_ids": []
+      },
+      {
+        "assertion_ids": [],
+        "citation_ids": [
+          "CITE-DAI-001",
+          "CITE-DAI-002",
+          "CITE-DAI-003",
+          "CITE-DAI-004",
+          "CITE-DAI-005",
+          "CITE-DAI-006"
+        ],
+        "decision_purpose": "Retain complete internal provenance and transparent limitations.",
+        "kind": "appendix",
+        "number_ids": [],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-011",
+        "title": "Sources, assumptions, methods and reconciliation",
+        "uncertainty_ids": [
+          "UNC-DAI-001",
+          "UNC-DAI-002",
+          "UNC-DAI-003",
+          "UNC-DAI-004",
+          "UNC-DAI-005",
+          "UNC-DAI-006"
+        ],
+        "visual_specification_ids": []
+      },
+      {
+        "assertion_ids": [
+          "AST-DAI-007",
+          "AST-DAI-008",
+          "AST-DAI-009"
+        ],
+        "citation_ids": [
+          "CITE-DAI-006"
+        ],
+        "decision_purpose": "Provide a deterministic calculation and reconciliation surface.",
+        "kind": "workbook_check",
+        "number_ids": [
+          "NUM-DAI-001",
+          "NUM-DAI-002",
+          "NUM-DAI-003",
+          "NUM-DAI-004",
+          "NUM-DAI-005",
+          "NUM-DAI-006",
+          "NUM-DAI-007",
+          "NUM-DAI-008",
+          "NUM-DAI-009",
+          "NUM-DAI-010",
+          "NUM-DAI-011",
+          "NUM-DAI-012",
+          "NUM-DAI-013",
+          "NUM-DAI-014",
+          "NUM-DAI-015",
+          "NUM-DAI-016",
+          "NUM-DAI-017",
+          "NUM-DAI-018"
+        ],
+        "recommendation_ids": [],
+        "roadmap_action_ids": [],
+        "semantic_object_id": "SEM-DAI-012",
+        "title": "Value model checks reconcile every displayed material number",
+        "uncertainty_ids": [],
+        "visual_specification_ids": []
+      }
+    ],
+    "story": {
+      "assertions": [
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-001",
+          "assumption_ids": [],
+          "conditions": [
+            "approved enterprise AI environment",
+            "identity and role-based access",
+            "source registry and version control",
+            "logging and audit",
+            "user verification training",
+            "incident and kill-switch procedure",
+            "transparent workforce and telemetry policy"
+          ],
+          "epistemic_status": "recommendation",
+          "evidence_ids": [
+            "EXP-EVID-001",
+            "EXP-EVID-006"
+          ],
+          "material": true,
+          "statement": "Northstar should approve one bounded quotation-drafting pilot, retain the non-AI comparator and defer scale until evidence and controls pass."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-002",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "reasoned_synthesis",
+          "evidence_ids": [
+            "EXP-EVID-001"
+          ],
+          "material": true,
+          "statement": "Quotation workload is material and segmented, but the evidence does not establish that administration consumes half of seller capacity."
+        },
+        {
+          "analysis_ids": [],
+          "assertion_id": "AST-DAI-003",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "established_fact",
+          "evidence_ids": [
+            "EXP-EVID-002"
+          ],
+          "material": true,
+          "statement": "Quotation elapsed time is not equivalent to automatable touch time."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-004",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "reasoned_synthesis",
+          "evidence_ids": [
+            "EXP-EVID-003"
+          ],
+          "material": true,
+          "statement": "Customer-service evidence supports only an internal human-mediated assistant after knowledge and identity controls improve—not an autonomous external chatbot."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-005",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "reasoned_synthesis",
+          "evidence_ids": [
+            "EXP-EVID-004"
+          ],
+          "material": true,
+          "statement": "Inventory forecasting is not production-ready without demand-label and substitution remediation and a controlled back-test."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-006",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "reasoned_synthesis",
+          "evidence_ids": [
+            "EXP-EVID-005"
+          ],
+          "material": true,
+          "statement": "Unapproved public-AI use is a current control gap, while strong training interest supports managed adoption with verification and role safeguards."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-007",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "reasoned_synthesis",
+          "evidence_ids": [
+            "EXP-EVID-006"
+          ],
+          "material": true,
+          "statement": "The pilot value case is capacity and potential incremental margin, not immediate cash savings."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-008",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "reasoned_synthesis",
+          "evidence_ids": [
+            "EXP-EVID-006"
+          ],
+          "material": true,
+          "statement": "The current evidence supports zero immediate cash-releasing headcount benefit."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-009",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "reasoned_synthesis",
+          "evidence_ids": [
+            "EXP-EVID-006"
+          ],
+          "material": true,
+          "statement": "The downside pilot cost remains within the approved SGD 120,000 ceiling, with only SGD 2,000 headroom."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-010",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "recommendation",
+          "evidence_ids": [
+            "EXP-EVID-001",
+            "EXP-EVID-003"
+          ],
+          "material": true,
+          "statement": "Human technical approval, pricing authority and external release must remain mandatory throughout the pilot."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-011",
+          "assumption_ids": [],
+          "conditions": [],
+          "epistemic_status": "recommendation",
+          "evidence_ids": [
+            "EXP-EVID-003",
+            "EXP-EVID-005"
+          ],
+          "material": true,
+          "statement": "Approved AI environment, identity, source versioning, logging, training and incident controls are required in parallel with the pilot."
+        },
+        {
+          "analysis_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "assertion_id": "AST-DAI-012",
+          "assumption_ids": [],
+          "conditions": [
+            "unresolved critical confidentiality exposure",
+            "material increase in quotation error or unauthorised pricing",
+            "external output sent without human approval",
+            "source-grounding below approved threshold",
+            "user correction effort eliminates expected capacity benefit",
+            "material workforce or service harm without effective remediation"
+          ],
+          "epistemic_status": "recommendation",
+          "evidence_ids": [
+            "EXP-EVID-003",
+            "EXP-EVID-005",
+            "EXP-EVID-006"
+          ],
+          "material": true,
+          "statement": "Scale should occur only after outcome and control evidence passes; material leakage, unauthorised release or value failure must stop the pilot."
+        }
+      ],
+      "audience_roles": [
+        "Northstar CEO",
+        "Northstar CFO",
+        "Northstar COO"
+      ],
+      "communication_objective": "Enable the Founder and Northstar leadership to decide whether to approve one bounded AI pilot, its cash ceiling, operating controls and evidence required before scale.",
+      "decision_id": "DEC-DAI-001",
+      "engagement_id": "FIXTURE-DAI-001",
+      "governing_thought": "Approve a bounded quotation-drafting pilot with a non-AI comparator and retained human authority; do not recognise immediate cash savings or scale before evidence and controls pass.",
+      "key_number_ids": [
+        "NUM-DAI-001",
+        "NUM-DAI-002",
+        "NUM-DAI-003",
+        "NUM-DAI-004",
+        "NUM-DAI-005",
+        "NUM-DAI-006",
+        "NUM-DAI-007",
+        "NUM-DAI-008",
+        "NUM-DAI-009",
+        "NUM-DAI-010",
+        "NUM-DAI-011",
+        "NUM-DAI-012",
+        "NUM-DAI-013",
+        "NUM-DAI-014",
+        "NUM-DAI-015",
+        "NUM-DAI-016",
+        "NUM-DAI-017",
+        "NUM-DAI-018"
+      ],
+      "recommendation_ids": [
+        "UC-001",
+        "UC-008"
+      ],
+      "roadmap_action_ids": [
+        "ACT-DAI-FOUNDATIONS",
+        "ACT-DAI-PILOT",
+        "ACT-DAI-EVALUATE",
+        "ACT-DAI-SCALE-OR-STOP"
+      ],
+      "sections": [
+        {
+          "assertion_ids": [
+            "AST-DAI-001",
+            "AST-DAI-009",
+            "AST-DAI-010"
+          ],
+          "purpose": "State the governing decision, recommendation and commitment requested.",
+          "required_number_ids": [
+            "NUM-DAI-010",
+            "NUM-DAI-011",
+            "NUM-DAI-012"
+          ],
+          "required_source_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-005"
+          ],
+          "section_id": "SEC-DAI-001",
+          "title": "Approve a bounded quotation-drafting pilot—not autonomous AI",
+          "visual_specification_ids": [
+            "VIS-DAI-001"
+          ]
+        },
+        {
+          "assertion_ids": [
+            "AST-DAI-002",
+            "AST-DAI-003"
+          ],
+          "purpose": "Correct the burden claim and identify the bounded drafting opportunity.",
+          "required_number_ids": [
+            "NUM-DAI-001",
+            "NUM-DAI-002",
+            "NUM-DAI-003",
+            "NUM-DAI-004"
+          ],
+          "required_source_ids": [
+            "CLIENT-SRC-002",
+            "CLIENT-DATA-001"
+          ],
+          "section_id": "SEC-DAI-002",
+          "title": "Quotation work is material, but elapsed time is not automatable touch time",
+          "visual_specification_ids": [
+            "VIS-DAI-002"
+          ]
+        },
+        {
+          "assertion_ids": [
+            "AST-DAI-004",
+            "AST-DAI-005"
+          ],
+          "purpose": "Define the options that must be deferred or constrained.",
+          "required_number_ids": [
+            "NUM-DAI-005",
+            "NUM-DAI-006",
+            "NUM-DAI-007"
+          ],
+          "required_source_ids": [
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004"
+          ],
+          "section_id": "SEC-DAI-003",
+          "title": "Customer service and inventory evidence do not support autonomous deployment",
+          "visual_specification_ids": []
+        },
+        {
+          "assertion_ids": [
+            "AST-DAI-006"
+          ],
+          "purpose": "Connect workforce evidence to implementation conditions.",
+          "required_number_ids": [
+            "NUM-DAI-008",
+            "NUM-DAI-009"
+          ],
+          "required_source_ids": [
+            "CLIENT-DATA-004",
+            "CLIENT-SRC-004",
+            "CLIENT-DATA-006"
+          ],
+          "section_id": "SEC-DAI-004",
+          "title": "Public-AI use creates a control gap while training interest supports managed adoption",
+          "visual_specification_ids": []
+        },
+        {
+          "assertion_ids": [
+            "AST-DAI-007",
+            "AST-DAI-008",
+            "AST-DAI-009"
+          ],
+          "purpose": "Present the reconciled value case, sensitivities and invalid management claim.",
+          "required_number_ids": [
+            "NUM-DAI-010",
+            "NUM-DAI-011",
+            "NUM-DAI-012",
+            "NUM-DAI-013",
+            "NUM-DAI-014",
+            "NUM-DAI-015",
+            "NUM-DAI-016",
+            "NUM-DAI-017",
+            "NUM-DAI-018"
+          ],
+          "required_source_ids": [
+            "CLIENT-SRC-005",
+            "CLIENT-DATA-005"
+          ],
+          "section_id": "SEC-DAI-005",
+          "title": "The pilot fits the ceiling, but value is capacity and potential margin—not cash savings",
+          "visual_specification_ids": [
+            "VIS-DAI-003"
+          ]
+        },
+        {
+          "assertion_ids": [
+            "AST-DAI-010",
+            "AST-DAI-011"
+          ],
+          "purpose": "Define the control stack and non-delegable authority.",
+          "required_number_ids": [],
+          "required_source_ids": [
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004"
+          ],
+          "section_id": "SEC-DAI-006",
+          "title": "Human authority and foundation controls must remain in the operating model",
+          "visual_specification_ids": [
+            "VIS-DAI-004"
+          ]
+        },
+        {
+          "assertion_ids": [
+            "AST-DAI-012"
+          ],
+          "purpose": "Set the pilot roadmap, scale gate, stop conditions and Founder approvals.",
+          "required_number_ids": [],
+          "required_source_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-005",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-002",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004",
+            "CLIENT-SRC-005"
+          ],
+          "section_id": "SEC-DAI-007",
+          "title": "Scale only after controlled evidence passes—and stop on material harm",
+          "visual_specification_ids": [
+            "VIS-DAI-005",
+            "VIS-DAI-006"
+          ]
+        },
+        {
+          "assertion_ids": [
+            "AST-DAI-001",
+            "AST-DAI-007",
+            "AST-DAI-012"
+          ],
+          "purpose": "Preserve complete internal provenance without cluttering executive surfaces.",
+          "required_number_ids": [],
+          "required_source_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-005",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-002",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004",
+            "CLIENT-SRC-005"
+          ],
+          "section_id": "SEC-DAI-008",
+          "title": "Appendix: sources, assumptions, methods and reconciliations",
+          "visual_specification_ids": []
+        }
+      ],
+      "source_ids": [
+        "CLIENT-DATA-001",
+        "CLIENT-DATA-002",
+        "CLIENT-DATA-003",
+        "CLIENT-DATA-004",
+        "CLIENT-DATA-005",
+        "CLIENT-DATA-006",
+        "CLIENT-SRC-002",
+        "CLIENT-SRC-003",
+        "CLIENT-SRC-004",
+        "CLIENT-SRC-005"
+      ],
+      "story_model_id": "STORY-DAI-001",
+      "version": "1.0.0"
+    },
+    "surface_plans": [
+      {
+        "manifest": {
+          "approval_status": "approved",
+          "audience_roles": [
+            "Northstar CEO",
+            "Northstar CFO",
+            "Northstar COO"
+          ],
+          "authority": "derived",
+          "baseline_story_model_id": "STORY-DAI-001",
+          "baseline_story_model_version": "1.0.0",
+          "confidentiality_marking": "Confidential — synthetic evaluation fixture",
+          "evidence_baseline_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-005",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-002",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004",
+            "CLIENT-SRC-005"
+          ],
+          "excluded_content": {
+            "autonomous_chatbot": "Deferred because the evidence does not establish safe autonomous response.",
+            "headcount_savings": "No immediate cash-releasing headcount benefit is recognised."
+          },
+          "file_id": "FILE-DAI-PPTX-001",
+          "filename": "northstar-ai-audit-decision-deck-v1.0.0.pptx",
+          "generated_from": [
+            "DSM-DAI-001",
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "included_object_ids": [
+            "SEM-DAI-001",
+            "SEM-DAI-002",
+            "SEM-DAI-003",
+            "SEM-DAI-004",
+            "SEM-DAI-005",
+            "SEM-DAI-006",
+            "SEM-DAI-007",
+            "SEM-DAI-008",
+            "SEM-DAI-009",
+            "SEM-DAI-010",
+            "SEM-DAI-011"
+          ],
+          "last_reconciliation_reference": "RECON-DAI-001",
+          "model_version_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "owner": "Deliverable Production Agent",
+          "purpose": "Executive decision deck for pilot approval.",
+          "surface": "pptx",
+          "version": "1.0.0"
+        },
+        "objects": [
+          {
+            "editable_required": false,
+            "render_form": "native_shapes",
+            "role": "cover",
+            "semantic_object_id": "SEM-DAI-001",
+            "sequence": 1,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-001",
+            "title": "Northstar AI pilot decision"
+          },
+          {
+            "editable_required": false,
+            "render_form": "native_shapes",
+            "role": "executive_summary",
+            "semantic_object_id": "SEM-DAI-002",
+            "sequence": 2,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-002",
+            "title": "Approve a bounded quotation-drafting pilot—not autonomous AI"
+          },
+          {
+            "editable_required": true,
+            "render_form": "native_shapes",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-003",
+            "sequence": 3,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-003",
+            "title": "Quotation work is material, but elapsed time is not automatable touch time"
+          },
+          {
+            "editable_required": false,
+            "render_form": "native_shapes",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-004",
+            "sequence": 4,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-004",
+            "title": "Customer service and inventory evidence do not support autonomous deployment"
+          },
+          {
+            "editable_required": false,
+            "render_form": "native_shapes",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-005",
+            "sequence": 5,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-005",
+            "title": "Public-AI use creates a control gap while training interest supports managed adoption"
+          },
+          {
+            "editable_required": true,
+            "render_form": "native_shapes",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-006",
+            "sequence": 6,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-006",
+            "title": "UC-001 is the first pilot and UC-008 remains the comparator"
+          },
+          {
+            "editable_required": true,
+            "render_form": "native_shapes",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-007",
+            "sequence": 7,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-007",
+            "title": "Value is capacity and potential margin—not immediate cash savings"
+          },
+          {
+            "editable_required": true,
+            "render_form": "native_shapes",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-008",
+            "sequence": 8,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-008",
+            "title": "Human authority and foundation controls must remain"
+          },
+          {
+            "editable_required": true,
+            "render_form": "native_shapes",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-009",
+            "sequence": 9,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-009",
+            "title": "Scale only after evidence passes—and stop on material harm"
+          },
+          {
+            "editable_required": false,
+            "render_form": "native_shapes",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-010",
+            "sequence": 10,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-010",
+            "title": "Founder approval is required for scope, commitment and residual risk"
+          },
+          {
+            "editable_required": false,
+            "render_form": "native_shapes",
+            "role": "appendix",
+            "semantic_object_id": "SEM-DAI-011",
+            "sequence": 11,
+            "surface": "pptx",
+            "surface_object_id": "SURF-DAI-PPTX-011",
+            "title": "Sources, assumptions, methods and reconciliation"
+          }
+        ]
+      },
+      {
+        "manifest": {
+          "approval_status": "approved",
+          "audience_roles": [
+            "Northstar CEO",
+            "Northstar CFO",
+            "Northstar COO"
+          ],
+          "authority": "derived",
+          "baseline_story_model_id": "STORY-DAI-001",
+          "baseline_story_model_version": "1.0.0",
+          "confidentiality_marking": "Confidential — synthetic evaluation fixture",
+          "evidence_baseline_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-005",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-002",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004",
+            "CLIENT-SRC-005"
+          ],
+          "excluded_content": {
+            "autonomous_chatbot": "Deferred because the evidence does not establish safe autonomous response.",
+            "headcount_savings": "No immediate cash-releasing headcount benefit is recognised."
+          },
+          "file_id": "FILE-DAI-DOCX-001",
+          "filename": "northstar-ai-audit-decision-report-v1.0.0.docx",
+          "generated_from": [
+            "DSM-DAI-001",
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "included_object_ids": [
+            "SEM-DAI-001",
+            "SEM-DAI-002",
+            "SEM-DAI-003",
+            "SEM-DAI-004",
+            "SEM-DAI-005",
+            "SEM-DAI-006",
+            "SEM-DAI-007",
+            "SEM-DAI-008",
+            "SEM-DAI-009",
+            "SEM-DAI-010",
+            "SEM-DAI-011"
+          ],
+          "last_reconciliation_reference": "RECON-DAI-001",
+          "model_version_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "owner": "Deliverable Production Agent",
+          "purpose": "Decision report with executive narrative, evidence and appendices.",
+          "surface": "docx",
+          "version": "1.0.0"
+        },
+        "objects": [
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "cover",
+            "semantic_object_id": "SEM-DAI-001",
+            "sequence": 1,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-001",
+            "title": "Northstar AI pilot decision"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-002",
+            "sequence": 2,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-002",
+            "title": "Approve a bounded quotation-drafting pilot—not autonomous AI"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-003",
+            "sequence": 3,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-003",
+            "title": "Quotation work is material, but elapsed time is not automatable touch time"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-004",
+            "sequence": 4,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-004",
+            "title": "Customer service and inventory evidence do not support autonomous deployment"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-005",
+            "sequence": 5,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-005",
+            "title": "Public-AI use creates a control gap while training interest supports managed adoption"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-006",
+            "sequence": 6,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-006",
+            "title": "UC-001 is the first pilot and UC-008 remains the comparator"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-007",
+            "sequence": 7,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-007",
+            "title": "Value is capacity and potential margin—not immediate cash savings"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-008",
+            "sequence": 8,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-008",
+            "title": "Human authority and foundation controls must remain"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-009",
+            "sequence": 9,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-009",
+            "title": "Scale only after evidence passes—and stop on material harm"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-010",
+            "sequence": 10,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-010",
+            "title": "Founder approval is required for scope, commitment and residual risk"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "appendix",
+            "semantic_object_id": "SEM-DAI-011",
+            "sequence": 11,
+            "surface": "docx",
+            "surface_object_id": "SURF-DAI-DOCX-011",
+            "title": "Sources, assumptions, methods and reconciliation"
+          }
+        ]
+      },
+      {
+        "manifest": {
+          "approval_status": "approved",
+          "audience_roles": [
+            "Northstar CFO",
+            "Northstar COO"
+          ],
+          "authority": "derived",
+          "baseline_story_model_id": "STORY-DAI-001",
+          "baseline_story_model_version": "1.0.0",
+          "confidentiality_marking": "Confidential — synthetic evaluation fixture",
+          "evidence_baseline_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-005",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-002",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004",
+            "CLIENT-SRC-005"
+          ],
+          "excluded_content": {
+            "autonomous_chatbot": "Deferred because the evidence does not establish safe autonomous response.",
+            "headcount_savings": "No immediate cash-releasing headcount benefit is recognised."
+          },
+          "file_id": "FILE-DAI-XLSX-001",
+          "filename": "northstar-ai-audit-value-model-v1.0.0.xlsx",
+          "generated_from": [
+            "DSM-DAI-001",
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "included_object_ids": [
+            "SEM-DAI-001",
+            "SEM-DAI-003",
+            "SEM-DAI-007",
+            "SEM-DAI-011",
+            "SEM-DAI-012"
+          ],
+          "last_reconciliation_reference": "RECON-DAI-001",
+          "model_version_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "owner": "Deliverable Production Agent",
+          "purpose": "Reconciled value model, source register, calculations, outputs and checks.",
+          "surface": "xlsx",
+          "version": "1.0.0"
+        },
+        "objects": [
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "readme",
+            "semantic_object_id": "SEM-DAI-001",
+            "sequence": 1,
+            "surface": "xlsx",
+            "surface_object_id": "SURF-DAI-XLSX-001",
+            "title": "Read-me and model purpose"
+          },
+          {
+            "editable_required": false,
+            "render_form": "table",
+            "role": "source_data",
+            "semantic_object_id": "SEM-DAI-011",
+            "sequence": 2,
+            "surface": "xlsx",
+            "surface_object_id": "SURF-DAI-XLSX-002",
+            "title": "Source and provenance register"
+          },
+          {
+            "editable_required": true,
+            "render_form": "chart",
+            "role": "assumptions",
+            "semantic_object_id": "SEM-DAI-003",
+            "sequence": 3,
+            "surface": "xlsx",
+            "surface_object_id": "SURF-DAI-XLSX-003",
+            "title": "Quotation inputs and segment assumptions"
+          },
+          {
+            "editable_required": false,
+            "render_form": "formula_sheet",
+            "role": "calculations",
+            "semantic_object_id": "SEM-DAI-007",
+            "sequence": 4,
+            "surface": "xlsx",
+            "surface_object_id": "SURF-DAI-XLSX-004",
+            "title": "Value calculations and sensitivities"
+          },
+          {
+            "editable_required": true,
+            "render_form": "chart",
+            "role": "outputs",
+            "semantic_object_id": "SEM-DAI-007",
+            "sequence": 5,
+            "surface": "xlsx",
+            "surface_object_id": "SURF-DAI-XLSX-005",
+            "title": "Approved value outputs"
+          },
+          {
+            "editable_required": false,
+            "render_form": "formula_sheet",
+            "role": "checks",
+            "semantic_object_id": "SEM-DAI-012",
+            "sequence": 6,
+            "surface": "xlsx",
+            "surface_object_id": "SURF-DAI-XLSX-006",
+            "title": "Checks and cross-format reconciliation"
+          }
+        ]
+      },
+      {
+        "manifest": {
+          "approval_status": "approved",
+          "audience_roles": [
+            "Northstar CEO",
+            "Northstar CFO",
+            "Northstar COO"
+          ],
+          "authority": "derived",
+          "baseline_story_model_id": "STORY-DAI-001",
+          "baseline_story_model_version": "1.0.0",
+          "confidentiality_marking": "Confidential — synthetic evaluation fixture",
+          "evidence_baseline_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-005",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-002",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004",
+            "CLIENT-SRC-005"
+          ],
+          "excluded_content": {
+            "autonomous_chatbot": "Deferred because the evidence does not establish safe autonomous response.",
+            "headcount_savings": "No immediate cash-releasing headcount benefit is recognised."
+          },
+          "file_id": "FILE-DAI-PDF-001",
+          "filename": "northstar-ai-audit-decision-pack-v1.0.0.pdf",
+          "generated_from": [
+            "DSM-DAI-001",
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "included_object_ids": [
+            "SEM-DAI-001",
+            "SEM-DAI-002",
+            "SEM-DAI-003",
+            "SEM-DAI-004",
+            "SEM-DAI-005",
+            "SEM-DAI-006",
+            "SEM-DAI-007",
+            "SEM-DAI-008",
+            "SEM-DAI-009",
+            "SEM-DAI-010",
+            "SEM-DAI-011"
+          ],
+          "last_reconciliation_reference": "RECON-DAI-001",
+          "model_version_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "owner": "Deliverable Production Agent",
+          "purpose": "Controlled distribution copy derived from the approved semantic story.",
+          "surface": "pdf",
+          "version": "1.0.0"
+        },
+        "objects": [
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "cover",
+            "semantic_object_id": "SEM-DAI-001",
+            "sequence": 1,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-001",
+            "title": "Northstar AI pilot decision"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-002",
+            "sequence": 2,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-002",
+            "title": "Approve a bounded quotation-drafting pilot—not autonomous AI"
+          },
+          {
+            "editable_required": false,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-003",
+            "sequence": 3,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-003",
+            "title": "Quotation work is material, but elapsed time is not automatable touch time"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-004",
+            "sequence": 4,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-004",
+            "title": "Customer service and inventory evidence do not support autonomous deployment"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-005",
+            "sequence": 5,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-005",
+            "title": "Public-AI use creates a control gap while training interest supports managed adoption"
+          },
+          {
+            "editable_required": false,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-006",
+            "sequence": 6,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-006",
+            "title": "UC-001 is the first pilot and UC-008 remains the comparator"
+          },
+          {
+            "editable_required": false,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-007",
+            "sequence": 7,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-007",
+            "title": "Value is capacity and potential margin—not immediate cash savings"
+          },
+          {
+            "editable_required": false,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-008",
+            "sequence": 8,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-008",
+            "title": "Human authority and foundation controls must remain"
+          },
+          {
+            "editable_required": false,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-009",
+            "sequence": 9,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-009",
+            "title": "Scale only after evidence passes—and stop on material harm"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-010",
+            "sequence": 10,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-010",
+            "title": "Founder approval is required for scope, commitment and residual risk"
+          },
+          {
+            "editable_required": false,
+            "render_form": "text",
+            "role": "appendix",
+            "semantic_object_id": "SEM-DAI-011",
+            "sequence": 11,
+            "surface": "pdf",
+            "surface_object_id": "SURF-DAI-PDF-011",
+            "title": "Sources, assumptions, methods and reconciliation"
+          }
+        ]
+      },
+      {
+        "manifest": {
+          "approval_status": "approved",
+          "audience_roles": [
+            "Northstar CEO",
+            "Northstar CFO",
+            "Northstar COO"
+          ],
+          "authority": "derived",
+          "baseline_story_model_id": "STORY-DAI-001",
+          "baseline_story_model_version": "1.0.0",
+          "confidentiality_marking": "Confidential — synthetic evaluation fixture",
+          "evidence_baseline_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-005",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-002",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004",
+            "CLIENT-SRC-005"
+          ],
+          "excluded_content": {
+            "autonomous_chatbot": "Deferred because the evidence does not establish safe autonomous response.",
+            "headcount_savings": "No immediate cash-releasing headcount benefit is recognised."
+          },
+          "file_id": "FILE-DAI-SVG-001",
+          "filename": "northstar-ai-audit-visual-library-v1.0.0.svg",
+          "generated_from": [
+            "DSM-DAI-001",
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "included_object_ids": [
+            "SEM-DAI-003",
+            "SEM-DAI-006",
+            "SEM-DAI-007",
+            "SEM-DAI-008",
+            "SEM-DAI-009"
+          ],
+          "last_reconciliation_reference": "RECON-DAI-001",
+          "model_version_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "owner": "Deliverable Production Agent",
+          "purpose": "Editable vector visual specifications for the decision pack.",
+          "surface": "svg",
+          "version": "1.0.0"
+        },
+        "objects": [
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-003",
+            "sequence": 1,
+            "surface": "svg",
+            "surface_object_id": "SURF-DAI-SVG-001",
+            "title": "Quotation work is material, but elapsed time is not automatable touch time"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-006",
+            "sequence": 2,
+            "surface": "svg",
+            "surface_object_id": "SURF-DAI-SVG-002",
+            "title": "UC-001 is the first pilot and UC-008 remains the comparator"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-007",
+            "sequence": 3,
+            "surface": "svg",
+            "surface_object_id": "SURF-DAI-SVG-003",
+            "title": "Value is capacity and potential margin—not immediate cash savings"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-008",
+            "sequence": 4,
+            "surface": "svg",
+            "surface_object_id": "SURF-DAI-SVG-004",
+            "title": "Human authority and foundation controls must remain"
+          },
+          {
+            "editable_required": true,
+            "render_form": "svg",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-009",
+            "sequence": 5,
+            "surface": "svg",
+            "surface_object_id": "SURF-DAI-SVG-005",
+            "title": "Scale only after evidence passes—and stop on material harm"
+          }
+        ]
+      },
+      {
+        "manifest": {
+          "approval_status": "approved",
+          "audience_roles": [
+            "Northstar CEO",
+            "Northstar CFO",
+            "Northstar COO"
+          ],
+          "authority": "derived",
+          "baseline_story_model_id": "STORY-DAI-001",
+          "baseline_story_model_version": "1.0.0",
+          "confidentiality_marking": "Confidential — synthetic evaluation fixture",
+          "evidence_baseline_ids": [
+            "CLIENT-DATA-001",
+            "CLIENT-DATA-002",
+            "CLIENT-DATA-003",
+            "CLIENT-DATA-004",
+            "CLIENT-DATA-005",
+            "CLIENT-DATA-006",
+            "CLIENT-SRC-002",
+            "CLIENT-SRC-003",
+            "CLIENT-SRC-004",
+            "CLIENT-SRC-005"
+          ],
+          "excluded_content": {
+            "autonomous_chatbot": "Deferred because the evidence does not establish safe autonomous response.",
+            "headcount_savings": "No immediate cash-releasing headcount benefit is recognised."
+          },
+          "file_id": "FILE-DAI-HTML-001",
+          "filename": "northstar-ai-audit-decision-brief-v1.0.0.html",
+          "generated_from": [
+            "DSM-DAI-001",
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "included_object_ids": [
+            "SEM-DAI-001",
+            "SEM-DAI-002",
+            "SEM-DAI-003",
+            "SEM-DAI-004",
+            "SEM-DAI-005",
+            "SEM-DAI-006",
+            "SEM-DAI-007",
+            "SEM-DAI-008",
+            "SEM-DAI-009",
+            "SEM-DAI-010",
+            "SEM-DAI-011"
+          ],
+          "last_reconciliation_reference": "RECON-DAI-001",
+          "model_version_ids": [
+            "FIXTURE-DAI-001:oracle:1.0.0"
+          ],
+          "owner": "Deliverable Production Agent",
+          "purpose": "Responsive decision brief with on-demand provenance and progressive disclosure.",
+          "surface": "html",
+          "version": "1.0.0"
+        },
+        "objects": [
+          {
+            "editable_required": false,
+            "render_form": "web_component",
+            "role": "cover",
+            "semantic_object_id": "SEM-DAI-001",
+            "sequence": 1,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-001",
+            "title": "Northstar AI pilot decision"
+          },
+          {
+            "editable_required": false,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-002",
+            "sequence": 2,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-002",
+            "title": "Approve a bounded quotation-drafting pilot—not autonomous AI"
+          },
+          {
+            "editable_required": true,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-003",
+            "sequence": 3,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-003",
+            "title": "Quotation work is material, but elapsed time is not automatable touch time"
+          },
+          {
+            "editable_required": false,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-004",
+            "sequence": 4,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-004",
+            "title": "Customer service and inventory evidence do not support autonomous deployment"
+          },
+          {
+            "editable_required": false,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-005",
+            "sequence": 5,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-005",
+            "title": "Public-AI use creates a control gap while training interest supports managed adoption"
+          },
+          {
+            "editable_required": true,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-006",
+            "sequence": 6,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-006",
+            "title": "UC-001 is the first pilot and UC-008 remains the comparator"
+          },
+          {
+            "editable_required": true,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-007",
+            "sequence": 7,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-007",
+            "title": "Value is capacity and potential margin—not immediate cash savings"
+          },
+          {
+            "editable_required": true,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-008",
+            "sequence": 8,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-008",
+            "title": "Human authority and foundation controls must remain"
+          },
+          {
+            "editable_required": true,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-009",
+            "sequence": 9,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-009",
+            "title": "Scale only after evidence passes—and stop on material harm"
+          },
+          {
+            "editable_required": false,
+            "render_form": "web_component",
+            "role": "content",
+            "semantic_object_id": "SEM-DAI-010",
+            "sequence": 10,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-010",
+            "title": "Founder approval is required for scope, commitment and residual risk"
+          },
+          {
+            "editable_required": false,
+            "render_form": "web_component",
+            "role": "appendix",
+            "semantic_object_id": "SEM-DAI-011",
+            "sequence": 11,
+            "surface": "html",
+            "surface_object_id": "SURF-DAI-HTML-011",
+            "title": "Sources, assumptions, methods and reconciliation"
+          }
+        ]
+      }
+    ],
+    "version": "1.0.0",
+    "visuals": [
+      {
+        "accessibility_rules": [
+          "direct_labels",
+          "text_alternative",
+          "do_not_rely_on_colour"
+        ],
+        "allowed_surfaces": [
+          "docx",
+          "html",
+          "pdf",
+          "pptx",
+          "svg"
+        ],
+        "archetype": "portfolio_matrix",
+        "decorative_image_reference": null,
+        "editable_output_required": true,
+        "entities": [
+          {
+            "category": "pilot",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "UC-001",
+            "label": "Quotation drafting"
+          },
+          {
+            "category": "comparator",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "UC-008",
+            "label": "Non-AI process comparator"
+          },
+          {
+            "category": "defer",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "UC-003",
+            "label": "Autonomous chatbot"
+          },
+          {
+            "category": "defer",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "UC-004",
+            "label": "Inventory forecasting"
+          },
+          {
+            "category": "secondary",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "UC-005",
+            "label": "Bounded secondary option"
+          }
+        ],
+        "layout_rules": [
+          "two_axis_decision_matrix",
+          "show_disposition_labels",
+          "highlight_primary_and_comparator"
+        ],
+        "message": "UC-001 is the bounded first pilot; UC-008 remains the comparator while autonomous chatbot and inventory forecasting are deferred.",
+        "relationships": [],
+        "visual_specification_id": "VIS-DAI-001"
+      },
+      {
+        "accessibility_rules": [
+          "numbered_steps",
+          "text_alternative",
+          "minimum_contrast"
+        ],
+        "allowed_surfaces": [
+          "docx",
+          "html",
+          "pdf",
+          "pptx",
+          "svg",
+          "xlsx"
+        ],
+        "archetype": "process_flow",
+        "decorative_image_reference": null,
+        "editable_output_required": true,
+        "entities": [
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "ENQUIRY",
+            "label": "Customer enquiry"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "DRAFT",
+            "label": "Structured draft"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "TECH",
+            "label": "Technical approval"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "PRICE",
+            "label": "Pricing approval"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "RELEASE",
+            "label": "Human external release"
+          }
+        ],
+        "layout_rules": [
+          "left_to_right",
+          "human_gates_visually_distinct",
+          "show_waiting_separately_from_touch"
+        ],
+        "message": "Drafting can be bounded, while technical judgement, pricing and external release remain human-controlled.",
+        "relationships": [
+          {
+            "label": "",
+            "relationship": "supports",
+            "source_entity_id": "ENQUIRY",
+            "target_entity_id": "DRAFT"
+          },
+          {
+            "label": "",
+            "relationship": "requires",
+            "source_entity_id": "DRAFT",
+            "target_entity_id": "TECH"
+          },
+          {
+            "label": "",
+            "relationship": "precedes",
+            "source_entity_id": "TECH",
+            "target_entity_id": "PRICE"
+          },
+          {
+            "label": "",
+            "relationship": "precedes",
+            "source_entity_id": "PRICE",
+            "target_entity_id": "RELEASE"
+          }
+        ],
+        "visual_specification_id": "VIS-DAI-002"
+      },
+      {
+        "accessibility_rules": [
+          "direct_value_labels",
+          "text_alternative",
+          "currency_units_explicit"
+        ],
+        "allowed_surfaces": [
+          "docx",
+          "html",
+          "pdf",
+          "pptx",
+          "svg",
+          "xlsx"
+        ],
+        "archetype": "value_driver_tree",
+        "decorative_image_reference": null,
+        "editable_output_required": true,
+        "entities": [
+          {
+            "category": "",
+            "data_reference": "NUM-DAI-010",
+            "description": "",
+            "entity_id": "PILOT_COST",
+            "label": "Pilot cash cost"
+          },
+          {
+            "category": "",
+            "data_reference": "NUM-DAI-015",
+            "description": "",
+            "entity_id": "SUPPORT_COST",
+            "label": "Recurring support cost"
+          },
+          {
+            "category": "",
+            "data_reference": "NUM-DAI-013",
+            "description": "",
+            "entity_id": "CAPACITY",
+            "label": "Addressable capacity value"
+          },
+          {
+            "category": "",
+            "data_reference": "NUM-DAI-014",
+            "description": "",
+            "entity_id": "MARGIN",
+            "label": "Potential incremental margin"
+          },
+          {
+            "category": "",
+            "data_reference": "NUM-DAI-016",
+            "description": "",
+            "entity_id": "CASH_BENEFIT",
+            "label": "Immediate headcount cash benefit"
+          }
+        ],
+        "layout_rules": [
+          "driver_tree",
+          "separate_cash_from_capacity",
+          "show_uncertainty_on_margin"
+        ],
+        "message": "The value case separates cash cost, released capacity, potential margin and zero immediate headcount cash benefit.",
+        "relationships": [
+          {
+            "label": "",
+            "relationship": "investment_enables",
+            "source_entity_id": "PILOT_COST",
+            "target_entity_id": "CAPACITY"
+          },
+          {
+            "label": "",
+            "relationship": "reduces_net_value",
+            "source_entity_id": "SUPPORT_COST",
+            "target_entity_id": "MARGIN"
+          },
+          {
+            "label": "",
+            "relationship": "may_convert_to",
+            "source_entity_id": "CAPACITY",
+            "target_entity_id": "MARGIN"
+          }
+        ],
+        "visual_specification_id": "VIS-DAI-003"
+      },
+      {
+        "accessibility_rules": [
+          "ordered_layers",
+          "text_alternative",
+          "do_not_rely_on_colour"
+        ],
+        "allowed_surfaces": [
+          "docx",
+          "html",
+          "pdf",
+          "pptx",
+          "svg"
+        ],
+        "archetype": "layered_stack",
+        "decorative_image_reference": null,
+        "editable_output_required": true,
+        "entities": [
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "SOURCES",
+            "label": "Approved sources and version control"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "IDENTITY",
+            "label": "Identity and role-based access"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "LOGGING",
+            "label": "Logging and audit"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "HUMAN",
+            "label": "Human technical, pricing and release authority"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "KILL",
+            "label": "Incident response and kill switch"
+          }
+        ],
+        "layout_rules": [
+          "bottom_to_top_stack",
+          "human_authority_prominent",
+          "kill_switch_boundary"
+        ],
+        "message": "The pilot requires approved sources, identity, logging, human review and an effective kill switch.",
+        "relationships": [
+          {
+            "label": "",
+            "relationship": "foundation_for",
+            "source_entity_id": "SOURCES",
+            "target_entity_id": "IDENTITY"
+          },
+          {
+            "label": "",
+            "relationship": "controlled_by",
+            "source_entity_id": "IDENTITY",
+            "target_entity_id": "LOGGING"
+          },
+          {
+            "label": "",
+            "relationship": "supports_accountability",
+            "source_entity_id": "LOGGING",
+            "target_entity_id": "HUMAN"
+          },
+          {
+            "label": "",
+            "relationship": "can_trigger",
+            "source_entity_id": "HUMAN",
+            "target_entity_id": "KILL"
+          }
+        ],
+        "visual_specification_id": "VIS-DAI-004"
+      },
+      {
+        "accessibility_rules": [
+          "numbered_stages",
+          "text_alternative",
+          "milestones_have_dates_or_gates"
+        ],
+        "allowed_surfaces": [
+          "docx",
+          "html",
+          "pdf",
+          "pptx",
+          "svg"
+        ],
+        "archetype": "roadmap",
+        "decorative_image_reference": null,
+        "editable_output_required": true,
+        "entities": [
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "FOUNDATIONS",
+            "label": "Build foundations"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "PILOT",
+            "label": "Run bounded pilot and comparator"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "EVALUATE",
+            "label": "Evaluate outcomes and controls"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "DECIDE",
+            "label": "Scale, recycle or stop"
+          }
+        ],
+        "layout_rules": [
+          "stage_gate",
+          "show_founder_gate",
+          "show_stop_path"
+        ],
+        "message": "Build foundations, run a bounded pilot with comparator, evaluate evidence, then scale or stop.",
+        "relationships": [
+          {
+            "label": "",
+            "relationship": "precedes",
+            "source_entity_id": "FOUNDATIONS",
+            "target_entity_id": "PILOT"
+          },
+          {
+            "label": "",
+            "relationship": "produces_evidence_for",
+            "source_entity_id": "PILOT",
+            "target_entity_id": "EVALUATE"
+          },
+          {
+            "label": "",
+            "relationship": "gates",
+            "source_entity_id": "EVALUATE",
+            "target_entity_id": "DECIDE"
+          }
+        ],
+        "visual_specification_id": "VIS-DAI-005"
+      },
+      {
+        "accessibility_rules": [
+          "relationship_labels",
+          "text_alternative",
+          "uncertainty_explicit"
+        ],
+        "allowed_surfaces": [
+          "docx",
+          "html",
+          "pdf",
+          "pptx",
+          "svg"
+        ],
+        "archetype": "causal_narrative",
+        "decorative_image_reference": null,
+        "editable_output_required": true,
+        "entities": [
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "DELIVERY",
+            "label": "Pilot delivered"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "ADOPTION",
+            "label": "Users adopt and verify"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "OUTCOME",
+            "label": "Touch, rework and response outcomes improve"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "VALUE",
+            "label": "Capacity or margin is evidenced"
+          },
+          {
+            "category": "",
+            "data_reference": null,
+            "description": "",
+            "entity_id": "SCALE",
+            "label": "Scale decision"
+          }
+        ],
+        "layout_rules": [
+          "left_to_right_causal_chain",
+          "show_leakage_between_stages",
+          "show_stop_conditions"
+        ],
+        "message": "Pilot activity is not benefit: adoption and operating outcomes must precede verified value and scale.",
+        "relationships": [
+          {
+            "label": "",
+            "relationship": "does_not_guarantee",
+            "source_entity_id": "DELIVERY",
+            "target_entity_id": "ADOPTION"
+          },
+          {
+            "label": "",
+            "relationship": "enables",
+            "source_entity_id": "ADOPTION",
+            "target_entity_id": "OUTCOME"
+          },
+          {
+            "label": "",
+            "relationship": "may_create",
+            "source_entity_id": "OUTCOME",
+            "target_entity_id": "VALUE"
+          },
+          {
+            "label": "",
+            "relationship": "informs",
+            "source_entity_id": "VALUE",
+            "target_entity_id": "SCALE"
+          }
+        ],
+        "visual_specification_id": "VIS-DAI-006"
+      }
+    ]
+  },
+  "semantic_model_digest": "bf46061f42a8d930c8503d286c6fc6cc22decd3acab1b0c4b98e7785632bb334"
+}
