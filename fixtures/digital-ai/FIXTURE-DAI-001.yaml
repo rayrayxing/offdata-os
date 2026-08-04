@@ -1,0 +1,325 @@
+fixture_id: FIXTURE-DAI-001
+version: 0.1.0
+status: specification
+name: Fictional SME AI opportunity and risk audit
+classification: synthetic
+real_client_data: false
+purpose:
+  - Test an end-to-end offdata engagement from initial conversation to recommendation.
+  - Test decision-led selection of digital, AI, operating-model, workforce, risk and value methods.
+  - Test evidence gaps, contradictions, Founder interruptions and cross-format outputs.
+  - Establish the first golden engagement fixture for regression testing.
+
+client:
+  organisation_id: SYNTH-ORG-NORTHSTAR
+  name: Northstar Components Pte. Ltd.
+  location: Singapore
+  sector: Industrial distribution and light assembly
+  employees: 185
+  annual_revenue_sgd_m: 52
+  ownership: Founder-owned private company
+  description: >-
+    Northstar imports industrial components, performs light configuration and assembly,
+    and sells to manufacturing and facilities-management customers across Singapore and
+    Malaysia. Sales, customer service, purchasing and warehouse teams use a mix of an ERP,
+    shared spreadsheets, email and messaging applications.
+
+initial_conversation:
+  participants:
+    - Northstar CEO
+    - offdata Founder
+  client_statements:
+    - We are hearing that AI can remove a lot of administration, but we do not know where to start.
+    - Our salespeople spend too much time preparing quotations and chasing internal answers.
+    - Customer service receives repeated questions on order status and product compatibility.
+    - Purchasing sometimes carries too much stock and still experiences urgent shortages.
+    - We do not want confidential customer or pricing data leaking into public AI tools.
+    - We can fund a modest pilot, but not a large transformation programme.
+  preliminary_ask: >-
+    Identify where AI could create measurable value within twelve months, determine what is
+    sufficiently ready and safe to pilot, and recommend a practical first investment.
+
+founder_mandate:
+  mandate_id: MAND-SYNTH-DAI-001
+  executive_decision: >-
+    Which one or two AI-enabled interventions should Northstar pilot during the next six months,
+    under what operating and control conditions, and what evidence should be required before scaling?
+  decision_owner: Northstar CEO
+  decision_gate: Investment committee meeting in six weeks
+  intended_use: Approve, defer or reject a bounded pilot and associated capability investment
+  required_standard_of_proof: E2 for recommendation; E3 for commercial commitment or external reliance
+  constraints:
+    - Total first-stage cash commitment must not exceed SGD 120,000.
+    - Existing ERP cannot be replaced during the pilot.
+    - Customer pricing and contract data is confidential.
+    - The company has no dedicated data-science team.
+    - Pilot must not reduce customer-service availability.
+    - Any workforce impact must include role redesign and training.
+  known_options:
+    - AI-assisted quotation preparation
+    - Customer-service knowledge assistant
+    - Inventory forecasting and exception detection
+    - General employee productivity assistant
+    - Defer investment and improve data/process foundations first
+  counterfactual: Continue existing improvement programme without an AI pilot
+
+synthetic_source_pack:
+  documents:
+    - source_id: CLIENT-SRC-001
+      title: CEO interview transcript
+      type: interview
+      intentional_characteristic: Strong enthusiasm but limited quantified evidence
+    - source_id: CLIENT-SRC-002
+      title: Sales and quotation process workshop
+      type: workshop
+      intentional_characteristic: Conflicting estimates of time spent and root causes
+    - source_id: CLIENT-SRC-003
+      title: Customer-service ticket extract
+      type: dataset
+      period: 12 months
+      rows: 18420
+    - source_id: CLIENT-SRC-004
+      title: Quotation activity extract
+      type: dataset
+      period: 6 months
+      rows: 6260
+    - source_id: CLIENT-SRC-005
+      title: Inventory and purchase-order history
+      type: dataset
+      period: 24 months
+      rows: 41200
+    - source_id: CLIENT-SRC-006
+      title: Application and data inventory
+      type: document
+    - source_id: CLIENT-SRC-007
+      title: Information-security policies
+      type: document
+      intentional_characteristic: Policy predates generative AI
+    - source_id: CLIENT-SRC-008
+      title: Employee pulse survey
+      type: survey
+      respondents: 123
+    - source_id: CLIENT-SRC-009
+      title: Finance baseline and pilot budget
+      type: workbook
+    - source_id: PUBLIC-SRC-001
+      title: Synthetic public guidance pack for AI governance and security
+      type: public_authoritative
+      note: Codex must later replace this placeholder with controlled public-source fixtures
+
+synthetic_data_findings:
+  quotation_process:
+    quotations_per_month: 1040
+    median_elapsed_hours: 19.2
+    median_touch_minutes: 34
+    percent_requiring_product_specialist: 31
+    percent_reworked: 17
+    apparent_delay_drivers:
+      - Product compatibility clarification
+      - Missing customer-specific discount authority
+      - Re-keying information between email, spreadsheet and ERP
+      - Waiting for technical drawings or supplier confirmation
+  customer_service:
+    tickets_per_month: 1535
+    repeatable_information_percent: 46
+    order_status_percent: 24
+    product_compatibility_percent: 18
+    first_contact_resolution_percent: 62
+    ticket_data_quality_issue: Resolution codes are missing for 28 percent of tickets
+  inventory:
+    inventory_value_sgd_m: 8.4
+    stockout_line_percent: 6.8
+    slow_moving_inventory_sgd_m: 1.15
+    forecast_quality_issue: Historical demand contains unlabelled project orders and substitutions
+  workforce:
+    employees_reporting_unapproved_public_ai_use_percent: 22
+    employees_confident_in_ai_output_review_percent: 31
+    managers_expect_headcount_reduction: true
+    employee_concern: Automation may be used principally to remove jobs
+  technology_and_data:
+    ERP_api_available: limited
+    product_master_duplicate_rate_percent: 9
+    customer_pricing_rules_documented: partially
+    identity_and_access_management: basic
+    approved_enterprise_ai_environment: false
+
+intentional_contradictions:
+  - Sales leadership claims quotation administration consumes 50 percent of seller time; activity sampling indicates 18 to 27 percent.
+  - The CEO believes customer-service automation is the fastest win; ticket data shows product-compatibility questions require specialist judgement.
+  - The finance baseline treats released capacity as immediate cash savings, but no positions are planned for removal.
+  - The ERP vendor claims a ready-made AI forecasting module; Northstar data does not distinguish project demand, substitutions or lost sales.
+  - Employees report high interest in AI training while also expressing concern about hidden workforce-reduction objectives.
+
+expected_problem_frame:
+  governing_decision: Select a bounded pilot and the evidence required before scale
+  primary_archetypes:
+    - AI opportunity portfolio and prioritisation
+    - Readiness and control assessment
+    - Pilot and causal learning design
+  supporting_archetypes:
+    - Process and task redesign
+    - Value case and staged investment
+    - Workforce adoption and capability
+  governing_uncertainties:
+    - Which use case has enough addressable value after separating waiting, policy and data causes from language-processing tasks?
+    - Which intervention can operate with available data and integration constraints?
+    - Which risks and human-review requirements constrain the feasible design?
+    - What pilot evidence would distinguish useful augmentation from a polished demonstration?
+
+expected_hypotheses:
+  - id: HYP-DAI-001
+    statement: AI-assisted quotation preparation can reduce touch time and rework without automating discount or technical approval decisions.
+    falsifier: No material reduction in controlled pilot cycle time or error rate after accounting for quote complexity and specialist wait time.
+  - id: HYP-DAI-002
+    statement: A customer-service knowledge assistant can improve agent resolution performance when restricted to approved knowledge and human-mediated responses.
+    falsifier: Grounded answer accuracy or agent adoption remains below the approved threshold, or specialist escalation increases materially.
+  - id: HYP-DAI-003
+    statement: Inventory forecasting should not be the first AI pilot because current demand and substitution data cannot support reliable evaluation.
+    falsifier: Data remediation demonstrates stable item-level demand signals and a back-test materially outperforms current planning rules.
+  - id: HYP-DAI-004
+    statement: Most first-year economic value will arise from capacity, faster response and conversion rather than immediate headcount cash savings.
+    falsifier: Approved workforce actions demonstrate genuinely avoidable roles and cash-releasing timing.
+
+expected_method_stack:
+  selected:
+    - method_id: DAI-02
+      role: Link enterprise outcomes and strategic focus to the decision
+    - method_id: DAI-03
+      role: Map value streams, processes and decision points
+    - method_id: DAI-05
+      role: Identify and structure AI use-case opportunities
+    - method_id: DAI-06
+      role: Test readiness, feasibility and constraints
+    - method_id: DAI-07
+      role: Assess AI risks, controls and acceptable residual exposure
+    - method_id: DAI-10
+      role: Build staged value case and investment decision
+    - method_id: DAI-11
+      role: Specify pilot evidence and scale gate
+    - method_id: DAI-12
+      role: Redesign tasks and human responsibilities
+  overlays:
+    - Process analysis and failure-demand analysis
+    - Data-quality assessment
+    - Information-security threat and control review
+    - Workforce adoption and capability assessment
+    - Scenario and sensitivity analysis
+  deliberately_rejected:
+    - method: Enterprise-wide AI maturity score as the governing method
+      reason: A maturity score does not choose the pilot or establish causal value.
+    - method: Fully autonomous customer chatbot
+      reason: Product-compatibility questions, incomplete knowledge and external-response risk require human mediation.
+    - method: Immediate inventory-forecasting production deployment
+      reason: Demand labels, substitutions and lost-sales evidence are insufficient.
+    - method: Headcount-reduction business case
+      reason: Released capacity is not currently cash-releasing and would distort workforce communication.
+
+expected_recommendation:
+  preferred_pilot:
+    name: AI-assisted quotation preparation
+    bounded_scope:
+      - Draft product and customer information from approved sources
+      - Retrieve relevant prior quotation patterns
+      - Flag missing information and required approvals
+      - Preserve human technical, discount and release decisions
+    reasons:
+      - High volume and measurable baseline
+      - Existing delays and rework include addressable information-retrieval and drafting tasks
+      - Internal workflow limits external-response risk
+      - Pilot can be run without replacing the ERP
+  parallel_foundation:
+    name: Controlled employee AI environment and governance baseline
+    reasons:
+      - Existing unapproved use creates current risk
+      - Pilot requires identity, access, logging, approved data boundaries and user training
+  defer:
+    - Customer-facing autonomous assistant
+    - Production inventory forecasting
+  scale_gate:
+    minimum_evidence:
+      - Statistically and operationally credible reduction in quotation touch time and elapsed time by complexity segment
+      - No material increase in technical, pricing or data errors
+      - Measured user adoption and correction effort
+      - Grounded output and source-trace performance above approved threshold
+      - No unresolved high-severity security, privacy or workforce-control defects
+      - Updated value case based on observed capacity use and conversion effect
+
+expected_value_case:
+  pilot_cost_sgd:
+    base: 88000
+    downside: 118000
+  annual_addressable_capacity_sgd:
+    base: 210000
+    note: Capacity value is not automatically cash-releasing
+  potential_incremental_gross_margin_sgd:
+    base: 145000
+    mechanism: Faster quotation response and improved conversion
+  required_sensitivities:
+    - Adoption rate
+    - Time reduction by quote complexity
+    - Correction effort
+    - Conversion uplift
+    - Integration and support cost
+    - Capacity redeployment effectiveness
+  prohibited_claim: The pilot will save SGD 355,000 in cash during year one
+
+expected_founder_interruptions:
+  - decision: Approve the recommended pilot scope and SGD 120,000 maximum commitment
+    classes:
+      - DEC-MATERIAL
+      - DEC-COMMERCIAL
+    latest_point: Before proposal or client commitment
+  - decision: Approve any external use of named technology vendors or pricing
+    classes:
+      - DEC-EXTERNAL
+      - DEC-COMMERCIAL
+  - decision: Accept any residual high-severity data, security or workforce risk
+    classes:
+      - DEC-MATERIAL
+      - DEC-IRREVERSIBLE
+
+expected_quality_traps:
+  - Treat CEO enthusiasm as evidence of use-case value
+  - Use search snippets as authoritative governance evidence
+  - Present capacity as cash savings
+  - Ignore seller-complexity segmentation in cycle-time analysis
+  - Recommend a chatbot because repeatable ticket percentage is high
+  - Omit contrary workforce evidence
+  - Produce a maturity wheel without linking it to the investment decision
+  - Allow the producing agent to approve its own recommendation
+
+expected_deliverables:
+  pptx:
+    purpose: Investment decision and pilot approval
+    target_pages: 18
+    required_visuals:
+      - Executive decision and recommendation
+      - AI opportunity portfolio
+      - Quotation value-stream and delay decomposition
+      - Layered readiness and control architecture
+      - Pilot causal chain and scale gates
+      - Value bridge and sensitivity
+      - Six-month roadmap
+  docx:
+    purpose: Evidence, methodology, controls and implementation reference
+  xlsx:
+    purpose: Baseline, pilot economics, scenarios, sensitivities and checks
+  html:
+    purpose: Interactive opportunity portfolio, pilot assumptions and evidence drill-through
+  svg:
+    purpose: Editable visual assets shared by PPTX and HTML
+  reconciliation_requirements:
+    - Same governing thought and recommendation
+    - Same controlled model outputs
+    - Same pilot scope, owners, conditions and stop rules
+    - Concise client-facing citations with full internal provenance
+
+acceptance_tests:
+  - Stage detection begins at mandate and intake and progresses only through evidenced gates.
+  - Method selection chooses the minimum sufficient stack and records rejected alternatives.
+  - Every material claim links to synthetic evidence and contradictory evidence where applicable.
+  - The value model separates capacity, incremental margin and cash-releasing benefit.
+  - External and commercial actions produce Founder decision packets rather than executing.
+  - Independent QA identifies every expected quality trap.
+  - PPTX, DOCX, XLSX and HTML pass all eight reconciliation checks.
+  - No source or output represents the fictional organisation or outcomes as real.
