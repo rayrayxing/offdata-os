@@ -1,0 +1,101 @@
+organisation:
+  organisation_id: SYNTH-ORG-NORTHSTAR
+  legal_name: Northstar Components Pte. Ltd.
+  display_name: Northstar Components
+  classification: fictional_synthetic
+  headquarters: Singapore
+  markets:
+    - Singapore
+    - Malaysia
+  sector: Industrial distribution and light assembly
+  employees: 185
+  annual_revenue_sgd: 52000000
+  gross_margin_percent: 23.5
+  inventory_value_sgd: 8400000
+  ownership: Founder-owned private company
+  business_model: >-
+    Import industrial components, perform light configuration and assembly,
+    and sell to manufacturing and facilities-management customers.
+  operating_channels:
+    - field sales
+    - inside sales
+    - email quotation
+    - telephone customer service
+    - limited customer portal
+  current_systems:
+    - mid-market ERP
+    - Microsoft 365
+    - shared network folders
+    - local spreadsheets
+    - messaging applications
+  strategic_context:
+    - Revenue growth is increasing quotation and service volume.
+    - Management does not want a large enterprise transformation programme.
+    - Confidential customer pricing and technical information must be protected.
+    - No dedicated data-science or AI-governance team exists.
+mandate:
+  mandate_id: MAND-SYNTH-DAI-001
+  engagement_id: ENG-SYNTH-DAI-001
+  title: AI opportunity, value and risk audit
+  status: founder_first_cut
+  decision_owner: Northstar CEO
+  governing_decision: >-
+    Which one or two AI-enabled interventions should Northstar pilot during the next six months,
+    under what operating and control conditions, and what evidence should be required before scaling?
+  decision_date: 2026-08-20
+  intended_use:
+    - Approve, defer or reject a bounded pilot.
+    - Approve associated data, control and capability foundations.
+    - Define a scale, adapt or stop gate.
+  scope:
+    - sales and quotation
+    - customer service and technical knowledge
+    - purchasing and inventory
+    - general employee AI use
+    - data technology security and governance
+    - workforce readiness and adoption
+    - pilot value case and implementation
+  exclusions:
+    - ERP replacement
+    - production autonomous customer communication
+    - legal regulatory audit or cybersecurity certification
+    - final vendor procurement
+    - workforce reduction programme
+  constraints:
+    maximum_initial_cash_commitment_sgd: 120000
+    pilot_duration_months: 6
+    ERP_replacement_allowed: false
+    service_availability_reduction_allowed: false
+    public_AI_for_confidential_data_allowed: false
+    dedicated_data_science_team_available: false
+  required_standard_of_proof:
+    recommendation: E2
+    commercial_commitment: E3
+    external_or_high_risk_use: E3_plus_specialist_review
+  known_options:
+    - UC-001
+    - UC-002
+    - UC-003
+    - UC-004
+    - UC-005
+    - UC-006
+    - UC-007
+    - UC-008
+  counterfactual: Continue process and data improvement without an AI pilot
+  success_criteria:
+    - materially improved decision confidence
+    - bounded pilot within maximum commitment
+    - measurable operational baseline and scale gate
+    - no unresolved critical confidentiality technical or authority defect
+    - transparent workforce and human-decision design
+  founder_gates:
+    - approve proposal scope and fee
+    - approve named vendor or external pricing
+    - approve any residual high or critical risk
+    - approve any external communication
+  open_questions:
+    - Which delay and work components are genuinely addressable by AI?
+    - Which options are feasible with current data and integration?
+    - Which controls and human decisions are mandatory?
+    - How will capacity or faster response create measurable economic value?
+    - What evidence would reverse or stop the pilot?
