@@ -75,6 +75,7 @@ from .knowledge import (
     SourcePassage,
 )
 from .lifecycle import StageDetectionResult, TransitionRequest, TransitionResult
+from .openapi_contract import build_openapi_document
 from .policy import PolicyContext, PolicyResult, ProposedAction
 from .quality import (
     Defect,
