@@ -1,0 +1,42 @@
+fixture_id: FIXTURE-COST-001
+version: 1.0.0
+domain: cost_productivity
+difficulty: advanced
+fictional: true
+organisation:
+  name: HarbourCare Services Pte. Ltd.
+  jurisdiction: Singapore
+  sector: facilities and field-service operations
+  revenue_sgd_m: 238
+  employees: 3180
+mandate:
+  decision: Where can recurring cost be removed without damaging service, safety, resilience or future capability?
+  scope: Singapore and Malaysia field operations, support functions and supplier spend; eighteen-month programme.
+  commercial_assumptions: Synthetic diagnostic; management target is SGD 24 million annualised savings.
+  delivery_assumptions: Ten-week diagnostic with an executive committee decision required by 2027-03-31.
+stakeholders:
+  - role: Chief Executive Officer
+    position: expects a 10 percent cost reduction and rapid headcount action
+  - role: Chief Operating Officer
+    position: warns that service demand and travel complexity are understated
+  - role: Chief Financial Officer
+    position: requires cash-releasing savings with finance ownership
+  - role: Head of Safety
+    position: rejects productivity targets that breach minimum coverage or fatigue controls
+constraints:
+  - Critical-response coverage and statutory safety controls cannot be reduced.
+  - Customer SLA attainment must remain at or above 96 percent.
+  - No workforce action may be recommended without task, demand and capacity evidence.
+  - Founder approval is required before any external or workforce commitment.
+exclusions:
+  - Employment-law, tax or collective-bargaining advice.
+  - Supplier negotiation or external communication.
+  - Binding redundancy or outsourcing decisions.
+decision_date: 2027-03-31
+currency: SGD
+deliberate_traps:
+  - Allocated overhead is treated as fully avoidable.
+  - Headcount reduction is proposed before demand and process analysis.
+  - A utilisation target removes resilience and safety headroom.
+  - Benefits are double counted across automation, spans and procurement initiatives.
+  - Gross capacity is labelled as immediate cash savings.
