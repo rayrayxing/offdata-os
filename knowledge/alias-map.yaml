@@ -1,0 +1,113 @@
+version: 0.1.0
+status: provisional_until_ingestion_validation
+purpose: Resolve historical or expected dependency names to the actual uploaded canonical source without rewriting original source files.
+rules:
+  exact_declared_file_id_has_priority: true
+  aliases_are_navigation_only: true
+  aliases_do_not_create_missing_records: true
+  unresolved_aliases_enter_quarantine: true
+
+aliases:
+  - alias: 01-ENGAGEMENT-LIFECYCLE.md
+    resolves_to_source_id: SOURCE-CORE-001
+  - alias: 01-ENGAGEMENT-LIFECYCLE-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-001
+  - alias: 01-ENGAGEMENT-LIFECYCLE-AND-GOVERNANCE.md
+    resolves_to_source_id: SOURCE-CORE-001
+  - alias: 01-ENGAGEMENT-GOVERNANCE.md
+    resolves_to_source_id: SOURCE-CORE-001
+    resolution_note: Only lifecycle/governance content actually present may be retrieved; absent engagement-control records remain gaps.
+  - alias: 02-PROBLEM-AND-FRAMEWORK-REGISTRY.md
+    resolves_to_source_id: SOURCE-CORE-002
+  - alias: 03-PROBLEM-FRAMING-AND-ISSUE-TREES.md
+    resolves_to_source_id: SOURCE-CORE-003
+  - alias: 03-PROBLEM-FRAMING-AND-TREES.md
+    resolves_to_source_id: SOURCE-CORE-003
+  - alias: 02-MANDATE-AND-DECISION-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-003
+    resolution_note: Retrieve only mandate/problem-framing records actually supported by the source.
+  - alias: 02-MANDATE-AND-DECISION-FRAMING.md
+    resolves_to_source_id: SOURCE-CORE-003
+  - alias: 04-RESEARCH-AND-EVIDENCE-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-004
+  - alias: 03-EVIDENCE-AND-RESEARCH-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-004
+  - alias: 03-EVIDENCE-AND-RESEARCH.md
+    resolves_to_source_id: SOURCE-CORE-004
+  - alias: 02-EVIDENCE-STANDARDS.md
+    resolves_to_source_id: SOURCE-CORE-004
+  - alias: 02-EVIDENCE-AND-SOURCE-CONTROLS.md
+    resolves_to_source_id: SOURCE-CORE-004
+  - alias: 02-EVIDENCE-AND-SOURCE-QUALITY.md
+    resolves_to_source_id: SOURCE-CORE-004
+  - alias: 03-EVIDENCE-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-004
+  - alias: 05-METHODOLOGY-AND-APPROACH-DESIGN.md
+    resolves_to_source_id: SOURCE-CORE-005
+  - alias: 04-METHOD-SELECTION.md
+    resolves_to_source_id: SOURCE-CORE-005
+    resolution_note: The central method catalogue remains SOURCE-CORE-002; approach design and selection procedure are SOURCE-CORE-005.
+  - alias: 04-METHOD-SELECTION-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-005
+  - alias: 04-METHOD-SELECTION-AND-SEQUENCING.md
+    resolves_to_source_id: SOURCE-CORE-005
+  - alias: 06-STORYLINE-AND-PROPOSITION-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-006
+  - alias: 05-PROPOSALS-AND-DELIVERABLES.md
+    resolves_to_source_id: SOURCE-CORE-006
+    resolution_note: Storyline and proposition content resolves here; unsupported commercial or file-rendering controls remain gaps.
+  - alias: 05-PROPOSAL-AND-DELIVERABLE-ARCHITECTURE.md
+    resolves_to_source_id: SOURCE-CORE-006
+  - alias: 06-PROPOSAL-AND-DELIVERABLE-DESIGN.md
+    resolves_to_source_id: SOURCE-CORE-006
+  - alias: 07-VALUE-CASE-AND-FINANCIAL-MODELLING.md
+    resolves_to_source_id: SOURCE-CORE-007
+  - alias: 05-ANALYSIS-AND-MODELLING-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-007
+    resolution_note: Resolve only financial/value modelling records; broader analysis standards may remain unresolved.
+  - alias: 04-ANALYSIS-AND-QUANTIFICATION-STANDARD.md
+    resolves_to_source_id: SOURCE-CORE-007
+  - alias: 08-IMPLEMENTATION-AND-CHANGE.md
+    resolves_to_source_id: SOURCE-CORE-008
+  - alias: 08-BENEFITS-REALISATION-AND-PMO.md
+    resolves_to_source_id: SOURCE-CORE-008
+    resolution_note: Detailed benefit modelling also depends on SOURCE-CORE-007 and SOURCE-DOMAIN-BENEFITS.
+  - alias: 08-OUTCOME-TRACKING.md
+    resolves_to_source_id: SOURCE-CORE-008
+  - alias: 09-RED-TEAM-AND-QUALITY-RUBRIC.md
+    resolves_to_source_id: SOURCE-CORE-009
+  - alias: 06-QUALITY-ASSURANCE-AND-RED-TEAM.md
+    resolves_to_source_id: SOURCE-CORE-009
+  - alias: 07-QUALITY-ASSURANCE.md
+    resolves_to_source_id: SOURCE-CORE-009
+  - alias: 07-QUALITY-ASSURANCE-AND-FOUNDER-REVIEW.md
+    resolves_to_source_id: SOURCE-CORE-009
+  - alias: 06-QUALITY-ASSURANCE-AND-FOUNDER-REVIEW.md
+    resolves_to_source_id: SOURCE-CORE-009
+  - alias: 10-SECTOR-OVERLAYS.md
+    resolves_to_source_id: SOURCE-CORE-010
+  - alias: 11-SANITISED-ENGAGEMENT-EXEMPLARS.md
+    resolves_to_source_id: SOURCE-CORE-011
+  - alias: 10-METHOD-CARDS.md
+    resolves_to_source_id: SOURCE-CORE-002
+    resolution_note: Resolve only method records actually present; this alias does not assert a separate method-card file exists.
+
+unresolved_expected_modules:
+  - expected_name: 02-ENGAGEMENT-CONTROLS.md
+    required_capability: detailed register schemas, tolerances and governance controls
+  - expected_name: 05-PROPOSALS-AND-COMMERCIALS.md
+    required_capability: pricing, contracting, commercial review and reliance controls
+  - expected_name: 06-DELIVERY-ARTEFACTS.md
+    required_capability: file-production engineering and renderer-specific controls
+  - expected_name: 08-DELIVERABLE-PRODUCTION-STANDARD.md
+    required_capability: software and native Office production rules
+  - expected_name: 09-AI-GOVERNANCE.md
+    required_capability: production model risk, permissions, privacy and monitoring
+  - expected_name: 10-LEGAL-AND-ETHICS.md
+    required_capability: conflicts, confidentiality, professional conduct and specialist escalation
+  - expected_name: 07-PROPOSAL-AND-COMMERCIAL-STANDARD.md
+    required_capability: proposal, fee, scope and contracting controls
+  - expected_name: 08-DATA-CLASSIFICATION-AND-SECURITY.md
+    required_capability: detailed data classification and handling standard
+
+action_for_unresolved_module: Record a controlled design gap and develop an original canonical module; do not fabricate the missing source or silently map unrelated content.
