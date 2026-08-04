@@ -38,7 +38,3 @@ ignore = ["E501"]
 python_version = "3.11"
 strict = true
 plugins = ["pydantic.mypy"]
-
-[[tool.mypy.overrides]]
-module = "offdata_core.policy"
-disable_error_code = ["arg-type"]
