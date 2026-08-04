@@ -2,12 +2,12 @@ name: Machine contracts, agents and AI-audit oracle
 
 on:
   push:
-    branches: [main]
+    branches: [main, oracle/phase3-ai-audit]
   pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   validate-contracts:
@@ -47,6 +47,16 @@ jobs:
       - name: Enforce type-check baseline
         working-directory: packages/offdata-core
         run: mypy src
+      - name: Commit generated Phase 3 release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/oracle/phase3-ai-audit'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add requirements/test-registry.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
+          if ! git diff --cached --quiet; then
+            git commit -m "build(oracle): retain generated Phase 3 release"
+            git push origin HEAD:oracle/phase3-ai-audit
+          fi
       - name: Retain generated chat-first release
         uses: actions/upload-artifact@v4
         with:
