@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "offdata-core"
 version = "0.1.0"
-description = "Deterministic lifecycle, policy, agent and analytical oracle contracts for offdata."
+description = "Deterministic lifecycle, policy, agent, analytical-oracle and semantic-deliverable contracts for offdata."
 requires-python = ">=3.11"
 dependencies = [
   "pydantic>=2.8,<3",
