@@ -1,0 +1,2912 @@
+{
+  "agent_visible": true,
+  "classification": "synthetic_golden_fixture_programme",
+  "fixtures": [
+    {
+      "acceptable_method_stacks": [
+        [
+          "market sizing plus scenario economics",
+          "capability-gap and option assessment",
+          "decision synthesis"
+        ],
+        [
+          "market sizing plus scenario economics",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Acquire a small regional competitor now",
+        "Launch the digital adjacency immediately"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-STRATEGY-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-STRATEGY-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Board strategy committee",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-STRATEGY-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-STRATEGY-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-001",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-001",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-STRATEGY-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-STRATEGY-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "corporate_and_business_unit_strategy",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-STRATEGY-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-STRATEGY-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-STRATEGY-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-STRATEGY-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Board strategy committee"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-STRATEGY-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-STRATEGY-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            51000.0,
+            305000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-STRATEGY-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "market attractiveness and competitive position",
+        "portfolio and capability fit"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-STRATEGY-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-STRATEGY-001-INIT-001",
+          "owner": "Board strategy committee",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-STRATEGY-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose whether to prioritise regional expansion, vertical specialisation or adjacent digital services.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Board strategy committee",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 85000,
+        "opportunity_id": "OPP-001",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Prioritise two high-fit verticals in the home region before funding a digital-services adjacency.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1025,
+          "dataset_id": "FIXTURE-STRATEGY-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 25
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-STRATEGY-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 437,
+        "jurisdiction": "Singapore",
+        "name": "Apex Field Services"
+      },
+      "version": "1.0.0",
+      "working_title": "Industrial services strategic growth choice"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "cohort retention plus funnel decomposition",
+          "willingness-to-pay and unit economics",
+          "decision synthesis"
+        ],
+        [
+          "cohort retention plus funnel decomposition",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Cut price across all plans",
+        "Double paid acquisition immediately"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-GROWTH-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-GROWTH-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Chief commercial officer",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-GROWTH-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-GROWTH-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-002",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-002",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-GROWTH-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-GROWTH-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "growth_and_commercial_strategy",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-GROWTH-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-GROWTH-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-GROWTH-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-GROWTH-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Chief commercial officer"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-GROWTH-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-GROWTH-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            52000.0,
+            310000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-GROWTH-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "segment economics and growth constraint",
+        "pricing, retention and acquisition efficiency"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-GROWTH-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-GROWTH-001-INIT-001",
+          "owner": "Chief commercial officer",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-GROWTH-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose the growth engine that can restore efficient recurring-revenue growth without worsening churn.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Chief commercial officer",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 90000,
+        "opportunity_id": "OPP-002",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Repair onboarding and packaging for the mid-market segment before increasing acquisition spend.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1050,
+          "dataset_id": "FIXTURE-GROWTH-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 26
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-GROWTH-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 474,
+        "jurisdiction": "Singapore",
+        "name": "Beacon Workflow Cloud"
+      },
+      "version": "1.0.0",
+      "working_title": "Subscription business growth-engine diagnosis"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "activity-based cost decomposition",
+          "process waste and capacity analysis",
+          "decision synthesis"
+        ],
+        [
+          "activity-based cost decomposition",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Apply an equal cost target to every site",
+        "Outsource all field operations"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-COST-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-COST-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Chief operating officer",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-COST-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-COST-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-003",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-003",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-COST-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-COST-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "cost_and_productivity",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-COST-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-COST-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-COST-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-COST-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Chief operating officer"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-COST-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-COST-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            53000.0,
+            315000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-COST-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "activity and demand drivers",
+        "span, process and capacity productivity"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-COST-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-COST-001-INIT-001",
+          "owner": "Chief operating officer",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-COST-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Select a productivity programme that lowers cost without reducing safety or service quality.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Chief operating officer",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 95000,
+        "opportunity_id": "OPP-003",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Standardise dispatch and technician scheduling at the highest-variance sites before structural headcount action.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1075,
+          "dataset_id": "FIXTURE-COST-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 27
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-COST-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 511,
+        "jurisdiction": "Singapore",
+        "name": "Cobalt Service Network"
+      },
+      "version": "1.0.0",
+      "working_title": "Multi-site service productivity improvement"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "journey analytics plus qualitative research",
+          "service blueprint and controlled experimentation",
+          "decision synthesis"
+        ],
+        [
+          "journey analytics plus qualitative research",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Remove manual KYC review",
+        "Rebuild the entire core banking platform"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-CX-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-CX-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Head of SME banking",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-CX-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-CX-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-004",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-004",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-CX-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-CX-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "customer_experience",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-CX-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-CX-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-CX-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-CX-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Head of SME banking"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-CX-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-CX-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            54000.0,
+            320000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-CX-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "journey friction and failure demand",
+        "customer needs and control constraints"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-CX-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-CX-001-INIT-001",
+          "owner": "Head of SME banking",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-CX-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose the onboarding redesign that improves conversion while preserving KYC and fraud controls.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Head of SME banking",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 100000,
+        "opportunity_id": "OPP-004",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Remove duplicate information requests and introduce assisted digital recovery before relaxing any control.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1100,
+          "dataset_id": "FIXTURE-CX-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 28
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-CX-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 548,
+        "jurisdiction": "Singapore",
+        "name": "Driftline Business Bank"
+      },
+      "version": "1.0.0",
+      "working_title": "SME digital onboarding redesign"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "service catalogue and demand analysis",
+          "decision-rights and organisation design",
+          "decision synthesis"
+        ],
+        [
+          "service catalogue and demand analysis",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Centralise every activity immediately",
+        "Keep the current country-by-country model"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-OM-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-OM-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Group chief operating officer",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-OM-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-OM-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-005",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-005",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-OM-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-OM-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "operating_model_transformation",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-OM-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-OM-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-OM-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-OM-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Group chief operating officer"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-OM-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-OM-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            55000.0,
+            325000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-OM-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "service segmentation and operating-model choices",
+        "governance, accountability and location"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-OM-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-OM-001-INIT-001",
+          "owner": "Group chief operating officer",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-OM-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose the regional service model and decision rights for finance, HR and procurement.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Group chief operating officer",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 105000,
+        "opportunity_id": "OPP-005",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Create a federated shared-services model with common transaction services and retained market business partners.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1125,
+          "dataset_id": "FIXTURE-OM-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 29
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-OM-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 585,
+        "jurisdiction": "Singapore",
+        "name": "Evergreen Consumer Group"
+      },
+      "version": "1.0.0",
+      "working_title": "Regional shared-services operating model"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "task-level work analysis",
+          "workforce scenarios and transition planning",
+          "decision synthesis"
+        ],
+        [
+          "task-level work analysis",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Announce a fixed headcount reduction now",
+        "Automate all claims decisions"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-WORKFORCE-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-WORKFORCE-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Chief people officer",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-WORKFORCE-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-WORKFORCE-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-006",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-006",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-WORKFORCE-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-WORKFORCE-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "organisation_and_workforce",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-WORKFORCE-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-WORKFORCE-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-WORKFORCE-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-WORKFORCE-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Chief people officer"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-WORKFORCE-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-WORKFORCE-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            56000.0,
+            330000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-WORKFORCE-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "work and role decomposition",
+        "skills, capacity and organisation implications"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-WORKFORCE-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-WORKFORCE-001-INIT-001",
+          "owner": "Chief people officer",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-WORKFORCE-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose how roles, skills and workforce capacity should change as assisted automation is introduced.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Chief people officer",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 110000,
+        "opportunity_id": "OPP-006",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Redesign adjuster roles around complex judgement and customer communication, with redeployment before hiring reduction.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1150,
+          "dataset_id": "FIXTURE-WORKFORCE-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 30
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-WORKFORCE-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 622,
+        "jurisdiction": "Singapore",
+        "name": "Fathom Claims Services"
+      },
+      "version": "1.0.0",
+      "working_title": "AI-enabled workforce and organisation redesign"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "risk-and-control self-assessment",
+          "control testing and remediation prioritisation",
+          "decision synthesis"
+        ],
+        [
+          "risk-and-control self-assessment",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Ban all AI use permanently",
+        "Accept vendor attestations as sufficient assurance"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-RISK-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-RISK-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Chief risk officer",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-RISK-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-RISK-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-007",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-007",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-RISK-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-RISK-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "risk_and_controls",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-RISK-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-RISK-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-RISK-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-RISK-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Chief risk officer"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-RISK-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-RISK-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            57000.0,
+            335000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-RISK-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "risk exposure and control design",
+        "control operation and assurance"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-RISK-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-RISK-001-INIT-001",
+          "owner": "Chief risk officer",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-RISK-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Decide which control gaps must be remediated before expanding third-party AI use.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Chief risk officer",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 115000,
+        "opportunity_id": "OPP-007",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Block high-risk external AI processing until data, approval, monitoring and incident controls pass.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1175,
+          "dataset_id": "FIXTURE-RISK-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 31
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-RISK-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 659,
+        "jurisdiction": "Singapore",
+        "name": "Granite Payments"
+      },
+      "version": "1.0.0",
+      "working_title": "Third-party and AI control environment review"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "synergy model and dependency mapping",
+          "target operating model and integration roadmap",
+          "decision synthesis"
+        ],
+        [
+          "synergy model and dependency mapping",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Full absorption on Day 1",
+        "Leave both businesses entirely separate"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-MA-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-MA-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Integration steering committee",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-MA-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-MA-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-008",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-008",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-MA-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-MA-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "merger_and_integration",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-MA-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-MA-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-MA-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-MA-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Integration steering committee"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-MA-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-MA-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            58000.0,
+            340000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-MA-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "deal thesis and value drivers",
+        "integration depth, sequencing and governance"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-MA-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-MA-001-INIT-001",
+          "owner": "Integration steering committee",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-MA-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose the integration thesis, Day-1 model and first-year synergy programme for a recent acquisition.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Integration steering committee",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 120000,
+        "opportunity_id": "OPP-008",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Integrate commercial and support platforms in waves while retaining the acquired engineering proposition and customer teams.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1200,
+          "dataset_id": "FIXTURE-MA-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 32
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-MA-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 696,
+        "jurisdiction": "Singapore",
+        "name": "Harbour Industrial Holdings"
+      },
+      "version": "1.0.0",
+      "working_title": "Mid-market acquisition integration design"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "dependency mapping and critical-path planning",
+          "standalone cost and TSA economics",
+          "decision synthesis"
+        ],
+        [
+          "dependency mapping and critical-path planning",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Replicate every parent system",
+        "Exit all TSAs within thirty days"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-CARVEOUT-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-CARVEOUT-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Separation management office",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-CARVEOUT-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-CARVEOUT-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-009",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-009",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-CARVEOUT-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-CARVEOUT-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "carve_out_and_separation",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-CARVEOUT-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-CARVEOUT-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-CARVEOUT-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-CARVEOUT-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Separation management office"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-CARVEOUT-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-CARVEOUT-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            59000.0,
+            345000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-CARVEOUT-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "standalone requirements and dependency exposure",
+        "TSA design, exit sequencing and stranded cost"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-CARVEOUT-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-CARVEOUT-001-INIT-001",
+          "owner": "Separation management office",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-CARVEOUT-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose the minimum viable separation model and TSA exit sequence for a divested business unit.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Separation management office",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 125000,
+        "opportunity_id": "OPP-009",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Prioritise identity, finance and order-management separation, using bounded TSAs for lower-risk shared services.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1225,
+          "dataset_id": "FIXTURE-CARVEOUT-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 33
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-CARVEOUT-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 733,
+        "jurisdiction": "Singapore",
+        "name": "Ion Materials Group"
+      },
+      "version": "1.0.0",
+      "working_title": "Business-unit technology and operations separation"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "scenario valuation and dilution analysis",
+          "IPO readiness and capital-pathway assessment",
+          "decision synthesis"
+        ],
+        [
+          "scenario valuation and dilution analysis",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Launch an IPO immediately",
+        "Sell the company now"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-IPO-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-IPO-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Board capital committee",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-IPO-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-IPO-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-010",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-010",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-IPO-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-IPO-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "ipo_valuation_and_capital_strategy",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-IPO-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-IPO-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-IPO-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-IPO-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Board capital committee"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-IPO-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-IPO-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            60000.0,
+            350000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-IPO-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "capital needs and strategic options",
+        "valuation, readiness and market conditions"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-IPO-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-IPO-001-INIT-001",
+          "owner": "Board capital committee",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-IPO-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose whether to pursue an IPO, private growth round or strategic investment over the next 24 months.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Board capital committee",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 130000,
+        "opportunity_id": "OPP-010",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Pursue a private growth round while closing reporting and governance gaps, preserving an IPO option.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1250,
+          "dataset_id": "FIXTURE-IPO-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 34
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-IPO-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 770,
+        "jurisdiction": "Singapore",
+        "name": "Juniper Diagnostics"
+      },
+      "version": "1.0.0",
+      "working_title": "Pre-IPO readiness and capital pathway"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "stakeholder and impact analysis",
+          "adoption measurement and stage-gated implementation",
+          "decision synthesis"
+        ],
+        [
+          "stakeholder and impact analysis",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Big-bang rollout to all countries",
+        "Treat training attendance as adoption"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-CHANGE-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-CHANGE-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Transformation sponsor",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-CHANGE-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-CHANGE-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-011",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-011",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-CHANGE-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-CHANGE-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "implementation_and_change",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-CHANGE-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-CHANGE-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-CHANGE-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-CHANGE-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Transformation sponsor"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-CHANGE-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-CHANGE-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            61000.0,
+            355000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-CHANGE-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "change impact and adoption barriers",
+        "delivery governance and capability transfer"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-CHANGE-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-CHANGE-001-INIT-001",
+          "owner": "Transformation sponsor",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-CHANGE-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose the implementation and change approach for a new planning workflow across six countries.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Transformation sponsor",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 135000,
+        "opportunity_id": "OPP-011",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Use country waves with role-based training, local champions and adoption gates before each rollout.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1275,
+          "dataset_id": "FIXTURE-CHANGE-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 35
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-CHANGE-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 807,
+        "jurisdiction": "Singapore",
+        "name": "Kestrel Logistics"
+      },
+      "version": "1.0.0",
+      "working_title": "Enterprise workflow adoption programme"
+    },
+    {
+      "acceptable_method_stacks": [
+        [
+          "benefit-driver tree and baseline reconciliation",
+          "initiative tracing and performance cadence",
+          "decision synthesis"
+        ],
+        [
+          "benefit-driver tree and baseline reconciliation",
+          "assumption and falsifier review",
+          "implementation feasibility"
+        ]
+      ],
+      "alternatives": [
+        "Preserve the original headline target",
+        "Recognise all released capacity as cash savings"
+      ],
+      "benefit_records": [
+        {
+          "benefit_id": "FIXTURE-BENEFITS-001-BEN-001",
+          "classification": "released_capacity",
+          "owner": "Finance",
+          "recognition_rule": "Recognise only after measured redeployment."
+        },
+        {
+          "benefit_id": "FIXTURE-BENEFITS-001-BEN-002",
+          "classification": "potential_incremental_value",
+          "owner": "Chief financial officer",
+          "recognition_rule": "Recognise only after controlled outcome evidence."
+        }
+      ],
+      "contradicting_evidence": [
+        {
+          "contradiction_id": "FIXTURE-BENEFITS-001-CON-001",
+          "statement": "Management confidence conflicts with controlled performance data."
+        },
+        {
+          "contradiction_id": "FIXTURE-BENEFITS-001-CON-002",
+          "statement": "Front-line evidence identifies a prerequisite omitted from the preferred option."
+        }
+      ],
+      "crm_records": [
+        {
+          "record_id": "CRM-COMP-012",
+          "record_type": "company"
+        },
+        {
+          "record_id": "CRM-DEAL-012",
+          "record_type": "deal"
+        }
+      ],
+      "data_quality_defects": [
+        {
+          "defect_id": "FIXTURE-BENEFITS-001-DQ-001",
+          "description": "Management total does not reconcile to segment detail.",
+          "severity": "high"
+        },
+        {
+          "defect_id": "FIXTURE-BENEFITS-001-DQ-002",
+          "description": "One period or segment contains a missing observation.",
+          "severity": "medium"
+        }
+      ],
+      "engagement_type": "benefits_realisation_and_performance_improvement",
+      "evidence_records": [
+        {
+          "authority": "management",
+          "record_id": "FIXTURE-BENEFITS-001-SRC-001",
+          "record_type": "source_document",
+          "signal": "Urgency and stated objective; confidence may be overstated.",
+          "title": "Management case"
+        },
+        {
+          "authority": "controlled_internal",
+          "record_id": "FIXTURE-BENEFITS-001-SRC-002",
+          "record_type": "source_document",
+          "signal": "Current performance, activity and economics.",
+          "title": "Operational baseline"
+        },
+        {
+          "authority": "independent_review",
+          "record_id": "FIXTURE-BENEFITS-001-SRC-003",
+          "record_type": "source_document",
+          "signal": "Risks, contradictions and alternatives.",
+          "title": "Independent challenge note"
+        },
+        {
+          "authority": "decision_owner",
+          "record_id": "FIXTURE-BENEFITS-001-INT-001",
+          "record_type": "interview_transcript",
+          "signal": "Supports action but overstates certainty.",
+          "title": "Interview with Chief financial officer"
+        },
+        {
+          "authority": "operational_witness",
+          "record_id": "FIXTURE-BENEFITS-001-INT-002",
+          "record_type": "interview_transcript",
+          "signal": "Identifies operational constraints and adoption risk.",
+          "title": "Front-line manager interview"
+        }
+      ],
+      "expected_calculations": [
+        {
+          "calculation_id": "FIXTURE-BENEFITS-001-CALC-001",
+          "metric": "base_case_value_sgd",
+          "unit": "SGD",
+          "valid_range": [
+            62000.0,
+            360000.0
+          ]
+        },
+        {
+          "calculation_id": "FIXTURE-BENEFITS-001-CALC-002",
+          "metric": "downside_headroom_percent",
+          "unit": "percent",
+          "valid_range": [
+            0.0,
+            25.0
+          ]
+        }
+      ],
+      "expected_founder_interruptions": [
+        {
+          "decision_class": "D3",
+          "reason": "Approve recommendation and material commitment."
+        },
+        {
+          "decision_class": "D4",
+          "reason": "Approve any external issue or irreversible action."
+        }
+      ],
+      "expected_problem_archetypes": [
+        "benefit definition and ownership",
+        "baseline, attribution and leakage"
+      ],
+      "expected_story_structure": [
+        "Decision",
+        "Evidence",
+        "Options",
+        "Recommendation",
+        "Implementation",
+        "Benefits and controls"
+      ],
+      "falsifiers": [
+        "Controlled data shows the recommendation underperforms the comparator.",
+        "A prerequisite cannot be met within the approved commitment or decision date."
+      ],
+      "fixture_id": "FIXTURE-BENEFITS-001",
+      "implementation_records": [
+        {
+          "dependency": "Validated baseline",
+          "initiative_id": "FIXTURE-BENEFITS-001-INIT-001",
+          "owner": "Chief financial officer",
+          "stage": "design"
+        },
+        {
+          "dependency": "Founder approval",
+          "initiative_id": "FIXTURE-BENEFITS-001-INIT-002",
+          "owner": "Programme lead",
+          "stage": "pilot"
+        }
+      ],
+      "known_quality_defects": [
+        "Unsupported certainty in the management case.",
+        "A tempting alternative double counts value or ignores a control."
+      ],
+      "mandate": {
+        "constraints": [
+          "No external action",
+          "No real client data",
+          "Founder approval required for material release"
+        ],
+        "decision": "Choose the recovery actions required to restore confidence in a transformation benefits case.",
+        "decision_gate": "GATE-RECOMMENDATION",
+        "decision_owner": "Chief financial officer",
+        "scope": "Board-sponsored diagnostic and recommendation using synthetic evidence only."
+      },
+      "material_assumptions": [
+        "Demand remains within the defined scenario range.",
+        "Implementation capacity is available only in controlled waves."
+      ],
+      "opportunity": {
+        "estimated_fee_sgd": 140000,
+        "opportunity_id": "OPP-012",
+        "relationship_summary": "Synthetic referral with a defined executive decision and incomplete evidence.",
+        "stage": "qualified"
+      },
+      "prohibited_conclusions": [
+        "The reference recommendation is guaranteed.",
+        "Released capacity is immediate cash savings."
+      ],
+      "reference_recommendation": "Rebaseline benefits, remove double counting and assign accountable owners before approving further transformation spend.",
+      "rejected_method_traps": [
+        {
+          "candidate": "generic maturity model",
+          "reason": "Does not resolve the executive choice or economics."
+        },
+        {
+          "candidate": "framework catalogue",
+          "reason": "Adds breadth without evidence or decision relevance."
+        }
+      ],
+      "specialist_reviews": [
+        "Finance or risk specialist review where the recommendation affects valuation, controls or workforce."
+      ],
+      "status": "golden_chat_first",
+      "structured_data": [
+        {
+          "controlled_total": 1300,
+          "dataset_id": "FIXTURE-BENEFITS-001-DATA-001",
+          "fields": [
+            "period",
+            "segment",
+            "volume",
+            "cost",
+            "quality"
+          ],
+          "name": "Performance baseline",
+          "rows": 36
+        },
+        {
+          "controlled_total": 3,
+          "dataset_id": "FIXTURE-BENEFITS-001-DATA-002",
+          "fields": [
+            "option",
+            "investment",
+            "benefit",
+            "risk"
+          ],
+          "name": "Option economics",
+          "rows": 3
+        }
+      ],
+      "synthetic_client": {
+        "classification": "synthetic",
+        "employees": 844,
+        "jurisdiction": "Singapore",
+        "name": "Lumen Manufacturing"
+      },
+      "version": "1.0.0",
+      "working_title": "Transformation benefit leakage and recovery"
+    }
+  ],
+  "programme_digest": "cd0dd4a737b17a62cf335934e400a64dc59570804f190da3b85252f096575b7d",
+  "version": "1.0.0"
+}

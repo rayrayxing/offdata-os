@@ -1,0 +1,254 @@
+version: 1.0.0
+defaults:
+  jurisdiction: Singapore
+  classification: synthetic
+  scope: Board-sponsored diagnostic and recommendation using synthetic evidence only.
+  constraints:
+  - No external action
+  - No real client data
+  - Founder approval required for material release
+  story_structure:
+  - Decision
+  - Evidence
+  - Options
+  - Recommendation
+  - Implementation
+  - Benefits and controls
+  assumptions:
+  - Demand remains within the defined scenario range.
+  - Implementation capacity is available only in controlled waves.
+  falsifiers:
+  - Controlled data shows the recommendation underperforms the comparator.
+  - A prerequisite cannot be met within the approved commitment or decision date.
+  prohibited_conclusions:
+  - The reference recommendation is guaranteed.
+  - Released capacity is immediate cash savings.
+fixtures:
+- fixture_id: FIXTURE-STRATEGY-001
+  engagement_type: corporate_and_business_unit_strategy
+  working_title: Industrial services strategic growth choice
+  client_name: Apex Field Services
+  decision: Choose whether to prioritise regional expansion, vertical specialisation or adjacent digital services.
+  decision_owner: Board strategy committee
+  problem_archetypes:
+  - market attractiveness and competitive position
+  - portfolio and capability fit
+  method_stack:
+  - market sizing plus scenario economics
+  - capability-gap and option assessment
+  reference_recommendation: Prioritise two high-fit verticals in the home region before funding a digital-services adjacency.
+  alternatives:
+  - Acquire a small regional competitor now
+  - Launch the digital adjacency immediately
+  base_case_value_range_sgd: [51000, 305000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-GROWTH-001
+  engagement_type: growth_and_commercial_strategy
+  working_title: Subscription business growth-engine diagnosis
+  client_name: Beacon Workflow Cloud
+  decision: Choose the growth engine that can restore efficient recurring-revenue growth without worsening churn.
+  decision_owner: Chief commercial officer
+  problem_archetypes:
+  - segment economics and growth constraint
+  - pricing, retention and acquisition efficiency
+  method_stack:
+  - cohort retention plus funnel decomposition
+  - willingness-to-pay and unit economics
+  reference_recommendation: Repair onboarding and packaging for the mid-market segment before increasing acquisition spend.
+  alternatives:
+  - Cut price across all plans
+  - Double paid acquisition immediately
+  base_case_value_range_sgd: [52000, 310000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-COST-001
+  engagement_type: cost_and_productivity
+  working_title: Multi-site service productivity improvement
+  client_name: Cobalt Service Network
+  decision: Select a productivity programme that lowers cost without reducing safety or service quality.
+  decision_owner: Chief operating officer
+  problem_archetypes:
+  - activity and demand drivers
+  - span, process and capacity productivity
+  method_stack:
+  - activity-based cost decomposition
+  - process waste and capacity analysis
+  reference_recommendation: Standardise dispatch and technician scheduling at the highest-variance sites before structural headcount action.
+  alternatives:
+  - Apply an equal cost target to every site
+  - Outsource all field operations
+  base_case_value_range_sgd: [53000, 315000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-CX-001
+  engagement_type: customer_experience
+  working_title: SME digital onboarding redesign
+  client_name: Driftline Business Bank
+  decision: Choose the onboarding redesign that improves conversion while preserving KYC and fraud controls.
+  decision_owner: Head of SME banking
+  problem_archetypes:
+  - journey friction and failure demand
+  - customer needs and control constraints
+  method_stack:
+  - journey analytics plus qualitative research
+  - service blueprint and controlled experimentation
+  reference_recommendation: Remove duplicate information requests and introduce assisted digital recovery before relaxing any control.
+  alternatives:
+  - Remove manual KYC review
+  - Rebuild the entire core banking platform
+  base_case_value_range_sgd: [54000, 320000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-OM-001
+  engagement_type: operating_model_transformation
+  working_title: Regional shared-services operating model
+  client_name: Evergreen Consumer Group
+  decision: Choose the regional service model and decision rights for finance, HR and procurement.
+  decision_owner: Group chief operating officer
+  problem_archetypes:
+  - service segmentation and operating-model choices
+  - governance, accountability and location
+  method_stack:
+  - service catalogue and demand analysis
+  - decision-rights and organisation design
+  reference_recommendation: Create a federated shared-services model with common transaction services and retained market business partners.
+  alternatives:
+  - Centralise every activity immediately
+  - Keep the current country-by-country model
+  base_case_value_range_sgd: [55000, 325000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-WORKFORCE-001
+  engagement_type: organisation_and_workforce
+  working_title: AI-enabled workforce and organisation redesign
+  client_name: Fathom Claims Services
+  decision: Choose how roles, skills and workforce capacity should change as assisted automation is introduced.
+  decision_owner: Chief people officer
+  problem_archetypes:
+  - work and role decomposition
+  - skills, capacity and organisation implications
+  method_stack:
+  - task-level work analysis
+  - workforce scenarios and transition planning
+  reference_recommendation: Redesign adjuster roles around complex judgement and customer communication, with redeployment before hiring reduction.
+  alternatives:
+  - Announce a fixed headcount reduction now
+  - Automate all claims decisions
+  base_case_value_range_sgd: [56000, 330000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-RISK-001
+  engagement_type: risk_and_controls
+  working_title: Third-party and AI control environment review
+  client_name: Granite Payments
+  decision: Decide which control gaps must be remediated before expanding third-party AI use.
+  decision_owner: Chief risk officer
+  problem_archetypes:
+  - risk exposure and control design
+  - control operation and assurance
+  method_stack:
+  - risk-and-control self-assessment
+  - control testing and remediation prioritisation
+  reference_recommendation: Block high-risk external AI processing until data, approval, monitoring and incident controls pass.
+  alternatives:
+  - Ban all AI use permanently
+  - Accept vendor attestations as sufficient assurance
+  base_case_value_range_sgd: [57000, 335000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-MA-001
+  engagement_type: merger_and_integration
+  working_title: Mid-market acquisition integration design
+  client_name: Harbour Industrial Holdings
+  decision: Choose the integration thesis, Day-1 model and first-year synergy programme for a recent acquisition.
+  decision_owner: Integration steering committee
+  problem_archetypes:
+  - deal thesis and value drivers
+  - integration depth, sequencing and governance
+  method_stack:
+  - synergy model and dependency mapping
+  - target operating model and integration roadmap
+  reference_recommendation: Integrate commercial and support platforms in waves while retaining the acquired engineering proposition and customer teams.
+  alternatives:
+  - Full absorption on Day 1
+  - Leave both businesses entirely separate
+  base_case_value_range_sgd: [58000, 340000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-CARVEOUT-001
+  engagement_type: carve_out_and_separation
+  working_title: Business-unit technology and operations separation
+  client_name: Ion Materials Group
+  decision: Choose the minimum viable separation model and TSA exit sequence for a divested business unit.
+  decision_owner: Separation management office
+  problem_archetypes:
+  - standalone requirements and dependency exposure
+  - TSA design, exit sequencing and stranded cost
+  method_stack:
+  - dependency mapping and critical-path planning
+  - standalone cost and TSA economics
+  reference_recommendation: Prioritise identity, finance and order-management separation, using bounded TSAs for lower-risk shared services.
+  alternatives:
+  - Replicate every parent system
+  - Exit all TSAs within thirty days
+  base_case_value_range_sgd: [59000, 345000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-IPO-001
+  engagement_type: ipo_valuation_and_capital_strategy
+  working_title: Pre-IPO readiness and capital pathway
+  client_name: Juniper Diagnostics
+  decision: Choose whether to pursue an IPO, private growth round or strategic investment over the next 24 months.
+  decision_owner: Board capital committee
+  problem_archetypes:
+  - capital needs and strategic options
+  - valuation, readiness and market conditions
+  method_stack:
+  - scenario valuation and dilution analysis
+  - IPO readiness and capital-pathway assessment
+  reference_recommendation: Pursue a private growth round while closing reporting and governance gaps, preserving an IPO option.
+  alternatives:
+  - Launch an IPO immediately
+  - Sell the company now
+  base_case_value_range_sgd: [60000, 350000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-CHANGE-001
+  engagement_type: implementation_and_change
+  working_title: Enterprise workflow adoption programme
+  client_name: Kestrel Logistics
+  decision: Choose the implementation and change approach for a new planning workflow across six countries.
+  decision_owner: Transformation sponsor
+  problem_archetypes:
+  - change impact and adoption barriers
+  - delivery governance and capability transfer
+  method_stack:
+  - stakeholder and impact analysis
+  - adoption measurement and stage-gated implementation
+  reference_recommendation: Use country waves with role-based training, local champions and adoption gates before each rollout.
+  alternatives:
+  - Big-bang rollout to all countries
+  - Treat training attendance as adoption
+  base_case_value_range_sgd: [61000, 355000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.
+- fixture_id: FIXTURE-BENEFITS-001
+  engagement_type: benefits_realisation_and_performance_improvement
+  working_title: Transformation benefit leakage and recovery
+  client_name: Lumen Manufacturing
+  decision: Choose the recovery actions required to restore confidence in a transformation benefits case.
+  decision_owner: Chief financial officer
+  problem_archetypes:
+  - benefit definition and ownership
+  - baseline, attribution and leakage
+  method_stack:
+  - benefit-driver tree and baseline reconciliation
+  - initiative tracing and performance cadence
+  reference_recommendation: Rebaseline benefits, remove double counting and assign accountable owners before approving further transformation spend.
+  alternatives:
+  - Preserve the original headline target
+  - Recognise all released capacity as cash savings
+  base_case_value_range_sgd: [62000, 360000]
+  management_overclaim: Management confidence conflicts with controlled performance data.
+  frontline_constraint: Front-line evidence identifies a prerequisite omitted from the preferred option.

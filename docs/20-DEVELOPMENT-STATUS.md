@@ -2,7 +2,7 @@
 
 ## Snapshot
 
-Date: 2026-08-04
+Date: 2026-08-05
 
 ## Completed in ChatGPT and committed
 
@@ -53,48 +53,63 @@ See:
 
 Status: **chat-first completion and independent CI gate passed**.
 
-Committed release includes:
+The governed release contains immutable story model `STORY-DAI-001`, twelve governed assertions, eighteen approved named numbers, six citation records, six editable visual specifications, twelve reusable semantic objects and six renderer-independent plans covering PPTX, DOCX, XLSX, PDF, SVG and HTML. It includes deterministic cross-format reconciliation, a Founder release boundary, an independent 115-check semantic grader and a byte-reproducible restricted baseline.
 
-- immutable story model `STORY-DAI-001` version `1.0.0`;
-- eight assertion-led decision sections and twelve governed assertions;
-- eighteen approved named numbers tied to exact Phase 3 oracle fields;
-- six citation records with concise client notes and complete internal provenance;
-- six editable visual specifications covering portfolio, process, value, control, roadmap and causal views;
-- twelve reusable semantic objects;
-- six renderer-independent plans for PPTX, DOCX, XLSX, PDF, SVG and HTML;
-- 55 planned surface objects;
-- workbook semantics separating sources, assumptions, calculations, outputs and checks;
-- eight deterministic cross-format reconciliation checks;
-- a Founder review summary that blocks external issuance in this phase;
-- an independent semantic grader with 115 checks;
-- a byte-reproducible restricted semantic baseline;
-- explicit exclusion of answer keys and restricted baselines from normal agent context;
-- mutation and failure tests for analytical changes, number drift, missing surfaces, unknown references, story-version drift and stale baselines;
-- twenty-one additional executable test nodes;
-- four planned tests converted to executable evidence;
-- a read-only clean-generation gate covering the test registry, Phase 3 oracle and Phase 4 semantic baseline.
-
-Latest complete independent validation:
-
-- Phase 1 regression gate passed;
-- Phase 2 regression gate passed;
-- Phase 3 oracle gate passed;
-- Phase 4 semantic-model gate passed;
-- 146 implemented test nodes and 57 remaining planned tests;
-- all 123 requirements mapped;
-- 148 runtime tests passed;
-- 93.29 percent coverage against a 90 percent floor;
-- Python compilation passed;
-- Ruff passed;
-- strict MyPy passed across 27 source files;
-- 34-file release artefact retained for 30 days.
-
-The Phase 4 boundary is semantic, not rendered. Physical PPTX, DOCX, XLSX, PDF, SVG and HTML generation, Office open-and-save, editability and visual-regression evidence remain later renderer work. `VIS-CITATION-001`, `VIS-EDIT-001` and `VIS-PPTX-001` remain planned.
+The Phase 4 boundary is semantic, not rendered. Physical deliverable generation, Office open-and-save, native editability and visual-regression evidence remain later renderer work. `VIS-CITATION-001`, `VIS-EDIT-001` and `VIS-PPTX-001` remain planned.
 
 See:
 
 - `docs/36-PHASE-4-DELIVERABLE-SEMANTIC-MODEL-COMPLETION.md`
 - `reports/phase4-validation-evidence.md`
+
+### Phase 5 — Additional engagement fixtures
+
+Status: **chat-first completion and independent CI gate passed**.
+
+The governed release completes the twelve remaining primary golden engagement fixture packs:
+
+- corporate and business-unit strategy;
+- growth and commercial strategy;
+- cost and productivity;
+- customer experience;
+- operating-model transformation;
+- organisation and workforce;
+- risk and controls;
+- M&A and integration;
+- carve-out and separation;
+- IPO, valuation and capital strategy;
+- implementation and change;
+- benefits realisation and performance improvement.
+
+Together with the detailed Northstar digital-and-AI fixture, all thirteen primary engagement types now have governed chat-first fixture definitions.
+
+Each additional fixture contains a synthetic Singapore client and mandate, CRM context, source and interview evidence, structured data, deliberate defects, expected problem archetypes, two minimum-sufficient method stacks, rejected method traps, contradictions, calculation ranges, assumptions, falsifiers, recommendations, alternatives, storyline expectations, D3/D4 Founder interruptions, implementation records and governed benefit records.
+
+The expanded fixture programme is deterministic, digest-protected, byte-reproducible and checked against the governed manifest. Phase 5 adds twelve mapped executable tests and preserves the full-system execution boundary.
+
+Latest complete independent validation:
+
+- Phase 1 regression gate passed;
+- Phase 2 regression gate passed;
+- Phase 3 analytical-oracle gate passed;
+- Phase 4 semantic-model gate passed;
+- Phase 5 additional-fixture gate passed;
+- read-only clean generation across all Phase 1–5 governed records passed;
+- 158 implemented test nodes and 57 remaining planned tests;
+- all 123 requirements mapped;
+- 160 runtime tests passed;
+- 93.15 percent coverage against a 90 percent floor;
+- Python compilation passed;
+- Ruff passed;
+- strict MyPy passed across 28 source files;
+- 37-file release artefact retained for 30 days.
+
+Compound fixture packs and full application execution remain later work. `E2E-PRIMARY-FIXTURES-001` and `E2E-COMPOUND-FIXTURES-001` remain planned and are not represented as complete.
+
+See:
+
+- `docs/37-PHASE-5-ADDITIONAL-ENGAGEMENT-FIXTURES-COMPLETION.md`
+- `reports/phase5-validation-evidence.md`
 
 ### Deterministic consulting kernel
 
@@ -109,12 +124,15 @@ See:
 - Provider-independent agent-system controls.
 - Restricted synthetic analytical oracle and independent grader.
 - Immutable cross-format deliverable semantic model and independent semantic grader.
+- Deterministic primary engagement fixture programme.
 
 ### Synthetic engagement system
 
-- Thirteen-primary and five-compound fixture programme.
-- Complete synthetic Northstar SME AI-audit evidence room.
-- Deterministic fixture, oracle and semantic tests covering evidence, calculations, controls, contradictions, prompt injection, answer-key separation, missing observations, recommendation mutations and cross-format consistency.
+- All thirteen primary engagement types have governed chat-first fixture definitions.
+- `FIXTURE-DAI-001` contains the detailed synthetic Northstar SME AI-audit evidence room, analytical oracle and semantic model.
+- Twelve additional primary fixtures are expanded deterministically from governed seeds.
+- Fixture tests cover scope, evidence, calculations, controls, contradictions, method traps, assumptions, falsifiers, human-authority boundaries, mutation detection and reproducibility.
+- Compound fixtures remain planned.
 
 ## Current strategy
 
@@ -134,4 +152,4 @@ Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack 
 
 ## Current Codex gate
 
-Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1–4, applying the database migration in a disposable environment, rebuilding restricted baselines without exposing them to normal agent context and reporting discrepancies without silently changing governing contracts, fixture evidence, answer keys, semantic conclusions or Founder authority boundaries.
+Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1–5, applying the database migration in a disposable environment, rebuilding restricted baselines without exposing them to normal agent context and reporting discrepancies without silently changing governing contracts, fixture evidence, golden expectations, answer keys, semantic conclusions or Founder authority boundaries.
