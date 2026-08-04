@@ -1,0 +1,25 @@
+row_id,source_id,metric,segment,period,value,unit,quality_status,notes
+COST-001,COST-SRC-002,direct_labour_cost,field_operations,FY2026,78000000,SGD,established,Payroll and contractor ledger
+COST-002,COST-SRC-002,productive_hours,field_operations,FY2026,1920000,hours,estimated,Travel and rework coding incomplete
+COST-003,COST-SRC-002,paid_hours,field_operations,FY2026,2496000,hours,established,Payroll ledger
+COST-004,COST-SRC-002,overtime_cost,field_operations,FY2026,8400000,SGD,established,Thirty eight percent linked to schedule volatility
+COST-005,COST-SRC-002,rework_hours,field_operations,FY2026,184000,hours,estimated,Manual coding sample
+COST-006,COST-SRC-002,sla_attainment,field_operations,FY2026,96.8,percent,established,Customer reporting
+COST-007,COST-SRC-002,safety_incidents,field_operations,FY2026,31,count,established,Recordable incidents
+COST-008,COST-SRC-002,minimum_resilience_capacity,field_operations,FY2026,12,percent,estimated,Safety and continuity requirement
+COST-009,COST-SRC-002,procurement_spend,subcontractors,FY2026,42000000,SGD,established,Accounts payable
+COST-010,COST-SRC-002,addressable_spend,subcontractors,FY2026,27000000,SGD,estimated,Excludes regulated and sole-source categories
+COST-011,COST-SRC-002,price_variance,subcontractors,FY2026,7.5,percent,estimated,Specification mix not fully controlled
+COST-012,COST-SRC-002,corporate_cost,shared_services,FY2026,28000000,SGD,established,Includes allocated technology and property
+COST-013,COST-SRC-002,avoidable_cost,shared_services,FY2026,9600000,SGD,estimated,Requires activity and contract validation
+COST-014,COST-SRC-002,management_target,total_program,FY2027,24000000,SGD,estimated,Top-down target
+COST-015,COST-SRC-002,automation_capacity,planning_admin,FY2027,126000,hours,estimated,Capacity before adoption leakage
+COST-016,COST-SRC-002,approved_position_removals,planning_admin,FY2027,0,count,established,No approved workforce plan
+COST-017,COST-SRC-002,travel_cost,field_operations,FY2026,11600000,SGD,established,Fuel fleet and allowances
+COST-018,COST-SRC-002,route_efficiency_opportunity,field_operations,FY2027,8.0,percent,estimated,Pilot evidence not yet available
+COST-019,COST-SRC-002,span_of_control,supervisors,FY2026,7.2,ratio,established,Average hides 3 to 16 range
+COST-020,COST-SRC-002,service_demand,emergency_jobs,FY2026,48600,jobs,established,Seasonality material
+COST-021,COST-SRC-002,service_demand,planned_jobs,FY2026,172400,jobs,established,Includes cancelled jobs
+COST-022,COST-SRC-002,cancellation_rate,planned_jobs,FY2026,6.4,percent,contradictory,Operations reports 4.9 percent after exclusions
+COST-023,COST-SRC-002,warehouse_obsolescence,inventory,FY2026,3900000,SGD,stale,Last cycle count fourteen months ago
+COST-024,COST-SRC-002,training_compliance,field_operations,FY2026,,percent,missing,Comparable denominator unavailable
