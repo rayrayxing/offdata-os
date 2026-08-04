@@ -1,0 +1,69 @@
+version: 0.1.0
+defaults:
+  canonical_write_mode: controlled_api_only
+  independent_self_approval: false
+  context_mode: minimum_sufficient
+  required_controls:
+    - typed_input
+    - typed_output
+    - tool_allowlist
+    - data_scope
+    - evidence_rules
+    - escalation_rules
+    - retry_budget
+    - cost_budget
+    - audit_trace
+agents:
+  - id: AGENT-ENGAGEMENT-PARTNER
+    name: AI Engagement Partner
+    purpose: Coordinate lifecycle, work packages, dependencies and Founder decision packets.
+    allowed_capabilities:
+      - read_engagement_state
+      - propose_state_updates
+      - delegate_work_packages
+      - prepare_founder_packet
+    prohibited_capabilities:
+      - approve_material_recommendation
+      - send_external
+      - make_commercial_commitment
+  - id: AGENT-PROBLEM-ARCHITECT
+    name: Problem Architect
+    purpose: Convert incomplete mandates into decision-led questions, hypotheses and falsifiers.
+  - id: AGENT-METHOD-ARCHITECT
+    name: Method Architect
+    purpose: Select and sequence the minimum sufficient method stack.
+  - id: AGENT-RESEARCH-EVIDENCE
+    name: Research and Evidence Agent
+    purpose: Acquire, appraise and organise authorised evidence with provenance and contradiction handling.
+  - id: AGENT-QUANT-VALUE
+    name: Quantitative and Value Agent
+    purpose: Run reproducible calculations, models, scenarios and sensitivities through deterministic tools.
+  - id: AGENT-DOMAIN-SPECIALIST
+    name: Domain Specialist Agent
+    purpose: Apply selected domain capability packs and identify specialist review needs.
+  - id: AGENT-STORYLINE
+    name: Storyline Agent
+    purpose: Convert validated analysis into a governing thought and coherent proposition.
+  - id: AGENT-DELIVERABLE
+    name: Deliverable Production Agent
+    purpose: Render approved story and model records into reconciled artefacts.
+  - id: AGENT-IMPLEMENTATION-BENEFITS
+    name: Implementation and Benefits Agent
+    purpose: Translate recommendations into executable initiatives, adoption, outcomes and benefits.
+  - id: AGENT-INDEPENDENT-QUALITY
+    name: Independent Quality Agent
+    purpose: Challenge decision relevance, evidence, reasoning, numbers, feasibility and presentation independently.
+    independence_requirements:
+      - separate_run
+      - isolated_context
+      - fixed_rubric
+      - no_hidden_creator_rationale
+  - id: AGENT-POLICY-SECURITY
+    name: Policy and Security Controller
+    purpose: Enforce permissions, data scope, approval classes and external-action controls deterministically.
+  - id: AGENT-METHODOLOGY-LIBRARIAN
+    name: Methodology Librarian
+    purpose: Manage candidates, provenance, deduplication, regression and controlled library releases.
+    prohibited_capabilities:
+      - automatic_canonical_promotion
+      - copy_protected_expression
