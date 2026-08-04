@@ -1,0 +1,1827 @@
+{
+  "implemented_tests": [
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_agent_configuration_preserves_propose_only_writes_and_provider_independence",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-003",
+        "AGENT-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_agent_manifest_has_complete_versioned_definitions",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "AGENT-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_agent_skill_packages_exist_and_contain_required_sections",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "AGENT-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_budget_exhaustion_and_evidence_gaps_trigger_material_escalation",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-006",
+        "AUTH-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_budget_policy_detects_every_exceeded_dimension",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-006",
+        "LIFE-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_context_compiler_isolates_untrusted_instruction_like_content",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-002",
+        "AGENT-007",
+        "EVID-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_context_compiler_rejects_cross_tenant_and_cross_engagement_records",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-002",
+        "AGENT-004",
+        "DATA-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_context_compiler_selects_required_then_highest_relevance",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_critical_dimension_threshold_rejects_polished_but_unsafe_agent",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "QA-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_evaluation_manifest_has_positive_negative_and_adversarial_cases",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "AGENT-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_injection_assessment_never_grants_authority",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-007",
+        "EVID-010",
+        "SEC-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_mandatory_failure_rejects_admission_regardless_of_score",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "AGENT-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_nonzero_variance_requires_independent_review_even_when_thresholds_pass",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "AUTH-008",
+        "AGENT-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_provider_route_preserves_output_contract_and_uses_risk",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-008",
+        "AGENT-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_provider_route_rejects_contract_drift",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-008",
+        "AGENT-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_record_write_is_propose_only_and_command_mediated",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-003",
+        "AGENT-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_repeatable_high_quality_result_is_admitted",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "AGENT-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_tool_permission_blocks_direct_external_effects_and_canonical_writes",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-003",
+        "AGENT-004",
+        "AUTH-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_agent_system.py::test_tool_permission_requires_agent_and_run_allowlists",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_answer_key_and_oracle_are_blocked_from_agent_context",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-002",
+        "AGENT-004",
+        "QA-009",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_customer_service_oracle_blocks_autonomous_chatbot_inference",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-005",
+        "MODEL-009",
+        "AUTH-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_financial_mutation_is_detected_by_independent_grader",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-006",
+        "QA-003",
+        "QA-005",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_financial_oracle_recalculates_and_classifies_value",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-001",
+        "MODEL-003",
+        "MODEL-004",
+        "MODEL-006",
+        "MODEL-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_invalid_answer_key_shape_fails_closed",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-009",
+        "MODEL-006"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_missing_or_malformed_fixture_inputs_fail_closed",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-002",
+        "MODEL-009",
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_baseline_writer_and_stale_detection",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-002",
+        "QA-005",
+        "DATA-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_builds_from_client_visible_inputs_and_grades_pass",
+      "phase": "chat-first",
+      "requirements": [
+        "OUT-002",
+        "QA-009",
+        "MODEL-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_contract_validators_reject_unbounded_records",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-005",
+        "QA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_does_not_require_answer_key_for_analysis",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-009",
+        "AGENT-002",
+        "DATA-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_is_byte_reproducible_and_committed_baseline_is_current",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-002",
+        "MODEL-005",
+        "DATA-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_method_stack_rejections_uncertainty_and_specialist_review_are_complete",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-003",
+        "KNOW-004",
+        "KNOW-005",
+        "EVID-006",
+        "AUTH-006"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_preserves_evidence_status_provenance_and_limits",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-006",
+        "DATA-007",
+        "EVID-003",
+        "EVID-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_risk_authority_and_stop_gates_are_complete",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003",
+        "AUTH-004",
+        "AUTH-007",
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_over_budget_primary_pilot_mutation_switches_to_bounded_alternative",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-004",
+        "QA-009",
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_quotation_oracle_separates_touch_waiting_and_complexity",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-001",
+        "MODEL-005",
+        "EVID-005",
+        "EVID-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_readiness_oracle_uses_process_application_and_untrusted_source_controls",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-010",
+        "AGENT-007",
+        "KNOW-004",
+        "MODEL-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_restricted_baseline_document_contains_grade_and_checksums",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-003",
+        "DATA-008",
+        "QA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_use_case_oracle_retains_non_ai_comparator_and_bounded_pilot",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-004",
+        "KNOW-005",
+        "MODEL-004",
+        "AUTH-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_workforce_oracle_quantifies_current_control_and_adoption_conditions",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-006",
+        "IMPL-003",
+        "AGENT-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_contracts.py::test_blocked_envelope_requires_gap_or_escalation",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_contracts.py::test_context_package_requires_tool_allowlist",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-002",
+        "AGENT-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_contracts.py::test_founder_packet_rejects_routine_only",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_contracts.py::test_founder_packet_requires_two_options",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_contracts.py::test_required_escalation_needs_class_and_reason",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-001",
+        "AGENT-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_contracts.py::test_successful_agent_envelope_can_be_minimal",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_crm.py::test_approved_campaign_authorises_bounded_outreach",
+      "phase": "chat-first",
+      "requirements": [
+        "ORIG-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_crm.py::test_no_campaign_control_means_prepare_only",
+      "phase": "chat-first",
+      "requirements": [
+        "ORIG-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_crm.py::test_sending_cannot_be_enabled_without_founder",
+      "phase": "chat-first",
+      "requirements": [
+        "ORIG-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_crm.py::test_suppressed_contact_cannot_be_contacted",
+      "phase": "chat-first",
+      "requirements": [
+        "ORIG-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_crm.py::test_suppressed_contact_requires_reason",
+      "phase": "chat-first",
+      "requirements": [
+        "ORIG-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_delivery.py::test_complete_reconciliation_passes",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_delivery.py::test_fact_assertion_requires_evidence",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-003",
+        "DELIV-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_delivery.py::test_reconciliation_requires_all_eight_checks",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_delivery.py::test_story_section_cannot_reference_missing_assertion",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_delivery.py::test_visual_relationship_requires_known_entities",
+      "phase": "chat-first",
+      "requirements": [
+        "DELIV-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_events.py::test_conditional_approval_requires_conditions",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_events.py::test_non_create_command_requires_engagement_scope",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002",
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_events.py::test_non_create_command_requires_expected_version",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-003",
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_events.py::test_routine_only_approval_request_is_invalid",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_events.py::test_side_effect_command_requires_idempotency",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-007",
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_adversarial_document_is_marked_untrusted_and_never_authoritative",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-010",
+        "AGENT-007",
+        "SEC-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_answer_key_is_restricted_and_requires_quotation_pilot_controls",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-009",
+        "AGENT-005",
+        "AUTH-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_complex_quotes_have_materially_more_waiting_and_touch_time",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-005",
+        "MODEL-001",
+        "MODEL-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_customer_service_categories_reconcile",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-005",
+        "EVID-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_financial_baseline_separates_value_classes",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-001",
+        "MODEL-003",
+        "MODEL-005",
+        "IMPL-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_fixture_required_files_exist",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-009",
+        "KNOW-001",
+        "EVID-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_founder_commitment_limit_is_consistent_across_fixture",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003",
+        "AUTH-005",
+        "DELIV-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_quotation_activity_reconciles_to_six_month_volume",
+      "phase": "chat-first",
+      "requirements": [
+        "MODEL-001",
+        "MODEL-005",
+        "DATA-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_risk_register_contains_mandatory_human_authority_boundaries",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003",
+        "AUTH-004",
+        "AUTH-005",
+        "AUTH-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_source_manifest_ids_are_unique_and_references_resolve",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-001",
+        "KNOW-002",
+        "EVID-002",
+        "EVID-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_use_case_inventory_preserves_non_ai_comparator",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-004",
+        "KNOW-005",
+        "MODEL-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "fixture",
+      "node_id": "packages/offdata-core/tests/test_fixture_dai_001.py::test_workforce_survey_reconciles_and_surfaces_current_control_gap",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-007",
+        "IMPL-003",
+        "AGENT-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge.py::test_candidate_cannot_promote_without_controls",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-007",
+        "KNOW-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge.py::test_client_confidential_source_requires_tenant_scope",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002",
+        "KNOW-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge.py::test_method_requires_substantive_fields",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge.py::test_method_selection_requires_role_for_each_method",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge.py::test_passage_requires_location",
+      "phase": "chat-first",
+      "requirements": [
+        "EVID-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_knowledge.py::test_source_requires_valid_sha256",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_compressed_stage_can_be_skipped_for_detection",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_documented_compression_allows_skip",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_earliest_unmet_gate_selects_stage",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_forward_transition_passes_with_gate",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_forward_transition_requires_current_gate",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_missing_identity_stays_at_intake",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-001",
+        "DATA-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_recycle_requires_material_reason",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_recycle_returns_to_earlier_stage",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_silent_stage_skip_is_blocked",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_lifecycle.py::test_stop_cancels_engagement",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_agent_config_has_bounded_roles_and_propose_only_writes",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "AGENT-003",
+        "AGENT-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_api_command_response_enforces_accepted_shape",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_api_pending_approval_requires_requirement",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003",
+        "AUTH-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_command_catalogue_covers_every_command_enum",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_committed_schema_bundle_matches_pydantic_models",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-003",
+        "AGENT-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_config_documents_validate_against_committed_config_schema",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-001",
+        "AUTH-001",
+        "AGENT-001",
+        "QA-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_engagement_view_enforces_status_alignment",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_event_catalogue_covers_every_event_enum",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_every_collected_test_has_requirement_mapping",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-002",
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_lifecycle_config_matches_python_stage_order",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-001",
+        "LIFE-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_model_registry_contains_all_public_contract_families",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-009",
+        "DATA-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_model_registry_references_existing_schema_definitions",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_non_repeatable_commands_require_idempotency",
+      "phase": "chat-first",
+      "requirements": [
+        "LIFE-007",
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_openapi_external_schema_references_resolve",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_openapi_is_31_and_has_required_paths",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-005",
+        "OUT-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_policy_config_covers_every_decision_class",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_rejected_api_response_requires_error",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_schema_bundle_is_valid_draft_2020_12",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-005",
+        "DATA-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_sql_migration_contains_tenant_scope_event_store_and_idempotency",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002",
+        "DATA-004",
+        "LIFE-007",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_standalone_schema_aliases_point_to_canonical_bundle",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-005",
+        "AGENT-009",
+        "DATA-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_machine_contracts.py::test_traceability_declares_test_or_planned_test_for_every_family_requirement",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_approved_methodology_promotion_can_execute",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_client_data_without_authority_is_prohibited",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-002",
+        "EVID-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_client_draft_requires_unapproved_marking",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-004",
+        "DELIV-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_external_send_requests_approval",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_fully_authorised_external_send_can_execute",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-004",
+        "LIFE-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_irreversible_action_requires_challenge_and_approval",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_legal_conclusion_without_specialist_is_prohibited",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-006"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_marked_client_draft_can_be_prepared",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_methodology_promotion_requires_governance",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-007",
+        "KNOW-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_policy.py::test_routine_internal_research_auto_executes",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_quality.py::test_external_t2_requires_independent_signoff",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_quality.py::test_founder_ready_passes_at_standard",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_quality.py::test_s1_self_closure_needs_independent_verification",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-005",
+        "QA-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_quality.py::test_s2_blocks_founder_ready",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_quality.py::test_t2_creator_cannot_be_reviewer",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-008",
+        "QA-008"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_quality.py::test_weighted_score_remains_on_four_point_scale",
+      "phase": "chat-first",
+      "requirements": [
+        "QA-002"
+      ]
+    }
+  ],
+  "planned_tests": [
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "agent_eval",
+      "phase": "agent-phase",
+      "requirements": [
+        "EVID-005"
+      ],
+      "test_id": "AE-EVIDENCE-003"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "agent_eval",
+      "phase": "codex-or-later",
+      "requirements": [
+        "TEST-004"
+      ],
+      "test_id": "AE-FALSE-TRAPS-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "agent_eval",
+      "phase": "origination-phase",
+      "requirements": [
+        "ORIG-004"
+      ],
+      "test_id": "AE-OUTREACH-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "agent_eval",
+      "phase": "agent-phase",
+      "requirements": [
+        "QA-001"
+      ],
+      "test_id": "AE-QA-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "agent_eval",
+      "phase": "agent-phase",
+      "requirements": [
+        "EVID-001"
+      ],
+      "test_id": "AE-RESEARCH-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "agent_eval",
+      "phase": "agent-phase",
+      "requirements": [
+        "EVID-004"
+      ],
+      "test_id": "AE-RESEARCH-002"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "agent_eval",
+      "phase": "agent-phase",
+      "requirements": [
+        "EVID-008"
+      ],
+      "test_id": "AE-RESEARCH-003"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "agent_eval",
+      "phase": "delivery-phase",
+      "requirements": [
+        "DELIV-002"
+      ],
+      "test_id": "AE-STORY-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "end_to_end",
+      "phase": "codex-or-later",
+      "requirements": [
+        "TEST-003"
+      ],
+      "test_id": "E2E-COMPOUND-FIXTURES-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "end_to_end",
+      "phase": "codex-or-later",
+      "requirements": [
+        "TEST-002"
+      ],
+      "test_id": "E2E-PRIMARY-FIXTURES-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "end_to_end",
+      "phase": "codex-or-later",
+      "requirements": [
+        "OUT-001",
+        "TEST-006"
+      ],
+      "test_id": "E2E-WORKLOAD-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "agent-phase",
+      "requirements": [
+        "AGENT-009"
+      ],
+      "test_id": "IT-ADAPTER-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "agent-phase",
+      "requirements": [
+        "AGENT-003"
+      ],
+      "test_id": "IT-AGENT-WRITE-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "recovery",
+      "phase": "codex-or-later",
+      "requirements": [
+        "SEC-006"
+      ],
+      "test_id": "IT-BACKUP-RESTORE-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-or-later",
+      "requirements": [
+        "DATA-008"
+      ],
+      "test_id": "IT-BASELINE-IMMUTABLE-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-or-later",
+      "requirements": [
+        "COST-003"
+      ],
+      "test_id": "IT-COST-ATTRIBUTION-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "crm-phase",
+      "requirements": [
+        "CRM-001"
+      ],
+      "test_id": "IT-CRM-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "crm-phase",
+      "requirements": [
+        "CRM-002"
+      ],
+      "test_id": "IT-CRM-002"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "security",
+      "phase": "codex-or-later",
+      "requirements": [
+        "SEC-003"
+      ],
+      "test_id": "IT-ENV-SEPARATION-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "knowledge-ingestion",
+      "requirements": [
+        "KNOW-001"
+      ],
+      "test_id": "IT-INGEST-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-integration",
+      "requirements": [
+        "LIFE-009"
+      ],
+      "test_id": "IT-KILL-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-or-later",
+      "requirements": [
+        "COST-001"
+      ],
+      "test_id": "IT-LOCAL-FIRST-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-or-later",
+      "requirements": [
+        "SEC-009"
+      ],
+      "test_id": "IT-OBSERVABILITY-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "methodology-radar",
+      "requirements": [
+        "KNOW-009"
+      ],
+      "test_id": "IT-RADAR-002"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-integration",
+      "requirements": [
+        "LIFE-007"
+      ],
+      "test_id": "IT-RECOVERY-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "quality-phase",
+      "requirements": [
+        "QA-005"
+      ],
+      "test_id": "IT-REPAIR-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-or-later",
+      "requirements": [
+        "TEST-005"
+      ],
+      "test_id": "IT-REPEATABILITY-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-or-later",
+      "requirements": [
+        "DATA-009"
+      ],
+      "test_id": "IT-RETENTION-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "recovery",
+      "phase": "codex-or-later",
+      "requirements": [
+        "SEC-010"
+      ],
+      "test_id": "IT-ROLLBACK-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "codex-or-later",
+      "requirements": [
+        "OUT-004",
+        "AGENT-009"
+      ],
+      "test_id": "IT-RUNTIME-REPLACE-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "integration",
+      "phase": "research-phase",
+      "requirements": [
+        "EVID-007"
+      ],
+      "test_id": "IT-STALENESS-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "artefact",
+      "phase": "codex-or-later",
+      "requirements": [
+        "MODEL-007",
+        "MODEL-008"
+      ],
+      "test_id": "IT-WORKBOOK-ARCH-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "meta",
+      "phase": "codex-or-later",
+      "requirements": [
+        "TEST-001"
+      ],
+      "test_id": "META-TEST-HIERARCHY-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "security",
+      "phase": "crm-phase",
+      "requirements": [
+        "CRM-003"
+      ],
+      "test_id": "SEC-CRM-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "security",
+      "phase": "codex-or-later",
+      "requirements": [
+        "SEC-004"
+      ],
+      "test_id": "SEC-ENCRYPTION-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "security",
+      "phase": "codex-or-later",
+      "requirements": [
+        "DATA-010",
+        "SEC-005"
+      ],
+      "test_id": "SEC-REGION-ISOLATION-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "security",
+      "phase": "codex-or-later",
+      "requirements": [
+        "SEC-008"
+      ],
+      "test_id": "SEC-SUPPLY-CHAIN-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "knowledge-ingestion",
+      "requirements": [
+        "KNOW-002"
+      ],
+      "test_id": "UT-ALIAS-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "delivery-phase",
+      "requirements": [
+        "DELIV-010"
+      ],
+      "test_id": "UT-ARTEFACT-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "codex-or-later",
+      "requirements": [
+        "IMPL-005",
+        "IMPL-006"
+      ],
+      "test_id": "UT-BENEFIT-GOVERNANCE-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "quality-phase",
+      "requirements": [
+        "QA-003"
+      ],
+      "test_id": "UT-DEFECT-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "quality-phase",
+      "requirements": [
+        "QA-004"
+      ],
+      "test_id": "UT-DEFECT-002"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "quality-phase",
+      "requirements": [
+        "QA-006"
+      ],
+      "test_id": "UT-EXCEPTION-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "codex-or-later",
+      "requirements": [
+        "IMPL-001",
+        "IMPL-002"
+      ],
+      "test_id": "UT-INITIATIVE-TRACE-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "agent-phase",
+      "requirements": [
+        "LIFE-006"
+      ],
+      "test_id": "UT-NBA-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "origination-phase",
+      "requirements": [
+        "ORIG-001"
+      ],
+      "test_id": "UT-ORIG-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "knowledge-ingestion",
+      "requirements": [
+        "KNOW-006"
+      ],
+      "test_id": "UT-OVERLAY-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "codex-or-later",
+      "requirements": [
+        "COST-004"
+      ],
+      "test_id": "UT-PAID-DEPENDENCY-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "codex-or-later",
+      "requirements": [
+        "SEC-007"
+      ],
+      "test_id": "UT-PROCESSOR-REGISTER-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "agent-phase",
+      "requirements": [
+        "AUTH-008",
+        "QA-008"
+      ],
+      "test_id": "UT-QA-INDEP-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "methodology-radar",
+      "requirements": [
+        "KNOW-007",
+        "KNOW-009"
+      ],
+      "test_id": "UT-RADAR-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "delivery-phase",
+      "requirements": [
+        "DELIV-008"
+      ],
+      "test_id": "UT-RECON-002"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "codex-integration",
+      "requirements": [
+        "LIFE-008"
+      ],
+      "test_id": "UT-RETRY-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "knowledge-ingestion",
+      "requirements": [
+        "KNOW-008"
+      ],
+      "test_id": "UT-RIGHTS-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "quality-phase",
+      "requirements": [
+        "QA-007"
+      ],
+      "test_id": "UT-SIGNOFF-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "codex-or-later",
+      "requirements": [
+        "COST-002"
+      ],
+      "test_id": "UT-SPEND-CONTROL-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "methodology-radar",
+      "requirements": [
+        "KNOW-010"
+      ],
+      "test_id": "UT-SUPERSEDE-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "unit",
+      "phase": "delivery-phase",
+      "requirements": [
+        "DELIV-006"
+      ],
+      "test_id": "UT-VISUAL-002"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "artefact",
+      "phase": "delivery-phase",
+      "requirements": [
+        "EVID-009",
+        "DELIV-009"
+      ],
+      "test_id": "VIS-CITATION-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "artefact",
+      "phase": "delivery-phase",
+      "requirements": [
+        "DELIV-004"
+      ],
+      "test_id": "VIS-EDIT-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "artefact",
+      "phase": "delivery-phase",
+      "requirements": [
+        "DELIV-007"
+      ],
+      "test_id": "VIS-PPTX-001"
+    }
+  ],
+  "rules": {
+    "completed_planned_tests_are_removed": true,
+    "every_collected_test_requires_mapping": true,
+    "mandatory_requirements_require_executed_or_planned_test": true,
+    "planned_tests_do_not_count_as_executed_evidence": true,
+    "requirement_ids_must_match_catalogue_pattern": true
+  },
+  "version": "2.0.0"
+}
