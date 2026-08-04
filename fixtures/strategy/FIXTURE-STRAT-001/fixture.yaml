@@ -1,0 +1,42 @@
+fixture_id: FIXTURE-STRAT-001
+version: 1.0.0
+domain: corporate_strategy
+difficulty: advanced
+fictional: true
+organisation:
+  name: Meridian Industrial Holdings Pte. Ltd.
+  jurisdiction: Singapore
+  sector: industrial services and specialty distribution
+  revenue_sgd_m: 486
+  employees: 2140
+mandate:
+  decision: Which business lines should receive growth capital, be restructured, partnered, divested or closed over the next three years?
+  scope: Five business lines across Singapore, Malaysia and Indonesia; three-year capital envelope; portfolio, parenting and execution choices.
+  commercial_assumptions: Advisory work is synthetic; capital envelope is SGD 95 million; all values are fictional.
+  delivery_assumptions: Eight-week diagnostic with a board decision required by 2027-02-15.
+stakeholders:
+  - role: Group CEO
+    position: favour regional growth and retain all businesses
+  - role: Group CFO
+    position: prioritise cash returns and reduce leverage
+  - role: Business Unit President
+    position: protect the low-return legacy engineering unit
+  - role: Independent Director
+    position: require explicit alternatives and downside scenarios
+constraints:
+  - Net debt to EBITDA must remain below 2.5x.
+  - No more than SGD 95 million gross growth capital over three years.
+  - Safety-critical service capability must remain available.
+  - Founder approval is required for any divestment recommendation.
+exclusions:
+  - Legal, tax, fairness and securities opinions.
+  - Real market diligence or external outreach.
+  - Binding transaction execution.
+decision_date: 2027-02-15
+currency: SGD
+deliberate_traps:
+  - Revenue growth is presented without return or cash economics.
+  - An attractive market masks structurally weak competitive position.
+  - Management preference is described as established fact.
+  - Unrelated diversification benefits are overstated.
+  - Allocated corporate cost is treated as fully avoidable on divestment.
