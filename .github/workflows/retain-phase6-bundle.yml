@@ -1,21 +1,22 @@
 name: Retain Phase 6 knowledge bundle
 
 on:
-  push:
-    branches: [knowledge/phase6-ingestion-intelligence]
+  pull_request:
     paths:
       - .github/workflows/retain-phase6-bundle.yml
+      - .phase6-bundle/**
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   retain:
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]' && github.head_ref == 'knowledge/phase6-ingestion-intelligence'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Check out Phase 6 branch
+      - name: Check out Phase 6 head branch
         uses: actions/checkout@v4
         with:
           ref: knowledge/phase6-ingestion-intelligence
@@ -24,6 +25,7 @@ jobs:
           cat .phase6-bundle/part-* > /tmp/phase6-bundle.b64
           base64 --decode /tmp/phase6-bundle.b64 > /tmp/phase6-bundle.tar.gz
           tar -xzf /tmp/phase6-bundle.tar.gz -C .
+          rm -rf packages/offdata-core/.pytest_cache
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
