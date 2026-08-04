@@ -1,0 +1,47 @@
+name: Retain Phase 6 knowledge bundle
+
+on:
+  push:
+    branches: [knowledge/phase6-ingestion-intelligence]
+    paths:
+      - .github/workflows/retain-phase6-bundle.yml
+
+permissions:
+  contents: write
+
+jobs:
+  retain:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out Phase 6 branch
+        uses: actions/checkout@v4
+        with:
+          ref: knowledge/phase6-ingestion-intelligence
+      - name: Expand Phase 6 release bundle
+        run: |
+          cat .phase6-bundle/part-* > /tmp/phase6-bundle.b64
+          base64 --decode /tmp/phase6-bundle.b64 > /tmp/phase6-bundle.tar.gz
+          tar -xzf /tmp/phase6-bundle.tar.gz -C .
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install validation dependencies
+        run: python -m pip install -e "packages/offdata-core[dev]"
+      - name: Generate governed Phase 6 records
+        run: |
+          python scripts/build_test_registry.py
+          python scripts/build_phase6_knowledge_intelligence.py
+      - name: Commit exact Phase 6 release
+        run: |
+          rm -rf .phase6-bundle
+          rm .github/workflows/retain-phase6-bundle.yml
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet && exit 1
+          git commit -m "feat(knowledge): add Phase 6 ingestion intelligence"
+          git push origin HEAD:knowledge/phase6-ingestion-intelligence
