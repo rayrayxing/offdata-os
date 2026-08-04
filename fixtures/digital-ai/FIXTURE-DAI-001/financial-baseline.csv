@@ -1,0 +1,17 @@
+line_id,category,driver,base_value,downside_value,upside_value,unit,cash_classification,timing,source_or_assumption,notes
+FIN-001,pilot_cost,software_and_model_services,28000,38000,24000,SGD,cash_cost,year_1,management_estimate,Includes controlled AI environment and usage
+FIN-002,pilot_cost,integration_and_data_work,26000,36000,22000,SGD,cash_cost,year_1,management_estimate,ERP export and retrieval integration only
+FIN-003,pilot_cost,design_testing_and_quality,18000,22000,16000,SGD,cash_cost,year_1,management_estimate,Includes evaluation and red-team effort
+FIN-004,pilot_cost,training_and_change,9000,12000,8000,SGD,cash_cost,year_1,management_estimate,Role-based user and manager training
+FIN-005,pilot_cost,contingency,7000,10000,6000,SGD,cash_cost,year_1,calculated,Approximately eight percent base contingency
+FIN-006,capacity,seller_and_coordinator_hours_released,4200,2100,6200,hours_per_year,released_capacity,steady_state,model_assumption,Must be measured by complexity and correction effort
+FIN-007,capacity,loaded_hourly_cost,50,50,50,SGD_per_hour,valuation_rate,steady_state,finance_baseline,Does not imply avoidable payroll
+FIN-008,capacity,addressable_capacity_value,210000,105000,310000,SGD_per_year,released_capacity,steady_state,calculated,Hours multiplied by loaded rate
+FIN-009,growth,eligible_quotation_gross_margin,7250000,6800000,7600000,SGD_per_year,revenue_pool,steady_state,finance_baseline,Gross margin associated with eligible quotes
+FIN-010,growth,conversion_uplift_assumption,2.0,0.0,3.5,percentage_points,unvalidated_assumption,steady_state,management_hypothesis,Requires controlled analysis or credible comparison
+FIN-011,growth,potential_incremental_gross_margin,145000,0,266000,SGD_per_year,incremental_margin,steady_state,calculated,Eligible margin multiplied by uplift
+FIN-012,operating_cost,annual_platform_and_support,36000,52000,30000,SGD_per_year,cash_cost,steady_state,management_estimate,Recurring licences support and evaluation
+FIN-013,benefit,immediate_headcount_reduction,0,0,0,SGD_per_year,cash_releasing,year_1,approved_workforce_plan,No approved positions for removal
+FIN-014,benefit,avoided_future_hiring,60000,0,90000,SGD_per_year,cost_avoidance,year_2,scenario_assumption,Depends on demand and capacity redeployment
+FIN-015,quality,expected_error_cost_avoided,18000,0,32000,SGD_per_year,risk_avoidance,steady_state,working_assumption,Requires evidence of reduced quote correction and service failure
+FIN-016,value,management_claimed_year_1_value,355000,105000,576000,SGD_per_year,mixed_and_invalid,year_1,management_calculation,Improperly combines capacity and margin as cash value
