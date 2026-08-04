@@ -32,8 +32,23 @@ Required execution method:
 1. Inspect the current repository and macOS environment.
 2. Produce a concise Phase 0 implementation plan and identify any decisions.
 3. Create a new branch named codex/phase-0-foundation.
-4. Implement the Phase 0 backlog only.
-5. Build a local monorepo foundation suitable for:
+4. Validate all pre-existing chat-built inputs before adding application code:
+   - packages/offdata-core/;
+   - config/lifecycle.yaml;
+   - config/policy-matrix.yaml;
+   - config/agent-roster.yaml;
+   - schemas/*.json;
+   - fixtures/manifest.yaml;
+   - third_party/registry.yaml;
+   - docs/19-PHASE-0-VALIDATION-ADDENDUM.md.
+5. Install packages/offdata-core in an isolated Python environment. Run its
+   tests, linting and strict type checks. The chat development environment
+   exercised 26 tests successfully; independently verify this on macOS.
+6. Validate every JSON schema and YAML file and add those checks to CI.
+7. Do not create a second lifecycle or policy implementation. Integrate the
+   existing deterministic package and document any material conflict.
+8. Implement the remaining Phase 0 backlog only.
+9. Build a local monorepo foundation suitable for:
    - Next.js and TypeScript frontend;
    - Python FastAPI backend;
    - PostgreSQL;
@@ -42,15 +57,17 @@ Required execution method:
    - future Restate durable workflows;
    - document and infographic rendering;
    - automated tests and infrastructure definitions.
-6. Provide one documented command to start the local environment and one to
-   run all required tests.
-7. Configure formatting, linting, type checks, unit tests, secret scanning,
-   dependency scanning and GitHub Actions CI.
-8. Add placeholders only for credentials and external services.
-9. Run every required check. Do not weaken tests to make them pass.
-10. Perform a separate review pass, repair defects and rerun tests.
-11. Open a DRAFT pull request. Do not merge it.
-12. Stop at the Phase 0 gate.
+10. Provide one documented command to start the local environment and one to
+    run all required tests.
+11. Configure formatting, linting, type checks, unit tests, secret scanning,
+    dependency scanning and GitHub Actions CI.
+12. Add placeholders only for credentials and external services.
+13. Run every required check. Do not weaken tests to make them pass.
+14. Add at least one CI case proving an invalid lifecycle transition is
+    blocked and one proving an unauthorised external action cannot auto-execute.
+15. Perform a separate review pass, repair defects and rerun tests.
+16. Open a DRAFT pull request. Do not merge it.
+17. Stop at the Phase 0 gate.
 
 Prohibited actions:
 - Do not purchase or activate services or trials.
@@ -66,6 +83,7 @@ Your final Founder report must include:
 - what was built;
 - how to run it;
 - tests performed and full results;
+- any changes made to chat-built contracts and why;
 - screenshots where useful;
 - unresolved defects and risks;
 - costs incurred and forecast costs;
