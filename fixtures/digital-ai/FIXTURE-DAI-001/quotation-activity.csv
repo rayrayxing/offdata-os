@@ -1,0 +1,25 @@
+row_id,month,complexity_segment,quotation_count,median_touch_minutes,median_elapsed_hours,median_specialist_wait_hours,rework_percent,data_error_percent,win_rate_percent,automated_extraction_candidate_percent,notes
+QA-001,2026-01,simple_repeat,525,18,5.8,0.0,8.2,3.4,39.0,88.0,Prior-item and customer data usually available
+QA-002,2026-01,standard_configured,326,31,15.4,4.8,15.8,6.9,34.0,72.0,Some product and discount clarification
+QA-003,2026-01,complex_technical,149,58,45.2,20.7,27.5,10.8,28.0,41.0,Technical evidence and drawings often required
+QA-004,2026-01,engineered_project,34,96,118.0,61.0,35.3,14.7,22.0,18.0,Supplier and engineering dependencies dominate
+QA-005,2026-02,simple_repeat,538,17,5.5,0.0,7.8,3.1,40.0,89.0,High reuse potential
+QA-006,2026-02,standard_configured,332,30,14.9,4.5,15.1,6.3,35.0,73.0,Approval routing inconsistently documented
+QA-007,2026-02,complex_technical,145,57,43.6,19.5,26.9,10.4,29.0,Part-number ambiguity common
+QA-008,2026-02,engineered_project,37,101,126.0,65.0,37.8,15.2,21.0,Small sample and high variability
+QA-009,2026-03,simple_repeat,548,19,6.2,0.0,9.0,3.7,38.0,87.0,Month includes new-customer volume
+QA-010,2026-03,standard_configured,341,32,16.8,5.2,16.7,7.1,33.0,70.0,More missing delivery terms
+QA-011,2026-03,complex_technical,154,61,48.9,23.4,29.2,11.5,27.0,Specialist capacity constrained
+QA-012,2026-03,engineered_project,36,104,133.0,70.0,38.9,16.7,20.0,Several supplier-dependent quotes
+QA-013,2026-04,simple_repeat,517,18,5.6,0.0,8.1,3.2,41.0,89.0,Stable pattern
+QA-014,2026-04,standard_configured,327,31,15.7,4.9,16.0,6.7,35.0,72.0,Manual re-keying remains common
+QA-015,2026-04,complex_technical,151,59,46.3,21.1,28.1,10.9,29.0,Product specialist review required
+QA-016,2026-04,engineered_project,33,98,121.0,63.0,36.4,15.2,23.0,Large value but low volume
+QA-017,2026-05,simple_repeat,542,17,5.4,0.0,7.6,3.0,42.0,90.0,Best month for simple quotes
+QA-018,2026-05,standard_configured,339,30,14.6,4.3,14.8,6.1,36.0,74.0,Lower backlog
+QA-019,2026-05,complex_technical,148,56,42.8,18.8,26.4,10.1,30.0,Specialist availability improved
+QA-020,2026-05,engineered_project,35,95,116.0,59.0,34.3,14.3,24.0,One large project won
+QA-021,2026-06,simple_repeat,535,18,5.9,0.0,8.4,3.5,40.0,88.0,Normal pattern
+QA-022,2026-06,standard_configured,334,32,16.1,5.1,16.5,6.8,34.0,71.0,Discount approvals delayed
+QA-023,2026-06,complex_technical,152,60,47.5,22.2,28.9,11.2,28.0,Technical drawing backlog
+QA-024,2026-06,engineered_project,38,102,129.0,67.0,39.5,15.8,21.0,High complexity and uncertainty
