@@ -53,11 +53,10 @@ def main() -> int:
             f"Additional fixture scope differs from governed manifest: missing={sorted(expected_ids - actual_ids)}, extra={sorted(actual_ids - expected_ids)}"
         )
 
-    completed = read_json(root / "requirements/completed-planned-tests-phase5.json").get(
-        "completed_test_ids"
-    )
-    if completed != ["IT-FIXTURE-001"]:
-        raise ValueError("Phase 5 completed planned-test register is not exact.")
+    planned = read_json(root / "requirements/planned-test-mappings.json")
+    for test_id in ("E2E-PRIMARY-FIXTURES-001", "E2E-COMPOUND-FIXTURES-001"):
+        if test_id not in planned:
+            raise ValueError(f"Required end-to-end boundary was lost: {test_id}")
 
     for fixture in programme.fixtures:
         record_types = {item.record_type for item in fixture.evidence_records}
@@ -89,7 +88,8 @@ def main() -> int:
         f"calculation_expectations={sum(len(item.expected_calculations) for item in programme.fixtures)}",
         f"implementation_records={sum(len(item.implementation_records) for item in programme.fixtures)}",
         f"benefit_records={sum(len(item.benefit_records) for item in programme.fixtures)}",
-        f"completed_planned_tests={len(completed)}",
+        "planned_primary_e2e_boundary=preserved",
+        "planned_compound_e2e_boundary=preserved",
     )
     for check in checks:
         print(f"- {check}")
