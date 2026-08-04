@@ -1,0 +1,26 @@
+row_id,source_id,metric,segment,period,value,unit,quality_status,notes
+STRAT-001,STRAT-SRC-002,revenue,precision_distribution,FY2026,148000000,SGD,established,Audited management pack
+STRAT-002,STRAT-SRC-002,ebitda_margin,precision_distribution,FY2026,18.4,percent,established,Audited management pack
+STRAT-003,STRAT-SRC-002,roic,precision_distribution,FY2026,16.2,percent,estimated,Working capital normalisation incomplete
+STRAT-004,STRAT-SRC-002,market_growth,precision_distribution,2027-2029,4.2,percent,estimated,Management market model
+STRAT-005,STRAT-SRC-002,revenue,field_services,FY2026,126000000,SGD,established,Audited management pack
+STRAT-006,STRAT-SRC-002,ebitda_margin,field_services,FY2026,12.1,percent,established,Audited management pack
+STRAT-007,STRAT-SRC-002,roic,field_services,FY2026,9.4,percent,estimated,Shared asset base allocation
+STRAT-008,STRAT-SRC-002,market_growth,field_services,2027-2029,6.8,percent,estimated,Independent source not supplied
+STRAT-009,STRAT-SRC-002,revenue,legacy_engineering,FY2026,92000000,SGD,established,Audited management pack
+STRAT-010,STRAT-SRC-002,ebitda_margin,legacy_engineering,FY2026,3.8,percent,established,Includes project provisions
+STRAT-011,STRAT-SRC-002,roic,legacy_engineering,FY2026,1.9,percent,contradictory,Business president claims 8 percent using a different capital base
+STRAT-012,STRAT-SRC-002,market_growth,legacy_engineering,2027-2029,-1.5,percent,estimated,No downside sensitivity provided
+STRAT-013,STRAT-SRC-002,revenue,energy_components,FY2026,76000000,SGD,established,Audited management pack
+STRAT-014,STRAT-SRC-002,ebitda_margin,energy_components,FY2026,14.7,percent,established,Customer concentration is 41 percent
+STRAT-015,STRAT-SRC-002,roic,energy_components,FY2026,13.1,percent,estimated,New plant ramp assumption
+STRAT-016,STRAT-SRC-002,market_growth,energy_components,2027-2029,9.5,percent,estimated,Policy sensitivity not modelled
+STRAT-017,STRAT-SRC-002,revenue,digital_maintenance,FY2026,44000000,SGD,established,Unaudited carve-out view
+STRAT-018,STRAT-SRC-002,ebitda_margin,digital_maintenance,FY2026,-2.0,percent,established,Investment-stage business
+STRAT-019,STRAT-SRC-002,roic,digital_maintenance,FY2026,,percent,missing,Invested-capital baseline not available
+STRAT-020,STRAT-SRC-002,market_growth,digital_maintenance,2027-2029,18.0,percent,stale,Estimate prepared eighteen months ago
+STRAT-021,STRAT-SRC-002,capital_request,precision_distribution,2027-2029,18000000,SGD,estimated,Growth capacity
+STRAT-022,STRAT-SRC-002,capital_request,field_services,2027-2029,22000000,SGD,estimated,Regional branch expansion
+STRAT-023,STRAT-SRC-002,capital_request,legacy_engineering,2027-2029,35000000,SGD,estimated,Plant renewal proposal
+STRAT-024,STRAT-SRC-002,capital_request,energy_components,2027-2029,42000000,SGD,estimated,Second production line
+STRAT-025,STRAT-SRC-002,capital_request,digital_maintenance,2027-2029,26000000,SGD,estimated,Product scale-up
