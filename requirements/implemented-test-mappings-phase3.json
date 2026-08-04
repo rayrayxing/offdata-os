@@ -1,0 +1,22 @@
+{
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_answer_key_and_oracle_are_blocked_from_agent_context": ["AGENT-002", "AGENT-004", "QA-009", "SEC-002"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_customer_service_oracle_blocks_autonomous_chatbot_inference": ["EVID-005", "MODEL-009", "AUTH-004"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_financial_mutation_is_detected_by_independent_grader": ["MODEL-006", "QA-003", "QA-005", "TEST-005"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_financial_oracle_recalculates_and_classifies_value": ["MODEL-001", "MODEL-003", "MODEL-004", "MODEL-006", "MODEL-008"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_invalid_answer_key_shape_fails_closed": ["QA-009", "MODEL-006"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_missing_or_malformed_fixture_inputs_fail_closed": ["EVID-002", "MODEL-009", "QA-004"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_baseline_writer_and_stale_detection": ["MODEL-002", "QA-005", "DATA-003"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_builds_from_client_visible_inputs_and_grades_pass": ["OUT-002", "QA-009", "MODEL-002"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_contract_validators_reject_unbounded_records": ["AGENT-005", "QA-009"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_does_not_require_answer_key_for_analysis": ["QA-009", "AGENT-002", "DATA-008"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_is_byte_reproducible_and_committed_baseline_is_current": ["MODEL-002", "MODEL-005", "DATA-008"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_method_stack_rejections_uncertainty_and_specialist_review_are_complete": ["KNOW-003", "KNOW-004", "KNOW-005", "EVID-006", "AUTH-006"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_preserves_evidence_status_provenance_and_limits": ["DATA-006", "DATA-007", "EVID-003", "EVID-005"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_risk_authority_and_stop_gates_are_complete": ["AUTH-003", "AUTH-004", "AUTH-007", "QA-004"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_over_budget_primary_pilot_mutation_switches_to_bounded_alternative": ["MODEL-004", "QA-009", "TEST-005"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_quotation_oracle_separates_touch_waiting_and_complexity": ["MODEL-001", "MODEL-005", "EVID-005", "EVID-008"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_readiness_oracle_uses_process_application_and_untrusted_source_controls": ["EVID-010", "AGENT-007", "KNOW-004", "MODEL-009"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_restricted_baseline_document_contains_grade_and_checksums": ["DATA-003", "DATA-008", "QA-009"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_use_case_oracle_retains_non_ai_comparator_and_bounded_pilot": ["KNOW-004", "KNOW-005", "MODEL-004", "AUTH-003"],
+  "packages/offdata-core/tests/test_ai_audit_oracle.py::test_workforce_oracle_quantifies_current_control_and_adoption_conditions": ["DATA-006", "IMPL-003", "AGENT-007"]
+}
