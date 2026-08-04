@@ -57,8 +57,12 @@ class ApprovalOutcome(StrEnum):
 
 
 _IDEMPOTENCY_REQUIRED = {
+    CommandType.REQUEST_APPROVAL,
+    CommandType.RECORD_APPROVAL,
+    CommandType.PROPOSE_EXTERNAL_ACTION,
     CommandType.EXECUTE_EXTERNAL_ACTION,
     CommandType.CANCEL_ENGAGEMENT,
+    CommandType.RECORD_AGENT_OUTPUT,
     CommandType.RELEASE_ARTEFACT,
 }
 
@@ -83,9 +87,11 @@ class CommandEnvelope(BaseModel):
     actor: ActorRef
     tenant_id: str = Field(min_length=1)
     engagement_id: str | None = None
+    expected_version: int | None = Field(default=None, ge=1)
     correlation_id: str = Field(min_length=1)
     causation_id: str | None = None
     idempotency_key: str | None = None
+    approval_id: str | None = None
     payload: dict[str, Any]
 
     @model_validator(mode="after")
@@ -94,6 +100,8 @@ class CommandEnvelope(BaseModel):
             raise ValueError("Non-create commands require engagement_id.")
         if self.command_type in _IDEMPOTENCY_REQUIRED and not self.idempotency_key:
             raise ValueError(f"{self.command_type.value} requires an idempotency key.")
+        if self.command_type is not CommandType.CREATE_ENGAGEMENT and self.expected_version is None:
+            raise ValueError("Non-create commands require expected_version.")
         return self
 
 
