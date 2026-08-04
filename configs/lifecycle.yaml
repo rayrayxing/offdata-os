@@ -1,0 +1,148 @@
+version: 1.0.0
+schema_version: offdata.lifecycle.v1
+source_requirements:
+  - LIFE-001
+  - LIFE-002
+  - LIFE-003
+  - LIFE-004
+  - LIFE-005
+  - LIFE-007
+  - LIFE-008
+  - LIFE-009
+stage_selection_rule: earliest_unmet_mandatory_gate
+stages:
+  - id: LIFE-STAGE-01
+    name: mandate_and_intake
+    exit_gate: GATE-01
+    required_outputs:
+      - engagement_identity
+      - accountable_founder
+      - governing_decision
+      - decision_owner
+      - intended_use
+      - constraints
+  - id: LIFE-STAGE-02
+    name: context_and_problem_definition
+    exit_gate: GATE-02
+    required_outputs:
+      - problem_frame
+      - decision_questions
+      - boundaries
+      - initial_assumptions
+  - id: LIFE-STAGE-03
+    name: research_and_evidence_baseline
+    exit_gate: GATE-03
+    required_outputs:
+      - research_plan
+      - source_strategy
+      - evidence_baseline
+      - evidence_gaps
+  - id: LIFE-STAGE-04
+    name: hypotheses_and_issue_architecture
+    exit_gate: GATE-04
+    required_outputs:
+      - issue_architecture
+      - hypotheses
+      - rival_explanations
+      - falsification_tests
+  - id: LIFE-STAGE-05
+    name: methodology_and_approach_design
+    exit_gate: GATE-05
+    required_outputs:
+      - method_selection
+      - rejected_methods
+      - approach_options
+      - review_requirements
+  - id: LIFE-STAGE-06
+    name: proposition_and_proposal
+    exit_gate: GATE-06
+    required_outputs:
+      - proposition
+      - scope
+      - workplan
+      - commercials_or_internal_assumptions
+  - id: LIFE-STAGE-07
+    name: mobilisation
+    exit_gate: GATE-07
+    required_outputs:
+      - governance
+      - access_plan
+      - delivery_plan
+      - risk_and_issue_baseline
+  - id: LIFE-STAGE-08
+    name: delivery_and_analysis
+    exit_gate: GATE-08
+    required_outputs:
+      - evidence_ledger
+      - analyses
+      - options
+      - recommendation
+  - id: LIFE-STAGE-09
+    name: quality_review_and_decision_readiness
+    exit_gate: GATE-09
+    required_outputs:
+      - quality_review
+      - defect_status
+      - reconciliation
+      - approval_packet
+  - id: LIFE-STAGE-10
+    name: implementation_and_adoption
+    exit_gate: GATE-10
+    required_outputs:
+      - initiatives
+      - owners
+      - milestones
+      - adoption_measures
+  - id: LIFE-STAGE-11
+    name: benefits_realisation
+    exit_gate: GATE-11
+    required_outputs:
+      - benefit_records
+      - baseline_and_counterfactual
+      - verification
+      - scale_adapt_stop_decision
+  - id: LIFE-STAGE-12
+    name: closeout_and_knowledge_capture
+    exit_gate: GATE-12
+    required_outputs:
+      - engagement_archive
+      - lessons
+      - method_candidates
+      - closure_approval
+  - id: LIFE-STAGE-13
+    name: expansion_and_follow_on
+    exit_gate: GATE-13
+    required_outputs:
+      - ethical_expansion_assessment
+      - follow_on_options
+      - relationship_continuity
+operational_states:
+  - normal
+  - waiting
+  - blocked
+  - retry
+  - cancelled
+  - completed
+gate_outcomes:
+  - proceed
+  - proceed_with_conditions
+  - pause
+  - recycle
+  - stop
+  - close
+controls:
+  forward_progression:
+    current_exit_gate_required: true
+    silent_stage_skipping_prohibited: true
+    compressed_stage_requires_recorded_evidence: true
+  regression:
+    gate_outcome: recycle
+    material_reason_required: true
+  retry:
+    bounded: true
+    exhausted_retry_state: blocked
+  cancellation:
+    founder_kill_switch: true
+    further_execution_prohibited: true
+  recovery:
+    completed_non_idempotent_actions_must_not_repeat: true
