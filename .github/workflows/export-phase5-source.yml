@@ -1,0 +1,28 @@
+name: Export Phase 5 source snapshot
+
+on:
+  push:
+    branches: [fixtures/phase5-engagement-suite]
+    paths:
+      - .github/workflows/export-phase5-source.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Phase 5 branch
+        uses: actions/checkout@v4
+      - name: Upload repository snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: offdata-phase5-source-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 1
+          include-hidden-files: true
+          path: |
+            .
+            !.git/**
