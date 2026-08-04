@@ -24,8 +24,21 @@ jobs:
           ref: fixtures/phase5-engagement-suite
       - name: Reassemble and validate patch
         run: |
-          sha256sum .phase5-patch.part.*
-          cat .phase5-patch.part.* > .phase5-patch.b64
+          echo "57716dc00219dba4f0bcfc43eab374cbcac8133a5a66412c4c68b02de4c37a99  .phase5-patch.part.080" | sha256sum -c -
+          echo "cd113ca8338b16c4855e2db60caa670f90f4ca8821fdc504144ec60dd1810c10  .phase5-patch.part.081" | sha256sum -c -
+          echo "a8978c803c52a9dcb201c31ce6fdddca8c3216f7a56e0d17ce56a20f315ba6c8  .phase5-patch.part.082" | sha256sum -c -
+          cat \
+            .phase5-patch.part.00 \
+            .phase5-patch.part.01 \
+            .phase5-patch.part.02 \
+            .phase5-patch.part.03 \
+            .phase5-patch.part.04 \
+            .phase5-patch.part.05 \
+            .phase5-patch.part.06 \
+            .phase5-patch.part.07 \
+            .phase5-patch.part.080 \
+            .phase5-patch.part.081 \
+            .phase5-patch.part.082 > .phase5-patch.b64
           echo "d3d06cc74a23384911391843fa05fb0d5993a8521944f5fae759a216ad9be833  .phase5-patch.b64" | sha256sum -c -
           base64 --decode .phase5-patch.b64 > .phase5-patch.zip
           echo "632afd266c9779c27307a0ca3c9be1d3c01879eb7d35f405d8bb20154800bc58  .phase5-patch.zip" | sha256sum -c -
