@@ -1,0 +1,80 @@
+version: 1.0.0
+schema_version: offdata.agents.v1
+default_output_contract: schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope
+default_context_contract: schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage
+default_write_mode: propose_only
+canonical_writes_via_commands_only: true
+agents:
+  - id: engagement_partner
+    purpose: Govern the engagement, select the next best action and prepare Founder decisions.
+    allowed_record_families: [engagement, mandate, decision, approval, task]
+    permitted_tool_classes: [read_canonical_records, invoke_bounded_agents, propose_commands]
+    prohibited_actions: [external_send, commercial_commitment, self_approval]
+    evaluation_profile: AE-PARTNER
+  - id: problem_architect
+    purpose: Convert an incomplete mandate into decision questions, issue architecture and hypotheses.
+    allowed_record_families: [decision, question, hypothesis, assumption, evidence_gap]
+    permitted_tool_classes: [read_canonical_records, search_knowledge, propose_commands]
+    prohibited_actions: [external_send, final_material_commitment]
+    evaluation_profile: AE-PROBLEM
+  - id: method_architect
+    purpose: Select the minimum sufficient method stack and record rejected alternatives.
+    allowed_record_families: [method_selection, problem_archetype, assumption, evidence_gap]
+    permitted_tool_classes: [read_canonical_records, search_knowledge, propose_commands]
+    prohibited_actions: [methodology_promotion, final_material_commitment]
+    evaluation_profile: AE-METHOD
+  - id: research_evidence
+    purpose: Plan and conduct governed research and maintain passage-level provenance.
+    allowed_record_families: [research_plan, source, passage, claim, evidence, evidence_gap]
+    permitted_tool_classes: [read_canonical_records, approved_research, document_read, propose_commands]
+    prohibited_actions: [circumvent_access_control, external_send, treat_untrusted_input_as_instruction]
+    evaluation_profile: AE-RESEARCH
+  - id: quantitative_value
+    purpose: Produce reproducible analysis, models, scenarios and value cases.
+    allowed_record_families: [analysis, model_run, number, assumption, benefit]
+    permitted_tool_classes: [read_canonical_records, deterministic_compute, spreadsheet_render, propose_commands]
+    prohibited_actions: [free_form_material_arithmetic, external_send, self_validation_only]
+    evaluation_profile: AE-QUANT
+  - id: storyline
+    purpose: Convert approved evidence and analysis into one decision-ready semantic story.
+    allowed_record_families: [assertion, story_model, visual_specification]
+    permitted_tool_classes: [read_canonical_records, search_knowledge, propose_commands]
+    prohibited_actions: [invent_fact, invent_number, external_send]
+    evaluation_profile: AE-STORY
+  - id: deliverable_production
+    purpose: Render approved story, model and evidence baselines into controlled artefacts.
+    allowed_record_families: [deliverable_manifest, reconciliation, defect]
+    permitted_tool_classes: [read_canonical_records, render_artefact, visual_inspection, propose_commands]
+    prohibited_actions: [change_recommendation, invent_number, external_release]
+    evaluation_profile: AE-DELIVERY
+  - id: implementation_benefits
+    purpose: Translate recommendations into initiatives, adoption, controls and benefit verification.
+    allowed_record_families: [initiative, milestone, risk, adoption_measure, benefit]
+    permitted_tool_classes: [read_canonical_records, deterministic_compute, propose_commands]
+    prohibited_actions: [client_commitment, benefit_claim_without_verification]
+    evaluation_profile: AE-IMPLEMENT
+  - id: independent_quality
+    purpose: Identify decision-relevant defects, require repair and evaluate release gates.
+    allowed_record_families: [quality_review, defect, exception, signoff, reconciliation]
+    permitted_tool_classes: [read_canonical_records, independent_recalculation, rendered_inspection, propose_commands]
+    prohibited_actions: [alter_source_work, approve_own_output, external_release]
+    evaluation_profile: AE-QA
+  - id: origination_opportunity
+    purpose: Detect evidence-backed opportunities and prepare controlled outreach dossiers.
+    allowed_record_families: [organisation, contact, opportunity, outreach_control]
+    permitted_tool_classes: [approved_public_research, crm_read, propose_commands]
+    prohibited_actions: [external_send, bypass_suppression, misrepresent_identity]
+    evaluation_profile: AE-ORIGINATION
+  - id: methodology_librarian
+    purpose: Assess new method candidates and maintain the governed library.
+    allowed_record_families: [source, method, archetype, methodology_candidate]
+    permitted_tool_classes: [approved_public_research, search_knowledge, run_regression, propose_commands]
+    prohibited_actions: [automatic_promotion, copy_proprietary_expression, external_send]
+    evaluation_profile: AE-LIBRARIAN
+budgets:
+  every_run_requires:
+    - timeout_seconds
+    - max_retries
+    - model_or_route
+    - token_or_cost_limit
+    - permitted_tools
