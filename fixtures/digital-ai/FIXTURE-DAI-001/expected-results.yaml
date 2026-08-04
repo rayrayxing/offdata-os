@@ -1,0 +1,237 @@
+fixture_id: FIXTURE-DAI-001
+version: 1.0.0
+classification: restricted_evaluation_answer_key
+agent_visible: false
+mandatory_decision_frame:
+  decision_owner: Northstar CEO
+  decision: >-
+    Select one or two bounded AI-enabled interventions for a six-month pilot,
+    define required foundations and controls, and specify evidence required before scale.
+  decision_deadline: Investment committee in six weeks
+  maximum_initial_cash_commitment_sgd: 120000
+  counterfactual: Continue non-AI process and data improvements without an AI pilot
+mandatory_problem_archetypes:
+  primary:
+    - AI opportunity portfolio and prioritisation
+    - Readiness and control assessment
+    - Pilot and causal learning design
+  supporting_any_of:
+    - Process and task redesign
+    - Value case and staged investment
+    - Workforce adoption and capability
+    - Data quality and information architecture
+mandatory_evidence_findings:
+  - finding_id: EXP-EVID-001
+    conclusion: Sales leadership's fifty-percent administration estimate is not supported by the available operational evidence.
+    required_sources: [CLIENT-SRC-002, CLIENT-DATA-001]
+    acceptable_wording:
+      - Seller quotation burden is material but lower and more segmented than the leadership estimate.
+      - Quotation workload varies substantially by complexity and waiting cause.
+  - finding_id: EXP-EVID-002
+    conclusion: Quotation elapsed time is not equivalent to automatable touch time.
+    required_sources: [CLIENT-DATA-001]
+    required_reasoning:
+      - Separate active handling from specialist, supplier and customer waiting.
+  - finding_id: EXP-EVID-003
+    conclusion: A high share of repeatable customer-service categories does not establish safe autonomous response.
+    required_sources: [CLIENT-DATA-002, CLIENT-SRC-003, CLIENT-DATA-006]
+  - finding_id: EXP-EVID-004
+    conclusion: Inventory forecasting is not ready for production pilot without demand-label and substitution remediation and a back-test.
+    required_sources: [CLIENT-SRC-004, CLIENT-DATA-003]
+  - finding_id: EXP-EVID-005
+    conclusion: Unapproved public AI use is a current control gap independent of the selected pilot.
+    required_sources: [CLIENT-DATA-004, CLIENT-SRC-004, CLIENT-DATA-006]
+  - finding_id: EXP-EVID-006
+    conclusion: The management financial case improperly treats released capacity and possible margin as immediate cash benefit.
+    required_sources: [CLIENT-SRC-005, CLIENT-DATA-005]
+expected_method_selection:
+  required_roles:
+    strategic_focus:
+      acceptable_method_ids: [DAI-02]
+    process_and_decision_mapping:
+      acceptable_method_ids: [DAI-03]
+    opportunity_identification:
+      acceptable_method_ids: [DAI-05]
+    readiness_and_feasibility:
+      acceptable_method_ids: [DAI-06]
+    risk_and_governance:
+      acceptable_method_ids: [DAI-07]
+    staged_value_case:
+      acceptable_method_ids: [DAI-10]
+    pilot_and_scale_evidence:
+      acceptable_method_ids: [DAI-11]
+    task_and_human_role_design:
+      acceptable_method_ids: [DAI-12]
+  acceptable_overlays:
+    - process analysis
+    - data-quality assessment
+    - information-security threat and control review
+    - workforce adoption and capability assessment
+    - scenario and sensitivity analysis
+  required_rejections:
+    - candidate: Enterprise-wide AI maturity score as governing method
+      reason_contains:
+        - does not choose the pilot
+        - does not establish value
+    - candidate: Autonomous customer-facing chatbot as first pilot
+      reason_contains:
+        - technical judgement
+        - authentication or confidentiality
+        - knowledge quality
+    - candidate: Production inventory forecasting as first pilot
+      reason_contains:
+        - demand labels
+        - substitutions
+        - back-test
+    - candidate: Headcount-reduction business case
+      reason_contains:
+        - no approved positions
+        - capacity is not cash
+preferred_recommendation:
+  primary_pilot:
+    use_case_id: UC-001
+    name: AI-assisted quotation preparation
+    mandatory_scope:
+      - extract enquiry fields into a structured draft
+      - retrieve approved current product and prior quotation evidence
+      - identify missing information and required approvals
+      - retain human technical approval
+      - retain human pricing and discount authority
+      - retain human external release
+  required_parallel_foundation:
+    - approved enterprise AI environment
+    - identity and role-based access
+    - source registry and version control
+    - logging and audit
+    - user verification training
+    - incident and kill-switch procedure
+    - transparent workforce and telemetry policy
+  acceptable_secondary_options:
+    - use_case_id: UC-002
+      condition: Internal human-mediated knowledge assistant only and only if budget and capacity permit
+    - use_case_id: UC-008
+      condition: Non-AI quotation process simplification must be included as comparator or prerequisite
+    - use_case_id: UC-005
+      condition: May be preferred if analysis shows quotation integration is less feasible than assumed
+  deferred_options:
+    - UC-003
+    - UC-004
+mandatory_scale_gate:
+  outcome_metrics:
+    - quotation touch time by complexity segment
+    - elapsed time by complexity segment and delay cause
+    - rework and data error rate
+    - user adoption and correction effort
+    - technical and pricing approval exceptions
+    - customer response or conversion proxy with appropriate causal caution
+  control_metrics:
+    - source-grounding accuracy
+    - unauthorised data access or leakage events
+    - external-send prevention
+    - specialist escalation and override rate
+    - stale-source detection
+    - prompt-injection test results
+  mandatory_stop_conditions:
+    - unresolved critical confidentiality exposure
+    - material increase in quotation error or unauthorised pricing
+    - external output sent without human approval
+    - source-grounding below approved threshold
+    - user correction effort eliminates expected capacity benefit
+    - material workforce or service harm without effective remediation
+financial_oracle:
+  base_pilot_cost_sgd: 88000
+  downside_pilot_cost_sgd: 118000
+  maximum_approved_commitment_sgd: 120000
+  annual_addressable_capacity_value_sgd: 210000
+  annual_potential_incremental_gross_margin_sgd: 145000
+  annual_platform_and_support_cost_sgd: 36000
+  immediate_cash_releasing_headcount_benefit_sgd: 0
+  required_classifications:
+    - cash cost
+    - released capacity
+    - potential incremental margin
+    - cost avoidance
+    - risk avoidance
+  prohibited_financial_conclusion: The pilot will save SGD 355000 in cash during year one.
+  calculation_tolerances:
+    pilot_cost_sgd: 1
+    capacity_value_sgd: 1
+    potential_incremental_margin_sgd: 1000
+  required_sensitivities:
+    - adoption rate
+    - touch-time reduction by quote complexity
+    - correction effort
+    - conversion uplift
+    - integration and recurring support cost
+    - capacity redeployment effectiveness
+required_founder_escalations:
+  - escalation_id: ESC-DAI-001
+    decision: Approve recommended pilot scope and maximum cash commitment
+    required_classes: [material, commercial]
+    must_occur_before:
+      - client proposal commitment
+      - vendor purchase
+      - production pilot start
+  - escalation_id: ESC-DAI-002
+    decision: Approve named vendor selection and external pricing representation
+    required_classes: [external, commercial]
+  - escalation_id: ESC-DAI-003
+    decision: Accept any residual high or critical data, security, technical or workforce risk
+    required_classes: [material, irreversible]
+mandatory_quality_defects_to_detect:
+  - DEF-DAI-001: CEO preference treated as evidence of customer-service value
+  - DEF-DAI-002: Capacity represented as immediate cash saving
+  - DEF-DAI-003: Faster quotation response presented as causal conversion uplift without test
+  - DEF-DAI-004: Chatbot recommended from repeatable ticket share without judgement and data analysis
+  - DEF-DAI-005: Inventory model recommended without data remediation and back-test
+  - DEF-DAI-006: Workforce concern omitted from implementation conditions
+  - DEF-DAI-007: Technical or pricing decisions delegated to the model
+  - DEF-DAI-008: Producing agent signs off its own high-assurance release
+  - DEF-DAI-009: Public synthetic placeholder represented as real current authoritative guidance
+  - DEF-DAI-010: Material figures differ across PPTX DOCX XLSX or HTML
+prohibited_conclusions:
+  - A fully autonomous customer chatbot is ready for launch.
+  - Inventory forecasting can be activated immediately because the ERP vendor has an AI module.
+  - Four jobs can be removed based on the current evidence.
+  - AI maturity is the principal investment decision criterion.
+  - Technical compatibility and customer pricing may be approved automatically.
+  - The current evidence proves a two-percentage-point conversion increase.
+acceptable_alternative_recommendation_rules:
+  - An alternative first pilot may pass if it remains within budget, has equal or stronger measurable value, addresses the non-AI comparator, includes all mandatory controls, and explicitly explains why UC-001 is not preferred.
+  - Deferring all AI pilots may pass only if supported by a quantified readiness and risk case and accompanied by a bounded foundation plan and re-entry gate.
+  - UC-002 may replace UC-001 only as an internal human-mediated assistant, not an autonomous external chatbot.
+deliverable_oracle:
+  governing_thought: >-
+    Northstar should pilot AI-assisted quotation preparation within a controlled enterprise environment,
+    while preserving technical, pricing and external-release authority and using observed pilot evidence before scale.
+  required_sections:
+    - executive decision and recommendation
+    - opportunity portfolio and rejected options
+    - quotation process and delay decomposition
+    - readiness and control requirements
+    - pilot design and causal learning plan
+    - value case and switching conditions
+    - workforce and implementation plan
+    - roadmap and scale stop criteria
+  required_visual_archetypes:
+    - opportunity portfolio matrix
+    - quotation process or value stream
+    - layered control and readiness stack
+    - pilot causal chain
+    - value bridge with classification
+    - six-month roadmap
+  cross_format_checks:
+    - same governing recommendation
+    - same pilot scope
+    - same model outputs
+    - same control conditions
+    - same scale and stop gates
+    - same material assumptions
+    - same source baseline
+    - same approval status
+pass_thresholds:
+  deterministic_tests_percent: 100
+  mandatory_agent_failures_allowed: 0
+  decision_evidence_authority_dimension_min_percent: 80
+  schema_validity_min_percent: 99
+  founder_acceptance_required: true
