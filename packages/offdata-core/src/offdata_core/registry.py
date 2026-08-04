@@ -148,9 +148,14 @@ MODEL_REGISTRY: dict[str, type[BaseModel]] = {
     "HealthResponse": HealthResponse,
 }
 
+_PUBLIC_IMPORT_MODULES = {
+    "offdata_core.policy_typed": "offdata_core.policy",
+}
+
 
 def model_import_path(model: type[BaseModel]) -> str:
-    return f"{model.__module__}:{model.__name__}"
+    module = _PUBLIC_IMPORT_MODULES.get(model.__module__, model.__module__)
+    return f"{module}:{model.__name__}"
 
 
 def build_model_registry_document() -> dict[str, Any]:
