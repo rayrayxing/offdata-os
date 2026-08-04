@@ -1,68 +1,8 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://offdata.com/schemas/context-package.schema.json",
+  "$ref": "offdata-contract-bundle.schema.json#/$defs/ContextPackage",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Offdata Minimum-Sufficient Context Package",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "engagement_id",
-    "current_stage",
-    "objective",
-    "decision",
-    "permitted_tools",
-    "output_contract",
-    "approval_classes",
-    "budget"
-  ],
-  "properties": {
-    "engagement_id": {"type": "string", "minLength": 1},
-    "current_stage": {
-      "type": "string",
-      "pattern": "^LIFE-STAGE-(0[1-9]|1[0-3])$"
-    },
-    "operational_state": {
-      "type": "string",
-      "enum": ["normal", "waiting", "blocked", "retry", "cancelled", "completed"]
-    },
-    "objective": {"type": "string", "minLength": 1},
-    "decision": {"type": "object"},
-    "constraints": {"type": "array", "items": {"type": "string"}},
-    "relevant_methods": {"type": "array", "items": {"type": "string"}},
-    "relevant_claims": {"type": "array", "items": {"type": "string"}},
-    "evidence_summary": {"type": "array", "items": {"type": "string"}},
-    "evidence_gaps": {"type": "array", "items": {"type": "string"}},
-    "approved_assumptions": {"type": "array", "items": {"type": "string"}},
-    "prior_outputs": {"type": "array", "items": {"type": "string"}},
-    "permitted_tools": {"type": "array", "items": {"type": "string"}},
-    "prohibited_actions": {"type": "array", "items": {"type": "string"}},
-    "output_contract": {"type": "string", "minLength": 1},
-    "quality_rubric": {"type": "array", "items": {"type": "string"}},
-    "approval_classes": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "enum": [
-          "DEC-ROUTINE",
-          "DEC-MATERIAL",
-          "DEC-EXTERNAL",
-          "DEC-COMMERCIAL",
-          "DEC-LEGALREG",
-          "DEC-IRREVERSIBLE"
-        ]
-      }
-    },
-    "budget": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["timeout_seconds", "max_retries"],
-      "properties": {
-        "timeout_seconds": {"type": "integer", "minimum": 1},
-        "max_retries": {"type": "integer", "minimum": 0},
-        "max_input_tokens": {"type": "integer", "minimum": 0},
-        "max_output_tokens": {"type": "integer", "minimum": 0},
-        "max_cost": {"type": "number", "minimum": 0},
-        "currency": {"type": "string"}
-      }
-    }
-  }
+  "x-offdata-canonical-bundle": "offdata-contract-bundle.schema.json",
+  "x-offdata-model": "ContextPackage"
 }
