@@ -1,0 +1,110 @@
+version: 0.1.0
+source_authority:
+  - docs/06-LIFECYCLE-AND-GATES.md
+  - docs/16-REQUIREMENTS-CATALOGUE.md
+operational_states:
+  - normal
+  - waiting
+  - blocked
+  - retry
+  - cancelled
+  - completed
+gate_outcomes:
+  - proceed
+  - proceed_with_conditions
+  - pause
+  - recycle
+  - stop
+  - close
+stage_detection:
+  rule: earliest_unmet_gate
+  compression_requires:
+    - minimum_outputs_embedded
+    - gate_intent_evidenced
+    - authorised_gate_record
+  regression_triggers:
+    - material_new_fact
+    - invalidated_assumption
+    - material_scope_change
+    - failed_quality_gate
+stages:
+  - id: LIFE-STAGE-01
+    name: Mandate and intake
+    executive_question: What has the Founder asked, what decision is at stake, and may work begin?
+    exit_gate: GATE-01
+    default_successor: LIFE-STAGE-02
+  - id: LIFE-STAGE-02
+    name: Context and problem definition
+    executive_question: What is actually happening, for whom, within which boundaries and constraints?
+    exit_gate: GATE-02
+    default_successor: LIFE-STAGE-03
+  - id: LIFE-STAGE-03
+    name: Research and evidence baseline
+    executive_question: What is known, how reliable is it, and what remains unknown?
+    exit_gate: GATE-03
+    default_successor: LIFE-STAGE-04
+  - id: LIFE-STAGE-04
+    name: Hypotheses and issue architecture
+    executive_question: What must be true, what could explain the problem, and what analysis would discriminate?
+    exit_gate: GATE-04
+    default_successor: LIFE-STAGE-05
+  - id: LIFE-STAGE-05
+    name: Methodology and approach design
+    executive_question: Which methods, sequence and level of rigour best support the decision?
+    exit_gate: GATE-05
+    default_successor: LIFE-STAGE-06
+  - id: LIFE-STAGE-06
+    name: Proposition and proposal
+    executive_question: What outcome, scope, approach, commitment and commercial proposition should be offered?
+    exit_gate: GATE-06
+    default_successor: LIFE-STAGE-07
+  - id: LIFE-STAGE-07
+    name: Mobilisation
+    executive_question: Are governance, people, data, access, plan and controls ready for delivery?
+    exit_gate: GATE-07
+    default_successor: LIFE-STAGE-08
+  - id: LIFE-STAGE-08
+    name: Delivery and analysis
+    executive_question: What does the evidence show, what is being produced, and is delivery controlled?
+    exit_gate: GATE-08
+    default_successor: LIFE-STAGE-09
+  - id: LIFE-STAGE-09
+    name: Quality review and decision readiness
+    executive_question: Is the answer evidence-backed, coherent, feasible, reconciled and ready for reliance?
+    exit_gate: GATE-09
+    default_successors:
+      - LIFE-STAGE-10
+      - LIFE-STAGE-12
+  - id: LIFE-STAGE-10
+    name: Implementation and adoption
+    executive_question: Is the chosen solution being put into use safely and effectively?
+    exit_gate: GATE-10
+    default_successor: LIFE-STAGE-11
+  - id: LIFE-STAGE-11
+    name: Benefits realisation
+    executive_question: Are outcomes and benefits occurring, attributable enough for the intended claim, and sustainable?
+    exit_gate: GATE-11
+    default_successor: LIFE-STAGE-12
+  - id: LIFE-STAGE-12
+    name: Closeout and knowledge capture
+    executive_question: Are obligations complete, records controlled, lessons captured and ownership transferred?
+    exit_gate: GATE-12
+    default_successors:
+      - LIFE-STAGE-13
+      - completed
+  - id: LIFE-STAGE-13
+    name: Expansion and follow-on
+    executive_question: Is there a distinct, ethical, evidence-based case for further work?
+    exit_gate: GATE-13
+    default_successors:
+      - LIFE-STAGE-01
+      - completed
+next_best_action_priority:
+  - prevent_harm_illegality_confidentiality_or_irreversible_error
+  - resolve_missing_owner_or_unclear_mandate
+  - obtain_evidence_for_material_gate
+  - remove_critical_dependency_or_blocker
+  - test_hypothesis_most_likely_to_change_recommendation
+  - reconcile_calculations_and_contradictions
+  - improve_feasibility_and_implementation_readiness
+  - improve_presentation_formatting_and_optional_analysis
