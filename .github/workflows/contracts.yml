@@ -1,4 +1,4 @@
-name: Machine contracts and agent system
+name: Machine contracts, agents and AI-audit oracle
 
 on:
   push:
@@ -11,9 +11,9 @@ permissions:
 
 jobs:
   validate-contracts:
-    name: Generate and validate machine contracts and agents
+    name: Validate contracts, agents and analytical oracle
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -33,6 +33,10 @@ jobs:
         run: python scripts/validate_phase1_contracts.py
       - name: Validate Phase 2 agent system
         run: python scripts/validate_phase2_agents.py
+      - name: Build Phase 3 AI-audit analytical oracle
+        run: python scripts/build_phase3_oracle.py
+      - name: Validate Phase 3 AI-audit analytical oracle
+        run: python scripts/validate_phase3_ai_audit_oracle.py
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
         run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
@@ -43,7 +47,7 @@ jobs:
       - name: Enforce type-check baseline
         working-directory: packages/offdata-core
         run: mypy src
-      - name: Retain generated contracts and agent release
+      - name: Retain generated chat-first release
         uses: actions/upload-artifact@v4
         with:
           name: offdata-chat-first-release-${{ github.sha }}
@@ -58,4 +62,5 @@ jobs:
             requirements/completed-planned-tests*.json
             configs/*.yaml
             agents/**/SKILL.md
+            fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
             database/migrations/*.sql
