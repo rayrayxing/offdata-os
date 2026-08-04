@@ -1,0 +1,87 @@
+version: 0.1.0
+fixture_rules:
+  data: synthetic_or_sanitised_only
+  purpose: regression_and_acceptance_testing
+  prohibited_use:
+    - canned_client_answer
+    - representation_of_real_outcome
+  required_elements:
+    - mandate
+    - decision_owner
+    - decision_date_or_gate
+    - source_documents
+    - interview_transcripts
+    - structured_data
+    - data_quality_defects
+    - expected_problem_archetypes
+    - acceptable_method_stacks
+    - rejected_method_traps
+    - expected_calculations
+    - contradicting_evidence
+    - expected_founder_interruptions
+    - expected_story_structure
+    - known_quality_defects
+    - implementation_records
+    - benefit_records
+primary_engagements:
+  - id: FIXTURE-STRATEGY-001
+    type: corporate_and_business_unit_strategy
+    working_title: Industrial services strategic growth choice
+  - id: FIXTURE-GROWTH-001
+    type: growth_and_commercial_strategy
+    working_title: Subscription business growth-engine diagnosis
+  - id: FIXTURE-COST-001
+    type: cost_and_productivity
+    working_title: Multi-site service productivity improvement
+  - id: FIXTURE-CX-001
+    type: customer_experience
+    working_title: SME digital onboarding redesign
+  - id: FIXTURE-OM-001
+    type: operating_model_transformation
+    working_title: Regional shared-services operating model
+  - id: FIXTURE-WORKFORCE-001
+    type: organisation_and_workforce
+    working_title: AI-enabled workforce and organisation redesign
+  - id: FIXTURE-DAI-001
+    type: digital_and_ai_transformation
+    working_title: Fictional SME AI opportunity and risk audit
+    first_pilot: true
+  - id: FIXTURE-RISK-001
+    type: risk_and_controls
+    working_title: Third-party and AI control environment review
+  - id: FIXTURE-MA-001
+    type: merger_and_integration
+    working_title: Mid-market acquisition integration design
+  - id: FIXTURE-CARVEOUT-001
+    type: carve_out_and_separation
+    working_title: Business-unit technology and operations separation
+  - id: FIXTURE-IPO-001
+    type: ipo_valuation_and_capital_strategy
+    working_title: Pre-IPO readiness and capital pathway
+  - id: FIXTURE-CHANGE-001
+    type: implementation_and_change
+    working_title: Enterprise workflow adoption programme
+  - id: FIXTURE-BENEFITS-001
+    type: benefits_realisation_and_performance_improvement
+    working_title: Transformation benefit leakage and recovery
+compound_engagements:
+  - id: FIXTURE-COMPOUND-001
+    domains:
+      - digital_and_ai_transformation
+      - organisation_and_workforce
+      - operating_model_transformation
+  - id: FIXTURE-COMPOUND-002
+    domains:
+      - merger_and_integration
+      - carve_out_and_separation
+      - benefits_realisation_and_performance_improvement
+  - id: FIXTURE-COMPOUND-003
+    domains:
+      - growth_and_commercial_strategy
+      - customer_experience
+      - cost_and_productivity
+  - id: FIXTURE-COMPOUND-004
+    domains:
+      - corporate_and_business_unit_strategy
+      - ipo_valuation_and_capital_strategy
+      - implementation_and_change
