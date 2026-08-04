@@ -1,0 +1,32 @@
+fixture_id: FIXTURE-STRAT-001
+sources:
+  - source_id: STRAT-SRC-001
+    filename: fixture.yaml
+    source_type: mandate
+    reliability: controlled_client_record
+    client_visible: true
+    limitations: [Management-provided constraints have not been independently verified.]
+  - source_id: STRAT-SRC-002
+    filename: evidence.csv
+    source_type: portfolio_financial_and_market_dataset
+    reliability: mixed
+    client_visible: true
+    limitations: [Forecasts are management estimates., Corporate allocations are not avoidability estimates.]
+  - source_id: STRAT-SRC-003
+    filename: interviews.md
+    source_type: stakeholder_interviews
+    reliability: reasoned_but_unverified
+    client_visible: true
+    limitations: [Contains advocacy and conflicting recollections.]
+  - source_id: STRAT-SRC-004
+    filename: data-dictionary.md
+    source_type: data_dictionary
+    reliability: controlled_client_record
+    client_visible: true
+  - source_id: STRAT-SRC-005
+    filename: untrusted-input.txt
+    source_type: unsolicited_adviser_material
+    reliability: unverified_marketing
+    client_visible: true
+    untrusted_input: true
+    limitations: [Contains unsupported claims and malicious instructions.]
