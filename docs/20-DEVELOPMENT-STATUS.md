@@ -20,54 +20,55 @@ Date: 2026-08-04
 
 Status: **chat-first completion and independent CI gate passed**.
 
-Committed source and generation controls include:
-
-- 58 registered Pydantic model contracts;
-- canonical Draft 2020-12 JSON Schema bundle generator;
-- governed configuration schemas;
-- OpenAPI 3.1 generator with 26 paths;
-- ten-command and fifteen-event catalogue;
-- command expected-version and idempotency controls;
-- machine-readable thirteen-stage lifecycle configuration;
-- machine-readable six-class authority policy;
-- machine-readable configuration for eleven bounded agents;
-- PostgreSQL core migration with tenant scope, events, approvals, idempotency and row-level security;
-- deterministic test-registry generation;
-- mappings for 86 implemented tests and 72 planned tests;
-- complete mapping of all 123 requirements;
-- mandatory GitHub Actions generation, validation, coverage, lint and type gates;
-- retained machine-contract artefact;
-- Phase 1 completion and validation reports.
-
-Final exact-main GitHub Actions validation completed:
-
-- eight generated contract artefacts;
-- 58 registered models;
-- four governed configuration documents validated;
-- 26 OpenAPI paths and all external schema references resolved;
-- ten commands and fifteen events catalogued;
-- all 123 requirements mapped to implemented or planned tests;
-- 86 deterministic tests passed;
-- 92.71 percent test coverage against a 90 percent mandatory floor;
-- Python source compilation passed;
-- Ruff linting passed without a per-file exception;
-- strict MyPy checking passed across 18 source files without a policy suppression;
-- stable public policy import paths preserved in the generated registry;
-- 13-file generated artefact retained for 30 days.
-
-Deferred integration evidence remains explicit:
-
-- macOS execution;
-- PostgreSQL apply, rollback and row-level-security penetration tests;
-- selected OpenAPI generated-client compatibility tests;
-- browser and Office rendering;
-- OAuth, model-provider, CRM and cloud integration;
-- durable-workflow recovery, performance and load tests.
+The governed baseline contains 58 registered models, Draft 2020-12 schemas, four governed configurations, 26 OpenAPI paths, ten commands, fifteen events, a PostgreSQL baseline, complete requirement traceability and mandatory generation, coverage, compilation, Ruff and strict MyPy gates.
 
 See:
 
 - `docs/33-PHASE-1-MACHINE-CONTRACT-COMPLETION.md`
 - `reports/phase1-validation-evidence.md`
+
+### Phase 2 — First agent system
+
+Status: **chat-first completion and independent CI gate passed**.
+
+Committed release includes:
+
+- eleven bounded and versioned agent definitions;
+- eleven project-local skill packages;
+- role-specific system prompts and task templates;
+- typed input references and a stable `AgentEnvelope` output;
+- eleven minimum-context profiles;
+- tenant and engagement isolation controls;
+- deterministic tool, record and action permissions;
+- propose-only, command-mediated writes;
+- six timeout, retry, token and cost budget profiles;
+- three provider-independent model routes preserving the output contract;
+- risk, complexity, latency and cost routing dimensions;
+- eight mandatory admission failures;
+- weighted and critical-dimension admission thresholds;
+- independent review for non-zero repeated-run variance;
+- eleven evaluation profiles;
+- 33 positive, negative and adversarial evaluation cases;
+- 19 additional executable test nodes;
+- five planned tests converted to executable evidence.
+
+Latest complete independent validation:
+
+- Phase 1 regression gate passed;
+- Phase 2 validator passed;
+- 105 implemented test nodes and 67 planned tests;
+- all 123 requirements mapped;
+- 107 runtime tests passed;
+- 92.45 percent coverage against a 90 percent floor;
+- Python compilation passed;
+- Ruff passed;
+- strict MyPy passed across 19 source files;
+- 28-file release artefact retained for 30 days.
+
+See:
+
+- `docs/34-PHASE-2-FIRST-AGENT-SYSTEM-COMPLETION.md`
+- `reports/phase2-validation-evidence.md`
 
 ### Deterministic consulting kernel
 
@@ -84,7 +85,7 @@ See:
 
 - Thirteen-primary and five-compound fixture programme.
 - Complete synthetic Northstar SME AI-audit evidence room.
-- Twelve deterministic fixture tests covering evidence, calculations, controls, contradictions, prompt injection and answer-key separation.
+- Deterministic fixture tests covering evidence, calculations, controls, contradictions, prompt injection and answer-key separation.
 
 ## Current strategy
 
@@ -102,19 +103,6 @@ Only the following are useful now:
 
 Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack yet.
 
-## Next ChatGPT phase
-
-**Phase 2 — Complete the first agent system**:
-
-1. project-local skill packages;
-2. role-specific system prompts and task templates;
-3. typed input/output references;
-4. context-selection rules;
-5. tool and record permissions;
-6. positive, negative and adversarial evaluations;
-7. budget, retry and escalation policies;
-8. deterministic admission tests for each agent.
-
 ## Current Codex gate
 
-Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phase 1 contracts, applying the database migration in a disposable local environment and reporting discrepancies without silently changing governing contracts.
+Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1 and 2, applying the database migration in a disposable environment and reporting discrepancies without silently changing governing contracts.
