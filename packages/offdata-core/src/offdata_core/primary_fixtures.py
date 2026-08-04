@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 import yaml
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 PHASE5_SUITE_ID = "FIXTURE-SUITE-PHASE5-001"
