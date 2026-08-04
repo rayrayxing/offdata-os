@@ -45,7 +45,7 @@ jobs:
         run: python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
 
       - name: Enforce static lint baseline
-        run: ruff check packages/offdata-core/src packages/offdata-core/tests scripts
+        run: ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts
 
       - name: Enforce type-check baseline
         working-directory: packages/offdata-core
