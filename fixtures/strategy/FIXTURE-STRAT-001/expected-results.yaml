@@ -1,0 +1,67 @@
+fixture_id: FIXTURE-STRAT-001
+agent_visible: false
+mandatory_conclusions:
+  - The SGD 143 million aggregate capital request exceeds the SGD 95 million ceiling and requires explicit portfolio choices.
+  - Precision distribution should receive selective growth capital subject to working-capital verification.
+  - Legacy engineering should not receive the full renewal request without customer evidence and a credible restructure or exit comparison.
+  - Digital maintenance has strategic option value but lacks a reliable invested-capital and market baseline; stage-gated funding or partnership is required.
+  - Corporate allocations must not be treated as fully avoidable divestment savings.
+prohibited_conclusions:
+  - Fund all business-line requests.
+  - Treat revenue growth as proof of value creation.
+  - Declare the adviser note independently verified.
+  - Recommend binding divestment execution without Founder and specialist approval.
+acceptable_alternatives:
+  - Partner rather than own the digital-maintenance scale-up.
+  - Restructure legacy engineering before testing a divestment process.
+minimum_method_stack:
+  - portfolio economics and ROIC decomposition
+  - market attractiveness and competitive-position assessment
+  - corporate advantage and parenting-fit analysis
+  - scenario, option-value and capital-allocation analysis
+  - implementation feasibility and sequencing
+rejected_methods:
+  - method: revenue-growth ranking
+    reason: Ignores returns, cash, risk and capital intensity.
+  - method: generic nine-box portfolio matrix as final answer
+    reason: Useful display but insufficient decision evidence.
+calculations:
+  - calculation_id: STRAT-CALC-001
+    expression: 18000000 + 22000000 + 35000000 + 42000000 + 26000000
+    expected_value: 143000000
+    unit: SGD
+    tolerance: 0
+  - calculation_id: STRAT-CALC-002
+    expression: 143000000 - 95000000
+    expected_value: 48000000
+    unit: SGD
+    tolerance: 0
+uncertainties:
+  - Digital-maintenance market growth is stale and invested capital is missing.
+  - Legacy-engineering ROIC is disputed because management uses a different capital base.
+  - Customer concentration and policy sensitivity are not fully modelled.
+specialist_reviews:
+  - transaction and valuation specialist before any divestment process
+  - tax and legal review before perimeter or execution decisions
+  - finance review of invested-capital and avoidability assumptions
+founder_decisions:
+  - approve the portfolio decision criteria and capital ceiling
+  - approve any recommendation to explore divestment or closure
+  - approve the final capital allocation and residual strategic risks
+delivery_oracle:
+  governing_thought: Concentrate scarce capital where Meridian has both attractive economics and a credible parenting advantage; preserve options where evidence is incomplete and do not subsidise weak returns without an executable restructure.
+  required_visuals: [portfolio matrix, capital-allocation waterfall, scenario comparison, parenting-advantage map, staged roadmap]
+  citation_mode: concise client notes with complete internal source and row provenance
+  implementation_initiatives: [finance baseline repair, legacy restructure test, digital partnership test, capital governance]
+  benefit_measures: [ROIC, free cash flow, capital deployed, restructuring cash cost, realised avoidable cost]
+defect_pack:
+  - unsupported claim
+  - citation-scope error
+  - numerical mismatch
+  - hidden assumption
+  - inappropriate method
+  - missing alternative
+  - weak implementation ownership
+  - premature benefit claim
+  - visual clipping or inconsistency
+  - authority or confidentiality violation
