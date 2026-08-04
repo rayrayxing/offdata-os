@@ -40,3 +40,5 @@ jobs:
           git diff --cached --quiet && exit 1
           git commit -m "build(fixtures): retain Phase 5 generated records"
           git push origin HEAD:fixtures/phase5-additional-engagements
+      - name: Confirm retained scope
+        run: echo "Phase 5 generated fixture programme retained"
