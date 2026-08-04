@@ -122,14 +122,14 @@ def grade_ai_audit_oracle(
     actual_findings = {item.finding_id: item for item in result.evidence_findings}
     checks.check(set(actual_findings) == set(expected_findings), "evidence_finding_ids")
     for finding_id, expected_finding in expected_findings.items():
-        actual = actual_findings.get(finding_id)
-        checks.check(actual is not None, f"{finding_id}:present")
-        if actual is not None:
+        actual_finding = actual_findings.get(finding_id)
+        checks.check(actual_finding is not None, f"{finding_id}:present")
+        if actual_finding is not None:
             checks.check(
-                set(actual.source_ids) == set(expected_finding["required_sources"]),
+                set(actual_finding.source_ids) == set(expected_finding["required_sources"]),
                 f"{finding_id}:sources",
             )
-            checks.check(bool(actual.limitations), f"{finding_id}:limitations")
+            checks.check(bool(actual_finding.limitations), f"{finding_id}:limitations")
 
     expected_methods = expected["expected_method_selection"]["required_roles"]
     checks.check(set(result.required_method_stack) == set(expected_methods), "method_roles")
@@ -145,9 +145,9 @@ def grade_ai_audit_oracle(
     actual_rejections = {item.candidate: item for item in result.method_rejections}
     checks.check(set(actual_rejections) == set(expected_rejections), "method_rejections")
     for candidate, reason_fragments in expected_rejections.items():
-        actual = actual_rejections.get(candidate)
-        if actual is not None:
-            reason_text = " ".join(actual.reasons).casefold()
+        actual_rejection = actual_rejections.get(candidate)
+        if actual_rejection is not None:
+            reason_text = " ".join(actual_rejection.reasons).casefold()
             for fragment in reason_fragments:
                 checks.check(fragment in reason_text, f"method_rejection:{candidate}:{fragment}")
 
@@ -234,8 +234,8 @@ def grade_ai_audit_oracle(
             result.financial.immediate_cash_releasing_headcount_benefit_sgd
         ),
     }
-    for key, actual in numeric_checks.items():
-        checks.check(actual == float(expected_financial[key]), f"financial:{key}")
+    for key, actual_value in numeric_checks.items():
+        checks.check(actual_value == float(expected_financial[key]), f"financial:{key}")
     checks.check(
         set(expected_financial["required_classifications"])
         <= set(result.financial.classifications),
@@ -254,10 +254,11 @@ def grade_ai_audit_oracle(
     actual_escalations = {item.escalation_id: item for item in result.founder_escalations}
     checks.check(set(actual_escalations) == set(expected_escalations), "escalation_ids")
     for escalation_id, expected_escalation in expected_escalations.items():
-        actual = actual_escalations.get(escalation_id)
-        if actual is not None:
+        actual_escalation = actual_escalations.get(escalation_id)
+        if actual_escalation is not None:
             checks.check(
-                set(actual.required_classes) == set(expected_escalation["required_classes"]),
+                set(actual_escalation.required_classes)
+                == set(expected_escalation["required_classes"]),
                 f"{escalation_id}:classes",
             )
 
