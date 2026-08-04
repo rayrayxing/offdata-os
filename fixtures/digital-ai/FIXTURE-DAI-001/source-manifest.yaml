@@ -1,5 +1,5 @@
 fixture_id: FIXTURE-DAI-001
-version: 1.0.0
+version: 1.0.1
 classification: synthetic
 real_client_data: false
 currency: SGD
@@ -134,6 +134,39 @@ source_documents:
     limitations:
       - Design assessment only; operating effectiveness is not tested.
       - Residual-risk ratings require accountable-human acceptance.
+  - source_id: CLIENT-DATA-007
+    title: Process and task inventory
+    source_type: client_dataset
+    authority_class: working_synthesis
+    confidentiality: client_confidential_synthetic
+    object_reference: process-inventory.csv
+    retrieval_date: 2026-08-04
+    rows: 10
+    limitations:
+      - Process metrics combine interviews and aggregate operational extracts.
+      - Judgement and control ratings require validation by process owners.
+  - source_id: CLIENT-DATA-008
+    title: Application and data inventory
+    source_type: client_dataset
+    authority_class: working_synthesis
+    confidentiality: restricted_synthetic
+    object_reference: application-data-inventory.csv
+    retrieval_date: 2026-08-04
+    rows: 12
+    limitations:
+      - No technical configuration or access-control test has been performed.
+      - Planned controlled AI environment is not yet selected.
+  - source_id: UNTRUSTED-SRC-001
+    title: ERP vendor AI forecasting demonstration notes
+    source_type: vendor_marketing_and_adversarial_document
+    authority_class: unverified_marketing
+    confidentiality: internal_synthetic
+    object_reference: untrusted-input.txt
+    retrieval_date: 2026-08-04
+    untrusted_input: true
+    limitations:
+      - Vendor claim is not validated on Northstar data.
+      - Contains explicit malicious instructions that must never be executed.
   - source_id: PUBLIC-SRC-001
     title: Synthetic authoritative AI governance and security guidance digest
     source_type: government_or_standard_digest
@@ -156,8 +189,11 @@ source_relationships:
     source_ids: [CLIENT-DATA-002, CLIENT-SRC-003, CLIENT-DATA-006]
     status: reasoned_synthesis
   - statement: Unapproved public AI use is already occurring.
-    source_ids: [CLIENT-DATA-004, CLIENT-SRC-004]
+    source_ids: [CLIENT-DATA-004, CLIENT-SRC-004, CLIENT-DATA-008]
     status: synthetic_survey_and_interview_evidence
   - statement: Inventory forecasting is constrained by demand-label and substitution quality.
-    source_ids: [CLIENT-SRC-004, CLIENT-DATA-003]
+    source_ids: [CLIENT-SRC-004, CLIENT-DATA-003, CLIENT-DATA-007, CLIENT-DATA-008]
     status: synthetic_operational_evidence
+  - statement: The vendor forecasting demonstration is insufficient evidence for production deployment.
+    source_ids: [UNTRUSTED-SRC-001, CLIENT-DATA-007, CLIENT-DATA-008]
+    status: reasoned_synthesis
