@@ -17,7 +17,7 @@ Date: 2026-08-05
 - Python: 3.11.15
 - conclusion: success
 
-Completion and development-status records are added after this run. The complete pull-request gate is rerun with those documentation commits included before merge.
+Completion and development-status records were added after this implementation run. The pull request must also pass the complete gate on the exact documentation-inclusive head before merge; that exact-head run is the release authority.
 
 ## Prior-phase regression results
 
