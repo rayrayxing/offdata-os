@@ -69,7 +69,8 @@ jobs:
       - name: Commit exact Phase 6 release
         run: |
           rm -rf .phase6-bundle
-          rm .github/workflows/retain-phase6-bundle.yml
+          rm -rf packages/offdata-core/src/offdata_core.egg-info
+          git checkout -- .github/workflows/contracts.yml
           git diff --check
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
