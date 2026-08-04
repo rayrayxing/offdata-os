@@ -1,0 +1,91 @@
+version: 0.1.0
+decision_classes:
+  DEC-ROUTINE:
+    description: Reversible internal choice within an approved brief.
+    minimum_evidence: E1
+    default_decision: auto_execute
+  DEC-MATERIAL:
+    description: Choice capable of changing scope, recommendation, outcome, risk, priority or stakeholder position.
+    minimum_evidence: E2
+    default_decision: request_approval
+    required_approvals:
+      - Founder or delegated accountable human
+  DEC-EXTERNAL:
+    description: Communication, upload, submission, representation or release outside the approved internal workspace.
+    minimum_evidence: E2
+    default_decision: request_approval
+    required_conditions:
+      - source_rights_checked
+      - confidentiality_reviewed
+      - external_release_authorised
+      - idempotency_key_present
+  DEC-COMMERCIAL:
+    description: Price, fee, liability, scope, deadline, staffing, procurement or payment commitment.
+    minimum_evidence: E3
+    default_decision: request_approval
+    required_approvals:
+      - Founder
+  DEC-LEGALREG:
+    description: Legal or regulatory interpretation, sign-off, acceptance or reliance.
+    minimum_evidence: E3
+    default_decision: prohibit
+    required_approvals:
+      - Founder
+      - Qualified specialist
+  DEC-IRREVERSIBLE:
+    description: Destructive, public, binding or hard-to-reverse action.
+    minimum_evidence: E4
+    default_decision: request_approval
+    required_conditions:
+      - independent_challenge_complete
+      - founder_approved
+      - idempotency_key_present
+action_rules:
+  internal_research:
+    inferred_classes:
+      - DEC-ROUTINE
+  internal_draft:
+    inferred_classes:
+      - DEC-ROUTINE
+  client_facing_draft:
+    minimum_evidence: E2
+    required_conditions:
+      - draft_marked_not_approved
+  use_client_data:
+    minimum_evidence: E2
+    required_conditions:
+      - data_access_authorised
+      - purpose_and_retention_known
+    failure_decision: prohibit
+  export_internal_artefact:
+    required_conditions:
+      - internal_destination_approved
+      - versioned_inputs
+  send_external:
+    inferred_classes:
+      - DEC-EXTERNAL
+  commercial_commitment:
+    inferred_classes:
+      - DEC-COMMERCIAL
+  legal_regulatory_conclusion:
+    inferred_classes:
+      - DEC-LEGALREG
+  production_or_destructive_change:
+    inferred_classes:
+      - DEC-IRREVERSIBLE
+  methodology_promotion:
+    inferred_classes:
+      - DEC-MATERIAL
+    required_conditions:
+      - provenance_review_complete
+      - regression_tests_passed
+      - founder_approved
+prohibited_autonomous_actions:
+  - send_or_publish_client_facing_content
+  - accept_scope_price_contract_liability_deadline_or_resource_commitment
+  - provide_final_legal_regulatory_audit_tax_investment_or_safety_signoff
+  - disclose_confidential_or_personal_data_beyond_authorised_purpose
+  - fabricate_citations_calculations_outcomes_quotations_or_client_agreement
+  - suppress_credible_contrary_evidence
+  - implement_destructive_irreversible_or_production_changes
+  - approve_own_assurance_conclusion_where_independence_is_required
