@@ -6,7 +6,7 @@ import hashlib
 import json
 from enum import StrEnum
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .delivery import (
     ArtefactApprovalStatus,
@@ -289,6 +289,7 @@ class DeliverableSemanticModel(BaseModel):
                 )
                 if semantic.visual_specification_ids and surface_object.editable_required:
                     if surface_object.render_form not in {
+                        RenderForm.CHART,
                         RenderForm.NATIVE_SHAPES,
                         RenderForm.SVG,
                         RenderForm.WEB_COMPONENT,
