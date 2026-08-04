@@ -22,11 +22,40 @@ from .ai_audit_models import (
     QuotationAnalysis,
     ReadinessAnalysis,
     RiskAnalysis,
+    SegmentAnalysis,
     SourceChecksum,
     UntrustedInputAnalysis,
     UseCaseAssessment,
     WorkforceAnalysis,
 )
+
+__all__ = [
+    "ANSWER_KEY_NAME",
+    "CLIENT_VISIBLE_FILES",
+    "ORACLE_BASELINE_NAME",
+    "AIAuditOracleResult",
+    "EvidenceFinding",
+    "EvidenceStatus",
+    "FinancialAnalysis",
+    "MethodRejection",
+    "OracleDisposition",
+    "OracleGrade",
+    "QuotationAnalysis",
+    "ReadinessAnalysis",
+    "RiskAnalysis",
+    "SegmentAnalysis",
+    "SourceChecksum",
+    "UntrustedInputAnalysis",
+    "UseCaseAssessment",
+    "WorkforceAnalysis",
+    "baseline_document",
+    "build_ai_audit_oracle",
+    "ensure_answer_key_isolation",
+    "grade_ai_audit_oracle",
+    "serialise_baseline",
+    "verify_committed_baseline",
+    "write_oracle_baseline",
+]
 
 
 class _CheckCollector:
