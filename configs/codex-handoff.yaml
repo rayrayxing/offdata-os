@@ -4,7 +4,6 @@ title: Machine-readable Codex handoff
 handoff_id: CODEX-PHASE0-HANDOFF-2026-08-05
 repository: rayrayxing/offdata-os
 canonical_branch: main
-stacked_base_branch: governance/pcr03-repository-hygiene
 target:
   phase_number: 0
   phase_name: Controlled project foundation
@@ -184,10 +183,10 @@ execution:
     - python scripts/validate_pcr02_referential_integrity.py
     - python scripts/validate_pcr03_repository_hygiene.py
     - python scripts/validate_pcr04_codex_handoff.py
-    - pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
+    - cd packages/offdata-core && pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
     - python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
     - ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts
-    - mypy src
+    - cd packages/offdata-core && mypy src
 prohibited_actions:
   - purchase_or_activate_services_or_trials
   - request_or_commit_secrets
