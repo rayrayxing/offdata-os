@@ -47,6 +47,19 @@ jobs:
           tar -xzf /tmp/pcr02.tar.gz -C .
           python apply_pcr02_repairs.py
           rm apply_pcr02_repairs.py
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("security/security-test-catalogue.yaml")
+          text = path.read_text(encoding="utf-8")
+          old = """    control_ids: [CTRL-INCIDENT-PLAYBOOK, CTRL-DURABLE-RECOVERY]
+              expected_result: A failed production change returns to the prior safe state."""
+          new = """    control_ids: [CTRL-INCIDENT-PLAYBOOK, CTRL-DURABLE-RECOVERY, CTRL-KILL-SWITCH-TEST]
+              expected_result: A failed production change or kill-switch test returns to the prior safe state."""
+          if old not in text:
+              raise SystemExit("Expected IT-ROLLBACK-001 control binding not found")
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+          PY
       - name: Install validation dependencies
         if: steps.staged.outputs.needed == 'true'
         run: python -m pip install --upgrade pip && python -m pip install -e "packages/offdata-core[dev]"
