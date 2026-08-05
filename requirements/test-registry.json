@@ -1827,6 +1827,360 @@
       "requirements": [
         "QA-002"
       ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_approved_global_metadata_transfer_is_allowed",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_candidate_and_synthetic_processor_cannot_receive_real_client_data",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_complete_technical_evidence_still_requires_founder_approval",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003",
+        "AUTH-007",
+        "SEC-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_engagement_access_is_denied",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_region_client_transfer_requires_basis_and_founder_approval",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-010",
+        "AUTH-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_tenant_access_is_denied",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_engagement_record_requires_tenant_and_engagement_scope",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_expired_or_failed_control_evidence_fails_gate",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_export_and_delete_require_founder_approval",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-004",
+        "AUTH-007",
+        "DATA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_external_target_requires_founder_approval",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-004"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_founder_approval_plus_current_controls_satisfies_gate",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003",
+        "AUTH-007",
+        "SEC-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_global_record_rejects_client_content",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002",
+        "CRM-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_incident_assessment_escalates_secret_and_cross_tenant_events",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_incident_assessment_keeps_low_event_open_for_human_control",
+      "phase": "chat-first",
+      "requirements": [
+        "AUTH-003",
+        "SEC-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_legal_hold_blocks_retention_progression",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_most_restrictive_classification_requires_input",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_most_restrictive_classification_wins",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_processor_register_rejects_credential_values",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-001",
+        "SEC-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_processor_register_requires_client_data_controls",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_processor_use_requires_current_scope_region_purpose_and_terms",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-005",
+        "SEC-007"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_production_gate_blocks_missing_and_wrong_region_evidence",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_read_access_allows_matching_scope_and_region",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-002",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_region_placement_allows_internal_record_in_singapore",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_region_placement_denies_client_content_in_unapproved_cell",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-010",
+        "SEC-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_region_placement_denies_non_singapore_first_production_cell",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-010",
+        "SEC-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_regional_cell_requires_gate_evidence_when_client_data_enabled",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-005",
+        "SEC-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_restricted_access_requires_mfa",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_restricted_client_content_is_prohibited_in_development",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_retention_active_archive_export_and_delete_states",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_retention_rejects_invalid_dates_and_windows",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_same_region_transfer_is_allowed",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_secret_detection_finds_known_formats_and_nested_paths",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_builds_expected_scope",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-005",
+        "SEC-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_is_reproducible_and_verified",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_support_access_requires_capability_and_current_expiry",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-004",
+        "SEC-002"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_synthetic_request_never_implies_real_client_authorisation",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_unapproved_processor_for_record_is_denied",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-007"
+      ]
     }
   ],
   "planned_tests": [
@@ -1920,6 +2274,16 @@
         "TEST-006"
       ],
       "test_id": "E2E-WORKLOAD-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "founder_acceptance",
+      "phase": "codex-or-later",
+      "requirements": [
+        "AUTH-003",
+        "SEC-010"
+      ],
+      "test_id": "FA-PRODUCTION-GATE-001"
     },
     {
       "evidence_status": "planned_not_executed",
@@ -2144,6 +2508,16 @@
       "kind": "security",
       "phase": "codex-or-later",
       "requirements": [
+        "AGENT-007",
+        "EVID-010"
+      ],
+      "test_id": "SEC-P7-DOCUMENT-001"
+    },
+    {
+      "evidence_status": "planned_not_executed",
+      "kind": "security",
+      "phase": "codex-or-later",
+      "requirements": [
         "DATA-010",
         "SEC-005"
       ],
@@ -2231,15 +2605,6 @@
         "COST-004"
       ],
       "test_id": "UT-PAID-DEPENDENCY-001"
-    },
-    {
-      "evidence_status": "planned_not_executed",
-      "kind": "unit",
-      "phase": "codex-or-later",
-      "requirements": [
-        "SEC-007"
-      ],
-      "test_id": "UT-PROCESSOR-REGISTER-001"
     },
     {
       "evidence_status": "planned_not_executed",

@@ -1,0 +1,61 @@
+version: 1.0.0
+status: governed_chat_first
+scope: security_privacy_and_regionalisation_policy_without_production_infrastructure
+first_managed_region: singapore
+real_client_data_enabled: false
+synthetic_only_until_production_gate: true
+production_gate:
+  default_disposition: deny
+  all_mandatory_controls_require_current_pass_evidence: true
+  founder_approval_required: true
+  no_agent_self_approval: true
+  evidence_must_match_environment_and_region: true
+  expired_evidence_fails: true
+regionalisation:
+  client_data_cross_region_default: deny
+  global_metadata_only: true
+  global_metadata_fields:
+    - stable_record_id
+    - source_region
+    - record_type
+    - lifecycle_status
+    - checksum
+    - retention_policy_id
+  prohibited_global_metadata_fields:
+    - client_name
+    - contact_details
+    - evidence_text
+    - source_passage
+    - model_input
+    - model_output
+    - recommendation_text
+    - personal_data
+  approved_region_expansion_requires:
+    - documented_client_or_jurisdiction_need
+    - approved_cell_architecture
+    - region_specific_processor_review
+    - transfer_and_backup_design
+    - isolation_and_recovery_tests
+    - incident_ownership
+    - Founder_approval
+secrets:
+  values_in_repository_allowed: false
+  values_in_chat_allowed: false
+  fixtures_must_use_references_only: true
+  approved_reference_prefixes:
+    - secret://
+    - vault://
+    - keychain://
+    - env://
+    - credential-ref://
+retention:
+  soft_delete_is_not_verified_deletion: true
+  legal_hold_overrides_deletion: true
+  deletion_requires_audit_event: true
+  deletion_requires_verification: true
+  export_before_deletion_when_policy_requires: true
+incident:
+  agents_may_assist: true
+  agents_may_autonomously_close_material_incident: false
+  preserve_audit_evidence: true
+  founder_notification_for_high_or_critical: true

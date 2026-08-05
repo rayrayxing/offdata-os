@@ -1,0 +1,80 @@
+version: 1.0.0
+status: governed_chat_first
+rules:
+  material_incidents_cannot_be_closed_by_agents: true
+  implicated_actor_cannot_be_sole_reviewer: true
+  preserve_evidence_before_repair: true
+  client_notification_is_a_human_accountability_decision: true
+playbooks:
+  - playbook_id: IR-DATA-EXPOSURE
+    title: Suspected client data exposure
+    immediate_actions: [stop_affected_access_path, quarantine_scope, preserve_audit_evidence, assign_incident_owner]
+    assessment: [identify_tenants_and_engagements, classify_data, determine_external_access, determine_region_impact]
+    founder_decisions: [client_notification, regulator_or_counsel_escalation, service_restart]
+    closure_evidence: [root_cause, corrected_control, regression_tests, independent_review]
+  - playbook_id: IR-REGION-LEAKAGE
+    title: Cross-region leakage or unapproved transfer
+    immediate_actions: [stop_transfer_path, isolate_destination_copy, preserve_provider_and_transfer_logs, quarantine_scope]
+    assessment: [source_and_destination_regions, transfer_basis, data_classification, backup_and_derivative_copies]
+    founder_decisions: [notification, deletion_or_return, provider_suspension, region_cell_shutdown]
+    closure_evidence: [verified_destination_cleanup, routing_fix, region_isolation_retest, independent_review]
+  - playbook_id: IR-CREDENTIAL-EXPOSURE
+    title: Credential exposure
+    immediate_actions: [revoke_credential, rotate_credential, stop_affected_integrations, preserve_access_logs]
+    assessment: [credential_scope, use_since_exposure, affected_data, financial_activity]
+    founder_decisions: [provider_notification, account_lockdown, service_reactivation]
+    closure_evidence: [rotation_complete, access_review, secret_scan, regression_tests]
+  - playbook_id: IR-AGENT-MISUSE
+    title: Agent injection or unsafe tool use
+    immediate_actions: [disable_agent_or_tool, quarantine_input, preserve_run_context, revoke_temporary_capabilities]
+    assessment: [records_read_or_written, external_actions, injection_source, policy_bypass]
+    founder_decisions: [restore_agent, disclose_to_client, broaden kill_switch]
+    closure_evidence: [prompt_or_policy_fix, adversarial_retest, affected_record_reconciliation, independent_review]
+  - playbook_id: IR-MALICIOUS-DOCUMENT
+    title: Malicious or unsupported document
+    immediate_actions: [quarantine_file, stop_parser, isolate_runtime, preserve_checksum_and_scan_results]
+    assessment: [embedded_objects, links, macros, parser_activity, credential_access]
+    founder_decisions: [delete_or_retain_for_evidence, notify_source, resume_ingestion]
+    closure_evidence: [sandbox_review, parser_patch, malicious_fixture_test, independent_review]
+  - playbook_id: IR-PROCESSOR-BREACH
+    title: Processor policy or security breach
+    immediate_actions: [suspend_processor, stop_new_transfers, preserve_call_logs, activate_exit_plan]
+    assessment: [data_sent, region, retention, subprocessors, deletion_capability]
+    founder_decisions: [notification, processor_exit, replacement_processor, legal_review]
+    closure_evidence: [verified_deletion_or_return, register_update, replacement_test, independent_review]
+  - playbook_id: IR-AVAILABILITY
+    title: Service disruption or recovery failure
+    immediate_actions: [stabilise_service, prevent_duplicate_external_actions, preserve_failure_state, assign_recovery_owner]
+    assessment: [affected_components, data_integrity, recovery_point, recovery_time]
+    founder_decisions: [rollback, failover, client_communication, extended_shutdown]
+    closure_evidence: [restore_reconciliation, recovery_test, root_cause, monitoring_update]
+  - playbook_id: IR-WORKFLOW-INTEGRITY
+    title: Workflow duplication or audit integrity failure
+    immediate_actions: [pause_workflow_class, block_external_actions, preserve_event_stream, identify_idempotency_keys]
+    assessment: [duplicated_or_missing_actions, affected_records, approval_history, audit_gaps]
+    founder_decisions: [compensation_action, client_communication, release_exception]
+    closure_evidence: [event_reconciliation, idempotency_retest, audit_repair_record, independent_review]
+  - playbook_id: IR-SUPPLY-CHAIN
+    title: Compromised package skill hook or image
+    immediate_actions: [isolate_runtime, disable_dependency, revoke_exposed_credentials, preserve_build_and_install_evidence]
+    assessment: [affected_versions, permissions, data_access, persistence]
+    founder_decisions: [environment_rebuild, provider_notification, production_shutdown]
+    closure_evidence: [clean_rebuild, dependency_pin, vulnerability_scan, independent_review]
+  - playbook_id: IR-RETENTION-FAILURE
+    title: Retention deletion or export failure
+    immediate_actions: [pause_deletion_workflow, preserve_scope_manifest, prevent_false_completion, assign_data_owner]
+    assessment: [source_derivatives_indexes_caches_backups, legal_hold, export_state, verification_gap]
+    founder_decisions: [manual_remediation, client_notification, policy_exception]
+    closure_evidence: [verified_reconciliation, corrected_workflow, deletion_retest, independent_review]
+  - playbook_id: IR-MATERIAL-INCIDENT
+    title: General material incident
+    immediate_actions: [activate_kill_switch_as_needed, preserve_evidence, quarantine_affected_scope, notify_Founder]
+    assessment: [confidentiality_integrity_availability, tenants_engagements_regions, external_actions, residual_risk]
+    founder_decisions: [notification, containment_duration, restart, external_advice]
+    closure_evidence: [root_cause, corrective_actions, regression_suite, independent_signoff]
+  - playbook_id: IR-COST-ABUSE
+    title: Provider cost or usage abuse
+    immediate_actions: [stop_runaway_workflows, revoke_compromised_credentials, enforce_budget_caps, preserve_usage_logs]
+    assessment: [provider_accounts, cost_exposure, affected_services, data_access]
+    founder_decisions: [provider_dispute, account_reactivation, new_spend_limit]
+    closure_evidence: [budget_retest, credential_review, alert_test, independent_review]

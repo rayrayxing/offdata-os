@@ -1,0 +1,224 @@
+version: 1.0.0
+status: governed_chat_first
+method: asset_vector_consequence_control_test
+threats:
+  - threat_id: THR-001
+    title: Cross-tenant record disclosure
+    assets: [client_records, engagement_evidence]
+    threat_actor: malicious_or_misconfigured_user_agent_or_query
+    attack_or_failure_path: Tenant filters are absent, bypassed or applied after retrieval.
+    consequences: [client_confidentiality_breach, contractual_harm, loss_of_trust]
+    preventive_controls: [CTRL-TENANT-ISOLATION, CTRL-LEAST-PRIVILEGE]
+    detective_controls: [CTRL-PRIVILEGED-ACCESS-LOG, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-DATA-EXPOSURE
+    residual_risk: high
+    test_ids: [SEC-P7-TENANT-001, SEC-REGION-ISOLATION-001]
+  - threat_id: THR-002
+    title: Cross-engagement evidence leakage
+    assets: [source_passages, hypotheses, model_outputs]
+    threat_actor: overbroad_agent_context_or_search_index
+    attack_or_failure_path: Engagement identifiers are missing from records, indexes or access checks.
+    consequences: [confidentiality_breach, contaminated_reasoning, invalid_deliverable]
+    preventive_controls: [CTRL-ENGAGEMENT-ISOLATION, CTRL-MINIMUM-CONTEXT]
+    detective_controls: [CTRL-AUDIT-EXPORT, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-DATA-EXPOSURE
+    residual_risk: high
+    test_ids: [SEC-P7-ENGAGEMENT-001, SEC-P7-CONTEXT-001]
+  - threat_id: THR-003
+    title: Region misrouting of restricted data
+    assets: [client_content, personal_data, clean_team_material]
+    threat_actor: routing_error_or_unapproved_provider
+    attack_or_failure_path: Data is sent to a cell or processor outside the authorised region.
+    consequences: [cross_border_leakage, contractual_breach, regulatory_risk]
+    preventive_controls: [CTRL-REGION-PINNING, CTRL-PROCESSOR-REGISTER, CTRL-TRANSFER-REGISTER]
+    detective_controls: [CTRL-PROVIDER-CALL-LOG, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-REGION-LEAKAGE
+    residual_risk: critical
+    test_ids: [SEC-P7-REGION-001, SEC-REGION-ISOLATION-001]
+  - threat_id: THR-004
+    title: Secret committed or pasted into governed artefacts
+    assets: [api_keys, oauth_tokens, signing_keys, database_credentials]
+    threat_actor: accidental_contributor_or_malicious_change
+    attack_or_failure_path: A credential value is placed in source, fixtures, issues, logs or prompts.
+    consequences: [credential_compromise, unauthorised_access, cost_abuse]
+    preventive_controls: [CTRL-SECRET-SCANNING, CTRL-CREDENTIAL-REFERENCE-ONLY]
+    detective_controls: [CTRL-OBSERVABILITY-ALERTS, CTRL-AUDIT-EVENT]
+    response_playbook_id: IR-CREDENTIAL-EXPOSURE
+    residual_risk: critical
+    test_ids: [SEC-P7-SECRET-001, SEC-SUPPLY-CHAIN-001]
+  - threat_id: THR-005
+    title: Prompt injection changes system policy
+    assets: [agent_instructions, tool_permissions, canonical_records]
+    threat_actor: malicious_document_or_retrieved_page
+    attack_or_failure_path: Instruction-like document content is executed as policy or tool authority.
+    consequences: [policy_bypass, data_exfiltration, corrupted_records]
+    preventive_controls: [CTRL-PROMPT-INJECTION-TEST, CTRL-MINIMUM-CONTEXT, CTRL-TOOL-PERMISSION]
+    detective_controls: [CTRL-AUDIT-EVENT, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-AGENT-MISUSE
+    residual_risk: high
+    test_ids: [SEC-INJECTION-001, SEC-P7-UNTRUSTED-001]
+  - threat_id: THR-006
+    title: Malicious or unsupported document execution
+    assets: [local_runtime, source_library, credentials]
+    threat_actor: crafted_upload
+    attack_or_failure_path: Macros, embedded objects, links or parser defects execute outside a sandbox.
+    consequences: [runtime_compromise, credential_theft, corrupted_ingestion]
+    preventive_controls: [CTRL-DOCUMENT-QUARANTINE, CTRL-SUPPLY-CHAIN-REVIEW]
+    detective_controls: [CTRL-OBSERVABILITY-ALERTS, CTRL-AUDIT-EVENT]
+    response_playbook_id: IR-MALICIOUS-DOCUMENT
+    residual_risk: high
+    test_ids: [SEC-P7-DOCUMENT-001, IT-INGEST-001]
+  - threat_id: THR-007
+    title: Agent tool privilege escalation
+    assets: [external_actions, files, database_records]
+    threat_actor: compromised_or_misconfigured_agent
+    attack_or_failure_path: Tool capabilities exceed the agent role, record scope or approved action class.
+    consequences: [unauthorised_change, external_disclosure, irreversible_action]
+    preventive_controls: [CTRL-LEAST-PRIVILEGE, CTRL-TOOL-PERMISSION, CTRL-FOUNDER-ACTION-APPROVAL]
+    detective_controls: [CTRL-AUDIT-EVENT, CTRL-PROVIDER-CALL-LOG]
+    response_playbook_id: IR-AGENT-MISUSE
+    residual_risk: high
+    test_ids: [SEC-TOOL-001, SEC-P7-ACCESS-001]
+  - threat_id: THR-008
+    title: Provider retention or training contrary to policy
+    assets: [prompts, evidence, model_outputs]
+    threat_actor: unreviewed_processor_configuration
+    attack_or_failure_path: Client data is sent without approved terms, region, retention or training settings.
+    consequences: [loss_of_control, unauthorised_reuse, transfer_risk]
+    preventive_controls: [CTRL-PROCESSOR-REGISTER, CTRL-PROVIDER-TRAINING-DISABLED]
+    detective_controls: [CTRL-PROVIDER-CALL-LOG, CTRL-PROCESSOR-REVIEW-EXPIRY]
+    response_playbook_id: IR-PROCESSOR-BREACH
+    residual_risk: high
+    test_ids: [UT-PROCESSOR-REGISTER-001, SEC-P7-PROCESSOR-001]
+  - threat_id: THR-009
+    title: CRM over-synchronisation
+    assets: [client_evidence, hypotheses, sensitive_model_outputs]
+    threat_actor: sync_mapping_error
+    attack_or_failure_path: Detailed confidential engagement content is copied into CRM summary fields.
+    consequences: [confidentiality_breach, uncontrolled_replication]
+    preventive_controls: [CTRL-CRM-DATA-MINIMISATION, CTRL-FIELD-ALLOWLIST]
+    detective_controls: [CTRL-AUDIT-EVENT, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-DATA-EXPOSURE
+    residual_risk: high
+    test_ids: [SEC-CRM-001, SEC-P7-CRM-001]
+  - threat_id: THR-010
+    title: Sensitive payload leakage through logs
+    assets: [prompts, files, personal_data, credentials]
+    threat_actor: verbose_logging_or_error_trace
+    attack_or_failure_path: Raw restricted payloads are written to logs or monitoring systems.
+    consequences: [secondary_data_store, unauthorised_support_access]
+    preventive_controls: [CTRL-LOG-REDACTION, CTRL-DATA-MINIMISATION]
+    detective_controls: [CTRL-SECRET-SCANNING, CTRL-AUDIT-EXPORT]
+    response_playbook_id: IR-DATA-EXPOSURE
+    residual_risk: high
+    test_ids: [SEC-P7-LOG-001, IT-OBSERVABILITY-001]
+  - threat_id: THR-011
+    title: Backup exists but cannot restore
+    assets: [canonical_database, object_store, audit_records]
+    threat_actor: untested_recovery_design
+    attack_or_failure_path: Backups are incomplete, corrupt, cross-region or inconsistent with object versions.
+    consequences: [permanent_data_loss, integrity_failure, prolonged_outage]
+    preventive_controls: [CTRL-BACKUP-POLICY, CTRL-REGION-PINNING]
+    detective_controls: [CTRL-BACKUP-RESTORE-TEST, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-AVAILABILITY
+    residual_risk: high
+    test_ids: [IT-BACKUP-RESTORE-001, SEC-P7-BACKUP-001]
+  - threat_id: THR-012
+    title: Recovery duplicates an external action
+    assets: [emails, crm_updates, deployments, payments]
+    threat_actor: workflow_restart_or_retry
+    attack_or_failure_path: A resumed workflow repeats a completed non-idempotent action.
+    consequences: [duplicate_disclosure, duplicate_commitment, client_confusion]
+    preventive_controls: [CTRL-IDEMPOTENCY, CTRL-DURABLE-RECOVERY]
+    detective_controls: [CTRL-AUDIT-EVENT, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-WORKFLOW-INTEGRITY
+    residual_risk: high
+    test_ids: [IT-RECOVERY-001, IT-REPEATABILITY-001]
+  - threat_id: THR-013
+    title: Audit evidence tampering or omission
+    assets: [material_action_log, approval_history, incident_evidence]
+    threat_actor: privileged_user_or_defective_integration
+    attack_or_failure_path: Material actions are changed, deleted or performed without correlated events.
+    consequences: [loss_of_accountability, unverifiable_release, concealed_incident]
+    preventive_controls: [CTRL-AUDIT-EVENT, CTRL-IMMUTABLE-AUDIT]
+    detective_controls: [CTRL-AUDIT-EXPORT, CTRL-INDEPENDENT-REVIEW]
+    response_playbook_id: IR-WORKFLOW-INTEGRITY
+    residual_risk: high
+    test_ids: [SEC-P7-AUDIT-001, IT-BASELINE-IMMUTABLE-001]
+  - threat_id: THR-014
+    title: Supply-chain package or skill compromise
+    assets: [runtime, source_code, credentials, client_data]
+    threat_actor: malicious_or_compromised_dependency
+    attack_or_failure_path: Unpinned or unreviewed package, hook, skill or container executes with project access.
+    consequences: [code_execution, exfiltration, persistent_backdoor]
+    preventive_controls: [CTRL-SUPPLY-CHAIN-REVIEW, CTRL-LEAST-PRIVILEGE]
+    detective_controls: [CTRL-SECRET-SCANNING, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-SUPPLY-CHAIN
+    residual_risk: critical
+    test_ids: [SEC-SUPPLY-CHAIN-001, SEC-P7-SUPPLY-001]
+  - threat_id: THR-015
+    title: Retention expiry without verified deletion
+    assets: [client_records, derived_indexes, backups]
+    threat_actor: incomplete_deletion_workflow
+    attack_or_failure_path: A soft delete leaves source, derivative, cache or backup copies beyond policy.
+    consequences: [contractual_breach, unnecessary_exposure, failed_client_request]
+    preventive_controls: [CTRL-RETENTION-DELETION, CTRL-DERIVED-DATA-DELETION]
+    detective_controls: [CTRL-DELETION-VERIFICATION, CTRL-AUDIT-EXPORT]
+    response_playbook_id: IR-RETENTION-FAILURE
+    residual_risk: high
+    test_ids: [IT-RETENTION-001, SEC-P7-RETENTION-001]
+  - threat_id: THR-016
+    title: Cross-border transfer without documented basis
+    assets: [client_content, personal_data]
+    threat_actor: manual_export_or_automatic_failover
+    attack_or_failure_path: A record or backup moves to another region without documented authority.
+    consequences: [residency_breach, client_harm, notification_obligation]
+    preventive_controls: [CTRL-TRANSFER-REGISTER, CTRL-REGION-PINNING]
+    detective_controls: [CTRL-PROVIDER-CALL-LOG, CTRL-OBSERVABILITY-ALERTS]
+    response_playbook_id: IR-REGION-LEAKAGE
+    residual_risk: critical
+    test_ids: [SEC-P7-TRANSFER-001, SEC-REGION-ISOLATION-001]
+  - threat_id: THR-017
+    title: Incident minimised or closed by implicated agent
+    assets: [incident_record, audit_evidence, client_trust]
+    threat_actor: conflicted_agent_or_operator
+    attack_or_failure_path: The actor involved in an incident suppresses severity or closes the case.
+    consequences: [concealed_harm, delayed_response, invalid_assurance]
+    preventive_controls: [CTRL-INCIDENT-PLAYBOOK, CTRL-NO-AUTONOMOUS-INCIDENT-CLOSURE]
+    detective_controls: [CTRL-INDEPENDENT-REVIEW, CTRL-AUDIT-EXPORT]
+    response_playbook_id: IR-MATERIAL-INCIDENT
+    residual_risk: high
+    test_ids: [SEC-P7-INCIDENT-001, QA-008]
+  - threat_id: THR-018
+    title: Environment boundary collapse
+    assets: [production_data, credentials, deployment_configuration]
+    threat_actor: configuration_or_operator_error
+    attack_or_failure_path: Development, staging and production share credentials, stores or uncontrolled network access.
+    consequences: [production_compromise, accidental_client_data_use, weak_change_control]
+    preventive_controls: [CTRL-ENVIRONMENT-SEPARATION, CTRL-CREDENTIAL-SCOPING]
+    detective_controls: [CTRL-OBSERVABILITY-ALERTS, CTRL-AUDIT-EVENT]
+    response_playbook_id: IR-AVAILABILITY
+    residual_risk: critical
+    test_ids: [IT-ENV-SEPARATION-001, SEC-P7-ENV-001]
+  - threat_id: THR-019
+    title: Cost abuse through compromised integration
+    assets: [provider_accounts, budget, workflow_capacity]
+    threat_actor: stolen_credential_or_runaway_workflow
+    attack_or_failure_path: Excessive calls, retries or resource use continue without limits or alerts.
+    consequences: [financial_loss, service_degradation, account_suspension]
+    preventive_controls: [CTRL-COST-BUDGET, CTRL-RETRY-LIMIT]
+    detective_controls: [CTRL-OBSERVABILITY-ALERTS, CTRL-PROVIDER-CALL-LOG]
+    response_playbook_id: IR-COST-ABUSE
+    residual_risk: medium
+    test_ids: [UT-BUDGET-001, IT-OBSERVABILITY-001]
+  - threat_id: THR-020
+    title: Production enabled without complete evidence
+    assets: [all_client_data, platform_integrity, Founder_accountability]
+    threat_actor: premature_release_or_incomplete_gate
+    attack_or_failure_path: Real client data is enabled despite missing, failed, stale or wrong-region control evidence.
+    consequences: [uncontrolled_client_risk, false_assurance, irreversible_exposure]
+    preventive_controls: [CTRL-PRODUCTION-SECURITY-GATE, CTRL-FOUNDER-PRODUCTION-APPROVAL]
+    detective_controls: [CTRL-AUDIT-EVENT, CTRL-INDEPENDENT-REVIEW]
+    response_playbook_id: IR-MATERIAL-INCIDENT
+    residual_risk: critical
+    test_ids: [SEC-P7-GATE-001, FA-PRODUCTION-GATE-001]

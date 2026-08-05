@@ -1,0 +1,28 @@
+{
+  "baseline_digest": "67d6458edb1dce689ace6ef29f218ace15e3aa56d7769d66f8c6850f432c446a",
+  "control_count": 48,
+  "data_class_count": 4,
+  "first_managed_region": "singapore",
+  "incident_playbook_count": 12,
+  "mandatory_real_client_control_count": 18,
+  "processor_fixture_count": 3,
+  "processor_record_count": 0,
+  "real_client_data_enabled": false,
+  "regional_cell_count": 3,
+  "retention_policy_count": 4,
+  "source_files": [
+    "configs/security-regionalisation.yaml",
+    "security/data-classification.yaml",
+    "security/regional-cells.yaml",
+    "security/retention-policies.yaml",
+    "security/provider-processor-register.yaml",
+    "security/provider-processor-fixtures.yaml",
+    "security/threat-model.yaml",
+    "security/security-control-catalogue.yaml",
+    "security/security-test-catalogue.yaml",
+    "security/incident-playbooks.yaml"
+  ],
+  "test_case_count": 36,
+  "threat_count": 20,
+  "version": "1.0.0"
+}

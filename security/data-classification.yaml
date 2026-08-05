@@ -1,0 +1,61 @@
+version: 1.0.0
+status: governed_chat_first
+classes:
+  - classification: public
+    rank: 0
+    tenant_scope_required: false
+    engagement_scope_required: false
+    mfa_required: false
+    encryption_in_transit_required: true
+    encryption_at_rest_required: false
+    raw_payload_logging_allowed: true
+    provider_training_allowed: false
+    external_processor_allowed: true
+    cross_region_transfer_allowed_by_default: true
+    client_content_allowed: false
+    default_log_mode: full
+  - classification: internal
+    rank: 1
+    tenant_scope_required: false
+    engagement_scope_required: false
+    mfa_required: true
+    encryption_in_transit_required: true
+    encryption_at_rest_required: true
+    raw_payload_logging_allowed: false
+    provider_training_allowed: false
+    external_processor_allowed: true
+    cross_region_transfer_allowed_by_default: false
+    client_content_allowed: false
+    default_log_mode: redacted
+  - classification: client_confidential
+    rank: 2
+    tenant_scope_required: true
+    engagement_scope_required: true
+    mfa_required: true
+    encryption_in_transit_required: true
+    encryption_at_rest_required: true
+    raw_payload_logging_allowed: false
+    provider_training_allowed: false
+    external_processor_allowed: true
+    cross_region_transfer_allowed_by_default: false
+    client_content_allowed: true
+    default_log_mode: metadata_only
+  - classification: highly_restricted
+    rank: 3
+    tenant_scope_required: true
+    engagement_scope_required: true
+    mfa_required: true
+    encryption_in_transit_required: true
+    encryption_at_rest_required: true
+    raw_payload_logging_allowed: false
+    provider_training_allowed: false
+    external_processor_allowed: false
+    cross_region_transfer_allowed_by_default: false
+    client_content_allowed: true
+    default_log_mode: none
+classification_rules:
+  highest_classification_governs_combined_record: true
+  downgrade_requires_authorised_sanitisation: true
+  unknown_classification: quarantine
+  client_content_minimum_classification: client_confidential
+  credentials_always: highly_restricted
