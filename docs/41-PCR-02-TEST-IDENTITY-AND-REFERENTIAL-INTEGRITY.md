@@ -2,7 +2,7 @@
 
 ## Status
 
-**Implementation complete; final exact-head CI evidence is recorded in `reports/pcr02-validation-evidence.md`.**
+**PCR-02 complete and independently CI-validated.**
 
 Date: 2026-08-05
 
@@ -41,6 +41,8 @@ PCR-02 replaces six invalid references:
 
 These replacements use existing governed semantic tests. PCR-02 does not invent operating evidence or mark deferred production tests complete.
 
+The new gate also detected that mandatory control `CTRL-KILL-SWITCH-TEST` had no governed semantic-test binding. It is now linked to planned operating test `IT-ROLLBACK-001`. The binding closes the governance gap while retaining the test's planned status until Codex can execute operating rollback and kill-switch evidence.
+
 ## 3. Governed identifier graph
 
 `requirements/referential-integrity-baseline.json` records a deterministic pass report and typed edges across:
@@ -78,9 +80,38 @@ The Phase 6 alias design intentionally permits the same alias text to resolve to
 
 `META-TEST-HIERARCHY-001` is converted from planned to executable evidence. The generated semantic registry contains all historical planned identities plus the Phase 7 security catalogue, with completed identities retained rather than deleted.
 
+The validated release contains:
+
+- 99 stable semantic test identities;
+- 45 implemented semantic tests;
+- 54 remaining planned semantic tests;
+- 245 executable pytest evidence nodes;
+- 20 completed planned-test identities retained in canonical history.
+
 No operating integration, artefact-rendering, production-security or Founder-acceptance test is upgraded merely because its specification is now referentially sound.
 
-## 6. Security and authority boundary
+## 6. Validation result
+
+Permanent read-only GitHub Actions run `30988776497`, job `92249669835`, validated branch head `3064996e92d96f96abb225c22a403d8c7de1483e` through pull-request merge reference `bc5ed646de65ccfa10e4159f7f9000f99bf78295`.
+
+The gate confirmed:
+
+- all Phase 1–7 validators passed;
+- PCR-01 passed;
+- PCR-02 passed;
+- clean deterministic generation passed;
+- 604 typed reference edges and zero unresolved references;
+- 247 runtime tests passed;
+- 93.14 percent coverage against a 90 percent floor;
+- Python compilation passed;
+- Ruff passed;
+- strict MyPy passed across 32 source files.
+
+The retained 73-file artefact is `8923215176`, with compressed size 181,769 bytes and SHA-256 `6729db7667238391097428ed04e386d3729a4d8b6cb1ba6000342c85d95c2024`.
+
+See `reports/pcr02-validation-evidence.md` for the full evidence record.
+
+## 7. Security and authority boundary
 
 PCR-02 does not:
 
