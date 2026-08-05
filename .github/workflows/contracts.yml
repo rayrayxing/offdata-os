@@ -10,88 +10,13 @@ permissions:
   contents: read
 
 jobs:
-  repair-pcr02:
-    name: Repair PCR-02 strict typing boundary
-    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'governance/pcr02-test-identity' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    permissions:
-      contents: write
-    steps:
-      - name: Check out PCR-02 branch
-        uses: actions/checkout@v4
-        with:
-          ref: governance/pcr02-test-identity
-          fetch-depth: 0
-      - name: Repair nullable security-test identifier assignment
-        id: repair
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          path = Path("packages/offdata-core/src/offdata_core/referential_integrity.py")
-          text = path.read_text(encoding="utf-8")
-          i8 = " " * 8
-          i12 = " " * 12
-          old = "\n".join(
-              [
-                  f'{i8}test_id = record.get("test_id")',
-                  f"{i8}if not isinstance(test_id, str):",
-                  f'{i12}raise ValueError("Security test is missing test_id.")',
-                  f'{i8}kind = str(record.get("kind", "unknown"))',
-                  f'{i8}stage = str(record.get("execution_stage", "unknown"))',
-                  f'{i8}requirements = set(_string_tuple(record.get("requirement_ids"), test_id))',
-                  f'{i8}controls = set(_string_tuple(record.get("control_ids"), test_id))',
-                  f"{i8}seed = seeds.setdefault(",
-                  f"{i12}test_id,",
-              ]
-          )
-          new = "\n".join(
-              [
-                  f'{i8}security_test_id = record.get("test_id")',
-                  f"{i8}if not isinstance(security_test_id, str):",
-                  f'{i12}raise ValueError("Security test is missing test_id.")',
-                  f'{i8}kind = str(record.get("kind", "unknown"))',
-                  f'{i8}stage = str(record.get("execution_stage", "unknown"))',
-                  f'{i8}requirements = set(_string_tuple(record.get("requirement_ids"), security_test_id))',
-                  f'{i8}controls = set(_string_tuple(record.get("control_ids"), security_test_id))',
-                  f"{i8}seed = seeds.setdefault(",
-                  f"{i12}security_test_id,",
-              ]
-          )
-          if old in text:
-              path.write_text(text.replace(old, new, 1), encoding="utf-8")
-              Path("/tmp/pcr02-repaired").write_text("true", encoding="utf-8")
-          elif new not in text:
-              raise SystemExit("Expected PCR-02 assignment boundary not found")
-          PY
-          if [ -f /tmp/pcr02-repaired ]; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Commit repair
-        if: steps.repair.outputs.changed == 'true'
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add packages/offdata-core/src/offdata_core/referential_integrity.py
-          git commit -m "Fix PCR-02 strict typing boundary"
-          git push origin HEAD:governance/pcr02-test-identity
-
   validate-contracts:
     name: Validate complete chat-first Phase 1–7 and PCR-01–02 release
-    needs: repair-pcr02
-    if: ${{ always() && (needs.repair-pcr02.result == 'success' || needs.repair-pcr02.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
