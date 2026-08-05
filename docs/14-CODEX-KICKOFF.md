@@ -1,158 +1,105 @@
-# 14 — Codex Kickoff Prompts
+# 14 — Codex Kickoff
+
+## Controlling handoff
+
+Codex must use `handoff/codex-phase0-handoff.json` as the machine-readable execution contract for the first implementation phase. The file is generated from `configs/codex-handoff.yaml`, validated against `schemas/codex-handoff.schema.json`, and semantically checked by `scripts/validate_pcr04_codex_handoff.py`.
+
+The handoff does not itself authorise execution. Phase 0 begins only after:
+
+1. PCR-03 and PCR-04 are merged to `main`;
+2. the GitHub-hosted controls tracked in issue #19 are verified;
+3. the Founder explicitly approves Phase 0; and
+4. a clean macOS development environment is available.
 
 ## Phase 0 kickoff prompt
 
 Paste the following into Codex after opening `rayrayxing/offdata-os`:
 
 ```text
-You are the principal engineering agent for offdata, an autonomous,
-Founder-governed consulting operating system.
+You are the principal engineering agent for offdata, a Founder-governed,
+AI-native consulting operating system.
 
 Open and inspect the private repository rayrayxing/offdata-os.
 
-Treat AGENTS.md as the controlling instruction. Read docs/00-START-HERE.md
-and every Build Pack document it references before proposing changes.
+Treat AGENTS.md as the controlling instruction. Then load and validate
+handoff/codex-phase0-handoff.json before proposing or changing code.
 
-Do not use rayrayxing/offdata or rayrayxing/offdata-clean as controlling
-specifications. They are historical references only.
+Run:
+python scripts/validate_pcr04_codex_handoff.py
 
-Your authorised assignment is PHASE 0 ONLY from docs/11-BUILD-BACKLOG.md.
-Do not begin Phase 1.
+Do not continue if the handoff is stale, invalid, missing a prerequisite,
+or if any activation condition has not been confirmed by the Founder.
 
-Founder context:
-- The Founder is non-technical.
-- The Founder uses macOS.
-- The Founder owns offdata.com through GoDaddy.
-- The Founder is based in Singapore.
-- Initial user count is one.
-- Initial budget is local-first and free-tier-first.
-- Use synthetic data only.
+Your authorised assignment is Phase 0 only. Use the task graph P0.1-P0.4
+and dependency order in the handoff. Do not begin Phase 1.
 
-Required execution method:
-1. Inspect the current repository and macOS environment.
-2. Produce a concise Phase 0 implementation plan and identify any decisions.
-3. Create a new branch named codex/phase-0-foundation.
-4. Validate all pre-existing chat-built inputs before adding application code:
-   - packages/offdata-core/;
-   - config/lifecycle.yaml;
-   - config/policy-matrix.yaml;
-   - config/agent-roster.yaml;
-   - schemas/*.json;
-   - fixtures/manifest.yaml;
-   - third_party/registry.yaml;
-   - docs/19-PHASE-0-VALIDATION-ADDENDUM.md.
-5. Install packages/offdata-core in an isolated Python environment. Run its
-   tests, linting and strict type checks. The chat development environment
-   exercised 26 tests successfully; independently verify this on macOS.
-6. Validate every JSON schema and YAML file and add those checks to CI.
-7. Do not create a second lifecycle or policy implementation. Integrate the
-   existing deterministic package and document any material conflict.
-8. Implement the remaining Phase 0 backlog only.
-9. Build a local monorepo foundation suitable for:
-   - Next.js and TypeScript frontend;
-   - Python FastAPI backend;
-   - PostgreSQL;
-   - S3-compatible local object storage;
-   - future Pydantic AI agents;
-   - future Restate durable workflows;
-   - document and infographic rendering;
-   - automated tests and infrastructure definitions.
-10. Provide one documented command to start the local environment and one to
-    run all required tests.
-11. Configure formatting, linting, type checks, unit tests, secret scanning,
-    dependency scanning and GitHub Actions CI.
-12. Add placeholders only for credentials and external services.
-13. Run every required check. Do not weaken tests to make them pass.
-14. Add at least one CI case proving an invalid lifecycle transition is
-    blocked and one proving an unauthorised external action cannot auto-execute.
-15. Perform a separate review pass, repair defects and rerun tests.
-16. Open a DRAFT pull request. Do not merge it.
-17. Stop at the Phase 0 gate.
+Create the branch codex/phase-0-foundation. Validate all pre-existing
+chat-first assets before adding application code. Integrate the existing
+deterministic lifecycle, policy, contracts, fixtures, knowledge, security,
+release, test-identity and repository-governance records. Do not create
+parallel replacements for them.
 
-Prohibited actions:
-- Do not purchase or activate services or trials.
-- Do not ask for secrets in chat or source files.
-- Do not alter DNS or GoDaddy.
-- Do not deploy production infrastructure.
-- Do not use real client data.
-- Do not send external communications.
-- Do not enable unrestricted computer access without a specific, approved need.
-- Do not move beyond Phase 0.
+Follow every required command, prohibited action, stop condition, approval
+boundary and completion-report field in the handoff.
 
-Your final Founder report must include:
-- what was built;
-- how to run it;
-- tests performed and full results;
-- any changes made to chat-built contracts and why;
-- screenshots where useful;
-- unresolved defects and risks;
-- costs incurred and forecast costs;
-- any credentials, subscriptions or approvals required later;
-- rollback instructions;
-- the exact recommended next phase.
+Use synthetic data only. Do not purchase services, request secrets, approve
+OAuth, alter DNS, deploy production infrastructure, send external messages,
+enable real client data, expose restricted oracle material, weaken tests or
+progress beyond Phase 0.
 
-Communicate in plain English and do not require the Founder to understand code.
+Perform a separate review pass, repair defects without weakening controls,
+open a DRAFT pull request, and stop at the Phase 0 gate. Do not merge.
 ```
 
 ## Phase completion repair prompt
 
-Use this when a phase report contains defects:
-
 ```text
-Review the current draft pull request against AGENTS.md, the approved phase
-requirements and docs/10-TESTING-STRATEGY.md.
+Review the current draft pull request against AGENTS.md,
+handoff/codex-phase0-handoff.json, the approved phase requirements and
+docs/10-TESTING-STRATEGY.md.
 
 Create a defect register with severity, cause, affected requirement and repair
 plan. Repair all critical, high and required medium defects without weakening
 tests or changing golden expectations merely to obtain a pass.
 
-Rerun the full required phase test suite, update documentation and provide a
-revised plain-English Founder report. Keep the pull request in draft and do
-not progress to the next phase.
+Rerun the complete required command set in the handoff, update documentation
+and provide a revised plain-English Founder report. Keep the pull request in
+draft and do not progress to the next phase.
 ```
 
 ## Independent review prompt
-
-Run in a separate Codex thread or isolated worktree where practical:
 
 ```text
 Act as an independent engineering, security and quality reviewer for the
 current offdata phase. Do not assume the implementation is correct because
 another agent produced it.
 
-Read AGENTS.md, the approved phase requirements, architecture and testing
-strategy. Inspect the changed files and test evidence. Attempt to falsify the
-claim that the phase is complete.
+Read AGENTS.md and handoff/codex-phase0-handoff.json. Inspect the changed files,
+test evidence, costs, permissions and rollback instructions. Attempt to falsify
+the claim that the approved phase is complete.
 
-Review for:
-- requirements omissions;
-- unsafe permissions or secret handling;
-- brittle architecture or hidden coupling;
-- insufficient tests;
-- tests that can pass while the feature is broken;
-- data isolation failures;
-- recovery and rollback weaknesses;
-- unnecessary paid dependencies;
-- usability problems for a non-technical Founder.
+Review for requirements omissions, unsafe permissions, secret handling,
+duplicate canonical implementations, hidden coupling, insufficient or hollow
+tests, data-isolation failures, recovery weaknesses, unnecessary paid
+dependencies and usability problems for a non-technical Founder.
 
 Return a defect register with severity and evidence. Do not merge or approve
 material work with unresolved blocking defects.
 ```
 
-## Phase progression prompt template
+## Later phase progression template
 
 ```text
-The Founder has approved progression to Phase [NUMBER AND NAME].
+The Founder has explicitly approved progression to Phase [NUMBER AND NAME].
 
-Read AGENTS.md and the complete Build Pack. Work only on the approved phase
-items in docs/11-BUILD-BACKLOG.md. First inspect the prior phase outputs and
-confirm its gate remains satisfied.
+Read AGENTS.md and the current machine-readable phase handoff. Work only on the
+approved phase. First verify every prior phase gate remains satisfied.
 
-Create a new codex/phase-[number]-[slug] branch, implement the phase, run all
+Create the canonical phase branch, implement in dependency order, run all
 required tests, perform an isolated review, repair defects, open a draft pull
 request and stop at the phase gate.
 
 Do not purchase services, enter credentials, approve OAuth, deploy real client
-data or perform external actions. Stop and present a decision-ready Founder
-packet whenever one of those actions is required.
+data or perform external actions. Present a decision-ready Founder packet when
+one of those actions is required.
 ```
