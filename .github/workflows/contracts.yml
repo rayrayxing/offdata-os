@@ -10,11 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  retain-pcr02:
-    name: Retain PCR-02 governed source bundle
+  repair-pcr02:
+    name: Repair PCR-02 strict typing boundary
     if: ${{ github.event_name == 'pull_request' && github.head_ref == 'governance/pcr02-test-identity' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     permissions:
       contents: write
     steps:
@@ -23,75 +23,62 @@ jobs:
         with:
           ref: governance/pcr02-test-identity
           fetch-depth: 0
-      - name: Detect staged bundle
-        id: staged
+      - name: Repair nullable security-test identifier assignment
+        id: repair
         shell: bash
         run: |
-          if [ -d .pcr02-staging ]; then
-            echo "needed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "needed=false" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Set up Python 3.11
-        if: steps.staged.outputs.needed == 'true'
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Verify and expand governed source bundle
-        if: steps.staged.outputs.needed == 'true'
-        shell: bash
-        run: |
-          cat .pcr02-staging/chunk-*.b64 > /tmp/pcr02.b64
-          base64 --decode /tmp/pcr02.b64 > /tmp/pcr02.tar.gz
-          echo "71440e8a3f2ce7c0dc8be4a181b52e22f2ad887ff62da7876a7339a9b3339df5  /tmp/pcr02.tar.gz" | sha256sum --check --strict
-          tar -xzf /tmp/pcr02.tar.gz -C .
-          python apply_pcr02_repairs.py
-          rm apply_pcr02_repairs.py
           python - <<'PY'
           from pathlib import Path
 
-          path = Path("security/security-test-catalogue.yaml")
+          path = Path("packages/offdata-core/src/offdata_core/referential_integrity.py")
           text = path.read_text(encoding="utf-8")
-          old = """    control_ids: [CTRL-INCIDENT-PLAYBOOK, CTRL-DURABLE-RECOVERY]
-              expected_result: A failed production change returns to the prior safe state."""
-          new = """    control_ids: [CTRL-INCIDENT-PLAYBOOK, CTRL-DURABLE-RECOVERY, CTRL-KILL-SWITCH-TEST]
-              expected_result: A failed production change or kill-switch test returns to the prior safe state."""
-          if old not in text:
-              raise SystemExit("Expected IT-ROLLBACK-001 control binding not found")
-          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+          old = '''    for record in security_tests:
+              test_id = record.get("test_id")
+              if not isinstance(test_id, str):
+                  raise ValueError("Security test is missing test_id.")
+              kind = str(record.get("kind", "unknown"))
+              stage = str(record.get("execution_stage", "unknown"))
+              requirements = set(_string_tuple(record.get("requirement_ids"), test_id))
+              controls = set(_string_tuple(record.get("control_ids"), test_id))
+              seed = seeds.setdefault(
+                  test_id,
+          '''
+          new = '''    for record in security_tests:
+              security_test_id = record.get("test_id")
+              if not isinstance(security_test_id, str):
+                  raise ValueError("Security test is missing test_id.")
+              kind = str(record.get("kind", "unknown"))
+              stage = str(record.get("execution_stage", "unknown"))
+              requirements = set(_string_tuple(record.get("requirement_ids"), security_test_id))
+              controls = set(_string_tuple(record.get("control_ids"), security_test_id))
+              seed = seeds.setdefault(
+                  security_test_id,
+          '''
+          if old in text:
+              path.write_text(text.replace(old, new, 1), encoding="utf-8")
+              Path("/tmp/pcr02-repaired").write_text("true", encoding="utf-8")
+          elif new not in text:
+              raise SystemExit("Expected PCR-02 assignment boundary not found")
           PY
-      - name: Install validation dependencies
-        if: steps.staged.outputs.needed == 'true'
-        run: python -m pip install --upgrade pip && python -m pip install -e "packages/offdata-core[dev]"
-      - name: Generate affected governed records
-        if: steps.staged.outputs.needed == 'true'
-        run: |
-          python scripts/build_test_registry.py
-          python scripts/build_pcr02_test_identity.py
-          python scripts/export_machine_contracts.py
-          python scripts/build_phase3_oracle.py
-          python scripts/build_phase4_deliverable_semantic_model.py
-          python scripts/build_phase5_fixture_programme.py
-          python scripts/build_phase6_knowledge_intelligence.py
-          python scripts/build_phase7_security_regionalisation.py
-          python scripts/build_pcr02_test_identity.py
-          python scripts/build_pcr01_canonical_release.py
-      - name: Commit governed release and remove staging path
-        if: steps.staged.outputs.needed == 'true'
+          if [ -f /tmp/pcr02-repaired ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Commit repair
+        if: steps.repair.outputs.changed == 'true'
         shell: bash
         run: |
-          rm -rf .pcr02-staging
-          rm -f .github/workflows/pcr02-retain.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Complete PCR-02 test identity and referential integrity [pcr02-retained]"
+          git add packages/offdata-core/src/offdata_core/referential_integrity.py
+          git commit -m "Fix PCR-02 strict typing boundary"
           git push origin HEAD:governance/pcr02-test-identity
 
   validate-contracts:
     name: Validate complete chat-first Phase 1–7 and PCR-01–02 release
-    needs: retain-pcr02
-    if: ${{ always() && (needs.retain-pcr02.result == 'success' || needs.retain-pcr02.result == 'skipped') }}
+    needs: repair-pcr02
+    if: ${{ always() && (needs.repair-pcr02.result == 'success' || needs.repair-pcr02.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
