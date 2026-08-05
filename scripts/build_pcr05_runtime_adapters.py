@@ -15,6 +15,15 @@ SECURITY_BASELINE_PATH = ROOT / "security" / "security-regionalisation-baseline.
 CLASSIFICATION_PATH = ROOT / "security" / "data-classification.yaml"
 PROCESSOR_REGISTER_PATH = ROOT / "security" / "provider-processor-register.yaml"
 CODEX_HANDOFF_PATH = ROOT / "handoff" / "codex-phase0-handoff.json"
+EXPECTED_REQUIRED_IDEMPOTENCY_COMMANDS = {
+    "cancel_engagement",
+    "execute_external_action",
+    "propose_external_action",
+    "record_agent_output",
+    "record_approval",
+    "release_artefact",
+    "request_approval",
+}
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -61,10 +70,12 @@ def build_runtime_contracts() -> dict[str, Any]:
     }
     missing_agent_tools = sorted(set(agent_tool_classes) - declared_tool_classes)
 
-    commands = catalogue.get("commands", [])
-    idempotency_required = sum(
-        1
-        for command in commands
+    commands = catalogue.get("commands")
+    if not isinstance(commands, dict):
+        raise ValueError("command-event catalogue commands must be a mapping")
+    required_idempotency_commands = sorted(
+        command_id
+        for command_id, command in commands.items()
         if isinstance(command, dict) and command.get("idempotency") == "required"
     )
     class_names = [
@@ -83,6 +94,10 @@ def build_runtime_contracts() -> dict[str, Any]:
         "processor_default_deny": processors.get("rules", {}).get("unregistered_processor_default") == "deny",
         "codex_start_unauthorized": handoff.get("readiness_snapshot", {}).get("codex_start_authorized") is False,
         "runtime_activation_unauthorized": source.get("boundaries", {}).get("runtime_activation_authorized") is False,
+        "command_idempotency_policy_healthy": (
+            set(required_idempotency_commands)
+            == EXPECTED_REQUIRED_IDEMPOTENCY_COMMANDS
+        ),
     }
 
     readiness = {
@@ -95,7 +110,8 @@ def build_runtime_contracts() -> dict[str, Any]:
         },
         "commands": {
             "count": len(commands),
-            "idempotency_required_count": idempotency_required,
+            "idempotency_required_count": len(required_idempotency_commands),
+            "idempotency_required_commands": required_idempotency_commands,
         },
         "security": {
             "data_classes": class_names,
