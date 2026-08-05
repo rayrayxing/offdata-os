@@ -48,10 +48,11 @@ PCR-05 validates:
 - command-only canonical writes and deny-by-default external actions;
 - typed request and response samples for every adapter kind;
 - budget ceilings, usage reporting, classifications, processors and audit events;
+- the command catalogue exposes the exact seven commands requiring idempotency;
 - Codex and runtime activation remain false;
-- fourteen conformance cases and seventeen controlled mutation cases.
+- fourteen conformance cases and eighteen controlled mutation cases.
 
-The mutation suite proves rejection of direct writes, runtime memory as truth, deferred-profile activation, credential leakage, missing adapter kinds, enabled side effects, missing approval, undeclared agent tools, runtime activation, real client data, raised budgets, disabled idempotency, incomplete audit events, incomplete activation conditions, transient PR metadata, inconsistent readiness checks and side-effect requests without approval or idempotency.
+The mutation suite proves rejection of direct writes, runtime memory as truth, deferred-profile activation, credential leakage, missing adapter kinds, enabled side effects, missing approval, undeclared agent tools, runtime activation, real client data, raised budgets, disabled idempotency, incomplete audit events, incomplete activation conditions, transient PR metadata, inconsistent readiness checks, false command-idempotency counts and side-effect requests without approval or idempotency.
 
 ## Activation boundary
 
