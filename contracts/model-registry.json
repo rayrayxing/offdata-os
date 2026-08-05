@@ -1,1 +1,238 @@
-{"models":{"ActorRef":{"python":"offdata_core.events:ActorRef","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ActorRef"},"AgentEnvelope":{"python":"offdata_core.contracts:AgentEnvelope","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope"},"ApiError":{"python":"offdata_core.api_contracts:ApiError","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ApiError"},"ApprovalRecord":{"python":"offdata_core.events:ApprovalRecord","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ApprovalRecord"},"ApprovalRequest":{"python":"offdata_core.events:ApprovalRequest","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ApprovalRequest"},"ApprovalRequirement":{"python":"offdata_core.api_contracts:ApprovalRequirement","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ApprovalRequirement"},"Assertion":{"python":"offdata_core.delivery:Assertion","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/Assertion"},"CommandEnvelope":{"python":"offdata_core.events:CommandEnvelope","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/CommandEnvelope"},"CommandResponse":{"python":"offdata_core.api_contracts:CommandResponse","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/CommandResponse"},"Contact":{"python":"offdata_core.crm:Contact","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/Contact"},"ContextBudget":{"python":"offdata_core.contracts:ContextBudget","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ContextBudget"},"ContextPackage":{"python":"offdata_core.contracts:ContextPackage","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage"},"CrossFormatReconciliation":{"python":"offdata_core.delivery:CrossFormatReconciliation","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/CrossFormatReconciliation"},"DecisionInboxItem":{"python":"offdata_core.api_contracts:DecisionInboxItem","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/DecisionInboxItem"},"DecisionInboxOption":{"python":"offdata_core.api_contracts:DecisionInboxOption","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/DecisionInboxOption"},"Defect":{"python":"offdata_core.quality:Defect","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/Defect"},"DeliverableManifest":{"python":"offdata_core.delivery:DeliverableManifest","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/DeliverableManifest"},"DimensionScore":{"python":"offdata_core.quality:DimensionScore","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/DimensionScore"},"DomainEvent":{"python":"offdata_core.events:DomainEvent","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/DomainEvent"},"EngagementCreateRequest":{"python":"offdata_core.api_contracts:EngagementCreateRequest","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/EngagementCreateRequest"},"EngagementListResponse":{"python":"offdata_core.api_contracts:EngagementListResponse","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/EngagementListResponse"},"EngagementView":{"python":"offdata_core.api_contracts:EngagementView","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/EngagementView"},"Escalation":{"python":"offdata_core.contracts:Escalation","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/Escalation"},"ExceptionRecord":{"python":"offdata_core.quality:ExceptionRecord","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ExceptionRecord"},"FounderDecisionPacket":{"python":"offdata_core.contracts:FounderDecisionPacket","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/FounderDecisionPacket"},"FounderEngagementSummary":{"python":"offdata_core.api_contracts:FounderEngagementSummary","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/FounderEngagementSummary"},"FounderOption":{"python":"offdata_core.contracts:FounderOption","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/FounderOption"},"GateAssessment":{"python":"offdata_core.quality:GateAssessment","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/GateAssessment"},"HealthResponse":{"python":"offdata_core.api_contracts:HealthResponse","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/HealthResponse"},"IndependentSignoff":{"python":"offdata_core.quality:IndependentSignoff","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/IndependentSignoff"},"MethodRecord":{"python":"offdata_core.knowledge:MethodRecord","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/MethodRecord"},"MethodSelection":{"python":"offdata_core.knowledge:MethodSelection","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/MethodSelection"},"MethodologyCandidate":{"python":"offdata_core.knowledge:MethodologyCandidate","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/MethodologyCandidate"},"OpportunityDossier":{"python":"offdata_core.crm:OpportunityDossier","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/OpportunityDossier"},"Organisation":{"python":"offdata_core.crm:Organisation","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/Organisation"},"OutreachAssessment":{"python":"offdata_core.crm:OutreachAssessment","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/OutreachAssessment"},"OutreachControl":{"python":"offdata_core.crm:OutreachControl","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/OutreachControl"},"PolicyContext":{"python":"offdata_core.policy:PolicyContext","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/PolicyContext"},"PolicyResult":{"python":"offdata_core.policy:PolicyResult","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/PolicyResult"},"ProblemArchetype":{"python":"offdata_core.knowledge:ProblemArchetype","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ProblemArchetype"},"ProposedAction":{"python":"offdata_core.policy:ProposedAction","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ProposedAction"},"QualityCheck":{"python":"offdata_core.contracts:QualityCheck","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/QualityCheck"},"QualityReview":{"python":"offdata_core.quality:QualityReview","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/QualityReview"},"ReconciliationResult":{"python":"offdata_core.delivery:ReconciliationResult","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/ReconciliationResult"},"RecordChange":{"python":"offdata_core.contracts:RecordChange","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/RecordChange"},"RecordCollectionResponse":{"python":"offdata_core.api_contracts:RecordCollectionResponse","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/RecordCollectionResponse"},"SourceDocument":{"python":"offdata_core.knowledge:SourceDocument","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/SourceDocument"},"SourcePassage":{"python":"offdata_core.knowledge:SourcePassage","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/SourcePassage"},"StageDetectionResult":{"python":"offdata_core.lifecycle:StageDetectionResult","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/StageDetectionResult"},"StoryModel":{"python":"offdata_core.delivery:StoryModel","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/StoryModel"},"StorySection":{"python":"offdata_core.delivery:StorySection","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/StorySection"},"TimelineItem":{"python":"offdata_core.api_contracts:TimelineItem","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/TimelineItem"},"TransitionRequest":{"python":"offdata_core.lifecycle:TransitionRequest","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/TransitionRequest"},"TransitionResult":{"python":"offdata_core.lifecycle:TransitionResult","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/TransitionResult"},"UsageRecord":{"python":"offdata_core.contracts:UsageRecord","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/UsageRecord"},"VisualEntity":{"python":"offdata_core.delivery:VisualEntity","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/VisualEntity"},"VisualRelationship":{"python":"offdata_core.delivery:VisualRelationship","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/VisualRelationship"},"VisualSpecification":{"python":"offdata_core.delivery:VisualSpecification","schema_ref":"../schemas/offdata-contract-bundle.schema.json#/$defs/VisualSpecification"}},"schema_dialect":"https://json-schema.org/draft/2020-12/schema","version":"1.0.0"}
+{
+  "models": {
+    "ActorRef": {
+      "python": "offdata_core.events:ActorRef",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ActorRef"
+    },
+    "AgentEnvelope": {
+      "python": "offdata_core.contracts:AgentEnvelope",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/AgentEnvelope"
+    },
+    "ApiError": {
+      "python": "offdata_core.api_contracts:ApiError",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ApiError"
+    },
+    "ApprovalRecord": {
+      "python": "offdata_core.events:ApprovalRecord",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ApprovalRecord"
+    },
+    "ApprovalRequest": {
+      "python": "offdata_core.events:ApprovalRequest",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ApprovalRequest"
+    },
+    "ApprovalRequirement": {
+      "python": "offdata_core.api_contracts:ApprovalRequirement",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ApprovalRequirement"
+    },
+    "Assertion": {
+      "python": "offdata_core.delivery:Assertion",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/Assertion"
+    },
+    "CommandEnvelope": {
+      "python": "offdata_core.events:CommandEnvelope",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/CommandEnvelope"
+    },
+    "CommandResponse": {
+      "python": "offdata_core.api_contracts:CommandResponse",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/CommandResponse"
+    },
+    "Contact": {
+      "python": "offdata_core.crm:Contact",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/Contact"
+    },
+    "ContextBudget": {
+      "python": "offdata_core.contracts:ContextBudget",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ContextBudget"
+    },
+    "ContextPackage": {
+      "python": "offdata_core.contracts:ContextPackage",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ContextPackage"
+    },
+    "CrossFormatReconciliation": {
+      "python": "offdata_core.delivery:CrossFormatReconciliation",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/CrossFormatReconciliation"
+    },
+    "DecisionInboxItem": {
+      "python": "offdata_core.api_contracts:DecisionInboxItem",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/DecisionInboxItem"
+    },
+    "DecisionInboxOption": {
+      "python": "offdata_core.api_contracts:DecisionInboxOption",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/DecisionInboxOption"
+    },
+    "Defect": {
+      "python": "offdata_core.quality:Defect",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/Defect"
+    },
+    "DeliverableManifest": {
+      "python": "offdata_core.delivery:DeliverableManifest",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/DeliverableManifest"
+    },
+    "DimensionScore": {
+      "python": "offdata_core.quality:DimensionScore",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/DimensionScore"
+    },
+    "DomainEvent": {
+      "python": "offdata_core.events:DomainEvent",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/DomainEvent"
+    },
+    "EngagementCreateRequest": {
+      "python": "offdata_core.api_contracts:EngagementCreateRequest",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/EngagementCreateRequest"
+    },
+    "EngagementListResponse": {
+      "python": "offdata_core.api_contracts:EngagementListResponse",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/EngagementListResponse"
+    },
+    "EngagementView": {
+      "python": "offdata_core.api_contracts:EngagementView",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/EngagementView"
+    },
+    "Escalation": {
+      "python": "offdata_core.contracts:Escalation",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/Escalation"
+    },
+    "ExceptionRecord": {
+      "python": "offdata_core.quality:ExceptionRecord",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ExceptionRecord"
+    },
+    "FounderDecisionPacket": {
+      "python": "offdata_core.contracts:FounderDecisionPacket",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/FounderDecisionPacket"
+    },
+    "FounderEngagementSummary": {
+      "python": "offdata_core.api_contracts:FounderEngagementSummary",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/FounderEngagementSummary"
+    },
+    "FounderOption": {
+      "python": "offdata_core.contracts:FounderOption",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/FounderOption"
+    },
+    "GateAssessment": {
+      "python": "offdata_core.quality:GateAssessment",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/GateAssessment"
+    },
+    "HealthResponse": {
+      "python": "offdata_core.api_contracts:HealthResponse",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/HealthResponse"
+    },
+    "IndependentSignoff": {
+      "python": "offdata_core.quality:IndependentSignoff",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/IndependentSignoff"
+    },
+    "MethodRecord": {
+      "python": "offdata_core.knowledge:MethodRecord",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/MethodRecord"
+    },
+    "MethodSelection": {
+      "python": "offdata_core.knowledge:MethodSelection",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/MethodSelection"
+    },
+    "MethodologyCandidate": {
+      "python": "offdata_core.knowledge:MethodologyCandidate",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/MethodologyCandidate"
+    },
+    "OpportunityDossier": {
+      "python": "offdata_core.crm:OpportunityDossier",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/OpportunityDossier"
+    },
+    "Organisation": {
+      "python": "offdata_core.crm:Organisation",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/Organisation"
+    },
+    "OutreachAssessment": {
+      "python": "offdata_core.crm:OutreachAssessment",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/OutreachAssessment"
+    },
+    "OutreachControl": {
+      "python": "offdata_core.crm:OutreachControl",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/OutreachControl"
+    },
+    "PolicyContext": {
+      "python": "offdata_core.policy:PolicyContext",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/PolicyContext"
+    },
+    "PolicyResult": {
+      "python": "offdata_core.policy:PolicyResult",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/PolicyResult"
+    },
+    "ProblemArchetype": {
+      "python": "offdata_core.knowledge:ProblemArchetype",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ProblemArchetype"
+    },
+    "ProposedAction": {
+      "python": "offdata_core.policy:ProposedAction",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ProposedAction"
+    },
+    "QualityCheck": {
+      "python": "offdata_core.contracts:QualityCheck",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/QualityCheck"
+    },
+    "QualityReview": {
+      "python": "offdata_core.quality:QualityReview",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/QualityReview"
+    },
+    "ReconciliationResult": {
+      "python": "offdata_core.delivery:ReconciliationResult",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/ReconciliationResult"
+    },
+    "RecordChange": {
+      "python": "offdata_core.contracts:RecordChange",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/RecordChange"
+    },
+    "RecordCollectionResponse": {
+      "python": "offdata_core.api_contracts:RecordCollectionResponse",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/RecordCollectionResponse"
+    },
+    "SourceDocument": {
+      "python": "offdata_core.knowledge:SourceDocument",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/SourceDocument"
+    },
+    "SourcePassage": {
+      "python": "offdata_core.knowledge:SourcePassage",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/SourcePassage"
+    },
+    "StageDetectionResult": {
+      "python": "offdata_core.lifecycle:StageDetectionResult",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/StageDetectionResult"
+    },
+    "StoryModel": {
+      "python": "offdata_core.delivery:StoryModel",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/StoryModel"
+    },
+    "StorySection": {
+      "python": "offdata_core.delivery:StorySection",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/StorySection"
+    },
+    "TimelineItem": {
+      "python": "offdata_core.api_contracts:TimelineItem",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/TimelineItem"
+    },
+    "TransitionRequest": {
+      "python": "offdata_core.lifecycle:TransitionRequest",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/TransitionRequest"
+    },
+    "TransitionResult": {
+      "python": "offdata_core.lifecycle:TransitionResult",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/TransitionResult"
+    },
+    "UsageRecord": {
+      "python": "offdata_core.contracts:UsageRecord",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/UsageRecord"
+    },
+    "VisualEntity": {
+      "python": "offdata_core.delivery:VisualEntity",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/VisualEntity"
+    },
+    "VisualRelationship": {
+      "python": "offdata_core.delivery:VisualRelationship",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/VisualRelationship"
+    },
+    "VisualSpecification": {
+      "python": "offdata_core.delivery:VisualSpecification",
+      "schema_ref": "../schemas/offdata-contract-bundle.schema.json#/$defs/VisualSpecification"
+    }
+  },
+  "schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0"
+}

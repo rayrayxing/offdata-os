@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: offdata-core
+Version: 0.1.0
+Summary: Deterministic lifecycle, policy, agent, analytical-oracle and semantic-deliverable contracts for offdata.
+Requires-Python: >=3.11
+Requires-Dist: pydantic<3,>=2.8
+Requires-Dist: pyyaml>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-cov>=5.0; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+Requires-Dist: mypy>=1.11; extra == "dev"
+Requires-Dist: types-PyYAML>=6.0; extra == "dev"
+Requires-Dist: jsonschema>=4.23; extra == "dev"

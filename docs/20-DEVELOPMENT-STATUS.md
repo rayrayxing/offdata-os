@@ -179,6 +179,17 @@ See:
 - `docs/40-PCR-01-CANONICAL-RELEASE-RECONCILIATION.md`
 - `reports/pcr01-validation-evidence.md`
 
+### PCR-02 — Test identity and referential-integrity repair
+
+Status: **complete as governed implementation; exact validation evidence is recorded in `reports/pcr02-validation-evidence.md`**.
+
+PCR-02 adds a stable semantic test-definition registry, preserves completed planned-test identities, repairs dangling and wrong-kind threat references, and validates typed relationships among requirements, tests, executable nodes, controls, threats, playbooks, agents, commands, events, fixtures, source profiles and aliases. `META-TEST-HIERARCHY-001` is executable. Deferred integration and production tests remain planned.
+
+See:
+
+- `docs/41-PCR-02-TEST-IDENTITY-AND-REFERENTIAL-INTEGRITY.md`
+- `reports/pcr02-validation-evidence.md`
+
 ### Deterministic consulting kernel
 
 - Lifecycle and transition logic.

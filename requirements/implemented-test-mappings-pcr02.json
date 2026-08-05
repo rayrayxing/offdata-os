@@ -1,0 +1,68 @@
+{
+  "packages/offdata-core/tests/test_referential_integrity.py::test_command_cannot_reference_unknown_event": [
+    "DATA-004",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_completed_semantic_tests_keep_identity_and_gain_evidence": [
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_compound_fixture_cannot_reference_unknown_engagement_type": [
+    "TEST-003"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_crm_security_boundary_excludes_confidential_content": [
+    "CRM-003"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_dangling_or_wrong_kind_threat_test_reference_fails": [
+    "SEC-010",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_duplicate_control_identifier_fails": [
+    "SEC-010",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_evidence_node_must_share_a_requirement_with_semantic_test": [
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_mandatory_control_without_test_coverage_fails": [
+    "SEC-010",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_missing_agent_skill_package_fails": [
+    "AGENT-001",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_missing_executable_evidence_node_fails": [
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_planned_semantic_tests_do_not_claim_execution_evidence": [
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_planned_test_cannot_receive_executable_evidence": [
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_referential_integrity_report_covers_governed_namespaces": [
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_restricted_logging_policy_is_metadata_only_or_none": [
+    "SEC-001",
+    "SEC-009"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_semantic_registry_and_integrity_baseline_are_reproducible": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_semantic_test_registry_preserves_all_test_identities": [
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_unknown_alias_target_fails": [
+    "KNOW-002",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_unknown_control_reference_fails": [
+    "SEC-010",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_referential_integrity.py::test_unknown_playbook_reference_fails": [
+    "SEC-010",
+    "TEST-001"
+  ]
+}

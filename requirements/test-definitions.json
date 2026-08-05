@@ -1,0 +1,2787 @@
+{
+  "counts": {
+    "implemented": 45,
+    "partially_implemented": 0,
+    "planned": 54,
+    "retired": 0,
+    "total": 99
+  },
+  "registry_digest": "fc666d8cf90a1bec2490d3d346ef91b341955548b05a8c5d9a3a0cf7a5a663e3",
+  "rules": {
+    "completed_ids_require_executable_evidence": true,
+    "evidence_nodes_must_exist": true,
+    "evidence_nodes_must_share_a_requirement": true,
+    "planned_tests_do_not_claim_execution_evidence": true,
+    "retired_tests_cannot_be_referenced": true,
+    "semantic_identity_survives_status_change": true,
+    "threat_test_references_must_resolve": true
+  },
+  "status": "governed_chat_first",
+  "tests": [
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "EVID-005"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "AE-EVIDENCE-003",
+      "threat_ids": [],
+      "title": "AE-EVIDENCE-003"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "TEST-004"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "AE-FALSE-TRAPS-001",
+      "threat_ids": [],
+      "title": "AE-FALSE-TRAPS-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "origination-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "ORIG-004"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "AE-OUTREACH-001",
+      "threat_ids": [],
+      "title": "AE-OUTREACH-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "QA-001"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "AE-QA-001",
+      "threat_ids": [],
+      "title": "AE-QA-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "EVID-001"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "AE-RESEARCH-001",
+      "threat_ids": [],
+      "title": "AE-RESEARCH-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "EVID-004"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "AE-RESEARCH-002",
+      "threat_ids": [],
+      "title": "AE-RESEARCH-002"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "EVID-008"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "AE-RESEARCH-003",
+      "threat_ids": [],
+      "title": "AE-RESEARCH-003"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_agent_system.py::test_provider_route_preserves_output_contract_and_uses_risk"
+        }
+      ],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AGENT-008"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "AE-ROUTING-001",
+      "threat_ids": [],
+      "title": "AE-ROUTING-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "delivery-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_story_is_assertion_led_and_decision_first"
+        }
+      ],
+      "kind": "agent_eval",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DELIV-002"
+      ],
+      "source_kinds": [
+        "agent_eval"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "AE-STORY-001",
+      "threat_ids": [],
+      "title": "AE-STORY-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "end_to_end",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "TEST-003"
+      ],
+      "source_kinds": [
+        "end_to_end"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "E2E-COMPOUND-FIXTURES-001",
+      "threat_ids": [],
+      "title": "E2E-COMPOUND-FIXTURES-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "end_to_end",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "TEST-002"
+      ],
+      "source_kinds": [
+        "end_to_end"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "E2E-PRIMARY-FIXTURES-001",
+      "threat_ids": [],
+      "title": "E2E-PRIMARY-FIXTURES-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "end_to_end",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "OUT-001",
+        "TEST-006"
+      ],
+      "source_kinds": [
+        "end_to_end"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "E2E-WORKLOAD-001",
+      "threat_ids": [],
+      "title": "E2E-WORKLOAD-001"
+    },
+    {
+      "control_ids": [
+        "CTRL-FOUNDER-PRODUCTION-APPROVAL",
+        "CTRL-PRODUCTION-SECURITY-GATE"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "production_gate"
+      ],
+      "expected_result": "Founder approval references the exact current evidence bundle and residual risks.",
+      "implementations": [],
+      "kind": "founder_acceptance",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "AUTH-003",
+        "SEC-010"
+      ],
+      "source_kinds": [
+        "founder_acceptance"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "FA-PRODUCTION-GATE-001",
+      "threat_ids": [
+        "THR-020"
+      ],
+      "title": "Founder accepts the complete real-client production gate"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AGENT-009"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-ADAPTER-001",
+      "threat_ids": [],
+      "title": "IT-ADAPTER-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AGENT-003"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-AGENT-WRITE-001",
+      "threat_ids": [],
+      "title": "IT-AGENT-WRITE-001"
+    },
+    {
+      "control_ids": [
+        "CTRL-BACKUP-POLICY",
+        "CTRL-BACKUP-RESTORE-TEST"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "production_gate"
+      ],
+      "expected_result": "Restore meets documented objectives and reconciles versions.",
+      "implementations": [],
+      "kind": "recovery",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-006"
+      ],
+      "source_kinds": [
+        "recovery"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "IT-BACKUP-RESTORE-001",
+      "threat_ids": [
+        "THR-011"
+      ],
+      "title": "Database object and workflow restore is tested"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DATA-008"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-BASELINE-IMMUTABLE-001",
+      "threat_ids": [
+        "THR-013"
+      ],
+      "title": "IT-BASELINE-IMMUTABLE-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "COST-003"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-COST-ATTRIBUTION-001",
+      "threat_ids": [],
+      "title": "IT-COST-ATTRIBUTION-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "crm-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "CRM-001"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-CRM-001",
+      "threat_ids": [],
+      "title": "IT-CRM-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "crm-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "CRM-002"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-CRM-002",
+      "threat_ids": [],
+      "title": "IT-CRM-002"
+    },
+    {
+      "control_ids": [
+        "CTRL-CREDENTIAL-SCOPING",
+        "CTRL-ENVIRONMENT-SEPARATION"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "codex_integration"
+      ],
+      "expected_result": "Development staging and production do not share client stores or credentials.",
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-003"
+      ],
+      "source_kinds": [
+        "integration",
+        "security"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "IT-ENV-SEPARATION-001",
+      "threat_ids": [
+        "THR-018"
+      ],
+      "title": "Runtime environments are physically separated"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "fixture-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_builds_from_client_visible_inputs_and_grades_pass"
+        }
+      ],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "QA-009"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "IT-FIXTURE-001",
+      "threat_ids": [],
+      "title": "IT-FIXTURE-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_financial_mutation_is_detected_by_independent_grader"
+        }
+      ],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "MODEL-006"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "IT-INDEPENDENT-RECALC-001",
+      "threat_ids": [],
+      "title": "IT-INDEPENDENT-RECALC-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "knowledge-ingestion"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "KNOW-001"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-INGEST-001",
+      "threat_ids": [
+        "THR-006"
+      ],
+      "title": "IT-INGEST-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-integration"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "LIFE-009"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-KILL-001",
+      "threat_ids": [],
+      "title": "IT-KILL-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "COST-001"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-LOCAL-FIRST-001",
+      "threat_ids": [],
+      "title": "IT-LOCAL-FIRST-001"
+    },
+    {
+      "control_ids": [
+        "CTRL-OBSERVABILITY-ALERTS"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "production_gate"
+      ],
+      "expected_result": "Test events generate observable alerts and escalation.",
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-009"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "IT-OBSERVABILITY-001",
+      "threat_ids": [
+        "THR-010",
+        "THR-019"
+      ],
+      "title": "Security workflow error and cost alerts reach an owner"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "methodology-radar"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "KNOW-009"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-RADAR-002",
+      "threat_ids": [],
+      "title": "IT-RADAR-002"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-integration"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "LIFE-007"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-RECOVERY-001",
+      "threat_ids": [
+        "THR-012"
+      ],
+      "title": "IT-RECOVERY-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "quality-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "QA-005"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-REPAIR-001",
+      "threat_ids": [],
+      "title": "IT-REPAIR-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "TEST-005"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-REPEATABILITY-001",
+      "threat_ids": [
+        "THR-012"
+      ],
+      "title": "IT-REPEATABILITY-001"
+    },
+    {
+      "control_ids": [
+        "CTRL-DELETION-VERIFICATION",
+        "CTRL-DERIVED-DATA-DELETION",
+        "CTRL-RETENTION-DELETION"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "production_gate"
+      ],
+      "expected_result": "Source derivatives indexes caches and backup policy reconcile after deletion.",
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-009"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "IT-RETENTION-001",
+      "threat_ids": [
+        "THR-015"
+      ],
+      "title": "Export archival deletion and derivative cleanup execute end to end"
+    },
+    {
+      "control_ids": [
+        "CTRL-DURABLE-RECOVERY",
+        "CTRL-INCIDENT-PLAYBOOK",
+        "CTRL-KILL-SWITCH-TEST"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "production_gate"
+      ],
+      "expected_result": "A failed production change or kill-switch test returns to the prior safe state.",
+      "implementations": [],
+      "kind": "recovery",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-010"
+      ],
+      "source_kinds": [
+        "recovery"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "IT-ROLLBACK-001",
+      "threat_ids": [],
+      "title": "Production change rollback is executable"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AGENT-009",
+        "OUT-004"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-RUNTIME-REPLACE-001",
+      "threat_ids": [],
+      "title": "IT-RUNTIME-REPLACE-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "research-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "integration",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "EVID-007"
+      ],
+      "source_kinds": [
+        "integration"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-STALENESS-001",
+      "threat_ids": [],
+      "title": "IT-STALENESS-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "artefact",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "MODEL-007",
+        "MODEL-008"
+      ],
+      "source_kinds": [
+        "artefact"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "IT-WORKBOOK-ARCH-001",
+      "threat_ids": [],
+      "title": "IT-WORKBOOK-ARCH-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_semantic_test_registry_preserves_all_test_identities"
+        }
+      ],
+      "kind": "meta",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "TEST-001"
+      ],
+      "source_kinds": [
+        "meta"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "META-TEST-HIERARCHY-001",
+      "threat_ids": [],
+      "title": "META-TEST-HIERARCHY-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "crm-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "security",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "CRM-003"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "SEC-CRM-001",
+      "threat_ids": [
+        "THR-009"
+      ],
+      "title": "SEC-CRM-001"
+    },
+    {
+      "control_ids": [
+        "CTRL-ENCRYPTION-AT-REST",
+        "CTRL-ENCRYPTION-IN-TRANSIT"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "production_gate"
+      ],
+      "expected_result": "Approved configuration and endpoint tests demonstrate encryption.",
+      "implementations": [],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-004"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "SEC-ENCRYPTION-001",
+      "threat_ids": [],
+      "title": "Client data encryption is verified in transit and at rest"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_agent_system.py::test_injection_assessment_never_grants_authority"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AGENT-007"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-INJECTION-001",
+      "threat_ids": [
+        "THR-005"
+      ],
+      "title": "SEC-INJECTION-001"
+    },
+    {
+      "control_ids": [
+        "CTRL-AUDIT-EVENT",
+        "CTRL-FOUNDER-ACTION-APPROVAL"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Export and deletion return require_founder_approval.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_export_and_delete_require_founder_approval"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "AUTH-004",
+        "AUTH-007",
+        "DATA-009"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-ACCESS-001",
+      "threat_ids": [
+        "THR-007"
+      ],
+      "title": "Material export and deletion require Founder approval"
+    },
+    {
+      "control_ids": [
+        "CTRL-AUDIT-EVENT",
+        "CTRL-PRODUCTION-SECURITY-GATE"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Regeneration matches committed baseline exactly.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_is_reproducible_and_verified"
+        }
+      ],
+      "kind": "mutation",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "SEC-010",
+        "TEST-005"
+      ],
+      "source_kinds": [
+        "mutation"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-BASELINE-001",
+      "threat_ids": [
+        "THR-013"
+      ],
+      "title": "Security regionalisation baseline is byte reproducible"
+    },
+    {
+      "control_ids": [
+        "CTRL-PRODUCTION-SECURITY-GATE"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Modified controls classifications or regions produce a different digest.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_is_reproducible_and_verified"
+        }
+      ],
+      "kind": "mutation",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "TEST-005"
+      ],
+      "source_kinds": [
+        "mutation"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-BASELINE-002",
+      "threat_ids": [],
+      "title": "Security policy mutation invalidates committed baseline"
+    },
+    {
+      "control_ids": [
+        "CTRL-DATA-MINIMISATION"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Combined content inherits the most restrictive classification.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_most_restrictive_classification_wins"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DATA-002",
+        "SEC-002"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-CLASSIFY-001",
+      "threat_ids": [],
+      "title": "Highest classification governs combined records"
+    },
+    {
+      "control_ids": [
+        "CTRL-PRODUCTION-SECURITY-GATE"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Every required control exists exactly once in the catalogue.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_builds_expected_scope"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-010"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-CONTROL-001",
+      "threat_ids": [
+        "THR-011"
+      ],
+      "title": "Mandatory real-client controls are complete and unique"
+    },
+    {
+      "control_ids": [
+        "CTRL-CRM-DATA-MINIMISATION",
+        "CTRL-FIELD-ALLOWLIST"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Confidential evidence and model outputs are not approved CRM fields.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_crm_security_boundary_excludes_confidential_content"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "CRM-003"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-CRM-001",
+      "threat_ids": [
+        "THR-009"
+      ],
+      "title": "CRM synchronisation excludes detailed confidential engagement content"
+    },
+    {
+      "control_ids": [
+        "CTRL-ENVIRONMENT-SEPARATION"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Development actors cannot access real restricted client content.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_restricted_client_content_is_prohibited_in_development"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-003"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-DEV-DATA-001",
+      "threat_ids": [
+        "THR-018"
+      ],
+      "title": "Real restricted client records are prohibited in development"
+    },
+    {
+      "control_ids": [
+        "CTRL-DOCUMENT-QUARANTINE"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "codex_integration"
+      ],
+      "expected_result": "Macros embedded objects and unsupported types do not execute.",
+      "implementations": [],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "AGENT-007",
+        "EVID-010"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "SEC-P7-DOCUMENT-001",
+      "threat_ids": [
+        "THR-006"
+      ],
+      "title": "Unsupported or malicious files quarantine before extraction"
+    },
+    {
+      "control_ids": [
+        "CTRL-ENGAGEMENT-ISOLATION"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Actor without engagement scope cannot read the record.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_engagement_access_is_denied"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-002"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-ENGAGEMENT-001",
+      "threat_ids": [
+        "THR-002"
+      ],
+      "title": "Cross-engagement access is denied"
+    },
+    {
+      "control_ids": [
+        "CTRL-FOUNDER-PRODUCTION-APPROVAL"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Technical completion returns eligible_for_founder_approval rather than self-approval.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_complete_technical_evidence_still_requires_founder_approval"
+        }
+      ],
+      "kind": "founder_acceptance",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "AUTH-003",
+        "AUTH-007"
+      ],
+      "source_kinds": [
+        "founder_acceptance"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-FOUNDER-GATE-001",
+      "threat_ids": [],
+      "title": "Complete technical evidence still requires Founder production approval"
+    },
+    {
+      "control_ids": [
+        "CTRL-PRODUCTION-SECURITY-GATE"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Real-client enablement remains denied until every mandatory control passes.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_production_gate_blocks_missing_and_wrong_region_evidence"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-010",
+        "TEST-001"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-GATE-001",
+      "threat_ids": [
+        "THR-020"
+      ],
+      "title": "Production gate blocks missing failed expired or wrong-region evidence"
+    },
+    {
+      "control_ids": [
+        "CTRL-RETENTION-DELETION"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Hold disposition overrides elapsed retention periods.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_legal_hold_blocks_retention_progression"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-009"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-HOLD-001",
+      "threat_ids": [],
+      "title": "Legal or contractual hold blocks deletion"
+    },
+    {
+      "control_ids": [
+        "CTRL-INCIDENT-PLAYBOOK",
+        "CTRL-NO-AUTONOMOUS-INCIDENT-CLOSURE"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "High and critical incidents notify the Founder and cannot be autonomously closed.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_incident_assessment_escalates_secret_and_cross_tenant_events"
+        }
+      ],
+      "kind": "incident",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-010"
+      ],
+      "source_kinds": [
+        "incident"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-INCIDENT-001",
+      "threat_ids": [
+        "THR-017"
+      ],
+      "title": "Material incident severity and mandatory actions are deterministic"
+    },
+    {
+      "control_ids": [
+        "CTRL-LOG-REDACTION"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Client-confidential and highly-restricted rules use metadata-only or no logging.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_restricted_logging_policy_is_metadata_only_or_none"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-001",
+        "SEC-009"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-LOG-001",
+      "threat_ids": [
+        "THR-010"
+      ],
+      "title": "Restricted classes prohibit raw payload logging"
+    },
+    {
+      "control_ids": [
+        "CTRL-DATA-MINIMISATION",
+        "CTRL-METADATA-ALLOWLIST"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Global methodology metadata may move while client content cannot.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_approved_global_metadata_transfer_is_allowed"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DATA-010"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-METADATA-001",
+      "threat_ids": [],
+      "title": "Only approved global metadata may cross cells"
+    },
+    {
+      "control_ids": [
+        "CTRL-STRONG-AUTH-MFA"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Restricted access without MFA is denied.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_restricted_access_requires_mfa"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-002"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-MFA-001",
+      "threat_ids": [],
+      "title": "Restricted record access requires MFA"
+    },
+    {
+      "control_ids": [
+        "CTRL-PROCESSOR-REGISTER",
+        "CTRL-PROCESSOR-REVIEW-EXPIRY"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Processor use requires current approval classification purpose and region.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_processor_use_requires_current_scope_region_purpose_and_terms"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-005",
+        "SEC-007"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-PROCESSOR-001",
+      "threat_ids": [
+        "THR-008"
+      ],
+      "title": "Unapproved expired or wrong-region processor use is denied"
+    },
+    {
+      "control_ids": [
+        "CTRL-REGION-PINNING"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Placement outside the authorised region is denied.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_region_placement_denies_client_content_in_unapproved_cell"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-010",
+        "SEC-005"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-REGION-001",
+      "threat_ids": [
+        "THR-003"
+      ],
+      "title": "Client records remain in their authorised Singapore cell"
+    },
+    {
+      "control_ids": [
+        "CTRL-DELETION-VERIFICATION",
+        "CTRL-RETENTION-DELETION"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Deterministic states never perform autonomous deletion.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_retention_active_archive_export_and_delete_states"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-009"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-RETENTION-001",
+      "threat_ids": [
+        "THR-015"
+      ],
+      "title": "Retention evaluates retain archive export and deletion eligibility"
+    },
+    {
+      "control_ids": [
+        "CTRL-ENGAGEMENT-ISOLATION",
+        "CTRL-TENANT-ISOLATION"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Missing or inconsistent scope fails model validation.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_engagement_record_requires_tenant_and_engagement_scope"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-002"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-SCOPE-001",
+      "threat_ids": [],
+      "title": "Restricted records require valid tenant and engagement scope"
+    },
+    {
+      "control_ids": [
+        "CTRL-CREDENTIAL-REFERENCE-ONLY",
+        "CTRL-SECRET-SCANNING"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Known credential formats and high-entropy values are detected.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_secret_detection_finds_known_formats_and_nested_paths"
+        }
+      ],
+      "kind": "mutation",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-001"
+      ],
+      "source_kinds": [
+        "mutation"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-SECRET-001",
+      "threat_ids": [
+        "THR-004"
+      ],
+      "title": "Secret-like values fail governed security records"
+    },
+    {
+      "control_ids": [
+        "CTRL-PRIVILEGED-ACCESS-LOG",
+        "CTRL-SUPPORT-ACCESS-EXPIRY"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Missing or expired support access is denied.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_support_access_requires_capability_and_current_expiry"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-004",
+        "SEC-002"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-SUPPORT-001",
+      "threat_ids": [],
+      "title": "Privileged support access is capability and time bounded"
+    },
+    {
+      "control_ids": [
+        "CTRL-LEAST-PRIVILEGE",
+        "CTRL-TENANT-ISOLATION"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Actor tenant mismatch is deterministically denied.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_tenant_access_is_denied"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-002",
+        "SEC-002"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-TENANT-001",
+      "threat_ids": [
+        "THR-001",
+        "THR-002"
+      ],
+      "title": "Cross-tenant access is denied"
+    },
+    {
+      "control_ids": [
+        "CTRL-INCIDENT-PLAYBOOK"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Every threat has preventive detective response and test coverage.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_builds_expected_scope"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-010",
+        "TEST-001"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-THREAT-001",
+      "threat_ids": [],
+      "title": "Threat model covers all mandatory control families"
+    },
+    {
+      "control_ids": [
+        "CTRL-REGION-PINNING",
+        "CTRL-TRANSFER-REGISTER"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Missing basis or Founder approval blocks transfer.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_region_client_transfer_requires_basis_and_founder_approval"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "AUTH-004",
+        "DATA-010"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-TRANSFER-001",
+      "threat_ids": [
+        "THR-016"
+      ],
+      "title": "Cross-region transfer requires basis destination approval and Founder authority"
+    },
+    {
+      "control_ids": [
+        "CTRL-DOCUMENT-QUARANTINE",
+        "CTRL-PROMPT-INJECTION-TEST"
+      ],
+      "execution_stages": [
+        "chat_first"
+      ],
+      "expected_result": "Uploaded content remains data and cannot override system policy.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_agent_system.py::test_context_compiler_isolates_untrusted_instruction_like_content"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "AGENT-007",
+        "EVID-010"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-P7-UNTRUSTED-001",
+      "threat_ids": [
+        "THR-005",
+        "THR-014"
+      ],
+      "title": "Instruction-like source content cannot broaden security authority"
+    },
+    {
+      "control_ids": [
+        "CTRL-REGION-PINNING",
+        "CTRL-TRANSFER-REGISTER"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "production_gate"
+      ],
+      "expected_result": "Full records cannot cross cells without explicit approved transfer.",
+      "implementations": [],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "DATA-010",
+        "SEC-005"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "SEC-REGION-ISOLATION-001",
+      "threat_ids": [
+        "THR-001",
+        "THR-003",
+        "THR-016"
+      ],
+      "title": "Regional cell isolation prevents cross-region leakage"
+    },
+    {
+      "control_ids": [
+        "CTRL-SUPPLY-CHAIN-REVIEW"
+      ],
+      "execution_stages": [
+        "codex-or-later",
+        "production_gate"
+      ],
+      "expected_result": "Versions licences permissions and vulnerabilities are reviewed.",
+      "implementations": [],
+      "kind": "security",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-008"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "planned",
+      "test_id": "SEC-SUPPLY-CHAIN-001",
+      "threat_ids": [
+        "THR-004",
+        "THR-014"
+      ],
+      "title": "Dependencies skills hooks and containers pass review"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_agent_system.py::test_tool_permission_blocks_direct_external_effects_and_canonical_writes"
+        }
+      ],
+      "kind": "security",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AGENT-004"
+      ],
+      "source_kinds": [
+        "security"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "SEC-TOOL-001",
+      "threat_ids": [
+        "THR-007"
+      ],
+      "title": "SEC-TOOL-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_agent_system.py::test_agent_manifest_has_complete_versioned_definitions"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AGENT-001"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-AGENT-001",
+      "threat_ids": [],
+      "title": "UT-AGENT-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "knowledge-ingestion"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_alias_resolution_supports_exact_ids_original_names_preferred_names_and_history"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "KNOW-002"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-ALIAS-001",
+      "threat_ids": [],
+      "title": "UT-ALIAS-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "delivery-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_surface_plans_match_manifest_scope_and_semantic_objects"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DELIV-010"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-ARTEFACT-001",
+      "threat_ids": [],
+      "title": "UT-ARTEFACT-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "IMPL-005",
+        "IMPL-006"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-BENEFIT-GOVERNANCE-001",
+      "threat_ids": [],
+      "title": "UT-BENEFIT-GOVERNANCE-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_agent_system.py::test_budget_policy_detects_every_exceeded_dimension"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AGENT-006"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-BUDGET-001",
+      "threat_ids": [
+        "THR-019"
+      ],
+      "title": "UT-BUDGET-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_method_stack_rejections_uncertainty_and_specialist_review_are_complete"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "EVID-006"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-BURDEN-001",
+      "threat_ids": [],
+      "title": "UT-BURDEN-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_builds_from_client_visible_inputs_and_grades_pass"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "OUT-002"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-DECISION-FITNESS-001",
+      "threat_ids": [],
+      "title": "UT-DECISION-FITNESS-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "quality-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "QA-003"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-DEFECT-001",
+      "threat_ids": [],
+      "title": "UT-DEFECT-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "quality-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "QA-004"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-DEFECT-002",
+      "threat_ids": [],
+      "title": "UT-DEFECT-002"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_preserves_evidence_status_provenance_and_limits"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DATA-006"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-EPISTEMIC-001",
+      "threat_ids": [],
+      "title": "UT-EPISTEMIC-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "quality-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "QA-006"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-EXCEPTION-001",
+      "threat_ids": [],
+      "title": "UT-EXCEPTION-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "IMPL-001",
+        "IMPL-002"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-INITIATIVE-TRACE-001",
+      "threat_ids": [],
+      "title": "UT-INITIATIVE-TRACE-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "LIFE-006"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-NBA-001",
+      "threat_ids": [],
+      "title": "UT-NBA-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "origination-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "ORIG-001"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-ORIG-001",
+      "threat_ids": [],
+      "title": "UT-ORIG-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "knowledge-ingestion"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_domain_overlays_add_context_without_pre_deciding_the_answer"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "KNOW-006"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-OVERLAY-001",
+      "threat_ids": [],
+      "title": "UT-OVERLAY-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "COST-004"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-PAID-DEPENDENCY-001",
+      "threat_ids": [],
+      "title": "UT-PAID-DEPENDENCY-001"
+    },
+    {
+      "control_ids": [
+        "CTRL-CREDENTIAL-REFERENCE-ONLY",
+        "CTRL-PROCESSOR-REGISTER"
+      ],
+      "execution_stages": [
+        "chat_first",
+        "codex-or-later"
+      ],
+      "expected_result": "Invalid processor records and credential values are rejected.",
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_security_regionalisation.py::test_processor_register_rejects_credential_values"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": true,
+      "requirement_ids": [
+        "SEC-007"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json",
+        "security/security-test-catalogue.yaml"
+      ],
+      "status": "implemented",
+      "test_id": "UT-PROCESSOR-REGISTER-001",
+      "threat_ids": [
+        "THR-008"
+      ],
+      "title": "Processor register validates purpose region rights retention and exit"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "agent-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "AUTH-008",
+        "QA-008"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-QA-INDEP-001",
+      "threat_ids": [
+        "THR-017"
+      ],
+      "title": "UT-QA-INDEP-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "methodology-radar"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "KNOW-007",
+        "KNOW-009"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-RADAR-001",
+      "threat_ids": [],
+      "title": "UT-RADAR-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "delivery-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_material_numbers_reconcile_to_named_approved_oracle_outputs"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DELIV-008"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-RECON-002",
+      "threat_ids": [],
+      "title": "UT-RECON-002"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_is_byte_reproducible_and_committed_baseline_is_current"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "MODEL-002"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-REPRODUCIBILITY-001",
+      "threat_ids": [],
+      "title": "UT-REPRODUCIBILITY-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-integration"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "LIFE-008"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-RETRY-001",
+      "threat_ids": [],
+      "title": "UT-RETRY-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "knowledge-ingestion"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_knowledge_ingestion.py::test_rights_policy_allows_internal_use_and_blocks_redistribution"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "KNOW-008"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-RIGHTS-001",
+      "threat_ids": [],
+      "title": "UT-RIGHTS-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "quality-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "QA-007"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-SIGNOFF-001",
+      "threat_ids": [],
+      "title": "UT-SIGNOFF-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "codex-or-later"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "COST-002"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-SPEND-CONTROL-001",
+      "threat_ids": [],
+      "title": "UT-SPEND-CONTROL-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "methodology-radar"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "KNOW-010"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "UT-SUPERSEDE-001",
+      "threat_ids": [],
+      "title": "UT-SUPERSEDE-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "delivery-phase"
+      ],
+      "expected_result": null,
+      "implementations": [
+        {
+          "environment": "chat_first_python",
+          "evidence_status": "executable",
+          "node_id": "packages/offdata-core/tests/test_ai_audit_deliverable.py::test_visual_grammar_is_editable_and_not_raster_only"
+        }
+      ],
+      "kind": "unit",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DELIV-006"
+      ],
+      "source_kinds": [
+        "unit"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "implemented",
+      "test_id": "UT-VISUAL-002",
+      "threat_ids": [],
+      "title": "UT-VISUAL-002"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "delivery-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "artefact",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DELIV-009",
+        "EVID-009"
+      ],
+      "source_kinds": [
+        "artefact"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "VIS-CITATION-001",
+      "threat_ids": [],
+      "title": "VIS-CITATION-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "delivery-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "artefact",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DELIV-004"
+      ],
+      "source_kinds": [
+        "artefact"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "VIS-EDIT-001",
+      "threat_ids": [],
+      "title": "VIS-EDIT-001"
+    },
+    {
+      "control_ids": [],
+      "execution_stages": [
+        "delivery-phase"
+      ],
+      "expected_result": null,
+      "implementations": [],
+      "kind": "artefact",
+      "mandatory_for_real_client_data": false,
+      "requirement_ids": [
+        "DELIV-007"
+      ],
+      "source_kinds": [
+        "artefact"
+      ],
+      "sources": [
+        "requirements/planned-test-mappings.json"
+      ],
+      "status": "planned",
+      "test_id": "VIS-PPTX-001",
+      "threat_ids": [],
+      "title": "VIS-PPTX-001"
+    }
+  ],
+  "version": "1.0.0"
+}

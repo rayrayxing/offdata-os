@@ -1831,6 +1831,186 @@
     {
       "evidence_status": "executable_in_chat_and_codex",
       "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_command_cannot_reference_unknown_event",
+      "phase": "chat-first",
+      "requirements": [
+        "DATA-004",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_completed_semantic_tests_keep_identity_and_gain_evidence",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_compound_fixture_cannot_reference_unknown_engagement_type",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_crm_security_boundary_excludes_confidential_content",
+      "phase": "chat-first",
+      "requirements": [
+        "CRM-003"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_dangling_or_wrong_kind_threat_test_reference_fails",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_duplicate_control_identifier_fails",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_evidence_node_must_share_a_requirement_with_semantic_test",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_mandatory_control_without_test_coverage_fails",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_missing_agent_skill_package_fails",
+      "phase": "chat-first",
+      "requirements": [
+        "AGENT-001",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_missing_executable_evidence_node_fails",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_planned_semantic_tests_do_not_claim_execution_evidence",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_planned_test_cannot_receive_executable_evidence",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_referential_integrity_report_covers_governed_namespaces",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_restricted_logging_policy_is_metadata_only_or_none",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-001",
+        "SEC-009"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_semantic_registry_and_integrity_baseline_are_reproducible",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-005"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_semantic_test_registry_preserves_all_test_identities",
+      "phase": "chat-first",
+      "requirements": [
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_unknown_alias_target_fails",
+      "phase": "chat-first",
+      "requirements": [
+        "KNOW-002",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_unknown_control_reference_fails",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
+      "node_id": "packages/offdata-core/tests/test_referential_integrity.py::test_unknown_playbook_reference_fails",
+      "phase": "chat-first",
+      "requirements": [
+        "SEC-010",
+        "TEST-001"
+      ]
+    },
+    {
+      "evidence_status": "executable_in_chat_and_codex",
+      "kind": "unit",
       "node_id": "packages/offdata-core/tests/test_release_reconciliation.py::test_canonical_release_builds_expected_identity",
       "phase": "chat-first",
       "requirements": [
@@ -2580,15 +2760,6 @@
     },
     {
       "evidence_status": "planned_not_executed",
-      "kind": "meta",
-      "phase": "codex-or-later",
-      "requirements": [
-        "TEST-001"
-      ],
-      "test_id": "META-TEST-HIERARCHY-001"
-    },
-    {
-      "evidence_status": "planned_not_executed",
       "kind": "security",
       "phase": "crm-phase",
       "requirements": [
@@ -2794,11 +2965,13 @@
     }
   ],
   "rules": {
-    "completed_planned_tests_are_removed": true,
+    "completed_planned_tests_are_removed_from_planned_view_only": true,
     "every_collected_test_requires_mapping": true,
     "mandatory_requirements_require_executed_or_planned_test": true,
     "planned_tests_do_not_count_as_executed_evidence": true,
-    "requirement_ids_must_match_catalogue_pattern": true
+    "requirement_ids_must_match_catalogue_pattern": true,
+    "semantic_test_identity_is_preserved_in_canonical_registry": true,
+    "semantic_test_registry": "requirements/test-definitions.json"
   },
-  "version": "2.0.0"
+  "version": "2.1.0"
 }

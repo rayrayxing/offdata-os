@@ -23,7 +23,7 @@ threats:
     detective_controls: [CTRL-AUDIT-EXPORT, CTRL-OBSERVABILITY-ALERTS]
     response_playbook_id: IR-DATA-EXPOSURE
     residual_risk: high
-    test_ids: [SEC-P7-ENGAGEMENT-001, SEC-P7-CONTEXT-001]
+    test_ids: [SEC-P7-ENGAGEMENT-001, SEC-P7-TENANT-001]
   - threat_id: THR-003
     title: Region misrouting of restricted data
     assets: [client_content, personal_data, clean_team_material]
@@ -122,7 +122,7 @@ threats:
     detective_controls: [CTRL-BACKUP-RESTORE-TEST, CTRL-OBSERVABILITY-ALERTS]
     response_playbook_id: IR-AVAILABILITY
     residual_risk: high
-    test_ids: [IT-BACKUP-RESTORE-001, SEC-P7-BACKUP-001]
+    test_ids: [IT-BACKUP-RESTORE-001, SEC-P7-CONTROL-001]
   - threat_id: THR-012
     title: Recovery duplicates an external action
     assets: [emails, crm_updates, deployments, payments]
@@ -144,7 +144,7 @@ threats:
     detective_controls: [CTRL-AUDIT-EXPORT, CTRL-INDEPENDENT-REVIEW]
     response_playbook_id: IR-WORKFLOW-INTEGRITY
     residual_risk: high
-    test_ids: [SEC-P7-AUDIT-001, IT-BASELINE-IMMUTABLE-001]
+    test_ids: [SEC-P7-BASELINE-001, IT-BASELINE-IMMUTABLE-001]
   - threat_id: THR-014
     title: Supply-chain package or skill compromise
     assets: [runtime, source_code, credentials, client_data]
@@ -155,7 +155,7 @@ threats:
     detective_controls: [CTRL-SECRET-SCANNING, CTRL-OBSERVABILITY-ALERTS]
     response_playbook_id: IR-SUPPLY-CHAIN
     residual_risk: critical
-    test_ids: [SEC-SUPPLY-CHAIN-001, SEC-P7-SUPPLY-001]
+    test_ids: [SEC-SUPPLY-CHAIN-001, SEC-P7-UNTRUSTED-001]
   - threat_id: THR-015
     title: Retention expiry without verified deletion
     assets: [client_records, derived_indexes, backups]
@@ -188,7 +188,7 @@ threats:
     detective_controls: [CTRL-INDEPENDENT-REVIEW, CTRL-AUDIT-EXPORT]
     response_playbook_id: IR-MATERIAL-INCIDENT
     residual_risk: high
-    test_ids: [SEC-P7-INCIDENT-001, QA-008]
+    test_ids: [SEC-P7-INCIDENT-001, UT-QA-INDEP-001]
   - threat_id: THR-018
     title: Environment boundary collapse
     assets: [production_data, credentials, deployment_configuration]
@@ -199,7 +199,7 @@ threats:
     detective_controls: [CTRL-OBSERVABILITY-ALERTS, CTRL-AUDIT-EVENT]
     response_playbook_id: IR-AVAILABILITY
     residual_risk: critical
-    test_ids: [IT-ENV-SEPARATION-001, SEC-P7-ENV-001]
+    test_ids: [IT-ENV-SEPARATION-001, SEC-P7-DEV-DATA-001]
   - threat_id: THR-019
     title: Cost abuse through compromised integration
     assets: [provider_accounts, budget, workflow_capacity]
