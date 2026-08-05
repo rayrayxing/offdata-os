@@ -1,4 +1,4 @@
-name: Machine contracts, agents, oracle, semantic deliverables, fixtures and knowledge
+name: Machine contracts, agents, oracle, deliverables, fixtures, knowledge and security
 
 on:
   push:
@@ -11,9 +11,9 @@ permissions:
 
 jobs:
   validate-contracts:
-    name: Validate contracts, agents, oracle, semantic deliverables, fixtures and knowledge
+    name: Validate complete chat-first Phase 1–7 release
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -47,10 +47,14 @@ jobs:
         run: python scripts/validate_phase5_fixture_programme.py
       - name: Build Phase 6 knowledge-ingestion intelligence
         run: python scripts/build_phase6_knowledge_intelligence.py
-      - name: Enforce clean generated Phase 1–6 records
-        run: git diff --exit-code -- requirements/test-registry.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json
       - name: Validate Phase 6 knowledge-ingestion intelligence
         run: python scripts/validate_phase6_knowledge_intelligence.py
+      - name: Build Phase 7 security and regionalisation
+        run: python scripts/build_phase7_security_regionalisation.py
+      - name: Enforce clean generated Phase 1–7 records
+        run: git diff --exit-code -- requirements/test-registry.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json security/security-regionalisation-baseline.json
+      - name: Validate Phase 7 security and regionalisation
+        run: python scripts/validate_phase7_security_regionalisation.py
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
         run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
@@ -82,4 +86,7 @@ jobs:
             fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json
             knowledge/*.yaml
             knowledge/*.json
+            security/README.md
+            security/*.yaml
+            security/*.json
             database/migrations/*.sql

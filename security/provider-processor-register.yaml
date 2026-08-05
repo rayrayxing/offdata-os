@@ -1,0 +1,36 @@
+version: 1.0.0
+status: governed_empty_register
+real_client_data_processor_approval: none
+rules:
+  credential_values_prohibited: true
+  credential_references_only: true
+  every_processor_requires_owner: true
+  every_processor_requires_exit_plan: true
+  every_processor_requires_region_review: true
+  every_processor_requires_data_class_scope: true
+  every_processor_requires_retention_and_deletion_review: true
+  client_data_requires_approved_processing_terms: true
+  client_data_requires_provider_training_disabled: true
+  client_data_requires_founder_approval: true
+  unregistered_processor_default: deny
+required_fields:
+  - processor_id
+  - legal_name
+  - service_name
+  - purposes
+  - permitted_classifications
+  - approved_regions
+  - retention_days
+  - subprocessors
+  - credential_reference
+  - credential_owner
+  - provider_training_disabled
+  - dpa_status
+  - transfer_basis_status
+  - deletion_verification_supported
+  - cost_model
+  - exit_plan
+  - approval_status
+  - last_reviewed_at
+  - next_review_at
+processors: []

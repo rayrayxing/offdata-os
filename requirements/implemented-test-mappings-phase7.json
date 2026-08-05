@@ -1,0 +1,134 @@
+{
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_approved_global_metadata_transfer_is_allowed": [
+    "DATA-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_candidate_and_synthetic_processor_cannot_receive_real_client_data": [
+    "SEC-007"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_complete_technical_evidence_still_requires_founder_approval": [
+    "AUTH-003",
+    "AUTH-007",
+    "SEC-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_engagement_access_is_denied": [
+    "DATA-002"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_region_client_transfer_requires_basis_and_founder_approval": [
+    "DATA-010",
+    "AUTH-004"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_cross_tenant_access_is_denied": [
+    "DATA-002",
+    "SEC-002"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_engagement_record_requires_tenant_and_engagement_scope": [
+    "DATA-002"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_expired_or_failed_control_evidence_fails_gate": [
+    "SEC-010",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_export_and_delete_require_founder_approval": [
+    "AUTH-004",
+    "AUTH-007",
+    "DATA-009"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_external_target_requires_founder_approval": [
+    "AUTH-004"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_founder_approval_plus_current_controls_satisfies_gate": [
+    "AUTH-003",
+    "AUTH-007",
+    "SEC-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_global_record_rejects_client_content": [
+    "DATA-002",
+    "CRM-003"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_incident_assessment_escalates_secret_and_cross_tenant_events": [
+    "SEC-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_incident_assessment_keeps_low_event_open_for_human_control": [
+    "AUTH-003",
+    "SEC-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_legal_hold_blocks_retention_progression": [
+    "DATA-009"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_most_restrictive_classification_requires_input": [
+    "DATA-002"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_most_restrictive_classification_wins": [
+    "DATA-002",
+    "SEC-002"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_processor_register_rejects_credential_values": [
+    "SEC-001",
+    "SEC-007"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_processor_register_requires_client_data_controls": [
+    "SEC-007"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_processor_use_requires_current_scope_region_purpose_and_terms": [
+    "SEC-005",
+    "SEC-007"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_production_gate_blocks_missing_and_wrong_region_evidence": [
+    "SEC-010",
+    "TEST-001"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_read_access_allows_matching_scope_and_region": [
+    "DATA-002",
+    "SEC-002"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_region_placement_allows_internal_record_in_singapore": [
+    "SEC-005"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_region_placement_denies_client_content_in_unapproved_cell": [
+    "DATA-010",
+    "SEC-005"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_region_placement_denies_non_singapore_first_production_cell": [
+    "DATA-010",
+    "SEC-005"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_regional_cell_requires_gate_evidence_when_client_data_enabled": [
+    "SEC-005",
+    "SEC-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_restricted_access_requires_mfa": [
+    "SEC-002"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_restricted_client_content_is_prohibited_in_development": [
+    "SEC-003"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_retention_active_archive_export_and_delete_states": [
+    "DATA-009"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_retention_rejects_invalid_dates_and_windows": [
+    "DATA-009"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_same_region_transfer_is_allowed": [
+    "DATA-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_secret_detection_finds_known_formats_and_nested_paths": [
+    "SEC-001"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_builds_expected_scope": [
+    "TEST-005",
+    "SEC-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_is_reproducible_and_verified": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_support_access_requires_capability_and_current_expiry": [
+    "DATA-004",
+    "SEC-002"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_synthetic_request_never_implies_real_client_authorisation": [
+    "SEC-010"
+  ],
+  "packages/offdata-core/tests/test_security_regionalisation.py::test_unapproved_processor_for_record_is_denied": [
+    "SEC-007"
+  ]
+}

@@ -104,6 +104,39 @@ The governed release includes:
 
 The original methodology source files remain unchanged and uncommitted. Physical file import, object storage, passage extraction, indexing and searchable retrieval remain Codex integration work; `IT-INGEST-001` remains planned.
 
+See:
+
+- `docs/38-PHASE-6-KNOWLEDGE-INGESTION-INTELLIGENCE-COMPLETION.md`
+- `reports/phase6-validation-evidence.md`
+
+### Phase 7 — Security and regionalisation
+
+Status: **chat-first completion and independent CI gate passed**.
+
+The governed release includes:
+
+- four deterministic data-classification levels and minimum handling controls;
+- tenant, engagement, region, environment, MFA, capability and time-limited-support access decisions;
+- explicit Founder authority for material export, deletion, external action and production enablement;
+- three Singapore-first regional-cell definitions covering local development and planned staging and production;
+- real-client-data enablement fixed at `false`;
+- client-data cross-region transfer denied by default;
+- controlled global metadata fields with client, evidence, model and personal-data fields prohibited;
+- four configurable retention-policy defaults with legal-hold, archive, export, deletion and verification rules;
+- a governed provider and processor register schema with zero real-client processors approved;
+- three synthetic processor fixtures isolated from the real register;
+- twenty threats and abuse cases;
+- forty-eight security controls;
+- eighteen mandatory controls for any future real-client-data gate;
+- thirty-six governed security tests;
+- twelve incident playbooks;
+- a deterministic default-deny production gate requiring current environment-and-region-specific evidence and explicit Founder approval;
+- incident severity, containment and escalation logic that prohibits autonomous closure of material incidents;
+- a byte-reproducible `security-regionalisation-baseline.json`;
+- thirty-seven additional runtime tests and mapped requirement evidence;
+- `UT-PROCESSOR-REGISTER-001` converted to executable evidence;
+- a read-only clean-generation gate covering all governed Phase 1–7 baselines.
+
 Latest complete independent validation:
 
 - Phase 1 regression gate passed;
@@ -112,20 +145,24 @@ Latest complete independent validation:
 - Phase 4 semantic-model gate passed;
 - Phase 5 additional-fixture gate passed;
 - Phase 6 knowledge-ingestion-intelligence gate passed;
-- read-only clean generation across all Phase 1–6 governed records passed;
-- 178 implemented test nodes and 54 remaining planned tests;
+- Phase 7 security-and-regionalisation gate passed;
+- read-only clean generation across all Phase 1–7 governed records passed;
+- 215 implemented test nodes and 55 remaining planned tests;
+- 19 completed planned-test IDs;
 - all 123 requirements mapped;
-- 180 runtime tests passed;
-- 93.40 percent coverage against a 90 percent floor;
+- 217 runtime tests passed;
+- 93.34 percent coverage against a 90 percent floor;
 - Python compilation passed;
 - Ruff passed;
-- strict MyPy passed across 29 source files;
-- 51-file release artefact retained for 30 days.
+- strict MyPy passed across 30 source files;
+- 65-file release artefact retained for 30 days.
+
+Operating identity, MFA, environment separation, encryption, region isolation, backup restoration, supply-chain scanning, monitoring, retention execution, infrastructure rollback, provider contracts and production Founder acceptance remain Codex, provider or Founder gates. Real client data remains prohibited.
 
 See:
 
-- `docs/38-PHASE-6-KNOWLEDGE-INGESTION-INTELLIGENCE-COMPLETION.md`
-- `reports/phase6-validation-evidence.md`
+- `docs/39-PHASE-7-SECURITY-AND-REGIONALISATION-COMPLETION.md`
+- `reports/phase7-validation-evidence.md`
 
 ### Deterministic consulting kernel
 
@@ -142,6 +179,7 @@ See:
 - Immutable cross-format deliverable semantic model and independent semantic grader.
 - Deterministic primary engagement fixture programme.
 - Deterministic source profiling, alias, rights, method-index and retrieval-evaluation intelligence.
+- Deterministic classification, access, regionalisation, retention, processor, production-gate and incident intelligence.
 
 ### Synthetic engagement system
 
@@ -165,9 +203,10 @@ Only the following are useful now:
 4. Keep the original methodology files unchanged in one local source-library folder.
 5. Confirm at least 30 GB free disk space.
 6. Later confirm source usage rights before any external redistribution or canonical import gate.
+7. Do not authorise real client data until the production-security evidence packet is complete.
 
 Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack yet.
 
 ## Current Codex gate
 
-Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1–6, applying the database migration in a disposable environment, importing the original source files unchanged into controlled storage, verifying their committed profile checksums, exercising parser and retrieval gold cases, rebuilding restricted baselines without exposing them to normal agent context and reporting discrepancies without silently changing governing contracts, source rights, aliases, fixture evidence, golden expectations, answer keys, semantic conclusions or Founder authority boundaries.
+Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1–7, applying the database migration in a disposable environment, importing the original source files unchanged into controlled storage, verifying their committed profile checksums, exercising parser and retrieval gold cases, configuring environment and region isolation, testing encryption, backup restoration, observability, retention, rollback and kill switches, rebuilding restricted baselines without exposing them to normal agent context and reporting discrepancies without silently changing governing contracts, source rights, aliases, security controls, regional boundaries, processor approvals, fixture evidence, golden expectations, answer keys, semantic conclusions or Founder authority boundaries.

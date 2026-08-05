@@ -1,0 +1,59 @@
+version: 1.0.0
+status: governed_chat_first_defaults_not_legal_advice
+rules:
+  engagement_and_jurisdiction_override_supported: true
+  legal_hold_overrides_scheduled_deletion: true
+  deletion_is_never_autonomous: true
+  soft_delete_is_not_verified_deletion: true
+  export_and_deletion_are_audited: true
+  derived_indexes_must_follow_source_deletion: true
+  backups_require_documented_expiry_or_tombstone_handling: true
+policies:
+  - policy_id: RET-PUBLIC-DEFAULT
+    jurisdiction: configurable
+    classification: public
+    active_retention_days: 365
+    archive_after_days: 365
+    delete_after_days: 3650
+    log_retention_days: 180
+    legal_hold_supported: true
+    export_before_deletion: false
+    deletion_verification_required: true
+    founder_approval_required_for_deletion: true
+    configurable_by_engagement: true
+  - policy_id: RET-INTERNAL-DEFAULT
+    jurisdiction: configurable
+    classification: internal
+    active_retention_days: 365
+    archive_after_days: 365
+    delete_after_days: 2555
+    log_retention_days: 180
+    legal_hold_supported: true
+    export_before_deletion: false
+    deletion_verification_required: true
+    founder_approval_required_for_deletion: true
+    configurable_by_engagement: true
+  - policy_id: RET-CLIENT-DEFAULT
+    jurisdiction: configurable
+    classification: client_confidential
+    active_retention_days: 180
+    archive_after_days: 180
+    delete_after_days: 1095
+    log_retention_days: 365
+    legal_hold_supported: true
+    export_before_deletion: true
+    deletion_verification_required: true
+    founder_approval_required_for_deletion: true
+    configurable_by_engagement: true
+  - policy_id: RET-HIGHLY-RESTRICTED-DEFAULT
+    jurisdiction: configurable
+    classification: highly_restricted
+    active_retention_days: 90
+    archive_after_days: 90
+    delete_after_days: 365
+    log_retention_days: 365
+    legal_hold_supported: true
+    export_before_deletion: true
+    deletion_verification_required: true
+    founder_approval_required_for_deletion: true
+    configurable_by_engagement: true

@@ -1,0 +1,297 @@
+version: 1.0.0
+status: governed_chat_first
+rules:
+  planned_tests_are_not_execution_evidence: true
+  real_client_data_requires_every_mandatory_test: true
+  evidence_must_match_environment_and_region: true
+  stale_or_expired_evidence_fails: true
+  founder_acceptance_cannot_be_self_issued: true
+tests:
+  - test_id: SEC-P7-CLASSIFY-001
+    title: Highest classification governs combined records
+    execution_stage: chat_first
+    kind: unit
+    requirement_ids: [DATA-002, SEC-002]
+    control_ids: [CTRL-DATA-MINIMISATION]
+    expected_result: Combined content inherits the most restrictive classification.
+    mandatory_for_real_client_data: false
+  - test_id: SEC-P7-SCOPE-001
+    title: Restricted records require valid tenant and engagement scope
+    execution_stage: chat_first
+    kind: unit
+    requirement_ids: [DATA-002]
+    control_ids: [CTRL-TENANT-ISOLATION, CTRL-ENGAGEMENT-ISOLATION]
+    expected_result: Missing or inconsistent scope fails model validation.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-TENANT-001
+    title: Cross-tenant access is denied
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [DATA-002, SEC-002]
+    control_ids: [CTRL-TENANT-ISOLATION, CTRL-LEAST-PRIVILEGE]
+    expected_result: Actor tenant mismatch is deterministically denied.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-ENGAGEMENT-001
+    title: Cross-engagement access is denied
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [DATA-002]
+    control_ids: [CTRL-ENGAGEMENT-ISOLATION]
+    expected_result: Actor without engagement scope cannot read the record.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-MFA-001
+    title: Restricted record access requires MFA
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [SEC-002]
+    control_ids: [CTRL-STRONG-AUTH-MFA]
+    expected_result: Restricted access without MFA is denied.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-DEV-DATA-001
+    title: Real restricted client records are prohibited in development
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [SEC-003]
+    control_ids: [CTRL-ENVIRONMENT-SEPARATION]
+    expected_result: Development actors cannot access real restricted client content.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-ACCESS-001
+    title: Material export and deletion require Founder approval
+    execution_stage: chat_first
+    kind: unit
+    requirement_ids: [AUTH-004, AUTH-007, DATA-009]
+    control_ids: [CTRL-FOUNDER-ACTION-APPROVAL, CTRL-AUDIT-EVENT]
+    expected_result: Export and deletion return require_founder_approval.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-SUPPORT-001
+    title: Privileged support access is capability and time bounded
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [SEC-002, DATA-004]
+    control_ids: [CTRL-PRIVILEGED-ACCESS-LOG, CTRL-SUPPORT-ACCESS-EXPIRY]
+    expected_result: Missing or expired support access is denied.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-REGION-001
+    title: Client records remain in their authorised Singapore cell
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [DATA-010, SEC-005]
+    control_ids: [CTRL-REGION-PINNING]
+    expected_result: Placement outside the authorised region is denied.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-TRANSFER-001
+    title: Cross-region transfer requires basis destination approval and Founder authority
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [DATA-010, AUTH-004]
+    control_ids: [CTRL-TRANSFER-REGISTER, CTRL-REGION-PINNING]
+    expected_result: Missing basis or Founder approval blocks transfer.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-METADATA-001
+    title: Only approved global metadata may cross cells
+    execution_stage: chat_first
+    kind: unit
+    requirement_ids: [DATA-010]
+    control_ids: [CTRL-METADATA-ALLOWLIST, CTRL-DATA-MINIMISATION]
+    expected_result: Global methodology metadata may move while client content cannot.
+    mandatory_for_real_client_data: false
+  - test_id: SEC-P7-RETENTION-001
+    title: Retention evaluates retain archive export and deletion eligibility
+    execution_stage: chat_first
+    kind: unit
+    requirement_ids: [DATA-009]
+    control_ids: [CTRL-RETENTION-DELETION, CTRL-DELETION-VERIFICATION]
+    expected_result: Deterministic states never perform autonomous deletion.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-HOLD-001
+    title: Legal or contractual hold blocks deletion
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [DATA-009]
+    control_ids: [CTRL-RETENTION-DELETION]
+    expected_result: Hold disposition overrides elapsed retention periods.
+    mandatory_for_real_client_data: true
+  - test_id: UT-PROCESSOR-REGISTER-001
+    title: Processor register validates purpose region rights retention and exit
+    execution_stage: chat_first
+    kind: unit
+    requirement_ids: [SEC-007]
+    control_ids: [CTRL-PROCESSOR-REGISTER, CTRL-CREDENTIAL-REFERENCE-ONLY]
+    expected_result: Invalid processor records and credential values are rejected.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-PROCESSOR-001
+    title: Unapproved expired or wrong-region processor use is denied
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [SEC-007, SEC-005]
+    control_ids: [CTRL-PROCESSOR-REGISTER, CTRL-PROCESSOR-REVIEW-EXPIRY]
+    expected_result: Processor use requires current approval classification purpose and region.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-SECRET-001
+    title: Secret-like values fail governed security records
+    execution_stage: chat_first
+    kind: mutation
+    requirement_ids: [SEC-001]
+    control_ids: [CTRL-SECRET-SCANNING, CTRL-CREDENTIAL-REFERENCE-ONLY]
+    expected_result: Known credential formats and high-entropy values are detected.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-GATE-001
+    title: Production gate blocks missing failed expired or wrong-region evidence
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [SEC-010, TEST-001]
+    control_ids: [CTRL-PRODUCTION-SECURITY-GATE]
+    expected_result: Real-client enablement remains denied until every mandatory control passes.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-FOUNDER-GATE-001
+    title: Complete technical evidence still requires Founder production approval
+    execution_stage: chat_first
+    kind: founder_acceptance
+    requirement_ids: [AUTH-003, AUTH-007]
+    control_ids: [CTRL-FOUNDER-PRODUCTION-APPROVAL]
+    expected_result: Technical completion returns eligible_for_founder_approval rather than self-approval.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-INCIDENT-001
+    title: Material incident severity and mandatory actions are deterministic
+    execution_stage: chat_first
+    kind: incident
+    requirement_ids: [SEC-010]
+    control_ids: [CTRL-INCIDENT-PLAYBOOK, CTRL-NO-AUTONOMOUS-INCIDENT-CLOSURE]
+    expected_result: High and critical incidents notify the Founder and cannot be autonomously closed.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-BASELINE-001
+    title: Security regionalisation baseline is byte reproducible
+    execution_stage: chat_first
+    kind: mutation
+    requirement_ids: [TEST-005, SEC-010]
+    control_ids: [CTRL-PRODUCTION-SECURITY-GATE, CTRL-AUDIT-EVENT]
+    expected_result: Regeneration matches committed baseline exactly.
+    mandatory_for_real_client_data: false
+  - test_id: SEC-P7-BASELINE-002
+    title: Security policy mutation invalidates committed baseline
+    execution_stage: chat_first
+    kind: mutation
+    requirement_ids: [TEST-005]
+    control_ids: [CTRL-PRODUCTION-SECURITY-GATE]
+    expected_result: Modified controls classifications or regions produce a different digest.
+    mandatory_for_real_client_data: false
+  - test_id: SEC-P7-THREAT-001
+    title: Threat model covers all mandatory control families
+    execution_stage: chat_first
+    kind: unit
+    requirement_ids: [SEC-010, TEST-001]
+    control_ids: [CTRL-INCIDENT-PLAYBOOK]
+    expected_result: Every threat has preventive detective response and test coverage.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-CONTROL-001
+    title: Mandatory real-client controls are complete and unique
+    execution_stage: chat_first
+    kind: unit
+    requirement_ids: [SEC-010]
+    control_ids: [CTRL-PRODUCTION-SECURITY-GATE]
+    expected_result: Every required control exists exactly once in the catalogue.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-UNTRUSTED-001
+    title: Instruction-like source content cannot broaden security authority
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [EVID-010, AGENT-007]
+    control_ids: [CTRL-PROMPT-INJECTION-TEST, CTRL-DOCUMENT-QUARANTINE]
+    expected_result: Uploaded content remains data and cannot override system policy.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-LOG-001
+    title: Restricted classes prohibit raw payload logging
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [SEC-001, SEC-009]
+    control_ids: [CTRL-LOG-REDACTION]
+    expected_result: Client-confidential and highly-restricted rules use metadata-only or no logging.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-CRM-001
+    title: CRM synchronisation excludes detailed confidential engagement content
+    execution_stage: chat_first
+    kind: security
+    requirement_ids: [CRM-003]
+    control_ids: [CTRL-CRM-DATA-MINIMISATION, CTRL-FIELD-ALLOWLIST]
+    expected_result: Confidential evidence and model outputs are not approved CRM fields.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-P7-DOCUMENT-001
+    title: Unsupported or malicious files quarantine before extraction
+    execution_stage: codex_integration
+    kind: security
+    requirement_ids: [AGENT-007, EVID-010]
+    control_ids: [CTRL-DOCUMENT-QUARANTINE]
+    expected_result: Macros embedded objects and unsupported types do not execute.
+    mandatory_for_real_client_data: true
+  - test_id: IT-ENV-SEPARATION-001
+    title: Runtime environments are physically separated
+    execution_stage: codex_integration
+    kind: integration
+    requirement_ids: [SEC-003]
+    control_ids: [CTRL-ENVIRONMENT-SEPARATION, CTRL-CREDENTIAL-SCOPING]
+    expected_result: Development staging and production do not share client stores or credentials.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-ENCRYPTION-001
+    title: Client data encryption is verified in transit and at rest
+    execution_stage: production_gate
+    kind: security
+    requirement_ids: [SEC-004]
+    control_ids: [CTRL-ENCRYPTION-IN-TRANSIT, CTRL-ENCRYPTION-AT-REST]
+    expected_result: Approved configuration and endpoint tests demonstrate encryption.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-REGION-ISOLATION-001
+    title: Regional cell isolation prevents cross-region leakage
+    execution_stage: production_gate
+    kind: security
+    requirement_ids: [DATA-010, SEC-005]
+    control_ids: [CTRL-REGION-PINNING, CTRL-TRANSFER-REGISTER]
+    expected_result: Full records cannot cross cells without explicit approved transfer.
+    mandatory_for_real_client_data: true
+  - test_id: IT-BACKUP-RESTORE-001
+    title: Database object and workflow restore is tested
+    execution_stage: production_gate
+    kind: recovery
+    requirement_ids: [SEC-006]
+    control_ids: [CTRL-BACKUP-RESTORE-TEST, CTRL-BACKUP-POLICY]
+    expected_result: Restore meets documented objectives and reconciles versions.
+    mandatory_for_real_client_data: true
+  - test_id: SEC-SUPPLY-CHAIN-001
+    title: Dependencies skills hooks and containers pass review
+    execution_stage: production_gate
+    kind: security
+    requirement_ids: [SEC-008]
+    control_ids: [CTRL-SUPPLY-CHAIN-REVIEW]
+    expected_result: Versions licences permissions and vulnerabilities are reviewed.
+    mandatory_for_real_client_data: true
+  - test_id: IT-OBSERVABILITY-001
+    title: Security workflow error and cost alerts reach an owner
+    execution_stage: production_gate
+    kind: integration
+    requirement_ids: [SEC-009]
+    control_ids: [CTRL-OBSERVABILITY-ALERTS]
+    expected_result: Test events generate observable alerts and escalation.
+    mandatory_for_real_client_data: true
+  - test_id: IT-RETENTION-001
+    title: Export archival deletion and derivative cleanup execute end to end
+    execution_stage: production_gate
+    kind: integration
+    requirement_ids: [DATA-009]
+    control_ids: [CTRL-RETENTION-DELETION, CTRL-DERIVED-DATA-DELETION, CTRL-DELETION-VERIFICATION]
+    expected_result: Source derivatives indexes caches and backup policy reconcile after deletion.
+    mandatory_for_real_client_data: true
+  - test_id: IT-ROLLBACK-001
+    title: Production change rollback is executable
+    execution_stage: production_gate
+    kind: recovery
+    requirement_ids: [SEC-010]
+    control_ids: [CTRL-INCIDENT-PLAYBOOK, CTRL-DURABLE-RECOVERY]
+    expected_result: A failed production change returns to the prior safe state.
+    mandatory_for_real_client_data: true
+  - test_id: FA-PRODUCTION-GATE-001
+    title: Founder accepts the complete real-client production gate
+    execution_stage: production_gate
+    kind: founder_acceptance
+    requirement_ids: [AUTH-003, SEC-010]
+    control_ids: [CTRL-FOUNDER-PRODUCTION-APPROVAL, CTRL-PRODUCTION-SECURITY-GATE]
+    expected_result: Founder approval references the exact current evidence bundle and residual risks.
+    mandatory_for_real_client_data: true

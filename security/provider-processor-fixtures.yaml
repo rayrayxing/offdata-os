@@ -1,0 +1,79 @@
+version: 1.0.0
+status: synthetic_test_records_only
+processors:
+  - processor_id: PROC-SYNTH-SG-LLM-001
+    legal_name: Synthetic Singapore Model Processor
+    service_name: Synthetic Regional Model API
+    purposes:
+      - controlled_model_inference
+    permitted_classifications:
+      - public
+      - internal
+      - client_confidential
+    approved_regions:
+      - singapore
+    retention_days: 0
+    subprocessors: []
+    credential_reference: credential-ref://synthetic/model-api
+    credential_owner: Founder
+    credential_value_stored: false
+    provider_training_disabled: true
+    dpa_status: approved
+    transfer_basis_status: not_required
+    deletion_verification_supported: true
+    cost_model: synthetic_zero_cost
+    exit_plan: Revoke the synthetic adapter and rebuild derived outputs from canonical records.
+    approval_status: approved_client_confidential
+    last_reviewed_at: '2026-08-01T00:00:00Z'
+    next_review_at: '2027-08-01T00:00:00Z'
+    synthetic_fixture: true
+  - processor_id: PROC-SYNTH-INTERNAL-001
+    legal_name: Synthetic Internal Tool Processor
+    service_name: Synthetic Internal Automation
+    purposes:
+      - internal_automation
+    permitted_classifications:
+      - public
+      - internal
+    approved_regions:
+      - singapore
+    retention_days: 30
+    subprocessors: []
+    credential_reference: env://SYNTHETIC_INTERNAL_TOOL
+    credential_owner: Founder
+    credential_value_stored: false
+    provider_training_disabled: true
+    dpa_status: not_required
+    transfer_basis_status: not_required
+    deletion_verification_supported: true
+    cost_model: synthetic_zero_cost
+    exit_plan: Disable the adapter and export its non-canonical operational metadata.
+    approval_status: approved_internal
+    last_reviewed_at: '2026-08-01T00:00:00Z'
+    next_review_at: '2027-08-01T00:00:00Z'
+    synthetic_fixture: true
+  - processor_id: PROC-SYNTH-CANDIDATE-001
+    legal_name: Synthetic Candidate Processor
+    service_name: Synthetic Candidate Service
+    purposes:
+      - evaluation_only
+    permitted_classifications:
+      - public
+    approved_regions:
+      - singapore
+    retention_days: 30
+    subprocessors:
+      - Synthetic Subprocessor
+    credential_reference: vault://synthetic/candidate
+    credential_owner: Founder
+    credential_value_stored: false
+    provider_training_disabled: false
+    dpa_status: pending
+    transfer_basis_status: pending
+    deletion_verification_supported: false
+    cost_model: synthetic_trial
+    exit_plan: Remove the candidate adapter and delete all synthetic evaluation records.
+    approval_status: candidate
+    last_reviewed_at: '2026-08-01T00:00:00Z'
+    next_review_at: '2026-11-01T00:00:00Z'
+    synthetic_fixture: true

@@ -1,0 +1,107 @@
+version: 1.0.0
+status: governed_chat_first
+cells:
+  - cell_id: CELL-SG-DEV-001
+    region: singapore
+    country: SG
+    environment: development
+    status: local_only
+    components:
+      - founder_mac_local_runtime
+      - local_database
+      - local_object_storage_fixture
+    permitted_classifications:
+      - public
+      - internal
+    client_data_enabled: false
+    encryption_in_transit: true
+    encryption_at_rest: true
+    separate_encryption_keys: false
+    logs_mode: redacted
+    backup_regions: []
+    global_metadata_only: true
+    gate_evidence_digest: null
+  - cell_id: CELL-SG-STG-001
+    region: singapore
+    country: SG
+    environment: staging
+    status: planned
+    components:
+      - application_compute
+      - postgresql
+      - object_storage
+      - search_index
+      - audit_logging
+      - backup_service
+    permitted_classifications:
+      - public
+      - internal
+    client_data_enabled: false
+    encryption_in_transit: true
+    encryption_at_rest: true
+    separate_encryption_keys: true
+    logs_mode: metadata_only
+    backup_regions: []
+    global_metadata_only: true
+    gate_evidence_digest: null
+  - cell_id: CELL-SG-PROD-001
+    region: singapore
+    country: SG
+    environment: production
+    status: planned
+    components:
+      - application_compute
+      - postgresql
+      - object_storage
+      - search_index
+      - audit_logging
+      - secret_store
+      - backup_service
+      - observability
+    permitted_classifications:
+      - public
+      - internal
+    client_data_enabled: false
+    encryption_in_transit: true
+    encryption_at_rest: true
+    separate_encryption_keys: true
+    logs_mode: metadata_only
+    backup_regions: []
+    global_metadata_only: true
+    gate_evidence_digest: null
+policy:
+  first_managed_region: singapore
+  synthetic_only_until_production_gate: true
+  client_data_cross_region_default: deny
+  global_metadata_fields:
+    - stable_record_id
+    - source_region
+    - record_type
+    - lifecycle_status
+    - checksum
+    - retention_policy_id
+  prohibited_global_metadata_fields:
+    - client_name
+    - evidence_text
+    - source_passage
+    - model_input
+    - model_output
+    - recommendation_text
+    - personal_data
+  approved_region_expansion_requires:
+    - documented_need
+    - region_specific_architecture
+    - processor_review
+    - isolation_tests
+    - recovery_tests
+    - incident_owner
+    - Founder_approval
+future_cell_template:
+  separate_compute_and_storage: true
+  separate_access_policy: true
+  separate_encryption_keys: true
+  client_data_stays_in_authorised_cell: true
+  controlled_global_metadata_only: true
+  cross_border_transfer_requires_documented_basis: true
+  region_aware_model_routing: true
+  disaster_recovery_must_preserve_residency_policy: true
