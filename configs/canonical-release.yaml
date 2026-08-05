@@ -1,0 +1,97 @@
+version: 1.0.0
+status: governed_chat_first
+release_id: CHAT-FIRST-PHASE1-7-2026-08-05
+scope: canonical_phase_1_to_7_release_reconciliation
+repository: rayrayxing/offdata-os
+phases: [1, 2, 3, 4, 5, 6, 7]
+controlling_release:
+  main_merge_commit: 7dc5531e641158e5a84fbbb9fdf07cefefd4782b
+  pull_request: 15
+  pull_request_head: 8da0f1167d9b6f4da792770b0d564379aa46c3fe
+  pull_request_merge_reference: 264459045ce75d7d7c60cbc980a50193f08a6f16
+  merged_at: 2026-08-05T04:53:20Z
+final_validation:
+  workflow_name: Machine contracts, agents, oracle, deliverables, fixtures, knowledge and security
+  run_id: 30976222896
+  job_id: 92210649514
+  conclusion: success
+  runner: Ubuntu 24.04
+  python: 3.11.15
+  artifact:
+    id: 8918355687
+    name: offdata-chat-first-release-264459045ce75d7d7c60cbc980a50193f08a6f16
+    file_count: 65
+    compressed_size_bytes: 157193
+    sha256: 3b9f14c520d31ce5f73fbecc726b032a3134042769ee84176e85d642fe2ea852
+    retention_days: 30
+    created_at: 2026-08-05T04:49:56Z
+    expires_at: 2026-09-04T04:49:55Z
+superseded_validation_snapshots:
+  - run_id: 30975868412
+    job_id: 92209612760
+    branch_head: 79b61615185ac4da99c81fa2a6e95b694a9ca35a
+    pull_request_merge_reference: 644e3c4311637511ad5753f968a5c57f8c3bd520
+    artifact_id: 8918232404
+    artifact_sha256: e3a87d3a23f1adce313985a79300447de1cd548986dd81abcf4c8b240c0aa263
+    reason: implementation_gate_preceding_later_documentation_and_exact_head_runs
+  - run_id: 30976088173
+    job_id: 92210248160
+    branch_head: dddeebbb75b7b2c0a3b4489dcd9ad6782241dca4
+    pull_request_merge_reference: ce5b1f4e5f3615f58011cbd1ed31ee80f8f0776c
+    artifact_id: 8918307764
+    artifact_sha256: ef5c3c57d9d415a82cdd3f37509097f238578a765d4675f1c8845a9195968254
+    reason: documentation_inclusive_run_preceding_final_exact_head_gate
+quality_summary:
+  implemented_test_nodes: 215
+  remaining_planned_tests: 55
+  completed_planned_test_ids: 19
+  catalogue_requirements: 123
+  runtime_tests_passed: 217
+  coverage_percent: 93.34
+  coverage_floor_percent: 90.0
+  mypy_source_files: 30
+  phase_validators_passed: 7
+governed_records:
+  - path: requirements/test-registry.json
+    role: combined_requirement_test_registry
+    restricted: false
+  - path: fixtures/additional-primary-fixtures.json
+    role: additional_primary_fixture_baseline
+    restricted: false
+  - path: fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json
+    role: restricted_analytical_oracle
+    restricted: true
+  - path: fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json
+    role: restricted_deliverable_semantic_oracle
+    restricted: true
+  - path: knowledge/knowledge-ingestion-baseline.json
+    role: knowledge_ingestion_intelligence_baseline
+    restricted: false
+  - path: security/security-regionalisation-baseline.json
+    role: security_and_regionalisation_baseline
+    restricted: false
+  - path: knowledge/source-manifest.yaml
+    role: founder_supplied_source_profile_manifest
+    restricted: false
+source_profile_expectations:
+  total_sources: 23
+  core_markdown_sources: 11
+  domain_docx_sources: 12
+  original_files_committed: false
+  import_status: profiled_original_not_committed
+  aggregate_profile_sha256: e42670042ae5f46bde5048e11912e42ef57f6e2991562fb080dd7f069cf107a7
+  aggregate_profile_bytes: 2294919
+boundaries:
+  real_client_data_enabled: false
+  original_methodology_binaries_committed: false
+  restricted_evaluation_material_agent_visible: false
+  external_actions_authorised: false
+  production_security_operating_evidence_complete: false
+  founder_accountability_preserved: true
+rules:
+  final_validation_is_authoritative: true
+  superseded_snapshots_are_preserved_not_controlling: true
+  governed_record_digests_are_computed_from_repository_bytes: true
+  source_profile_checksums_are_preserved: true
+  manifest_generation_must_be_byte_reproducible: true
+  missing_or_changed_governed_record_fails: true
