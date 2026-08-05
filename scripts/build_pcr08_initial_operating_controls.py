@@ -266,9 +266,6 @@ def build_initial_operating_controls() -> dict[str, Any]:
 
     output = dict(source)
     output["generated_from"] = "configs/initial-operating-controls.yaml"
-    output["control_assignments"] = sorted(
-        assignments, key=lambda item: str(item.get("control_id"))
-    )
     output["readiness_snapshot"] = readiness
     return output
 
