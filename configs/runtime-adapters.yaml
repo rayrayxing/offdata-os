@@ -1,0 +1,651 @@
+schema_version: 1
+phase_id: PCR-05
+contract_id: OFFDATA-RUNTIME-ADAPTERS-2026-08-05
+repository: rayrayxing/offdata-os
+canonical_branch: main
+authority:
+  controlling_instruction: AGENTS.md
+  control_plane_owner: offdata
+  provider_independent: true
+  canonical_write_mode: commands_only
+  runtime_memory_is_canonical: false
+  founder_accountability_preserved: true
+protocol:
+  protocol_version: offdata.runtime-adapter.v1
+  serialization: json
+  correlation_required: true
+  idempotency_required_for_mutating_or_external_operations: true
+  contract_version_required: true
+canonical_contracts:
+  offdata_bundle: schemas/offdata-contract-bundle.schema.json
+  runtime_contracts: schemas/runtime-adapter-contracts.schema.json
+adapter_kinds:
+- adapter_kind: agent_runtime
+  purpose: Bounded typed agent execution.
+  operations:
+  - invoke
+  - cancel
+  - health
+  request_definition: AgentRuntimeRequest
+  response_definition: AgentRuntimeResponse
+  required_capabilities:
+  - typed_input
+  - typed_output
+  - budgets
+  - tool_scope
+  forbidden_capabilities:
+  - direct_write
+  - self_approval
+  - unbounded_tools
+  canonical_write_mode: commands_only
+  external_action_mode: deny_by_default
+  kill_switch_required: true
+  health_check_required: true
+- adapter_kind: workflow_runtime
+  purpose: Durable lifecycle coordination.
+  operations:
+  - start
+  - signal
+  - query
+  - cancel
+  - health
+  request_definition: WorkflowRuntimeRequest
+  response_definition: WorkflowRuntimeResponse
+  required_capabilities:
+  - durable_id
+  - checkpointing
+  - replay
+  - approval_wait
+  forbidden_capabilities:
+  - direct_domain_mutation
+  - approval_fabrication
+  - silent_retry
+  canonical_write_mode: commands_only
+  external_action_mode: deny_by_default
+  kill_switch_required: true
+  health_check_required: true
+- adapter_kind: worker_harness
+  purpose: Isolated bounded work packages.
+  operations:
+  - execute
+  - cancel
+  - health
+  request_definition: WorkerPackage
+  response_definition: WorkerResult
+  required_capabilities:
+  - isolation
+  - tool_scope
+  - tests
+  - artifacts
+  forbidden_capabilities:
+  - direct_write
+  - unbounded_access
+  - secrets
+  canonical_write_mode: commands_only
+  external_action_mode: deny_by_default
+  kill_switch_required: true
+  health_check_required: true
+- adapter_kind: tool_runtime
+  purpose: Policy-checked tool invocation.
+  operations:
+  - invoke
+  - cancel
+  - health
+  request_definition: ToolInvocation
+  response_definition: ToolResult
+  required_capabilities:
+  - class_scope
+  - params
+  - idempotency
+  - approval
+  forbidden_capabilities:
+  - undeclared_tool
+  - unapproved_side_effect
+  - secret_echo
+  canonical_write_mode: commands_only
+  external_action_mode: deny_by_default
+  kill_switch_required: true
+  health_check_required: true
+adapter_profiles:
+- adapter_id: local-agent-contract-stub
+  adapter_kind: agent_runtime
+  implementation_family: contract_stub
+  status: contract_test_only
+  activation_authorized: false
+  network_mode: deny
+  credential_mode: none
+  permitted_data_classes:
+  - public
+  - internal
+  region_mode: local_synthetic
+  paid_service_required: false
+- adapter_id: pydantic-ai-agent-runtime
+  adapter_kind: agent_runtime
+  implementation_family: pydantic_ai
+  status: planned
+  activation_authorized: false
+  network_mode: provider_allowlist
+  credential_mode: reference_only
+  permitted_data_classes:
+  - public
+  - internal
+  region_mode: policy_selected
+  paid_service_required: false
+- adapter_id: restate-workflow-runtime
+  adapter_kind: workflow_runtime
+  implementation_family: restate
+  status: planned
+  activation_authorized: false
+  network_mode: local_or_approved_endpoint
+  credential_mode: reference_only
+  permitted_data_classes:
+  - public
+  - internal
+  region_mode: local_synthetic
+  paid_service_required: false
+- adapter_id: codex-worker-harness
+  adapter_kind: worker_harness
+  implementation_family: codex
+  status: planned_phase0
+  activation_authorized: false
+  network_mode: task_scoped
+  credential_mode: existing_user_session_only
+  permitted_data_classes:
+  - public
+  - internal
+  region_mode: local_synthetic
+  paid_service_required: false
+- adapter_id: hermes-worker-harness
+  adapter_kind: worker_harness
+  implementation_family: hermes
+  status: deferred
+  activation_authorized: false
+  network_mode: deny_until_review
+  credential_mode: none
+  permitted_data_classes:
+  - public
+  - internal
+  region_mode: unapproved
+  paid_service_required: false
+- adapter_id: claude-code-worker-harness
+  adapter_kind: worker_harness
+  implementation_family: claude_code
+  status: deferred
+  activation_authorized: false
+  network_mode: deny_until_review
+  credential_mode: none
+  permitted_data_classes:
+  - public
+  - internal
+  region_mode: unapproved
+  paid_service_required: false
+- adapter_id: pi-worker-harness
+  adapter_kind: worker_harness
+  implementation_family: pi
+  status: deferred
+  activation_authorized: false
+  network_mode: deny_until_review
+  credential_mode: none
+  permitted_data_classes:
+  - public
+  - internal
+  region_mode: unapproved
+  paid_service_required: false
+- adapter_id: local-tool-runtime
+  adapter_kind: tool_runtime
+  implementation_family: local_tools
+  status: planned
+  activation_authorized: false
+  network_mode: deny_by_default
+  credential_mode: none
+  permitted_data_classes:
+  - public
+  - internal
+  region_mode: local_synthetic
+  paid_service_required: false
+tool_classes:
+- tool_class: read_canonical_records
+  category: read
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: read
+  canonical_write_permitted: false
+- tool_class: invoke_bounded_agents
+  category: orchestration
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: internal
+  canonical_write_permitted: false
+- tool_class: propose_commands
+  category: proposal
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: local
+  canonical_write_permitted: false
+- tool_class: search_knowledge
+  category: read
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: local
+  canonical_write_permitted: false
+- tool_class: approved_research
+  category: read
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: approved
+  canonical_write_permitted: false
+- tool_class: document_read
+  category: read
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: approved
+  canonical_write_permitted: false
+- tool_class: deterministic_compute
+  category: compute
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: local
+  canonical_write_permitted: false
+- tool_class: spreadsheet_render
+  category: artifact
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: workspace
+  canonical_write_permitted: false
+- tool_class: render_artefact
+  category: artifact
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: workspace
+  canonical_write_permitted: false
+- tool_class: visual_inspection
+  category: artifact
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: workspace
+  canonical_write_permitted: false
+- tool_class: independent_recalculation
+  category: compute
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: local
+  canonical_write_permitted: false
+- tool_class: rendered_inspection
+  category: artifact
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: workspace
+  canonical_write_permitted: false
+- tool_class: approved_public_research
+  category: read
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: approved
+  canonical_write_permitted: false
+- tool_class: crm_read
+  category: read
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: synthetic
+  canonical_write_permitted: false
+- tool_class: run_regression
+  category: test_execution
+  available: true
+  external_side_effect: false
+  founder_approval_required: false
+  idempotency_required: false
+  network_mode: workspace
+  canonical_write_permitted: false
+- tool_class: external_send
+  category: external_side_effect
+  available: false
+  external_side_effect: true
+  founder_approval_required: true
+  idempotency_required: true
+  network_mode: deny
+  canonical_write_permitted: false
+- tool_class: crm_write
+  category: external_side_effect
+  available: false
+  external_side_effect: true
+  founder_approval_required: true
+  idempotency_required: true
+  network_mode: deny
+  canonical_write_permitted: false
+- tool_class: calendar_write
+  category: external_side_effect
+  available: false
+  external_side_effect: true
+  founder_approval_required: true
+  idempotency_required: true
+  network_mode: deny
+  canonical_write_permitted: false
+- tool_class: file_publish
+  category: external_side_effect
+  available: false
+  external_side_effect: true
+  founder_approval_required: true
+  idempotency_required: true
+  network_mode: deny
+  canonical_write_permitted: false
+- tool_class: deployment
+  category: external_side_effect
+  available: false
+  external_side_effect: true
+  founder_approval_required: true
+  idempotency_required: true
+  network_mode: deny
+  canonical_write_permitted: false
+budget_enforcement:
+  source: configs/agents.yaml
+  adapter_may_raise_limits: false
+  actual_usage_required: true
+data_and_security:
+  pre_codex_permitted_classes:
+  - public
+  - internal
+  real_client_data_enabled: false
+  unregistered_processor_default: deny
+  provider_training_allowed: false
+  credential_values_permitted: false
+  cross_tenant_execution_permitted: false
+observability:
+  required_events:
+  - runtime.invocation.accepted
+  - runtime.invocation.started
+  - runtime.invocation.completed
+  - runtime.invocation.failed
+  - runtime.invocation.blocked
+  - runtime.invocation.cancelled
+  - runtime.invocation.timed_out
+  - runtime.budget.exceeded
+  - runtime.policy.denied
+  - runtime.kill_switch.triggered
+  raw_secret_logging_permitted: false
+sample_messages:
+- sample_id: RA-SAMPLE-AGENT-REQUEST
+  definition: AgentRuntimeRequest
+  message:
+    protocol_version: offdata.runtime-adapter.v1
+    contract_version: 1.0.0
+    invocation_id: inv-agent-001
+    correlation_id: corr-001
+    causation_id: cmd-001
+    adapter_id: local-agent-contract-stub
+    tenant_id: t-syn
+    engagement_id: f-syn
+    agent_id: problem_architect
+    agent_version: 1.0.0
+    prompt_version: 1.0.0
+    context_contract: bundle#ContextPackage
+    context_reference: ctx:f-syn/problem-001
+    output_contract: bundle#AgentEnvelope
+    route_id: standard
+    permitted_tool_classes:
+    - read_canonical_records
+    - search_knowledge
+    - propose_commands
+    prohibited_actions:
+    - external_send
+    - direct_write
+    budget:
+      timeout_seconds: 300
+      max_retries: 2
+      max_input_tokens: 24000
+      max_output_tokens: 6000
+      max_cost: 4.0
+      currency: USD
+    data_classification: internal
+    idempotency_key: agent-f-syn-problem-001
+- sample_id: RA-SAMPLE-AGENT-RESPONSE
+  definition: AgentRuntimeResponse
+  message:
+    protocol_version: offdata.runtime-adapter.v1
+    contract_version: 1.0.0
+    invocation_id: inv-agent-001
+    correlation_id: corr-001
+    adapter_id: local-agent-contract-stub
+    status: succeeded
+    output_contract: bundle#AgentEnvelope
+    output_reference: res:inv-agent-001/agent-envelope
+    proposed_command_references:
+    - command://proposal-001
+    artifact_references: []
+    audit_event_ids:
+    - evt-001
+    - evt-002
+    usage:
+      input_tokens: 1000
+      output_tokens: 250
+      cost: 0.0
+      currency: USD
+    canonical_state_mutated: false
+- sample_id: RA-SAMPLE-WORKFLOW-REQUEST
+  definition: WorkflowRuntimeRequest
+  message:
+    protocol_version: offdata.runtime-adapter.v1
+    contract_version: 1.0.0
+    invocation_id: inv-workflow-001
+    correlation_id: corr-002
+    causation_id: cmd-002
+    adapter_id: restate-workflow-runtime
+    tenant_id: t-syn
+    engagement_id: f-syn
+    workflow_type: engagement_lifecycle
+    workflow_instance_id: wf-f-syn
+    operation: start
+    input_reference: cmd:start-engagement-001
+    expected_version: 1
+    idempotency_key: wf-start-f-syn
+    data_classification: internal
+- sample_id: RA-SAMPLE-WORKFLOW-RESPONSE
+  definition: WorkflowRuntimeResponse
+  message:
+    protocol_version: offdata.runtime-adapter.v1
+    contract_version: 1.0.0
+    invocation_id: inv-workflow-001
+    correlation_id: corr-002
+    adapter_id: restate-workflow-runtime
+    workflow_instance_id: wf-f-syn
+    status: accepted
+    checkpoint_reference: cp:wf-f-syn/1
+    emitted_command_references: []
+    emitted_event_references:
+    - event://workflow-started-001
+    audit_event_ids:
+    - evt-003
+    canonical_state_mutated: false
+- sample_id: RA-SAMPLE-WORKER-REQUEST
+  definition: WorkerPackage
+  message:
+    protocol_version: offdata.runtime-adapter.v1
+    contract_version: 1.0.0
+    invocation_id: inv-worker-001
+    correlation_id: corr-003
+    causation_id: task-003
+    adapter_id: codex-worker-harness
+    tenant_id: t-syn
+    engagement_id: f-syn
+    work_package_id: wp-phase0-001
+    objective: Validate contracts.
+    input_references:
+    - repo://rayrayxing/offdata-os
+    permitted_tool_classes:
+    - run_regression
+    prohibited_actions:
+    - external_send
+    - autonomous_merge
+    - direct_canonical_write
+    expected_outputs:
+    - report
+    acceptance_tests:
+    - validators_pass
+    output_contract: runtime#WorkerResult
+    workspace_mode: isolated_branch
+    network_mode: task_scoped
+    write_scope:
+    - reports/**
+    budget:
+      timeout_seconds: 900
+      max_retries: 1
+      max_cost: 0.0
+      currency: USD
+    data_classification: internal
+    idempotency_key: wp-phase0-001
+- sample_id: RA-SAMPLE-WORKER-RESPONSE
+  definition: WorkerResult
+  message:
+    protocol_version: offdata.runtime-adapter.v1
+    contract_version: 1.0.0
+    invocation_id: inv-worker-001
+    correlation_id: corr-003
+    adapter_id: codex-worker-harness
+    work_package_id: wp-phase0-001
+    status: succeeded
+    structured_result_reference: res:wp-phase0-001
+    artifact_references:
+    - artifact://validation-report
+    log_references:
+    - log://wp-phase0-001
+    test_evidence_references:
+    - test://all-required-validators-pass
+    proposed_command_references: []
+    audit_event_ids:
+    - evt-004
+    canonical_state_mutated: false
+- sample_id: RA-SAMPLE-TOOL-REQUEST
+  definition: ToolInvocation
+  message:
+    protocol_version: offdata.runtime-adapter.v1
+    contract_version: 1.0.0
+    invocation_id: inv-tool-001
+    correlation_id: corr-004
+    causation_id: inv-agent-001
+    adapter_id: local-tool-runtime
+    tenant_id: t-syn
+    engagement_id: f-syn
+    tool_class: search_knowledge
+    tool_id: knowledge-search-local
+    operation: query
+    parameter_reference: par:knowledge-query-001
+    external_side_effect: false
+    approval_id: null
+    idempotency_key: null
+    timeout_seconds: 30
+    data_classification: internal
+- sample_id: RA-SAMPLE-TOOL-RESPONSE
+  definition: ToolResult
+  message:
+    protocol_version: offdata.runtime-adapter.v1
+    contract_version: 1.0.0
+    invocation_id: inv-tool-001
+    correlation_id: corr-004
+    adapter_id: local-tool-runtime
+    status: succeeded
+    result_reference: res:knowledge-query-001
+    artifact_references: []
+    audit_event_ids:
+    - evt-005
+    external_side_effect_performed: false
+    canonical_state_mutated: false
+conformance_cases:
+- case_id: RA-CONF-001
+  adapter_kind: agent_runtime
+  scenario: typed agent pass
+  expected_outcome: pass
+- case_id: RA-CONF-002
+  adapter_kind: workflow_runtime
+  scenario: workflow replay dedupes
+  expected_outcome: pass
+- case_id: RA-CONF-003
+  adapter_kind: worker_harness
+  scenario: worker returns evidence
+  expected_outcome: pass
+- case_id: RA-CONF-004
+  adapter_kind: tool_runtime
+  scenario: allowed tool pass
+  expected_outcome: pass
+- case_id: RA-CONF-005
+  adapter_kind: agent_runtime
+  scenario: direct write rejected
+  expected_outcome: reject
+- case_id: RA-CONF-006
+  adapter_kind: tool_runtime
+  scenario: unapproved side effect rejected
+  expected_outcome: reject
+- case_id: RA-CONF-007
+  adapter_kind: worker_harness
+  scenario: undeclared tool rejected
+  expected_outcome: reject
+- case_id: RA-CONF-008
+  adapter_kind: workflow_runtime
+  scenario: cross-scope resume rejected
+  expected_outcome: reject
+- case_id: RA-CONF-009
+  adapter_kind: agent_runtime
+  scenario: budget raise rejected
+  expected_outcome: reject
+- case_id: RA-CONF-010
+  adapter_kind: agent_runtime
+  scenario: contract drift rejected
+  expected_outcome: reject
+- case_id: RA-CONF-011
+  adapter_kind: worker_harness
+  scenario: deferred activation rejected
+  expected_outcome: reject
+- case_id: RA-CONF-012
+  adapter_kind: tool_runtime
+  scenario: client data rejected
+  expected_outcome: reject
+- case_id: RA-CONF-013
+  adapter_kind: agent_runtime
+  scenario: missing audit identity rejected
+  expected_outcome: reject
+- case_id: RA-CONF-014
+  adapter_kind: agent_runtime
+  scenario: memory-as-truth rejected
+  expected_outcome: reject
+activation_conditions:
+- pcr03_merged_to_main
+- pcr04_merged_to_main
+- pcr05_merged_to_main
+- github_hosted_controls_in_issue_19_verified
+- explicit_founder_phase_0_approval_received
+- clean_macos_environment_available
+boundaries:
+  runtime_activation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  production_deployment_authorized: false
+  credential_collection_authorized: false
+  autonomous_merge_authorized: false
+  founder_accountability_preserved: true
