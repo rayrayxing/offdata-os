@@ -237,8 +237,19 @@ def mutated(contract: dict[str, Any], change: Callable[[dict[str, Any]], None]) 
 
 
 def run_mutations(contract: dict[str, Any]) -> int:
-    side = lambda value: next(item for item in value["tool_classes"] if item["external_side_effect"])
-    tool_sample = lambda value: next(item for item in value["sample_messages"] if item["definition"] == "ToolInvocation")["message"]
+    def side(value: dict[str, Any]) -> dict[str, Any]:
+        return next(
+            item
+            for item in value["tool_classes"]
+            if item["external_side_effect"]
+        )
+
+    def tool_sample(value: dict[str, Any]) -> dict[str, Any]:
+        return next(
+            item
+            for item in value["sample_messages"]
+            if item["definition"] == "ToolInvocation"
+        )["message"]
     changes: list[Callable[[dict[str, Any]], None]] = [
         lambda v: v["adapter_kinds"][0].__setitem__("canonical_write_mode", "direct"),
         lambda v: v["authority"].__setitem__("runtime_memory_is_canonical", True),
