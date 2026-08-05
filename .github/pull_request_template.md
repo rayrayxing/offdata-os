@@ -1,70 +1,54 @@
-## Founder summary
+## Purpose
 
-Explain the change in plain English.
+Describe the problem, the approved phase or maintenance authority, and the bounded outcome.
 
-## Approved phase and scope
+## Scope
 
-- Phase:
-- Backlog items:
-- Confirm no build-ahead occurred: [ ]
+- In scope:
+- Explicitly out of scope:
+- Controlling requirements, controls, tests, or governance records:
 
-## What changed
+## Authority and data boundary
 
-- 
+- [ ] This change is inside an approved phase or maintenance task.
+- [ ] Real client data remains prohibited unless a separately approved production gate says otherwise.
+- [ ] No secrets, private source binaries, or restricted evaluation material are exposed.
+- [ ] Founder approval requirements are identified below.
 
-## Demonstration
+Founder approvals still required:
 
-Add screenshots, recordings or artefact samples where relevant.
+## Implementation
 
-## Tests and evidence
+Summarise the important design and file changes.
 
-- [ ] Formatting and linting
-- [ ] Type checks
-- [ ] Unit tests
-- [ ] Integration tests
-- [ ] Secret scan
-- [ ] Dependency scan
-- [ ] Required agent or fixture evaluations
-- [ ] Manual or Computer Use acceptance test
+## Validation
 
-Summarise results and link to logs or artefacts.
+- [ ] All Phase 1–7 validators pass.
+- [ ] PCR-01 passes.
+- [ ] PCR-02 passes.
+- [ ] PCR-03 passes.
+- [ ] Generated records are clean and reproducible.
+- [ ] Pytest and coverage pass.
+- [ ] Python compilation passes.
+- [ ] Ruff passes.
+- [ ] Strict MyPy passes.
 
-## Security, privacy and residency
-
-- Data classes affected:
-- New external processors or providers:
-- Regional impact:
-- Secrets added or changed:
-- Permissions changed:
-
-## Cost
-
-- Cost incurred:
-- New recurring cost:
-- Free alternative considered:
-
-## Risks and defects
-
-List all open defects with severity. State whether any waiver is requested.
-
-## Founder actions required
-
-List decisions, OAuth, credentials, subscriptions or approvals. Never include secret values.
-
-## Rollback
-
-Describe how to reverse the change and any irreversible effects.
+Exact commit, workflow run, job, and artefact evidence:
 
 ## Independent review
 
-- Reviewer/run:
-- Findings:
-- Blocking defects closed: [ ]
+Describe the separate review pass, findings, and repairs.
 
-## Gate recommendation
+## Risks and unresolved work
 
-- [ ] Approve and merge
-- [ ] Approve with conditions
-- [ ] Repair and resubmit
-- [ ] Pause
-- [ ] Reject
+List remaining defects, planned tests, operating evidence, costs, credentials, subscriptions, or decisions.
+
+## Rollback
+
+State the exact rollback or revert approach.
+
+## Founder decision
+
+- [ ] Keep as draft.
+- [ ] Ready for Founder review.
+- [ ] Approved to merge.
