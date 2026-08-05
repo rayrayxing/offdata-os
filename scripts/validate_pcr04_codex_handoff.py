@@ -22,6 +22,9 @@ EXPECTED_ACTIVATION_CONDITIONS = {
     "pcr03_merged_to_main",
     "pcr04_merged_to_main",
     "pcr05_merged_to_main",
+    "pcr06_merged_to_main",
+    "pcr07_merged_to_main",
+    "pcr08_merged_to_main",
     "github_hosted_controls_in_issue_19_verified",
     "explicit_founder_phase_0_approval_received",
     "clean_macos_environment_available",
@@ -31,6 +34,12 @@ REQUIRED_DOCUMENT_TOKENS = {
     "scripts/validate_pcr04_codex_handoff.py",
     "scripts/validate_pcr05_runtime_adapters.py",
     "contracts/runtime-adapter-contracts.json",
+    "scripts/validate_pcr06_hermes_compatibility.py",
+    "contracts/hermes-compatibility-pack.json",
+    "scripts/validate_pcr07_northstar_blueprint.py",
+    "contracts/northstar-integration-blueprint.json",
+    "scripts/validate_pcr08_initial_operating_controls.py",
+    "contracts/initial-operating-controls.json",
     "codex/phase-0-foundation",
 }
 ROOT_PYTEST_COMMAND = (
@@ -212,6 +221,28 @@ def semantic_failures(
             failures.append("PCR-05 runtime adapter prerequisite must pass")
         elif runtime.get("runtime_activation_authorized") is not False:
             failures.append("PCR-05 runtime activation must remain false")
+        hermes = readiness.get("hermes_compatibility")
+        if not isinstance(hermes, dict) or hermes.get("passed") is not True:
+            failures.append("PCR-06 Hermes compatibility prerequisite must pass")
+        elif hermes.get("hermes_activation_authorized") is not False:
+            failures.append("PCR-06 Hermes activation must remain false")
+        northstar = readiness.get("northstar_blueprint")
+        if not isinstance(northstar, dict) or northstar.get("passed") is not True:
+            failures.append("PCR-07 Northstar blueprint prerequisite must pass")
+        elif northstar.get("northstar_implementation_authorized") is not False:
+            failures.append("PCR-07 Northstar implementation must remain false")
+        operating = readiness.get("initial_operating_controls")
+        if not isinstance(operating, dict) or operating.get("passed") is not True:
+            failures.append("PCR-08 initial operating-control prerequisite must pass")
+        else:
+            if operating.get("initial_operating_controls_activation_authorized") is not False:
+                failures.append("PCR-08 operating controls must remain inactive")
+            if operating.get("hosted_control_evidence_complete") is not False:
+                failures.append("PCR-08 hosted evidence must remain incomplete")
+            if operating.get("operating_environment_evidence_complete") is not False:
+                failures.append("PCR-08 operating evidence must remain incomplete")
+            if operating.get("production_evidence_complete") is not False:
+                failures.append("PCR-08 production evidence must remain incomplete")
         blockers = readiness.get("activation_blockers")
         if not isinstance(blockers, list) or set(blockers) != EXPECTED_ACTIVATION_CONDITIONS:
             failures.append("activation blockers do not match the governed conditions")
@@ -238,6 +269,12 @@ def semantic_failures(
                 failures.append("PCR-04 validation command is missing")
             if "python scripts/validate_pcr05_runtime_adapters.py" not in commands:
                 failures.append("PCR-05 validation command is missing")
+            if "python scripts/validate_pcr06_hermes_compatibility.py" not in commands:
+                failures.append("PCR-06 validation command is missing")
+            if "python scripts/validate_pcr07_northstar_blueprint.py" not in commands:
+                failures.append("PCR-07 validation command is missing")
+            if "python scripts/validate_pcr08_initial_operating_controls.py" not in commands:
+                failures.append("PCR-08 validation command is missing")
             if ROOT_PYTEST_COMMAND not in commands:
                 failures.append("root-executable package test command is missing")
             if ROOT_MYPY_COMMAND not in commands:
@@ -313,6 +350,36 @@ def _run_mutation_cases(handoff: dict[str, Any]) -> int:
         "runtime_activation_authorized"
     ] = True
     mutations.append(runtime_activation_mutation)
+
+    hermes_activation_mutation = copy.deepcopy(handoff)
+    hermes_activation_mutation["readiness_snapshot"]["hermes_compatibility"][
+        "hermes_activation_authorized"
+    ] = True
+    mutations.append(hermes_activation_mutation)
+
+    northstar_activation_mutation = copy.deepcopy(handoff)
+    northstar_activation_mutation["readiness_snapshot"]["northstar_blueprint"][
+        "northstar_implementation_authorized"
+    ] = True
+    mutations.append(northstar_activation_mutation)
+
+    operating_activation_mutation = copy.deepcopy(handoff)
+    operating_activation_mutation["readiness_snapshot"]["initial_operating_controls"][
+        "initial_operating_controls_activation_authorized"
+    ] = True
+    mutations.append(operating_activation_mutation)
+
+    operating_evidence_mutation = copy.deepcopy(handoff)
+    operating_evidence_mutation["readiness_snapshot"]["initial_operating_controls"][
+        "production_evidence_complete"
+    ] = True
+    mutations.append(operating_evidence_mutation)
+
+    pcr08_command_mutation = copy.deepcopy(handoff)
+    pcr08_command_mutation["execution"]["required_commands"].remove(
+        "python scripts/validate_pcr08_initial_operating_controls.py"
+    )
+    mutations.append(pcr08_command_mutation)
 
     for index, mutation in enumerate(mutations, start=1):
         if not semantic_failures(mutation, check_paths=False):
