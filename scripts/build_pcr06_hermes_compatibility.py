@@ -36,11 +36,14 @@ def _skill_files() -> list[Path]:
 
 
 def _skill_files_valid(paths: list[Path]) -> bool:
-    return bool(paths) and all(
-        path.read_text(encoding="utf-8").strip().startswith("#")
-        and len(path.read_text(encoding="utf-8").strip()) > 80
-        for path in paths
-    )
+    if not paths:
+        return False
+    for path in paths:
+        content = path.read_text(encoding="utf-8").strip()
+        header = content[:400]
+        if len(content) <= 80 or not (content.startswith("#") or "name:" in header):
+            return False
+    return True
 
 
 def build_hermes_compatibility() -> dict[str, Any]:
