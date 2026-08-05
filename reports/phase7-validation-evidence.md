@@ -9,15 +9,15 @@ Date: 2026-08-05
 ## GitHub Actions evidence
 
 - workflow: `Machine contracts, agents, oracle, deliverables, fixtures, knowledge and security`
-- run ID: `30975868412`
-- job ID: `92209612760`
-- validated branch head: `79b61615185ac4da99c81fa2a6e95b694a9ca35a`
-- validated pull-request merge reference: `644e3c4311637511ad5753f968a5c57f8c3bd520`
+- run ID: `30976088173`
+- job ID: `92210248160`
+- validated branch head: `dddeebbb75b7b2c0a3b4489dcd9ad6782241dca4`
+- validated pull-request merge reference: `ce5b1f4e5f3615f58011cbd1ed31ee80f8f0776c`
 - runner: Ubuntu 24.04
 - Python: 3.11.15
 - conclusion: success
 
-The complete pull-request gate is rerun with this validation record, the Phase 7 completion report and the updated development status before merge.
+This run includes the Phase 7 completion report, this validation record and the updated development-status document.
 
 ## Prior-phase regression results
 
@@ -143,9 +143,9 @@ The following operating gates remain planned: `IT-ENV-SEPARATION-001`, `SEC-ENCR
 ## Retained release artefact
 
 - files: 65;
-- artefact ID: `8918232404`;
+- artefact ID: `8918307764`;
 - compressed size: 157,193 bytes;
-- SHA-256: `e3a87d3a23f1adce313985a79300447de1cd548986dd81abcf4c8b240c0aa263`;
+- SHA-256: `ef5c3c57d9d415a82cdd3f37509097f238578a765d4675f1c8845a9195968254`;
 - retention: 30 days.
 
 ## Operating-security boundary
