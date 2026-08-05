@@ -1,4 +1,4 @@
-name: Machine contracts, agents, oracle, deliverables, fixtures, knowledge, security, governance and Codex handoff
+name: Machine contracts, agents, oracle, deliverables, fixtures, knowledge, security, governance, Codex handoff and runtime adapters
 
 on:
   push:
@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   validate-contracts:
-    name: Validate complete chat-first Phase 1–7 and PCR-01–04 release
+    name: Validate complete chat-first Phase 1–7 and PCR-01–05 release
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -65,10 +65,12 @@ jobs:
         run: python scripts/build_pcr01_canonical_release.py
       - name: Build PCR-03 repository governance baseline
         run: python scripts/build_pcr03_repository_hygiene.py
+      - name: Build PCR-05 runtime adapter contracts
+        run: python scripts/build_pcr05_runtime_adapters.py
       - name: Build PCR-04 machine-readable Codex handoff
         run: python scripts/build_pcr04_codex_handoff.py
-      - name: Enforce clean generated Phase 1–7 and PCR-01–04 records
-        run: git diff --exit-code -- requirements/test-registry.json requirements/test-definitions.json requirements/referential-integrity-baseline.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json security/security-regionalisation-baseline.json releases/canonical-chat-first-phase1-7-release.json repository/repository-governance-baseline.json handoff/codex-phase0-handoff.json
+      - name: Enforce clean generated Phase 1–7 and PCR-01–05 records
+        run: git diff --exit-code -- requirements/test-registry.json requirements/test-definitions.json requirements/referential-integrity-baseline.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json security/security-regionalisation-baseline.json releases/canonical-chat-first-phase1-7-release.json repository/repository-governance-baseline.json contracts/runtime-adapter-contracts.json handoff/codex-phase0-handoff.json
       - name: Validate Phase 7 security and regionalisation
         run: python scripts/validate_phase7_security_regionalisation.py
       - name: Validate PCR-01 canonical release reconciliation
@@ -77,6 +79,8 @@ jobs:
         run: python scripts/validate_pcr02_referential_integrity.py
       - name: Validate PCR-03 repository and governance hygiene
         run: python scripts/validate_pcr03_repository_hygiene.py
+      - name: Validate PCR-05 runtime adapter contracts
+        run: python scripts/validate_pcr05_runtime_adapters.py
       - name: Validate PCR-04 machine-readable Codex handoff
         run: python scripts/validate_pcr04_codex_handoff.py
       - name: Run deterministic test suite
@@ -89,7 +93,7 @@ jobs:
       - name: Enforce type-check baseline
         working-directory: packages/offdata-core
         run: mypy src
-      - name: Retain generated chat-first release and Codex handoff
+      - name: Retain generated chat-first release, Codex handoff and runtime contracts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: offdata-chat-first-release-${{ github.sha }}
@@ -106,6 +110,7 @@ jobs:
             .github/pull_request_template.md
             .github/ISSUE_TEMPLATE/*.yml
             .github/dependabot.yml
+            .github/workflows/contracts.yml
             api/openapi.json
             schemas/*.json
             contracts/*.json
@@ -138,7 +143,11 @@ jobs:
             docs/20-DEVELOPMENT-STATUS.md
             docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md
             docs/43-PCR-04-MACHINE-READABLE-CODEX-HANDOFF.md
+            docs/44-PCR-05-RUNTIME-ADAPTER-CONTRACTS.md
             reports/pcr04-validation-evidence.md
+            reports/pcr05-validation-evidence.md
             scripts/build_pcr04_codex_handoff.py
             scripts/validate_pcr04_codex_handoff.py
+            scripts/build_pcr05_runtime_adapters.py
+            scripts/validate_pcr05_runtime_adapters.py
             packages/offdata-core/pyproject.toml

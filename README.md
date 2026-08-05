@@ -6,7 +6,7 @@ This repository is the **canonical build repository** for the new offdata consul
 
 ## Current status
 
-- Repository stage: chat-first pre-Codex foundation hardened through PCR-04
+- Repository stage: chat-first pre-Codex foundation hardened through PCR-05
 - Initial operator: Founder only
 - Initial hosting/data region: Singapore
 - Initial data: synthetic only; real client data remains prohibited
@@ -16,6 +16,7 @@ This repository is the **canonical build repository** for the new offdata consul
 - Test and reference integrity: governed by PCR-02
 - Repository and governance hygiene: governed by PCR-03
 - Codex Phase 0 handoff: governed by PCR-04
+- Runtime adapter boundaries: governed by PCR-05
 - Codex start: not automatically authorised; all activation conditions in `handoff/codex-phase0-handoff.json` remain mandatory
 
 ## Product objective
@@ -39,17 +40,20 @@ offdata should support the full consulting lifecycle from qualified opportunity 
 13. `docs/20-DEVELOPMENT-STATUS.md`
 14. `docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md`
 15. `docs/43-PCR-04-MACHINE-READABLE-CODEX-HANDOFF.md`
-16. `handoff/codex-phase0-handoff.json`
+16. `docs/44-PCR-05-RUNTIME-ADAPTER-CONTRACTS.md`
+17. `contracts/runtime-adapter-contracts.json`
+18. `handoff/codex-phase0-handoff.json`
 
 ## Codex entry point
 
-After PCR-03 and PCR-04 are merged, the hosted controls in issue #19 are verified and the Founder explicitly approves Phase 0, Codex must begin by running:
+After PCR-03, PCR-04 and PCR-05 are merged, the hosted controls in issue #19 are verified and the Founder explicitly approves Phase 0, Codex must begin by running:
 
 ```bash
+python scripts/validate_pcr05_runtime_adapters.py
 python scripts/validate_pcr04_codex_handoff.py
 ```
 
-The generated handoff is the machine-readable Phase 0 execution contract. It defines the read order, prerequisite records, P0.1–P0.4 dependency graph, required commands, boundaries, stop conditions, branch name, draft-pull-request rule and Founder report fields.
+`runtime_activation_authorized=false` remains mandatory. The runtime adapter contract fixes the replaceable execution boundaries, and the generated handoff is the machine-readable Phase 0 execution contract. It defines the read order, prerequisite records, P0.1–P0.4 dependency graph, required commands, boundaries, stop conditions, branch name, draft-pull-request rule and Founder report fields.
 
 ## Non-negotiable principles
 
