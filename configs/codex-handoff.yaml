@@ -1,0 +1,237 @@
+schema_version: 1
+phase_id: PCR-04
+title: Machine-readable Codex handoff
+handoff_id: CODEX-PHASE0-HANDOFF-2026-08-05
+repository: rayrayxing/offdata-os
+canonical_branch: main
+stacked_base_branch: governance/pcr03-repository-hygiene
+target:
+  phase_number: 0
+  phase_name: Controlled project foundation
+  backlog_document: docs/11-BUILD-BACKLOG.md
+  phase_gate: Founder receives a local demonstration and completion report; no substantive product workflow is required.
+  start_requires_explicit_founder_approval: true
+  maximum_authorised_phase: 0
+  next_phase_is_prohibited: true
+authority:
+  controlling_instruction: AGENTS.md
+  precedence:
+    - applicable_law_platform_safety_and_explicit_founder_instruction
+    - AGENTS.md
+    - approved_architecture_and_decision_records
+    - approved_phase_requirements_and_acceptance_criteria
+    - other_repository_documentation
+    - agent_judgement
+  historical_repositories_are_non_controlling:
+    - rayrayxing/offdata
+    - rayrayxing/offdata-clean
+read_order:
+  - AGENTS.md
+  - GOVERNANCE.md
+  - SECURITY.md
+  - CONTRIBUTING.md
+  - docs/00-START-HERE.md
+  - docs/01-PRODUCT-VISION.md
+  - docs/02-FUNCTIONAL-REQUIREMENTS.md
+  - docs/03-ARCHITECTURE.md
+  - docs/10-TESTING-STRATEGY.md
+  - docs/11-BUILD-BACKLOG.md
+  - docs/14-CODEX-KICKOFF.md
+  - docs/19-PHASE-0-VALIDATION-ADDENDUM.md
+  - docs/20-DEVELOPMENT-STATUS.md
+  - docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md
+  - docs/43-PCR-04-MACHINE-READABLE-CODEX-HANDOFF.md
+prerequisite_records:
+  - id: canonical_chat_first_release
+    path: releases/canonical-chat-first-phase1-7-release.json
+    validator: scripts/validate_pcr01_canonical_release.py
+    required_status: success
+  - id: test_identity_and_referential_integrity
+    path: requirements/referential-integrity-baseline.json
+    validator: scripts/validate_pcr02_referential_integrity.py
+    required_status: passed
+  - id: repository_and_governance_hygiene
+    path: repository/repository-governance-baseline.json
+    validator: scripts/validate_pcr03_repository_hygiene.py
+    required_status: passed
+  - id: codex_handoff
+    path: handoff/codex-phase0-handoff.json
+    validator: scripts/validate_pcr04_codex_handoff.py
+    required_status: passed
+existing_assets:
+  deterministic_core:
+    - packages/offdata-core/pyproject.toml
+    - packages/offdata-core/src/offdata_core
+    - packages/offdata-core/tests
+  governed_configuration:
+    - configs/lifecycle.yaml
+    - configs/policy.yaml
+    - configs/agents.yaml
+    - configs/agent-evaluations.yaml
+    - configs/canonical-release.yaml
+    - configs/knowledge-ingestion.yaml
+    - configs/repository-governance.yaml
+    - configs/security-regionalisation.yaml
+  contracts_and_schemas:
+    - api/openapi.json
+    - contracts/model-registry.json
+    - contracts/command-event-catalogue.json
+    - schemas/offdata-contract-bundle.schema.json
+    - schemas/offdata-configs.schema.json
+    - schemas/agent-envelope.schema.json
+    - schemas/context-package.schema.json
+    - schemas/founder-decision-packet.schema.json
+    - schemas/codex-handoff.schema.json
+  governed_evidence:
+    - requirements/test-registry.json
+    - requirements/test-definitions.json
+    - requirements/referential-integrity-baseline.json
+    - fixtures/additional-primary-fixtures.json
+    - knowledge/knowledge-ingestion-baseline.json
+    - security/security-regionalisation-baseline.json
+    - releases/canonical-chat-first-phase1-7-release.json
+    - repository/repository-governance-baseline.json
+task_graph:
+  - id: P0.1
+    title: Repository baseline
+    dependencies: []
+    deliverables:
+      - reconcile_monorepo_structure_without_replacing_governed_assets
+      - preserve_governing_documentation_and_code_ownership
+      - add_licence_decision_placeholder
+      - retain_secret_safe_ignore_and_environment_examples
+    acceptance:
+      - canonical_read_order_remains_clear
+      - no_secret_is_committed
+      - existing_chat_first_assets_are_integrated_not_duplicated
+  - id: P0.2
+    title: Local development environment
+    dependencies:
+      - P0.1
+    deliverables:
+      - nextjs_application_shell
+      - fastapi_service_shell
+      - local_postgresql
+      - local_s3_compatible_object_storage
+      - container_orchestration
+      - one_command_start_stop_and_health_checks
+    acceptance:
+      - clean_macos_setup_can_start_all_services
+      - health_checks_pass
+      - no_paid_cloud_resource_is_required
+  - id: P0.3
+    title: Engineering quality baseline
+    dependencies:
+      - P0.1
+      - P0.2
+    deliverables:
+      - formatting_linting_and_type_checks
+      - unit_test_runners
+      - secret_and_dependency_scanning
+      - github_actions_ci
+      - local_precommit_or_equivalent
+    acceptance:
+      - deliberate_failure_blocks_ci
+      - safe_change_passes_all_checks
+      - existing_phase_1_to_7_and_pcr_01_to_04_gate_remains_green
+  - id: P0.4
+    title: Security and operating documentation
+    dependencies:
+      - P0.1
+    deliverables:
+      - threat_model_skeleton_reconciled_with_existing_catalogue
+      - secret_handling_guide
+      - environment_separation_plan
+      - founder_action_register
+      - architecture_decision_template
+      - build_status_ledger
+    acceptance:
+      - no_real_client_data_enabled
+      - no_processor_or_external_action_is_approved
+      - rollback_and_founder_actions_are_documented
+execution:
+  branch_name: codex/phase-0-foundation
+  pull_request_mode: draft
+  merge_requires_founder_approval: true
+  implementation_method:
+    - inspect_repository_and_macos_environment
+    - validate_all_preexisting_assets_before_application_code
+    - produce_concise_phase_0_plan_and_decision_register
+    - implement_only_phase_0_tasks_in_dependency_order
+    - run_required_commands
+    - perform_independent_review_and_repair
+    - open_draft_pull_request_and_stop_at_phase_gate
+  required_commands:
+    - python scripts/build_test_registry.py
+    - python scripts/build_pcr02_test_identity.py
+    - python scripts/export_machine_contracts.py
+    - python scripts/build_phase3_oracle.py
+    - python scripts/build_phase4_deliverable_semantic_model.py
+    - python scripts/build_phase5_fixture_programme.py
+    - python scripts/build_phase6_knowledge_intelligence.py
+    - python scripts/build_phase7_security_regionalisation.py
+    - python scripts/build_pcr01_canonical_release.py
+    - python scripts/build_pcr03_repository_hygiene.py
+    - python scripts/build_pcr04_codex_handoff.py
+    - python scripts/validate_phase1_contracts.py
+    - python scripts/validate_phase2_agents.py
+    - python scripts/validate_phase3_ai_audit_oracle.py
+    - python scripts/validate_phase4_deliverable_semantic_model.py
+    - python scripts/validate_phase5_fixture_programme.py
+    - python scripts/validate_phase6_knowledge_intelligence.py
+    - python scripts/validate_phase7_security_regionalisation.py
+    - python scripts/validate_pcr01_canonical_release.py
+    - python scripts/validate_pcr02_referential_integrity.py
+    - python scripts/validate_pcr03_repository_hygiene.py
+    - python scripts/validate_pcr04_codex_handoff.py
+    - pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
+    - python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
+    - ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts
+    - mypy src
+prohibited_actions:
+  - purchase_or_activate_services_or_trials
+  - request_or_commit_secrets
+  - alter_dns_or_godaddy
+  - deploy_production_infrastructure
+  - use_real_client_data
+  - send_external_communications
+  - approve_oauth_or_third_party_access
+  - weaken_tests_or_golden_expectations
+  - create_duplicate_lifecycle_policy_or_contract_implementations
+  - expose_restricted_oracle_material_to_production_agents
+  - progress_beyond_phase_0
+stop_conditions:
+  - material_requirement_ambiguity
+  - credential_payment_oauth_or_external_approval_required
+  - unresolved_legal_privacy_security_or_copyright_concern
+  - test_and_expected_result_conflict
+  - suspected_incorrect_golden_fixture
+  - data_loss_or_corruption_risk
+  - material_architecture_change
+  - phase_boundary_would_be_crossed
+activation_conditions:
+  - pcr03_merged_to_main
+  - pcr04_merged_to_main
+  - github_hosted_controls_in_issue_19_verified
+  - explicit_founder_phase_0_approval_received
+  - clean_macos_environment_available
+completion_report_fields:
+  - what_was_built
+  - why_it_was_needed
+  - how_to_run_it
+  - tests_and_full_results
+  - changes_to_chat_first_contracts_and_rationale
+  - artefact_samples_or_screenshots
+  - unresolved_defects_and_risks
+  - costs_incurred_and_forecast
+  - credentials_subscriptions_and_approvals_required
+  - rollback_instructions
+  - exact_recommended_next_phase
+boundaries:
+  real_client_data_enabled: false
+  external_actions_authorised: false
+  paid_services_authorised: false
+  production_deployment_authorised: false
+  autonomous_merge_authorised: false
+  original_methodology_binaries_committed: false
+  founder_accountability_preserved: true
