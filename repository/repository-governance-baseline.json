@@ -94,9 +94,9 @@
       "path": "reports/pcr03-validation-evidence.md"
     },
     {
-      "bytes": 4992,
+      "bytes": 4970,
       "path": "scripts/build_pcr03_repository_hygiene.py",
-      "sha256": "e19120d3ae2bfbbda3ef4551f5b76badb151eddaa80592f46dbf54dc35755a7b"
+      "sha256": "ef906aa9cce62786ea523b9508444b58735219cb77f13b62134a4a799d6eb025"
     },
     {
       "bytes": 2639,
