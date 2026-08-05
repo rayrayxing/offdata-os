@@ -48,9 +48,9 @@
       "sha256": "fba106327ec94482986c6a43804e8f0666ab0ab472066432c34273871a210f2f"
     },
     {
-      "bytes": 6217,
+      "bytes": 6383,
       "path": ".github/workflows/contracts.yml",
-      "sha256": "e42edba4c12fa95ee555b60f4f536f584eafbacb2685132f40d7e445ba392928"
+      "sha256": "f36aef18c17a1b5fad3931087edcd6e5a7232657a39b0607114a0b0c50b44650"
     },
     {
       "bytes": 799,
@@ -81,9 +81,9 @@
       "sha256": "e066099c14bec58d69078f874f0cdb3e8e8ed9f48e011974c1df4212c1070b31"
     },
     {
-      "bytes": 2316,
+      "bytes": 2552,
       "path": "configs/repository-governance.yaml",
-      "sha256": "f67498c61414d03de19172178145673152f0cc846481a6f1584c2dfd0c55638d"
+      "sha256": "c7ec69f8552508a44087211336233ff14f686998a2cb6c347760e9346af51dec"
     },
     {
       "bytes": 4173,
@@ -106,10 +106,14 @@
   ],
   "schema_version": 1,
   "workflow_checks": {
+    "actions/checkout@11d5960a326750d5838078e36cf38b85af677262": true,
+    "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065": true,
+    "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02": true,
     "branches: [main]": true,
     "cancel-in-progress: true": true,
     "concurrency:": true,
     "contents: read": true,
+    "include-hidden-files: true": true,
     "permissions:": true,
     "persist-credentials: false": true,
     "pull_request:": true,
