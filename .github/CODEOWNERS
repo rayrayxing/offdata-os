@@ -1,0 +1,13 @@
+# Founder remains accountable for all repository areas.
+* @rayrayxing
+
+# Explicit high-risk areas.
+AGENTS.md @rayrayxing
+GOVERNANCE.md @rayrayxing
+SECURITY.md @rayrayxing
+.github/ @rayrayxing
+configs/ @rayrayxing
+security/ @rayrayxing
+requirements/ @rayrayxing
+releases/ @rayrayxing
+fixtures/**/restricted/ @rayrayxing
