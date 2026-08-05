@@ -2,7 +2,7 @@
 
 ## Status
 
-**Implementation in progress; canonical Phase 1–7 evidence identified and governed.**
+**PCR-01 complete and independently CI-validated.**
 
 Date: 2026-08-05
 
@@ -137,6 +137,34 @@ PCR-01 reconciles the completed chat-first release. It does not establish:
 
 Real client data remains prohibited.
 
-## 9. Final validation evidence
+## 9. Independent implementation validation
 
-The exact PCR-01 branch-head validation run, retained artifact and merge evidence will be recorded after the documentation-inclusive gate passes. Until then, this document governs the reconciled Phase 1–7 source release but does not claim PCR-01 completion.
+GitHub Actions run `30983105556`, job `92231688824`, validated branch head `6d770f2128785c4dbeaf646e3eaa839591c0f299` through pull-request merge reference `cd4e72dac2cce80d238477c9e1b0288c616b2947` on Ubuntu 24.04 and Python 3.11.15.
+
+The gate passed:
+
+- all Phase 1–7 validators;
+- PCR-01 canonical-release reconciliation validator;
+- byte-clean generation of all Phase 1–7 and PCR-01 governed records;
+- 226 implemented test nodes;
+- 55 remaining planned tests;
+- 19 completed planned-test IDs;
+- all 123 requirements mapped;
+- 228 runtime tests;
+- 93.39 percent coverage against the 90 percent floor;
+- Python compilation;
+- Ruff;
+- strict MyPy across 31 source files.
+
+The retained implementation-gate artifact contains 68 files:
+
+- artifact ID: `8920937473`;
+- compressed size: 163,702 bytes;
+- SHA-256: `6cc7168786e2484a99d558d57e261194cc124943f3c4e9ece4b6c2d8480784d6`;
+- retention: 30 days.
+
+This implementation gate is the evidence recorded in the completion document. The final documentation-inclusive pull-request head must pass the same unchanged gate before review and merge.
+
+## 10. Phase-gate conclusion
+
+PCR-01 is complete as the governed canonical release reconciliation. It creates one reproducible source of truth for the completed chat-first Phase 1–7 release, preserves superseded evidence without presenting it as current, and keeps all operating and Founder-controlled boundaries intact.
