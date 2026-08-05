@@ -48,9 +48,9 @@
       "sha256": "fba106327ec94482986c6a43804e8f0666ab0ab472066432c34273871a210f2f"
     },
     {
-      "bytes": 7281,
+      "bytes": 7847,
       "path": ".github/workflows/contracts.yml",
-      "sha256": "8fabc244e7421db477395d50b3d24190e182771bdfcb5494ad776e7ba341f771"
+      "sha256": "4e7c70aee8ee3bc571f47639d25ccc8c980cf30ce47e0c7ebed66856eaeb1154"
     },
     {
       "bytes": 799,
@@ -71,9 +71,9 @@
       "sha256": "ea9568037f19b57cc362f54641f36c33974e886c5323fb70de223c587085644f"
     },
     {
-      "bytes": 4845,
+      "bytes": 5183,
       "path": "README.md",
-      "sha256": "a946c9f506892965373aee991f2f2cad71fcc83a1c11ba1415693335aadec465"
+      "sha256": "a681772195e596fa68d821cac0f5fd042df41ea4e9c5daea774a9ed32298a2e1"
     },
     {
       "bytes": 2241,
@@ -81,9 +81,9 @@
       "sha256": "e066099c14bec58d69078f874f0cdb3e8e8ed9f48e011974c1df4212c1070b31"
     },
     {
-      "bytes": 2695,
+      "bytes": 2851,
       "path": "configs/repository-governance.yaml",
-      "sha256": "19a5da7f3c48f117f46a8b972e386c1e435a068b4bdcdfcb136c6df7aa4a05f4"
+      "sha256": "d29d4f9f8bad2a92451f16f2e4432fea84461db9cdbaa397fc84168352726242"
     },
     {
       "bytes": 4173,
@@ -113,6 +113,7 @@
     "cancel-in-progress: true": true,
     "concurrency:": true,
     "contents: read": true,
+    "contracts/runtime-adapter-contracts.json": true,
     "handoff/codex-phase0-handoff.json": true,
     "include-hidden-files: true": true,
     "permissions:": true,
@@ -120,8 +121,10 @@
     "pull_request:": true,
     "python scripts/build_pcr03_repository_hygiene.py": true,
     "python scripts/build_pcr04_codex_handoff.py": true,
+    "python scripts/build_pcr05_runtime_adapters.py": true,
     "python scripts/validate_pcr03_repository_hygiene.py": true,
     "python scripts/validate_pcr04_codex_handoff.py": true,
+    "python scripts/validate_pcr05_runtime_adapters.py": true,
     "repository/repository-governance-baseline.json": true
   }
 }

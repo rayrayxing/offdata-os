@@ -40,6 +40,8 @@ read_order:
   - docs/20-DEVELOPMENT-STATUS.md
   - docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md
   - docs/43-PCR-04-MACHINE-READABLE-CODEX-HANDOFF.md
+  - docs/44-PCR-05-RUNTIME-ADAPTER-CONTRACTS.md
+  - contracts/runtime-adapter-contracts.json
 prerequisite_records:
   - id: canonical_chat_first_release
     path: releases/canonical-chat-first-phase1-7-release.json
@@ -52,6 +54,10 @@ prerequisite_records:
   - id: repository_and_governance_hygiene
     path: repository/repository-governance-baseline.json
     validator: scripts/validate_pcr03_repository_hygiene.py
+    required_status: passed
+  - id: runtime_adapters
+    path: contracts/runtime-adapter-contracts.json
+    validator: scripts/validate_pcr05_runtime_adapters.py
     required_status: passed
   - id: codex_handoff
     path: handoff/codex-phase0-handoff.json
@@ -81,6 +87,8 @@ existing_assets:
     - schemas/context-package.schema.json
     - schemas/founder-decision-packet.schema.json
     - schemas/codex-handoff.schema.json
+    - contracts/runtime-adapter-contracts.json
+    - schemas/runtime-adapter-contracts.schema.json
   governed_evidence:
     - requirements/test-registry.json
     - requirements/test-definitions.json
@@ -90,6 +98,7 @@ existing_assets:
     - security/security-regionalisation-baseline.json
     - releases/canonical-chat-first-phase1-7-release.json
     - repository/repository-governance-baseline.json
+    - contracts/runtime-adapter-contracts.json
 task_graph:
   - id: P0.1
     title: Repository baseline
@@ -171,6 +180,7 @@ execution:
     - python scripts/build_phase7_security_regionalisation.py
     - python scripts/build_pcr01_canonical_release.py
     - python scripts/build_pcr03_repository_hygiene.py
+    - python scripts/build_pcr05_runtime_adapters.py
     - python scripts/build_pcr04_codex_handoff.py
     - python scripts/validate_phase1_contracts.py
     - python scripts/validate_phase2_agents.py
@@ -182,6 +192,7 @@ execution:
     - python scripts/validate_pcr01_canonical_release.py
     - python scripts/validate_pcr02_referential_integrity.py
     - python scripts/validate_pcr03_repository_hygiene.py
+    - python scripts/validate_pcr05_runtime_adapters.py
     - python scripts/validate_pcr04_codex_handoff.py
     - cd packages/offdata-core && pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
     - python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
@@ -211,6 +222,7 @@ stop_conditions:
 activation_conditions:
   - pcr03_merged_to_main
   - pcr04_merged_to_main
+  - pcr05_merged_to_main
   - github_hosted_controls_in_issue_19_verified
   - explicit_founder_phase_0_approval_received
   - clean_macos_environment_available

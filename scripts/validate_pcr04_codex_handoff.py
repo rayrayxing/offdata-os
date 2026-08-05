@@ -21,6 +21,7 @@ EXPECTED_TASKS = {"P0.1", "P0.2", "P0.3", "P0.4"}
 EXPECTED_ACTIVATION_CONDITIONS = {
     "pcr03_merged_to_main",
     "pcr04_merged_to_main",
+    "pcr05_merged_to_main",
     "github_hosted_controls_in_issue_19_verified",
     "explicit_founder_phase_0_approval_received",
     "clean_macos_environment_available",
@@ -28,6 +29,8 @@ EXPECTED_ACTIVATION_CONDITIONS = {
 REQUIRED_DOCUMENT_TOKENS = {
     "handoff/codex-phase0-handoff.json",
     "scripts/validate_pcr04_codex_handoff.py",
+    "scripts/validate_pcr05_runtime_adapters.py",
+    "contracts/runtime-adapter-contracts.json",
     "codex/phase-0-foundation",
 }
 ROOT_PYTEST_COMMAND = (
@@ -204,6 +207,11 @@ def semantic_failures(
             failures.append("local prerequisite records must pass")
         if readiness.get("codex_start_authorized") is not False:
             failures.append("PCR-04 must not autonomously authorise Codex start")
+        runtime = readiness.get("runtime_adapters")
+        if not isinstance(runtime, dict) or runtime.get("passed") is not True:
+            failures.append("PCR-05 runtime adapter prerequisite must pass")
+        elif runtime.get("runtime_activation_authorized") is not False:
+            failures.append("PCR-05 runtime activation must remain false")
         blockers = readiness.get("activation_blockers")
         if not isinstance(blockers, list) or set(blockers) != EXPECTED_ACTIVATION_CONDITIONS:
             failures.append("activation blockers do not match the governed conditions")
@@ -228,6 +236,8 @@ def semantic_failures(
         else:
             if "python scripts/validate_pcr04_codex_handoff.py" not in commands:
                 failures.append("PCR-04 validation command is missing")
+            if "python scripts/validate_pcr05_runtime_adapters.py" not in commands:
+                failures.append("PCR-05 validation command is missing")
             if ROOT_PYTEST_COMMAND not in commands:
                 failures.append("root-executable package test command is missing")
             if ROOT_MYPY_COMMAND not in commands:
@@ -291,6 +301,18 @@ def _run_mutation_cases(handoff: dict[str, Any]) -> int:
     transient_metadata_mutation = copy.deepcopy(handoff)
     transient_metadata_mutation["stacked_base_branch"] = "temporary/stacked-branch"
     mutations.append(transient_metadata_mutation)
+
+    runtime_command_mutation = copy.deepcopy(handoff)
+    runtime_command_mutation["execution"]["required_commands"].remove(
+        "python scripts/validate_pcr05_runtime_adapters.py"
+    )
+    mutations.append(runtime_command_mutation)
+
+    runtime_activation_mutation = copy.deepcopy(handoff)
+    runtime_activation_mutation["readiness_snapshot"]["runtime_adapters"][
+        "runtime_activation_authorized"
+    ] = True
+    mutations.append(runtime_activation_mutation)
 
     for index, mutation in enumerate(mutations, start=1):
         if not semantic_failures(mutation, check_paths=False):
