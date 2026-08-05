@@ -164,6 +164,21 @@ See:
 - `docs/39-PHASE-7-SECURITY-AND-REGIONALISATION-COMPLETION.md`
 - `reports/phase7-validation-evidence.md`
 
+### PCR-01 — Canonical release reconciliation
+
+Status: **complete and independently CI-validated**.
+
+PCR-01 governs the final Phase 1–7 release through `configs/canonical-release.yaml` and the deterministic `releases/canonical-chat-first-phase1-7-release.json`. The controlling completed chat-first source release is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, validated by final run `30976222896` and retained artifact `8918355687`. Earlier successful Phase 7 runs remain recorded as superseded snapshots rather than controlling evidence.
+
+The PCR-01 implementation gate passed in run `30983105556`, job `92231688824`, through merge reference `cd4e72dac2cce80d238477c9e1b0288c616b2947`: all Phase 1–7 and PCR-01 validators passed, 226 implemented test nodes and 55 planned tests were registered, all 123 requirements remained mapped, 228 runtime tests passed at 93.39 percent coverage, compilation and Ruff passed, and strict MyPy passed across 31 source files. The 68-file artifact `8920937473` has SHA-256 `6cc7168786e2484a99d558d57e261194cc124943f3c4e9ece4b6c2d8480784d6`.
+
+PCR-01 does not enable real client data, commit original methodology binaries or claim operating infrastructure.
+
+See:
+
+- `docs/40-PCR-01-CANONICAL-RELEASE-RECONCILIATION.md`
+- `reports/pcr01-validation-evidence.md`
+
 ### Deterministic consulting kernel
 
 - Lifecycle and transition logic.
@@ -180,6 +195,7 @@ See:
 - Deterministic primary engagement fixture programme.
 - Deterministic source profiling, alias, rights, method-index and retrieval-evaluation intelligence.
 - Deterministic classification, access, regionalisation, retention, processor, production-gate and incident intelligence.
+- Deterministic canonical release reconciliation with exact governed-record and source-profile digests.
 
 ### Synthetic engagement system
 
@@ -191,7 +207,7 @@ See:
 
 ## Current strategy
 
-Continue chat-first heavy lifting. Codex must integrate and execute the committed design rather than rediscover it.
+Complete the remaining bounded pre-Codex readiness work. Codex must integrate and execute the committed design rather than rediscover it.
 
 ## Current Founder actions
 
@@ -209,12 +225,4 @@ Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack 
 
 ## Current Codex gate
 
-Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1–7, applying the database migration in a disposable environment, importing the original source files unchanged into controlled storage, verifying their committed profile checksums, exercising parser and retrieval gold cases, configuring environment and region isolation, testing encryption, backup restoration, observability, retention, rollback and kill switches, rebuilding restricted baselines without exposing them to normal agent context and reporting discrepancies without silently changing governing contracts, source rights, aliases, security controls, regional boundaries, processor approvals, fixture evidence, golden expectations, answer keys, semantic conclusions or Founder authority boundaries.
-
-### PCR-01 — Canonical release reconciliation
-
-Status: **implementation and validation in progress**.
-
-PCR-01 governs the final Phase 1–7 release through `configs/canonical-release.yaml` and the deterministic `releases/canonical-chat-first-phase1-7-release.json`. The controlling completed chat-first source release is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, validated by final run `30976222896` and retained artifact `8918355687`. Earlier successful Phase 7 runs remain recorded as superseded snapshots rather than controlling evidence.
-
-PCR-01 does not enable real client data, commit original methodology binaries or claim operating infrastructure.
+Codex integration remains deliberately deferred until the agreed pre-Codex readiness tranche is complete. Later Codex work begins from the canonical Phase 1–7 release manifest, regenerates and validates all governed records, applies the database migration in a disposable environment, imports the original source files unchanged into controlled storage, verifies committed profile checksums, exercises parser and retrieval gold cases, configures environment and region isolation, tests encryption, backup restoration, observability, retention, rollback and kill switches, and reports discrepancies without silently changing governing contracts, source rights, aliases, security controls, regional boundaries, processor approvals, fixture evidence, golden expectations, answer keys, semantic conclusions or Founder authority boundaries.
