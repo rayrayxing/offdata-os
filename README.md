@@ -6,13 +6,15 @@ This repository is the **canonical build repository** for the new offdata consul
 
 ## Current status
 
-- Repository stage: specification-first foundation
+- Repository stage: chat-first pre-Codex foundation hardened through PCR-03
 - Initial operator: Founder only
 - Initial hosting/data region: Singapore
-- Initial data: synthetic only
-- Initial budget posture: local-first, free-tier-first
+- Initial data: synthetic only; real client data remains prohibited
 - Engineering execution: Codex, operating through gated phases
 - Production orchestrator: not yet approved; the build must preserve replaceability
+- Canonical release: Phase 1–7 reconciled by PCR-01
+- Test and reference integrity: governed by PCR-02
+- Repository and governance hygiene: governed by PCR-03
 
 ## Product objective
 
@@ -21,13 +23,18 @@ offdata should support the full consulting lifecycle from qualified opportunity 
 ## Read order
 
 1. `AGENTS.md`
-2. `docs/00-START-HERE.md`
-3. `docs/01-PRODUCT-VISION.md`
-4. `docs/02-FUNCTIONAL-REQUIREMENTS.md`
-5. `docs/03-ARCHITECTURE.md`
-6. `docs/10-TESTING-STRATEGY.md`
-7. `docs/11-BUILD-BACKLOG.md`
-8. `docs/14-CODEX-KICKOFF.md`
+2. `GOVERNANCE.md`
+3. `SECURITY.md`
+4. `CONTRIBUTING.md`
+5. `docs/00-START-HERE.md`
+6. `docs/01-PRODUCT-VISION.md`
+7. `docs/02-FUNCTIONAL-REQUIREMENTS.md`
+8. `docs/03-ARCHITECTURE.md`
+9. `docs/10-TESTING-STRATEGY.md`
+10. `docs/11-BUILD-BACKLOG.md`
+11. `docs/14-CODEX-KICKOFF.md`
+12. `docs/20-DEVELOPMENT-STATUS.md`
+13. `docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md`
 
 ## Non-negotiable principles
 
@@ -51,8 +58,13 @@ The first target is a local, synthetic-data prototype that can complete one end-
 ```text
 offdata-os/
 ├── AGENTS.md
-├── README.md
+├── GOVERNANCE.md
+├── SECURITY.md
+├── CONTRIBUTING.md
 ├── docs/
+├── configs/
+├── repository/
+├── requirements/
 ├── knowledge/
 ├── fixtures/
 ├── apps/
@@ -62,4 +74,4 @@ offdata-os/
 └── tests/
 ```
 
-The directories beyond documentation will be created during the approved implementation phases.
+Application and operating-infrastructure directories are populated only through approved implementation phases.
