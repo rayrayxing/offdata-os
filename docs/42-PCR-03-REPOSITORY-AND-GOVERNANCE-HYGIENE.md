@@ -72,7 +72,7 @@ Automation remains evidence rather than approval.
 
 Obsolete Phase 5 pull requests #11 and #12 were superseded by merged PR #13. PCR-03 closes them with explicit replacement references so they can no longer be mistaken for active or controlling work.
 
-Historical merged and validation branches may be deleted after evidence retention is confirmed. The GitHub connector used for PCR--03 does not expose branch deletion or repository-setting mutation, so hosted settings and residual branch deletion remain explicit Founder-administered checks rather than being misrepresented as completed.
+Historical merged and validation branches may be deleted after evidence retention is confirmed. The GitHub connector used for PCR-03 does not expose branch deletion or repository-setting mutation, so hosted settings and residual branch deletion remain explicit Founder-administered checks rather than being misrepresented as completed.
 
 ## 6. Hosted settings required before Codex
 
