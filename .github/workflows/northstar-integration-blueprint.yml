@@ -71,7 +71,7 @@ jobs:
             contracts/northstar-integration-blueprint.json
             schemas/northstar-integration-blueprint.schema.json
             scripts/build_pcr07_northstar_blueprint.py
-            scripts/validate_pcr07_northstar-blueprint.py
+            scripts/validate_pcr07_northstar_blueprint.py
             docs/46-PCR-07-NORTHSTAR-END-TO-END-INTEGRATION-BLUEPRINT.md
             reports/pcr07-validation-evidence.md
             contracts/hermes-compatibility-pack.json
