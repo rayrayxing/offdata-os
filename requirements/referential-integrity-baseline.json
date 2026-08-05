@@ -1,0 +1,4265 @@
+{
+  "counts": {
+    "agents": 11,
+    "aliases": 99,
+    "commands": 10,
+    "controls": 48,
+    "edges": 604,
+    "events": 15,
+    "executable_test_nodes": 245,
+    "fixtures": 17,
+    "implemented_semantic_tests": 45,
+    "planned_semantic_tests": 54,
+    "playbooks": 12,
+    "requirements": 123,
+    "semantic_tests": 99,
+    "sources": 23,
+    "threats": 20
+  },
+  "edges": [
+    {
+      "relation": "defined_by",
+      "source_id": "deliverable_production",
+      "source_kind": "agent",
+      "target_id": "agents/deliverable_production/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "engagement_partner",
+      "source_kind": "agent",
+      "target_id": "agents/engagement_partner/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "implementation_benefits",
+      "source_kind": "agent",
+      "target_id": "agents/implementation_benefits/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "independent_quality",
+      "source_kind": "agent",
+      "target_id": "agents/independent_quality/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "method_architect",
+      "source_kind": "agent",
+      "target_id": "agents/method_architect/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "methodology_librarian",
+      "source_kind": "agent",
+      "target_id": "agents/methodology_librarian/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "origination_opportunity",
+      "source_kind": "agent",
+      "target_id": "agents/origination_opportunity/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "problem_architect",
+      "source_kind": "agent",
+      "target_id": "agents/problem_architect/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "quantitative_value",
+      "source_kind": "agent",
+      "target_id": "agents/quantitative_value/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "research_evidence",
+      "source_kind": "agent",
+      "target_id": "agents/research_evidence/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "defined_by",
+      "source_id": "storyline",
+      "source_kind": "agent",
+      "target_id": "agents/storyline/SKILL.md",
+      "target_kind": "skill"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AGENT-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "AUTH-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "EVID-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "SEC-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "offdata-agents",
+      "source_kind": "agent_system",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "01-CONSULTING-LIFECYCLE(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-001",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "01-CONSULTING-LIFECYCLE.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-001",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "01-ENGAGEMENT-GOVERNANCE.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-001",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "01-ENGAGEMENT-LIFECYCLE-AND-GOVERNANCE.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-001",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "01-ENGAGEMENT-LIFECYCLE-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-001",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "01-ENGAGEMENT-LIFECYCLE.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-001",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "02-EVIDENCE-AND-SOURCE-CONTROLS.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "02-EVIDENCE-AND-SOURCE-QUALITY.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "02-EVIDENCE-STANDARDS.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "02-MANDATE-AND-DECISION-FRAMING.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-003",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "02-MANDATE-AND-DECISION-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-003",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "02-PROBLEM-AND-FRAMEWORK-REGISTRY(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-002",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "02-PROBLEM-AND-FRAMEWORK-REGISTRY.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-002",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "03-EVIDENCE-AND-RESEARCH-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "03-EVIDENCE-AND-RESEARCH.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "03-EVIDENCE-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-003",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "03-HYPOTHESIS-DRIVEN-PROBLEM-SOLVING.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-003",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "03-PROBLEM-FRAMING-AND-ISSUE-TREES.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-003",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "03-PROBLEM-FRAMING-AND-TREES.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-003",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "04-ANALYSIS-AND-QUANTIFICATION-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-007",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "04-METHOD-SELECTION-AND-SEQUENCING.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-005",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "04-METHOD-SELECTION-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-005",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "04-METHOD-SELECTION.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-005",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "04-RESEARCH-AND-EVIDENCE-STANDARD(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "04-RESEARCH-AND-EVIDENCE-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "05-ANALYSIS-AND-MODELLING-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-007",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "05-METHODOLOGY-AND-APPROACH-DESIGN(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-005",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "05-METHODOLOGY-AND-APPROACH-DESIGN.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-005",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "05-PROPOSAL-AND-DELIVERABLE-ARCHITECTURE.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-006",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "05-PROPOSALS-AND-DELIVERABLES.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-006",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "06-PROPOSAL-AND-DELIVERABLE-DESIGN.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-006",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "06-QUALITY-ASSURANCE-AND-FOUNDER-REVIEW.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-009",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "06-QUALITY-ASSURANCE-AND-RED-TEAM.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-009",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "06-STORYLINE-AND-PROPOSITION-STANDARD(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-006",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "06-STORYLINE-AND-PROPOSITION-STANDARD.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-006",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "07-QUALITY-ASSURANCE-AND-FOUNDER-REVIEW.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-009",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "07-QUALITY-ASSURANCE.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-009",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "07-VALUE-CASE-AND-FINANCIAL-MODELLING(3).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-007",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "07-VALUE-CASE-AND-FINANCIAL-MODELLING.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-007",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "08-BENEFITS-REALISATION-AND-PMO.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-008",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "08-IMPLEMENTATION-AND-CHANGE(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-008",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "08-IMPLEMENTATION-AND-CHANGE.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-008",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "08-OUTCOME-TRACKING.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-008",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "09-RED-TEAM-AND-QUALITY-RUBRIC(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-009",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "09-RED-TEAM-AND-QUALITY-RUBRIC.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-009",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "10-METHOD-CARDS.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-002",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "10-SECTOR-OVERLAYS(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-010",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "10-SECTOR-OVERLAYS.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-010",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "11-SANITISED-ENGAGEMENT-EXEMPLARS(2).md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-011",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "11-SANITISED-ENGAGEMENT-EXEMPLARS.md",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-011",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "AI-Enabled Consulting Engagement Lifecycle",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-001",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Benefits Realisation and Performance Improvement",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-BENEFITS",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Benefits Realisation and Performance Improvement.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-BENEFITS",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Corporate and Business-Unit Strategy Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-STRATEGY",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Corporate and Business-Unit Strategy Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-STRATEGY",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Cost and Productivity \u2014 Decision-Led Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-COST",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Cost and Productivity \u2014 Decision-Led Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-COST",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Customer Experience Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-CX",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Customer Experience Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-CX",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Digital and AI Transformation",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-DIGITAL-AI",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Digital and AI Transformation Methodology.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-DIGITAL-AI",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Growth and Commercial Strategy Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-GROWTH",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Growth and Commercial Strategy Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-GROWTH",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Hypothesis-Driven Problem Solving",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-003",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "IPO Valuation and Capital Strategy.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-IPO",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "IPO, Valuation and Capital Strategy",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-IPO",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Implementation and Change",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-008",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Implementation and Change",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-CHANGE",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Implementation and Change Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-CHANGE",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Implementation and Change Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-CHANGE",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "M&A, Carve-out and Integration Decision-Led Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-MA",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "M&A, Carve-out and Integration Decision-Led Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-MA",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Methodology and Approach Design",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-005",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Operating Model Transformation Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-OPERATING-MODEL",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Operating Model Transformation Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-OPERATING-MODEL",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Organisation and Workforce Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-WORKFORCE",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Organisation and Workforce Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-WORKFORCE",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Problem and Framework Registry",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-002",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Red-Team and Quality Rubric",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-009",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Research and Evidence Standard",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-004",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Risk and Controls Methodology Reference",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-RISK",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Risk and Controls Methodology Reference.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-RISK",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Sanitised Engagement Exemplars",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-011",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Sector Overlays",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-010",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Storyline and Proposition Standard",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-006",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "Value Case and Financial Modelling",
+      "source_kind": "alias",
+      "target_id": "SOURCE-CORE-007",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "benefits-realisation-and-performance-improvement.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-BENEFITS",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "corporate-and-business-unit-strategy.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-STRATEGY",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "cost-and-productivity.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-COST",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "customer-experience.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-CX",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "digital-and-ai-transformation.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-DIGITAL-AI",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "growth-and-commercial-strategy.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-GROWTH",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "implementation-and-change-methodology.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-CHANGE",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "ipo-valuation-and-capital-strategy.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-IPO",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "ma-carve-out-and-integration.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-MA",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "operating-model-transformation.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-OPERATING-MODEL",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "organisation-and-workforce.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-WORKFORCE",
+      "target_kind": "source"
+    },
+    {
+      "relation": "resolves_to",
+      "source_id": "risk-and-controls.docx",
+      "source_kind": "alias",
+      "target_id": "SOURCE-DOMAIN-RISK",
+      "target_kind": "source"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "cancel_engagement",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "cancel_engagement",
+      "source_kind": "command",
+      "target_id": "engagement_cancelled",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "cancel_engagement",
+      "source_kind": "command",
+      "target_id": "AUTH-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "cancel_engagement",
+      "source_kind": "command",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "cancel_engagement",
+      "source_kind": "command",
+      "target_id": "LIFE-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "create_engagement",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "create_engagement",
+      "source_kind": "command",
+      "target_id": "engagement_created",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "create_engagement",
+      "source_kind": "command",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "create_engagement",
+      "source_kind": "command",
+      "target_id": "DATA-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "create_engagement",
+      "source_kind": "command",
+      "target_id": "DATA-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "execute_external_action",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "execute_external_action",
+      "source_kind": "command",
+      "target_id": "external_action_executed",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "execute_external_action",
+      "source_kind": "command",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "execute_external_action",
+      "source_kind": "command",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "execute_external_action",
+      "source_kind": "command",
+      "target_id": "LIFE-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "propose_external_action",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "propose_external_action",
+      "source_kind": "command",
+      "target_id": "approval_requested",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "propose_external_action",
+      "source_kind": "command",
+      "target_id": "external_action_proposed",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "propose_external_action",
+      "source_kind": "command",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "propose_external_action",
+      "source_kind": "command",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "transition_proposed",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "transition_rejected",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "transition_accepted",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "transition_proposed",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "LIFE-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "LIFE-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "propose_transition",
+      "source_kind": "command",
+      "target_id": "LIFE-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "record_agent_output",
+      "source_kind": "command",
+      "target_id": "defect_recorded",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "record_agent_output",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "record_agent_output",
+      "source_kind": "command",
+      "target_id": "agent_output_recorded",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_agent_output",
+      "source_kind": "command",
+      "target_id": "AGENT-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_agent_output",
+      "source_kind": "command",
+      "target_id": "AGENT-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_agent_output",
+      "source_kind": "command",
+      "target_id": "AGENT-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_agent_output",
+      "source_kind": "command",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "record_approval",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "record_approval",
+      "source_kind": "command",
+      "target_id": "approval_recorded",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "record_approval",
+      "source_kind": "command",
+      "target_id": "workflow_resumed",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_approval",
+      "source_kind": "command",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_approval",
+      "source_kind": "command",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_approval",
+      "source_kind": "command",
+      "target_id": "AUTH-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_approval",
+      "source_kind": "command",
+      "target_id": "AUTH-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "record_approval",
+      "source_kind": "command",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "release_artefact",
+      "source_kind": "command",
+      "target_id": "defect_recorded",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "release_artefact",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "release_artefact",
+      "source_kind": "command",
+      "target_id": "artefact_released",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "release_artefact",
+      "source_kind": "command",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "release_artefact",
+      "source_kind": "command",
+      "target_id": "DELIV-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "release_artefact",
+      "source_kind": "command",
+      "target_id": "DELIV-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "release_artefact",
+      "source_kind": "command",
+      "target_id": "QA-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "request_approval",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "request_approval",
+      "source_kind": "command",
+      "target_id": "approval_requested",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "request_approval",
+      "source_kind": "command",
+      "target_id": "AUTH-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "request_approval",
+      "source_kind": "command",
+      "target_id": "AUTH-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "request_approval",
+      "source_kind": "command",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "emits_failure",
+      "source_id": "update_mandate",
+      "source_kind": "command",
+      "target_id": "workflow_blocked",
+      "target_kind": "event"
+    },
+    {
+      "relation": "emits_success",
+      "source_id": "update_mandate",
+      "source_kind": "command",
+      "target_id": "mandate_updated",
+      "target_kind": "event"
+    },
+    {
+      "relation": "implements",
+      "source_id": "update_mandate",
+      "source_kind": "command",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "update_mandate",
+      "source_kind": "command",
+      "target_id": "DATA-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "update_mandate",
+      "source_kind": "command",
+      "target_id": "OUT-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-AUDIT-EVENT",
+      "source_kind": "control",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-AUDIT-EXPORT",
+      "source_kind": "control",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-AUDIT-EXPORT",
+      "source_kind": "control",
+      "target_id": "DATA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-BACKUP-POLICY",
+      "source_kind": "control",
+      "target_id": "SEC-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-BACKUP-RESTORE-TEST",
+      "source_kind": "control",
+      "target_id": "SEC-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-COST-BUDGET",
+      "source_kind": "control",
+      "target_id": "AGENT-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-COST-BUDGET",
+      "source_kind": "control",
+      "target_id": "COST-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-CREDENTIAL-REFERENCE-ONLY",
+      "source_kind": "control",
+      "target_id": "SEC-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-CREDENTIAL-REFERENCE-ONLY",
+      "source_kind": "control",
+      "target_id": "SEC-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-CREDENTIAL-SCOPING",
+      "source_kind": "control",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-CREDENTIAL-SCOPING",
+      "source_kind": "control",
+      "target_id": "SEC-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-CRM-DATA-MINIMISATION",
+      "source_kind": "control",
+      "target_id": "CRM-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-DATA-MINIMISATION",
+      "source_kind": "control",
+      "target_id": "CRM-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-DATA-MINIMISATION",
+      "source_kind": "control",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-DELETION-VERIFICATION",
+      "source_kind": "control",
+      "target_id": "DATA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-DERIVED-DATA-DELETION",
+      "source_kind": "control",
+      "target_id": "DATA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-DOCUMENT-QUARANTINE",
+      "source_kind": "control",
+      "target_id": "AGENT-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-DOCUMENT-QUARANTINE",
+      "source_kind": "control",
+      "target_id": "EVID-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-DURABLE-RECOVERY",
+      "source_kind": "control",
+      "target_id": "LIFE-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-ENCRYPTION-AT-REST",
+      "source_kind": "control",
+      "target_id": "SEC-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-ENCRYPTION-IN-TRANSIT",
+      "source_kind": "control",
+      "target_id": "SEC-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-ENGAGEMENT-ISOLATION",
+      "source_kind": "control",
+      "target_id": "DATA-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-ENVIRONMENT-SEPARATION",
+      "source_kind": "control",
+      "target_id": "SEC-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-FIELD-ALLOWLIST",
+      "source_kind": "control",
+      "target_id": "CRM-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-FOUNDER-ACTION-APPROVAL",
+      "source_kind": "control",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-FOUNDER-ACTION-APPROVAL",
+      "source_kind": "control",
+      "target_id": "AUTH-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-FOUNDER-PRODUCTION-APPROVAL",
+      "source_kind": "control",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-FOUNDER-PRODUCTION-APPROVAL",
+      "source_kind": "control",
+      "target_id": "AUTH-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-IDEMPOTENCY",
+      "source_kind": "control",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-IDEMPOTENCY",
+      "source_kind": "control",
+      "target_id": "LIFE-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-IMMUTABLE-AUDIT",
+      "source_kind": "control",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-IMMUTABLE-AUDIT",
+      "source_kind": "control",
+      "target_id": "DATA-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-INCIDENT-PLAYBOOK",
+      "source_kind": "control",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-INDEPENDENT-REVIEW",
+      "source_kind": "control",
+      "target_id": "AUTH-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-INDEPENDENT-REVIEW",
+      "source_kind": "control",
+      "target_id": "QA-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-KILL-SWITCH-TEST",
+      "source_kind": "control",
+      "target_id": "LIFE-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-KILL-SWITCH-TEST",
+      "source_kind": "control",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-LEAST-PRIVILEGE",
+      "source_kind": "control",
+      "target_id": "AGENT-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-LEAST-PRIVILEGE",
+      "source_kind": "control",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-LOG-REDACTION",
+      "source_kind": "control",
+      "target_id": "SEC-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-LOG-REDACTION",
+      "source_kind": "control",
+      "target_id": "SEC-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-METADATA-ALLOWLIST",
+      "source_kind": "control",
+      "target_id": "DATA-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-MINIMUM-CONTEXT",
+      "source_kind": "control",
+      "target_id": "AGENT-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-NO-AUTONOMOUS-INCIDENT-CLOSURE",
+      "source_kind": "control",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-NO-AUTONOMOUS-INCIDENT-CLOSURE",
+      "source_kind": "control",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-OBSERVABILITY-ALERTS",
+      "source_kind": "control",
+      "target_id": "SEC-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PRIVILEGED-ACCESS-LOG",
+      "source_kind": "control",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PRIVILEGED-ACCESS-LOG",
+      "source_kind": "control",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PROCESSOR-REGISTER",
+      "source_kind": "control",
+      "target_id": "SEC-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PROCESSOR-REVIEW-EXPIRY",
+      "source_kind": "control",
+      "target_id": "SEC-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PRODUCTION-SECURITY-GATE",
+      "source_kind": "control",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PRODUCTION-SECURITY-GATE",
+      "source_kind": "control",
+      "target_id": "TEST-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PROMPT-INJECTION-TEST",
+      "source_kind": "control",
+      "target_id": "AGENT-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PROVIDER-CALL-LOG",
+      "source_kind": "control",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PROVIDER-CALL-LOG",
+      "source_kind": "control",
+      "target_id": "SEC-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-PROVIDER-TRAINING-DISABLED",
+      "source_kind": "control",
+      "target_id": "SEC-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-REGION-PINNING",
+      "source_kind": "control",
+      "target_id": "DATA-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-REGION-PINNING",
+      "source_kind": "control",
+      "target_id": "SEC-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-RETENTION-DELETION",
+      "source_kind": "control",
+      "target_id": "DATA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-RETRY-LIMIT",
+      "source_kind": "control",
+      "target_id": "LIFE-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-SECRET-SCANNING",
+      "source_kind": "control",
+      "target_id": "SEC-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-STRONG-AUTH-MFA",
+      "source_kind": "control",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-SUPPLY-CHAIN-REVIEW",
+      "source_kind": "control",
+      "target_id": "SEC-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-SUPPORT-ACCESS-EXPIRY",
+      "source_kind": "control",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-TENANT-ISOLATION",
+      "source_kind": "control",
+      "target_id": "DATA-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-TOOL-PERMISSION",
+      "source_kind": "control",
+      "target_id": "AGENT-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "implements",
+      "source_id": "CTRL-TRANSFER-REGISTER",
+      "source_kind": "control",
+      "target_id": "DATA-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-BENEFITS-001",
+      "source_kind": "fixture",
+      "target_id": "benefits_realisation_and_performance_improvement",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-CARVEOUT-001",
+      "source_kind": "fixture",
+      "target_id": "carve_out_and_separation",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-CHANGE-001",
+      "source_kind": "fixture",
+      "target_id": "implementation_and_change",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-001",
+      "source_kind": "fixture",
+      "target_id": "digital_and_ai_transformation",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-001",
+      "source_kind": "fixture",
+      "target_id": "operating_model_transformation",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-001",
+      "source_kind": "fixture",
+      "target_id": "organisation_and_workforce",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-002",
+      "source_kind": "fixture",
+      "target_id": "benefits_realisation_and_performance_improvement",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-002",
+      "source_kind": "fixture",
+      "target_id": "carve_out_and_separation",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-002",
+      "source_kind": "fixture",
+      "target_id": "merger_and_integration",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-003",
+      "source_kind": "fixture",
+      "target_id": "cost_and_productivity",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-003",
+      "source_kind": "fixture",
+      "target_id": "customer_experience",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-003",
+      "source_kind": "fixture",
+      "target_id": "growth_and_commercial_strategy",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-004",
+      "source_kind": "fixture",
+      "target_id": "corporate_and_business_unit_strategy",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-004",
+      "source_kind": "fixture",
+      "target_id": "implementation_and_change",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "combines",
+      "source_id": "FIXTURE-COMPOUND-004",
+      "source_kind": "fixture",
+      "target_id": "ipo_valuation_and_capital_strategy",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-COST-001",
+      "source_kind": "fixture",
+      "target_id": "cost_and_productivity",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-CX-001",
+      "source_kind": "fixture",
+      "target_id": "customer_experience",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-DAI-001",
+      "source_kind": "fixture",
+      "target_id": "digital_and_ai_transformation",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-GROWTH-001",
+      "source_kind": "fixture",
+      "target_id": "growth_and_commercial_strategy",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-IPO-001",
+      "source_kind": "fixture",
+      "target_id": "ipo_valuation_and_capital_strategy",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-MA-001",
+      "source_kind": "fixture",
+      "target_id": "merger_and_integration",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-OM-001",
+      "source_kind": "fixture",
+      "target_id": "operating_model_transformation",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-RISK-001",
+      "source_kind": "fixture",
+      "target_id": "risk_and_controls",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-STRATEGY-001",
+      "source_kind": "fixture",
+      "target_id": "corporate_and_business_unit_strategy",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "covers",
+      "source_id": "FIXTURE-WORKFORCE-001",
+      "source_kind": "fixture",
+      "target_id": "organisation_and_workforce",
+      "target_kind": "engagement_type"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-EVIDENCE-003",
+      "source_kind": "test",
+      "target_id": "EVID-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-FALSE-TRAPS-001",
+      "source_kind": "test",
+      "target_id": "TEST-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-OUTREACH-001",
+      "source_kind": "test",
+      "target_id": "ORIG-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-QA-001",
+      "source_kind": "test",
+      "target_id": "QA-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-RESEARCH-001",
+      "source_kind": "test",
+      "target_id": "EVID-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-RESEARCH-002",
+      "source_kind": "test",
+      "target_id": "EVID-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-RESEARCH-003",
+      "source_kind": "test",
+      "target_id": "EVID-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-ROUTING-001",
+      "source_kind": "test",
+      "target_id": "AGENT-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "AE-STORY-001",
+      "source_kind": "test",
+      "target_id": "DELIV-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "E2E-COMPOUND-FIXTURES-001",
+      "source_kind": "test",
+      "target_id": "TEST-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "E2E-PRIMARY-FIXTURES-001",
+      "source_kind": "test",
+      "target_id": "TEST-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "E2E-WORKLOAD-001",
+      "source_kind": "test",
+      "target_id": "OUT-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "E2E-WORKLOAD-001",
+      "source_kind": "test",
+      "target_id": "TEST-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "FA-PRODUCTION-GATE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-FOUNDER-PRODUCTION-APPROVAL",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "FA-PRODUCTION-GATE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PRODUCTION-SECURITY-GATE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "FA-PRODUCTION-GATE-001",
+      "source_kind": "test",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "FA-PRODUCTION-GATE-001",
+      "source_kind": "test",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-ADAPTER-001",
+      "source_kind": "test",
+      "target_id": "AGENT-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-AGENT-WRITE-001",
+      "source_kind": "test",
+      "target_id": "AGENT-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-BACKUP-RESTORE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-BACKUP-POLICY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-BACKUP-RESTORE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-BACKUP-RESTORE-TEST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-BACKUP-RESTORE-001",
+      "source_kind": "test",
+      "target_id": "SEC-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-BASELINE-IMMUTABLE-001",
+      "source_kind": "test",
+      "target_id": "DATA-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-COST-ATTRIBUTION-001",
+      "source_kind": "test",
+      "target_id": "COST-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-CRM-001",
+      "source_kind": "test",
+      "target_id": "CRM-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-CRM-002",
+      "source_kind": "test",
+      "target_id": "CRM-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-ENV-SEPARATION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-CREDENTIAL-SCOPING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-ENV-SEPARATION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-ENVIRONMENT-SEPARATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-ENV-SEPARATION-001",
+      "source_kind": "test",
+      "target_id": "SEC-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-FIXTURE-001",
+      "source_kind": "test",
+      "target_id": "QA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-INDEPENDENT-RECALC-001",
+      "source_kind": "test",
+      "target_id": "MODEL-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-INGEST-001",
+      "source_kind": "test",
+      "target_id": "KNOW-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-KILL-001",
+      "source_kind": "test",
+      "target_id": "LIFE-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-LOCAL-FIRST-001",
+      "source_kind": "test",
+      "target_id": "COST-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-OBSERVABILITY-001",
+      "source_kind": "test",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-OBSERVABILITY-001",
+      "source_kind": "test",
+      "target_id": "SEC-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-RADAR-002",
+      "source_kind": "test",
+      "target_id": "KNOW-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-RECOVERY-001",
+      "source_kind": "test",
+      "target_id": "LIFE-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-REPAIR-001",
+      "source_kind": "test",
+      "target_id": "QA-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-REPEATABILITY-001",
+      "source_kind": "test",
+      "target_id": "TEST-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-RETENTION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-DELETION-VERIFICATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-RETENTION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-DERIVED-DATA-DELETION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-RETENTION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-RETENTION-DELETION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-RETENTION-001",
+      "source_kind": "test",
+      "target_id": "DATA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-ROLLBACK-001",
+      "source_kind": "test",
+      "target_id": "CTRL-DURABLE-RECOVERY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-ROLLBACK-001",
+      "source_kind": "test",
+      "target_id": "CTRL-INCIDENT-PLAYBOOK",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-ROLLBACK-001",
+      "source_kind": "test",
+      "target_id": "CTRL-KILL-SWITCH-TEST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-ROLLBACK-001",
+      "source_kind": "test",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-RUNTIME-REPLACE-001",
+      "source_kind": "test",
+      "target_id": "AGENT-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-RUNTIME-REPLACE-001",
+      "source_kind": "test",
+      "target_id": "OUT-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-STALENESS-001",
+      "source_kind": "test",
+      "target_id": "EVID-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-WORKBOOK-ARCH-001",
+      "source_kind": "test",
+      "target_id": "MODEL-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "IT-WORKBOOK-ARCH-001",
+      "source_kind": "test",
+      "target_id": "MODEL-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "META-TEST-HIERARCHY-001",
+      "source_kind": "test",
+      "target_id": "TEST-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-CRM-001",
+      "source_kind": "test",
+      "target_id": "CRM-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-ENCRYPTION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-ENCRYPTION-AT-REST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-ENCRYPTION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-ENCRYPTION-IN-TRANSIT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-ENCRYPTION-001",
+      "source_kind": "test",
+      "target_id": "SEC-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-INJECTION-001",
+      "source_kind": "test",
+      "target_id": "AGENT-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-ACCESS-001",
+      "source_kind": "test",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-ACCESS-001",
+      "source_kind": "test",
+      "target_id": "CTRL-FOUNDER-ACTION-APPROVAL",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-ACCESS-001",
+      "source_kind": "test",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-ACCESS-001",
+      "source_kind": "test",
+      "target_id": "AUTH-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-ACCESS-001",
+      "source_kind": "test",
+      "target_id": "DATA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-BASELINE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-BASELINE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PRODUCTION-SECURITY-GATE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-BASELINE-001",
+      "source_kind": "test",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-BASELINE-001",
+      "source_kind": "test",
+      "target_id": "TEST-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-BASELINE-002",
+      "source_kind": "test",
+      "target_id": "CTRL-PRODUCTION-SECURITY-GATE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-BASELINE-002",
+      "source_kind": "test",
+      "target_id": "TEST-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-CLASSIFY-001",
+      "source_kind": "test",
+      "target_id": "CTRL-DATA-MINIMISATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-CLASSIFY-001",
+      "source_kind": "test",
+      "target_id": "DATA-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-CLASSIFY-001",
+      "source_kind": "test",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-CONTROL-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PRODUCTION-SECURITY-GATE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-CONTROL-001",
+      "source_kind": "test",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-CRM-001",
+      "source_kind": "test",
+      "target_id": "CTRL-CRM-DATA-MINIMISATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-CRM-001",
+      "source_kind": "test",
+      "target_id": "CTRL-FIELD-ALLOWLIST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-CRM-001",
+      "source_kind": "test",
+      "target_id": "CRM-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-DEV-DATA-001",
+      "source_kind": "test",
+      "target_id": "CTRL-ENVIRONMENT-SEPARATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-DEV-DATA-001",
+      "source_kind": "test",
+      "target_id": "SEC-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-DOCUMENT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-DOCUMENT-QUARANTINE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-DOCUMENT-001",
+      "source_kind": "test",
+      "target_id": "AGENT-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-DOCUMENT-001",
+      "source_kind": "test",
+      "target_id": "EVID-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-ENGAGEMENT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-ENGAGEMENT-ISOLATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-ENGAGEMENT-001",
+      "source_kind": "test",
+      "target_id": "DATA-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-FOUNDER-GATE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-FOUNDER-PRODUCTION-APPROVAL",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-FOUNDER-GATE-001",
+      "source_kind": "test",
+      "target_id": "AUTH-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-FOUNDER-GATE-001",
+      "source_kind": "test",
+      "target_id": "AUTH-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-GATE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PRODUCTION-SECURITY-GATE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-GATE-001",
+      "source_kind": "test",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-GATE-001",
+      "source_kind": "test",
+      "target_id": "TEST-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-HOLD-001",
+      "source_kind": "test",
+      "target_id": "CTRL-RETENTION-DELETION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-HOLD-001",
+      "source_kind": "test",
+      "target_id": "DATA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-INCIDENT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-INCIDENT-PLAYBOOK",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-INCIDENT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-NO-AUTONOMOUS-INCIDENT-CLOSURE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-INCIDENT-001",
+      "source_kind": "test",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-LOG-001",
+      "source_kind": "test",
+      "target_id": "CTRL-LOG-REDACTION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-LOG-001",
+      "source_kind": "test",
+      "target_id": "SEC-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-LOG-001",
+      "source_kind": "test",
+      "target_id": "SEC-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-METADATA-001",
+      "source_kind": "test",
+      "target_id": "CTRL-DATA-MINIMISATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-METADATA-001",
+      "source_kind": "test",
+      "target_id": "CTRL-METADATA-ALLOWLIST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-METADATA-001",
+      "source_kind": "test",
+      "target_id": "DATA-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-MFA-001",
+      "source_kind": "test",
+      "target_id": "CTRL-STRONG-AUTH-MFA",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-MFA-001",
+      "source_kind": "test",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-PROCESSOR-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PROCESSOR-REGISTER",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-PROCESSOR-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PROCESSOR-REVIEW-EXPIRY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-PROCESSOR-001",
+      "source_kind": "test",
+      "target_id": "SEC-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-PROCESSOR-001",
+      "source_kind": "test",
+      "target_id": "SEC-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-REGION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-REGION-PINNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-REGION-001",
+      "source_kind": "test",
+      "target_id": "DATA-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-REGION-001",
+      "source_kind": "test",
+      "target_id": "SEC-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-RETENTION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-DELETION-VERIFICATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-RETENTION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-RETENTION-DELETION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-RETENTION-001",
+      "source_kind": "test",
+      "target_id": "DATA-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SCOPE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-ENGAGEMENT-ISOLATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SCOPE-001",
+      "source_kind": "test",
+      "target_id": "CTRL-TENANT-ISOLATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SCOPE-001",
+      "source_kind": "test",
+      "target_id": "DATA-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SECRET-001",
+      "source_kind": "test",
+      "target_id": "CTRL-CREDENTIAL-REFERENCE-ONLY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SECRET-001",
+      "source_kind": "test",
+      "target_id": "CTRL-SECRET-SCANNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SECRET-001",
+      "source_kind": "test",
+      "target_id": "SEC-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SUPPORT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PRIVILEGED-ACCESS-LOG",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SUPPORT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-SUPPORT-ACCESS-EXPIRY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SUPPORT-001",
+      "source_kind": "test",
+      "target_id": "DATA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-SUPPORT-001",
+      "source_kind": "test",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-TENANT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-LEAST-PRIVILEGE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-TENANT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-TENANT-ISOLATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-TENANT-001",
+      "source_kind": "test",
+      "target_id": "DATA-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-TENANT-001",
+      "source_kind": "test",
+      "target_id": "SEC-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-THREAT-001",
+      "source_kind": "test",
+      "target_id": "CTRL-INCIDENT-PLAYBOOK",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-THREAT-001",
+      "source_kind": "test",
+      "target_id": "SEC-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-THREAT-001",
+      "source_kind": "test",
+      "target_id": "TEST-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-TRANSFER-001",
+      "source_kind": "test",
+      "target_id": "CTRL-REGION-PINNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-TRANSFER-001",
+      "source_kind": "test",
+      "target_id": "CTRL-TRANSFER-REGISTER",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-TRANSFER-001",
+      "source_kind": "test",
+      "target_id": "AUTH-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-TRANSFER-001",
+      "source_kind": "test",
+      "target_id": "DATA-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-UNTRUSTED-001",
+      "source_kind": "test",
+      "target_id": "CTRL-DOCUMENT-QUARANTINE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-UNTRUSTED-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PROMPT-INJECTION-TEST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-UNTRUSTED-001",
+      "source_kind": "test",
+      "target_id": "AGENT-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-P7-UNTRUSTED-001",
+      "source_kind": "test",
+      "target_id": "EVID-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-REGION-ISOLATION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-REGION-PINNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-REGION-ISOLATION-001",
+      "source_kind": "test",
+      "target_id": "CTRL-TRANSFER-REGISTER",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-REGION-ISOLATION-001",
+      "source_kind": "test",
+      "target_id": "DATA-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-REGION-ISOLATION-001",
+      "source_kind": "test",
+      "target_id": "SEC-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-SUPPLY-CHAIN-001",
+      "source_kind": "test",
+      "target_id": "CTRL-SUPPLY-CHAIN-REVIEW",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-SUPPLY-CHAIN-001",
+      "source_kind": "test",
+      "target_id": "SEC-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "SEC-TOOL-001",
+      "source_kind": "test",
+      "target_id": "AGENT-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-AGENT-001",
+      "source_kind": "test",
+      "target_id": "AGENT-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-ALIAS-001",
+      "source_kind": "test",
+      "target_id": "KNOW-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-ARTEFACT-001",
+      "source_kind": "test",
+      "target_id": "DELIV-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-BENEFIT-GOVERNANCE-001",
+      "source_kind": "test",
+      "target_id": "IMPL-005",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-BENEFIT-GOVERNANCE-001",
+      "source_kind": "test",
+      "target_id": "IMPL-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-BUDGET-001",
+      "source_kind": "test",
+      "target_id": "AGENT-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-BURDEN-001",
+      "source_kind": "test",
+      "target_id": "EVID-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-DECISION-FITNESS-001",
+      "source_kind": "test",
+      "target_id": "OUT-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-DEFECT-001",
+      "source_kind": "test",
+      "target_id": "QA-003",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-DEFECT-002",
+      "source_kind": "test",
+      "target_id": "QA-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-EPISTEMIC-001",
+      "source_kind": "test",
+      "target_id": "DATA-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-EXCEPTION-001",
+      "source_kind": "test",
+      "target_id": "QA-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-INITIATIVE-TRACE-001",
+      "source_kind": "test",
+      "target_id": "IMPL-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-INITIATIVE-TRACE-001",
+      "source_kind": "test",
+      "target_id": "IMPL-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-NBA-001",
+      "source_kind": "test",
+      "target_id": "LIFE-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-ORIG-001",
+      "source_kind": "test",
+      "target_id": "ORIG-001",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-OVERLAY-001",
+      "source_kind": "test",
+      "target_id": "KNOW-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-PAID-DEPENDENCY-001",
+      "source_kind": "test",
+      "target_id": "COST-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-PROCESSOR-REGISTER-001",
+      "source_kind": "test",
+      "target_id": "CTRL-CREDENTIAL-REFERENCE-ONLY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-PROCESSOR-REGISTER-001",
+      "source_kind": "test",
+      "target_id": "CTRL-PROCESSOR-REGISTER",
+      "target_kind": "control"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-PROCESSOR-REGISTER-001",
+      "source_kind": "test",
+      "target_id": "SEC-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-QA-INDEP-001",
+      "source_kind": "test",
+      "target_id": "AUTH-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-QA-INDEP-001",
+      "source_kind": "test",
+      "target_id": "QA-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-RADAR-001",
+      "source_kind": "test",
+      "target_id": "KNOW-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-RADAR-001",
+      "source_kind": "test",
+      "target_id": "KNOW-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-RECON-002",
+      "source_kind": "test",
+      "target_id": "DELIV-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-REPRODUCIBILITY-001",
+      "source_kind": "test",
+      "target_id": "MODEL-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-RETRY-001",
+      "source_kind": "test",
+      "target_id": "LIFE-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-RIGHTS-001",
+      "source_kind": "test",
+      "target_id": "KNOW-008",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-SIGNOFF-001",
+      "source_kind": "test",
+      "target_id": "QA-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-SPEND-CONTROL-001",
+      "source_kind": "test",
+      "target_id": "COST-002",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-SUPERSEDE-001",
+      "source_kind": "test",
+      "target_id": "KNOW-010",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "UT-VISUAL-002",
+      "source_kind": "test",
+      "target_id": "DELIV-006",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "VIS-CITATION-001",
+      "source_kind": "test",
+      "target_id": "DELIV-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "VIS-CITATION-001",
+      "source_kind": "test",
+      "target_id": "EVID-009",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "VIS-EDIT-001",
+      "source_kind": "test",
+      "target_id": "DELIV-004",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "verifies",
+      "source_id": "VIS-PPTX-001",
+      "source_kind": "test",
+      "target_id": "DELIV-007",
+      "target_kind": "requirement"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-001",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-001",
+      "source_kind": "threat",
+      "target_id": "CTRL-PRIVILEGED-ACCESS-LOG",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-001",
+      "source_kind": "threat",
+      "target_id": "CTRL-LEAST-PRIVILEGE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-001",
+      "source_kind": "threat",
+      "target_id": "CTRL-TENANT-ISOLATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-001",
+      "source_kind": "threat",
+      "target_id": "IR-DATA-EXPOSURE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-001",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-TENANT-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-001",
+      "source_kind": "threat",
+      "target_id": "SEC-REGION-ISOLATION-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-002",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EXPORT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-002",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-002",
+      "source_kind": "threat",
+      "target_id": "CTRL-ENGAGEMENT-ISOLATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-002",
+      "source_kind": "threat",
+      "target_id": "CTRL-MINIMUM-CONTEXT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-002",
+      "source_kind": "threat",
+      "target_id": "IR-DATA-EXPOSURE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-002",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-ENGAGEMENT-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-002",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-TENANT-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-003",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-003",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROVIDER-CALL-LOG",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-003",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROCESSOR-REGISTER",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-003",
+      "source_kind": "threat",
+      "target_id": "CTRL-REGION-PINNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-003",
+      "source_kind": "threat",
+      "target_id": "CTRL-TRANSFER-REGISTER",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-003",
+      "source_kind": "threat",
+      "target_id": "IR-REGION-LEAKAGE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-003",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-REGION-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-003",
+      "source_kind": "threat",
+      "target_id": "SEC-REGION-ISOLATION-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-004",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-004",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-004",
+      "source_kind": "threat",
+      "target_id": "CTRL-CREDENTIAL-REFERENCE-ONLY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-004",
+      "source_kind": "threat",
+      "target_id": "CTRL-SECRET-SCANNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-004",
+      "source_kind": "threat",
+      "target_id": "IR-CREDENTIAL-EXPOSURE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-004",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-SECRET-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-004",
+      "source_kind": "threat",
+      "target_id": "SEC-SUPPLY-CHAIN-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-005",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-005",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-005",
+      "source_kind": "threat",
+      "target_id": "CTRL-MINIMUM-CONTEXT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-005",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROMPT-INJECTION-TEST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-005",
+      "source_kind": "threat",
+      "target_id": "CTRL-TOOL-PERMISSION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-005",
+      "source_kind": "threat",
+      "target_id": "IR-AGENT-MISUSE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-005",
+      "source_kind": "threat",
+      "target_id": "SEC-INJECTION-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-005",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-UNTRUSTED-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-006",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-006",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-006",
+      "source_kind": "threat",
+      "target_id": "CTRL-DOCUMENT-QUARANTINE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-006",
+      "source_kind": "threat",
+      "target_id": "CTRL-SUPPLY-CHAIN-REVIEW",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-006",
+      "source_kind": "threat",
+      "target_id": "IR-MALICIOUS-DOCUMENT",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-006",
+      "source_kind": "threat",
+      "target_id": "IT-INGEST-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-006",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-DOCUMENT-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-007",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-007",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROVIDER-CALL-LOG",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-007",
+      "source_kind": "threat",
+      "target_id": "CTRL-FOUNDER-ACTION-APPROVAL",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-007",
+      "source_kind": "threat",
+      "target_id": "CTRL-LEAST-PRIVILEGE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-007",
+      "source_kind": "threat",
+      "target_id": "CTRL-TOOL-PERMISSION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-007",
+      "source_kind": "threat",
+      "target_id": "IR-AGENT-MISUSE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-007",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-ACCESS-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-007",
+      "source_kind": "threat",
+      "target_id": "SEC-TOOL-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-008",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROCESSOR-REVIEW-EXPIRY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-008",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROVIDER-CALL-LOG",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-008",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROCESSOR-REGISTER",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-008",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROVIDER-TRAINING-DISABLED",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-008",
+      "source_kind": "threat",
+      "target_id": "IR-PROCESSOR-BREACH",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-008",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-PROCESSOR-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-008",
+      "source_kind": "threat",
+      "target_id": "UT-PROCESSOR-REGISTER-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-009",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-009",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-009",
+      "source_kind": "threat",
+      "target_id": "CTRL-CRM-DATA-MINIMISATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-009",
+      "source_kind": "threat",
+      "target_id": "CTRL-FIELD-ALLOWLIST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-009",
+      "source_kind": "threat",
+      "target_id": "IR-DATA-EXPOSURE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-009",
+      "source_kind": "threat",
+      "target_id": "SEC-CRM-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-009",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-CRM-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-010",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EXPORT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-010",
+      "source_kind": "threat",
+      "target_id": "CTRL-SECRET-SCANNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-010",
+      "source_kind": "threat",
+      "target_id": "CTRL-DATA-MINIMISATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-010",
+      "source_kind": "threat",
+      "target_id": "CTRL-LOG-REDACTION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-010",
+      "source_kind": "threat",
+      "target_id": "IR-DATA-EXPOSURE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-010",
+      "source_kind": "threat",
+      "target_id": "IT-OBSERVABILITY-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-010",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-LOG-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-011",
+      "source_kind": "threat",
+      "target_id": "CTRL-BACKUP-RESTORE-TEST",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-011",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-011",
+      "source_kind": "threat",
+      "target_id": "CTRL-BACKUP-POLICY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-011",
+      "source_kind": "threat",
+      "target_id": "CTRL-REGION-PINNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-011",
+      "source_kind": "threat",
+      "target_id": "IR-AVAILABILITY",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-011",
+      "source_kind": "threat",
+      "target_id": "IT-BACKUP-RESTORE-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-011",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-CONTROL-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-012",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-012",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-012",
+      "source_kind": "threat",
+      "target_id": "CTRL-DURABLE-RECOVERY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-012",
+      "source_kind": "threat",
+      "target_id": "CTRL-IDEMPOTENCY",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-012",
+      "source_kind": "threat",
+      "target_id": "IR-WORKFLOW-INTEGRITY",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-012",
+      "source_kind": "threat",
+      "target_id": "IT-RECOVERY-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-012",
+      "source_kind": "threat",
+      "target_id": "IT-REPEATABILITY-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-013",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EXPORT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-013",
+      "source_kind": "threat",
+      "target_id": "CTRL-INDEPENDENT-REVIEW",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-013",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-013",
+      "source_kind": "threat",
+      "target_id": "CTRL-IMMUTABLE-AUDIT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-013",
+      "source_kind": "threat",
+      "target_id": "IR-WORKFLOW-INTEGRITY",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-013",
+      "source_kind": "threat",
+      "target_id": "IT-BASELINE-IMMUTABLE-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-013",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-BASELINE-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-014",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-014",
+      "source_kind": "threat",
+      "target_id": "CTRL-SECRET-SCANNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-014",
+      "source_kind": "threat",
+      "target_id": "CTRL-LEAST-PRIVILEGE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-014",
+      "source_kind": "threat",
+      "target_id": "CTRL-SUPPLY-CHAIN-REVIEW",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-014",
+      "source_kind": "threat",
+      "target_id": "IR-SUPPLY-CHAIN",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-014",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-UNTRUSTED-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-014",
+      "source_kind": "threat",
+      "target_id": "SEC-SUPPLY-CHAIN-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-015",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EXPORT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-015",
+      "source_kind": "threat",
+      "target_id": "CTRL-DELETION-VERIFICATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-015",
+      "source_kind": "threat",
+      "target_id": "CTRL-DERIVED-DATA-DELETION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-015",
+      "source_kind": "threat",
+      "target_id": "CTRL-RETENTION-DELETION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-015",
+      "source_kind": "threat",
+      "target_id": "IR-RETENTION-FAILURE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-015",
+      "source_kind": "threat",
+      "target_id": "IT-RETENTION-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-015",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-RETENTION-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-016",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-016",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROVIDER-CALL-LOG",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-016",
+      "source_kind": "threat",
+      "target_id": "CTRL-REGION-PINNING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-016",
+      "source_kind": "threat",
+      "target_id": "CTRL-TRANSFER-REGISTER",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-016",
+      "source_kind": "threat",
+      "target_id": "IR-REGION-LEAKAGE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-016",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-TRANSFER-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-016",
+      "source_kind": "threat",
+      "target_id": "SEC-REGION-ISOLATION-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-017",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EXPORT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-017",
+      "source_kind": "threat",
+      "target_id": "CTRL-INDEPENDENT-REVIEW",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-017",
+      "source_kind": "threat",
+      "target_id": "CTRL-INCIDENT-PLAYBOOK",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-017",
+      "source_kind": "threat",
+      "target_id": "CTRL-NO-AUTONOMOUS-INCIDENT-CLOSURE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-017",
+      "source_kind": "threat",
+      "target_id": "IR-MATERIAL-INCIDENT",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-017",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-INCIDENT-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-017",
+      "source_kind": "threat",
+      "target_id": "UT-QA-INDEP-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-018",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-018",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-018",
+      "source_kind": "threat",
+      "target_id": "CTRL-CREDENTIAL-SCOPING",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-018",
+      "source_kind": "threat",
+      "target_id": "CTRL-ENVIRONMENT-SEPARATION",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-018",
+      "source_kind": "threat",
+      "target_id": "IR-AVAILABILITY",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-018",
+      "source_kind": "threat",
+      "target_id": "IT-ENV-SEPARATION-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-018",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-DEV-DATA-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-019",
+      "source_kind": "threat",
+      "target_id": "CTRL-OBSERVABILITY-ALERTS",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-019",
+      "source_kind": "threat",
+      "target_id": "CTRL-PROVIDER-CALL-LOG",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-019",
+      "source_kind": "threat",
+      "target_id": "CTRL-COST-BUDGET",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-019",
+      "source_kind": "threat",
+      "target_id": "CTRL-RETRY-LIMIT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-019",
+      "source_kind": "threat",
+      "target_id": "IR-COST-ABUSE",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-019",
+      "source_kind": "threat",
+      "target_id": "IT-OBSERVABILITY-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-019",
+      "source_kind": "threat",
+      "target_id": "UT-BUDGET-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-020",
+      "source_kind": "threat",
+      "target_id": "CTRL-AUDIT-EVENT",
+      "target_kind": "control"
+    },
+    {
+      "relation": "detected_by",
+      "source_id": "THR-020",
+      "source_kind": "threat",
+      "target_id": "CTRL-INDEPENDENT-REVIEW",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-020",
+      "source_kind": "threat",
+      "target_id": "CTRL-FOUNDER-PRODUCTION-APPROVAL",
+      "target_kind": "control"
+    },
+    {
+      "relation": "prevented_by",
+      "source_id": "THR-020",
+      "source_kind": "threat",
+      "target_id": "CTRL-PRODUCTION-SECURITY-GATE",
+      "target_kind": "control"
+    },
+    {
+      "relation": "responded_by",
+      "source_id": "THR-020",
+      "source_kind": "threat",
+      "target_id": "IR-MATERIAL-INCIDENT",
+      "target_kind": "playbook"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-020",
+      "source_kind": "threat",
+      "target_id": "FA-PRODUCTION-GATE-001",
+      "target_kind": "test"
+    },
+    {
+      "relation": "tested_by",
+      "source_id": "THR-020",
+      "source_kind": "threat",
+      "target_id": "SEC-P7-GATE-001",
+      "target_kind": "test"
+    }
+  ],
+  "issues": [],
+  "report_digest": "1f9a99894918c88eab9d498daf699b81630edfa344f52e52b79110349b3dd4e0",
+  "rules": {
+    "agent_skill_references_must_exist": true,
+    "definitions_and_references_are_type_checked": true,
+    "duplicate_identifiers_fail": true,
+    "mandatory_controls_require_test_coverage": true,
+    "retired_test_references_fail": true,
+    "source_alias_targets_must_exist": true,
+    "unknown_controls_fail": true,
+    "unknown_playbooks_fail": true,
+    "unknown_requirements_fail": true,
+    "unknown_tests_fail": true
+  },
+  "status": "pass",
+  "version": "1.0.0"
+}

@@ -44,22 +44,22 @@ def main() -> int:
     verify_canonical_release_manifest(root, manifest_path)
     manifest = build_canonical_release_manifest(root)
 
-    if manifest.controlling_release.main_merge_commit != FINAL_MAIN_COMMIT:
+    identity = manifest.controlling_release
+    validation = manifest.final_validation
+    if identity.main_merge_commit != FINAL_MAIN_COMMIT:
         raise ValueError("Controlling main commit is not the merged Phase 7 release.")
-    if manifest.controlling_release.pull_request_head != FINAL_HEAD:
+    if identity.pull_request_head != FINAL_HEAD:
         raise ValueError("Controlling pull-request head is not exact.")
-    if manifest.controlling_release.pull_request_merge_reference != FINAL_MERGE_REFERENCE:
+    if identity.pull_request_merge_reference != FINAL_MERGE_REFERENCE:
         raise ValueError("Controlling merge reference is not exact.")
-    if str(manifest.final_validation.run_id) != FINAL_RUN:
-        raise ValueError("Final validation run is not authoritative.")
-    if str(manifest.final_validation.job_id) != FINAL_JOB:
-        raise ValueError("Final validation job is not authoritative.")
-    if str(manifest.final_validation.artifact.id) != FINAL_ARTIFACT:
+    if str(validation.run_id) != FINAL_RUN or str(validation.job_id) != FINAL_JOB:
+        raise ValueError("Final validation run or job is not authoritative.")
+    if str(validation.artifact.id) != FINAL_ARTIFACT:
         raise ValueError("Final release artifact is not authoritative.")
-    if manifest.final_validation.artifact.sha256 != FINAL_ARTIFACT_SHA256:
+    if validation.artifact.sha256 != FINAL_ARTIFACT_SHA256:
         raise ValueError("Final release artifact digest is not authoritative.")
     if len(manifest.governed_records) != 7:
-        raise ValueError("Canonical release must digest exactly seven governed records.")
+        raise ValueError("Canonical Phase 1-7 release must digest seven governed records.")
     if manifest.source_profiles.total_sources != 23:
         raise ValueError("Canonical source profile count must remain 23.")
     if manifest.boundaries.real_client_data_enabled:
@@ -70,10 +70,10 @@ def main() -> int:
     registry = _json_object(root / "requirements" / "test-registry.json")
     implemented = registry.get("implemented_tests")
     planned = registry.get("planned_tests")
-    if not isinstance(implemented, list) or len(implemented) < 226:
-        raise ValueError("PCR-01 executable test registry is incomplete.")
-    if not isinstance(planned, list) or len(planned) != 55:
-        raise ValueError("PCR-01 must preserve the 55 deferred planned tests.")
+    if not isinstance(implemented, list) or len(implemented) < 245:
+        raise ValueError("Current executable test registry regressed below PCR-02.")
+    if not isinstance(planned, list) or len(planned) != 54:
+        raise ValueError("Current planned-test view must preserve 54 deferred tests.")
 
     canonical_tokens = (
         FINAL_RUN,
@@ -105,7 +105,8 @@ def main() -> int:
         (FINAL_RUN, FINAL_ARTIFACT, "Real client data remains prohibited"),
     )
 
-    if list((root / "knowledge" / "source").glob("*.docx")) if (root / "knowledge" / "source").exists() else []:
+    source_dir = root / "knowledge" / "source"
+    if source_dir.exists() and list(source_dir.glob("*.docx")):
         raise ValueError("Original methodology binaries must remain uncommitted in PCR-01.")
 
     print("PCR-01 CANONICAL RELEASE RECONCILIATION VALIDATION PASSED")
@@ -130,5 +131,8 @@ if __name__ == "__main__":
     try:
         raise SystemExit(main())
     except (KeyError, OSError, TypeError, ValueError) as exc:
-        print(f"PCR-01 CANONICAL RELEASE RECONCILIATION VALIDATION FAILED: {exc}", file=sys.stderr)
+        print(
+            f"PCR-01 CANONICAL RELEASE RECONCILIATION VALIDATION FAILED: {exc}",
+            file=sys.stderr,
+        )
         raise SystemExit(1) from exc

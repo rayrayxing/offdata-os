@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the deterministic test registry from governed mapping sources."""
+"""Build deterministic executable and planned views over stable semantic tests."""
 
 from __future__ import annotations
 
@@ -28,7 +28,9 @@ def collect_test_nodes(root: Path) -> set[str]:
         tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         relative = path.relative_to(root).as_posix()
         for node in tree.body:
-            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith("test_"):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith(
+                "test_"
+            ):
                 result.add(f"{relative}::{node.name}")
     return result
 
@@ -43,7 +45,9 @@ def merge_implemented_mappings(root: Path) -> dict[str, list[str]]:
         for node_id, requirements in source.items():
             if node_id in merged:
                 raise ValueError(f"Duplicate implemented test mapping: {node_id}")
-            if not isinstance(requirements, list) or not all(isinstance(item, str) for item in requirements):
+            if not isinstance(requirements, list) or not all(
+                isinstance(item, str) for item in requirements
+            ):
                 raise ValueError(f"Invalid implemented test mapping: {node_id}")
             merged[node_id] = requirements
     return merged
@@ -71,7 +75,11 @@ def main() -> int:
     if unknown_completed:
         print(f"Completed planned tests not found in source: {unknown_completed}", file=sys.stderr)
         return 1
-    planned_source = {test_id: record for test_id, record in planned_source.items() if test_id not in completed_planned}
+    planned_view = {
+        test_id: record
+        for test_id, record in planned_source.items()
+        if test_id not in completed_planned
+    }
     collected = collect_test_nodes(root)
     mapped = set(implemented_source)
     missing = sorted(collected - mapped)
@@ -82,12 +90,49 @@ def main() -> int:
         if stale:
             print(f"Stale test mappings: {stale}", file=sys.stderr)
         return 1
-    implemented = [{"node_id": node_id, "kind": "fixture" if "test_fixture_" in node_id else "unit", "phase": "chat-first", "requirements": requirements, "evidence_status": "executable_in_chat_and_codex"} for node_id, requirements in sorted(implemented_source.items())]
-    planned = [{"test_id": test_id, "kind": record["kind"], "phase": record["phase"], "requirements": record["requirements"], "evidence_status": "planned_not_executed"} for test_id, record in sorted(planned_source.items())]
-    registry = {"version": "2.0.0", "rules": {"every_collected_test_requires_mapping": True, "mandatory_requirements_require_executed_or_planned_test": True, "planned_tests_do_not_count_as_executed_evidence": True, "requirement_ids_must_match_catalogue_pattern": True, "completed_planned_tests_are_removed": True}, "implemented_tests": implemented, "planned_tests": planned}
+    implemented = [
+        {
+            "node_id": node_id,
+            "kind": "fixture" if "test_fixture_" in node_id else "unit",
+            "phase": "chat-first",
+            "requirements": requirements,
+            "evidence_status": "executable_in_chat_and_codex",
+        }
+        for node_id, requirements in sorted(implemented_source.items())
+    ]
+    planned = [
+        {
+            "test_id": test_id,
+            "kind": record["kind"],
+            "phase": record["phase"],
+            "requirements": record["requirements"],
+            "evidence_status": "planned_not_executed",
+        }
+        for test_id, record in sorted(planned_view.items())
+    ]
+    registry = {
+        "version": "2.1.0",
+        "rules": {
+            "semantic_test_registry": "requirements/test-definitions.json",
+            "every_collected_test_requires_mapping": True,
+            "mandatory_requirements_require_executed_or_planned_test": True,
+            "planned_tests_do_not_count_as_executed_evidence": True,
+            "requirement_ids_must_match_catalogue_pattern": True,
+            "completed_planned_tests_are_removed_from_planned_view_only": True,
+            "semantic_test_identity_is_preserved_in_canonical_registry": True,
+        },
+        "implemented_tests": implemented,
+        "planned_tests": planned,
+    }
     destination = root / "requirements/test-registry.json"
-    destination.write_text(json.dumps(registry, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"Wrote {destination.relative_to(root)}: implemented={len(implemented)} planned={len(planned)} completed_planned={len(completed_planned)}")
+    destination.write_text(
+        json.dumps(registry, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(
+        f"Wrote {destination.relative_to(root)}: implemented={len(implemented)} "
+        f"planned={len(planned)} completed_planned={len(completed_planned)}"
+    )
     return 0
 
 

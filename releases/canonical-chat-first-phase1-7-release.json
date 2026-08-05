@@ -37,8 +37,8 @@
       "path": "requirements/test-registry.json",
       "restricted": false,
       "role": "combined_requirement_test_registry",
-      "sha256": "f8d5d2914456c2ba55d987d53c17933a0bf6c3fc4d8e451e4a6139e2694e46bd",
-      "size_bytes": 85264
+      "sha256": "6644962e17183985cbfdaef81b1e731a1214b20182470361a52bed4f6c79d092",
+      "size_bytes": 91133
     },
     {
       "path": "fixtures/additional-primary-fixtures.json",
@@ -72,7 +72,7 @@
       "path": "security/security-regionalisation-baseline.json",
       "restricted": false,
       "role": "security_and_regionalisation_baseline",
-      "sha256": "a608ae867bc0bf55fe1c1c736f602234d8224320d786afd3020cc6ab30ef12be",
+      "sha256": "f799be61d5d2a2dd3dd7ba2ccf6549583043bc7e3933c04e915ca4fec37a848c",
       "size_bytes": 936
     },
     {
@@ -83,7 +83,7 @@
       "size_bytes": 16741
     }
   ],
-  "manifest_digest": "e53531d1a0a8ed80eb4ece163611c0ccd000001829d12112f50e2da450dc13ea",
+  "manifest_digest": "b3b19e91cace41024dfc174fa0949e4f235ffdd6fbdf1ca4a80e03fbd0e2ec68",
   "phases": [
     1,
     2,

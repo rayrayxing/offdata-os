@@ -1,0 +1,152 @@
+version: 1.0.0
+status: governed_chat_first
+sources:
+  planned_test_mappings: requirements/planned-test-mappings.json
+  completed_test_registers: requirements/completed-planned-tests*.json
+  executable_node_mappings: requirements/implemented-test-mappings*.json
+  security_test_catalogue: security/security-test-catalogue.yaml
+  threat_model: security/threat-model.yaml
+rules:
+  semantic_identity_survives_status_change: true
+  completed_ids_require_executable_evidence: true
+  planned_tests_do_not_claim_execution_evidence: true
+  evidence_nodes_must_exist: true
+  evidence_nodes_must_share_a_requirement: true
+  threat_test_references_must_resolve: true
+  retired_tests_cannot_be_referenced: true
+implementation_evidence:
+  AE-ROUTING-001:
+    - node_id: packages/offdata-core/tests/test_agent_system.py::test_provider_route_preserves_output_contract_and_uses_risk
+      environment: chat_first_python
+  SEC-INJECTION-001:
+    - node_id: packages/offdata-core/tests/test_agent_system.py::test_injection_assessment_never_grants_authority
+      environment: chat_first_python
+  SEC-TOOL-001:
+    - node_id: packages/offdata-core/tests/test_agent_system.py::test_tool_permission_blocks_direct_external_effects_and_canonical_writes
+      environment: chat_first_python
+  UT-AGENT-001:
+    - node_id: packages/offdata-core/tests/test_agent_system.py::test_agent_manifest_has_complete_versioned_definitions
+      environment: chat_first_python
+  UT-BUDGET-001:
+    - node_id: packages/offdata-core/tests/test_agent_system.py::test_budget_policy_detects_every_exceeded_dimension
+      environment: chat_first_python
+  IT-FIXTURE-001:
+    - node_id: packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_builds_from_client_visible_inputs_and_grades_pass
+      environment: chat_first_python
+  IT-INDEPENDENT-RECALC-001:
+    - node_id: packages/offdata-core/tests/test_ai_audit_oracle.py::test_financial_mutation_is_detected_by_independent_grader
+      environment: chat_first_python
+  UT-BURDEN-001:
+    - node_id: packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_method_stack_rejections_uncertainty_and_specialist_review_are_complete
+      environment: chat_first_python
+  UT-DECISION-FITNESS-001:
+    - node_id: packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_builds_from_client_visible_inputs_and_grades_pass
+      environment: chat_first_python
+  UT-EPISTEMIC-001:
+    - node_id: packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_preserves_evidence_status_provenance_and_limits
+      environment: chat_first_python
+  UT-REPRODUCIBILITY-001:
+    - node_id: packages/offdata-core/tests/test_ai_audit_oracle.py::test_oracle_is_byte_reproducible_and_committed_baseline_is_current
+      environment: chat_first_python
+  AE-STORY-001:
+    - node_id: packages/offdata-core/tests/test_ai_audit_deliverable.py::test_story_is_assertion_led_and_decision_first
+      environment: chat_first_python
+  UT-ARTEFACT-001:
+    - node_id: packages/offdata-core/tests/test_ai_audit_deliverable.py::test_surface_plans_match_manifest_scope_and_semantic_objects
+      environment: chat_first_python
+  UT-RECON-002:
+    - node_id: packages/offdata-core/tests/test_ai_audit_deliverable.py::test_material_numbers_reconcile_to_named_approved_oracle_outputs
+      environment: chat_first_python
+  UT-VISUAL-002:
+    - node_id: packages/offdata-core/tests/test_ai_audit_deliverable.py::test_visual_grammar_is_editable_and_not_raster_only
+      environment: chat_first_python
+  UT-ALIAS-001:
+    - node_id: packages/offdata-core/tests/test_knowledge_ingestion.py::test_alias_resolution_supports_exact_ids_original_names_preferred_names_and_history
+      environment: chat_first_python
+  UT-OVERLAY-001:
+    - node_id: packages/offdata-core/tests/test_knowledge_ingestion.py::test_domain_overlays_add_context_without_pre_deciding_the_answer
+      environment: chat_first_python
+  UT-RIGHTS-001:
+    - node_id: packages/offdata-core/tests/test_knowledge_ingestion.py::test_rights_policy_allows_internal_use_and_blocks_redistribution
+      environment: chat_first_python
+  UT-PROCESSOR-REGISTER-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_processor_register_rejects_credential_values
+      environment: chat_first_python
+  META-TEST-HIERARCHY-001:
+    - node_id: packages/offdata-core/tests/test_referential_integrity.py::test_semantic_test_registry_preserves_all_test_identities
+      environment: chat_first_python
+  SEC-P7-CLASSIFY-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_most_restrictive_classification_wins
+      environment: chat_first_python
+  SEC-P7-SCOPE-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_engagement_record_requires_tenant_and_engagement_scope
+      environment: chat_first_python
+  SEC-P7-TENANT-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_cross_tenant_access_is_denied
+      environment: chat_first_python
+  SEC-P7-ENGAGEMENT-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_cross_engagement_access_is_denied
+      environment: chat_first_python
+  SEC-P7-MFA-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_restricted_access_requires_mfa
+      environment: chat_first_python
+  SEC-P7-DEV-DATA-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_restricted_client_content_is_prohibited_in_development
+      environment: chat_first_python
+  SEC-P7-ACCESS-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_export_and_delete_require_founder_approval
+      environment: chat_first_python
+  SEC-P7-SUPPORT-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_support_access_requires_capability_and_current_expiry
+      environment: chat_first_python
+  SEC-P7-REGION-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_region_placement_denies_client_content_in_unapproved_cell
+      environment: chat_first_python
+  SEC-P7-TRANSFER-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_cross_region_client_transfer_requires_basis_and_founder_approval
+      environment: chat_first_python
+  SEC-P7-METADATA-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_approved_global_metadata_transfer_is_allowed
+      environment: chat_first_python
+  SEC-P7-RETENTION-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_retention_active_archive_export_and_delete_states
+      environment: chat_first_python
+  SEC-P7-HOLD-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_legal_hold_blocks_retention_progression
+      environment: chat_first_python
+  SEC-P7-PROCESSOR-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_processor_use_requires_current_scope_region_purpose_and_terms
+      environment: chat_first_python
+  SEC-P7-SECRET-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_secret_detection_finds_known_formats_and_nested_paths
+      environment: chat_first_python
+  SEC-P7-GATE-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_production_gate_blocks_missing_and_wrong_region_evidence
+      environment: chat_first_python
+  SEC-P7-FOUNDER-GATE-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_complete_technical_evidence_still_requires_founder_approval
+      environment: chat_first_python
+  SEC-P7-INCIDENT-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_incident_assessment_escalates_secret_and_cross_tenant_events
+      environment: chat_first_python
+  SEC-P7-BASELINE-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_is_reproducible_and_verified
+      environment: chat_first_python
+  SEC-P7-BASELINE-002:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_is_reproducible_and_verified
+      environment: chat_first_python
+  SEC-P7-THREAT-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_builds_expected_scope
+      environment: chat_first_python
+  SEC-P7-CONTROL-001:
+    - node_id: packages/offdata-core/tests/test_security_regionalisation.py::test_security_baseline_builds_expected_scope
+      environment: chat_first_python
+  SEC-P7-UNTRUSTED-001:
+    - node_id: packages/offdata-core/tests/test_agent_system.py::test_context_compiler_isolates_untrusted_instruction_like_content
+      environment: chat_first_python
+  SEC-P7-LOG-001:
+    - node_id: packages/offdata-core/tests/test_referential_integrity.py::test_restricted_logging_policy_is_metadata_only_or_none
+      environment: chat_first_python
+  SEC-P7-CRM-001:
+    - node_id: packages/offdata-core/tests/test_referential_integrity.py::test_crm_security_boundary_excludes_confidential_content
+      environment: chat_first_python

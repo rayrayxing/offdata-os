@@ -284,8 +284,8 @@ tests:
     execution_stage: production_gate
     kind: recovery
     requirement_ids: [SEC-010]
-    control_ids: [CTRL-INCIDENT-PLAYBOOK, CTRL-DURABLE-RECOVERY]
-    expected_result: A failed production change returns to the prior safe state.
+    control_ids: [CTRL-INCIDENT-PLAYBOOK, CTRL-DURABLE-RECOVERY, CTRL-KILL-SWITCH-TEST]
+    expected_result: A failed production change or kill-switch test returns to the prior safe state.
     mandatory_for_real_client_data: true
   - test_id: FA-PRODUCTION-GATE-001
     title: Founder accepts the complete real-client production gate
