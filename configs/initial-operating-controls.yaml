@@ -1,0 +1,380 @@
+schema_version: 1
+phase_id: PCR-08
+contract_id: OFFDATA-INITIAL-OPERATING-CONTROLS-2026-08-05
+repository: rayrayxing/offdata-os
+canonical_branch: main
+status: initial_configuration_only
+operating_context:
+  operator_model: founder_only
+  operating_mode: local_synthetic_pre_codex
+  managed_region: Singapore
+  permitted_data_classes: [public, internal]
+  canonical_write_mode: commands_only
+  network_default: deny
+  provider_training_allowed: false
+  credential_values_permitted: false
+  real_client_data_enabled: false
+  external_actions_enabled: false
+  paid_services_enabled: false
+  production_deployment_enabled: false
+  autonomous_merge_enabled: false
+authority_matrix:
+  - decision_class: DEC-ROUTINE
+    execution_mode: policy_bounded_auto_execute
+    accountable_owner: Founder
+    delegation_allowed: true
+    qualified_specialist_required: false
+    external_execution_enabled: false
+  - decision_class: DEC-MATERIAL
+    execution_mode: approval_required
+    accountable_owner: Founder
+    delegation_allowed: true
+    qualified_specialist_required: false
+    external_execution_enabled: false
+  - decision_class: DEC-EXTERNAL
+    execution_mode: proposal_only_pre_activation
+    accountable_owner: Founder
+    delegation_allowed: false
+    qualified_specialist_required: false
+    external_execution_enabled: false
+  - decision_class: DEC-COMMERCIAL
+    execution_mode: founder_approval_required
+    accountable_owner: Founder
+    delegation_allowed: false
+    qualified_specialist_required: false
+    external_execution_enabled: false
+  - decision_class: DEC-LEGALREG
+    execution_mode: founder_and_specialist_review_required
+    accountable_owner: Founder
+    delegation_allowed: false
+    qualified_specialist_required: true
+    external_execution_enabled: false
+  - decision_class: DEC-IRREVERSIBLE
+    execution_mode: founder_approval_required
+    accountable_owner: Founder
+    delegation_allowed: false
+    qualified_specialist_required: false
+    external_execution_enabled: false
+control_domains:
+  - domain_id: OPC-DOM-IDENTITY-ACCESS
+    title: Identity, access and credentials
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: deny_by_default
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-STRONG-AUTH-MFA
+      - CTRL-LEAST-PRIVILEGE
+      - CTRL-CREDENTIAL-REFERENCE-ONLY
+      - CTRL-CREDENTIAL-SCOPING
+      - CTRL-PRIVILEGED-ACCESS-LOG
+      - CTRL-SUPPORT-ACCESS-EXPIRY
+  - domain_id: OPC-DOM-DATA-REGION
+    title: Data classification, tenancy and regionalisation
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: deny_by_default
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-TENANT-ISOLATION
+      - CTRL-ENGAGEMENT-ISOLATION
+      - CTRL-REGION-PINNING
+      - CTRL-TRANSFER-REGISTER
+      - CTRL-METADATA-ALLOWLIST
+      - CTRL-DATA-MINIMISATION
+      - CTRL-LOG-REDACTION
+      - CTRL-CRM-DATA-MINIMISATION
+      - CTRL-FIELD-ALLOWLIST
+  - domain_id: OPC-DOM-SECRETS-SUPPLY
+    title: Secret safety, supply chain and document quarantine
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: fail_closed
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-SECRET-SCANNING
+      - CTRL-SUPPLY-CHAIN-REVIEW
+      - CTRL-DOCUMENT-QUARANTINE
+  - domain_id: OPC-DOM-RUNTIME-AGENT
+    title: Runtime, agent, tool and usage control
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: allowlist_and_budget
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-PROMPT-INJECTION-TEST
+      - CTRL-MINIMUM-CONTEXT
+      - CTRL-TOOL-PERMISSION
+      - CTRL-PROVIDER-CALL-LOG
+      - CTRL-PROVIDER-TRAINING-DISABLED
+      - CTRL-COST-BUDGET
+      - CTRL-RETRY-LIMIT
+  - domain_id: OPC-DOM-CANONICAL-WORKFLOW
+    title: Canonical state, audit and durable workflow integrity
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: commands_only_and_idempotent
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-AUDIT-EVENT
+      - CTRL-IMMUTABLE-AUDIT
+      - CTRL-IDEMPOTENCY
+      - CTRL-DURABLE-RECOVERY
+  - domain_id: OPC-DOM-DECISION-RELEASE
+    title: Decision, assurance and release authority
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: scoped_approval_and_independent_review
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-FOUNDER-PRODUCTION-APPROVAL
+      - CTRL-FOUNDER-ACTION-APPROVAL
+      - CTRL-INDEPENDENT-REVIEW
+      - CTRL-PRODUCTION-SECURITY-GATE
+      - CTRL-AUDIT-EXPORT
+  - domain_id: OPC-DOM-BACKUP-RETENTION
+    title: Backup, recovery, retention and verified deletion
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: evidence_before_completion
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-BACKUP-RESTORE-TEST
+      - CTRL-BACKUP-POLICY
+      - CTRL-RETENTION-DELETION
+      - CTRL-DELETION-VERIFICATION
+      - CTRL-DERIVED-DATA-DELETION
+  - domain_id: OPC-DOM-PROCESSORS
+    title: Providers and processors
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: unregistered_default_deny
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-PROCESSOR-REGISTER
+      - CTRL-PROCESSOR-REVIEW-EXPIRY
+  - domain_id: OPC-DOM-INCIDENT
+    title: Monitoring, kill switches and incident response
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: preserve_evidence_and_fail_closed
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-KILL-SWITCH-TEST
+      - CTRL-OBSERVABILITY-ALERTS
+      - CTRL-INCIDENT-PLAYBOOK
+      - CTRL-NO-AUTONOMOUS-INCIDENT-CLOSURE
+  - domain_id: OPC-DOM-ENVIRONMENT-CHANGE
+    title: Environment, encryption and change control
+    accountable_owner: Founder
+    independent_review_required: true
+    enforcement_mode: phase_gated
+    activation_state: configured_not_activated
+    security_control_ids:
+      - CTRL-ENVIRONMENT-SEPARATION
+      - CTRL-ENCRYPTION-IN-TRANSIT
+      - CTRL-ENCRYPTION-AT-REST
+operating_gates:
+  - gate_id: OPC-GATE-CODEX-START
+    subject: codex_phase_0
+    authorized: false
+    required_conditions: [all_chat_first_pcrs_merged, hosted_controls_verified, explicit_founder_approval, clean_macos_environment]
+  - gate_id: OPC-GATE-RUNTIME-ACTIVATION
+    subject: runtime_adapters
+    authorized: false
+    required_conditions: [codex_phase_0_complete, runtime_conformance_passed, explicit_founder_approval]
+  - gate_id: OPC-GATE-HERMES-ACTIVATION
+    subject: hermes_worker_harness
+    authorized: false
+    required_conditions: [pinned_version_verified, sandbox_conformance_passed, explicit_founder_approval]
+  - gate_id: OPC-GATE-NORTHSTAR-IMPLEMENTATION
+    subject: northstar_e2e_implementation
+    authorized: false
+    required_conditions: [separate_phase_authorization, dependency_wave_gate_passed, explicit_founder_approval]
+  - gate_id: OPC-GATE-REAL-CLIENT-DATA
+    subject: real_client_data
+    authorized: false
+    required_conditions: [all_mandatory_controls_current, exact_environment_and_region_evidence, processor_register_approved, explicit_founder_approval]
+  - gate_id: OPC-GATE-EXTERNAL-ACTION
+    subject: external_action_execution
+    authorized: false
+    required_conditions: [global_switch_enabled, exact_scoped_unexpired_approval, idempotency_key, audit_correlation]
+  - gate_id: OPC-GATE-PAID-SERVICE
+    subject: paid_service_or_trial
+    authorized: false
+    required_conditions: [cost_review, processor_and_data_review, exit_plan, explicit_founder_approval]
+  - gate_id: OPC-GATE-PRODUCTION-DEPLOYMENT
+    subject: production_deployment
+    authorized: false
+    required_conditions: [production_security_gate_passed, backup_restore_tested, rollback_tested, explicit_founder_approval]
+control_switches:
+  - switch_id: OPC-SW-AGENT-EXECUTION
+    scope: all_agent_execution
+    initial_state: deny
+    fail_mode: fail_closed
+    reset_authority: Founder
+    audit_event_required: true
+  - switch_id: OPC-SW-TOOL-RUNTIME
+    scope: all_tool_invocation
+    initial_state: deny
+    fail_mode: fail_closed
+    reset_authority: Founder
+    audit_event_required: true
+  - switch_id: OPC-SW-EXTERNAL-ACTIONS
+    scope: all_external_actions
+    initial_state: deny
+    fail_mode: fail_closed
+    reset_authority: Founder
+    audit_event_required: true
+  - switch_id: OPC-SW-PROVIDER-NETWORK
+    scope: provider_and_gateway_network
+    initial_state: deny
+    fail_mode: fail_closed
+    reset_authority: Founder
+    audit_event_required: true
+  - switch_id: OPC-SW-WORKFLOW-CLASS
+    scope: selected_workflow_class
+    initial_state: deny
+    fail_mode: fail_closed
+    reset_authority: Founder
+    audit_event_required: true
+  - switch_id: OPC-SW-PRODUCTION-DEPLOYMENT
+    scope: production_deployment
+    initial_state: deny
+    fail_mode: fail_closed
+    reset_authority: Founder
+    audit_event_required: true
+cost_and_usage:
+  currency: USD
+  paid_provider_spend_hard_cap: 0
+  purchases_authorized: false
+  per_invocation_budget_source: configs/agents.yaml
+  required_budget_profiles: [standard, orchestration, research, quantitative, production, quality]
+  adapter_may_raise_limits: false
+  actual_usage_record_required: true
+  alert_on_any_billable_usage: true
+  exception_requires_founder_approval: true
+incident_routing:
+  agents_may_assist: true
+  agents_may_close_material_incidents: false
+  preserve_evidence_before_repair: true
+  implicated_actor_may_be_sole_reviewer: false
+  severities:
+    - severity: critical
+      founder_notification: immediate
+      default_action: trip_relevant_switches_and_quarantine
+      closure_authority: Founder
+    - severity: high
+      founder_notification: immediate
+      default_action: contain_preserve_and_escalate
+      closure_authority: Founder
+    - severity: medium
+      founder_notification: same_working_day
+      default_action: bound_scope_and_schedule_repair
+      closure_authority: Founder
+    - severity: low
+      founder_notification: scheduled_review
+      default_action: record_and_prioritise
+      closure_authority: Founder
+  playbook_ids:
+    - IR-DATA-EXPOSURE
+    - IR-REGION-LEAKAGE
+    - IR-CREDENTIAL-EXPOSURE
+    - IR-AGENT-MISUSE
+    - IR-MALICIOUS-DOCUMENT
+    - IR-PROCESSOR-BREACH
+    - IR-AVAILABILITY
+    - IR-WORKFLOW-INTEGRITY
+    - IR-SUPPLY-CHAIN
+    - IR-RETENTION-FAILURE
+    - IR-MATERIAL-INCIDENT
+    - IR-COST-ABUSE
+retention_and_recovery:
+  retention_policy_ids: [RET-PUBLIC-DEFAULT, RET-INTERNAL-DEFAULT, RET-CLIENT-DEFAULT, RET-HIGHLY-RESTRICTED-DEFAULT]
+  legal_hold_overrides_deletion: true
+  deletion_is_autonomous: false
+  founder_approval_required_for_deletion: true
+  deletion_verification_required: true
+  derived_data_deletion_required: true
+  backup_restore_evidence_status: pending_operating_environment
+  recovery_objectives_status: unset_until_measured
+provider_and_processor:
+  unregistered_processor_default: deny
+  approved_real_client_processor_count: 0
+  oauth_authorized: false
+  provider_gateway_authorized: false
+  provider_training_allowed: false
+  credential_values_permitted: false
+  paid_service_activation_authorized: false
+operating_cadences:
+  - cadence_id: OPC-CAD-PER-CHANGE
+    cadence: per_change
+    enabled_now: true
+    activities: [deterministic_generation, complete_ci, independent_review, rollback_record]
+  - cadence_id: OPC-CAD-PER-RELEASE
+    cadence: per_release
+    enabled_now: true
+    activities: [exact_version_approval, evidence_retention, release_reconciliation]
+  - cadence_id: OPC-CAD-DAILY-ACTIVE
+    cadence: daily_when_active
+    enabled_now: false
+    activities: [alert_review, failed_workflow_review, billable_usage_review]
+  - cadence_id: OPC-CAD-WEEKLY-ACTIVE
+    cadence: weekly_when_active
+    enabled_now: false
+    activities: [open_incident_review, privileged_access_review, processor_exception_review]
+  - cadence_id: OPC-CAD-MONTHLY-ACTIVE
+    cadence: monthly_when_active
+    enabled_now: false
+    activities: [control_evidence_freshness, budget_reconciliation, backup_status_review]
+  - cadence_id: OPC-CAD-QUARTERLY-ACTIVE
+    cadence: quarterly_when_active
+    enabled_now: false
+    activities: [restore_test, incident_tabletop, retention_execution_review]
+  - cadence_id: OPC-CAD-ANNUAL-ACTIVE
+    cadence: annual_when_active
+    enabled_now: false
+    activities: [processor_reapproval, regionalisation_review, production_risk_acceptance]
+exception_policy:
+  silent_waivers_permitted: false
+  exact_scope_required: true
+  expiry_required: true
+  compensating_controls_required: true
+  independent_review_required: true
+  founder_approval_required: true
+  non_waivable_boundaries:
+    - no_secret_values_in_repository_or_chat
+    - no_cross_tenant_access
+    - no_real_client_data_before_production_gate
+    - no_self_approval_of_material_work
+    - no_autonomous_merge
+    - no_unregistered_processor
+control_evidence:
+  chat_first_configuration_current: true
+  hosted_control_evidence_complete: false
+  operating_environment_evidence_complete: false
+  production_evidence_complete: false
+  evidence_expiry_enforced: true
+  evidence_must_match_environment_and_region: true
+activation_conditions:
+  - pcr03_merged_to_main
+  - pcr04_merged_to_main
+  - pcr05_merged_to_main
+  - pcr06_merged_to_main
+  - pcr07_merged_to_main
+  - pcr08_merged_to_main
+  - github_hosted_controls_in_issue_19_verified
+  - explicit_founder_phase_0_approval_received
+  - clean_macos_environment_available
+boundaries:
+  initial_operating_controls_activation_authorized: false
+  codex_start_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  northstar_implementation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
+  founder_accountability_preserved: true
