@@ -30,6 +30,11 @@ REQUIRED_DOCUMENT_TOKENS = {
     "scripts/validate_pcr04_codex_handoff.py",
     "codex/phase-0-foundation",
 }
+ROOT_PYTEST_COMMAND = (
+    "cd packages/offdata-core && pytest --cov=offdata_core "
+    "--cov-report=term-missing --cov-fail-under=90"
+)
+ROOT_MYPY_COMMAND = "cd packages/offdata-core && mypy src"
 
 
 def _load_builder() -> ModuleType:
@@ -127,6 +132,11 @@ def semantic_failures(
 ) -> list[str]:
     failures: list[str] = []
 
+    if "stacked_base_branch" in handoff:
+        failures.append(
+            "transient stacked pull-request metadata must not enter the canonical handoff"
+        )
+
     target = handoff.get("target")
     if not isinstance(target, dict):
         failures.append("target is missing")
@@ -215,8 +225,18 @@ def semantic_failures(
         commands = execution.get("required_commands")
         if not isinstance(commands, list):
             failures.append("required command list is missing")
-        elif "python scripts/validate_pcr04_codex_handoff.py" not in commands:
-            failures.append("PCR-04 validation command is missing")
+        else:
+            if "python scripts/validate_pcr04_codex_handoff.py" not in commands:
+                failures.append("PCR-04 validation command is missing")
+            if ROOT_PYTEST_COMMAND not in commands:
+                failures.append("root-executable package test command is missing")
+            if ROOT_MYPY_COMMAND not in commands:
+                failures.append("root-executable package MyPy command is missing")
+            if any(
+                command.startswith("pytest ") or command == "mypy src"
+                for command in commands
+            ):
+                failures.append("package commands must declare their working directory")
 
     if check_paths:
         for relative in sorted(_referenced_paths(handoff) | _command_paths(handoff)):
@@ -260,6 +280,17 @@ def _run_mutation_cases(handoff: dict[str, Any]) -> int:
         "python scripts/validate_pcr04_codex_handoff.py"
     )
     mutations.append(command_mutation)
+
+    working_directory_mutation = copy.deepcopy(handoff)
+    commands = working_directory_mutation["execution"]["required_commands"]
+    commands[commands.index(ROOT_PYTEST_COMMAND)] = (
+        "pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90"
+    )
+    mutations.append(working_directory_mutation)
+
+    transient_metadata_mutation = copy.deepcopy(handoff)
+    transient_metadata_mutation["stacked_base_branch"] = "temporary/stacked-branch"
+    mutations.append(transient_metadata_mutation)
 
     for index, mutation in enumerate(mutations, start=1):
         if not semantic_failures(mutation, check_paths=False):
