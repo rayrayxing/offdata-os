@@ -80,10 +80,10 @@
       "python scripts/validate_pcr02_referential_integrity.py",
       "python scripts/validate_pcr03_repository_hygiene.py",
       "python scripts/validate_pcr04_codex_handoff.py",
-      "pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90",
+      "cd packages/offdata-core && pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90",
       "python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts",
       "ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts",
-      "mypy src"
+      "cd packages/offdata-core && mypy src"
     ]
   },
   "existing_assets": {
@@ -256,7 +256,6 @@
   },
   "repository": "rayrayxing/offdata-os",
   "schema_version": 1,
-  "stacked_base_branch": "governance/pcr03-repository-hygiene",
   "stop_conditions": [
     "material_requirement_ambiguity",
     "credential_payment_oauth_or_external_approval_required",
