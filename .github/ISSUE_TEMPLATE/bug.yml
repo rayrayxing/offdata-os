@@ -1,0 +1,49 @@
+name: Defect report
+description: Report a reproducible defect using synthetic or sanitised evidence.
+title: "[Defect] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include secrets, real client data, private methodology files, restricted answer keys, or vulnerability details.
+  - type: input
+    id: commit
+    attributes:
+      label: Affected commit or branch
+      placeholder: Commit SHA or branch name
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behaviour
+      description: State what happened and attach only safe synthetic evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Use synthetic data and the narrowest safe reproduction.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact and scope
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: This report contains no secrets, real client data, private source binaries, restricted evaluation material, or unredacted vulnerability details.
+          required: true
