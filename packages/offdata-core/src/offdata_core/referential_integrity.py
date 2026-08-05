@@ -306,15 +306,15 @@ def _initial_test_seeds(root: Path) -> dict[str, dict[str, Any]]:
     security_path = root / "security" / "security-test-catalogue.yaml"
     security_tests = _record_list(_yaml_object(security_path), "tests", security_path)
     for record in security_tests:
-        test_id = record.get("test_id")
-        if not isinstance(test_id, str):
+        security_test_id = record.get("test_id")
+        if not isinstance(security_test_id, str):
             raise ValueError("Security test is missing test_id.")
         kind = str(record.get("kind", "unknown"))
         stage = str(record.get("execution_stage", "unknown"))
-        requirements = set(_string_tuple(record.get("requirement_ids"), test_id))
-        controls = set(_string_tuple(record.get("control_ids"), test_id))
+        requirements = set(_string_tuple(record.get("requirement_ids"), security_test_id))
+        controls = set(_string_tuple(record.get("control_ids"), security_test_id))
         seed = seeds.setdefault(
-            test_id,
+            security_test_id,
             {
                 "test_id": test_id,
                 "title": str(record.get("title", test_id)),
