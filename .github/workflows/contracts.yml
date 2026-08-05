@@ -9,14 +9,20 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: contracts-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate-contracts:
-    name: Validate complete chat-first Phase 1–7 and PCR-01–02 release
+    name: Validate complete chat-first Phase 1–7 and PCR-01–03 release
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
@@ -57,14 +63,18 @@ jobs:
         run: python scripts/build_pcr02_test_identity.py
       - name: Build PCR-01 canonical release reconciliation
         run: python scripts/build_pcr01_canonical_release.py
-      - name: Enforce clean generated Phase 1–7 and PCR-01–02 records
-        run: git diff --exit-code -- requirements/test-registry.json requirements/test-definitions.json requirements/referential-integrity-baseline.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json security/security-regionalisation-baseline.json releases/canonical-chat-first-phase1-7-release.json
+      - name: Build PCR-03 repository governance baseline
+        run: python scripts/build_pcr03_repository_hygiene.py
+      - name: Enforce clean generated Phase 1–7 and PCR-01–03 records
+        run: git diff --exit-code -- requirements/test-registry.json requirements/test-definitions.json requirements/referential-integrity-baseline.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json security/security-regionalisation-baseline.json releases/canonical-chat-first-phase1-7-release.json repository/repository-governance-baseline.json
       - name: Validate Phase 7 security and regionalisation
         run: python scripts/validate_phase7_security_regionalisation.py
       - name: Validate PCR-01 canonical release reconciliation
         run: python scripts/validate_pcr01_canonical_release.py
       - name: Validate PCR-02 test identity and referential integrity
         run: python scripts/validate_pcr02_referential_integrity.py
+      - name: Validate PCR-03 repository and governance hygiene
+        run: python scripts/validate_pcr03_repository_hygiene.py
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
         run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
@@ -82,6 +92,15 @@ jobs:
           if-no-files-found: error
           retention-days: 30
           path: |
+            AGENTS.md
+            README.md
+            CONTRIBUTING.md
+            GOVERNANCE.md
+            SECURITY.md
+            .github/CODEOWNERS
+            .github/pull_request_template.md
+            .github/ISSUE_TEMPLATE/*.yml
+            .github/dependabot.yml
             api/openapi.json
             schemas/*.json
             contracts/*.json
@@ -92,6 +111,7 @@ jobs:
             requirements/implemented-test-mappings*.json
             requirements/completed-planned-tests*.json
             configs/*.yaml
+            repository/repository-governance-baseline.json
             agents/**/SKILL.md
             fixtures/additional-primary-fixture-seeds.yaml
             fixtures/additional-primary-fixtures.json
