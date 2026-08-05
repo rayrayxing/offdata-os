@@ -1,0 +1,58 @@
+name: Finalize PCR-01 status record
+
+on:
+  push:
+    branches: [governance/pcr01-canonical-release]
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/pcr01-canonical-release
+      - name: Finalize development status
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("docs/20-DEVELOPMENT-STATUS.md")
+          text = path.read_text(encoding="utf-8")
+          old = """### PCR-01 — Canonical release reconciliation
+
+Status: **implementation and validation in progress**.
+
+PCR-01 governs the final Phase 1–7 release through `configs/canonical-release.yaml` and the deterministic `releases/canonical-chat-first-phase1-7-release.json`. The controlling completed chat-first source release is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, validated by final run `30976222896` and retained artifact `8918355687`. Earlier successful Phase 7 runs remain recorded as superseded snapshots rather than controlling evidence.
+
+PCR-01 does not enable real client data, commit original methodology binaries or claim operating infrastructure.
+"""
+          new = """### PCR-01 — Canonical release reconciliation
+
+Status: **complete and independently CI-validated**.
+
+PCR-01 governs the final Phase 1–7 release through `configs/canonical-release.yaml` and the deterministic `releases/canonical-chat-first-phase1-7-release.json`. The controlling completed chat-first source release is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, validated by final run `30976222896` and retained artifact `8918355687`. Earlier successful Phase 7 runs remain recorded as superseded snapshots rather than controlling evidence.
+
+The PCR-01 implementation gate passed in run `30983105556`, job `92231688824`, through merge reference `cd4e72dac2cce80d238477c9e1b0288c616b2947`: all Phase 1–7 and PCR-01 validators passed, 226 implemented test nodes and 55 planned tests were registered, all 123 requirements remained mapped, 228 runtime tests passed at 93.39 percent coverage, compilation and Ruff passed, and strict MyPy passed across 31 source files. The 68-file artifact `8920937473` has SHA-256 `6cc7168786e2484a99d558d57e261194cc124943f3c4e9ece4b6c2d8480784d6`.
+
+PCR-01 does not enable real client data, commit original methodology binaries or claim operating infrastructure.
+
+See:
+
+- `docs/40-PCR-01-CANONICAL-RELEASE-RECONCILIATION.md`
+- `reports/pcr01-validation-evidence.md`
+"""
+          if old not in text:
+              raise SystemExit("Expected PCR-01 status block not found")
+          path.write_text(text.replace(old, new), encoding="utf-8")
+          PY
+      - name: Commit status update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/20-DEVELOPMENT-STATUS.md
+          git commit -m "docs(governance): finalize PCR-01 status"
+          git push
