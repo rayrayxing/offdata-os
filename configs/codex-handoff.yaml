@@ -42,6 +42,12 @@ read_order:
   - docs/43-PCR-04-MACHINE-READABLE-CODEX-HANDOFF.md
   - docs/44-PCR-05-RUNTIME-ADAPTER-CONTRACTS.md
   - contracts/runtime-adapter-contracts.json
+  - docs/45-PCR-06-HERMES-ADOPTION-AND-COMPATIBILITY-PACK.md
+  - contracts/hermes-compatibility-pack.json
+  - docs/46-PCR-07-NORTHSTAR-END-TO-END-INTEGRATION-BLUEPRINT.md
+  - contracts/northstar-integration-blueprint.json
+  - docs/47-PCR-08-INITIAL-OPERATING-CONTROL-CONFIGURATION.md
+  - contracts/initial-operating-controls.json
 prerequisite_records:
   - id: canonical_chat_first_release
     path: releases/canonical-chat-first-phase1-7-release.json
@@ -58,6 +64,18 @@ prerequisite_records:
   - id: runtime_adapters
     path: contracts/runtime-adapter-contracts.json
     validator: scripts/validate_pcr05_runtime_adapters.py
+    required_status: passed
+  - id: hermes_compatibility
+    path: contracts/hermes-compatibility-pack.json
+    validator: scripts/validate_pcr06_hermes_compatibility.py
+    required_status: passed
+  - id: northstar_integration_blueprint
+    path: contracts/northstar-integration-blueprint.json
+    validator: scripts/validate_pcr07_northstar_blueprint.py
+    required_status: passed
+  - id: initial_operating_controls
+    path: contracts/initial-operating-controls.json
+    validator: scripts/validate_pcr08_initial_operating_controls.py
     required_status: passed
   - id: codex_handoff
     path: handoff/codex-phase0-handoff.json
@@ -77,6 +95,9 @@ existing_assets:
     - configs/knowledge-ingestion.yaml
     - configs/repository-governance.yaml
     - configs/security-regionalisation.yaml
+    - configs/hermes-compatibility.yaml
+    - configs/northstar-integration-blueprint.yaml
+    - configs/initial-operating-controls.yaml
   contracts_and_schemas:
     - api/openapi.json
     - contracts/model-registry.json
@@ -89,6 +110,12 @@ existing_assets:
     - schemas/codex-handoff.schema.json
     - contracts/runtime-adapter-contracts.json
     - schemas/runtime-adapter-contracts.schema.json
+    - contracts/hermes-compatibility-pack.json
+    - schemas/hermes-compatibility.schema.json
+    - contracts/northstar-integration-blueprint.json
+    - schemas/northstar-integration-blueprint.schema.json
+    - contracts/initial-operating-controls.json
+    - schemas/initial-operating-controls.schema.json
   governed_evidence:
     - requirements/test-registry.json
     - requirements/test-definitions.json
@@ -141,7 +168,7 @@ task_graph:
     acceptance:
       - deliberate_failure_blocks_ci
       - safe_change_passes_all_checks
-      - existing_phase_1_to_7_and_pcr_01_to_04_gate_remains_green
+      - existing_phase_1_to_7_and_pcr_01_to_08_gate_remains_green
   - id: P0.4
     title: Security and operating documentation
     dependencies:
@@ -153,6 +180,7 @@ task_graph:
       - founder_action_register
       - architecture_decision_template
       - build_status_ledger
+      - initial_operating_controls_integrated
     acceptance:
       - no_real_client_data_enabled
       - no_processor_or_external_action_is_approved
@@ -181,6 +209,9 @@ execution:
     - python scripts/build_pcr01_canonical_release.py
     - python scripts/build_pcr03_repository_hygiene.py
     - python scripts/build_pcr05_runtime_adapters.py
+    - python scripts/build_pcr06_hermes_compatibility.py
+    - python scripts/build_pcr07_northstar_blueprint.py
+    - python scripts/build_pcr08_initial_operating_controls.py
     - python scripts/build_pcr04_codex_handoff.py
     - python scripts/validate_phase1_contracts.py
     - python scripts/validate_phase2_agents.py
@@ -193,6 +224,9 @@ execution:
     - python scripts/validate_pcr02_referential_integrity.py
     - python scripts/validate_pcr03_repository_hygiene.py
     - python scripts/validate_pcr05_runtime_adapters.py
+    - python scripts/validate_pcr06_hermes_compatibility.py
+    - python scripts/validate_pcr07_northstar_blueprint.py
+    - python scripts/validate_pcr08_initial_operating_controls.py
     - python scripts/validate_pcr04_codex_handoff.py
     - cd packages/offdata-core && pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
     - python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
@@ -223,6 +257,9 @@ activation_conditions:
   - pcr03_merged_to_main
   - pcr04_merged_to_main
   - pcr05_merged_to_main
+  - pcr06_merged_to_main
+  - pcr07_merged_to_main
+  - pcr08_merged_to_main
   - github_hosted_controls_in_issue_19_verified
   - explicit_founder_phase_0_approval_received
   - clean_macos_environment_available
