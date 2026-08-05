@@ -168,3 +168,9 @@ This evidence validates security intelligence, policy decisions and release-gate
 ## Gate conclusion
 
 Phase 7 is complete as the governed chat-first security and regionalisation package. Real client data remains prohibited until the operating evidence and Founder-acceptance gates pass.
+
+## PCR-01 canonical evidence reconciliation
+
+The authoritative final Phase 7 evidence is GitHub Actions run `30976222896`, job `92210649514`, branch head `8da0f1167d9b6f4da792770b0d564379aa46c3fe`, pull-request merge reference `264459045ce75d7d7c60cbc980a50193f08a6f16`, controlling `main` commit `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, and retained artifact `8918355687` with SHA-256 `3b9f14c520d31ce5f73fbecc726b032a3134042769ee84176e85d642fe2ea852`.
+
+Runs `30975868412` and `30976088173` are successful but **superseded validation snapshots**. Their earlier artifact records remain available for audit history and must not be represented as the final release evidence.

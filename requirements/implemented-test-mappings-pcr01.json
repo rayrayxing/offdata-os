@@ -1,0 +1,38 @@
+{
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_canonical_release_builds_expected_identity": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_canonical_release_manifest_is_reproducible_and_verified": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_changed_governed_record_invalidates_committed_manifest": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_changed_source_profile_checksum_fails_governed_expectation": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_final_validation_cannot_also_be_superseded": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_governed_record_digests_match_exact_repository_bytes": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_governed_release_config_loads_without_implicit_correction": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_missing_governed_record_fails_reconciliation": [
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_release_boundaries_cannot_enable_real_client_data": [
+    "SEC-010",
+    "AUTH-003"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_restricted_oracles_must_remain_agent_invisible": [
+    "AGENT-007",
+    "TEST-005"
+  ],
+  "packages/offdata-core/tests/test_release_reconciliation.py::test_source_profile_summary_preserves_all_founder_sources": [
+    "DATA-004",
+    "TEST-005"
+  ]
+}
