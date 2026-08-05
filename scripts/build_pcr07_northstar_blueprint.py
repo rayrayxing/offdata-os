@@ -53,51 +53,87 @@ def build_northstar_blueprint() -> dict[str, Any]:
     pcr06 = _load_json(PCR06_PATH)
 
     lifecycle_stages = lifecycle.get("stages", [])
+    lifecycle_by_id = {
+        item.get("id"): item for item in lifecycle_stages if isinstance(item, dict)
+    }
     commands = catalogue.get("commands", {})
     events = catalogue.get("events", {})
     model_entries = models.get("models", {})
     agent_entries = agents.get("agents", [])
-    oracle_data = oracle.get("oracle", {})
-    semantic_data = semantic.get("semantic_model", {})
-    journey = source.get("journey_stages", [])
+    declared_agents = {
+        item.get("id") for item in agent_entries if isinstance(item, dict)
+    }
 
-    lifecycle_alignment = [
-        (item.get("lifecycle_stage_id"), item.get("name"), item.get("exit_gate"))
-        for item in journey
-        if isinstance(item, dict)
-    ] == [
-        (item.get("id"), item.get("name"), item.get("exit_gate"))
-        for item in lifecycle_stages
-        if isinstance(item, dict)
+    components = [
+        {
+            "component_id": item[0],
+            "name": item[1],
+            "layer": item[2],
+            "canonical_owner": item[3],
+        }
+        for item in source.get("components", [])
     ]
+    component_ids = {item["component_id"] for item in components}
+    edges = [
+        {
+            "edge_id": item[0],
+            "from_component": item[1],
+            "to_component": item[2],
+            "contract": item[3],
+            "interaction": item[4],
+        }
+        for item in source.get("edges", [])
+    ]
+    journey = []
+    for sequence, item in enumerate(source.get("journey", []), start=1):
+        lifecycle_stage = lifecycle_by_id.get(item[1], {})
+        journey.append(
+            {
+                "stage_id": item[0],
+                "sequence": sequence,
+                "lifecycle_stage_id": item[1],
+                "name": lifecycle_stage.get("name"),
+                "primary_agents": item[2],
+                "command_sequence": item[3],
+                "founder_gate_required": item[4],
+                "required_outputs": lifecycle_stage.get("required_outputs", []),
+                "checkpoint_id": f"CHECKPOINT-{sequence:02d}",
+                "restart_safe": True,
+                "exit_gate": lifecycle_stage.get("exit_gate"),
+                "canonical_write_mode": "commands_only",
+            }
+        )
+    scenarios = [
+        {
+            "scenario_id": item[0],
+            "name": item[1],
+            "expected_terminal_state": item[2],
+            "required_assertions": item[3],
+        }
+        for item in source.get("scenarios", [])
+    ]
+    waves = [
+        {
+            "wave_id": item[0],
+            "name": item[1],
+            "depends_on": [] if item[2] is None else [item[2]],
+            "completion_gate": item[3],
+        }
+        for item in source.get("waves", [])
+    ]
+
     required_commands = {
         command
         for stage in journey
-        if isinstance(stage, dict)
-        for command in stage.get("command_sequence", [])
+        for command in stage["command_sequence"]
         if isinstance(command, str)
     }
     required_agents = {
         agent
         for stage in journey
-        if isinstance(stage, dict)
-        for agent in stage.get("primary_agents", [])
+        for agent in stage["primary_agents"]
         if isinstance(agent, str)
     }
-    declared_agents = {
-        item.get("id") for item in agent_entries if isinstance(item, dict)
-    }
-    component_ids = {
-        item.get("component_id")
-        for item in source.get("integration_components", [])
-        if isinstance(item, dict)
-    }
-    edges_valid = all(
-        edge.get("from_component") in component_ids
-        and edge.get("to_component") in component_ids
-        for edge in source.get("integration_edges", [])
-        if isinstance(edge, dict)
-    )
     required_scenario_commands = {
         "cancel_engagement",
         "create_engagement",
@@ -127,26 +163,27 @@ def build_northstar_blueprint() -> dict[str, Any]:
         for command_id, command in commands.items()
         if isinstance(command, dict) and command.get("idempotency") == "required"
     }
+    oracle_data = oracle.get("oracle", {})
+    semantic_data = semantic.get("semantic_model", {})
     checks = {
         "northstar_fixture_matches_oracle": oracle_data.get("fixture_id") == "FIXTURE-DAI-001",
-        "northstar_fixture_matches_semantic": semantic_data.get("fixture_id")
-        == "FIXTURE-DAI-001",
+        "northstar_fixture_matches_semantic": semantic_data.get("fixture_id") == "FIXTURE-DAI-001",
         "oracle_grade_passed": oracle.get("grade", {}).get("passed") is True,
         "semantic_grade_passed": semantic.get("grade", {}).get("passed") is True,
         "semantic_model_identity": semantic_data.get("semantic_model_id") == "DSM-DAI-001",
-        "story_model_identity": semantic_data.get("story", {}).get("story_model_id")
-        == "STORY-DAI-001",
-        "lifecycle_alignment": lifecycle_alignment and len(journey) == 13,
+        "story_model_identity": semantic_data.get("story", {}).get("story_model_id") == "STORY-DAI-001",
+        "lifecycle_alignment": [item["lifecycle_stage_id"] for item in journey]
+        == [item.get("id") for item in lifecycle_stages],
         "required_commands_declared": required_commands <= set(commands),
         "required_scenario_commands_declared": required_scenario_commands <= set(commands),
         "required_events_declared": required_events <= set(events),
-        "idempotent_release_and_cancel": {
-            "release_artefact",
-            "cancel_engagement",
-        }
+        "idempotent_release_and_cancel": {"release_artefact", "cancel_engagement"}
         <= idempotent_commands,
         "required_agents_declared": required_agents <= declared_agents,
-        "component_edges_resolve": edges_valid,
+        "component_edges_resolve": all(
+            edge["from_component"] in component_ids and edge["to_component"] in component_ids
+            for edge in edges
+        ),
         "model_contracts_available": all(
             name in model_entries
             for name in [
@@ -181,10 +218,10 @@ def build_northstar_blueprint() -> dict[str, Any]:
         "model_count": len(model_entries),
         "agent_count": len(agent_entries),
         "primary_fixture_count": len(additional.get("fixtures", [])) + 1,
-        "integration_component_count": len(source.get("integration_components", [])),
-        "integration_edge_count": len(source.get("integration_edges", [])),
-        "scenario_count": len(source.get("e2e_scenarios", [])),
-        "implementation_wave_count": len(source.get("implementation_waves", [])),
+        "integration_component_count": len(components),
+        "integration_edge_count": len(edges),
+        "scenario_count": len(scenarios),
+        "implementation_wave_count": len(waves),
         "oracle_grade_passed": checks["oracle_grade_passed"],
         "semantic_grade_passed": checks["semantic_grade_passed"],
         "pcr04_codex_start_authorized": False,
@@ -193,7 +230,16 @@ def build_northstar_blueprint() -> dict[str, Any]:
         "local_prerequisites_passed": all(checks.values()),
         "northstar_implementation_authorized": False,
     }
-    output = dict(source)
+    output = {
+        key: value
+        for key, value in source.items()
+        if key not in {"components", "edges", "journey", "scenarios", "waves"}
+    }
+    output["integration_components"] = components
+    output["integration_edges"] = edges
+    output["journey_stages"] = journey
+    output["e2e_scenarios"] = scenarios
+    output["implementation_waves"] = waves
     output["generated_from"] = "configs/northstar-integration-blueprint.yaml"
     output["readiness_snapshot"] = readiness
     return output
