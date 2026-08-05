@@ -110,7 +110,6 @@ def validate(value: dict[str, Any]) -> None:
     require(all(item["independent_review_required"] is True for item in domains.values()), "review")
     assigned = [control for domain in domains.values() for control in domain["security_control_ids"]]
     require(len(assigned) == len(set(assigned)) == 48, "control assignment")
-
     gates = {item["gate_id"]: item for item in value["operating_gates"]}
     require(set(gates) == GATES, "gates")
     require(all(item["authorized"] is False for item in gates.values()), "gate authorized")
@@ -196,6 +195,7 @@ def mutations() -> list[tuple[str, Mutation]]:
             set_path(value, path, replacement)
 
         cases.append((name, mutate))
+
     for path, replacement, name in [
         (("phase_id",), "PCR-09", "phase"), (("status",), "operating_active", "status"),
         (("operating_context", "operator_model"), "multi_user", "operator"),
@@ -262,6 +262,7 @@ def mutations() -> list[tuple[str, Mutation]]:
 
     def remove_condition(v: dict[str, Any]) -> None:
         v["activation_conditions"].remove("pcr08_merged_to_main")
+
     cases.extend([
         ("remove control", remove_control), ("duplicate control", duplicate_control),
         ("enable gate", enable_gate), ("remove idempotency", remove_idempotency),
