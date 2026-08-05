@@ -32,28 +32,34 @@ jobs:
 
           path = Path("packages/offdata-core/src/offdata_core/referential_integrity.py")
           text = path.read_text(encoding="utf-8")
-          old = '''    for record in security_tests:
-              test_id = record.get("test_id")
-              if not isinstance(test_id, str):
-                  raise ValueError("Security test is missing test_id.")
-              kind = str(record.get("kind", "unknown"))
-              stage = str(record.get("execution_stage", "unknown"))
-              requirements = set(_string_tuple(record.get("requirement_ids"), test_id))
-              controls = set(_string_tuple(record.get("control_ids"), test_id))
-              seed = seeds.setdefault(
-                  test_id,
-          '''
-          new = '''    for record in security_tests:
-              security_test_id = record.get("test_id")
-              if not isinstance(security_test_id, str):
-                  raise ValueError("Security test is missing test_id.")
-              kind = str(record.get("kind", "unknown"))
-              stage = str(record.get("execution_stage", "unknown"))
-              requirements = set(_string_tuple(record.get("requirement_ids"), security_test_id))
-              controls = set(_string_tuple(record.get("control_ids"), security_test_id))
-              seed = seeds.setdefault(
-                  security_test_id,
-          '''
+          i8 = " " * 8
+          i12 = " " * 12
+          old = "\n".join(
+              [
+                  f'{i8}test_id = record.get("test_id")',
+                  f"{i8}if not isinstance(test_id, str):",
+                  f'{i12}raise ValueError("Security test is missing test_id.")',
+                  f'{i8}kind = str(record.get("kind", "unknown"))',
+                  f'{i8}stage = str(record.get("execution_stage", "unknown"))',
+                  f'{i8}requirements = set(_string_tuple(record.get("requirement_ids"), test_id))',
+                  f'{i8}controls = set(_string_tuple(record.get("control_ids"), test_id))',
+                  f"{i8}seed = seeds.setdefault(",
+                  f"{i12}test_id,",
+              ]
+          )
+          new = "\n".join(
+              [
+                  f'{i8}security_test_id = record.get("test_id")',
+                  f"{i8}if not isinstance(security_test_id, str):",
+                  f'{i12}raise ValueError("Security test is missing test_id.")',
+                  f'{i8}kind = str(record.get("kind", "unknown"))',
+                  f'{i8}stage = str(record.get("execution_stage", "unknown"))',
+                  f'{i8}requirements = set(_string_tuple(record.get("requirement_ids"), security_test_id))',
+                  f'{i8}controls = set(_string_tuple(record.get("control_ids"), security_test_id))',
+                  f"{i8}seed = seeds.setdefault(",
+                  f"{i12}security_test_id,",
+              ]
+          )
           if old in text:
               path.write_text(text.replace(old, new, 1), encoding="utf-8")
               Path("/tmp/pcr02-repaired").write_text("true", encoding="utf-8")
