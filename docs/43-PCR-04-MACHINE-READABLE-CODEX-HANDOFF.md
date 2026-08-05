@@ -27,7 +27,7 @@ The generated handoff records:
 - prerequisite release, test-identity, referential-integrity and repository-governance records;
 - existing deterministic assets that must be integrated rather than duplicated;
 - a dependency-checked P0.1–P0.4 task graph;
-- required build, validation, test, compilation, lint and type-check commands;
+- required root-executable build, validation, test, compilation, lint and type-check commands;
 - the canonical branch and draft-pull-request workflow;
 - prohibited actions and stop conditions;
 - Founder report fields;
@@ -49,9 +49,11 @@ PCR-04 fails when:
 - prohibited data, deployment, payment, external-action or merge boundaries are weakened;
 - the canonical Phase 0 branch or draft-PR rule changes;
 - the PCR-04 command is removed from the handoff;
+- a package command omits its required working directory;
+- transient stacked-pull-request metadata enters the canonical handoff;
 - kickoff documentation drifts away from the machine contract.
 
-The validator also applies controlled mutations and proves that phase escalation, autonomous activation, external-action enablement, duplicate task identity, dependency cycles and removal of the PCR-04 command are rejected.
+The validator applies eight controlled mutations and proves that phase escalation, autonomous activation, external-action enablement, duplicate task identity, dependency cycles, removal of the PCR-04 command, missing package working directories and transient stacked-branch metadata are rejected.
 
 ## Activation boundary
 
