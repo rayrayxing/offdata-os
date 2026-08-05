@@ -1,0 +1,120 @@
+{
+  "accountable_owner": "rayrayxing",
+  "canonical_branch": "main",
+  "case_collisions": [],
+  "generated_from": "configs/repository-governance.yaml",
+  "hosted_settings_required_before_codex": [
+    "require_pull_request_for_main",
+    "require_complete_validation_workflow",
+    "dismiss_stale_approvals",
+    "require_conversation_resolution",
+    "block_force_push_and_branch_deletion",
+    "automatically_delete_merged_head_branches",
+    "verify_github_mfa"
+  ],
+  "missing_required_files": [],
+  "phase_id": "PCR-03",
+  "prohibited_tracked_paths": [],
+  "real_client_data_allowed": false,
+  "required_files": [
+    {
+      "bytes": 319,
+      "path": ".github/CODEOWNERS",
+      "sha256": "c840679fe4b6cec69162ef69ccb35eb53ddb2573207ceaf3666fc07b539aad3f"
+    },
+    {
+      "bytes": 1410,
+      "path": ".github/ISSUE_TEMPLATE/bug.yml",
+      "sha256": "211451961e729bc67c55f74269bad4e662ae1d8700c46b388a55a93cac065366"
+    },
+    {
+      "bytes": 238,
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "sha256": "23f5bf0e64875470ab8e6d9265601a719dd9af3084a0f695a0f8f74c1c5fcc0f"
+    },
+    {
+      "bytes": 1194,
+      "path": ".github/ISSUE_TEMPLATE/governance-change.yml",
+      "sha256": "d9fee42d4a160fbe858d29ea32d7938ddd752b60a75b0183c3e45aba051cf87e"
+    },
+    {
+      "bytes": 416,
+      "path": ".github/dependabot.yml",
+      "sha256": "39da0b2ce585f83331f2156b5a42247461a88e48ff40e2e42a1c5e51041fd0a3"
+    },
+    {
+      "bytes": 1394,
+      "path": ".github/pull_request_template.md",
+      "sha256": "fba106327ec94482986c6a43804e8f0666ab0ab472066432c34273871a210f2f"
+    },
+    {
+      "bytes": 6217,
+      "path": ".github/workflows/contracts.yml",
+      "sha256": "e42edba4c12fa95ee555b60f4f536f584eafbacb2685132f40d7e445ba392928"
+    },
+    {
+      "bytes": 799,
+      "path": ".gitignore",
+      "sha256": "a36e57705fcfa885c40bfe6984d8749b31726faada1ab460eeb0dd44ab9d668a"
+    },
+    {
+      "path": "AGENTS.md"
+    },
+    {
+      "bytes": 2310,
+      "path": "CONTRIBUTING.md",
+      "sha256": "ea9befa133887a04303effbda1851807e74e8f3b3b7e44c891a5fb6a60c75b60"
+    },
+    {
+      "bytes": 3817,
+      "path": "GOVERNANCE.md",
+      "sha256": "ea9568037f19b57cc362f54641f36c33974e886c5323fb70de223c587085644f"
+    },
+    {
+      "bytes": 4010,
+      "path": "README.md",
+      "sha256": "3b87d137e782b259425de251a480a92ba599d7cba57672939ad17cff33aa36f6"
+    },
+    {
+      "bytes": 2241,
+      "path": "SECURITY.md",
+      "sha256": "e066099c14bec58d69078f874f0cdb3e8e8ed9f48e011974c1df4212c1070b31"
+    },
+    {
+      "bytes": 2316,
+      "path": "configs/repository-governance.yaml",
+      "sha256": "f67498c61414d03de19172178145673152f0cc846481a6f1584c2dfd0c55638d"
+    },
+    {
+      "bytes": 4173,
+      "path": "docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md",
+      "sha256": "18447f9151a88d51b1a4fb33ae4ab399124b34e265dd0b8fe0feb9b76188a74c"
+    },
+    {
+      "path": "reports/pcr03-validation-evidence.md"
+    },
+    {
+      "bytes": 4992,
+      "path": "scripts/build_pcr03_repository_hygiene.py",
+      "sha256": "e19120d3ae2bfbbda3ef4551f5b76badb151eddaa80592f46dbf54dc35755a7b"
+    },
+    {
+      "bytes": 2639,
+      "path": "scripts/validate_pcr03_repository_hygiene.py",
+      "sha256": "755995d42a7b3db5e651cce19f817a32d3690e8a2938cde45f6345db30d2ca32"
+    }
+  ],
+  "schema_version": 1,
+  "workflow_checks": {
+    "branches: [main]": true,
+    "cancel-in-progress: true": true,
+    "concurrency:": true,
+    "contents: read": true,
+    "permissions:": true,
+    "persist-credentials: false": true,
+    "pull_request:": true,
+    "python scripts/build_pcr03_repository_hygiene.py": true,
+    "python scripts/validate_pcr03_repository_hygiene.py": true,
+    "repository/repository-governance-baseline.json": true
+  }
+}
