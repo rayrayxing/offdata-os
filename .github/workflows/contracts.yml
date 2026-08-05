@@ -1,4 +1,4 @@
-name: Machine contracts, agents, oracle, deliverables, fixtures, knowledge and security
+name: Machine contracts, agents, oracle, deliverables, fixtures, knowledge, security and release
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   validate-contracts:
-    name: Validate complete chat-first Phase 1–7 release
+    name: Validate complete chat-first Phase 1–7 and PCR-01 release
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -51,10 +51,14 @@ jobs:
         run: python scripts/validate_phase6_knowledge_intelligence.py
       - name: Build Phase 7 security and regionalisation
         run: python scripts/build_phase7_security_regionalisation.py
-      - name: Enforce clean generated Phase 1–7 records
-        run: git diff --exit-code -- requirements/test-registry.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json security/security-regionalisation-baseline.json
+      - name: Build PCR-01 canonical release reconciliation
+        run: python scripts/build_pcr01_canonical_release.py
+      - name: Enforce clean generated Phase 1–7 and PCR-01 records
+        run: git diff --exit-code -- requirements/test-registry.json fixtures/additional-primary-fixtures.json fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json knowledge/knowledge-ingestion-baseline.json security/security-regionalisation-baseline.json releases/canonical-chat-first-phase1-7-release.json
       - name: Validate Phase 7 security and regionalisation
         run: python scripts/validate_phase7_security_regionalisation.py
+      - name: Validate PCR-01 canonical release reconciliation
+        run: python scripts/validate_pcr01_canonical_release.py
       - name: Run deterministic test suite
         working-directory: packages/offdata-core
         run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
@@ -89,4 +93,5 @@ jobs:
             security/README.md
             security/*.yaml
             security/*.json
+            releases/*.json
             database/migrations/*.sql
