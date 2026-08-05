@@ -25,12 +25,22 @@ jobs:
           cat > /tmp/phase7-chunks.sha256 <<'EOF'
           fd6300974849a2de0fb4cc52bcbaa1726be2e50134e2ccbecc5aa9902e490431  .phase7-bundle/part-00
           fe3c8fa38cb9d2a59f9c5f76fe0af6e6f7fbe722479f8405592090f19c691008  .phase7-bundle/part-01
-          463d0932ed0e07eaf9fa7ce56fdcdf924bef2fc035935a35b6fabeba28a3e511  .phase7-bundle/part-02
+          50966cc3afa2ec58873cdd2b46a759e85005757982054d59c294452c8020047b  .phase7-bundle/fix02-00
+          01b00998bf6b7c68c3cbf807189ccb00e389f058eac127bd619815c2d5fe6149  .phase7-bundle/fix02-01
+          f879c403246352cdb59da4f7d71d5a54f1b01df9c49c3bcb315d1ef5501c742f  .phase7-bundle/fix02-02
+          affa852c80b2c7c581ba9f5fbfd59bf1837f110bc238f587ee614808771e5617  .phase7-bundle/fix02-03
+          7ee6c4e884f24da233b937ca12ea179dcc60c4fb29acc847bfa98cfa36f97918  .phase7-bundle/fix02-04
           9caaa5aa90c94270f7991126a6e998555b859bb15b2e495f174b3ec4216f7540  .phase7-bundle/part-03
           54c8cf74b53a18e6eae7e3ea9f92bdb3d7eda5955814bdd46aa8c91384161298  .phase7-bundle/part-04
           EOF
           sha256sum --check /tmp/phase7-chunks.sha256
-          cat .phase7-bundle/part-* > /tmp/phase7-release.b64
+          cat \
+            .phase7-bundle/part-00 \
+            .phase7-bundle/part-01 \
+            .phase7-bundle/fix02-* \
+            .phase7-bundle/part-03 \
+            .phase7-bundle/part-04 \
+            > /tmp/phase7-release.b64
           base64 --decode /tmp/phase7-release.b64 > /tmp/phase7-release.tar.gz
           tar -xzf /tmp/phase7-release.tar.gz -C .
       - name: Set up Python 3.11
