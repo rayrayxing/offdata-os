@@ -19,12 +19,12 @@ The handoff makes the first Codex assignment unambiguous without granting autono
 
 ## Contract contents
 
-The generated handoff consumes `contracts/runtime-adapter-contracts.json` as a prerequisite and records:
+The generated handoff consumes the PCR-05 runtime, PCR-06 Hermes, PCR-07 Northstar and PCR-08 initial operating-control contracts as prerequisites and records:
 
 - instruction precedence and non-controlling historical repositories;
 - the required read order;
 - the canonical Phase 0 target and maximum authorised phase;
-- prerequisite release, test-identity, referential-integrity, repository-governance and runtime-adapter records;
+- prerequisite release, test-identity, referential-integrity, repository-governance, runtime-adapter, Hermes-compatibility, Northstar-blueprint and initial operating-control records;
 - existing deterministic assets that must be integrated rather than duplicated;
 - a dependency-checked P0.1–P0.4 task graph;
 - required root-executable build, validation, test, compilation, lint and type-check commands;
@@ -33,7 +33,7 @@ The generated handoff consumes `contracts/runtime-adapter-contracts.json` as a p
 - Founder report fields;
 - activation conditions;
 - immutable data, external-action, cost, deployment, merge and accountability boundaries;
-- a generated readiness snapshot from PCR-01, PCR-02, PCR-03 and PCR-05 records.
+- a generated readiness snapshot from PCR-01 through PCR-08 records while preserving every inactive activation state and incomplete hosted or operating-evidence boundary.
 
 ## Validation behaviour
 
@@ -53,7 +53,7 @@ PCR-04 fails when:
 - transient stacked-pull-request metadata enters the canonical handoff;
 - kickoff documentation drifts away from the machine contract.
 
-The validator applies ten controlled mutations and proves that phase escalation, autonomous activation, external-action enablement, duplicate task identity, dependency cycles, removal of the PCR-04 command, missing package working directories, transient stacked-branch metadata, removal of the PCR-05 validator and runtime activation are rejected.
+The validator applies fifteen controlled mutations and proves that phase escalation, autonomous activation, external-action enablement, duplicate task identity, dependency cycles, command removal, missing package working directories, transient stacked-branch metadata, runtime or Hermes activation, Northstar implementation, false operating evidence and initial operating-control activation are rejected.
 
 ## Activation boundary
 
@@ -64,9 +64,12 @@ All activation conditions in the handoff remain required:
 1. PCR-03 merged to `main`;
 2. PCR-04 merged to `main`;
 3. PCR-05 merged to `main`;
-4. issue #19 hosted controls verified;
-5. explicit Founder Phase 0 approval;
-6. a clean macOS environment.
+4. PCR-06 merged to `main`;
+5. PCR-07 merged to `main`;
+6. PCR-08 merged to `main`;
+7. issue #19 hosted controls verified;
+8. explicit Founder Phase 0 approval;
+9. a clean macOS environment.
 
 ## Cost, data and authority
 
