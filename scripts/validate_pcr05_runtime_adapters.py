@@ -20,6 +20,7 @@ DOCS = [
     ROOT / "README.md",
     ROOT / "docs/14-CODEX-KICKOFF.md",
     ROOT / "docs/19-PHASE-0-VALIDATION-ADDENDUM.md",
+    ROOT / "docs/20-DEVELOPMENT-STATUS.md",
 ]
 KINDS = {"agent_runtime", "workflow_runtime", "worker_harness", "tool_runtime"}
 ACTIVATION = {
@@ -38,6 +39,15 @@ EVENTS = {
     "runtime.policy.denied", "runtime.kill_switch.triggered",
 }
 CASES = {f"RA-CONF-{i:03d}" for i in range(1, 15)}
+EXPECTED_REQUIRED_IDEMPOTENCY_COMMANDS = {
+    "cancel_engagement",
+    "execute_external_action",
+    "propose_external_action",
+    "record_agent_output",
+    "record_approval",
+    "release_artefact",
+    "request_approval",
+}
 SAMPLES = {
     "AgentRuntimeRequest", "AgentRuntimeResponse", "WorkflowRuntimeRequest",
     "WorkflowRuntimeResponse", "WorkerPackage", "WorkerResult",
@@ -216,6 +226,17 @@ def semantic_failures(contract: dict[str, Any], *, samples: bool = True) -> list
     if readiness.get("security", {}).get("real_client_data_enabled") is not False:
         fail.append("readiness enables client data")
 
+    commands = readiness.get("commands", {}) if isinstance(readiness, dict) else {}
+    if (
+        not isinstance(commands, dict)
+        or commands.get("count") != 10
+        or commands.get("idempotency_required_count")
+        != len(EXPECTED_REQUIRED_IDEMPOTENCY_COMMANDS)
+        or set(commands.get("idempotency_required_commands", []))
+        != EXPECTED_REQUIRED_IDEMPOTENCY_COMMANDS
+    ):
+        fail.append("command idempotency readiness does not match the catalogue")
+
     if samples:
         messages = contract.get("sample_messages", [])
         ids = [item.get("sample_id") for item in messages if isinstance(item, dict)]
@@ -267,6 +288,9 @@ def run_mutations(contract: dict[str, Any]) -> int:
         lambda v: v["activation_conditions"].remove("pcr05_merged_to_main"),
         lambda v: v.__setitem__("stacked_base_branch", "temporary"),
         lambda v: v["readiness_snapshot"]["checks"].__setitem__("agent_tools_declared", False),
+        lambda v: v["readiness_snapshot"]["commands"].__setitem__(
+            "idempotency_required_count", 0
+        ),
         lambda v: (tool_sample(v).__setitem__("external_side_effect", True), tool_sample(v).__setitem__("approval_id", None), tool_sample(v).__setitem__("idempotency_key", None)),
     ]
     for index, change in enumerate(changes, 1):
