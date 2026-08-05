@@ -1,0 +1,135 @@
+name: PCR-09 final issue and release evidence
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact pull-request merge reference
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.11
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: packages/offdata-core/pyproject.toml
+      - name: Install validation dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -e 'packages/offdata-core[dev]'
+      - name: Rebuild every governed machine record
+        run: |
+          python scripts/build_test_registry.py
+          python scripts/build_pcr02_test_identity.py
+          python scripts/export_machine_contracts.py
+          python scripts/build_phase3_oracle.py
+          python scripts/build_phase4_deliverable_semantic_model.py
+          python scripts/build_phase5_fixture_programme.py
+          python scripts/build_phase6_knowledge_intelligence.py
+          python scripts/build_phase7_security_regionalisation.py
+          python scripts/build_pcr01_canonical_release.py
+          python scripts/build_pcr03_repository_hygiene.py
+          python scripts/build_pcr05_runtime_adapters.py
+          python scripts/build_pcr06_hermes_compatibility.py
+          python scripts/build_pcr07_northstar_blueprint.py
+          python scripts/build_pcr08_initial_operating_controls.py
+          python scripts/build_pcr09_codex_issue.py
+          python scripts/build_pcr04_codex_handoff.py
+      - name: Enforce clean deterministic generation
+        run: git diff --exit-code
+      - name: Validate every chat-first phase and PCR boundary
+        run: |
+          python scripts/validate_phase1_contracts.py
+          python scripts/validate_phase2_agents.py
+          python scripts/validate_phase3_ai_audit_oracle.py
+          python scripts/validate_phase4_deliverable_semantic_model.py
+          python scripts/validate_phase5_fixture_programme.py
+          python scripts/validate_phase6_knowledge_intelligence.py
+          python scripts/validate_phase7_security_regionalisation.py
+          python scripts/validate_pcr01_canonical_release.py
+          python scripts/validate_pcr02_referential_integrity.py
+          python scripts/validate_pcr03_repository_hygiene.py
+          python scripts/validate_pcr05_runtime_adapters.py
+          python scripts/validate_pcr06_hermes_compatibility.py
+          python scripts/validate_pcr07_northstar_blueprint.py
+          python scripts/validate_pcr08_initial_operating_controls.py
+          python scripts/validate_pcr09_codex_issue.py
+          python scripts/validate_pcr04_codex_handoff.py
+      - name: Run deterministic runtime and coverage suite
+        working-directory: packages/offdata-core
+        run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90 | tee /tmp/pcr09-pytest.log
+      - name: Compile Python sources
+        run: python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
+      - name: Enforce Ruff baseline
+        run: ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts
+      - name: Enforce strict MyPy baseline
+        working-directory: packages/offdata-core
+        run: mypy src
+      - name: Verify live canonical and superseded issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_TITLE: Codex Phase 0 — Validate and build the controlled local foundation
+          EXPECTED_BODY_SHA256: eb36942b5db4d344edc47465bca0101f1458e7a1f5e67d47060831197aa2fb3f
+        run: |
+          mkdir -p ci-evidence
+          gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
+          gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          issue1 = json.loads(Path('ci-evidence/issue-1.json').read_text())
+          issue2 = json.loads(Path('ci-evidence/issue-2.json').read_text())
+          assert issue1['title'] == os.environ['EXPECTED_TITLE']
+          digest = hashlib.sha256(issue1['body'].encode('utf-8')).hexdigest()
+          assert digest == os.environ['EXPECTED_BODY_SHA256'], digest
+          assert issue1['state'] == 'open'
+          assert issue2['state'] == 'closed'
+          assert issue2.get('state_reason') == 'duplicate'
+          Path('ci-evidence/remote-verification.txt').write_text(
+              f"issue_1_title_verified=true\n"
+              f"issue_1_body_sha256={digest}\n"
+              f"issue_1_state=open\n"
+              f"issue_2_state=closed\n"
+              f"issue_2_state_reason=duplicate\n",
+              encoding='utf-8',
+          )
+          PY
+      - name: Assemble retained evidence
+        run: |
+          cp /tmp/pcr09-pytest.log ci-evidence/pytest.log
+          printf 'head_sha=%s\nmerge_ref=%s\nrun_id=%s\n' "${{ github.event.pull_request.head.sha }}" "$GITHUB_SHA" "$GITHUB_RUN_ID" > ci-evidence/run.txt
+          sha256sum contracts/codex-phase0-issue.json handoff/codex-phase0-issue.md handoff/codex-phase0-handoff.json > ci-evidence/repository-digests.txt
+      - name: Retain final PCR-09 evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: offdata-pcr09-final-evidence-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 30
+          include-hidden-files: true
+          path: |
+            ci-evidence
+            configs/codex-phase0-issue.yaml
+            contracts/codex-phase0-issue.json
+            handoff/codex-phase0-issue.md
+            handoff/codex-phase0-handoff.json
+            reports/pcr09-validation-evidence.md
+      - name: Publish successful exact-gate evidence to pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/pcr09-pytest.log | tail -1)
+          COVERAGE=$(grep 'Total coverage:' /tmp/pcr09-pytest.log | tail -1)
+          gh pr comment "$PR_NUMBER" --body "PCR-09 final evidence gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Deterministic Phase 1–7/PCR-01–09 generation and validation, compilation, Ruff, strict MyPy, issue #1 title/body digest, and issue #2 duplicate closure all passed. Codex remains unauthorized to start."
