@@ -213,6 +213,19 @@ See:
 - `handoff/codex-phase0-handoff.json`
 - `reports/pcr04-validation-evidence.md`
 
+### PCR-05 — Runtime adapter contracts
+
+Status: **complete as a governed stacked implementation in PR #21; final merge remains dependent on PCR-03 and PCR-04**.
+
+PCR-05 defines provider-independent contracts for agent runtimes, durable workflow runtimes, bounded worker harnesses and tool runtimes. The deterministic contract covers eight implementation profiles, twenty tool classes, typed request and response messages, budget and audit requirements, fourteen conformance cases and eighteen controlled mutation cases. Canonical writes remain command-only, every external-side-effect tool remains unavailable pending scoped Founder approval and idempotency, and `runtime_activation_authorized=false`.
+
+See:
+
+- `docs/44-PCR-05-RUNTIME-ADAPTER-CONTRACTS.md`
+- `contracts/runtime-adapter-contracts.json`
+- `reports/pcr05-validation-evidence.md`
+
+
 ### Deterministic consulting kernel
 
 - Lifecycle and transition logic.
@@ -245,9 +258,10 @@ Complete the governed merge and activation sequence without bypassing Founder au
 
 1. Founder reviews and merges PCR-03 PR #18.
 2. Retarget PCR-04 PR #20 to `main`, rerun the exact complete gate and merge only after Founder approval.
-3. Verify every GitHub-hosted control in issue #19.
-4. Confirm a clean macOS development environment.
-5. Give explicit Founder approval for Codex Phase 0 only.
+3. Retarget PCR-05 PR #21 to the merged PCR-04 base, rerun the exact complete gate and merge only after Founder approval.
+4. Verify every GitHub-hosted control in issue #19.
+5. Confirm a clean macOS development environment.
+6. Give explicit Founder approval for Codex Phase 0 only.
 
 Codex must integrate and execute the committed design rather than rediscover or duplicate it.
 
@@ -255,7 +269,7 @@ Codex must integrate and execute the committed design rather than rediscover or 
 
 Only the following are useful now:
 
-1. Review the PCR-03 and PCR-04 pull requests in sequence.
+1. Review the PCR-03, PCR-04 and PCR-05 pull requests in sequence.
 2. Complete the hosted-control checklist in issue #19, including MFA and `main` protection.
 3. Install and sign into the Codex macOS app.
 4. Confirm PowerPoint, Word and Excel availability.
@@ -268,10 +282,11 @@ Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack 
 
 ## Current Codex gate
 
-Codex may begin only when all activation conditions in `handoff/codex-phase0-handoff.json` are satisfied. The first command is:
+Codex may begin only when all activation conditions in `handoff/codex-phase0-handoff.json` are satisfied. The first commands are:
 
 ```bash
+python scripts/validate_pcr05_runtime_adapters.py
 python scripts/validate_pcr04_codex_handoff.py
 ```
 
-The initial assignment is Phase 0 only on branch `codex/phase-0-foundation`, using synthetic data and a draft pull request. Phase 1 progression, paid services, secrets, OAuth, DNS changes, production deployment, external actions, restricted-oracle exposure and real client data remain prohibited.
+`runtime_activation_authorized=false` remains binding. The initial assignment is Phase 0 only on branch `codex/phase-0-foundation`, using synthetic data and a draft pull request. Phase 1 progression, paid services, secrets, OAuth, DNS changes, production deployment, external actions, restricted-oracle exposure and real client data remain prohibited.
