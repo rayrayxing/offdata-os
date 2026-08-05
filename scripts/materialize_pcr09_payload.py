@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CHUNKS = sorted((ROOT / "scripts").glob(".pcr09_payload_*"))
 EXPECTED_SHA256 = "e5797e559e5b1937bac42a8925a5d10e912b2058947d8f89d13d63e6820c1497"
-EXPECTED_LENGTHS = [6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 5676]
+EXPECTED_LENGTHS = [6000, 6000, 6000, 6000, 6000, 6000, 3000, 3000, 6000, 5676]
 
 
 def replace_once(path: Path, old: str, new: str) -> None:
@@ -20,8 +20,8 @@ def replace_once(path: Path, old: str, new: str) -> None:
 
 
 def main() -> None:
-    if len(CHUNKS) != 9:
-        raise RuntimeError(f"Expected 9 payload chunks, found {len(CHUNKS)}")
+    if len(CHUNKS) != 10:
+        raise RuntimeError(f"Expected 10 payload chunks, found {len(CHUNKS)}")
     texts = [path.read_text(encoding="ascii") for path in CHUNKS]
     lengths = [len(text) for text in texts]
     print(f"PCR-09 payload chunk lengths: {lengths}")
