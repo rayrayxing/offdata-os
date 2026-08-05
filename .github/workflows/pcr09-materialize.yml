@@ -1,34 +1,40 @@
-name: PCR-09 one-time materialization
+name: PCR-09 one-time finalization
 
 on:
   push:
     branches:
       - governance/pcr09-first-codex-issue
-  pull_request:
 
 permissions:
   contents: write
 
+concurrency:
+  group: pcr09-finalize-governance-pcr09-first-codex-issue
+  cancel-in-progress: true
+
 jobs:
-  materialize:
-    if: ${{ github.event_name == 'pull_request' || !contains(github.event.head_commit.message, '[pcr09-materialized]') }}
+  finalize:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Check out branch
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: ${{ github.head_ref || github.ref_name }}
+          ref: governance/pcr09-first-codex-issue
           persist-credentials: true
           fetch-depth: 0
       - name: Materialize validated PCR-09 package
         run: python scripts/materialize_pcr09_payload.py
-      - name: Commit materialized package
+      - name: Squash package onto exact PCR-08 base
+        env:
+          PCR08_BASE: dbab13cbb7cb3993846188fcfeac925b93fb7d09
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --exit-code && exit 1 || true
-          git commit -m "PCR-09: materialize validated issue package [pcr09-materialized]"
-          echo "MATERIALIZED_COMMIT=$(git rev-parse HEAD)"
-          git push origin HEAD:${{ github.head_ref || github.ref_name }}
+          git commit -m "PCR-09 temporary materialized state"
+          git reset --soft "$PCR08_BASE"
+          git commit -m "PCR-09: complete first Codex issue rewrite"
+          echo "PCR09_FINAL_COMMIT=$(git rev-parse HEAD)"
+          git push --force origin HEAD:governance/pcr09-first-codex-issue
