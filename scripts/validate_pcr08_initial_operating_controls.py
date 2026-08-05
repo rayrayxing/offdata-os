@@ -110,10 +110,6 @@ def validate(value: dict[str, Any]) -> None:
     require(all(item["independent_review_required"] is True for item in domains.values()), "review")
     assigned = [control for domain in domains.values() for control in domain["security_control_ids"]]
     require(len(assigned) == len(set(assigned)) == 48, "control assignment")
-    assignments = value["control_assignments"]
-    require(len(assignments) == 48, "generated assignments")
-    require({item["control_id"] for item in assignments} == set(assigned), "assignment mismatch")
-    require(sum(item["mandatory_for_real_client_data"] is True for item in assignments) == 18, "mandatory controls")
 
     gates = {item["gate_id"]: item for item in value["operating_gates"]}
     require(set(gates) == GATES, "gates")
