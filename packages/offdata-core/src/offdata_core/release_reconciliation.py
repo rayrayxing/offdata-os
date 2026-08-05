@@ -275,7 +275,15 @@ def _source_profile_summary(root: Path, config: CanonicalReleaseConfig) -> Sourc
     for raw in core + domain:
         if not isinstance(raw, dict):
             raise ValueError("Source profile must be an object.")
-        profiles.append(SourceProfileDigest.model_validate(raw))
+        profile_payload = {
+            "source_id": raw.get("source_id"),
+            "checksum_sha256": raw.get("checksum_sha256"),
+            "byte_size": raw.get("byte_size"),
+            "import_status": raw.get("import_status"),
+            "rights_status": raw.get("rights_status"),
+            "external_redistribution_allowed": raw.get("external_redistribution_allowed"),
+        }
+        profiles.append(SourceProfileDigest.model_validate(profile_payload))
     profiles.sort(key=lambda item: item.source_id)
     if len({item.source_id for item in profiles}) != len(profiles):
         raise ValueError("Source profile IDs must be unique.")
@@ -322,7 +330,7 @@ def build_canonical_release_manifest(root: Path) -> CanonicalReleaseManifest:
         rules=config.rules,
     )
     digest = _sha256_bytes(_canonical_bytes(body.model_dump(mode="json")))
-    return CanonicalReleaseManifest(**body.model_dump(), manifest_digest=digest)
+    return CanonicalReleaseManifest.model_validate({**body.model_dump(mode="json"), "manifest_digest": digest})
 
 
 def canonical_release_document(root: Path) -> dict[str, Any]:

@@ -1,0 +1,333 @@
+{
+  "boundaries": {
+    "external_actions_authorised": false,
+    "founder_accountability_preserved": true,
+    "original_methodology_binaries_committed": false,
+    "production_security_operating_evidence_complete": false,
+    "real_client_data_enabled": false,
+    "restricted_evaluation_material_agent_visible": false
+  },
+  "controlling_release": {
+    "main_merge_commit": "7dc5531e641158e5a84fbbb9fdf07cefefd4782b",
+    "merged_at": "2026-08-05T04:53:20Z",
+    "pull_request": 15,
+    "pull_request_head": "8da0f1167d9b6f4da792770b0d564379aa46c3fe",
+    "pull_request_merge_reference": "264459045ce75d7d7c60cbc980a50193f08a6f16"
+  },
+  "final_validation": {
+    "artifact": {
+      "compressed_size_bytes": 157193,
+      "created_at": "2026-08-05T04:49:56Z",
+      "expires_at": "2026-09-04T04:49:55Z",
+      "file_count": 65,
+      "id": 8918355687,
+      "name": "offdata-chat-first-release-264459045ce75d7d7c60cbc980a50193f08a6f16",
+      "retention_days": 30,
+      "sha256": "3b9f14c520d31ce5f73fbecc726b032a3134042769ee84176e85d642fe2ea852"
+    },
+    "conclusion": "success",
+    "job_id": 92210649514,
+    "python": "3.11.15",
+    "run_id": 30976222896,
+    "runner": "Ubuntu 24.04",
+    "workflow_name": "Machine contracts, agents, oracle, deliverables, fixtures, knowledge and security"
+  },
+  "governed_records": [
+    {
+      "path": "requirements/test-registry.json",
+      "restricted": false,
+      "role": "combined_requirement_test_registry",
+      "sha256": "f8d5d2914456c2ba55d987d53c17933a0bf6c3fc4d8e451e4a6139e2694e46bd",
+      "size_bytes": 85264
+    },
+    {
+      "path": "fixtures/additional-primary-fixtures.json",
+      "restricted": false,
+      "role": "additional_primary_fixture_baseline",
+      "sha256": "ecd4049edf25ce05c319a9ffb1b9fcf3779f407b0f05ceb90143cbf59107501c",
+      "size_bytes": 98417
+    },
+    {
+      "path": "fixtures/digital-ai/FIXTURE-DAI-001/oracle-baseline.json",
+      "restricted": true,
+      "role": "restricted_analytical_oracle",
+      "sha256": "4f7a653839017b6a5adbb622a3eddfd027f784f87f7a0c75aee52de928a1ca02",
+      "size_bytes": 25566
+    },
+    {
+      "path": "fixtures/digital-ai/FIXTURE-DAI-001/deliverable-semantic-baseline.json",
+      "restricted": true,
+      "role": "restricted_deliverable_semantic_oracle",
+      "sha256": "be581ea86ea1788c208682e74fa88cfe5780de9ff5a452517d07e63f12686dcb",
+      "size_bytes": 86405
+    },
+    {
+      "path": "knowledge/knowledge-ingestion-baseline.json",
+      "restricted": false,
+      "role": "knowledge_ingestion_intelligence_baseline",
+      "sha256": "a29d405e76c4dbcac0f86546e1ff31476ee6fc5fce8e42d3e679349120bfbb38",
+      "size_bytes": 112164
+    },
+    {
+      "path": "security/security-regionalisation-baseline.json",
+      "restricted": false,
+      "role": "security_and_regionalisation_baseline",
+      "sha256": "a608ae867bc0bf55fe1c1c736f602234d8224320d786afd3020cc6ab30ef12be",
+      "size_bytes": 936
+    },
+    {
+      "path": "knowledge/source-manifest.yaml",
+      "restricted": false,
+      "role": "founder_supplied_source_profile_manifest",
+      "sha256": "ba7b43bbcb5ef170212fe6c7daead57cd7396ee7ee1411f3fc93d2b7e17ce9b7",
+      "size_bytes": 16741
+    }
+  ],
+  "manifest_digest": "e53531d1a0a8ed80eb4ece163611c0ccd000001829d12112f50e2da450dc13ea",
+  "phases": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "quality_summary": {
+    "catalogue_requirements": 123,
+    "completed_planned_test_ids": 19,
+    "coverage_floor_percent": 90.0,
+    "coverage_percent": 93.34,
+    "implemented_test_nodes": 215,
+    "mypy_source_files": 30,
+    "phase_validators_passed": 7,
+    "remaining_planned_tests": 55,
+    "runtime_tests_passed": 217
+  },
+  "release_id": "CHAT-FIRST-PHASE1-7-2026-08-05",
+  "repository": "rayrayxing/offdata-os",
+  "rules": {
+    "final_validation_is_authoritative": true,
+    "governed_record_digests_are_computed_from_repository_bytes": true,
+    "manifest_generation_must_be_byte_reproducible": true,
+    "missing_or_changed_governed_record_fails": true,
+    "source_profile_checksums_are_preserved": true,
+    "superseded_snapshots_are_preserved_not_controlling": true
+  },
+  "scope": "canonical_phase_1_to_7_release_reconciliation",
+  "source_profiles": {
+    "aggregate_profile_bytes": 2294919,
+    "aggregate_profile_sha256": "e42670042ae5f46bde5048e11912e42ef57f6e2991562fb080dd7f069cf107a7",
+    "core_markdown_sources": 11,
+    "domain_docx_sources": 12,
+    "profiles": [
+      {
+        "byte_size": 112064,
+        "checksum_sha256": "c40be56daafd9c3938188d9b80807c73b5c02234a1a2f586610ed52013b8dcb5",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-001"
+      },
+      {
+        "byte_size": 178528,
+        "checksum_sha256": "52e28cc8948cb970e54a4ff9adcf6feda18e2de7f05e568629742f228ea03ddf",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-002"
+      },
+      {
+        "byte_size": 134428,
+        "checksum_sha256": "7cfa628d3eddfc608a008ccb42237e3255cf9a29ba9cce01572492405f4d1348",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-003"
+      },
+      {
+        "byte_size": 116698,
+        "checksum_sha256": "d72a48129da403c1d759e6203af79b1cf12291444e84454c19e840d3f9770858",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-004"
+      },
+      {
+        "byte_size": 113529,
+        "checksum_sha256": "b7ead1afb3059278f278331e61ec49bdc07afe61ac30c721e71dc9bb7646c313",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-005"
+      },
+      {
+        "byte_size": 124522,
+        "checksum_sha256": "2f80187363ebe4709b8d8d3070f4572a2fad0603625a79a785342c77c9c9821d",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-006"
+      },
+      {
+        "byte_size": 152672,
+        "checksum_sha256": "5dcde4699b9d63b11d2cefc261e3e19dabc450afc1d0df7bbe9ce728157beda9",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-007"
+      },
+      {
+        "byte_size": 172188,
+        "checksum_sha256": "c7f0e732ad366a5e8b20ccc39c47aa4682282259d1a78981e04478f2df8759b2",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-008"
+      },
+      {
+        "byte_size": 114898,
+        "checksum_sha256": "8e1bf505f06687cf9f278eaa9d087a731e9bf28984b9674bb78e3f4dae1f816b",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-009"
+      },
+      {
+        "byte_size": 145769,
+        "checksum_sha256": "00072a2199d6ee130dbce9ba044a8c068db7e5a26eb9fdbac1a209b73cbe5c78",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-010"
+      },
+      {
+        "byte_size": 224904,
+        "checksum_sha256": "8e70829fd2b79b66f26f6f11e3d21328bed7e3b4290862a125ef71fdd521b5ce",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-CORE-011"
+      },
+      {
+        "byte_size": 58439,
+        "checksum_sha256": "2d3f0ffad900961de4ab327d68885a21114f4d82a016b0786fdce8e7251e7a59",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-BENEFITS"
+      },
+      {
+        "byte_size": 56191,
+        "checksum_sha256": "ad7742dc830a26337f7cc6a6a5be6634935925b58a8de0b55bb77a9385fc1232",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-CHANGE"
+      },
+      {
+        "byte_size": 56285,
+        "checksum_sha256": "505970ab5e6abe80e520b3ec71a364e7ae1ee8ef719f73e5cc18b75048347ad7",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-COST"
+      },
+      {
+        "byte_size": 62283,
+        "checksum_sha256": "88b38754c893e65e4f7dd7d44650355d8e9bdc7eac6ae0b613fee4d448b13bab",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-CX"
+      },
+      {
+        "byte_size": 67746,
+        "checksum_sha256": "673e7a7804ef218667e364373399d442f4e0ee8634d7205bc2a92c37eb2a5c87",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-DIGITAL-AI"
+      },
+      {
+        "byte_size": 61769,
+        "checksum_sha256": "dac9ce93d54a5a590ae25fca8e497b279baa8f13a2c0f831562ed4e13938c3f6",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-GROWTH"
+      },
+      {
+        "byte_size": 61419,
+        "checksum_sha256": "b2918d4c445bbe7be923bc79a274bd1be9f48984af17606e5852cf16ef889458",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-IPO"
+      },
+      {
+        "byte_size": 62867,
+        "checksum_sha256": "4b8030558237237cebc209f712861b179b97993d7282c384e7d615031d0cf967",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-MA"
+      },
+      {
+        "byte_size": 51858,
+        "checksum_sha256": "70720c4009f50a8ac0c4863f6c75179535d14e1c5fa62df04c22a60cdec15ac8",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-OPERATING-MODEL"
+      },
+      {
+        "byte_size": 49161,
+        "checksum_sha256": "3b01e2f88ae99f3bafec4e52b2dc7d649460fdd2aef9c9a8a4e2f26cb4ea69ba",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-RISK"
+      },
+      {
+        "byte_size": 53726,
+        "checksum_sha256": "4aa4266592f26b1f1a93dbe06d83330ef332c7704534d020a2c41835a4ae70a8",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-STRATEGY"
+      },
+      {
+        "byte_size": 62975,
+        "checksum_sha256": "4ce91eb92db72b4522766854f063b957f66fc9c8cbc1bd990a6c9282282a7cef",
+        "external_redistribution_allowed": false,
+        "import_status": "profiled_original_not_committed",
+        "rights_status": "founder_supplied_internal_use_pending_confirmation",
+        "source_id": "SOURCE-DOMAIN-WORKFORCE"
+      }
+    ],
+    "total_sources": 23
+  },
+  "status": "canonical_governed_release",
+  "superseded_validation_snapshots": [
+    {
+      "artifact_id": 8918232404,
+      "artifact_sha256": "e3a87d3a23f1adce313985a79300447de1cd548986dd81abcf4c8b240c0aa263",
+      "branch_head": "79b61615185ac4da99c81fa2a6e95b694a9ca35a",
+      "job_id": 92209612760,
+      "pull_request_merge_reference": "644e3c4311637511ad5753f968a5c57f8c3bd520",
+      "reason": "implementation_gate_preceding_later_documentation_and_exact_head_runs",
+      "run_id": 30975868412
+    },
+    {
+      "artifact_id": 8918307764,
+      "artifact_sha256": "ef5c3c57d9d415a82cdd3f37509097f238578a765d4675f1c8845a9195968254",
+      "branch_head": "dddeebbb75b7b2c0a3b4489dcd9ad6782241dca4",
+      "job_id": 92210248160,
+      "pull_request_merge_reference": "ce5b1f4e5f3615f58011cbd1ed31ee80f8f0776c",
+      "reason": "documentation_inclusive_run_preceding_final_exact_head_gate",
+      "run_id": 30976088173
+    }
+  ],
+  "version": "1.0.0"
+}

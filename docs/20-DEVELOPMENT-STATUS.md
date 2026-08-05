@@ -210,3 +210,11 @@ Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack 
 ## Current Codex gate
 
 Codex integration remains deliberately deferred until the agreed chat-first tranche is complete. Later Codex work begins by regenerating and validating Phases 1–7, applying the database migration in a disposable environment, importing the original source files unchanged into controlled storage, verifying their committed profile checksums, exercising parser and retrieval gold cases, configuring environment and region isolation, testing encryption, backup restoration, observability, retention, rollback and kill switches, rebuilding restricted baselines without exposing them to normal agent context and reporting discrepancies without silently changing governing contracts, source rights, aliases, security controls, regional boundaries, processor approvals, fixture evidence, golden expectations, answer keys, semantic conclusions or Founder authority boundaries.
+
+### PCR-01 — Canonical release reconciliation
+
+Status: **implementation and validation in progress**.
+
+PCR-01 governs the final Phase 1–7 release through `configs/canonical-release.yaml` and the deterministic `releases/canonical-chat-first-phase1-7-release.json`. The controlling completed chat-first source release is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, validated by final run `30976222896` and retained artifact `8918355687`. Earlier successful Phase 7 runs remain recorded as superseded snapshots rather than controlling evidence.
+
+PCR-01 does not enable real client data, commit original methodology binaries or claim operating infrastructure.

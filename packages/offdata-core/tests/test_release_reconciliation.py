@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
+from collections.abc import Callable
 from pathlib import Path
 
 import pytest
@@ -42,7 +43,7 @@ def _copy_inputs(tmp_path: Path) -> Path:
     return target
 
 
-def _rewrite_yaml(path: Path, mutation: callable) -> None:  # type: ignore[type-arg]
+def _rewrite_yaml(path: Path, mutation: Callable[[dict[str, object]], None]) -> None:
     value = yaml.safe_load(path.read_text(encoding="utf-8"))
     mutation(value)
     path.write_text(yaml.safe_dump(value, sort_keys=False), encoding="utf-8")

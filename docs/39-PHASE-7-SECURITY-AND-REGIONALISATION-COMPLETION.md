@@ -338,3 +338,17 @@ These require Codex execution, provider and contract evidence, and Founder decis
 Phase 7 is complete as the governed chat-first security and regionalisation intelligence. It makes the future production gate explicit, testable and default-deny while preserving operational autonomy and Founder accountability.
 
 Real client data remains prohibited.
+
+## 17. PCR-01 canonical evidence reconciliation
+
+PCR-01 establishes the final exact-head release evidence as authoritative:
+
+- final run: `30976222896`;
+- final job: `92210649514`;
+- pull-request head: `8da0f1167d9b6f4da792770b0d564379aa46c3fe`;
+- pull-request merge reference: `264459045ce75d7d7c60cbc980a50193f08a6f16`;
+- controlling `main` commit: `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`;
+- final artifact: `8918355687`;
+- final artifact SHA-256: `3b9f14c520d31ce5f73fbecc726b032a3134042769ee84176e85d642fe2ea852`.
+
+The earlier successful runs `30975868412` and `30976088173`, and their artifacts `8918232404` and `8918307764`, are preserved as **superseded validation snapshots**. Their evidence remains historical, but they are not the controlling Phase 7 release. This section supersedes the earlier run and artifact metadata in Section 14 without deleting that audit history.
