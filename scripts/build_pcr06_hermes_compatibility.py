@@ -45,6 +45,10 @@ def _skill_files_valid(paths: list[Path]) -> bool:
 
 def build_hermes_compatibility() -> dict[str, Any]:
     source = _load_yaml(SOURCE_PATH)
+    upstream = source.get("upstream")
+    if not isinstance(upstream, dict):
+        raise ValueError("upstream must be a mapping")
+    upstream["assessment_date"] = str(upstream["assessment_date"])
     pcr05 = _load_json(PCR05_PATH)
     pcr04 = _load_json(PCR04_PATH)
     profiles = {
