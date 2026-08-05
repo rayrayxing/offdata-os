@@ -1,0 +1,31 @@
+name: PCR-09 one-time materialization
+
+on:
+  push:
+    branches:
+      - governance/pcr09-first-codex-issue
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: ${{ !contains(github.event.head_commit.message, '[pcr09-materialized]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Materialize validated PCR-09 package
+        run: python scripts/materialize_pcr09_payload.py
+      - name: Commit materialized package
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --exit-code && exit 1 || true
+          git commit -m "PCR-09: materialize validated issue package [pcr09-materialized]"
+          git push origin HEAD:${GITHUB_REF_NAME}
