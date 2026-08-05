@@ -1,0 +1,100 @@
+name: Retain Phase 7 security bundle
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/retain-phase7-bundle.yml
+      - .phase7-bundle/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  retain:
+    if: github.actor != 'github-actions[bot]' && github.head_ref == 'security/phase7-regionalisation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out Phase 7 head branch
+        uses: actions/checkout@v4
+        with:
+          ref: security/phase7-regionalisation
+      - name: Verify and expand Phase 7 release bundle
+        run: |
+          cat > /tmp/phase7-chunks.sha256 <<'EOF'
+          fd6300974849a2de0fb4cc52bcbaa1726be2e50134e2ccbecc5aa9902e490431  .phase7-bundle/part-00
+          fe3c8fa38cb9d2a59f9c5f76fe0af6e6f7fbe722479f8405592090f19c691008  .phase7-bundle/part-01
+          463d0932ed0e07eaf9fa7ce56fdcdf924bef2fc035935a35b6fabeba28a3e511  .phase7-bundle/part-02
+          9caaa5aa90c94270f7991126a6e998555b859bb15b2e495f174b3ec4216f7540  .phase7-bundle/part-03
+          54c8cf74b53a18e6eae7e3ea9f92bdb3d7eda5955814bdd46aa8c91384161298  .phase7-bundle/part-04
+          EOF
+          sha256sum --check /tmp/phase7-chunks.sha256
+          cat .phase7-bundle/part-* > /tmp/phase7-release.b64
+          base64 --decode /tmp/phase7-release.b64 > /tmp/phase7-release.tar.gz
+          tar -xzf /tmp/phase7-release.tar.gz -C .
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install validation dependencies
+        run: python -m pip install -e "packages/offdata-core[dev]"
+      - name: Update governed test-plan boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("requirements/planned-test-mappings.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          additions = {
+              "FA-PRODUCTION-GATE-001": {
+                  "kind": "founder_acceptance",
+                  "phase": "codex-or-later",
+                  "requirements": ["AUTH-003", "SEC-010"],
+              },
+              "SEC-P7-DOCUMENT-001": {
+                  "kind": "security",
+                  "phase": "codex-or-later",
+                  "requirements": ["AGENT-007", "EVID-010"],
+              },
+          }
+          for test_id, record in additions.items():
+              existing = data.get(test_id)
+              if existing is not None and existing != record:
+                  raise SystemExit(f"Conflicting planned-test record: {test_id}")
+              data[test_id] = record
+          path.write_text(
+              json.dumps(data, sort_keys=True, separators=(",", ":")) + "\n",
+              encoding="utf-8",
+          )
+          PY
+      - name: Generate and validate Phase 7 records
+        run: |
+          python scripts/build_test_registry.py
+          python scripts/build_phase7_security_regionalisation.py
+          python scripts/validate_phase7_security_regionalisation.py
+          pytest -q packages/offdata-core/tests/test_security_regionalisation.py
+          ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src/offdata_core/security_regionalisation.py packages/offdata-core/tests/test_security_regionalisation.py scripts/build_phase7_security_regionalisation.py scripts/validate_phase7_security_regionalisation.py
+          (cd packages/offdata-core && mypy src/offdata_core/security_regionalisation.py)
+      - name: Commit exact Phase 7 release
+        run: |
+          rm -rf .phase7-bundle
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            configs/security-regionalisation.yaml \
+            security \
+            packages/offdata-core/src/offdata_core/security_regionalisation.py \
+            packages/offdata-core/tests/test_security_regionalisation.py \
+            scripts/build_phase7_security_regionalisation.py \
+            scripts/validate_phase7_security_regionalisation.py \
+            requirements/implemented-test-mappings-phase7.json \
+            requirements/completed-planned-tests-phase7.json \
+            requirements/planned-test-mappings.json \
+            requirements/test-registry.json \
+            .phase7-bundle
+          git diff --cached --quiet && exit 1
+          git commit -m "feat(security): add Phase 7 security and regionalisation"
+          git push origin HEAD:security/phase7-regionalisation
