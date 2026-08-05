@@ -1,0 +1,117 @@
+name: Retain PCR-01 generated records
+
+on:
+  push:
+    branches: [governance/pcr01-canonical-release]
+
+permissions:
+  contents: write
+
+jobs:
+  retain:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/pcr01-canonical-release
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install validation dependencies
+        run: python -m pip install -e "packages/offdata-core[dev]"
+      - name: Apply deterministic PCR-01 source and evidence reconciliations
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          module = Path("packages/offdata-core/src/offdata_core/release_reconciliation.py")
+          text = module.read_text(encoding="utf-8")
+          text = text.replace(
+              "        profiles.append(SourceProfileDigest.model_validate(raw))",
+              """        profile_payload = {\n            \"source_id\": raw.get(\"source_id\"),\n            \"checksum_sha256\": raw.get(\"checksum_sha256\"),\n            \"byte_size\": raw.get(\"byte_size\"),\n            \"import_status\": raw.get(\"import_status\"),\n            \"rights_status\": raw.get(\"rights_status\"),\n            \"external_redistribution_allowed\": raw.get(\"external_redistribution_allowed\"),\n        }\n        profiles.append(SourceProfileDigest.model_validate(profile_payload))""",
+          )
+          text = text.replace(
+              "    return CanonicalReleaseManifest(**body.model_dump(), manifest_digest=digest)",
+              "    return CanonicalReleaseManifest.model_validate({**body.model_dump(mode=\"json\"), \"manifest_digest\": digest})",
+          )
+          module.write_text(text, encoding="utf-8")
+
+          tests = Path("packages/offdata-core/tests/test_release_reconciliation.py")
+          text = tests.read_text(encoding="utf-8")
+          text = text.replace(
+              "import shutil\nfrom pathlib import Path",
+              "import shutil\nfrom collections.abc import Callable\nfrom pathlib import Path",
+          )
+          text = text.replace(
+              "def _rewrite_yaml(path: Path, mutation: callable) -> None:  # type: ignore[type-arg]",
+              "def _rewrite_yaml(path: Path, mutation: Callable[[dict[str, object]], None]) -> None:",
+          )
+          tests.write_text(text, encoding="utf-8")
+
+          def append_once(path: str, marker: str, content: str) -> None:
+              target = Path(path)
+              current = target.read_text(encoding="utf-8")
+              if marker not in current:
+                  target.write_text(current.rstrip() + "\n\n" + content.strip() + "\n", encoding="utf-8")
+
+          append_once(
+              "docs/39-PHASE-7-SECURITY-AND-REGIONALISATION-COMPLETION.md",
+              "## 17. PCR-01 canonical evidence reconciliation",
+              """
+          ## 17. PCR-01 canonical evidence reconciliation
+
+          PCR-01 establishes the final exact-head release evidence as authoritative:
+
+          - final run: `30976222896`;
+          - final job: `92210649514`;
+          - pull-request head: `8da0f1167d9b6f4da792770b0d564379aa46c3fe`;
+          - pull-request merge reference: `264459045ce75d7d7c60cbc980a50193f08a6f16`;
+          - controlling `main` commit: `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`;
+          - final artifact: `8918355687`;
+          - final artifact SHA-256: `3b9f14c520d31ce5f73fbecc726b032a3134042769ee84176e85d642fe2ea852`.
+
+          The earlier successful runs `30975868412` and `30976088173`, and their artifacts `8918232404` and `8918307764`, are preserved as **superseded validation snapshots**. Their evidence remains historical, but they are not the controlling Phase 7 release. This section supersedes the earlier run and artifact metadata in Section 14 without deleting that audit history.
+          """,
+          )
+          append_once(
+              "reports/phase7-validation-evidence.md",
+              "## PCR-01 canonical evidence reconciliation",
+              """
+          ## PCR-01 canonical evidence reconciliation
+
+          The authoritative final Phase 7 evidence is GitHub Actions run `30976222896`, job `92210649514`, branch head `8da0f1167d9b6f4da792770b0d564379aa46c3fe`, pull-request merge reference `264459045ce75d7d7c60cbc980a50193f08a6f16`, controlling `main` commit `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, and retained artifact `8918355687` with SHA-256 `3b9f14c520d31ce5f73fbecc726b032a3134042769ee84176e85d642fe2ea852`.
+
+          Runs `30975868412` and `30976088173` are successful but **superseded validation snapshots**. Their earlier artifact records remain available for audit history and must not be represented as the final release evidence.
+          """,
+          )
+          append_once(
+              "docs/20-DEVELOPMENT-STATUS.md",
+              "### PCR-01 — Canonical release reconciliation",
+              """
+          ### PCR-01 — Canonical release reconciliation
+
+          Status: **implementation and validation in progress**.
+
+          PCR-01 governs the final Phase 1–7 release through `configs/canonical-release.yaml` and the deterministic `releases/canonical-chat-first-phase1-7-release.json`. The controlling completed chat-first source release is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, validated by final run `30976222896` and retained artifact `8918355687`. Earlier successful Phase 7 runs remain recorded as superseded snapshots rather than controlling evidence.
+
+          PCR-01 does not enable real client data, commit original methodology binaries or claim operating infrastructure.
+          """,
+          )
+          PY
+      - name: Generate governed records
+        run: |
+          python scripts/build_test_registry.py
+          python scripts/build_pcr01_canonical_release.py
+      - name: Commit retained records and reconciliations
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/offdata-core/src/offdata_core/release_reconciliation.py packages/offdata-core/tests/test_release_reconciliation.py requirements/test-registry.json releases/canonical-chat-first-phase1-7-release.json docs/20-DEVELOPMENT-STATUS.md docs/39-PHASE-7-SECURITY-AND-REGIONALISATION-COMPLETION.md reports/phase7-validation-evidence.md
+          if git diff --cached --quiet; then
+            echo "No generated changes to retain"
+          else
+            git commit -m "chore(governance): retain PCR-01 canonical release"
+            git push
+          fi
