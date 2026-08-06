@@ -138,6 +138,10 @@ jobs:
             ci-evidence
             .env.example
             contracts/initial-operating-controls.json
+            configs/codex-phase0-launch-control.yaml
+            contracts/codex-phase0-launch-control.json
+            configs/workstream6-final-launch-control.yaml
+            contracts/workstream6-final-launch-control.json
             .github/workflows/workstream6-final-pre-codex.yml
             .github/workflows/workstream6-required-workflow-identity.yml
             .github/workflows/workstream6-configuration-contradictions.yml
