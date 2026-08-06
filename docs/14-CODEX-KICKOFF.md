@@ -107,3 +107,12 @@ Do not purchase services, enter credentials, approve OAuth, deploy real client
 data or perform external actions. Present a decision-ready Founder packet when
 one of those actions is required.
 ```
+
+## PCR-09 first Codex issue contract
+
+Before Phase 0 can be authorised, the generated first-issue contract must remain current and pass its dedicated validator:
+
+- `contracts/codex-phase0-issue.json`
+- `scripts/validate_pcr09_codex_issue.py`
+
+Preparing or validating this contract does not authorise Codex to start.
