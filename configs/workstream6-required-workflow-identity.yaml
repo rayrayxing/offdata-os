@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "workstream_id": "WORKSTREAM-6",
+  "work_package_id": "WS6.6",
+  "contract_id": "WORKSTREAM6-REQUIRED-WORKFLOW-IDENTITY",
+  "title": "WS6.6 required workflow identity",
+  "repository": "rayrayxing/offdata-os",
+  "canonical_branch": "main",
+  "base_main_sha": "08f043b8dd1102bebd0186d3fc52041261f51920",
+  "status": "required_workflow_identity_reserved_fail_closed",
+  "canonical_status_phrase": "Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.6; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.",
+  "canonical_identity": {
+    "workflow_file": ".github/workflows/workstream6-final-pre-codex.yml",
+    "workflow_name": "Final pre-Codex canonical handoff and release",
+    "job_key": "validate-final-pre-codex",
+    "job_name": "Validate final pre-Codex canonical handoff and complete release",
+    "identity_is_case_sensitive": true,
+    "identity_is_whitespace_sensitive": true
+  },
+  "activation": {
+    "state": "reserved_fail_closed",
+    "allowed_triggers": [
+      "workflow_dispatch"
+    ],
+    "automatic_triggers_enabled": false,
+    "manual_dispatch_must_fail": true,
+    "activation_work_package": "WS6.15",
+    "permanent_release_work_package": "WS6.16",
+    "hosted_branch_protection_configured": false,
+    "final_release_verified": false
+  },
+  "superseded_required_checks": [
+    {
+      "job_name": "Validate complete chat-first Phase 1–7 and PCR-01–10 release",
+      "source": "contracts/workstream4-readiness.json",
+      "classification": "retained_predecessor_identity",
+      "current": false
+    },
+    {
+      "job_name": "Validate Codex Phase 0 launch control and complete prior release",
+      "source": "Workstream 5 retained launch-control evidence",
+      "classification": "retained_predecessor_identity",
+      "current": false
+    }
+  ],
+  "package_check_rule": {
+    "example": "Validate WS6.6 required workflow identity and complete prior components",
+    "classification": "package_validation_only",
+    "may_satisfy_final_branch_protection": false
+  },
+  "authority_surfaces": [
+    "README.md",
+    "docs/00-START-HERE.md",
+    "docs/14-CODEX-KICKOFF.md",
+    "docs/19-PHASE-0-VALIDATION-ADDENDUM.md",
+    "docs/20-DEVELOPMENT-STATUS.md",
+    "handoff/codex-phase0-hosted-controls-issue-final.md"
+  ],
+  "required_surface_tokens": {
+    "all": [
+      "codex_start_authorized=false",
+      "Validate final pre-Codex canonical handoff and complete release"
+    ],
+    "README.md": [
+      "contracts/workstream6-required-workflow-identity.json",
+      "WS6.15"
+    ],
+    "docs/00-START-HERE.md": [
+      "contracts/workstream6-required-workflow-identity.json",
+      "manual-only and deliberately fails"
+    ],
+    "docs/14-CODEX-KICKOFF.md": [
+      "contracts/workstream6-required-workflow-identity.json",
+      "WS6.15"
+    ],
+    "docs/19-PHASE-0-VALIDATION-ADDENDUM.md": [
+      "contracts/workstream6-required-workflow-identity.json",
+      ".github/workflows/workstream6-final-pre-codex.yml"
+    ],
+    "docs/20-DEVELOPMENT-STATUS.md": [
+      "WS6-CONSIST-003",
+      "WS6.7",
+      ".github/workflows/workstream6-final-pre-codex.yml"
+    ],
+    "handoff/codex-phase0-hosted-controls-issue-final.md": [
+      "WS6.6 required workflow identity",
+      "WS6.15"
+    ]
+  },
+  "closed_defects": [
+    "WS6-CONSIST-003"
+  ],
+  "remaining_blocking_defects": [
+    "WS6-BLOCK-006"
+  ],
+  "completion": {
+    "all_required_prior_components_pass": true,
+    "ws66_complete": true,
+    "canonical_identity_unique": true,
+    "predecessor_identities_superseded": true,
+    "reservation_fail_closed": true,
+    "final_workflow_active": false,
+    "final_reconciliation_complete": false,
+    "all_blocking_defects_closed": false,
+    "next_permitted_work_package": "WS6.7"
+  },
+  "boundaries": {
+    "founder_accountability_preserved": true,
+    "codex_start_authorized": false,
+    "phase0_implementation_authorized": false,
+    "phase0_merge_authorized": false,
+    "phase1_authorized": false,
+    "runtime_activation_authorized": false,
+    "hermes_activation_authorized": false,
+    "northstar_implementation_authorized": false,
+    "real_client_data_enabled": false,
+    "external_actions_authorized": false,
+    "paid_services_authorized": false,
+    "oauth_authorized": false,
+    "production_deployment_authorized": false,
+    "autonomous_merge_authorized": false
+  },
+  "rollback": {
+    "before_merge": "Close the WS6.6 pull request and delete only governance/workstream6-required-workflow-identity.",
+    "after_merge": "Revert WS6.6 as one unit, restore issue #19 from the prior synchronized body, and keep the final workflow inactive and every authorization boundary false."
+  }
+}

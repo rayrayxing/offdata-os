@@ -1,4 +1,4 @@
-<!-- Canonical issue #19 body for WS6.5. Keep synchronized through the WS6.5 gate. -->
+<!-- Canonical issue #19 body for WS6.6. Keep synchronized through the WS6.6 gate. -->
 # Verify hosted controls and clean environment before Codex
 
 The canonical implementation identifier is `IMP-P0`; stable `phase0` filenames and gate keys remain compatibility identifiers only.
@@ -18,12 +18,14 @@ This issue is the authoritative human evidence record for GitHub-hosted settings
 - [x] WS6.2 final launch-control reconciliation is integrated.
 - [x] WS6.3 current status repair is integrated.
 - [x] WS6.4 canonical authority and evidence registry is integrated.
-- [x] WS6.5 phase namespace normalization is included in this package and becomes integrated when this package merges.
+- [x] WS6.5 phase namespace normalization is integrated.
+- [x] WS6.6 required workflow identity is included in this package and becomes integrated when this package merges.
 - [ ] All remaining WS6 packages are integrated.
 - [ ] `releases/pre-codex-final-reconciliation-2026-08-06.json` exists and passes `scripts/require_workstream6_final_reconciliation.py`.
 - [x] Issue #1 is open and synchronized to `handoff/codex-phase0-issue-final.md`.
 - [x] Issue #2 remains closed as duplicate.
-- [x] The final required status-check identity is `Validate final pre-Codex canonical handoff and complete release`.
+- [x] The final required status-check identity is uniquely reserved as `Validate final pre-Codex canonical handoff and complete release`.
+- [ ] WS6.15 has activated `.github/workflows/workstream6-final-pre-codex.yml`; until then the reserved workflow remains manual-only and deliberately fail-closed.
 - [ ] `codex/phase-0-foundation` and any IMP-P0 pull request remain absent at permit issuance.
 
 The latest successful complete gate for the exact pull-request merge reference is predecessor evidence. Record the final release, run, job, artifact and digest evidence only after the final WS6 package is merged.
@@ -34,7 +36,7 @@ Attach screenshots or a concise settings audit. Every item must be verified agai
 
 - [ ] Confirm MFA is enabled for the accountable Founder account.
 - [ ] Require a pull request before changes reach `main`.
-- [ ] Require exactly `Validate final pre-Codex canonical handoff and complete release` before merge.
+- [ ] After WS6.15 activation, require exactly `Validate final pre-Codex canonical handoff and complete release` before merge.
 - [ ] Dismiss stale approvals when new commits are pushed.
 - [ ] Require all review conversations to be resolved before merge.
 - [ ] Block force pushes to `main`.

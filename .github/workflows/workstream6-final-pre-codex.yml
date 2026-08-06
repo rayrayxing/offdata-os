@@ -1,0 +1,18 @@
+name: Final pre-Codex canonical handoff and release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-final-pre-codex:
+    name: Validate final pre-Codex canonical handoff and complete release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Refuse activation before WS6.15
+        run: |
+          echo "::error::WS6.6 reserves this exact check identity. WS6.15 must activate the final workflow and WS6.16 must bind the permanent release before this check may pass."
+          exit 1

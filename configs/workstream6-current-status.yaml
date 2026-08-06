@@ -6,9 +6,7 @@ title: WS6.3 current human authority and status repair
 repository: rayrayxing/offdata-os
 canonical_branch: main
 base_main_sha: 1b518253abb187bbc31b1c809ee4f7ca5506f7e8
-canonical_status_phrase: Chat-first development is complete through CF-P1–7, PCR-01–10,
-  WS-4, WS-5 and WS6.5; final Workstream 6 reconciliation and all manual launch gates
-  remain pending; `codex_start_authorized=false`.
+canonical_status_phrase: Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.6; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.
 current_authority_files:
 - README.md
 - docs/00-START-HERE.md
@@ -17,12 +15,12 @@ current_authority_files:
 - docs/20-DEVELOPMENT-STATUS.md
 - handoff/codex-phase0-hosted-controls-issue-final.md
 document_fingerprints:
-  README.md: 238c36c0c85e2c8ea07926266ae9b0c4890737dd
-  docs/00-START-HERE.md: db1a83ef62c08b533ec6f37a6efe7b07b386189f
-  docs/14-CODEX-KICKOFF.md: e7dff27a6c18dcbdab094ba4ff2d1191354c263a
-  docs/19-PHASE-0-VALIDATION-ADDENDUM.md: f234705e94ad2267ea932efeae14ae4bbb89d496
-  docs/20-DEVELOPMENT-STATUS.md: 6e8375a2ed3d2a7288bb2ee7fb86c458f9bff2f9
-  handoff/codex-phase0-hosted-controls-issue-final.md: d572e54bd6519ccd86160d4fb421d12f5c71eb0d
+  README.md: e02f6960fea626ca4c579343e3d68347ad5bda96
+  docs/00-START-HERE.md: 7e50012d403a7655574dad47a2be0eef6e42f018
+  docs/14-CODEX-KICKOFF.md: 942e6803722fa919dea0e9a2ed3513e42be12f43
+  docs/19-PHASE-0-VALIDATION-ADDENDUM.md: 248030f5bf7855f631dcf93467dd64e8d1aa62de
+  docs/20-DEVELOPMENT-STATUS.md: c5ac29ce6d50514954d6bd08b9b56e768b04dc91
+  handoff/codex-phase0-hosted-controls-issue-final.md: b84bd6847cb0f88140e90b8c57bd1ecdf3a38984
 required_common_tokens:
 - codex_start_authorized=false
 - Validate final pre-Codex canonical handoff and complete release
@@ -96,7 +94,5 @@ boundaries:
   production_deployment_authorized: false
   autonomous_merge_authorized: false
 rollback:
-  before_merge: 'Close the WS6.3 pull request, restore the five prior documents and
-    issue #19 body, and delete only governance/workstream6-current-status-documents.'
-  after_merge: 'Revert the WS6.3 merge as one unit and restore issue #19 from the
-    last synchronized body while keeping every authorization flag false.'
+  before_merge: 'Close the WS6.3 pull request, restore the five prior documents and issue #19 body, and delete only governance/workstream6-current-status-documents.'
+  after_merge: 'Revert the WS6.3 merge as one unit and restore issue #19 from the last synchronized body while keeping every authorization flag false.'

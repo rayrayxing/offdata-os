@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://offdata.local/schemas/workstream6-required-workflow-identity.schema.json",
+  "title": "WS6.6 required workflow identity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "workstream_id",
+    "work_package_id",
+    "contract_id",
+    "title",
+    "repository",
+    "canonical_branch",
+    "base_main_sha",
+    "status",
+    "canonical_status_phrase",
+    "canonical_identity",
+    "activation",
+    "superseded_required_checks",
+    "package_check_rule",
+    "authority_surfaces",
+    "required_surface_tokens",
+    "closed_defects",
+    "remaining_blocking_defects",
+    "completion",
+    "boundaries",
+    "rollback",
+    "generated_from",
+    "workflow_evidence",
+    "canonical_workflow_observed",
+    "authority_evidence",
+    "authority_surface_count"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "workstream_id": {
+      "const": "WORKSTREAM-6"
+    },
+    "work_package_id": {
+      "const": "WS6.6"
+    },
+    "contract_id": {
+      "const": "WORKSTREAM6-REQUIRED-WORKFLOW-IDENTITY"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 10
+    },
+    "repository": {
+      "const": "rayrayxing/offdata-os"
+    },
+    "canonical_branch": {
+      "const": "main"
+    },
+    "base_main_sha": {
+      "const": "08f043b8dd1102bebd0186d3fc52041261f51920"
+    },
+    "status": {
+      "const": "required_workflow_identity_reserved_fail_closed"
+    },
+    "canonical_status_phrase": {
+      "type": "string",
+      "pattern": "WS6\\.6"
+    },
+    "canonical_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workflow_file",
+        "workflow_name",
+        "job_key",
+        "job_name",
+        "identity_is_case_sensitive",
+        "identity_is_whitespace_sensitive"
+      ],
+      "properties": {
+        "workflow_file": {
+          "const": ".github/workflows/workstream6-final-pre-codex.yml"
+        },
+        "workflow_name": {
+          "const": "Final pre-Codex canonical handoff and release"
+        },
+        "job_key": {
+          "const": "validate-final-pre-codex"
+        },
+        "job_name": {
+          "const": "Validate final pre-Codex canonical handoff and complete release"
+        },
+        "identity_is_case_sensitive": {
+          "const": true
+        },
+        "identity_is_whitespace_sensitive": {
+          "const": true
+        }
+      }
+    },
+    "activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "allowed_triggers",
+        "automatic_triggers_enabled",
+        "manual_dispatch_must_fail",
+        "activation_work_package",
+        "permanent_release_work_package",
+        "hosted_branch_protection_configured",
+        "final_release_verified"
+      ],
+      "properties": {
+        "state": {
+          "const": "reserved_fail_closed"
+        },
+        "allowed_triggers": {
+          "const": [
+            "workflow_dispatch"
+          ]
+        },
+        "automatic_triggers_enabled": {
+          "const": false
+        },
+        "manual_dispatch_must_fail": {
+          "const": true
+        },
+        "activation_work_package": {
+          "const": "WS6.15"
+        },
+        "permanent_release_work_package": {
+          "const": "WS6.16"
+        },
+        "hosted_branch_protection_configured": {
+          "const": false
+        },
+        "final_release_verified": {
+          "const": false
+        }
+      }
+    },
+    "superseded_required_checks": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "package_check_rule": {
+      "type": "object"
+    },
+    "authority_surfaces": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true
+    },
+    "required_surface_tokens": {
+      "type": "object"
+    },
+    "closed_defects": {
+      "const": [
+        "WS6-CONSIST-003"
+      ]
+    },
+    "remaining_blocking_defects": {
+      "const": [
+        "WS6-BLOCK-006"
+      ]
+    },
+    "completion": {
+      "type": "object"
+    },
+    "boundaries": {
+      "type": "object"
+    },
+    "rollback": {
+      "type": "object"
+    },
+    "generated_from": {
+      "const": "configs/workstream6-required-workflow-identity.yaml"
+    },
+    "workflow_evidence": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "canonical_workflow_observed": {
+      "type": "object"
+    },
+    "authority_evidence": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "authority_surface_count": {
+      "const": 6
+    }
+  }
+}

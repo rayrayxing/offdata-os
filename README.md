@@ -6,7 +6,7 @@ This repository is the **canonical build repository** for the new offdata consul
 
 ## Current canonical status
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.5; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.6; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 - Initial operator: Founder only.
 - Initial hosting and data region: Singapore.
@@ -14,6 +14,7 @@ This repository is the **canonical build repository** for the new offdata consul
 - Canonical implementation namespace: `IMP-P0–12`; no implementation phase has started.
 - Current authority registry: `repository/canonical-authority-registry.json`.
 - Current phase namespace: `contracts/workstream6-phase-namespace.json`.
+- Current required workflow identity: `contracts/workstream6-required-workflow-identity.json`.
 - Current canonical issue: `handoff/codex-phase0-issue-final.md`, synchronized to issue #1.
 - Current launch control: `contracts/codex-phase0-launch-control.json`.
 - Current machine handoff: `handoff/codex-phase0-handoff.json`.
@@ -32,11 +33,12 @@ Historical PCR and Workstream completion documents remain evidence of their own 
 6. `docs/20-DEVELOPMENT-STATUS.md`
 7. `repository/canonical-authority-registry.json`
 8. `contracts/workstream6-phase-namespace.json`
-9. `handoff/codex-phase0-handoff.json`
-10. `contracts/codex-phase0-launch-control.json`
-11. `handoff/codex-phase0-issue-final.md`
+9. `contracts/workstream6-required-workflow-identity.json`
+10. `handoff/codex-phase0-handoff.json`
+11. `contracts/codex-phase0-launch-control.json`
+12. `handoff/codex-phase0-issue-final.md`
 
-The phase namespace contract separates chat-first packages from `IMP-P0–12`. The authority registry classifies every current read-order item and retained evidence surface. The complete implementation read order and command set remain machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
+The phase namespace contract separates chat-first packages from `IMP-P0–12`. The workflow-identity contract reserves the exact future branch-protection check and remains manual-only and deliberately fail-closed until WS6.15 activates it. The authority registry classifies every current read-order item and retained evidence surface. The complete implementation read order and command set remain machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
 
 ## Codex entry gate
 
@@ -44,9 +46,10 @@ Codex may not begin merely because repository validation passes. Every one of th
 
 1. the permanent final Workstream 6 release exists and passes `scripts/require_workstream6_final_reconciliation.py`;
 2. issue #19 is completed with evidence for hosted controls and exact-allowlist historical branch cleanup;
-3. a clean macOS doctor report and Founder environment attestation are complete;
-4. the Founder gives explicit approval for IMP-P0 only against the exact current `main` SHA; and
-5. `scripts/prepare_codex_phase0_launch.py` emits a valid local single-use permit.
+3. WS6.15 has activated `.github/workflows/workstream6-final-pre-codex.yml` and hosted branch protection requires exactly `Validate final pre-Codex canonical handoff and complete release`;
+4. a clean macOS doctor report and Founder environment attestation are complete;
+5. the Founder gives explicit approval for IMP-P0 only against the exact current `main` SHA; and
+6. `scripts/prepare_codex_phase0_launch.py` emits a valid local single-use permit.
 
 Create `codex/phase-0-foundation` only after that permit exists and only from its approved SHA. The first commit must contain the governed launch acknowledgement. The pull request must remain draft; merge and IMP-P1 remain unauthorised.
 
