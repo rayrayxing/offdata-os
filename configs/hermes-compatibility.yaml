@@ -1,0 +1,179 @@
+schema_version: 1
+phase_id: PCR-06
+contract_id: OFFDATA-HERMES-COMPATIBILITY-2026-08-05
+repository: rayrayxing/offdata-os
+canonical_branch: main
+upstream:
+  repository: NousResearch/hermes-agent
+  documentation: https://hermes-agent.nousresearch.com/docs
+  assessed_release: v0.18.2
+  assessed_tag: v2026.7.7.2
+  assessed_commit: 9de9c25
+  assessment_date: 2026-08-05
+  update_policy: pinned_review_required
+adoption:
+  status: compatibility_pack_only
+  installation_authorized: false
+  runtime_activation_authorized: false
+  production_use_authorized: false
+  provider_gateway_authorized: false
+  oauth_authorized: false
+  messaging_channels_authorized: false
+  background_delegation_authorized: false
+  autonomous_skill_writes_authorized: false
+  autonomous_memory_writes_authorized: false
+  yolo_mode_authorized: false
+  real_client_data_enabled: false
+compatibility_surfaces:
+- surface_id: HERMES-SURFACE-SKILLS
+  upstream_features:
+  - skills
+  - external_skill_directories
+  - skill_view
+  - skill_manage
+  - learn_command
+  offdata_mode: immutable_external_directory
+  compatibility: compatible_with_adapter
+  required_controls:
+  - offdata_skills_remain_repository_canonical
+  - hermes_local_copy_is_noncanonical
+  - skill_manage_write_gate
+  - learn_command_write_gate
+  - skill_checksum_verification
+- surface_id: HERMES-SURFACE-WORKER
+  upstream_features:
+  - delegate_task
+  - background_fanout
+  - completion_contracts
+  - pre_verify_hook
+  offdata_mode: foreground_single_worker_contract
+  compatibility: compatible_with_restrictions
+  required_controls:
+  - worker_package_required
+  - background_fanout_denied
+  - offdata_acceptance_tests_control_completion
+  - pre_verify_allowlist_only
+  - no_autonomous_merge
+- surface_id: HERMES-SURFACE-TOOLS
+  upstream_features:
+  - terminal
+  - mcp
+  - tool_gateway
+  - browser_automation
+  offdata_mode: declared_tool_class_allowlist
+  compatibility: compatible_with_restrictions
+  required_controls:
+  - pcr05_tool_class_mapping
+  - undeclared_tools_denied
+  - external_side_effects_denied
+  - provider_gateway_denied
+  - credential_values_denied
+- surface_id: HERMES-SURFACE-MEMORY
+  upstream_features:
+  - memory
+  - curator
+  - journey
+  - background_review
+  offdata_mode: session_ephemeral_only
+  compatibility: incompatible_for_canonical_state
+  required_controls:
+  - runtime_memory_noncanonical
+  - autonomous_memory_writes_denied
+  - curator_disabled
+  - no_client_data_retention
+skill_policy:
+  canonical_source: agents
+  external_directory_mode: read_only
+  local_directory: ~/.hermes/skills
+  repository_skill_glob: agents/*/SKILL.md
+  progressive_disclosure_supported: true
+  agentskills_standard_compatible: true
+  required_frontmatter:
+  - name
+  - description
+  prohibited_skill_capabilities:
+  - direct_canonical_write
+  - autonomous_approval
+  - external_send
+  - credential_collection
+  - production_deployment
+  - real_client_data
+  write_controls:
+    skill_manage: founder_review_required
+    learn_command: founder_review_required
+    curator: disabled
+    background_review: suggestions_only
+worker_adapter:
+  pcr05_adapter_id: hermes-worker-harness
+  target_status: compatibility_validated_not_activated
+  invocation_mode: foreground
+  concurrency_limit: 1
+  workspace_mode: isolated_branch
+  network_mode: deny_by_default
+  credential_mode: none
+  permitted_data_classes:
+  - public
+  - internal
+  required_inputs:
+  - WorkerPackage
+  required_outputs:
+  - WorkerResult
+  completion_authority: offdata_acceptance_tests
+  prohibited_actions:
+  - background_fanout
+  - autonomous_merge
+  - direct_canonical_write
+  - external_send
+  - yolo_mode
+  - skill_write_without_review
+  - memory_write_without_review
+tool_mapping:
+- hermes_capability: terminal
+  offdata_tool_classes:
+  - deterministic_compute
+  - run_regression
+  - render_artefact
+  policy: command_allowlist_and_workspace_scope
+- hermes_capability: web_extract
+  offdata_tool_classes:
+  - approved_public_research
+  - approved_research
+  policy: approved_sources_and_network_scope
+- hermes_capability: mcp
+  offdata_tool_classes: []
+  policy: denied_until_separate_processor_and_tool_review
+- hermes_capability: tool_gateway
+  offdata_tool_classes: []
+  policy: denied_until_paid_service_and_processor_approval
+- hermes_capability: messaging
+  offdata_tool_classes:
+  - external_send
+  policy: denied_pre_activation
+verification:
+  required_commands:
+  - python scripts/validate_pcr06_hermes_compatibility.py
+  - python scripts/validate_pcr05_runtime_adapters.py
+  - python scripts/validate_pcr04_codex_handoff.py
+  completion_contract:
+    all_commands_must_pass: true
+    generated_contract_clean: true
+    no_forbidden_capability_enabled: true
+activation_conditions:
+- pcr03_merged_to_main
+- pcr04_merged_to_main
+- pcr05_merged_to_main
+- pcr06_merged_to_main
+- github_hosted_controls_in_issue_19_verified
+- explicit_founder_phase_0_approval_received
+- clean_macos_environment_available
+- hermes_version_and_checksum_verified
+- hermes_sandbox_conformance_passed
+boundaries:
+  founder_accountability_preserved: true
+  canonical_write_mode: commands_only
+  runtime_memory_is_canonical: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  credential_collection_authorized: false
+  autonomous_merge_authorized: false
+  phase1_progression_authorized: false
