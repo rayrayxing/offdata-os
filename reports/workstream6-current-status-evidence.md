@@ -17,7 +17,7 @@
 - `docs/00-START-HERE.md` — `a4cd7ba7f039b57891ba95ab258b5d90feea7910`
 - `docs/14-CODEX-KICKOFF.md` — `faa31863dfbd22674178f92719d0e0600f420493`
 - `docs/19-PHASE-0-VALIDATION-ADDENDUM.md` — `efda8efb0ef7ea5903596906ba1a2c0c9bc131b5`
-- `docs/20-DEVELOPMENT-STATUS.md` — `3e5f3e2084644126b2d3d50d0e64776a668981a4`
+- `docs/20-DEVELOPMENT-STATUS.md` — `329f4dd4a635e2a682bfac274d20c8cbeeaf925f`
 - `handoff/codex-phase0-hosted-controls-issue-final.md` — `f5023c0ad10d90c23cd8777e52409b1e36dff6b2`
 
 Next permitted work package: `WS6.4`.
