@@ -57,6 +57,10 @@ The exact required future branch-protection check is:
 Validate final pre-Codex canonical handoff and complete release
 ```
 
+## Retained runtime boundary
+
+The completed PCR-05 contract remains `contracts/runtime-adapter-contracts.json`. Every complete gate must run `scripts/validate_pcr05_runtime_adapters.py`; current and future repository status remains `runtime_activation_authorized=false` until a separately governed activation package exists.
+
 ## Verified predecessor baseline
 
 The complete WS6.2 exact merge-reference gate recorded:
