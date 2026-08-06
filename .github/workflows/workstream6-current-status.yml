@@ -1,0 +1,21 @@
+name: Workstream 6 current status document repair
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: write
+
+jobs:
+  validate-current-status:
+    name: Validate WS6.3 current status documents and complete prior components
+    uses: ./.github/workflows/workstream6-final-launch-control.yml
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: write
