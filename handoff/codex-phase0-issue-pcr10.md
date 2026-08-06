@@ -15,14 +15,14 @@
 
 ## Activation gate — every item is required
 
-- [ ] `pcr03_merged_to_main`
-- [ ] `pcr04_merged_to_main`
-- [ ] `pcr05_merged_to_main`
-- [ ] `pcr06_merged_to_main`
-- [ ] `pcr07_merged_to_main`
-- [ ] `pcr08_merged_to_main`
-- [ ] `pcr09_merged_to_main`
-- [ ] `pcr10_merged_to_main`
+- [x] `pcr03_merged_to_main`
+- [x] `pcr04_merged_to_main`
+- [x] `pcr05_merged_to_main`
+- [x] `pcr06_merged_to_main`
+- [x] `pcr07_merged_to_main`
+- [x] `pcr08_merged_to_main`
+- [x] `pcr09_merged_to_main`
+- [x] `pcr10_merged_to_main`
 - [ ] `github_hosted_controls_in_issue_19_verified`
 - [ ] `explicit_founder_phase_0_approval_received`
 - [ ] `clean_macos_environment_available`
