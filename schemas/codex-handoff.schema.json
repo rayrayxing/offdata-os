@@ -1,380 +1,13 @@
 {
-  "$id": "https://offdata.com/schemas/codex-handoff.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://offdata.com/schemas/codex-handoff.schema.json",
+  "title": "offdata Codex Phase 0 handoff — WS6.1 reconciled",
+  "type": "object",
   "additionalProperties": true,
-  "properties": {
-    "activation_conditions": {
-      "items": {
-        "type": "string"
-      },
-      "minItems": 9,
-      "type": "array",
-      "uniqueItems": true
-    },
-    "authority": {
-      "required": [
-        "controlling_instruction",
-        "precedence",
-        "historical_repositories_are_non_controlling"
-      ],
-      "type": "object"
-    },
-    "boundaries": {
-      "additionalProperties": false,
-      "properties": {
-        "autonomous_merge_authorised": {
-          "const": false
-        },
-        "external_actions_authorised": {
-          "const": false
-        },
-        "founder_accountability_preserved": {
-          "const": true
-        },
-        "original_methodology_binaries_committed": {
-          "const": false
-        },
-        "paid_services_authorised": {
-          "const": false
-        },
-        "production_deployment_authorised": {
-          "const": false
-        },
-        "real_client_data_enabled": {
-          "const": false
-        }
-      },
-      "required": [
-        "real_client_data_enabled",
-        "external_actions_authorised",
-        "paid_services_authorised",
-        "production_deployment_authorised",
-        "autonomous_merge_authorised",
-        "original_methodology_binaries_committed",
-        "founder_accountability_preserved"
-      ],
-      "type": "object"
-    },
-    "canonical_branch": {
-      "const": "main"
-    },
-    "completion_report_fields": {
-      "items": {
-        "type": "string"
-      },
-      "minItems": 10,
-      "type": "array",
-      "uniqueItems": true
-    },
-    "execution": {
-      "additionalProperties": false,
-      "properties": {
-        "branch_name": {
-          "const": "codex/phase-0-foundation"
-        },
-        "implementation_method": {
-          "items": {
-            "type": "string"
-          },
-          "minItems": 5,
-          "type": "array"
-        },
-        "merge_requires_founder_approval": {
-          "const": true
-        },
-        "pull_request_mode": {
-          "const": "draft"
-        },
-        "required_commands": {
-          "items": {
-            "type": "string"
-          },
-          "minItems": 30,
-          "type": "array",
-          "uniqueItems": true
-        }
-      },
-      "required": [
-        "branch_name",
-        "pull_request_mode",
-        "merge_requires_founder_approval",
-        "implementation_method",
-        "required_commands"
-      ],
-      "type": "object"
-    },
-    "existing_assets": {
-      "type": "object"
-    },
-    "generated_from": {
-      "const": "configs/codex-handoff.yaml"
-    },
-    "handoff_id": {
-      "pattern": "^CODEX-PHASE0-HANDOFF-",
-      "type": "string"
-    },
-    "phase_id": {
-      "const": "PCR-04"
-    },
-    "prerequisite_records": {
-      "items": {
-        "required": [
-          "id",
-          "path",
-          "validator",
-          "required_status"
-        ],
-        "type": "object"
-      },
-      "minItems": 8,
-      "type": "array"
-    },
-    "prohibited_actions": {
-      "items": {
-        "type": "string"
-      },
-      "minItems": 10,
-      "type": "array",
-      "uniqueItems": true
-    },
-    "read_order": {
-      "items": {
-        "minLength": 1,
-        "type": "string"
-      },
-      "minItems": 20,
-      "type": "array",
-      "uniqueItems": true
-    },
-    "readiness_snapshot": {
-      "additionalProperties": false,
-      "properties": {
-        "activation_blockers": {
-          "items": {
-            "type": "string"
-          },
-          "minItems": 4,
-          "type": "array",
-          "uniqueItems": true
-        },
-        "canonical_release": {
-          "required": [
-            "passed",
-            "release_id",
-            "phases",
-            "final_validation_conclusion",
-            "boundaries"
-          ],
-          "type": "object"
-        },
-        "codex_start_authorized": {
-          "const": false
-        },
-        "hermes_compatibility": {
-          "required": [
-            "passed",
-            "contract_id",
-            "compatibility_surface_count",
-            "capability_mapping_count",
-            "repository_skill_count",
-            "hermes_activation_authorized",
-            "boundaries"
-          ],
-          "type": "object"
-        },
-        "initial_operating_controls": {
-          "required": [
-            "passed",
-            "contract_id",
-            "control_domain_count",
-            "security_control_count",
-            "operating_gate_count",
-            "control_switch_count",
-            "hosted_control_evidence_complete",
-            "operating_environment_evidence_complete",
-            "production_evidence_complete",
-            "initial_operating_controls_activation_authorized",
-            "boundaries"
-          ],
-          "type": "object"
-        },
-        "local_prerequisites_passed": {
-          "const": true
-        },
-        "northstar_blueprint": {
-          "required": [
-            "passed",
-            "contract_id",
-            "lifecycle_stage_count",
-            "integration_component_count",
-            "scenario_count",
-            "implementation_wave_count",
-            "northstar_implementation_authorized",
-            "boundaries"
-          ],
-          "type": "object"
-        },
-        "referential_integrity": {
-          "required": [
-            "passed",
-            "status",
-            "issue_count",
-            "counts",
-            "report_digest"
-          ],
-          "type": "object"
-        },
-        "repository_governance": {
-          "required": [
-            "passed",
-            "failures",
-            "required_file_count",
-            "workflow_invariant_count",
-            "hosted_settings_required_before_codex"
-          ],
-          "type": "object"
-        },
-        "runtime_adapters": {
-          "required": [
-            "passed",
-            "contract_id",
-            "adapter_kind_count",
-            "adapter_profile_count",
-            "tool_class_count",
-            "conformance_case_count",
-            "runtime_activation_authorized",
-            "boundaries"
-          ],
-          "type": "object"
-        }
-      },
-      "required": [
-        "canonical_release",
-        "referential_integrity",
-        "repository_governance",
-        "runtime_adapters",
-        "hermes_compatibility",
-        "northstar_blueprint",
-        "initial_operating_controls",
-        "local_prerequisites_passed",
-        "codex_start_authorized",
-        "activation_blockers"
-      ],
-      "type": "object"
-    },
-    "repository": {
-      "const": "rayrayxing/offdata-os"
-    },
-    "schema_version": {
-      "const": 1
-    },
-    "stacked_base_branch": {
-      "type": "string"
-    },
-    "stop_conditions": {
-      "items": {
-        "type": "string"
-      },
-      "minItems": 8,
-      "type": "array",
-      "uniqueItems": true
-    },
-    "target": {
-      "additionalProperties": false,
-      "properties": {
-        "backlog_document": {
-          "const": "docs/11-BUILD-BACKLOG.md"
-        },
-        "maximum_authorised_phase": {
-          "const": 0
-        },
-        "next_phase_is_prohibited": {
-          "const": true
-        },
-        "phase_gate": {
-          "minLength": 1,
-          "type": "string"
-        },
-        "phase_name": {
-          "const": "Controlled project foundation"
-        },
-        "phase_number": {
-          "const": 0
-        },
-        "start_requires_explicit_founder_approval": {
-          "const": true
-        }
-      },
-      "required": [
-        "phase_number",
-        "phase_name",
-        "backlog_document",
-        "start_requires_explicit_founder_approval",
-        "maximum_authorised_phase",
-        "next_phase_is_prohibited"
-      ],
-      "type": "object"
-    },
-    "task_graph": {
-      "items": {
-        "additionalProperties": false,
-        "properties": {
-          "acceptance": {
-            "items": {
-              "type": "string"
-            },
-            "minItems": 1,
-            "type": "array",
-            "uniqueItems": true
-          },
-          "deliverables": {
-            "items": {
-              "type": "string"
-            },
-            "minItems": 1,
-            "type": "array",
-            "uniqueItems": true
-          },
-          "dependencies": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "uniqueItems": true
-          },
-          "id": {
-            "enum": [
-              "P0.1",
-              "P0.2",
-              "P0.3",
-              "P0.4"
-            ]
-          },
-          "title": {
-            "minLength": 1,
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "title",
-          "dependencies",
-          "deliverables",
-          "acceptance"
-        ],
-        "type": "object"
-      },
-      "maxItems": 4,
-      "minItems": 4,
-      "type": "array"
-    },
-    "title": {
-      "type": "string"
-    }
-  },
   "required": [
     "schema_version",
     "phase_id",
+    "reconciled_by",
     "handoff_id",
     "repository",
     "canonical_branch",
@@ -393,6 +26,212 @@
     "generated_from",
     "readiness_snapshot"
   ],
-  "title": "offdata Codex Phase 0 Handoff",
-  "type": "object"
+  "properties": {
+    "schema_version": {"const": 2},
+    "phase_id": {"const": "PCR-04"},
+    "reconciled_by": {"const": "WS6.1"},
+    "handoff_id": {"const": "CODEX-PHASE0-HANDOFF-2026-08-06"},
+    "repository": {"const": "rayrayxing/offdata-os"},
+    "canonical_branch": {"const": "main"},
+    "generated_from": {"const": "configs/codex-handoff.yaml"},
+    "target": {
+      "type": "object",
+      "required": [
+        "phase_number",
+        "phase_name",
+        "backlog_document",
+        "phase_gate",
+        "start_requires_explicit_founder_approval",
+        "start_requires_valid_launch_permit",
+        "start_requires_final_workstream6_reconciliation",
+        "maximum_authorised_phase",
+        "next_phase_is_prohibited"
+      ],
+      "properties": {
+        "phase_number": {"const": 0},
+        "phase_name": {"const": "Controlled project foundation"},
+        "backlog_document": {"const": "docs/11-BUILD-BACKLOG.md"},
+        "phase_gate": {"type": "string", "minLength": 10},
+        "start_requires_explicit_founder_approval": {"const": true},
+        "start_requires_valid_launch_permit": {"const": true},
+        "start_requires_final_workstream6_reconciliation": {"const": true},
+        "maximum_authorised_phase": {"const": 0},
+        "next_phase_is_prohibited": {"const": true}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "controlling_instruction",
+        "machine_execution_contract",
+        "current_launch_control",
+        "current_workstream6_reconciliation",
+        "final_workstream6_gate",
+        "precedence",
+        "historical_repositories_are_non_controlling"
+      ],
+      "properties": {
+        "controlling_instruction": {"const": "AGENTS.md"},
+        "machine_execution_contract": {"const": "handoff/codex-phase0-handoff.json"},
+        "current_launch_control": {"const": "contracts/codex-phase0-launch-control.json"},
+        "current_workstream6_reconciliation": {"const": "contracts/workstream6-handoff-reconciliation.json"},
+        "final_workstream6_gate": {"const": "scripts/require_workstream6_final_reconciliation.py"}
+      }
+    },
+    "read_order": {
+      "type": "array",
+      "minItems": 45,
+      "maxItems": 45,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "prerequisite_records": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "validator", "required_status"],
+        "properties": {
+          "id": {"type": "string", "minLength": 3},
+          "path": {"type": "string", "minLength": 3},
+          "validator": {"type": "string", "pattern": "^scripts/validate_.*\\.py$"},
+          "required_status": {"type": "string", "minLength": 3}
+        }
+      }
+    },
+    "task_graph": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "dependencies", "deliverables", "acceptance"],
+        "properties": {
+          "id": {"enum": ["P0.1", "P0.2", "P0.3", "P0.4"]},
+          "title": {"type": "string", "minLength": 1},
+          "dependencies": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+          "deliverables": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+          "acceptance": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "branch_name",
+        "pull_request_mode",
+        "merge_requires_founder_approval",
+        "launch_permit_required",
+        "launch_permit_path",
+        "final_workstream6_gate_command",
+        "implementation_method",
+        "required_commands"
+      ],
+      "properties": {
+        "branch_name": {"const": "codex/phase-0-foundation"},
+        "pull_request_mode": {"const": "draft"},
+        "merge_requires_founder_approval": {"const": true},
+        "launch_permit_required": {"const": true},
+        "launch_permit_path": {"const": ".local/codex-phase0-launch/permit.json"},
+        "final_workstream6_gate_command": {"const": "python scripts/require_workstream6_final_reconciliation.py"},
+        "implementation_method": {"type": "array", "minItems": 8, "items": {"type": "string"}},
+        "required_commands": {
+          "type": "array",
+          "minItems": 49,
+          "maxItems": 49,
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "activation_conditions": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": {"type": "string"}
+    },
+    "prohibited_actions": {"type": "array", "minItems": 12, "uniqueItems": true, "items": {"type": "string"}},
+    "stop_conditions": {"type": "array", "minItems": 12, "uniqueItems": true, "items": {"type": "string"}},
+    "completion_report_fields": {"type": "array", "minItems": 14, "uniqueItems": true, "items": {"type": "string"}},
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "real_client_data_enabled",
+        "external_actions_authorised",
+        "paid_services_authorised",
+        "production_deployment_authorised",
+        "autonomous_merge_authorised",
+        "phase0_implementation_authorised",
+        "phase0_merge_authorised",
+        "phase1_authorised",
+        "runtime_activation_authorised",
+        "hermes_activation_authorised",
+        "northstar_implementation_authorised",
+        "launch_permit_issued",
+        "final_workstream6_gate_complete",
+        "original_methodology_binaries_committed",
+        "founder_accountability_preserved"
+      ],
+      "properties": {
+        "real_client_data_enabled": {"const": false},
+        "external_actions_authorised": {"const": false},
+        "paid_services_authorised": {"const": false},
+        "production_deployment_authorised": {"const": false},
+        "autonomous_merge_authorised": {"const": false},
+        "phase0_implementation_authorised": {"const": false},
+        "phase0_merge_authorised": {"const": false},
+        "phase1_authorised": {"const": false},
+        "runtime_activation_authorised": {"const": false},
+        "hermes_activation_authorised": {"const": false},
+        "northstar_implementation_authorised": {"const": false},
+        "launch_permit_issued": {"const": false},
+        "final_workstream6_gate_complete": {"const": false},
+        "original_methodology_binaries_committed": {"const": false},
+        "founder_accountability_preserved": {"const": true}
+      }
+    },
+    "readiness_snapshot": {
+      "type": "object",
+      "required": [
+        "canonical_release",
+        "referential_integrity",
+        "repository_governance",
+        "runtime_adapters",
+        "hermes_compatibility",
+        "northstar_blueprint",
+        "initial_operating_controls",
+        "pre_codex_readiness",
+        "workstream4_readiness",
+        "workstream5_launch_control",
+        "workstream6_baseline_lock",
+        "workstream6_handoff_reconciliation",
+        "local_prerequisites_passed",
+        "final_workstream6_gate_complete",
+        "hosted_controls_verified",
+        "clean_macos_environment_verified",
+        "explicit_founder_phase0_approval_received",
+        "launch_permit_issued",
+        "codex_start_authorized",
+        "activation_status",
+        "activation_blockers"
+      ],
+      "properties": {
+        "local_prerequisites_passed": {"const": true},
+        "final_workstream6_gate_complete": {"const": false},
+        "hosted_controls_verified": {"const": false},
+        "clean_macos_environment_verified": {"const": false},
+        "explicit_founder_phase0_approval_received": {"const": false},
+        "launch_permit_issued": {"const": false},
+        "codex_start_authorized": {"const": false},
+        "activation_status": {"type": "object", "minProperties": 15},
+        "activation_blockers": {"type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true}
+      }
+    }
+  }
 }

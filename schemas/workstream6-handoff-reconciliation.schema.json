@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://offdata.local/schemas/workstream6-handoff-reconciliation.schema.json",
+  "title": "WS6.1 controlling handoff reconciliation",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "workstream_id",
+    "work_package_id",
+    "contract_id",
+    "repository",
+    "canonical_branch",
+    "base_main_sha",
+    "status",
+    "authority",
+    "closed_defects",
+    "remaining_blocking_defects",
+    "reconciliation",
+    "completion",
+    "boundaries",
+    "rollback",
+    "generated_from",
+    "evidence_report"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "workstream_id": {"const": "WORKSTREAM-6"},
+    "work_package_id": {"const": "WS6.1"},
+    "contract_id": {"const": "WORKSTREAM6-CONTROLLING-HANDOFF-RECONCILIATION"},
+    "repository": {"const": "rayrayxing/offdata-os"},
+    "canonical_branch": {"const": "main"},
+    "base_main_sha": {"const": "5c80cea82aa663cbe0a690e3f8f02504d121bea1"},
+    "status": {"const": "controlling_machine_handoff_reconciled"},
+    "closed_defects": {
+      "const": ["WS6-BLOCK-001", "WS6-BLOCK-002"]
+    },
+    "remaining_blocking_defects": {
+      "const": ["WS6-BLOCK-003", "WS6-BLOCK-004", "WS6-BLOCK-005", "WS6-BLOCK-006"]
+    },
+    "reconciliation": {
+      "type": "object",
+      "required": [
+        "pcr10_included",
+        "workstream4_included",
+        "workstream5_included",
+        "workstream6_baseline_and_ws61_included",
+        "final_workstream6_activation_gate_required",
+        "valid_launch_permit_required",
+        "full_p0_3_regression_scope_required",
+        "prerequisite_record_count",
+        "read_order_count",
+        "required_command_count",
+        "activation_condition_count"
+      ],
+      "properties": {
+        "pcr10_included": {"const": true},
+        "workstream4_included": {"const": true},
+        "workstream5_included": {"const": true},
+        "workstream6_baseline_and_ws61_included": {"const": true},
+        "final_workstream6_activation_gate_required": {"const": true},
+        "valid_launch_permit_required": {"const": true},
+        "full_p0_3_regression_scope_required": {"const": true},
+        "prerequisite_record_count": {"const": 14},
+        "read_order_count": {"const": 45},
+        "required_command_count": {"const": 49},
+        "activation_condition_count": {"const": 15}
+      }
+    },
+    "completion": {
+      "type": "object",
+      "required": [
+        "ws60_complete",
+        "ws61_complete",
+        "all_required_prior_components_pass",
+        "all_blocking_defects_closed",
+        "final_reconciliation_complete",
+        "next_permitted_work_package"
+      ],
+      "properties": {
+        "ws60_complete": {"const": true},
+        "ws61_complete": {"const": true},
+        "all_required_prior_components_pass": {"const": true},
+        "all_blocking_defects_closed": {"const": false},
+        "final_reconciliation_complete": {"const": false},
+        "next_permitted_work_package": {"const": "WS6.2"}
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "required": [
+        "founder_accountability_preserved",
+        "codex_start_authorized",
+        "phase0_implementation_authorized",
+        "phase0_merge_authorized",
+        "phase1_authorized",
+        "runtime_activation_authorized",
+        "real_client_data_enabled",
+        "external_actions_authorized",
+        "paid_services_authorized",
+        "launch_permit_issued"
+      ],
+      "properties": {
+        "founder_accountability_preserved": {"const": true},
+        "codex_start_authorized": {"const": false},
+        "phase0_implementation_authorized": {"const": false},
+        "phase0_merge_authorized": {"const": false},
+        "phase1_authorized": {"const": false},
+        "runtime_activation_authorized": {"const": false},
+        "real_client_data_enabled": {"const": false},
+        "external_actions_authorized": {"const": false},
+        "paid_services_authorized": {"const": false},
+        "launch_permit_issued": {"const": false}
+      }
+    },
+    "generated_from": {"const": "configs/workstream6-handoff-reconciliation.yaml"},
+    "evidence_report": {"const": "reports/workstream6-handoff-reconciliation-evidence.md"}
+  }
+}
