@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+python scripts/build_test_registry.py
+python scripts/build_pcr02_test_identity.py
+python scripts/export_machine_contracts.py
+python scripts/build_phase3_oracle.py
+python scripts/build_phase4_deliverable_semantic_model.py
+python scripts/build_phase5_fixture_programme.py
+python scripts/build_phase6_knowledge_intelligence.py
+python scripts/build_phase7_security_regionalisation.py
+python scripts/build_pcr01_canonical_release.py
+python scripts/build_pcr03_repository_hygiene.py
+python scripts/build_pcr05_runtime_adapters.py
+python scripts/build_pcr06_hermes_compatibility.py
+python scripts/build_pcr07_northstar_blueprint.py
+python scripts/build_pcr08_initial_operating_controls.py
+python scripts/build_pcr09_codex_issue.py
+python scripts/build_workstream6_handoff_reconciliation.py
+python scripts/build_pcr04_codex_handoff.py
+python scripts/build_pcr10_pre_codex_readiness.py
+python scripts/build_workstream4_readiness.py
+python scripts/build_workstream5_launch_control.py
+python scripts/build_workstream6_final_reconciliation.py
+python scripts/build_workstream6_final_launch_control.py
+
+git diff --exit-code
+
+python scripts/validate_phase1_contracts.py
+python scripts/validate_phase2_agents.py
+python scripts/validate_phase3_ai_audit_oracle.py
+python scripts/validate_phase4_deliverable_semantic_model.py
+python scripts/validate_phase5_fixture_programme.py
+python scripts/validate_phase6_knowledge_intelligence.py
+python scripts/validate_phase7_security_regionalisation.py
+python scripts/validate_pcr01_canonical_release.py
+python scripts/validate_pcr02_referential_integrity.py
+python scripts/validate_pcr03_repository_hygiene.py
+python scripts/validate_pcr05_runtime_adapters.py
+python scripts/validate_pcr06_hermes_compatibility.py
+python scripts/validate_pcr07_northstar_blueprint.py
+python scripts/validate_pcr08_initial_operating_controls.py
+python scripts/validate_pcr09_codex_issue.py
+python scripts/validate_pcr04_codex_handoff.py
+python scripts/validate_pcr10_pre_codex_readiness.py
+python scripts/validate_workstream4_readiness.py
+python scripts/validate_workstream5_launch_control.py
+python scripts/validate_workstream6_final_reconciliation.py
+python scripts/validate_workstream6_handoff_reconciliation.py
+python scripts/validate_workstream6_final_launch_control.py
+python scripts/prepare_codex_phase0_launch.py --self-test
+python scripts/require_workstream6_final_reconciliation.py --self-test
+
+(
+  cd packages/offdata-core
+  pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90 | tee /tmp/ws62-pytest.log
+  mypy src
+)
+python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
+ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts

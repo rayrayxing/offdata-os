@@ -10,7 +10,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_PATH = ROOT / "contracts" / "codex-phase0-launch-control.json"
-ISSUE_BODY_PATH = ROOT / "handoff" / "codex-phase0-issue-workstream5.md"
+ISSUE_BODY_PATH = ROOT / "handoff" / "codex-phase0-issue-final.md"
+FINAL_RELEASE_PATH = ROOT / "releases" / "pre-codex-final-reconciliation-2026-08-06.json"
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -41,10 +42,49 @@ def git_value(*args: str) -> str | None:
     return result.stdout.strip() if result.returncode == 0 else None
 
 
+def _final_release_state() -> dict[str, Any]:
+    if not FINAL_RELEASE_PATH.is_file():
+        return {
+            "final_workstream6_gate_complete": False,
+            "final_release_main_sha": None,
+            "final_release_digest": None,
+        }
+    try:
+        record = load_json(FINAL_RELEASE_PATH)
+    except (ValueError, json.JSONDecodeError):
+        return {
+            "final_workstream6_gate_complete": False,
+            "final_release_main_sha": None,
+            "final_release_digest": None,
+        }
+    required = {
+        "release_id": "PRE-CODEX-FINAL-RECONCILIATION-2026-08-06",
+        "final_reconciliation_complete": True,
+        "all_blocking_defects_closed": True,
+        "exact_main_sha_bound": True,
+        "tested_merge_reference_bound": True,
+        "codex_start_authorized": False,
+    }
+    complete = all(record.get(key) == expected for key, expected in required.items())
+    main_sha = record.get("integrated_main_sha") or record.get("main_sha")
+    if not isinstance(main_sha, str) or len(main_sha) != 40:
+        complete = False
+        main_sha = None
+    return {
+        "final_workstream6_gate_complete": complete,
+        "final_release_main_sha": main_sha,
+        "final_release_digest": digest_file(FINAL_RELEASE_PATH),
+    }
+
+
 def repository_state(contract: dict[str, Any]) -> dict[str, Any]:
     remote = git_value("ls-remote", "origin", "refs/heads/main")
-    codex = git_value("ls-remote", "origin", f"refs/heads/{contract['launch_target']['required_branch']}")
-    ancestor = run(["git", "merge-base", "--is-ancestor", contract["pre_workstream_main_sha"], "HEAD"])
+    codex = git_value(
+        "ls-remote",
+        "origin",
+        f"refs/heads/{contract['launch_target']['required_branch']}",
+    )
+    ancestor = run(["git", "merge-base", "--is-ancestor", contract["base_main_sha"], "HEAD"])
     return {
         "platform": platform.system(),
         "branch": git_value("branch", "--show-current"),
@@ -52,7 +92,8 @@ def repository_state(contract: dict[str, Any]) -> dict[str, Any]:
         "clean": git_value("status", "--porcelain") == "",
         "remote_main_sha": remote.split()[0] if remote else None,
         "codex_branch_absent": codex == "",
-        "pre_workstream_main_is_ancestor": ancestor.returncode == 0,
+        "ws61_main_is_ancestor": ancestor.returncode == 0,
+        **_final_release_state(),
     }
 
 
@@ -85,97 +126,272 @@ def live_repository_state(contract: dict[str, Any]) -> dict[str, Any]:
 
 
 def semantic_failures(
-    contract: dict[str, Any], hosted: dict[str, Any], doctor: dict[str, Any],
-    mac: dict[str, Any], approval: dict[str, Any], repo: dict[str, Any],
-    live: dict[str, Any], *, doctor_digest: str,
+    contract: dict[str, Any],
+    hosted: dict[str, Any],
+    doctor: dict[str, Any],
+    mac: dict[str, Any],
+    approval: dict[str, Any],
+    repo: dict[str, Any],
+    live: dict[str, Any],
+    *,
+    doctor_digest: str,
 ) -> list[str]:
     failures: list[str] = []
-    target = contract["launch_target"]
-    repository = contract["repository"]
 
     def require(condition: bool, message: str) -> None:
         if not condition:
             failures.append(message)
 
+    target = contract["launch_target"]
+    repository = contract["repository"]
     snapshot = contract.get("readiness_snapshot", {})
-    require(contract.get("status") == "repository_launch_control_complete_manual_gates_pending", "launch-control contract status is invalid")
-    require(snapshot.get("repository_launch_control_complete") is True, "repository launch-control package is incomplete")
-    require(snapshot.get("codex_start_authorized") is False, "committed launch-control contract must remain unauthorized")
 
-    require(hosted.get("evidence_type") == "github_hosted_controls_attestation", "hosted-controls evidence type is invalid")
-    require(hosted.get("repository") == repository and hosted.get("issue_number") == 19, "hosted-controls evidence targets the wrong repository or issue")
-    require(hosted.get("issue_state") == "closed" and hosted.get("issue_state_reason") == "completed", "hosted-controls issue must be closed as completed")
+    require(
+        contract.get("status")
+        == "repository_launch_control_complete_manual_gates_pending",
+        "legacy launch-control status alias is invalid",
+    )
+    require(
+        contract.get("final_status")
+        == "final_launch_control_reconciled_manual_gates_pending",
+        "final launch-control contract status is invalid",
+    )
+    require(
+        snapshot.get("repository_final_launch_control_complete") is True,
+        "repository final launch-control package is incomplete",
+    )
+    require(
+        snapshot.get("repository_launch_control_complete") is True,
+        "legacy repository launch-control projection is incomplete",
+    )
+    require(
+        snapshot.get("codex_start_authorized") is False,
+        "committed launch-control contract must remain unauthorized",
+    )
+    require(
+        contract.get("generated_issue", {}).get("body_path")
+        == "handoff/codex-phase0-issue-final.md",
+        "controlling issue path is not final",
+    )
+    require(
+        contract.get("final_release_gate", {}).get("must_exist_before_permit") is True,
+        "final Workstream 6 release gate is not mandatory",
+    )
+
+    require(
+        hosted.get("evidence_type") == "github_hosted_controls_attestation",
+        "hosted-controls evidence type is invalid",
+    )
+    require(
+        hosted.get("repository") == repository and hosted.get("issue_number") == 19,
+        "hosted-controls evidence targets the wrong repository or issue",
+    )
+    require(
+        hosted.get("issue_state") == "closed"
+        and hosted.get("issue_state_reason") == "completed",
+        "hosted-controls issue must be closed as completed",
+    )
+    require(
+        hosted.get("required_status_check_name")
+        == contract["required_status_check"]["job_name"],
+        "hosted-controls status-check identity is stale",
+    )
     controls = hosted.get("controls", {})
-    require(isinstance(controls, dict) and len(controls) == 8 and all(value is True for value in controls.values()), "all eight hosted controls require explicit true attestations")
+    require(
+        isinstance(controls, dict)
+        and len(controls) == 8
+        and all(value is True for value in controls.values()),
+        "all eight hosted controls require explicit true attestations",
+    )
     cleanup = hosted.get("branch_cleanup", {})
     require(cleanup.get("complete") is True, "historical branch cleanup is incomplete")
-    require(cleanup.get("remaining_branches") == ["main"], "final branch inventory must contain only main before launch")
+    require(
+        cleanup.get("remaining_branches") == ["main"],
+        "final branch inventory must contain only main before launch",
+    )
     require(bool(hosted.get("evidence_attachments")), "hosted-control evidence attachments are required")
-    require(hosted.get("attested") is True and hosted.get("attested_by") == "rayrayxing", "hosted-control Founder attestation is missing")
+    require(
+        hosted.get("attested") is True and hosted.get("attested_by") == "rayrayxing",
+        "hosted-control Founder attestation is missing",
+    )
 
-    require(doctor.get("report_type") == "offdata_pre_codex_macos_doctor", "macOS doctor report type is invalid")
-    require(doctor.get("non_destructive") is True and doctor.get("generated_values_include_secrets") is False, "macOS doctor report must be non-destructive and redacted")
+    require(
+        doctor.get("report_type") == "offdata_pre_codex_macos_doctor",
+        "macOS doctor report type is invalid",
+    )
+    require(
+        doctor.get("non_destructive") is True
+        and doctor.get("generated_values_include_secrets") is False,
+        "macOS doctor report must be non-destructive and redacted",
+    )
     require(doctor.get("machine_checks_passed") is True, "macOS doctor machine checks did not all pass")
     checks = doctor.get("checks", {})
-    require(isinstance(checks, dict) and bool(checks) and all(value is True for value in checks.values()), "every macOS doctor check must pass")
+    require(
+        isinstance(checks, dict) and bool(checks) and all(value is True for value in checks.values()),
+        "every macOS doctor check must pass",
+    )
     doctor_git = doctor.get("git", {})
-    require(doctor_git.get("clean") is True and doctor_git.get("branch") == "main", "macOS doctor must report a clean main branch")
+    require(
+        doctor_git.get("clean") is True and doctor_git.get("branch") == "main",
+        "macOS doctor must report a clean main branch",
+    )
     require(doctor.get("codex_start_authorized") is False, "macOS doctor may never authorize Codex")
 
-    require(mac.get("evidence_type") == "clean_macos_environment_attestation", "clean-macOS attestation type is invalid")
+    require(
+        mac.get("evidence_type") == "clean_macos_environment_attestation",
+        "clean-macOS attestation type is invalid",
+    )
     require(mac.get("repository") == repository, "clean-macOS attestation targets the wrong repository")
     require(mac.get("doctor_report_sha256") == doctor_digest, "clean-macOS attestation doctor digest mismatch")
     manual = mac.get("manual_attestations", {})
-    require(isinstance(manual, dict) and len(manual) == 5 and all(value is True for value in manual.values()), "all clean-macOS manual attestations are required")
-    require(mac.get("clean_macos_environment_verified") is True, "clean-macOS environment is not verified")
-    require(mac.get("attested") is True and mac.get("attested_by") == "rayrayxing", "clean-macOS Founder attestation is missing")
+    require(
+        isinstance(manual, dict)
+        and len(manual) == 5
+        and all(value is True for value in manual.values()),
+        "all clean-macOS manual attestations are required",
+    )
+    require(
+        mac.get("clean_macos_environment_verified") is True,
+        "clean-macOS environment is not verified",
+    )
+    require(
+        mac.get("attested") is True and mac.get("attested_by") == "rayrayxing",
+        "clean-macOS Founder attestation is missing",
+    )
 
-    require(approval.get("evidence_type") == "founder_codex_phase0_authorization", "Founder approval evidence type is invalid")
-    require(approval.get("repository") == repository and approval.get("canonical_issue") == 1, "Founder approval targets the wrong repository or issue")
-    require(approval.get("decision") == "approve_codex_phase0_only", "Founder decision must explicitly approve Codex Phase 0 only")
+    require(
+        approval.get("evidence_type") == "founder_codex_phase0_authorization",
+        "Founder approval evidence type is invalid",
+    )
+    require(
+        approval.get("repository") == repository and approval.get("canonical_issue") == 1,
+        "Founder approval targets the wrong repository or issue",
+    )
+    require(
+        approval.get("decision") == "approve_codex_phase0_only",
+        "Founder decision must explicitly approve Codex Phase 0 only",
+    )
     require(approval.get("approved_phase") == "Codex Phase 0 only", "Founder approval phase is invalid")
-    require(approval.get("approved_tasks") == target["permitted_tasks"], "Founder approval tasks must be exactly P0.1-P0.4")
-    require(approval.get("required_branch") == target["required_branch"], "Founder approval branch is invalid")
-    require(approval.get("draft_pull_request_required") is True, "Founder approval must require a draft pull request")
-    require(approval.get("merge_authorized") is False and approval.get("phase1_authorized") is False, "Founder approval cannot authorize merge or Phase 1")
+    require(
+        approval.get("approved_tasks") == target["permitted_tasks"],
+        "Founder approval tasks must be exactly P0.1-P0.4",
+    )
+    require(
+        approval.get("required_branch") == target["required_branch"],
+        "Founder approval branch is invalid",
+    )
+    require(
+        approval.get("draft_pull_request_required") is True,
+        "Founder approval must require a draft pull request",
+    )
+    require(
+        approval.get("merge_authorized") is False
+        and approval.get("phase1_authorized") is False,
+        "Founder approval cannot authorize merge or Phase 1",
+    )
     require(bool(approval.get("authorized_at")), "Founder approval timestamp is required")
-    require(approval.get("attested") is True and approval.get("attested_by") == "rayrayxing", "explicit Founder approval attestation is missing")
+    require(
+        approval.get("attested") is True and approval.get("attested_by") == "rayrayxing",
+        "explicit Founder approval attestation is missing",
+    )
 
-    sha_values = {approval.get("approved_main_sha"), hosted.get("approved_main_sha"), mac.get("approved_main_sha"), doctor_git.get("head"), repo.get("head"), repo.get("remote_main_sha")}
-    require(None not in sha_values and len(sha_values) == 1, "all evidence and repository state must bind to one exact main SHA")
+    sha_values = {
+        approval.get("approved_main_sha"),
+        hosted.get("approved_main_sha"),
+        mac.get("approved_main_sha"),
+        doctor_git.get("head"),
+        repo.get("head"),
+        repo.get("remote_main_sha"),
+        repo.get("final_release_main_sha"),
+    }
+    require(
+        None not in sha_values and len(sha_values) == 1,
+        "all evidence, final release and repository state must bind to one exact main SHA",
+    )
     require(repo.get("platform") == "Darwin", "real launch preparation must run on macOS")
-    require(repo.get("branch") == "main" and repo.get("clean") is True, "launch preparation requires a clean local main branch")
-    require(repo.get("pre_workstream_main_is_ancestor") is True, "approved main does not include the Workstream 5 launch control")
+    require(
+        repo.get("branch") == "main" and repo.get("clean") is True,
+        "launch preparation requires a clean local main branch",
+    )
+    require(repo.get("ws61_main_is_ancestor") is True, "approved main does not include WS6.1")
+    require(
+        repo.get("final_workstream6_gate_complete") is True,
+        "final Workstream 6 release is missing, invalid or incomplete",
+    )
+    require(bool(repo.get("final_release_digest")), "final Workstream 6 release digest is unavailable")
     require(repo.get("codex_branch_absent") is True, "Codex Phase 0 branch already exists")
 
     require(live.get("issue1_state") == "open", "canonical issue #1 must remain open")
-    require(live.get("issue1_body_sha256") == contract.get("generated_issue", {}).get("body_sha256"), "canonical issue #1 body digest is stale")
-    require(live.get("issue2_state") == "closed" and live.get("issue2_state_reason") == "duplicate", "issue #2 must remain closed as duplicate")
-    require(live.get("issue19_state") == "closed" and live.get("issue19_state_reason") == "completed", "issue #19 must be closed as completed")
-    require(live.get("open_codex_pull_request_absent") is True, "an open Codex Phase 0 pull request already exists")
+    require(
+        live.get("issue1_body_sha256") == contract.get("generated_issue", {}).get("body_sha256"),
+        "canonical issue #1 does not match the final WS6.2 issue body",
+    )
+    historical_digest = contract["historical_authority"]["workstream5_issue_body"]["sha256"]
+    require(
+        live.get("issue1_body_sha256") != historical_digest,
+        "Workstream 5 issue body is historical and cannot satisfy final launch",
+    )
+    require(
+        live.get("issue2_state") == "closed"
+        and live.get("issue2_state_reason") == "duplicate",
+        "issue #2 must remain closed as duplicate",
+    )
+    require(
+        live.get("issue19_state") == "closed"
+        and live.get("issue19_state_reason") == "completed",
+        "issue #19 must be closed as completed",
+    )
+    require(
+        live.get("open_codex_pull_request_absent") is True,
+        "an open Codex Phase 0 pull request already exists",
+    )
     return failures
 
 
-def build_permit(contract: dict[str, Any], paths: list[Path], approval: dict[str, Any]) -> dict[str, Any]:
+def build_permit(
+    contract: dict[str, Any],
+    paths: list[Path],
+    approval: dict[str, Any],
+) -> dict[str, Any]:
     digests = {
-        "launch_control": digest_file(CONTRACT_PATH),
+        "final_launch_control": digest_file(CONTRACT_PATH),
         "canonical_issue_body": digest_file(ISSUE_BODY_PATH),
+        "final_workstream6_release": digest_file(FINAL_RELEASE_PATH),
         "hosted_controls": digest_file(paths[0]),
         "macos_report": digest_file(paths[1]),
         "macos_attestation": digest_file(paths[2]),
         "founder_approval": digest_file(paths[3]),
     }
-    identity = {"repository": contract["repository"], "approved_main_sha": approval["approved_main_sha"], "branch": contract["launch_target"]["required_branch"], "tasks": contract["launch_target"]["permitted_tasks"], "evidence_digests": digests}
+    identity = {
+        "repository": contract["repository"],
+        "approved_main_sha": approval["approved_main_sha"],
+        "branch": contract["launch_target"]["required_branch"],
+        "tasks": contract["launch_target"]["permitted_tasks"],
+        "required_status_check": contract["required_status_check"]["job_name"],
+        "evidence_digests": digests,
+    }
     return {
-        "schema_version": "1.0.0", "permit_type": "codex_phase0_launch_permit",
-        "launch_id": digest_bytes(canonical_json(identity).encode()), "issued_at": approval["authorized_at"],
-        "repository": contract["repository"], "approved_main_sha": approval["approved_main_sha"],
-        "canonical_issue": 1, "hosted_controls_issue": 19,
-        "branch": contract["launch_target"]["required_branch"], "phase": "Codex Phase 0 only",
+        "schema_version": "2.0.0",
+        "permit_type": "codex_phase0_launch_permit",
+        "launch_id": digest_bytes(canonical_json(identity).encode()),
+        "issued_at": approval["authorized_at"],
+        "repository": contract["repository"],
+        "approved_main_sha": approval["approved_main_sha"],
+        "canonical_issue": 1,
+        "hosted_controls_issue": 19,
+        "required_status_check": contract["required_status_check"]["job_name"],
+        "branch": contract["launch_target"]["required_branch"],
+        "phase": "Codex Phase 0 only",
         "tasks": contract["launch_target"]["permitted_tasks"],
         "required_first_commit_ack": contract["launch_target"]["required_first_commit_ack"],
-        "draft_pull_request_required": True, "merge_authorized": False, "phase1_authorized": False,
-        "single_use": True, "stale_on_main_advance": True, "evidence_digests": digests,
-        "scope": contract["allowed_scope"], "prohibitions": contract["prohibited_scope"],
+        "draft_pull_request_required": True,
+        "merge_authorized": False,
+        "phase1_authorized": False,
+        "single_use": True,
+        "stale_on_main_advance": True,
+        "stale_on_final_release_advance": True,
+        "evidence_digests": digests,
+        "scope": contract["allowed_scope"],
+        "prohibitions": contract["prohibited_scope"],
         "codex_start_authorized": True,
     }
