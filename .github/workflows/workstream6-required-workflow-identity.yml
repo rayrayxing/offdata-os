@@ -1,0 +1,21 @@
+name: Workstream 6 required workflow identity
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: write
+
+jobs:
+  validate-required-workflow-identity:
+    name: Validate WS6.6 required workflow identity and complete prior components
+    uses: ./.github/workflows/workstream6-final-launch-control.yml
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: write

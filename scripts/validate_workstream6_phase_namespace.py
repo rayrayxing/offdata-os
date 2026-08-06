@@ -115,7 +115,7 @@ def _semantic_failures(contract: dict[str, Any], documents: dict[str, str]) -> l
         require(completion.get(key) is True, f"completion flag is false: {key}")
     require(completion.get("final_reconciliation_complete") is False, "final reconciliation was claimed early")
     require(completion.get("all_blocking_defects_closed") is False, "all blockers were claimed closed early")
-    require(completion.get("next_permitted_work_package") == "WS6.6", "next work package is invalid")
+    require(completion.get("next_permitted_work_package") == "WS6.7", "next work package is invalid")
 
     boundaries = contract.get("boundaries", {})
     require(boundaries.get("founder_accountability_preserved") is True, "Founder accountability was not preserved")
@@ -156,7 +156,7 @@ def main() -> None:
         (("founder_instruction", "imp_p0_start_authorized"), True), (("closed_defects",), []),
         (("remaining_blocking_defects",), []), (("completion", "ws65_complete"), False),
         (("completion", "namespace_disjoint"), False), (("completion", "final_reconciliation_complete"), True),
-        (("completion", "all_blocking_defects_closed"), True), (("completion", "next_permitted_work_package"), "WS6.7"),
+        (("completion", "all_blocking_defects_closed"), True), (("completion", "next_permitted_work_package"), "WS6.8"),
         (("boundaries", "phase0_implementation_authorized"), True), (("boundaries", "founder_accountability_preserved"), False),
     ]
     rejected = 0
@@ -187,7 +187,7 @@ def main() -> None:
         "WS6.5 phase namespace normalization passed: "
         f"canonical_ids={contract['namespace_id_count']}, surfaces={contract['surface_count']}, "
         f"aliases={contract['legacy_alias_count']}, {rejected} mutations rejected, "
-        "next=WS6.6, codex_start_authorized=false."
+        "next=WS6.7, codex_start_authorized=false."
     )
 
 

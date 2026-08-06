@@ -2,7 +2,7 @@
 
 ## Current state
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.5; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.6; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 This file is preparation guidance, not an instruction to start Codex. Do not paste a kickoff prompt into Codex, create the implementation branch or change application code until the final release and every manual launch gate have passed and a valid local single-use permit exists.
 
@@ -13,13 +13,14 @@ IMP-P0 is governed by:
 - `AGENTS.md`;
 - `repository/canonical-authority-registry.json`;
 - `contracts/workstream6-phase-namespace.json`;
+- `contracts/workstream6-required-workflow-identity.json`;
 - `handoff/codex-phase0-handoff.json`;
 - `contracts/codex-phase0-launch-control.json`;
 - `handoff/codex-phase0-issue-final.md` and issue #1;
 - `releases/pre-codex-final-reconciliation-2026-08-06.json` after it exists and passes the independent gate;
 - a valid local permit emitted by `scripts/prepare_codex_phase0_launch.py`.
 
-The namespace contract makes `IMP-P0` the canonical implementation phase identifier and retains older filenames and machine keys only for compatibility. The registry identifies which repository records are current, supporting, retained or superseded. The handoff, final issue body, a green workflow, an assignment or a branch name does not authorise execution.
+The namespace contract makes `IMP-P0` the canonical implementation phase identifier and retains older filenames and machine keys only for compatibility. The workflow-identity contract reserves the exact final check, but its canonical workflow remains manual-only and fail-closed until WS6.15. The registry identifies which repository records are current, supporting, retained or superseded. The handoff, final issue body, a green workflow, an assignment or a branch name does not authorise execution.
 
 ## Preconditions before any Codex session
 
@@ -27,7 +28,7 @@ All of the following are mandatory:
 
 1. `python scripts/require_workstream6_final_reconciliation.py` passes against the exact current `main` SHA;
 2. issue #19 is closed as completed with evidence for hosted controls and exact-allowlist branch cleanup;
-3. branch protection requires exactly `Validate final pre-Codex canonical handoff and complete release`;
+3. WS6.15 has activated `.github/workflows/workstream6-final-pre-codex.yml` and branch protection requires exactly `Validate final pre-Codex canonical handoff and complete release`;
 4. a clean macOS doctor report and Founder environment attestation are complete and SHA-bound;
 5. the Founder explicitly approves IMP-P0 only, tasks P0.1–P0.4, against the same SHA;
 6. `scripts/prepare_codex_phase0_launch.py` validates all evidence and emits a valid local single-use permit;
@@ -61,7 +62,7 @@ AI-native consulting operating system.
 
 Open and inspect the private repository rayrayxing/offdata-os. Treat AGENTS.md
 as the controlling instruction. Load repository/canonical-authority-registry.json,
-contracts/workstream6-phase-namespace.json, handoff/codex-phase0-handoff.json, contracts/codex-phase0-launch-control.json
+contracts/workstream6-phase-namespace.json, contracts/workstream6-required-workflow-identity.json, handoff/codex-phase0-handoff.json, contracts/codex-phase0-launch-control.json
 and the valid local launch permit.
 
 Before changing files, verify that the current main SHA, final Workstream 6

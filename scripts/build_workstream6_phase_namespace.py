@@ -61,11 +61,12 @@ def build_records() -> tuple[dict[str, Any], str]:
         "- Stable filenames, task IDs, branch names and verifier keys remain compatibility identifiers only.",
         "- Founder approval intent was recorded, but it is not exact-SHA launch authorization.",
         "- Closed defect: `WS6-CONSIST-002`.",
+        "- Successor state reconciled through WS6.6 required workflow identity.",
         "- Remaining blocking defect: `WS6-BLOCK-006`.",
         "- `codex_start_authorized=false`; IMP-P0, merge and IMP-P1 remain unauthorized.", "",
         "## Surface fingerprints", "",
         *[f"- `{item['path']}` — `{item['git_blob_sha']}` ({item['bytes']} bytes)" for item in evidence], "",
-        "Next permitted work package: `WS6.6`.", "",
+        "Next permitted work package: `WS6.7`.", "",
     ])
     return contract, report
 
@@ -78,7 +79,7 @@ def main() -> None:
         "Built WS6.5 phase namespace: "
         f"namespaces=4, canonical_ids={contract['namespace_id_count']}, "
         f"surfaces={contract['surface_count']}, aliases={contract['legacy_alias_count']}, "
-        "next=WS6.6, codex_start_authorized=false."
+        "next=WS6.7, codex_start_authorized=false."
     )
 
 

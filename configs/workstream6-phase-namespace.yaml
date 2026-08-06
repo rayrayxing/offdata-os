@@ -8,56 +8,339 @@
   "canonical_branch": "main",
   "base_main_sha": "fbfd052e8b76162468f7ee1ff5cd11dad4829497",
   "status": "phase_namespace_normalized",
-  "canonical_status_phrase": "Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.5; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.",
-  "namespace_order": ["CF", "PCR", "WS", "IMP"],
+  "canonical_status_phrase": "Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.6; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.",
+  "namespace_order": [
+    "CF",
+    "PCR",
+    "WS",
+    "IMP"
+  ],
   "namespaces": [
-    {"prefix":"CF-P","canonical_ids":["CF-P1","CF-P2","CF-P3","CF-P4","CF-P5","CF-P6","CF-P7"],"kind":"chat_first_foundation_package","state":"complete_integrated","implementation_authority":false,"description":"Chat-first design, contracts, fixtures and deterministic logic."},
-    {"prefix":"PCR-","canonical_ids":["PCR-01","PCR-02","PCR-03","PCR-04","PCR-05","PCR-06","PCR-07","PCR-08","PCR-09","PCR-10"],"kind":"pre_codex_reconciliation_package","state":"complete_integrated","implementation_authority":false,"description":"Pre-Codex reconciliation and repository preparation."},
-    {"prefix":"WS","canonical_ids":["WS-4","WS-5","WS6.0","WS6.1","WS6.2","WS6.3","WS6.4","WS6.5","WS6.6","WS6.7","WS6.8","WS6.9","WS6.10","WS6.11","WS6.12","WS6.13","WS6.14","WS6.15","WS6.16"],"kind":"governance_workstream_package","state":"complete_through_WS6.5","implementation_authority":false,"description":"Repository readiness, launch control and final reconciliation packages."},
-    {"prefix":"IMP-P","canonical_ids":["IMP-P0","IMP-P1","IMP-P2","IMP-P3","IMP-P4","IMP-P5","IMP-P6","IMP-P7","IMP-P8","IMP-P9","IMP-P10","IMP-P11","IMP-P12"],"kind":"product_implementation_phase","state":"not_started","implementation_authority":false,"description":"Future product implementation phases; each requires its own gate."}
+    {
+      "prefix": "CF-P",
+      "canonical_ids": [
+        "CF-P1",
+        "CF-P2",
+        "CF-P3",
+        "CF-P4",
+        "CF-P5",
+        "CF-P6",
+        "CF-P7"
+      ],
+      "kind": "chat_first_foundation_package",
+      "state": "complete_integrated",
+      "implementation_authority": false,
+      "description": "Chat-first design, contracts, fixtures and deterministic logic."
+    },
+    {
+      "prefix": "PCR-",
+      "canonical_ids": [
+        "PCR-01",
+        "PCR-02",
+        "PCR-03",
+        "PCR-04",
+        "PCR-05",
+        "PCR-06",
+        "PCR-07",
+        "PCR-08",
+        "PCR-09",
+        "PCR-10"
+      ],
+      "kind": "pre_codex_reconciliation_package",
+      "state": "complete_integrated",
+      "implementation_authority": false,
+      "description": "Pre-Codex reconciliation and repository preparation."
+    },
+    {
+      "prefix": "WS",
+      "canonical_ids": [
+        "WS-4",
+        "WS-5",
+        "WS6.0",
+        "WS6.1",
+        "WS6.2",
+        "WS6.3",
+        "WS6.4",
+        "WS6.5",
+        "WS6.6",
+        "WS6.7",
+        "WS6.8",
+        "WS6.9",
+        "WS6.10",
+        "WS6.11",
+        "WS6.12",
+        "WS6.13",
+        "WS6.14",
+        "WS6.15",
+        "WS6.16"
+      ],
+      "kind": "governance_workstream_package",
+      "state": "complete_through_WS6.6",
+      "implementation_authority": false,
+      "description": "Repository readiness, launch control and final reconciliation packages."
+    },
+    {
+      "prefix": "IMP-P",
+      "canonical_ids": [
+        "IMP-P0",
+        "IMP-P1",
+        "IMP-P2",
+        "IMP-P3",
+        "IMP-P4",
+        "IMP-P5",
+        "IMP-P6",
+        "IMP-P7",
+        "IMP-P8",
+        "IMP-P9",
+        "IMP-P10",
+        "IMP-P11",
+        "IMP-P12"
+      ],
+      "kind": "product_implementation_phase",
+      "state": "not_started",
+      "implementation_authority": false,
+      "description": "Future product implementation phases; each requires its own gate."
+    }
   ],
   "legacy_aliases": [
-    {"alias":"Codex Phase 0","canonical_id":"IMP-P0","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 0","canonical_id":"IMP-P0","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 1","canonical_id":"IMP-P1","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 2","canonical_id":"IMP-P2","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 3","canonical_id":"IMP-P3","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 4","canonical_id":"IMP-P4","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 5","canonical_id":"IMP-P5","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 6","canonical_id":"IMP-P6","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 7","canonical_id":"IMP-P7","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 8","canonical_id":"IMP-P8","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 9","canonical_id":"IMP-P9","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 10","canonical_id":"IMP-P10","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 11","canonical_id":"IMP-P11","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true},
-    {"alias":"Phase 12","canonical_id":"IMP-P12","classification":"legacy_display_alias","allowed_only_when_explicitly_mapped":true}
+    {
+      "alias": "Codex Phase 0",
+      "canonical_id": "IMP-P0",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 0",
+      "canonical_id": "IMP-P0",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 1",
+      "canonical_id": "IMP-P1",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 2",
+      "canonical_id": "IMP-P2",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 3",
+      "canonical_id": "IMP-P3",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 4",
+      "canonical_id": "IMP-P4",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 5",
+      "canonical_id": "IMP-P5",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 6",
+      "canonical_id": "IMP-P6",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 7",
+      "canonical_id": "IMP-P7",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 8",
+      "canonical_id": "IMP-P8",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 9",
+      "canonical_id": "IMP-P9",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 10",
+      "canonical_id": "IMP-P10",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 11",
+      "canonical_id": "IMP-P11",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    },
+    {
+      "alias": "Phase 12",
+      "canonical_id": "IMP-P12",
+      "classification": "legacy_display_alias",
+      "allowed_only_when_explicitly_mapped": true
+    }
   ],
   "stable_compatibility_identifiers": {
-    "paths": ["handoff/codex-phase0-handoff.json","contracts/codex-phase0-launch-control.json","handoff/codex-phase0-issue-final.md","schemas/codex-phase0-launch-permit.schema.json","scripts/prepare_codex_phase0_launch.py","codex/phase-0-foundation"],
-    "task_ids": ["P0.1","P0.2","P0.3","P0.4"],
-    "gate_keys": ["explicit_founder_phase_0_approval_received","valid_codex_phase0_launch_permit_issued","phase0_implementation_authorized","phase0_merge_authorized","phase1_authorized"],
+    "paths": [
+      "handoff/codex-phase0-handoff.json",
+      "contracts/codex-phase0-launch-control.json",
+      "handoff/codex-phase0-issue-final.md",
+      "schemas/codex-phase0-launch-permit.schema.json",
+      "scripts/prepare_codex_phase0_launch.py",
+      "codex/phase-0-foundation"
+    ],
+    "task_ids": [
+      "P0.1",
+      "P0.2",
+      "P0.3",
+      "P0.4"
+    ],
+    "gate_keys": [
+      "explicit_founder_phase_0_approval_received",
+      "valid_codex_phase0_launch_permit_issued",
+      "phase0_implementation_authorized",
+      "phase0_merge_authorized",
+      "phase1_authorized"
+    ],
     "rule": "Compatibility identifiers are stable machine keys or paths. They are not canonical phase labels and confer no authority."
   },
-  "normalization_surfaces": ["README.md","docs/00-START-HERE.md","docs/11-BUILD-BACKLOG.md","docs/14-CODEX-KICKOFF.md","docs/19-PHASE-0-VALIDATION-ADDENDUM.md","docs/20-DEVELOPMENT-STATUS.md","handoff/codex-phase0-issue-final.md","handoff/codex-phase0-hosted-controls-issue-final.md","docs/57-WS6-5-PHASE-NAMESPACE-NORMALIZATION.md"],
-  "machine_authority_surfaces": ["repository/canonical-authority-registry.json","handoff/codex-phase0-handoff.json","contracts/codex-phase0-launch-control.json","contracts/workstream6-phase-namespace.json"],
+  "normalization_surfaces": [
+    "README.md",
+    "docs/00-START-HERE.md",
+    "docs/11-BUILD-BACKLOG.md",
+    "docs/14-CODEX-KICKOFF.md",
+    "docs/19-PHASE-0-VALIDATION-ADDENDUM.md",
+    "docs/20-DEVELOPMENT-STATUS.md",
+    "handoff/codex-phase0-issue-final.md",
+    "handoff/codex-phase0-hosted-controls-issue-final.md",
+    "docs/57-WS6-5-PHASE-NAMESPACE-NORMALIZATION.md"
+  ],
+  "machine_authority_surfaces": [
+    "repository/canonical-authority-registry.json",
+    "handoff/codex-phase0-handoff.json",
+    "contracts/codex-phase0-launch-control.json",
+    "contracts/workstream6-phase-namespace.json"
+  ],
   "required_tokens": {
-    "all_surfaces": ["IMP-P0"],
-    "README.md": ["CF-P1–7","PCR-01–10","WS6.5","contracts/workstream6-phase-namespace.json"],
-    "docs/00-START-HERE.md": ["IMP-P0–12","A completed CF or PCR package is not an implemented product phase"],
-    "docs/11-BUILD-BACKLOG.md": ["IMP-P0","IMP-P12","Task identifiers remain `P0.1`"],
-    "docs/14-CODEX-KICKOFF.md": ["IMP-P0","IMP-P1"],
-    "docs/19-PHASE-0-VALIDATION-ADDENDUM.md": ["IMP-P0","IMP-P1"],
-    "docs/20-DEVELOPMENT-STATUS.md": ["WS6.5","WS6-CONSIST-002","WS6.6"],
-    "handoff/codex-phase0-issue-final.md": ["Codex Phase 0","Phase 1","valid_codex_phase0_launch_permit_issued"],
-    "handoff/codex-phase0-hosted-controls-issue-final.md": ["IMP-P0","IMP-P1"],
-    "docs/57-WS6-5-PHASE-NAMESPACE-NORMALIZATION.md": ["WS6-CONSIST-002","IMP-P0–12"]
+    "all_surfaces": [
+      "IMP-P0"
+    ],
+    "README.md": [
+      "CF-P1–7",
+      "PCR-01–10",
+      "WS6.6",
+      "contracts/workstream6-phase-namespace.json"
+    ],
+    "docs/00-START-HERE.md": [
+      "IMP-P0–12",
+      "A completed CF or PCR package is not an implemented product phase"
+    ],
+    "docs/11-BUILD-BACKLOG.md": [
+      "IMP-P0",
+      "IMP-P12",
+      "Task identifiers remain `P0.1`"
+    ],
+    "docs/14-CODEX-KICKOFF.md": [
+      "IMP-P0",
+      "IMP-P1"
+    ],
+    "docs/19-PHASE-0-VALIDATION-ADDENDUM.md": [
+      "IMP-P0",
+      "IMP-P1"
+    ],
+    "docs/20-DEVELOPMENT-STATUS.md": [
+      "WS6.6",
+      "WS6-CONSIST-003",
+      "WS6.7"
+    ],
+    "handoff/codex-phase0-issue-final.md": [
+      "Codex Phase 0",
+      "Phase 1",
+      "valid_codex_phase0_launch_permit_issued"
+    ],
+    "handoff/codex-phase0-hosted-controls-issue-final.md": [
+      "IMP-P0",
+      "IMP-P1"
+    ],
+    "docs/57-WS6-5-PHASE-NAMESPACE-NORMALIZATION.md": [
+      "WS6-CONSIST-002",
+      "IMP-P0–12"
+    ]
   },
-  "forbidden_unqualified_patterns": ["\\bCodex Phase 0\\b","\\bPhase 0\\b","\\bPhase 1\\b","\\bPhase 2\\b","\\bPhase 3\\b","\\bPhase 4\\b","\\bPhase 5\\b","\\bPhase 6\\b","\\bPhase 7\\b","\\bPhase 8\\b","\\bPhase 9\\b","\\bPhase 10\\b","\\bPhase 11\\b","\\bPhase 12\\b"],
-  "founder_instruction": {"received_at":"2026-08-06T19:56:00+08:00","instruction":"Proceed with WS6.5 and record Founder approval intent for issue #1.","effective_scope":"WS6.5_chat_first_only","founder_approval_intent_received":true,"exact_final_main_sha_bound":false,"final_release_bound":false,"hosted_controls_verified":false,"clean_macos_verified":false,"launch_permit_issued":false,"imp_p0_start_authorized":false,"reason":"The final post-merge SHA, permanent release, hosted controls, clean macOS evidence and local permit do not yet exist."},
-  "closed_defects": ["WS6-CONSIST-002"],
-  "remaining_blocking_defects": ["WS6-BLOCK-006"],
-  "completion": {"all_required_prior_components_pass":true,"ws65_complete":true,"namespace_disjoint":true,"current_authority_normalized":true,"compatibility_identifiers_preserved":true,"final_reconciliation_complete":false,"all_blocking_defects_closed":false,"next_permitted_work_package":"WS6.6"},
-  "boundaries": {"founder_accountability_preserved":true,"codex_start_authorized":false,"phase0_implementation_authorized":false,"phase0_merge_authorized":false,"phase1_authorized":false,"runtime_activation_authorized":false,"hermes_activation_authorized":false,"northstar_implementation_authorized":false,"real_client_data_enabled":false,"external_actions_authorized":false,"paid_services_authorized":false,"oauth_authorized":false,"production_deployment_authorized":false,"autonomous_merge_authorized":false},
-  "rollback": {"before_merge":"Close the WS6.5 pull request and delete only governance/workstream6-phase-namespace-normalization.","after_merge":"Revert WS6.5 as one unit, restore synchronized issue bodies, and keep every implementation and launch boundary false."},
-  "legacy_alias_surfaces": ["handoff/codex-phase0-issue-final.md"]
+  "forbidden_unqualified_patterns": [
+    "\\bCodex Phase 0\\b",
+    "\\bPhase 0\\b",
+    "\\bPhase 1\\b",
+    "\\bPhase 2\\b",
+    "\\bPhase 3\\b",
+    "\\bPhase 4\\b",
+    "\\bPhase 5\\b",
+    "\\bPhase 6\\b",
+    "\\bPhase 7\\b",
+    "\\bPhase 8\\b",
+    "\\bPhase 9\\b",
+    "\\bPhase 10\\b",
+    "\\bPhase 11\\b",
+    "\\bPhase 12\\b"
+  ],
+  "founder_instruction": {
+    "received_at": "2026-08-06T19:56:00+08:00",
+    "instruction": "Proceed with WS6.5 and record Founder approval intent for issue #1.",
+    "effective_scope": "WS6.5_chat_first_only",
+    "founder_approval_intent_received": true,
+    "exact_final_main_sha_bound": false,
+    "final_release_bound": false,
+    "hosted_controls_verified": false,
+    "clean_macos_verified": false,
+    "launch_permit_issued": false,
+    "imp_p0_start_authorized": false,
+    "reason": "The final post-merge SHA, permanent release, hosted controls, clean macOS evidence and local permit do not yet exist."
+  },
+  "closed_defects": [
+    "WS6-CONSIST-002"
+  ],
+  "remaining_blocking_defects": [
+    "WS6-BLOCK-006"
+  ],
+  "completion": {
+    "all_required_prior_components_pass": true,
+    "ws65_complete": true,
+    "namespace_disjoint": true,
+    "current_authority_normalized": true,
+    "compatibility_identifiers_preserved": true,
+    "final_reconciliation_complete": false,
+    "all_blocking_defects_closed": false,
+    "next_permitted_work_package": "WS6.7"
+  },
+  "boundaries": {
+    "founder_accountability_preserved": true,
+    "codex_start_authorized": false,
+    "phase0_implementation_authorized": false,
+    "phase0_merge_authorized": false,
+    "phase1_authorized": false,
+    "runtime_activation_authorized": false,
+    "hermes_activation_authorized": false,
+    "northstar_implementation_authorized": false,
+    "real_client_data_enabled": false,
+    "external_actions_authorized": false,
+    "paid_services_authorized": false,
+    "oauth_authorized": false,
+    "production_deployment_authorized": false,
+    "autonomous_merge_authorized": false
+  },
+  "rollback": {
+    "before_merge": "Close the WS6.5 pull request and delete only governance/workstream6-phase-namespace-normalization.",
+    "after_merge": "Revert WS6.5 as one unit, restore synchronized issue bodies, and keep every implementation and launch boundary false."
+  },
+  "legacy_alias_surfaces": [
+    "handoff/codex-phase0-issue-final.md"
+  ]
 }

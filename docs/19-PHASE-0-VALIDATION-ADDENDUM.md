@@ -2,7 +2,7 @@
 
 ## Current state and boundary
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.5; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.6; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 The repository remains pre-Codex. This addendum defines validation expectations for a future permitted IMP-P0 session. It does not authorise implementation, branch creation, merge or IMP-P1.
 
@@ -12,6 +12,7 @@ The authoritative classification, input inventory, task graph, command set, boun
 
 - `repository/canonical-authority-registry.json`;
 - `contracts/workstream6-phase-namespace.json`;
+- `contracts/workstream6-required-workflow-identity.json`;
 - `handoff/codex-phase0-handoff.json`;
 - `contracts/codex-phase0-launch-control.json`;
 - `handoff/codex-phase0-issue-final.md`;
@@ -20,13 +21,13 @@ The authoritative classification, input inventory, task graph, command set, boun
 
 The canonical implementation identifier is `IMP-P0`; stable `phase0` filenames and machine keys are compatibility identifiers only.
 
-The required hosted status check is exactly `Validate final pre-Codex canonical handoff and complete release`.
+The required hosted status check is exactly `Validate final pre-Codex canonical handoff and complete release`. WS6.6 reserves that identity in `.github/workflows/workstream6-final-pre-codex.yml`; the workflow remains manual-only and deliberately fail-closed until WS6.15 activates the final implementation.
 
 ## Mandatory pre-launch validation
 
 Before a permit may be issued:
 
-1. validate `repository/canonical-authority-registry.json` and run the complete command set in `handoff/codex-phase0-handoff.json`;
+1. validate `repository/canonical-authority-registry.json`, `contracts/workstream6-required-workflow-identity.json`, and run the complete command set in `handoff/codex-phase0-handoff.json`;
 2. require `python scripts/require_workstream6_final_reconciliation.py` to pass against the exact current `main` SHA;
 3. confirm issue #1 matches `handoff/codex-phase0-issue-final.md` and remains open;
 4. confirm issue #2 remains closed as duplicate;

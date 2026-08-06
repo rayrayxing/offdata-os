@@ -4,37 +4,155 @@
   "title": "WS6.5 phase namespace normalization",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version","workstream_id","work_package_id","contract_id","title","repository","canonical_branch","base_main_sha","status","canonical_status_phrase","namespace_order","namespaces","legacy_aliases","stable_compatibility_identifiers","normalization_surfaces","machine_authority_surfaces","legacy_alias_surfaces","required_tokens","forbidden_unqualified_patterns","founder_instruction","closed_defects","remaining_blocking_defects","completion","boundaries","rollback","generated_from","surface_evidence","surface_count","namespace_id_count","legacy_alias_count"],
+  "required": [
+    "schema_version",
+    "workstream_id",
+    "work_package_id",
+    "contract_id",
+    "title",
+    "repository",
+    "canonical_branch",
+    "base_main_sha",
+    "status",
+    "canonical_status_phrase",
+    "namespace_order",
+    "namespaces",
+    "legacy_aliases",
+    "stable_compatibility_identifiers",
+    "normalization_surfaces",
+    "machine_authority_surfaces",
+    "legacy_alias_surfaces",
+    "required_tokens",
+    "forbidden_unqualified_patterns",
+    "founder_instruction",
+    "closed_defects",
+    "remaining_blocking_defects",
+    "completion",
+    "boundaries",
+    "rollback",
+    "generated_from",
+    "surface_evidence",
+    "surface_count",
+    "namespace_id_count",
+    "legacy_alias_count"
+  ],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
-    "workstream_id": {"const": "WORKSTREAM-6"},
-    "work_package_id": {"const": "WS6.5"},
-    "contract_id": {"const": "WORKSTREAM6-PHASE-NAMESPACE"},
-    "title": {"type": "string", "minLength": 10},
-    "repository": {"const": "rayrayxing/offdata-os"},
-    "canonical_branch": {"const": "main"},
-    "base_main_sha": {"const": "fbfd052e8b76162468f7ee1ff5cd11dad4829497"},
-    "status": {"const": "phase_namespace_normalized"},
-    "canonical_status_phrase": {"type": "string", "pattern": "WS6\\.5"},
-    "namespace_order": {"const": ["CF","PCR","WS","IMP"]},
-    "namespaces": {"type": "array", "minItems": 4, "maxItems": 4},
-    "legacy_aliases": {"type": "array", "minItems": 14, "maxItems": 14},
-    "stable_compatibility_identifiers": {"type": "object"},
-    "normalization_surfaces": {"type": "array", "minItems": 9, "maxItems": 9, "uniqueItems": true},
-    "machine_authority_surfaces": {"type": "array", "minItems": 4, "uniqueItems": true},
-    "required_tokens": {"type": "object"},
-    "forbidden_unqualified_patterns": {"type": "array", "minItems": 14, "maxItems": 14, "uniqueItems": true},
-    "founder_instruction": {"type": "object"},
-    "closed_defects": {"const": ["WS6-CONSIST-002"]},
-    "remaining_blocking_defects": {"const": ["WS6-BLOCK-006"]},
-    "completion": {"type": "object"},
-    "boundaries": {"type": "object"},
-    "rollback": {"type": "object"},
-    "generated_from": {"const": "configs/workstream6-phase-namespace.yaml"},
-    "surface_evidence": {"type": "array", "minItems": 9, "maxItems": 9},
-    "surface_count": {"const": 9},
-    "namespace_id_count": {"const": 49},
-    "legacy_alias_count": {"const": 14},
-    "legacy_alias_surfaces": {"const": ["handoff/codex-phase0-issue-final.md"]}
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "workstream_id": {
+      "const": "WORKSTREAM-6"
+    },
+    "work_package_id": {
+      "const": "WS6.5"
+    },
+    "contract_id": {
+      "const": "WORKSTREAM6-PHASE-NAMESPACE"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 10
+    },
+    "repository": {
+      "const": "rayrayxing/offdata-os"
+    },
+    "canonical_branch": {
+      "const": "main"
+    },
+    "base_main_sha": {
+      "const": "fbfd052e8b76162468f7ee1ff5cd11dad4829497"
+    },
+    "status": {
+      "const": "phase_namespace_normalized"
+    },
+    "canonical_status_phrase": {
+      "type": "string",
+      "pattern": "WS6\\.6"
+    },
+    "namespace_order": {
+      "const": [
+        "CF",
+        "PCR",
+        "WS",
+        "IMP"
+      ]
+    },
+    "namespaces": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "legacy_aliases": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14
+    },
+    "stable_compatibility_identifiers": {
+      "type": "object"
+    },
+    "normalization_surfaces": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true
+    },
+    "machine_authority_surfaces": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true
+    },
+    "required_tokens": {
+      "type": "object"
+    },
+    "forbidden_unqualified_patterns": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "uniqueItems": true
+    },
+    "founder_instruction": {
+      "type": "object"
+    },
+    "closed_defects": {
+      "const": [
+        "WS6-CONSIST-002"
+      ]
+    },
+    "remaining_blocking_defects": {
+      "const": [
+        "WS6-BLOCK-006"
+      ]
+    },
+    "completion": {
+      "type": "object"
+    },
+    "boundaries": {
+      "type": "object"
+    },
+    "rollback": {
+      "type": "object"
+    },
+    "generated_from": {
+      "const": "configs/workstream6-phase-namespace.yaml"
+    },
+    "surface_evidence": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "surface_count": {
+      "const": 9
+    },
+    "namespace_id_count": {
+      "const": 49
+    },
+    "legacy_alias_count": {
+      "const": 14
+    },
+    "legacy_alias_surfaces": {
+      "const": [
+        "handoff/codex-phase0-issue-final.md"
+      ]
+    }
   }
 }
