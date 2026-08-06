@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import copy
-import importlib.util
 import hashlib
+import importlib.util
 import json
 import subprocess
 from pathlib import Path
@@ -21,15 +21,34 @@ HANDOFF_PATH = ROOT / "handoff" / "codex-phase0-handoff.json"
 DOC_PATH = ROOT / "docs" / "49-PCR-10-PRE-CODEX-RELEASE-AND-QUALITY-ACCEPTANCE.md"
 
 EXPECTED_ACTIVATION = [
-    "pcr03_merged_to_main", "pcr04_merged_to_main", "pcr05_merged_to_main",
-    "pcr06_merged_to_main", "pcr07_merged_to_main", "pcr08_merged_to_main",
-    "pcr09_merged_to_main", "pcr10_merged_to_main",
+    "pcr03_merged_to_main",
+    "pcr04_merged_to_main",
+    "pcr05_merged_to_main",
+    "pcr06_merged_to_main",
+    "pcr07_merged_to_main",
+    "pcr08_merged_to_main",
+    "pcr09_merged_to_main",
+    "pcr10_merged_to_main",
     "github_hosted_controls_in_issue_19_verified",
-    "explicit_founder_phase_0_approval_received", "clean_macos_environment_available",
+    "explicit_founder_phase_0_approval_received",
+    "clean_macos_environment_available",
 ]
 EXPECTED_COMMANDS = {
-    "doctor", "bootstrap", "up", "down", "restart", "health", "test", "lint", "format", "scan",
-    "reset-synthetic", "backup", "restore", "clean", "support-bundle",
+    "doctor",
+    "bootstrap",
+    "up",
+    "down",
+    "restart",
+    "health",
+    "test",
+    "lint",
+    "format",
+    "scan",
+    "reset-synthetic",
+    "backup",
+    "restore",
+    "clean",
+    "support-bundle",
 }
 PROHIBITED_TRACKED_PATTERNS = (
     ".pcr09_payload_",
@@ -76,6 +95,11 @@ def semantic_failures(
         failures.append(
             "activation conditions must be the exact governed PCR-03 through PCR-10 sequence"
         )
+    if contract.get("status") != "chat_first_complete_integrated":
+        failures.append("PCR-10 status must record completed chat-first integration")
+    release = contract.get("release_integrity", {})
+    if release.get("integration_state") != "integrated_to_main":
+        failures.append("release integration state must be integrated_to_main")
 
     boundaries = contract.get("boundaries", {})
     for key, value in boundaries.items() if isinstance(boundaries, dict) else []:
@@ -84,11 +108,7 @@ def semantic_failures(
             failures.append(f"boundary {key} has an invalid value")
 
     developer = contract.get("developer_experience", {})
-    commands = (
-        developer.get("phase0_required_commands", [])
-        if isinstance(developer, dict)
-        else []
-    )
+    commands = developer.get("phase0_required_commands", []) if isinstance(developer, dict) else []
     if set(commands) != EXPECTED_COMMANDS or len(commands) != len(EXPECTED_COMMANDS):
         failures.append("developer command inventory is incomplete or duplicated")
 
@@ -129,46 +149,43 @@ def semantic_failures(
     readiness = contract.get("readiness_snapshot", {})
     if readiness.get("chat_first_scope_complete") is not True:
         failures.append("chat-first scope must be complete")
+    if readiness.get("release_integration_complete") is not True:
+        failures.append("release integration must be complete after PCR-03 through PCR-10 merge")
+    if readiness.get("pcr10_merge_required") is not False:
+        failures.append("PCR-10 merge must no longer be required")
     for key in (
-        "release_integration_complete",
         "issue_19_hosted_controls_verified",
         "clean_macos_environment_verified",
         "explicit_founder_phase_0_approval_received",
         "codex_start_authorized",
     ):
         if readiness.get(key) is not False:
-            failures.append(
-                f"{key} must remain false before the governed integration and Founder gates"
-            )
-    if readiness.get("pcr10_merge_required") is not True:
-        failures.append("PCR-10 merge must remain required")
+            failures.append(f"{key} must remain false until its separate governed gate")
 
     generated = contract.get("generated_issue", {})
     if generated.get("github_issue_sync_verified") is not False:
         failures.append("offline contract must not claim hosted issue synchronization")
 
     if FINAL_BODY_PATH.is_file():
-        actual_body_sha = hashlib.sha256(
-            FINAL_BODY_PATH.read_text(encoding="utf-8").encode("utf-8")
-        ).hexdigest()
+        body_text = FINAL_BODY_PATH.read_text(encoding="utf-8")
+        actual_body_sha = hashlib.sha256(body_text.encode("utf-8")).hexdigest()
         if generated.get("body_sha256") != actual_body_sha:
             failures.append("generated issue body digest does not match the final body")
+        for condition in EXPECTED_ACTIVATION[:8]:
+            if f"- [x] `{condition}`" not in body_text:
+                failures.append(f"integrated issue body must check {condition}")
+        for condition in EXPECTED_ACTIVATION[8:]:
+            if f"- [ ] `{condition}`" not in body_text:
+                failures.append(f"external gate must remain unchecked: {condition}")
 
     if check_files:
         builder = _load_builder()
         expected_contract, expected_body = builder.build_contract()
         if contract != expected_contract:
             failures.append("PCR-10 contract is stale")
-        if (
-            not FINAL_BODY_PATH.is_file()
-            or FINAL_BODY_PATH.read_text(encoding="utf-8") != expected_body
-        ):
+        if not FINAL_BODY_PATH.is_file() or FINAL_BODY_PATH.read_text(encoding="utf-8") != expected_body:
             failures.append("PCR-10 final issue body is stale")
-        body = (
-            FINAL_BODY_PATH.read_text(encoding="utf-8")
-            if FINAL_BODY_PATH.is_file()
-            else ""
-        )
+        body = FINAL_BODY_PATH.read_text(encoding="utf-8") if FINAL_BODY_PATH.is_file() else ""
         for token in (
             "pcr10_merged_to_main",
             "contracts/pre-codex-readiness.json",
@@ -189,12 +206,9 @@ def semantic_failures(
             capture_output=True,
             text=True,
         )
-        tracked = result.stdout.splitlines()
-        for path in tracked:
+        for path in result.stdout.splitlines():
             if any(pattern in path for pattern in PROHIBITED_TRACKED_PATTERNS):
-                failures.append(
-                    f"prohibited transfer or materialization path is tracked: {path}"
-                )
+                failures.append(f"prohibited transfer or materialization path is tracked: {path}")
 
     return failures
 
@@ -232,9 +246,7 @@ def _run_mutation_cases(contract: dict[str, Any]) -> int:
     mutations.append(mutation)
 
     mutation = copy.deepcopy(contract)
-    mutation["quality_registry"]["criterion_ids"][1] = mutation[
-        "quality_registry"
-    ]["criterion_ids"][0]
+    mutation["quality_registry"]["criterion_ids"][1] = mutation["quality_registry"]["criterion_ids"][0]
     mutations.append(mutation)
 
     mutation = copy.deepcopy(contract)
@@ -256,13 +268,26 @@ def _run_mutation_cases(contract: dict[str, Any]) -> int:
     mutations.append(mutation)
 
     mutation = copy.deepcopy(contract)
-    mutation["output_quality"]["artifact_surfaces"]["xlsx"].remove(
-        "formulas_remain_formulas"
-    )
+    mutation["output_quality"]["artifact_surfaces"]["xlsx"].remove("formulas_remain_formulas")
+    mutations.append(mutation)
+
+    mutation = copy.deepcopy(contract)
+    mutation["status"] = "chat_first_complete_not_integrated"
+    mutations.append(mutation)
+
+    mutation = copy.deepcopy(contract)
+    mutation["release_integrity"]["integration_state"] = "pending_governed_merge_sequence"
+    mutations.append(mutation)
+
+    mutation = copy.deepcopy(contract)
+    mutation["readiness_snapshot"]["release_integration_complete"] = False
+    mutations.append(mutation)
+
+    mutation = copy.deepcopy(contract)
+    mutation["readiness_snapshot"]["pcr10_merge_required"] = True
     mutations.append(mutation)
 
     for readiness_field in (
-        "release_integration_complete",
         "issue_19_hosted_controls_verified",
         "clean_macos_environment_verified",
         "explicit_founder_phase_0_approval_received",
@@ -270,10 +295,6 @@ def _run_mutation_cases(contract: dict[str, Any]) -> int:
         mutation = copy.deepcopy(contract)
         mutation["readiness_snapshot"][readiness_field] = True
         mutations.append(mutation)
-
-    mutation = copy.deepcopy(contract)
-    mutation["readiness_snapshot"]["pcr10_merge_required"] = False
-    mutations.append(mutation)
 
     mutation = copy.deepcopy(contract)
     mutation["generated_issue"]["github_issue_sync_verified"] = True
@@ -323,7 +344,8 @@ def main() -> None:
         f"{contract['quality_registry']['criterion_count']} criteria, "
         f"{contract['quality_registry']['developer_command_count']} commands, "
         f"{mutation_count} mutation cases rejected, "
-        "chat_first_scope_complete=true, codex_start_authorized=false."
+        "chat_first_scope_complete=true, release_integration_complete=true, "
+        "codex_start_authorized=false."
     )
 
 
