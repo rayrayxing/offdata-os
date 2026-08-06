@@ -1,17 +1,24 @@
-name: PCR-09 final issue and release evidence
+name: PCR-10 pre-Codex readiness and quality acceptance
 
 on:
+  push:
+    branches: [main]
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
   issues: read
   pull-requests: write
 
+concurrency:
+  group: pcr10-pre-codex-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Check out exact pull-request merge reference
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -25,7 +32,7 @@ jobs:
           cache-dependency-path: packages/offdata-core/pyproject.toml
       - name: Install validation dependencies
         run: python -m pip install --upgrade pip && python -m pip install -e 'packages/offdata-core[dev]'
-      - name: Rebuild every governed machine record through PCR-09
+      - name: Rebuild every governed machine record
         run: |
           python scripts/build_test_registry.py
           python scripts/build_pcr02_test_identity.py
@@ -43,9 +50,10 @@ jobs:
           python scripts/build_pcr08_initial_operating_controls.py
           python scripts/build_pcr09_codex_issue.py
           python scripts/build_pcr04_codex_handoff.py
-      - name: Enforce clean deterministic generation through PCR-09
+          python scripts/build_pcr10_pre_codex_readiness.py
+      - name: Enforce clean deterministic generation
         run: git diff --exit-code
-      - name: Validate every chat-first phase and PCR boundary through PCR-09
+      - name: Validate every chat-first phase and PCR boundary
         run: |
           python scripts/validate_phase1_contracts.py
           python scripts/validate_phase2_agents.py
@@ -63,9 +71,10 @@ jobs:
           python scripts/validate_pcr08_initial_operating_controls.py
           python scripts/validate_pcr09_codex_issue.py
           python scripts/validate_pcr04_codex_handoff.py
+          python scripts/validate_pcr10_pre_codex_readiness.py
       - name: Run deterministic runtime and coverage suite
         working-directory: packages/offdata-core
-        run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90 | tee /tmp/pcr09-pytest.log
+        run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90 | tee /tmp/pcr10-pytest.log
       - name: Compile Python sources
         run: python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
       - name: Enforce Ruff baseline
@@ -73,7 +82,7 @@ jobs:
       - name: Enforce strict MyPy baseline
         working-directory: packages/offdata-core
         run: mypy src
-      - name: Verify live canonical and superseded issues
+      - name: Verify final live issue state
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -87,19 +96,15 @@ jobs:
 
           issue1 = json.loads(Path('ci-evidence/issue-1.json').read_text())
           issue2 = json.loads(Path('ci-evidence/issue-2.json').read_text())
-          final_body = Path('handoff/codex-phase0-issue-pcr10.md')
-          expected_path = final_body if final_body.is_file() else Path('handoff/codex-phase0-issue.md')
-          expected = expected_path.read_text(encoding='utf-8')
+          expected = Path('handoff/codex-phase0-issue-pcr10.md').read_text(encoding='utf-8')
           expected_digest = hashlib.sha256(expected.encode('utf-8')).hexdigest()
           actual_digest = hashlib.sha256(issue1['body'].encode('utf-8')).hexdigest()
           assert issue1['title'] == 'Codex Phase 0 — Validate and build the controlled local foundation'
           assert issue1['state'] == 'open'
-          assert actual_digest == expected_digest, (actual_digest, expected_digest, str(expected_path))
+          assert actual_digest == expected_digest, (actual_digest, expected_digest)
           assert issue2['state'] == 'closed'
           assert issue2.get('state_reason') == 'duplicate'
           Path('ci-evidence/remote-verification.txt').write_text(
-              f'issue_1_title_verified=true\n'
-              f'issue_1_body_path={expected_path}\n'
               f'issue_1_body_sha256={actual_digest}\n'
               'issue_1_state=open\n'
               'issue_2_state=closed\n'
@@ -109,23 +114,24 @@ jobs:
           PY
       - name: Assemble retained evidence
         run: |
-          cp /tmp/pcr09-pytest.log ci-evidence/pytest.log
+          cp /tmp/pcr10-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nmerge_ref=%s\nrun_id=%s\n' "${{ github.event.pull_request.head.sha }}" "$GITHUB_SHA" "$GITHUB_RUN_ID" > ci-evidence/run.txt
-          sha256sum contracts/codex-phase0-issue.json handoff/codex-phase0-issue.md handoff/codex-phase0-handoff.json > ci-evidence/repository-digests.txt
-      - name: Retain final PCR-09 evidence
+          sha256sum contracts/pre-codex-readiness.json handoff/codex-phase0-issue-pcr10.md contracts/codex-phase0-issue.json handoff/codex-phase0-handoff.json > ci-evidence/repository-digests.txt
+      - name: Retain PCR-10 evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: offdata-pcr09-final-evidence-${{ github.sha }}
+          name: offdata-pcr10-pre-codex-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
           path: |
             ci-evidence
-            configs/codex-phase0-issue.yaml
-            contracts/codex-phase0-issue.json
-            handoff/codex-phase0-issue.md
-            handoff/codex-phase0-handoff.json
-            reports/pcr09-validation-evidence.md
+            configs/pre-codex-readiness.yaml
+            contracts/pre-codex-readiness.json
+            schemas/pre-codex-readiness.schema.json
+            handoff/codex-phase0-issue-pcr10.md
+            docs/49-PCR-10-PRE-CODEX-RELEASE-AND-QUALITY-ACCEPTANCE.md
+            reports/pcr10-validation-evidence.md
       - name: Publish successful exact-gate evidence to pull request
         if: github.event_name == 'pull_request'
         env:
@@ -133,6 +139,6 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/pcr09-pytest.log | tail -1)
-          COVERAGE=$(grep 'Total coverage:' /tmp/pcr09-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "PCR-09 retained evidence gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Deterministic Phase 1–7/PCR-01–09 generation and validation, compilation, Ruff, strict MyPy, final canonical issue-body digest, and issue #2 duplicate closure all passed. Codex remains unauthorized to start."
+          TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/pcr10-pytest.log | tail -1)
+          COVERAGE=$(grep 'Total coverage:' /tmp/pcr10-pytest.log | tail -1)
+          gh pr comment "$PR_NUMBER" --body "PCR-10 final gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Deterministic Phase 1–7/PCR-01–10 generation and validation, compilation, Ruff, strict MyPy and live issue synchronization all passed. Codex remains unauthorized to start."
