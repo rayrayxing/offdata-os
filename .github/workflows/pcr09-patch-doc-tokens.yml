@@ -51,4 +51,4 @@ Preparing or validating this contract does not authorise Codex to start.
           git commit -m 'PCR-09: reconcile Phase 0 document references'
           git push origin HEAD:governance/pcr09-first-codex-issue-clean
 
-# Trigger the one-time reconciliation after registration.
+# Triggered for Workstream 1 clean reconciliation.
