@@ -12,6 +12,7 @@ OUTPUT_PATH = ROOT / "handoff" / "codex-phase0-handoff.json"
 CANONICAL_RELEASE_PATH = ROOT / "releases" / "canonical-chat-first-phase1-7-release.json"
 REFERENTIAL_BASELINE_PATH = ROOT / "requirements" / "referential-integrity-baseline.json"
 REPOSITORY_BASELINE_PATH = ROOT / "repository" / "repository-governance-baseline.json"
+RUNTIME_ADAPTER_PATH = ROOT / "contracts" / "runtime-adapter-contracts.json"
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -29,7 +30,7 @@ def _load_yaml(path: Path) -> dict[str, Any]:
 
 
 def _canonical_json(value: object) -> str:
-    return json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+    return json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
 def _repository_gate(repository: dict[str, Any]) -> tuple[bool, list[str]]:
@@ -60,6 +61,7 @@ def build_handoff() -> dict[str, Any]:
     canonical = _load_json(CANONICAL_RELEASE_PATH)
     referential = _load_json(REFERENTIAL_BASELINE_PATH)
     repository = _load_json(REPOSITORY_BASELINE_PATH)
+    runtime_adapters = _load_json(RUNTIME_ADAPTER_PATH)
 
     repository_passed, repository_failures = _repository_gate(repository)
     canonical_boundaries = canonical.get("boundaries", {})
@@ -75,6 +77,17 @@ def build_handoff() -> dict[str, Any]:
         and referential.get("issues") == []
         and referential.get("counts", {}).get("requirements") == 123
         and referential.get("counts", {}).get("edges") == 604
+    )
+    runtime_boundaries = runtime_adapters.get("boundaries", {})
+    runtime_readiness = runtime_adapters.get("readiness_snapshot", {})
+    runtime_passed = (
+        runtime_adapters.get("phase_id") == "PCR-05"
+        and runtime_readiness.get("local_prerequisites_passed") is True
+        and runtime_readiness.get("runtime_activation_authorized") is False
+        and runtime_boundaries.get("runtime_activation_authorized") is False
+        and runtime_boundaries.get("real_client_data_enabled") is False
+        and runtime_boundaries.get("external_actions_authorized") is False
+        and runtime_boundaries.get("founder_accountability_preserved") is True
     )
 
     readiness = {
@@ -103,11 +116,28 @@ def build_handoff() -> dict[str, Any]:
                 "hosted_settings_required_before_codex", []
             ),
         },
+        "runtime_adapters": {
+            "passed": runtime_passed,
+            "contract_id": runtime_adapters.get("contract_id"),
+            "adapter_kind_count": len(runtime_adapters.get("adapter_kinds", [])),
+            "adapter_profile_count": len(runtime_adapters.get("adapter_profiles", [])),
+            "tool_class_count": len(runtime_adapters.get("tool_classes", [])),
+            "conformance_case_count": len(runtime_adapters.get("conformance_cases", [])),
+            "runtime_activation_authorized": runtime_readiness.get(
+                "runtime_activation_authorized"
+            ),
+            "boundaries": runtime_boundaries,
+        },
     }
     readiness["local_prerequisites_passed"] = all(
         item.get("passed") is True
         for key, item in readiness.items()
-        if key in {"canonical_release", "referential_integrity", "repository_governance"}
+        if key in {
+            "canonical_release",
+            "referential_integrity",
+            "repository_governance",
+            "runtime_adapters",
+        }
     )
     readiness["codex_start_authorized"] = False
     readiness["activation_blockers"] = source.get("activation_conditions", [])

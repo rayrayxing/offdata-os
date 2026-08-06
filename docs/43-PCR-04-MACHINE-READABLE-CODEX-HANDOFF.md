@@ -19,12 +19,12 @@ The handoff makes the first Codex assignment unambiguous without granting autono
 
 ## Contract contents
 
-The generated handoff records:
+The generated handoff consumes `contracts/runtime-adapter-contracts.json` as a prerequisite and records:
 
 - instruction precedence and non-controlling historical repositories;
 - the required read order;
 - the canonical Phase 0 target and maximum authorised phase;
-- prerequisite release, test-identity, referential-integrity and repository-governance records;
+- prerequisite release, test-identity, referential-integrity, repository-governance and runtime-adapter records;
 - existing deterministic assets that must be integrated rather than duplicated;
 - a dependency-checked P0.1–P0.4 task graph;
 - required root-executable build, validation, test, compilation, lint and type-check commands;
@@ -33,7 +33,7 @@ The generated handoff records:
 - Founder report fields;
 - activation conditions;
 - immutable data, external-action, cost, deployment, merge and accountability boundaries;
-- a generated readiness snapshot from PCR-01, PCR-02 and PCR-03 records.
+- a generated readiness snapshot from PCR-01, PCR-02, PCR-03 and PCR-05 records.
 
 ## Validation behaviour
 
@@ -53,7 +53,7 @@ PCR-04 fails when:
 - transient stacked-pull-request metadata enters the canonical handoff;
 - kickoff documentation drifts away from the machine contract.
 
-The validator applies eight controlled mutations and proves that phase escalation, autonomous activation, external-action enablement, duplicate task identity, dependency cycles, removal of the PCR-04 command, missing package working directories and transient stacked-branch metadata are rejected.
+The validator applies ten controlled mutations and proves that phase escalation, autonomous activation, external-action enablement, duplicate task identity, dependency cycles, removal of the PCR-04 command, missing package working directories, transient stacked-branch metadata, removal of the PCR-05 validator and runtime activation are rejected.
 
 ## Activation boundary
 
@@ -63,9 +63,10 @@ All activation conditions in the handoff remain required:
 
 1. PCR-03 merged to `main`;
 2. PCR-04 merged to `main`;
-3. issue #19 hosted controls verified;
-4. explicit Founder Phase 0 approval;
-5. a clean macOS environment.
+3. PCR-05 merged to `main`;
+4. issue #19 hosted controls verified;
+5. explicit Founder Phase 0 approval;
+6. a clean macOS environment.
 
 ## Cost, data and authority
 
