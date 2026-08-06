@@ -6,13 +6,14 @@ This repository is the **canonical build repository** for the new offdata consul
 
 ## Current canonical status
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.4; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.5; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 - Initial operator: Founder only.
 - Initial hosting and data region: Singapore.
 - Data: synthetic only; real client data remains prohibited.
-- Codex implementation phase: not started and not authorised.
+- Canonical implementation namespace: `IMP-P0–12`; no implementation phase has started.
 - Current authority registry: `repository/canonical-authority-registry.json`.
+- Current phase namespace: `contracts/workstream6-phase-namespace.json`.
 - Current canonical issue: `handoff/codex-phase0-issue-final.md`, synchronized to issue #1.
 - Current launch control: `contracts/codex-phase0-launch-control.json`.
 - Current machine handoff: `handoff/codex-phase0-handoff.json`.
@@ -30,11 +31,12 @@ Historical PCR and Workstream completion documents remain evidence of their own 
 5. `docs/00-START-HERE.md`
 6. `docs/20-DEVELOPMENT-STATUS.md`
 7. `repository/canonical-authority-registry.json`
-8. `handoff/codex-phase0-handoff.json`
-9. `contracts/codex-phase0-launch-control.json`
-10. `handoff/codex-phase0-issue-final.md`
+8. `contracts/workstream6-phase-namespace.json`
+9. `handoff/codex-phase0-handoff.json`
+10. `contracts/codex-phase0-launch-control.json`
+11. `handoff/codex-phase0-issue-final.md`
 
-The authority registry classifies every current read-order item and retained evidence surface. The complete implementation read order and command set remain machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
+The phase namespace contract separates chat-first packages from `IMP-P0–12`. The authority registry classifies every current read-order item and retained evidence surface. The complete implementation read order and command set remain machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
 
 ## Codex entry gate
 
@@ -43,10 +45,10 @@ Codex may not begin merely because repository validation passes. Every one of th
 1. the permanent final Workstream 6 release exists and passes `scripts/require_workstream6_final_reconciliation.py`;
 2. issue #19 is completed with evidence for hosted controls and exact-allowlist historical branch cleanup;
 3. a clean macOS doctor report and Founder environment attestation are complete;
-4. the Founder gives explicit approval for Codex Phase 0 only against the exact current `main` SHA; and
+4. the Founder gives explicit approval for IMP-P0 only against the exact current `main` SHA; and
 5. `scripts/prepare_codex_phase0_launch.py` emits a valid local single-use permit.
 
-Create `codex/phase-0-foundation` only after that permit exists and only from its approved SHA. The first commit must contain the governed launch acknowledgement. The pull request must remain draft; merge and Phase 1 remain unauthorised.
+Create `codex/phase-0-foundation` only after that permit exists and only from its approved SHA. The first commit must contain the governed launch acknowledgement. The pull request must remain draft; merge and IMP-P1 remain unauthorised.
 
 ## Retained runtime boundary
 
@@ -71,4 +73,4 @@ offdata should support the full consulting lifecycle from qualified opportunity 
 
 ## Initial implementation target
 
-After a valid permit is issued, Codex Phase 0 may establish only the controlled local project foundation defined by tasks P0.1–P0.4. Application and operating-infrastructure directories are populated only through separately approved implementation phases.
+After a valid permit is issued, IMP-P0 may establish only the controlled local project foundation defined by tasks P0.1–P0.4. Application and operating-infrastructure directories are populated only through separately approved implementation phases.

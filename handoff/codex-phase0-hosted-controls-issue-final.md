@@ -1,5 +1,7 @@
-<!-- Canonical issue #19 body for WS6.3. Keep synchronized through the WS6.3 gate. -->
+<!-- Canonical issue #19 body for WS6.5. Keep synchronized through the WS6.5 gate. -->
 # Verify hosted controls and clean environment before Codex
+
+The canonical implementation identifier is `IMP-P0`; stable `phase0` filenames and gate keys remain compatibility identifiers only.
 
 This issue is the authoritative human evidence record for GitHub-hosted settings, exact-allowlist historical branch cleanup and the clean macOS environment. Repository files and successful workflows cannot prove these manual gates.
 
@@ -14,12 +16,15 @@ This issue is the authoritative human evidence record for GitHub-hosted settings
 - [x] WS6.0 baseline lock is integrated.
 - [x] WS6.1 machine handoff reconciliation is integrated.
 - [x] WS6.2 final launch-control reconciliation is integrated.
+- [x] WS6.3 current status repair is integrated.
+- [x] WS6.4 canonical authority and evidence registry is integrated.
+- [x] WS6.5 phase namespace normalization is included in this package and becomes integrated when this package merges.
 - [ ] All remaining WS6 packages are integrated.
 - [ ] `releases/pre-codex-final-reconciliation-2026-08-06.json` exists and passes `scripts/require_workstream6_final_reconciliation.py`.
 - [x] Issue #1 is open and synchronized to `handoff/codex-phase0-issue-final.md`.
 - [x] Issue #2 remains closed as duplicate.
 - [x] The final required status-check identity is `Validate final pre-Codex canonical handoff and complete release`.
-- [ ] `codex/phase-0-foundation` and any Phase 0 pull request remain absent at permit issuance.
+- [ ] `codex/phase-0-foundation` and any IMP-P0 pull request remain absent at permit issuance.
 
 The latest successful complete gate for the exact pull-request merge reference is predecessor evidence. Record the final release, run, job, artifact and digest evidence only after the final WS6 package is merged.
 
@@ -84,7 +89,7 @@ Then verify:
 - [ ] at least 20 GiB free disk space is available;
 - [ ] no real client files are present;
 - [ ] no credential values are stored in the repository or evidence;
-- [ ] no paid service or trial is required for Phase 0;
+- [ ] no paid service or trial is required for IMP-P0;
 - [ ] the Founder clean-environment attestation is complete;
 - [ ] the doctor report, attestation and final release reference the same SHA.
 
@@ -93,9 +98,9 @@ Then verify:
 Only after every repository, hosted-control, branch-cleanup and clean-macOS item is evidenced:
 
 1. complete `handoff/codex-phase0-founder-authorization.template.json`;
-2. approve exactly Codex Phase 0 tasks P0.1–P0.4, branch `codex/phase-0-foundation` and a draft pull request;
+2. approve exactly IMP-P0 tasks P0.1–P0.4, branch `codex/phase-0-foundation` and a draft pull request;
 3. bind approval to the exact final `main` SHA and final release digest;
-4. keep merge and Phase 1 unauthorised;
+4. keep merge and IMP-P1 unauthorised;
 5. run:
 
 ```bash
@@ -108,11 +113,11 @@ python scripts/prepare_codex_phase0_launch.py \
 
 A successful verifier run writes a local, ignored, mode-`0600`, single-use permit. It does not create a branch, open or merge a pull request, activate a runtime or change GitHub settings.
 
-- [ ] explicit Founder Phase 0-only approval is recorded against the exact final `main` SHA;
+- [ ] explicit Founder IMP-P0-only approval is recorded against the exact final `main` SHA;
 - [ ] all final-release and evidence digests validate;
 - [ ] a local single-use permit is issued;
 - [ ] the permit scope remains P0.1–P0.4 only;
-- [ ] merge and Phase 1 remain unauthorised.
+- [ ] merge and IMP-P1 remain unauthorised.
 
 Create `codex/phase-0-foundation` only after the valid permit exists and only from its approved SHA.
 
@@ -129,4 +134,4 @@ Until the permanent final release, completed issue evidence, exact-SHA approval 
 - `launch_permit_issued=false`
 - `codex_start_authorized=false`
 
-Real client data, external actions, paid services, OAuth, DNS changes, production deployment, runtime activation, Hermes activation, Northstar product implementation, autonomous merge and Phase 1 remain prohibited.
+Real client data, external actions, paid services, OAuth, DNS changes, production deployment, runtime activation, Hermes activation, Northstar product implementation, autonomous merge and IMP-P1 remain prohibited.

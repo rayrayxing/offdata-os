@@ -5,7 +5,7 @@
 - Base main: `1b518253abb187bbc31b1c809ee4f7ca5506f7e8`
 - Current authority surfaces: `6`
 - Forbidden stale-state patterns: `13`
-- Canonical status: Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.4; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.
+- Canonical status: Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.5; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.
 - Closed defects: `WS6-BLOCK-003`, `WS6-CONSIST-008`
 - Remaining blocking defect: `WS6-BLOCK-006`
 - Final release, hosted controls, branch cleanup, clean macOS, Founder approval and permit remain pending.
@@ -13,11 +13,11 @@
 
 ## Document fingerprints
 
-- `README.md` — `94f16db93b68f84650db7265185bb9bae6d8a5c1`
-- `docs/00-START-HERE.md` — `20c31cc001e8112133fdb2e532630b6f842cb7e5`
-- `docs/14-CODEX-KICKOFF.md` — `f9d59351b8c16475bc6b88999ae6926d2f576558`
-- `docs/19-PHASE-0-VALIDATION-ADDENDUM.md` — `a08d97293c32844292878e4a7bc7435f685c4c50`
-- `docs/20-DEVELOPMENT-STATUS.md` — `9acd113c88fc2d3c1ebbe7d82c1323df1f37c185`
-- `handoff/codex-phase0-hosted-controls-issue-final.md` — `f5023c0ad10d90c23cd8777e52409b1e36dff6b2`
+- `README.md` — `238c36c0c85e2c8ea07926266ae9b0c4890737dd`
+- `docs/00-START-HERE.md` — `db1a83ef62c08b533ec6f37a6efe7b07b386189f`
+- `docs/14-CODEX-KICKOFF.md` — `e7dff27a6c18dcbdab094ba4ff2d1191354c263a`
+- `docs/19-PHASE-0-VALIDATION-ADDENDUM.md` — `f234705e94ad2267ea932efeae14ae4bbb89d496`
+- `docs/20-DEVELOPMENT-STATUS.md` — `fd1a0ccd72423c32ac286bd4a4a07cb332a2ca5c`
+- `handoff/codex-phase0-hosted-controls-issue-final.md` — `d572e54bd6519ccd86160d4fb421d12f5c71eb0d`
 
 Next permitted work package: `WS6.4`.

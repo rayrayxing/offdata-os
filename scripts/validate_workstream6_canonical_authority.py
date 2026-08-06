@@ -107,14 +107,11 @@ def _semantic_failures(registry: dict[str, Any]) -> list[str]:
             failures.append(message)
 
     require(registry.get("work_package_id") == "WS6.4", "work package is not WS6.4")
-    require(
-        registry.get("base_main_sha") == "be83de22a1178ad9fb5c814d993a0ade8a54f53c",
-        "exact WS6.3 base is missing",
-    )
+    require(registry.get("base_main_sha") == "be83de22a1178ad9fb5c814d993a0ade8a54f53c", "exact WS6.3 base is missing")
     exact = registry.get("exact_records", [])
     rules = registry.get("classification_rules", [])
     external = registry.get("external_records", [])
-    require(isinstance(exact, list) and len(exact) == 35, "exact record count is invalid")
+    require(isinstance(exact, list) and len(exact) == 39, "exact record count is invalid")
     require(isinstance(rules, list) and len(rules) == 11, "classification rule count is invalid")
     require(isinstance(external, list) and len(external) == 3, "external record count is invalid")
 
@@ -125,40 +122,22 @@ def _semantic_failures(registry: dict[str, Any]) -> list[str]:
     require(len(rule_ids) == len(set(rule_ids)), "classification rule ids are not unique")
     require(len(rule_patterns) == len(set(rule_patterns)), "classification rule patterns are not unique")
 
-    counts = Counter(
-        str(item.get("classification"))
-        for item in [*exact, *external]
-        if isinstance(item, dict)
-    )
+    counts = Counter(str(item.get("classification")) for item in [*exact, *external] if isinstance(item, dict))
     constraints = registry.get("uniqueness_constraints", {})
     if not isinstance(constraints, dict):
         failures.append("uniqueness constraints are invalid")
     else:
         for classification, expected in constraints.items():
-            require(
-                counts[str(classification)] == expected,
-                f"uniqueness constraint failed for {classification}",
-            )
+            require(counts[str(classification)] == expected, f"uniqueness constraint failed for {classification}")
 
     exact_by_path = _exact_map(registry)
     for path in exact_paths:
         if isinstance(path, str):
             require((ROOT / path).is_file(), f"exact authority path is missing: {path}")
-    require(
-        exact_by_path.get("handoff/codex-phase0-handoff.json", {}).get("classification")
-        == "current_machine_handoff",
-        "sole current machine handoff is invalid",
-    )
-    require(
-        exact_by_path.get("handoff/codex-phase0-issue-final.md", {}).get("classification")
-        == "current_issue_body",
-        "sole current issue body is invalid",
-    )
-    require(
-        exact_by_path.get("repository/canonical-authority-registry.json", {}).get("classification")
-        == "current_authority_registry",
-        "current authority registry does not classify itself",
-    )
+    require(exact_by_path.get("handoff/codex-phase0-handoff.json", {}).get("classification") == "current_machine_handoff", "sole current machine handoff is invalid")
+    require(exact_by_path.get("handoff/codex-phase0-issue-final.md", {}).get("classification") == "current_issue_body", "sole current issue body is invalid")
+    require(exact_by_path.get("repository/canonical-authority-registry.json", {}).get("classification") == "current_authority_registry", "current authority registry does not classify itself")
+    require(exact_by_path.get("contracts/workstream6-phase-namespace.json", {}).get("classification") == "current_phase_namespace", "current phase namespace is not classified")
 
     try:
         sources = registry["read_order_sources"]
@@ -168,11 +147,7 @@ def _semantic_failures(registry: dict[str, Any]) -> list[str]:
         failures.append(f"read-order source failure: {exc}")
         machine = []
         issue = []
-    required_exact = [
-        str(item["path"])
-        for item in exact
-        if isinstance(item, dict) and item.get("read_order_required") is True
-    ]
+    required_exact = [str(item["path"]) for item in exact if isinstance(item, dict) and item.get("read_order_required") is True]
     read_order = sorted(set(machine) | set(issue) | set(required_exact))
     require(len(machine) >= 45, "machine read order regressed")
     require(len(issue) >= 49, "canonical issue read order regressed")
@@ -182,10 +157,7 @@ def _semantic_failures(registry: dict[str, Any]) -> list[str]:
         classification = _classify(registry, relative)
         require(classification is not None, f"read-order file is unclassified: {relative}")
         if classification is not None:
-            require(
-                classification.get("classification") != "__CONFLICT__",
-                f"read-order classification conflict: {relative}",
-            )
+            require(classification.get("classification") != "__CONFLICT__", f"read-order classification conflict: {relative}")
 
     scanned = _all_scanned_paths(registry)
     require(len(scanned) >= 100, "authority and evidence scan is unexpectedly small")
@@ -193,45 +165,23 @@ def _semantic_failures(registry: dict[str, Any]) -> list[str]:
         classification = _classify(registry, relative)
         require(classification is not None, f"authority or evidence file is unclassified: {relative}")
         if classification is not None:
-            require(
-                classification.get("classification") != "__CONFLICT__",
-                f"classification conflict: {relative}",
-            )
+            require(classification.get("classification") != "__CONFLICT__", f"classification conflict: {relative}")
 
     issue_bodies = sorted((ROOT / "handoff").glob("codex-phase0-issue*.md"))
-    current_issue_bodies = [
-        path
-        for path in issue_bodies
-        if (_classify(registry, path.relative_to(ROOT).as_posix()) or {}).get("classification")
-        == "current_issue_body"
-    ]
+    current_issue_bodies = [path for path in issue_bodies if (_classify(registry, path.relative_to(ROOT).as_posix()) or {}).get("classification") == "current_issue_body"]
     require(len(current_issue_bodies) == 1, "exactly one current generated issue body is required")
     for path in issue_bodies:
         relative = path.relative_to(ROOT).as_posix()
         classification = (_classify(registry, relative) or {}).get("classification")
         if path not in current_issue_bodies:
-            require(
-                classification in {"superseded_issue_body", "current_manual_gate_body"},
-                f"non-current issue material lacks supersession classification: {relative}",
-            )
+            require(classification in {"superseded_issue_body", "current_manual_gate_body"}, f"non-current issue material lacks supersession classification: {relative}")
 
     machine_files = sorted((ROOT / "handoff").glob("codex-phase0-handoff*.json"))
-    current_machine_files = [
-        path
-        for path in machine_files
-        if (_classify(registry, path.relative_to(ROOT).as_posix()) or {}).get("classification")
-        == "current_machine_handoff"
-    ]
+    current_machine_files = [path for path in machine_files if (_classify(registry, path.relative_to(ROOT).as_posix()) or {}).get("classification") == "current_machine_handoff"]
     require(len(current_machine_files) == 1, "exactly one current machine handoff is required")
 
-    expected_external = {
-        1: ("current_actionable_assignment", True, "open"),
-        19: ("current_manual_gate", True, "open"),
-        2: ("superseded_duplicate", False, "closed"),
-    }
-    external_by_number = {
-        item.get("number"): item for item in external if isinstance(item, dict)
-    }
+    expected_external = {1: ("current_actionable_assignment", True, "open"), 19: ("current_manual_gate", True, "open"), 2: ("superseded_duplicate", False, "closed")}
+    external_by_number = {item.get("number"): item for item in external if isinstance(item, dict)}
     for number, (classification, current, state) in expected_external.items():
         record = external_by_number.get(number, {})
         require(record.get("classification") == classification, f"issue #{number} classification is invalid")
@@ -240,30 +190,22 @@ def _semantic_failures(registry: dict[str, Any]) -> list[str]:
     require(external_by_number.get(2, {}).get("state_reason") == "duplicate", "issue #2 duplicate reason is missing")
 
     status = registry.get("canonical_status_phrase")
-    require(isinstance(status, str) and "WS6.4" in status, "canonical WS6.4 status phrase is invalid")
+    require(isinstance(status, str) and "WS6.5" in status, "canonical WS6.5 status phrase is invalid")
     if isinstance(status, str):
         for relative in STATUS_FILES:
             text = (ROOT / relative).read_text(encoding="utf-8")
-            require(status in text, f"canonical WS6.4 status phrase missing: {relative}")
+            require(status in text, f"canonical WS6.5 status phrase missing: {relative}")
             require("codex_start_authorized=false" in text, f"fail-closed status missing: {relative}")
             require("repository/canonical-authority-registry.json" in text, f"authority registry missing: {relative}")
 
-    require(
-        registry.get("closed_defects") == ["WS6-CONSIST-001", "WS6-CONSIST-007"],
-        "closed defect set is invalid",
-    )
+    require(registry.get("closed_defects") == ["WS6-CONSIST-001", "WS6-CONSIST-007"], "closed defect set is invalid")
     require(registry.get("remaining_blocking_defects") == ["WS6-BLOCK-006"], "remaining blocker set is invalid")
     completion = registry.get("completion", {})
-    for key in (
-        "all_required_prior_components_pass",
-        "ws64_complete",
-        "all_current_read_order_items_classified",
-        "all_evidence_roots_classified",
-    ):
+    for key in ("all_required_prior_components_pass", "ws64_complete", "all_current_read_order_items_classified", "all_evidence_roots_classified"):
         require(completion.get(key) is True, f"completion flag {key} is false")
     require(completion.get("final_reconciliation_complete") is False, "final reconciliation was claimed early")
     require(completion.get("all_blocking_defects_closed") is False, "all blockers were claimed closed early")
-    require(completion.get("next_permitted_work_package") == "WS6.5", "next package is not WS6.5")
+    require(completion.get("next_permitted_work_package") == "WS6.6", "next package is not WS6.6")
     boundaries = registry.get("boundaries", {})
     require(boundaries.get("founder_accountability_preserved") is True, "Founder accountability is not preserved")
     for key, value in boundaries.items():
@@ -295,22 +237,14 @@ def main() -> None:
         raise SystemExit("WS6.4 semantic validation failed:\n- " + "\n- ".join(failures))
 
     cases: list[tuple[tuple[str, ...], Any]] = [
-        (("work_package_id",), "WS6.3"),
-        (("base_main_sha",), "0" * 40),
-        (("closed_defects",), ["WS6-CONSIST-001"]),
-        (("remaining_blocking_defects",), []),
-        (("completion", "all_required_prior_components_pass"), False),
-        (("completion", "ws64_complete"), False),
-        (("completion", "all_current_read_order_items_classified"), False),
-        (("completion", "all_evidence_roots_classified"), False),
-        (("completion", "final_reconciliation_complete"), True),
-        (("completion", "all_blocking_defects_closed"), True),
-        (("completion", "next_permitted_work_package"), "WS6.6"),
-        (("boundaries", "founder_accountability_preserved"), False),
-        (("boundaries", "codex_start_authorized"), True),
-        (("boundaries", "phase0_implementation_authorized"), True),
-        (("uniqueness_constraints", "current_machine_handoff"), 2),
-        (("uniqueness_constraints", "current_issue_body"), 2),
+        (("work_package_id",), "WS6.3"), (("base_main_sha",), "0" * 40),
+        (("closed_defects",), ["WS6-CONSIST-001"]), (("remaining_blocking_defects",), []),
+        (("completion", "all_required_prior_components_pass"), False), (("completion", "ws64_complete"), False),
+        (("completion", "all_current_read_order_items_classified"), False), (("completion", "all_evidence_roots_classified"), False),
+        (("completion", "final_reconciliation_complete"), True), (("completion", "all_blocking_defects_closed"), True),
+        (("completion", "next_permitted_work_package"), "WS6.7"), (("boundaries", "founder_accountability_preserved"), False),
+        (("boundaries", "codex_start_authorized"), True), (("boundaries", "phase0_implementation_authorized"), True),
+        (("uniqueness_constraints", "current_machine_handoff"), 2), (("uniqueness_constraints", "current_issue_body"), 2),
     ]
     rejected = 0
     for path, replacement in cases:
@@ -326,9 +260,7 @@ def main() -> None:
     duplicate_exact["exact_records"].append(copy.deepcopy(duplicate_exact["exact_records"][0]))
     structural_mutations.append(("duplicate exact path", duplicate_exact))
     missing_handoff = copy.deepcopy(registry)
-    missing_handoff["exact_records"] = [
-        item for item in missing_handoff["exact_records"] if item["path"] != "handoff/codex-phase0-handoff.json"
-    ]
+    missing_handoff["exact_records"] = [item for item in missing_handoff["exact_records"] if item["path"] != "handoff/codex-phase0-handoff.json"]
     structural_mutations.append(("missing current handoff", missing_handoff))
     promoted_old_issue = copy.deepcopy(registry)
     for item in promoted_old_issue["exact_records"]:
@@ -337,9 +269,7 @@ def main() -> None:
             item["current"] = True
     structural_mutations.append(("promoted superseded issue", promoted_old_issue))
     missing_report_rule = copy.deepcopy(registry)
-    missing_report_rule["classification_rules"] = [
-        item for item in missing_report_rule["classification_rules"] if item["id"] != "reports"
-    ]
+    missing_report_rule["classification_rules"] = [item for item in missing_report_rule["classification_rules"] if item["id"] != "reports"]
     structural_mutations.append(("unclassified reports", missing_report_rule))
     duplicate_rule = copy.deepcopy(registry)
     duplicate_rule["classification_rules"].append(copy.deepcopy(duplicate_rule["classification_rules"][0]))
@@ -362,10 +292,10 @@ def main() -> None:
             raise SystemExit(f"WS6.4 structural mutation was not rejected: {label}")
 
     print(
-        "WS6.4 canonical authority registry passed: "
+        "WS6.4 canonical authority registry successor validation passed: "
         f"read_order>=51, scanned_files>={len(_all_scanned_paths(registry))}, "
-        f"exact=35, rules=11, external=3, {rejected} mutations rejected, "
-        "closed_defects=2, remaining_blockers=1, next=WS6.5, codex_start_authorized=false."
+        f"exact=39, rules=11, external=3, {rejected} mutations rejected, "
+        "closed_defects=2, remaining_blockers=1, next=WS6.6, codex_start_authorized=false."
     )
 
 
