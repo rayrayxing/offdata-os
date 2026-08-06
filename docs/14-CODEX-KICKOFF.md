@@ -2,7 +2,7 @@
 
 ## Current state
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.4; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 This file is preparation guidance, not an instruction to start Codex. Do not paste a kickoff prompt into Codex, create the implementation branch or change application code until the final release and every manual launch gate have passed and a valid local single-use permit exists.
 
@@ -11,13 +11,14 @@ This file is preparation guidance, not an instruction to start Codex. Do not pas
 Codex Phase 0 is governed by:
 
 - `AGENTS.md`;
+- `repository/canonical-authority-registry.json`;
 - `handoff/codex-phase0-handoff.json`;
 - `contracts/codex-phase0-launch-control.json`;
 - `handoff/codex-phase0-issue-final.md` and issue #1;
 - `releases/pre-codex-final-reconciliation-2026-08-06.json` after it exists and passes the independent gate;
 - a valid local permit emitted by `scripts/prepare_codex_phase0_launch.py`.
 
-The handoff, final issue body, a green workflow, an assignment or a branch name does not authorise execution.
+The registry identifies which repository records are current, supporting, retained or superseded. The handoff, final issue body, a green workflow, an assignment or a branch name does not authorise execution.
 
 ## Preconditions before any Codex session
 
@@ -58,8 +59,9 @@ You are the principal engineering agent for offdata, a Founder-governed,
 AI-native consulting operating system.
 
 Open and inspect the private repository rayrayxing/offdata-os. Treat AGENTS.md
-as the controlling instruction. Load handoff/codex-phase0-handoff.json,
-contracts/codex-phase0-launch-control.json and the valid local launch permit.
+as the controlling instruction. Load repository/canonical-authority-registry.json,
+handoff/codex-phase0-handoff.json, contracts/codex-phase0-launch-control.json
+and the valid local launch permit.
 
 Before changing files, verify that the current main SHA, final Workstream 6
 release, final issue-body digest, required status-check identity, evidence
@@ -89,8 +91,8 @@ gate. Do not merge.
 
 ```text
 Review the current draft Codex Phase 0 pull request against AGENTS.md, the
-machine handoff, final launch contract, launch acknowledgement, approved permit
-scope and docs/10-TESTING-STRATEGY.md.
+canonical authority registry, machine handoff, final launch contract, launch
+acknowledgement, approved permit scope and docs/10-TESTING-STRATEGY.md.
 
 Create a defect register with severity, cause, affected requirement and repair
 plan. Repair all blocking and required defects without weakening tests or
