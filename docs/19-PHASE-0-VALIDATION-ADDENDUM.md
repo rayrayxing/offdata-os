@@ -34,6 +34,10 @@ Before a permit may be issued:
 
 A passing repository-local validation does not satisfy the final release, hosted-control, environment, Founder-approval or permit gates.
 
+## Retained runtime validation
+
+The pre-existing provider-independent runtime boundary remains governed by `contracts/runtime-adapter-contracts.json`. Every complete validation must run `scripts/validate_pcr05_runtime_adapters.py`, and the resulting state must remain `runtime_activation_authorized=false`.
+
 ## Permit-gated branch rule
 
 Create `codex/phase-0-foundation` only after a valid permit exists. The branch must start from the permit’s approved `main` SHA. The first commit must add `governance/codex-phase0-launch-ack.json`. Any SHA, release, issue-body, required-check, evidence, approval or scope drift invalidates the permit and requires a stop.
