@@ -42,7 +42,7 @@ required_file_tokens:
   - Create `codex/phase-0-foundation` only after a valid permit exists
   docs/20-DEVELOPMENT-STATUS.md:
   - WS6.3 closes `WS6-BLOCK-003` and `WS6-CONSIST-008`
-  - `WS6.4` is the next permitted chat-first work package
+  - '`WS6.4` is the next permitted chat-first work package'
   handoff/codex-phase0-hosted-controls-issue-final.md:
   - This issue is the authoritative human evidence record
   - Close this issue as completed only after every hosted-control
@@ -94,5 +94,5 @@ boundaries:
   production_deployment_authorized: false
   autonomous_merge_authorized: false
 rollback:
-  before_merge: Close the WS6.3 pull request, restore the five prior documents and issue #19 body, and delete only governance/workstream6-current-status-documents.
-  after_merge: Revert the WS6.3 merge as one unit and restore issue #19 from the last synchronized body while keeping every authorization flag false.
+  before_merge: 'Close the WS6.3 pull request, restore the five prior documents and issue #19 body, and delete only governance/workstream6-current-status-documents.'
+  after_merge: 'Revert the WS6.3 merge as one unit and restore issue #19 from the last synchronized body while keeping every authorization flag false.'
