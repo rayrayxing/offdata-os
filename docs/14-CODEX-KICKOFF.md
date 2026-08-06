@@ -45,6 +45,10 @@ python scripts/prepare_codex_phase0_launch.py \
 
 A successful run writes a local permit. It does not create a branch, open a pull request, activate services or authorise merge.
 
+## Retained runtime boundary
+
+Before any permitted session, validate `contracts/runtime-adapter-contracts.json` with `scripts/validate_pcr05_runtime_adapters.py`. The contract is provider-independent and remains inactive: `runtime_activation_authorized=false`.
+
 ## Permit-gated kickoff prompt
 
 Use the following only after independently confirming that the permit is valid for the exact checked-out `main` SHA:
