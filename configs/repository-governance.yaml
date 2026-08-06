@@ -84,6 +84,9 @@ workflow_required_tokens:
   - "python scripts/build_pcr03_repository_hygiene.py"
   - "python scripts/validate_pcr03_repository_hygiene.py"
   - "repository/repository-governance-baseline.json"
+  - "python scripts/build_pcr04_codex_handoff.py"
+  - "python scripts/validate_pcr04_codex_handoff.py"
+  - "handoff/codex-phase0-handoff.json"
 
 hosted_settings_required_before_codex:
   - require_pull_request_for_main

@@ -190,6 +190,29 @@ See:
 - `docs/41-PCR-02-TEST-IDENTITY-AND-REFERENTIAL-INTEGRITY.md`
 - `reports/pcr02-validation-evidence.md`
 
+### PCR-03 — Repository and governance hygiene
+
+Status: **complete as governed implementation and ready for Founder review in PR #18**.
+
+PCR-03 adds contribution, governance, security, ownership, issue and pull-request controls; removes tracked generated package metadata; hardens the complete CI workflow; generates and validates a deterministic repository-governance baseline; rejects prohibited paths and case collisions; and preserves explicit Founder-administered hosted-setting boundaries.
+
+See:
+
+- `docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md`
+- `reports/pcr03-validation-evidence.md`
+
+### PCR-04 — Machine-readable Codex handoff
+
+Status: **complete as a governed stacked implementation in PR #20; final merge to `main` remains dependent on PCR-03**.
+
+PCR-04 replaces prompt-only transfer with a generated and schema-validated Phase 0 handoff containing the read order, prerequisite health, existing assets, P0.1–P0.4 dependency graph, root-executable validation commands, activation blockers, prohibited actions, stop conditions, Founder report fields and immutable authority boundaries. The handoff deliberately records `codex_start_authorized=false`.
+
+See:
+
+- `docs/43-PCR-04-MACHINE-READABLE-CODEX-HANDOFF.md`
+- `handoff/codex-phase0-handoff.json`
+- `reports/pcr04-validation-evidence.md`
+
 ### Deterministic consulting kernel
 
 - Lifecycle and transition logic.
@@ -218,22 +241,37 @@ See:
 
 ## Current strategy
 
-Complete the remaining bounded pre-Codex readiness work. Codex must integrate and execute the committed design rather than rediscover it.
+Complete the governed merge and activation sequence without bypassing Founder authority:
+
+1. Founder reviews and merges PCR-03 PR #18.
+2. Retarget PCR-04 PR #20 to `main`, rerun the exact complete gate and merge only after Founder approval.
+3. Verify every GitHub-hosted control in issue #19.
+4. Confirm a clean macOS development environment.
+5. Give explicit Founder approval for Codex Phase 0 only.
+
+Codex must integrate and execute the committed design rather than rediscover or duplicate it.
 
 ## Current Founder actions
 
 Only the following are useful now:
 
-1. Confirm GitHub MFA.
-2. Install and sign into the Codex macOS app.
-3. Confirm PowerPoint, Word and Excel availability.
-4. Keep the original methodology files unchanged in one local source-library folder.
-5. Confirm at least 30 GB free disk space.
-6. Later confirm source usage rights before any external redistribution or canonical import gate.
-7. Do not authorise real client data until the production-security evidence packet is complete.
+1. Review the PCR-03 and PCR-04 pull requests in sequence.
+2. Complete the hosted-control checklist in issue #19, including MFA and `main` protection.
+3. Install and sign into the Codex macOS app.
+4. Confirm PowerPoint, Word and Excel availability.
+5. Keep the original methodology files unchanged in one local source-library folder.
+6. Confirm at least 30 GB free disk space.
+7. Later confirm source usage rights before any external redistribution or canonical import gate.
+8. Do not authorise real client data until the production-security evidence packet is complete.
 
 Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack yet.
 
 ## Current Codex gate
 
-Codex integration remains deliberately deferred until the agreed pre-Codex readiness tranche is complete. Later Codex work begins from the canonical Phase 1–7 release manifest, regenerates and validates all governed records, applies the database migration in a disposable environment, imports the original source files unchanged into controlled storage, verifies committed profile checksums, exercises parser and retrieval gold cases, configures environment and region isolation, tests encryption, backup restoration, observability, retention, rollback and kill switches, and reports discrepancies without silently changing governing contracts, source rights, aliases, security controls, regional boundaries, processor approvals, fixture evidence, golden expectations, answer keys, semantic conclusions or Founder authority boundaries.
+Codex may begin only when all activation conditions in `handoff/codex-phase0-handoff.json` are satisfied. The first command is:
+
+```bash
+python scripts/validate_pcr04_codex_handoff.py
+```
+
+The initial assignment is Phase 0 only on branch `codex/phase-0-foundation`, using synthetic data and a draft pull request. Phase 1 progression, paid services, secrets, OAuth, DNS changes, production deployment, external actions, restricted-oracle exposure and real client data remain prohibited.

@@ -1,31 +1,77 @@
 # 19 — Phase 0 Validation Addendum
 
-Codex must treat the following files as pre-existing implementation inputs during Phase 0:
+## Controlling machine contract
 
-- `packages/offdata-core/`
-- `config/lifecycle.yaml`
-- `config/policy-matrix.yaml`
-- `config/agent-roster.yaml`
-- `schemas/agent-envelope.schema.json`
-- `schemas/context-package.schema.json`
-- `schemas/founder-decision-packet.schema.json`
-- `fixtures/manifest.yaml`
-- `third_party/registry.yaml`
+The authoritative Phase 0 input inventory, task graph, command set, boundaries, stop conditions and activation conditions are in `handoff/codex-phase0-handoff.json`.
+
+Before application work, Codex must run:
+
+```bash
+python scripts/validate_pcr04_codex_handoff.py
+```
+
+The intended working branch is `codex/phase-0-foundation`. A passing handoff confirms repository-local prerequisites; it does not replace explicit Founder approval or the hosted-control checks tracked in issue #19.
+
+## Pre-existing implementation inputs
+
+Codex must integrate, not duplicate, the following governed assets:
+
+- `packages/offdata-core/pyproject.toml`
+- `packages/offdata-core/src/offdata_core/`
+- `packages/offdata-core/tests/`
+- `configs/lifecycle.yaml`
+- `configs/policy.yaml`
+- `configs/agents.yaml`
+- `configs/agent-evaluations.yaml`
+- `configs/canonical-release.yaml`
+- `configs/knowledge-ingestion.yaml`
+- `configs/repository-governance.yaml`
+- `configs/security-regionalisation.yaml`
+- `api/openapi.json`
+- `contracts/model-registry.json`
+- `contracts/command-event-catalogue.json`
+- `schemas/*.json`
+- `requirements/test-registry.json`
+- `requirements/test-definitions.json`
+- `requirements/referential-integrity-baseline.json`
+- `fixtures/additional-primary-fixtures.json`
+- `knowledge/knowledge-ingestion-baseline.json`
+- `security/security-regionalisation-baseline.json`
+- `releases/canonical-chat-first-phase1-7-release.json`
+- `repository/repository-governance-baseline.json`
+
+The original Founder-supplied methodology binaries remain outside the repository. Their governed profiles and checksums are in `knowledge/source-manifest.yaml`; Phase 0 must not import or expose those originals.
 
 ## Required validation
 
-1. Install `packages/offdata-core` in an isolated Python environment.
-2. Run its complete test suite.
-3. Add formatting, linting, strict type checking and coverage to repository-wide commands.
-4. Validate all JSON schemas.
-5. Validate all YAML configuration files.
-6. Confirm the Python rules and machine-readable configuration do not materially conflict.
-7. Add at least one CI test proving an invalid lifecycle transition is blocked.
-8. Add at least one CI test proving an unauthorised external action cannot auto-execute.
-9. Document any corrections as an architecture or requirements issue rather than silently changing governing intent.
+1. Validate the PCR-04 handoff and every prerequisite validator.
+2. Install `packages/offdata-core` in an isolated Python environment.
+3. Run the complete test suite with the 90 percent coverage floor.
+4. Run Python compilation, Ruff and strict MyPy.
+5. Validate generated JSON, JSON Schema and YAML records.
+6. Confirm generated records are clean and byte-reproducible.
+7. Confirm no duplicate lifecycle, policy, contract or test-identity implementation is introduced.
+8. Preserve the default-deny real-client-data and external-action boundaries.
+9. Add Phase 0 application and infrastructure checks without removing any Phase 1–7 or PCR-01–04 gate.
+10. Document corrections as reviewed changes rather than silently changing governing intent.
 
-## Current chat-built scope
+## Current verified baseline
 
-The committed deterministic package now includes lifecycle, approval policy, typed agent and Founder contracts, knowledge and methodology records, commands and events, quality gates, deliverable reconciliation, CRM and controlled outreach. The repository currently contains 51 unit-test functions across these modules.
+The final PCR-03 exact-head run before PCR-04 recorded:
 
-Incremental predecessor versions were exercised successfully in the chat development environment. The four latest contract groups were reviewed structurally but have not been executed in the Founder’s macOS environment. The authoritative result is the complete Codex macOS and GitHub Actions run; exact historical test counts in earlier documents are superseded by this addendum.
+- 123 mapped requirements;
+- 99 semantic tests;
+- 245 executable test nodes;
+- 604 typed reference edges;
+- zero unresolved references;
+- 247 runtime tests passed;
+- 93.14 percent coverage against a 90 percent floor;
+- successful compilation, Ruff and strict MyPy;
+- real client data disabled;
+- external actions not authorised.
+
+PCR-04 adds a deterministic handoff validator and mutation checks. The authoritative current result is always the latest successful complete GitHub Actions run for the exact pull-request merge reference.
+
+## Phase boundary
+
+Phase 0 creates the controlled project foundation only. It must not begin knowledge-ingestion implementation, product workflows, production infrastructure, real-client processing, external integrations or Phase 1 work.
