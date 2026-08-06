@@ -112,8 +112,11 @@ jobs:
             schemas/workstream6-configuration-contradictions.schema.json \
             reports/workstream6-configuration-contradictions-evidence.md \
             .github/workflows/workstream6-configuration-contradictions.yml \
+            .github/workflows/workstream6-final-launch-control.yml \
             scripts/build_workstream6_configuration_contradictions.py \
             scripts/validate_workstream6_configuration_contradictions.py \
+            scripts/doctor_pre_codex_macos.py \
+            scripts/run_ws62_ci.sh \
             README.md \
             docs/00-START-HERE.md \
             docs/11-BUILD-BACKLOG.md \
@@ -138,6 +141,7 @@ jobs:
             .github/workflows/workstream6-final-pre-codex.yml
             .github/workflows/workstream6-required-workflow-identity.yml
             .github/workflows/workstream6-configuration-contradictions.yml
+            .github/workflows/workstream6-final-launch-control.yml
             README.md
             docs/00-START-HERE.md
             docs/11-BUILD-BACKLOG.md
