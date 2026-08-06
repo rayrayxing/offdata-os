@@ -2,133 +2,74 @@
 
 ## Purpose
 
-This document tells Codex and the Founder how to use the offdata Build Pack.
+This document tells the Founder, reviewers and future Codex sessions how to interpret the offdata repository without confusing completed chat-first design with implementation authority.
 
-## Current authorised scope
+## Current canonical status
 
-The repository is in **Phase 0: controlled project foundation**. No production infrastructure, real client data, external outreach or paid service activation is authorised.
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
-A deterministic starter package now exists in `packages/offdata-core/`. Codex must validate and integrate it during Phase 0 rather than re-deriving lifecycle and approval rules from scratch.
+The repository is **pre-Codex**. It is not presently executing implementation Phase 0. A deterministic consulting kernel and governed chat-first package exist in `packages/offdata-core/`, but they remain inputs to a future permitted implementation session.
 
-## Canonical repository
+No production infrastructure, real client data, external outreach, OAuth approval, paid service activation, runtime activation, Hermes activation, Northstar product implementation, autonomous merge or Phase 1 work is authorised.
 
-`rayrayxing/offdata-os` is the only controlling build repository.
+## Canonical repository and authority
 
-The following repositories are historical references only:
+`rayrayxing/offdata-os` is the only controlling build repository. `rayrayxing/offdata` and `rayrayxing/offdata-clean` are historical references only.
 
-- `rayrayxing/offdata`
-- `rayrayxing/offdata-clean`
+Current authority is interpreted in this order:
 
-Do not merge their specifications into this project unless a proposal is separately reviewed and approved.
+1. `AGENTS.md`;
+2. `GOVERNANCE.md`, `SECURITY.md` and `CONTRIBUTING.md`;
+3. this current-status document and `docs/20-DEVELOPMENT-STATUS.md`;
+4. `handoff/codex-phase0-handoff.json`;
+5. `contracts/codex-phase0-launch-control.json`;
+6. `handoff/codex-phase0-issue-final.md` and synchronized issue #1;
+7. the future permanent release `releases/pre-codex-final-reconciliation-2026-08-06.json`.
 
-## Read order for Codex
+Historical completion documents remain evidence for the package they describe. Old PR numbers, branch names, issue bodies, run summaries and chat messages do not override current authority.
 
-1. `AGENTS.md`
-2. This file
-3. `01-PRODUCT-VISION.md`
-4. `02-FUNCTIONAL-REQUIREMENTS.md`
-5. `03-ARCHITECTURE.md`
-6. `04-DATA-MODEL.md`
-7. `05-AGENT-SPECIFICATIONS.md`
-8. `06-LIFECYCLE-AND-GATES.md`
-9. `07-SECURITY-AND-DATA-RESIDENCY.md`
-10. `08-DELIVERABLE-STUDIO.md`
-11. `09-CRM-AND-ORIGINATION.md`
-12. `10-TESTING-STRATEGY.md`
-13. `11-BUILD-BACKLOG.md`
-14. `12-APPROVAL-MATRIX.md`
-15. `13-FOUNDER-OPERATING-GUIDE.md`
-16. `14-CODEX-KICKOFF.md`
-17. `15-CHAT-FIRST-DEVELOPMENT-PLAN.md`
-18. `16-REQUIREMENTS-CATALOGUE.md`
-19. `17-THIRD-PARTY-TOOL-REGISTRY.md`
-20. `config/lifecycle.yaml`
-21. `config/policy-matrix.yaml`
-22. `config/agent-roster.yaml`
-23. `fixtures/manifest.yaml`
-24. `schemas/`
-25. `packages/offdata-core/`
+## Build labels
 
-## Build sequence
+- **CF-P1–7**: completed chat-first design, contracts, fixtures and deterministic logic.
+- **PCR-01–10**: completed pre-Codex reconciliation packages.
+- **WS-4 and WS-5**: completed repository-readiness and launch-control predecessors.
+- **WS6.x**: final pre-Codex reconciliation packages.
+- **IMP-P0–12**: future implementation phases. None has started.
 
-The system is designed as a whole but built in gated phases:
+A completed CF or PCR package is not an implemented product phase and is not permission to begin IMP-P0.
 
-- Phase 0 — repository, local environment, CI, security baseline and documentation
-- Phase 1 — knowledge ingestion and method registry
-- Phase 2 — engagement system of record
-- Phase 3 — lifecycle and durable workflow control
-- Phase 4 — bounded specialist agents
-- Phase 5 — research and evidence layer
-- Phase 6 — quantitative and modelling services
-- Phase 7 — storyline, infographics and deliverable studio
-- Phase 8 — CRM integration
-- Phase 9 — controlled origination engine
-- Phase 10 — methodology radar
-- Phase 11 — security and production readiness
-- Phase 12 — synthetic pilot suite and launch gate
+## Current read order
 
-Codex must stop after each phase and obtain Founder approval.
+Before any launch preparation, read:
 
-## Chat-first work allocation
+1. `AGENTS.md`;
+2. `README.md`;
+3. this file;
+4. `docs/20-DEVELOPMENT-STATUS.md`;
+5. `docs/14-CODEX-KICKOFF.md`;
+6. `docs/19-PHASE-0-VALIDATION-ADDENDUM.md`;
+7. `handoff/codex-phase0-handoff.json`;
+8. `contracts/codex-phase0-launch-control.json`;
+9. `handoff/codex-phase0-issue-final.md`.
 
-Architecture, requirements, schemas, deterministic policy logic, fixture design and review may be developed through ChatGPT and committed to this repository. Codex should focus on work that requires a real computer environment: installation, integration, execution, debugging, OAuth, rendering and deployment.
+The machine handoff contains the complete implementation read order and command set. Do not replace it with this abbreviated orientation list.
 
-All chat-built source code remains provisional until Codex runs the repository tests in the approved macOS environment and reports the result.
+## Launch sequence
 
-## Build Pack source context
+Codex Phase 0 remains blocked until all of the following are independently verified:
 
-The design is informed by the uploaded canonical consulting lifecycle and methodology standards plus domain methodology packs covering:
+1. every required WS6 package is integrated and the permanent final release passes `scripts/require_workstream6_final_reconciliation.py`;
+2. issue #19 records completed hosted controls, the exact required check `Validate final pre-Codex canonical handoff and complete release`, and exact-allowlist branch cleanup;
+3. a clean macOS doctor report and Founder environment attestation reference the exact current `main` SHA;
+4. the Founder explicitly approves only tasks P0.1–P0.4 against that same SHA; and
+5. `scripts/prepare_codex_phase0_launch.py` writes a valid local single-use permit.
 
-- Corporate and business-unit strategy
-- Growth and commercial strategy
-- Cost and productivity
-- Customer experience
-- Operating-model transformation
-- Organisation and workforce
-- Digital and AI transformation
-- Risk and controls
-- M&A, carve-out and integration
-- IPO, valuation and capital strategy
-- Implementation and change
-- Benefits realisation and performance improvement
-
-The original source files are not yet committed. They must be imported later into `knowledge/source/` unchanged, checksummed and access-controlled. Extracted records must retain source provenance.
+Create `codex/phase-0-foundation` only after the permit exists. The branch must start from the permit’s approved SHA, the first commit must contain the governed acknowledgement, and the pull request must remain draft. Merge and IMP-P1 remain prohibited.
 
 ## Founder operating model
 
-The Founder:
+The Founder provides product and business judgement, creates accounts, enters credentials through secure interfaces, completes any approved OAuth steps, reviews evidence and approves material changes. ChatGPT develops and reviews bounded chat-first artifacts. Codex performs computer-environment implementation only after the launch gate is satisfied.
 
-- Provides product decisions and business judgement.
-- Creates accounts and subscriptions.
-- Enters credentials through secure interfaces.
-- Completes OAuth approvals.
-- Reviews demonstrations and deliverables.
-- Approves production, external communications and material changes.
+## Definition of done
 
-Codex:
-
-- Builds and tests the platform.
-- Configures local and approved cloud environments.
-- Creates documentation and rollback points.
-- Reports issues in plain English.
-- Stops for required Founder decisions.
-
-ChatGPT:
-
-- Develops and reviews architecture, requirements, schemas, policies, fixtures and bounded starter code.
-- Pushes approved textual and deterministic development into GitHub.
-- Reviews Codex pull requests and test evidence when requested.
-- Does not replace computer-environment validation.
-
-## Definition of done for any phase
-
-A phase is complete only when:
-
-- Approved requirements are implemented.
-- Required tests pass.
-- A separate review pass is complete.
-- Documentation is updated.
-- Costs and risks are disclosed.
-- Rollback instructions exist.
-- The Founder receives a plain-English completion report.
-- The Founder explicitly approves progression.
+A governed package or implementation phase is complete only when its requirements, deterministic generation, tests, independent review, evidence, documentation, costs, risks and rollback are complete and the required Founder decision is explicit. Repository files and green CI never substitute for a manual approval or launch permit.
