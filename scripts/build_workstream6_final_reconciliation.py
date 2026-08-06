@@ -88,6 +88,16 @@ def build_records() -> tuple[dict[str, Any], str, dict[str, Any]]:
     _validate_source(source)
     defects = source["defects"]
     contract = dict(source)
+    contract["defects"] = [
+        {
+            "id": item["id"],
+            "severity": item["severity"],
+            "kind": item["kind"],
+            "target_work_package": item["target_work_package"],
+            "status": item["status"],
+        }
+        for item in defects
+    ]
     contract["generated_from"] = str(SOURCE_PATH.relative_to(ROOT))
     contract["generated_from_fragments"] = source["defect_sources"]
     contract["status"] = "baseline_locked_repairs_pending"
