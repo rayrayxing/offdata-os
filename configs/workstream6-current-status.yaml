@@ -15,11 +15,11 @@ current_authority_files:
 - docs/20-DEVELOPMENT-STATUS.md
 - handoff/codex-phase0-hosted-controls-issue-final.md
 document_fingerprints:
-  README.md: 071bfa1f60ef64ca88a57322faf2075d6e8bd2f7
+  README.md: 2816811c2ef1dfcc81f4238e975c2f1e05c77158
   docs/00-START-HERE.md: a4cd7ba7f039b57891ba95ab258b5d90feea7910
-  docs/14-CODEX-KICKOFF.md: fd75e4bd8b68567ad96a6529cd49225a073cc96c
-  docs/19-PHASE-0-VALIDATION-ADDENDUM.md: 7a1eba4f6e96c0cc9576ebcea30af512bf193dd1
-  docs/20-DEVELOPMENT-STATUS.md: b7b95e131e85a7a6018c422312a8a30c266c6544
+  docs/14-CODEX-KICKOFF.md: faa31863dfbd22674178f92719d0e0600f420493
+  docs/19-PHASE-0-VALIDATION-ADDENDUM.md: efda8efb0ef7ea5903596906ba1a2c0c9bc131b5
+  docs/20-DEVELOPMENT-STATUS.md: 3e5f3e2084644126b2d3d50d0e64776a668981a4
   handoff/codex-phase0-hosted-controls-issue-final.md: f5023c0ad10d90c23cd8777e52409b1e36dff6b2
 required_common_tokens:
 - codex_start_authorized=false
