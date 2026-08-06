@@ -6,12 +6,13 @@ This repository is the **canonical build repository** for the new offdata consul
 
 ## Current canonical status
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.4; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 - Initial operator: Founder only.
 - Initial hosting and data region: Singapore.
 - Data: synthetic only; real client data remains prohibited.
 - Codex implementation phase: not started and not authorised.
+- Current authority registry: `repository/canonical-authority-registry.json`.
 - Current canonical issue: `handoff/codex-phase0-issue-final.md`, synchronized to issue #1.
 - Current launch control: `contracts/codex-phase0-launch-control.json`.
 - Current machine handoff: `handoff/codex-phase0-handoff.json`.
@@ -28,11 +29,12 @@ Historical PCR and Workstream completion documents remain evidence of their own 
 4. `CONTRIBUTING.md`
 5. `docs/00-START-HERE.md`
 6. `docs/20-DEVELOPMENT-STATUS.md`
-7. `handoff/codex-phase0-handoff.json`
-8. `contracts/codex-phase0-launch-control.json`
-9. `handoff/codex-phase0-issue-final.md`
+7. `repository/canonical-authority-registry.json`
+8. `handoff/codex-phase0-handoff.json`
+9. `contracts/codex-phase0-launch-control.json`
+10. `handoff/codex-phase0-issue-final.md`
 
-The complete implementation read order and command set are machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
+The authority registry classifies every current read-order item and retained evidence surface. The complete implementation read order and command set remain machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
 
 ## Codex entry gate
 
