@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   repair:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -36,10 +35,7 @@ Preparing or validating this contract does not authorise Codex to start.
           for name in ('docs/14-CODEX-KICKOFF.md', 'docs/19-PHASE-0-VALIDATION-ADDENDUM.md'):
               path = Path(name)
               text = path.read_text(encoding='utf-8')
-              for token in ('contracts/codex-phase0-issue.json', 'scripts/validate_pcr09_codex_issue.py'):
-                  if token in text:
-                      break
-              else:
+              if 'contracts/codex-phase0-issue.json' not in text or 'scripts/validate_pcr09_codex_issue.py' not in text:
                   path.write_text(text.rstrip() + block + '\n', encoding='utf-8')
           PY
           rm .github/workflows/pcr09-patch-doc-tokens.yml
@@ -50,5 +46,3 @@ Preparing or validating this contract does not authorise Codex to start.
           git add docs/14-CODEX-KICKOFF.md docs/19-PHASE-0-VALIDATION-ADDENDUM.md .github/workflows/pcr09-patch-doc-tokens.yml
           git commit -m 'PCR-09: reconcile Phase 0 document references'
           git push origin HEAD:governance/pcr09-first-codex-issue-clean
-
-# Triggered for Workstream 1 clean reconciliation.
