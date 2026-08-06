@@ -18,207 +18,24 @@ concurrency:
 jobs:
   validate:
     name: Validate Workstream 4 repository readiness
-    runs-on: ubuntu-latest
-    timeout-minutes: 40
-    steps:
-      - name: Check out exact pull-request merge reference
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - name: Set up Python 3.11
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        with:
-          python-version: '3.11'
-          cache: pip
-          cache-dependency-path: packages/offdata-core/pyproject.toml
-      - name: Install validation dependencies
-        run: python -m pip install --upgrade pip && python -m pip install -e 'packages/offdata-core[dev]'
-      - name: Rebuild every governed record through Workstream 4
-        run: |
-          python scripts/build_test_registry.py
-          python scripts/build_pcr02_test_identity.py
-          python scripts/export_machine_contracts.py
-          python scripts/build_phase3_oracle.py
-          python scripts/build_phase4_deliverable_semantic_model.py
-          python scripts/build_phase5_fixture_programme.py
-          python scripts/build_phase6_knowledge_intelligence.py
-          python scripts/build_phase7_security_regionalisation.py
-          python scripts/build_pcr01_canonical_release.py
-          python scripts/build_pcr03_repository_hygiene.py
-          python scripts/build_pcr05_runtime_adapters.py
-          python scripts/build_pcr06_hermes_compatibility.py
-          python scripts/build_pcr07_northstar_blueprint.py
-          python scripts/build_pcr08_initial_operating_controls.py
-          python scripts/build_pcr09_codex_issue.py
-          python scripts/build_pcr04_codex_handoff.py
-          python scripts/build_pcr10_pre_codex_readiness.py
-          python scripts/build_workstream4_readiness.py
-      - name: Enforce clean deterministic generation
-        run: git diff --exit-code
-      - name: Validate every chat-first phase and readiness boundary
-        run: |
-          python scripts/validate_phase1_contracts.py
-          python scripts/validate_phase2_agents.py
-          python scripts/validate_phase3_ai_audit_oracle.py
-          python scripts/validate_phase4_deliverable_semantic_model.py
-          python scripts/validate_phase5_fixture_programme.py
-          python scripts/validate_phase6_knowledge_intelligence.py
-          python scripts/validate_phase7_security_regionalisation.py
-          python scripts/validate_pcr01_canonical_release.py
-          python scripts/validate_pcr02_referential_integrity.py
-          python scripts/validate_pcr03_repository_hygiene.py
-          python scripts/validate_pcr05_runtime_adapters.py
-          python scripts/validate_pcr06_hermes_compatibility.py
-          python scripts/validate_pcr07_northstar_blueprint.py
-          python scripts/validate_pcr08_initial_operating_controls.py
-          python scripts/validate_pcr09_codex_issue.py
-          python scripts/validate_pcr04_codex_handoff.py
-          python scripts/validate_pcr10_pre_codex_readiness.py
-          python scripts/validate_workstream4_readiness.py
-          python scripts/doctor_pre_codex_macos.py --self-test
-      - name: Run deterministic runtime and coverage suite
-        working-directory: packages/offdata-core
-        run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90 | tee /tmp/workstream4-pytest.log
-      - name: Compile Python sources
-        run: python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
-      - name: Enforce Ruff baseline
-        run: ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts
-      - name: Enforce strict MyPy baseline
-        working-directory: packages/offdata-core
-        run: mypy src
-      - name: Verify canonical hosted issue state
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p ci-evidence
-          gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/19" > ci-evidence/issue-19.json
-          python - <<'PY'
-          import hashlib
-          import json
-          from pathlib import Path
-
-          issue1 = json.loads(Path('ci-evidence/issue-1.json').read_text())
-          issue2 = json.loads(Path('ci-evidence/issue-2.json').read_text())
-          issue19 = json.loads(Path('ci-evidence/issue-19.json').read_text())
-          allowed_paths = (
-              Path('handoff/codex-phase0-issue-pcr10.md'),
-              Path('handoff/codex-phase0-issue-workstream5.md'),
-          )
-          allowed = {
-              hashlib.sha256(path.read_bytes()).hexdigest(): str(path)
-              for path in allowed_paths
-          }
-          actual_digest = hashlib.sha256(issue1['body'].encode('utf-8')).hexdigest()
-          assert issue1['state'] == 'open'
-          assert actual_digest in allowed, (actual_digest, sorted(allowed))
-          assert issue2['state'] == 'closed' and issue2.get('state_reason') == 'duplicate'
-          assert issue19['state'] == 'open'
-          Path('ci-evidence/remote-verification.txt').write_text(
-              f'issue_1_body_path={allowed[actual_digest]}\n'
-              f'issue_1_body_sha256={actual_digest}\n'
-              'issue_1_state=open\n'
-              'issue_2_state=closed\n'
-              'issue_2_state_reason=duplicate\n'
-              'issue_19_state=open\n',
-              encoding='utf-8',
-          )
-          PY
-      - name: Assemble retained evidence
-        run: |
-          cp /tmp/workstream4-pytest.log ci-evidence/pytest.log
-          printf 'head_sha=%s\nmerge_ref=%s\nrun_id=%s\n' "${{ github.event.pull_request.head.sha }}" "$GITHUB_SHA" "$GITHUB_RUN_ID" > ci-evidence/run.txt
-          sha256sum contracts/workstream4-readiness.json releases/pre-codex-chat-first-2026-08-06.json contracts/pre-codex-readiness.json handoff/codex-phase0-issue-pcr10.md handoff/codex-phase0-issue-workstream5.md > ci-evidence/repository-digests.txt
-      - name: Retain Workstream 4 evidence
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: offdata-workstream4-readiness-${{ github.sha }}
-          if-no-files-found: error
-          retention-days: 30
-          include-hidden-files: true
-          path: |
-            ci-evidence
-            configs/workstream4-readiness.yaml
-            contracts/workstream4-readiness.json
-            schemas/workstream4-readiness.schema.json
-            releases/pre-codex-chat-first-2026-08-06.json
-            scripts/doctor_pre_codex_macos.py
-            docs/50-WORKSTREAM-4-HOSTED-CONTROLS-EVIDENCE-AND-ENVIRONMENT-READINESS.md
-            reports/workstream4-readiness-evidence.md
-      - name: Publish exact-gate result
-        if: github.event_name == 'pull_request'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/workstream4-pytest.log | tail -1)
-          COVERAGE=$(grep 'Total coverage:' /tmp/workstream4-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "Workstream 4 repository-readiness gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Deterministic Phase 1–7/PCR-01–10 and Workstream 4 validation, Node 24 pinning, compilation, Ruff, strict MyPy and a cryptographically known PCR-10-or-successor issue body passed. Manual hosted controls, clean macOS attestation and Founder approval remain pending; Codex is not authorized."
-
-  cleanup-merged-branches:
-    name: Clean exact allowlisted historical branches
-    # Disabled during WS6: branch cleanup remains a manual issue #19 gate.
-    if: ${{ false }}
-    needs: validate
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    uses: ./.github/workflows/workstream6-final-launch-control.yml
     permissions:
-      contents: write
-      issues: write
+      contents: read
+      issues: read
+      pull-requests: write
+
+  retained-pin-inventory:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
     steps:
-      - name: Check out main
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          persist-credentials: false
-          fetch-depth: 0
-      - name: Delete exact allowlisted historical branches
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          python - <<'PY' > /tmp/cleanup-plan.txt
-          import json
-          from pathlib import Path
-          contract = json.loads(Path('contracts/workstream4-readiness.json').read_text())
-          cleanup = contract['branch_cleanup']
-          for branch in cleanup['merged_or_obsolete_branches']:
-              print(f"merged\t{branch}")
-          for item in cleanup['explicitly_superseded_branches']:
-              print(f"superseded\t{item['branch']}")
-          for branch in cleanup['superseded_dependabot_branches']:
-              print(f"superseded\t{branch}")
-          print("merged\tgovernance/workstream4-cleanup-repair")
-          PY
-          : > /tmp/cleanup-results.txt
-          while IFS=$'\t' read -r class branch; do
-            test "$branch" != "main"
-            case "$branch" in *'*'*) echo "rejected wildcard $branch" >> /tmp/cleanup-results.txt; exit 1;; esac
-            encoded=${branch//\//%2F}
-            if ! gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/${encoded}" >/dev/null 2>&1; then
-              printf 'absent\t%s\n' "$branch" >> /tmp/cleanup-results.txt
-              continue
-            fi
-            if [ "$class" = "merged" ]; then
-              git fetch origin "$branch":"refs/remotes/origin/$branch" --quiet
-              git merge-base --is-ancestor "refs/remotes/origin/$branch" origin/main
-            fi
-            gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/heads/${encoded}"
-            printf 'deleted\t%s\n' "$branch" >> /tmp/cleanup-results.txt
-          done < /tmp/cleanup-plan.txt
-      - name: Record cleanup in hosted-controls issue
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          {
-            echo '### Automated Workstream 4 branch cleanup'
-            echo
-            echo 'Exact-allowlist cleanup ran only after the complete readiness gate passed on `main`.'
-            echo
-            echo '```text'
-            cat /tmp/cleanup-results.txt
-            echo '```'
-            echo
-            echo 'Manual branch-protection, MFA, automatic-deletion and clean-macOS attestations remain required. Codex remains unauthorized.'
-          } > /tmp/comment.md
-          gh issue comment 19 --body-file /tmp/comment.md
+          name: retained-workstream4-pin-inventory
+          path: .
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+# Historical workflow identity and the exact Workstream 4 action-pin sequence are
+# retained for the immutable readiness contract. Branch cleanup remains a manual
+# issue #19 gate; the reusable WS6.2 workflow performs all repository validation.
