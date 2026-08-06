@@ -170,7 +170,7 @@ jobs:
               print(f"superseded\t{item['branch']}")
           for branch in cleanup['superseded_dependabot_branches']:
               print(f"superseded\t{branch}")
-          print("superseded\tgovernance/workstream4-hosted-controls-readiness")
+          print("merged\tgovernance/workstream4-cleanup-repair")
           PY
           : > /tmp/cleanup-results.txt
           while IFS=$'\t' read -r class branch; do
