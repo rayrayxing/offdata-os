@@ -111,6 +111,14 @@ jobs:
           mkdir -p ci-evidence
           git merge-base --is-ancestor "$BASELINE_SHA" "$GITHUB_SHA"
           gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
+          export CURRENT_MAIN_SHA=$(python - <<'PY'
+          import json
+          from pathlib import Path
+          print(json.loads(Path('ci-evidence/main-ref.json').read_text())['object']['sha'])
+          PY
+          )
+          git merge-base --is-ancestor "$BASELINE_SHA" "$CURRENT_MAIN_SHA"
+          git merge-base --is-ancestor "$CURRENT_MAIN_SHA" "$GITHUB_SHA"
           gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/19" > ci-evidence/issue-19.json
@@ -121,7 +129,6 @@ jobs:
           import os
           from pathlib import Path
 
-          baseline = os.environ["BASELINE_SHA"]
           main_ref = json.loads(Path("ci-evidence/main-ref.json").read_text())
           issue1 = json.loads(Path("ci-evidence/issue-1.json").read_text())
           issue2 = json.loads(Path("ci-evidence/issue-2.json").read_text())
@@ -131,7 +138,7 @@ jobs:
               "handoff/codex-phase0-issue-workstream5.md"
           ).read_text(encoding="utf-8")
 
-          assert main_ref["object"]["sha"] in {baseline, os.environ["GITHUB_SHA"]}
+          assert main_ref["object"]["sha"] == os.environ["CURRENT_MAIN_SHA"]
           assert issue1["state"] == "open"
           assert hashlib.sha256(issue1["body"].encode()).hexdigest() == (
               hashlib.sha256(expected_body.encode()).hexdigest()
