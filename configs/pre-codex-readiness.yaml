@@ -4,7 +4,7 @@ phase_id: PCR-10
 title: Pre-Codex release consolidation and quality acceptance
 repository: rayrayxing/offdata-os
 canonical_branch: main
-status: chat_first_complete_not_integrated
+status: chat_first_complete_integrated
 authority:
   controlling_instruction: AGENTS.md
   execution_handoff: handoff/codex-phase0-handoff.json
@@ -44,7 +44,7 @@ release_integrity:
   - unresolved_defects_and_waivers_recorded
   - permanent_evidence_not_only_expiring_artifacts
   - rollback_instructions_recorded
-  integration_state: pending_governed_merge_sequence
+  integration_state: integrated_to_main
   critical_or_high_defects_allowed: 0
   generated_tree_must_be_clean: true
   clean_clone_validation_required: true

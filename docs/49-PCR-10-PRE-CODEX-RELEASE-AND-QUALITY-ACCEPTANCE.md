@@ -2,7 +2,11 @@
 
 ## Purpose
 
-PCR-10 is the final bounded chat-first phase before repository integration and Codex Phase 0. It does not build the application. It converts existing product, architecture, testing, Founder-experience and deliverable-quality intent into one deterministic pre-start readiness contract.
+PCR-10 is the final bounded chat-first phase and is now integrated into `main` with PCR-03 through PCR-09. It does not build the application. It converts existing product, architecture, testing, Founder-experience and deliverable-quality intent into one deterministic pre-start readiness contract.
+
+## Integrated release state
+
+PCR-03 through PCR-10 were merged sequentially into `main` using merge commits. Each retargeted successor was compared with its previously validated stacked merge reference and had zero content differences before merge. The post-merge reconciliation marks only the eight PCR merge conditions complete. Issue #19 hosted controls, the clean macOS environment and explicit Founder Phase 0 approval remain incomplete, so Codex start authorization remains false.
 
 The controlling machine record is `contracts/pre-codex-readiness.json`, generated from `configs/pre-codex-readiness.yaml` and validated by `scripts/validate_pcr10_pre_codex_readiness.py`.
 
@@ -50,4 +54,4 @@ Singapore timezone handling, currency and unit consistency, data portability, sc
 
 PCR-10 is complete when its source, schema, generated contract, final issue body and documentation rebuild deterministically; its semantic and mutation tests pass; every retained Phase 1–7 and PCR-01–10 validator passes; all runtime tests meet the 90 percent coverage floor; compilation, Ruff and strict MyPy pass; and the live issue #1 body matches the PCR-10 generated digest while issue #2 remains closed as duplicate.
 
-After PCR-10, no additional broad chat-first architecture phase is required before the governed merge and hosted-control workstreams.
+PCR-03 through PCR-10 are integrated. No additional broad chat-first architecture phase is required; the remaining pre-Codex work is hosted-control verification, permanent release evidence, clean-macOS readiness and explicit Founder Phase 0 approval.

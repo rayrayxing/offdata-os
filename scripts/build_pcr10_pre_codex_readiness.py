@@ -52,6 +52,14 @@ def _insert_before(lines: list[str], anchor: str, new_lines: list[str]) -> None:
     lines[index:index] = new_lines
 
 
+def _integration_complete(source: dict[str, Any]) -> bool:
+    return (
+        source.get("status") == "chat_first_complete_integrated"
+        and source.get("release_integrity", {}).get("integration_state")
+        == "integrated_to_main"
+    )
+
+
 def build_final_issue_body(source: dict[str, Any]) -> str:
     body = PCR09_BODY_PATH.read_text(encoding="utf-8")
     lines = body.splitlines()
@@ -68,6 +76,14 @@ def build_final_issue_body(source: dict[str, Any]) -> str:
         ],
     )
     _insert_after(lines, "- [ ] `pcr09_merged_to_main`", ["- [ ] `pcr10_merged_to_main`"])
+    if _integration_complete(source):
+        for condition in source["activation_conditions"][:8]:
+            unchecked = f"- [ ] `{condition}`"
+            checked = f"- [x] `{condition}`"
+            if unchecked not in lines:
+                raise ValueError(f"Integration checkbox missing: {condition}")
+            lines[lines.index(unchecked)] = checked
+
     _insert_after(
         lines,
         "26. `handoff/codex-phase0-issue.md`",
@@ -167,6 +183,7 @@ def build_contract() -> tuple[dict[str, Any], str]:
         expected_activation.index("github_hosted_controls_in_issue_19_verified"),
         "pcr10_merged_to_main",
     )
+    integration_complete = _integration_complete(source)
 
     criteria_ids: list[str] = []
     for section in (
@@ -175,37 +192,25 @@ def build_contract() -> tuple[dict[str, Any], str]:
         "operational_quality",
         "cross_cutting",
     ):
-        criteria_ids.extend(
-            item["id"] for item in source[section]["acceptance_criteria"]
-        )
+        criteria_ids.extend(item["id"] for item in source[section]["acceptance_criteria"])
     for section in ("evidence", "quantitative"):
-        criteria_ids.extend(
-            item["id"] for item in source["output_quality"][section]
-        )
+        criteria_ids.extend(item["id"] for item in source["output_quality"][section])
 
     checks = {
         "pcr09_contract_present": PCR09_CONTRACT_PATH.is_file(),
         "pcr04_handoff_present": HANDOFF_PATH.is_file(),
         "pcr09_issue_body_present": PCR09_BODY_PATH.is_file(),
         "pcr10_activation_is_exact_extension": activation == expected_activation,
-        "pcr09_codex_start_remains_false": (
-            pcr09["boundaries"]["codex_start_authorized"] is False
-        ),
-        "handoff_codex_start_remains_false": (
-            handoff["readiness_snapshot"]["codex_start_authorized"] is False
-        ),
+        "pcr09_codex_start_remains_false": pcr09["boundaries"]["codex_start_authorized"] is False,
+        "handoff_codex_start_remains_false": handoff["readiness_snapshot"]["codex_start_authorized"] is False,
         "all_pcr10_authorization_boundaries_denied": all(
             value is False
             for key, value in source["boundaries"].items()
             if key != "founder_accountability_preserved"
         ),
-        "founder_accountability_preserved": (
-            source["boundaries"]["founder_accountability_preserved"] is True
-        ),
+        "founder_accountability_preserved": source["boundaries"]["founder_accountability_preserved"] is True,
         "quality_criteria_ids_unique": len(criteria_ids) == len(set(criteria_ids)),
-        "critical_or_high_defects_allowed_is_zero": (
-            source["release_integrity"]["critical_or_high_defects_allowed"] == 0
-        ),
+        "critical_or_high_defects_allowed_is_zero": source["release_integrity"]["critical_or_high_defects_allowed"] == 0,
     }
 
     contract = {
@@ -246,8 +251,8 @@ def build_contract() -> tuple[dict[str, Any], str]:
             "checks": checks,
             "local_prerequisites_passed": all(checks.values()),
             "chat_first_scope_complete": all(checks.values()),
-            "release_integration_complete": False,
-            "pcr10_merge_required": True,
+            "release_integration_complete": integration_complete,
+            "pcr10_merge_required": not integration_complete,
             "issue_19_hosted_controls_verified": False,
             "clean_macos_environment_verified": False,
             "explicit_founder_phase_0_approval_received": False,
@@ -257,15 +262,9 @@ def build_contract() -> tuple[dict[str, Any], str]:
         "quality_registry": {
             "criterion_ids": criteria_ids,
             "criterion_count": len(criteria_ids),
-            "artifact_surface_count": len(
-                source["output_quality"]["artifact_surfaces"]
-            ),
-            "developer_command_count": len(
-                source["developer_experience"]["phase0_required_commands"]
-            ),
-            "learning_field_count": len(
-                source["learning_measurement"]["required_fields"]
-            ),
+            "artifact_surface_count": len(source["output_quality"]["artifact_surfaces"]),
+            "developer_command_count": len(source["developer_experience"]["phase0_required_commands"]),
+            "learning_field_count": len(source["learning_measurement"]["required_fields"]),
         },
     }
     return contract, final_body
@@ -280,6 +279,7 @@ def main() -> None:
         f"{len(contract['activation_conditions'])} activation conditions, "
         f"{contract['quality_registry']['criterion_count']} quality criteria, "
         f"{contract['quality_registry']['developer_command_count']} developer commands, "
+        f"release_integration_complete={str(contract['readiness_snapshot']['release_integration_complete']).lower()}, "
         "codex_start_authorized=false."
     )
 

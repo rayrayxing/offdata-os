@@ -1,87 +1,48 @@
-# PCR-10 Validation Evidence
+# PCR-10 Integration Reconciliation Evidence
 
 Date: 2026-08-06
 
 ## Scope
 
-PCR-10 pre-Codex release consolidation and measurable quality acceptance. Chat-first completion does not authorize Codex or imply repository integration.
+Final Workstream 3 reconciliation after sequential merge-commit integration of PCR-03 through PCR-10. This record marks only repository-hosted merge conditions complete. It does not verify issue #19 hosted controls, the clean macOS environment or Founder Phase 0 authorization.
 
-## Controlling assets
+## Integrated merge sequence
 
-- `configs/pre-codex-readiness.yaml`
-- `contracts/pre-codex-readiness.json`
-- `schemas/pre-codex-readiness.schema.json`
-- `scripts/build_pcr10_pre_codex_readiness.py`
-- `scripts/validate_pcr10_pre_codex_readiness.py`
-- `handoff/codex-phase0-issue-pcr10.md`
-- `docs/49-PCR-10-PRE-CODEX-RELEASE-AND-QUALITY-ACCEPTANCE.md`
+- PCR-03 PR #18: `5c968dbf18be663d5fe6ff69001e4316fc4d41ab`
+- PCR-04 PR #20: `51398a213aa19879321ae77666c2644f86664e39`
+- PCR-05 PR #21: `dc8e37aaef9f83935863ab1364a53b50b8006f20`
+- PCR-06 PR #22: `e8b0335330ccae3896eb5e6f2e6b1801d7c94770`
+- PCR-07 PR #23: `3d1a017b10a520bd86e6ed02343bb3a6c8516635`
+- PCR-08 PR #24: `2f5a7106c2ce28fc3d21666d0919c0dc0f4f6ee6`
+- PCR-09 PR #27: `aa8d6e0fde88043435e7d4765e38823ffb56e623`
+- PCR-10 PR #28: `882b1993cc6b412e9712261e4e05e7af41848bf4`
 
-## Acceptance boundary
+Every successor was retargeted only after its predecessor merged. For PCR-04 through PCR-08, the old tested stacked merge reference and new `main` merge reference had zero changed files. For PCR-09 and PCR-10, the prior phase head tree and integrated `main` tree had zero changed files before merge.
 
-The contract registers release integrity, developer experience, Founder experience, output quality, operational quality, learning measurement and cross-cutting acceptance. It adds exactly `pcr10_merged_to_main` to the PCR-09 activation sequence and retains every authorization boundary as false.
+## Canonical readiness state
 
-## Controlling implementation validation
+- `status=chat_first_complete_integrated`
+- `release_integrity.integration_state=integrated_to_main`
+- `chat_first_scope_complete=true`
+- `release_integration_complete=true`
+- `pcr10_merge_required=false`
+- `issue_19_hosted_controls_verified=false`
+- `clean_macos_environment_verified=false`
+- `explicit_founder_phase_0_approval_received=false`
+- `codex_start_authorized=false`
 
-- Branch: `governance/pcr10-pre-codex-readiness`
-- Stacked pull request: `#28 — Complete PCR-10 pre-Codex release and quality acceptance`
-- Exact PCR-09 base: `77782820022962999e04294e6489efb35e773048`
-- Tested implementation head: `13d29ddb669d5fa5335cd9e6751d47b4b38c10e6`
-- Tested exact pull-request merge reference: `0ce8cb4f928fa949eba4a37731cdbd7c8a5dc0d1`
-- PCR-10 workflow run: `31066889684`
-- PCR-10 job: `92506364878`
+The first eight activation conditions are rendered checked in the generated issue body. The final three external gates remain unchecked.
 
-Every substantive step passed on that exact merge reference:
+## Generated issue body
 
-- all governed Phase 1–7 and PCR-01–10 records rebuilt;
-- clean deterministic generation passed;
-- every retained validator passed;
-- PCR-10 schema, semantic and cross-contract checks passed;
-- 25 controlled PCR-10 mutations were rejected;
-- 247 runtime tests passed in 32.07 seconds;
-- coverage was 93.14 percent across 4,604 statements against a 90 percent floor;
-- Python compilation passed;
-- Ruff passed;
-- strict MyPy passed across 32 source files;
-- live issue #1 title, state and PCR-10 body digest passed;
-- issue #2 remained closed as duplicate.
+- Path: `handoff/codex-phase0-issue-pcr10.md`
+- SHA-256: `01871803444487ef3e808f155a85cc13ac6fc2350eb11a401e6b5c14fc4a79ad`
+- Hosted synchronization remains a separate workflow verification and is not claimed by the offline contract.
 
-## PCR-10 contract evidence
+## Final validation status
 
-- activation conditions: 11;
-- measurable acceptance criteria: 38;
-- Phase 0 root commands: 15;
-- artifact-surface groups: 4;
-- learning-measurement fields: 11;
-- critical or high defects permitted: 0;
-- `chat_first_scope_complete=true`;
-- `release_integration_complete=false`;
-- `pcr10_merge_required=true`;
-- `codex_start_authorized=false`.
+The reconciliation branch must pass deterministic regeneration with no diff; all Phase 1–7 and PCR-01–10 validators; controlled mutations; all runtime tests with at least 90 percent coverage; compilation; Ruff; strict MyPy; live issue #1 synchronization; issue #2 duplicate closure; and retained artifact publication. Exact final head, merge reference, run, job and artifact IDs will be recorded in the pull request and workflow evidence.
 
-The final generated issue body contains 287 lines and 13,028 characters with SHA-256 `f031c09c476e8beb909136586bd04569288c22ea4ade78ca6c4be9886d669afc`.
+## Remaining boundary
 
-## Retained artifact
-
-- Artifact ID: `8954148625`
-- Artifact name: `offdata-pcr10-pre-codex-0ce8cb4f928fa949eba4a37731cdbd7c8a5dc0d1`
-- Files: 12
-- Size: 29,432 bytes
-- ZIP SHA-256: `76c0c4fa853d2903ad4c74b950b4d8413f93c696f3fe7ebd3d81cae0772a90c0`
-- Retention: 30 days
-
-## Retained workflow regression
-
-The same implementation head also passed:
-
-- complete retained chat-first release run `31066889652`;
-- initial operating-control run `31066889642`;
-- Northstar blueprint run `31066889648`;
-- Hermes compatibility run `31066889640`;
-- first Codex issue rewrite run `31066889655`;
-- PCR-09 final retained evidence run `31066889658`.
-
-## Final evidence boundary
-
-This evidence-record commit is non-functional and triggers a final evidence-inclusive exact-head workflow set. The pull-request metadata and successful workflow comments are the controlling source for the final evidence-inclusive head and merge reference.
-
-PCR-03 through PCR-10 remain unmerged. Issue #19, a clean macOS environment and explicit Founder approval remain mandatory. No runtime, data, provider, external-action, production or merge authorization is granted.
+Codex remains unauthorized. Runtime, Hermes, Northstar implementation, initial operating-control activation, real client data, external actions, paid services, production deployment and autonomous merge remain false.
