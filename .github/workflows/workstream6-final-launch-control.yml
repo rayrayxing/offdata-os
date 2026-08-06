@@ -91,6 +91,7 @@ jobs:
             configs/codex-phase0-launch-control.yaml \
             contracts/codex-phase0-launch-control.json \
             handoff/codex-phase0-issue-final.md \
+            handoff/codex-phase0-hosted-controls-issue-final.md \
             configs/workstream6-final-launch-control.yaml \
             contracts/workstream6-final-launch-control.json \
             configs/workstream6-current-status.yaml \
@@ -127,6 +128,17 @@ jobs:
             docs/59-WS6-7-CONFIGURATION-CONTRADICTIONS.md \
             > ci-evidence/repository-digests.txt
 
+          mkdir -p ci-evidence/package
+          awk '{print $2}' ci-evidence/repository-digests.txt | while IFS= read -r path; do
+            destination="ci-evidence/package/$path"
+            mkdir -p "$(dirname "$destination")"
+            cp "$path" "$destination"
+          done
+          (
+            cd ci-evidence/package
+            sha256sum -c ../repository-digests.txt
+          )
+
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -134,50 +146,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
-          path: |
-            ci-evidence
-            .env.example
-            contracts/initial-operating-controls.json
-            configs/codex-phase0-launch-control.yaml
-            contracts/codex-phase0-launch-control.json
-            configs/workstream6-final-launch-control.yaml
-            contracts/workstream6-final-launch-control.json
-            .github/workflows/workstream6-final-pre-codex.yml
-            .github/workflows/workstream6-required-workflow-identity.yml
-            .github/workflows/workstream6-configuration-contradictions.yml
-            .github/workflows/workstream6-final-launch-control.yml
-            README.md
-            docs/00-START-HERE.md
-            docs/11-BUILD-BACKLOG.md
-            docs/14-CODEX-KICKOFF.md
-            docs/19-PHASE-0-VALIDATION-ADDENDUM.md
-            docs/20-DEVELOPMENT-STATUS.md
-            docs/58-WS6-6-REQUIRED-WORKFLOW-IDENTITY.md
-            docs/59-WS6-7-CONFIGURATION-CONTRADICTIONS.md
-            handoff/codex-phase0-issue-final.md
-            handoff/codex-phase0-hosted-controls-issue-final.md
-            configs/workstream6-current-status.yaml
-            contracts/workstream6-current-status.json
-            configs/workstream6-canonical-authority.yaml
-            repository/canonical-authority-registry.json
-            schemas/canonical-authority-registry.schema.json
-            configs/workstream6-phase-namespace.yaml
-            contracts/workstream6-phase-namespace.json
-            schemas/workstream6-phase-namespace.schema.json
-            configs/workstream6-required-workflow-identity.yaml
-            contracts/workstream6-required-workflow-identity.json
-            schemas/workstream6-required-workflow-identity.schema.json
-            scripts/build_workstream6_required_workflow_identity.py
-            scripts/validate_workstream6_required_workflow_identity.py
-            reports/workstream6-required-workflow-identity-evidence.md
-            configs/workstream6-configuration-contradictions.yaml
-            contracts/workstream6-configuration-contradictions.json
-            schemas/workstream6-configuration-contradictions.schema.json
-            scripts/build_workstream6_configuration_contradictions.py
-            scripts/validate_workstream6_configuration_contradictions.py
-            reports/workstream6-configuration-contradictions-evidence.md
-            scripts/doctor_pre_codex_macos.py
-            scripts/run_ws62_ci.sh
+          path: ci-evidence
 
       - name: Publish exact-gate result
         if: github.event_name == 'pull_request'
@@ -188,4 +157,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.7 configuration-contradictions gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. The exact final check identity remains unique and reserved in a manual-only fail-closed workflow; WS6.7 zero-spend defaults and cross-file controls, all prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Complete WS6.7 evidence and digests were retained. The final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.7 configuration-contradictions gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. The exact final check identity remains unique and reserved in a manual-only fail-closed workflow; WS6.7 zero-spend defaults and cross-file controls, all prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. The complete WS6.7 payload was staged from its digest manifest, verified before upload and retained. The final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
