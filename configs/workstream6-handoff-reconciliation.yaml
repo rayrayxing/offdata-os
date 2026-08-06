@@ -1,0 +1,58 @@
+schema_version: 1.0.0
+workstream_id: WORKSTREAM-6
+work_package_id: WS6.1
+contract_id: WORKSTREAM6-CONTROLLING-HANDOFF-RECONCILIATION
+title: WS6.1 controlling machine handoff reconciliation
+repository: rayrayxing/offdata-os
+canonical_branch: main
+base_main_sha: 5c80cea82aa663cbe0a690e3f8f02504d121bea1
+status: controlling_machine_handoff_reconciled
+authority:
+  controlling_instruction: AGENTS.md
+  source: configs/codex-handoff.yaml
+  generated_handoff: handoff/codex-phase0-handoff.json
+  schema: schemas/codex-handoff.schema.json
+  builder: scripts/build_pcr04_codex_handoff.py
+  validator: scripts/validate_pcr04_codex_handoff.py
+closed_defects:
+- WS6-BLOCK-001
+- WS6-BLOCK-002
+remaining_blocking_defects:
+- WS6-BLOCK-003
+- WS6-BLOCK-004
+- WS6-BLOCK-005
+- WS6-BLOCK-006
+reconciliation:
+  pcr10_included: true
+  workstream4_included: true
+  workstream5_included: true
+  workstream6_baseline_and_ws61_included: true
+  final_workstream6_activation_gate_required: true
+  valid_launch_permit_required: true
+  full_p0_3_regression_scope_required: true
+  prerequisite_record_count: 14
+  read_order_count: 45
+  required_command_count: 49
+  activation_condition_count: 15
+completion:
+  ws60_complete: true
+  ws61_complete: true
+  all_required_prior_components_pass: true
+  all_blocking_defects_closed: false
+  final_reconciliation_complete: false
+  next_permitted_work_package: WS6.2
+boundaries:
+  founder_accountability_preserved: true
+  codex_start_authorized: false
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  phase1_authorized: false
+  runtime_activation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  launch_permit_issued: false
+rollback:
+  before_merge: Close the WS6.1 pull request and delete only governance/workstream6-handoff-reconciliation.
+  after_merge: Revert the WS6.1 merge as one unit; restore the WS6.0 handoff baseline
+    and keep Codex unauthorized.

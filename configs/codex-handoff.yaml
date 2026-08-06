@@ -1,19 +1,27 @@
-schema_version: 1
+schema_version: 2
 phase_id: PCR-04
-title: Machine-readable Codex handoff
-handoff_id: CODEX-PHASE0-HANDOFF-2026-08-05
+reconciled_by: WS6.1
+title: Machine-readable Codex Phase 0 handoff — Workstream 6 reconciled
+handoff_id: CODEX-PHASE0-HANDOFF-2026-08-06
 repository: rayrayxing/offdata-os
 canonical_branch: main
 target:
   phase_number: 0
   phase_name: Controlled project foundation
   backlog_document: docs/11-BUILD-BACKLOG.md
-  phase_gate: Founder receives a local demonstration and completion report; no substantive product workflow is required.
+  phase_gate: Founder receives a local demonstration and completion report; no substantive
+    product workflow is required.
   start_requires_explicit_founder_approval: true
+  start_requires_valid_launch_permit: true
+  start_requires_final_workstream6_reconciliation: true
   maximum_authorised_phase: 0
   next_phase_is_prohibited: true
 authority:
   controlling_instruction: AGENTS.md
+  machine_execution_contract: handoff/codex-phase0-handoff.json
+  current_launch_control: contracts/codex-phase0-launch-control.json
+  current_workstream6_reconciliation: contracts/workstream6-handoff-reconciliation.json
+  final_workstream6_gate: scripts/require_workstream6_final_reconciliation.py
   precedence:
   - applicable_law_platform_safety_and_explicit_founder_instruction
   - AGENTS.md
@@ -51,6 +59,25 @@ read_order:
 - docs/48-PCR-09-FIRST-CODEX-ISSUE-REWRITE.md
 - contracts/codex-phase0-issue.json
 - handoff/codex-phase0-issue.md
+- docs/49-PCR-10-PRE-CODEX-RELEASE-AND-QUALITY-ACCEPTANCE.md
+- contracts/pre-codex-readiness.json
+- handoff/codex-phase0-issue-pcr10.md
+- docs/50-WORKSTREAM-4-HOSTED-CONTROLS-EVIDENCE-AND-ENVIRONMENT-READINESS.md
+- contracts/workstream4-readiness.json
+- docs/51-WORKSTREAM-5-CODEX-PHASE-0-LAUNCH-CONTROL.md
+- contracts/codex-phase0-launch-control.json
+- handoff/codex-phase0-issue-workstream5.md
+- docs/52-WORKSTREAM-6-FINAL-PRE-CODEX-RECONCILIATION.md
+- contracts/workstream6-final-reconciliation.json
+- docs/53-WS6-1-CONTROLLING-MACHINE-HANDOFF-RECONCILIATION.md
+- contracts/workstream6-handoff-reconciliation.json
+- handoff/codex-phase0-hosted-controls-attestation.template.json
+- handoff/codex-phase0-clean-macos-attestation.template.json
+- handoff/codex-phase0-founder-authorization.template.json
+- handoff/codex-phase0-launch-ack.template.json
+- schemas/codex-phase0-launch-permit.schema.json
+- scripts/prepare_codex_phase0_launch.py
+- scripts/require_workstream6_final_reconciliation.py
 prerequisite_records:
 - id: canonical_chat_first_release
   path: releases/canonical-chat-first-phase1-7-release.json
@@ -84,6 +111,26 @@ prerequisite_records:
   path: contracts/codex-phase0-issue.json
   validator: scripts/validate_pcr09_codex_issue.py
   required_status: passed
+- id: pre_codex_readiness
+  path: contracts/pre-codex-readiness.json
+  validator: scripts/validate_pcr10_pre_codex_readiness.py
+  required_status: passed
+- id: workstream4_readiness
+  path: contracts/workstream4-readiness.json
+  validator: scripts/validate_workstream4_readiness.py
+  required_status: repository_side_passed_manual_gates_pending
+- id: workstream5_launch_control
+  path: contracts/codex-phase0-launch-control.json
+  validator: scripts/validate_workstream5_launch_control.py
+  required_status: repository_side_passed_manual_gates_pending
+- id: workstream6_baseline_lock
+  path: contracts/workstream6-final-reconciliation.json
+  validator: scripts/validate_workstream6_final_reconciliation.py
+  required_status: baseline_locked_repairs_pending
+- id: workstream6_handoff_reconciliation
+  path: contracts/workstream6-handoff-reconciliation.json
+  validator: scripts/validate_workstream6_handoff_reconciliation.py
+  required_status: passed
 - id: codex_handoff
   path: handoff/codex-phase0-handoff.json
   validator: scripts/validate_pcr04_codex_handoff.py
@@ -106,6 +153,12 @@ existing_assets:
   - configs/northstar-integration-blueprint.yaml
   - configs/initial-operating-controls.yaml
   - configs/codex-phase0-issue.yaml
+  - configs/pre-codex-readiness.yaml
+  - configs/workstream4-readiness.yaml
+  - configs/codex-phase0-launch-control.yaml
+  - configs/workstream6-final-reconciliation.yaml
+  - configs/workstream6-handoff-reconciliation.yaml
+  - configs/codex-handoff.yaml
   contracts_and_schemas:
   - api/openapi.json
   - contracts/model-registry.json
@@ -126,6 +179,17 @@ existing_assets:
   - schemas/initial-operating-controls.schema.json
   - contracts/codex-phase0-issue.json
   - schemas/codex-phase0-issue.schema.json
+  - contracts/pre-codex-readiness.json
+  - schemas/pre-codex-readiness.schema.json
+  - contracts/workstream4-readiness.json
+  - schemas/workstream4-readiness.schema.json
+  - contracts/codex-phase0-launch-control.json
+  - schemas/codex-phase0-launch-control.schema.json
+  - contracts/workstream6-final-reconciliation.json
+  - schemas/workstream6-final-reconciliation.schema.json
+  - contracts/workstream6-handoff-reconciliation.json
+  - schemas/workstream6-handoff-reconciliation.schema.json
+  - schemas/codex-phase0-launch-permit.schema.json
   governed_evidence:
   - requirements/test-registry.json
   - requirements/test-definitions.json
@@ -135,8 +199,11 @@ existing_assets:
   - security/security-regionalisation-baseline.json
   - releases/canonical-chat-first-phase1-7-release.json
   - repository/repository-governance-baseline.json
-  - contracts/runtime-adapter-contracts.json
-  - contracts/codex-phase0-issue.json
+  - releases/pre-codex-chat-first-2026-08-06.json
+  - releases/codex-phase0-launch-control-2026-08-06.json
+  - releases/workstream6-baseline-lock-2026-08-06.json
+  - reports/workstream6-initial-defect-register.md
+  - reports/workstream6-handoff-reconciliation-evidence.md
 task_graph:
 - id: P0.1
   title: Repository baseline
@@ -179,7 +246,8 @@ task_graph:
   acceptance:
   - deliberate_failure_blocks_ci
   - safe_change_passes_all_checks
-  - existing_phase_1_to_7_and_pcr_01_to_09_gate_remains_green
+  - existing_cf_p1_to_p7_pcr_01_to_10_ws4_ws5_and_final_ws6_gates_remain_green
+  - valid_launch_permit_and_exact_approved_main_sha_are_verified_before_branch_creation
 - id: P0.4
   title: Security and operating documentation
   dependencies:
@@ -193,17 +261,23 @@ task_graph:
   - build_status_ledger
   - initial_operating_controls_integrated
   - first_codex_issue_contract_integrated
+  - final_workstream6_handoff_and_launch_control_integrated
   acceptance:
   - no_real_client_data_enabled
   - no_processor_or_external_action_is_approved
   - rollback_and_founder_actions_are_documented
+  - phase0_merge_and_phase1_remain_unauthorized
 execution:
   branch_name: codex/phase-0-foundation
   pull_request_mode: draft
   merge_requires_founder_approval: true
+  launch_permit_required: true
+  launch_permit_path: .local/codex-phase0-launch/permit.json
+  final_workstream6_gate_command: python scripts/require_workstream6_final_reconciliation.py
   implementation_method:
   - inspect_repository_and_macos_environment
   - validate_all_preexisting_assets_before_application_code
+  - verify_final_workstream6_gate_and_single_use_launch_permit
   - produce_concise_phase_0_plan_and_decision_register
   - implement_only_phase_0_tasks_in_dependency_order
   - run_required_commands
@@ -225,7 +299,12 @@ execution:
   - python scripts/build_pcr07_northstar_blueprint.py
   - python scripts/build_pcr08_initial_operating_controls.py
   - python scripts/build_pcr09_codex_issue.py
+  - python scripts/build_workstream6_handoff_reconciliation.py
   - python scripts/build_pcr04_codex_handoff.py
+  - python scripts/build_pcr10_pre_codex_readiness.py
+  - python scripts/build_workstream4_readiness.py
+  - python scripts/build_workstream5_launch_control.py
+  - python scripts/build_workstream6_final_reconciliation.py
   - python scripts/validate_phase1_contracts.py
   - python scripts/validate_phase2_agents.py
   - python scripts/validate_phase3_ai_audit_oracle.py
@@ -242,10 +321,20 @@ execution:
   - python scripts/validate_pcr08_initial_operating_controls.py
   - python scripts/validate_pcr09_codex_issue.py
   - python scripts/validate_pcr04_codex_handoff.py
-  - cd packages/offdata-core && pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
-  - python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
-  - ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests
+  - python scripts/validate_pcr10_pre_codex_readiness.py
+  - python scripts/validate_workstream4_readiness.py
+  - python scripts/validate_workstream5_launch_control.py
+  - python scripts/validate_workstream6_final_reconciliation.py
+  - python scripts/validate_workstream6_handoff_reconciliation.py
+  - python scripts/prepare_codex_phase0_launch.py --self-test
+  - python scripts/require_workstream6_final_reconciliation.py
+  - git diff --exit-code
+  - cd packages/offdata-core && pytest --cov=offdata_core --cov-report=term-missing
+    --cov-fail-under=90
+  - python -m compileall -q packages/offdata-core/src packages/offdata-core/tests
     scripts
+  - ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src
+    packages/offdata-core/tests scripts
   - cd packages/offdata-core && mypy src
 prohibited_actions:
 - purchase_or_activate_services_or_trials
@@ -258,6 +347,7 @@ prohibited_actions:
 - weaken_tests_or_golden_expectations
 - create_duplicate_lifecycle_policy_or_contract_implementations
 - expose_restricted_oracle_material_to_production_agents
+- create_codex_branch_without_valid_permit
 - progress_beyond_phase_0
 stop_conditions:
 - material_requirement_ambiguity
@@ -268,6 +358,10 @@ stop_conditions:
 - data_loss_or_corruption_risk
 - material_architecture_change
 - phase_boundary_would_be_crossed
+- final_workstream6_reconciliation_incomplete
+- launch_permit_missing_invalid_used_or_stale
+- approved_main_sha_drift
+- issue_or_evidence_digest_drift
 activation_conditions:
 - pcr03_merged_to_main
 - pcr04_merged_to_main
@@ -276,9 +370,14 @@ activation_conditions:
 - pcr07_merged_to_main
 - pcr08_merged_to_main
 - pcr09_merged_to_main
+- pcr10_merged_to_main
+- workstream4_repository_package_merged_to_main
+- workstream5_launch_control_merged_to_main
+- workstream6_final_reconciliation_merged_to_main
 - github_hosted_controls_in_issue_19_verified
-- explicit_founder_phase_0_approval_received
 - clean_macos_environment_available
+- explicit_founder_phase_0_approval_received
+- valid_codex_phase0_launch_permit_issued
 completion_report_fields:
 - what_was_built
 - why_it_was_needed
@@ -291,11 +390,22 @@ completion_report_fields:
 - credentials_subscriptions_and_approvals_required
 - rollback_instructions
 - exact_recommended_next_phase
+- final_workstream6_release_and_evidence
+- launch_permit_id_and_approved_main_sha
+- first_commit_launch_acknowledgement
 boundaries:
   real_client_data_enabled: false
   external_actions_authorised: false
   paid_services_authorised: false
   production_deployment_authorised: false
   autonomous_merge_authorised: false
+  phase0_implementation_authorised: false
+  phase0_merge_authorised: false
+  phase1_authorised: false
+  runtime_activation_authorised: false
+  hermes_activation_authorised: false
+  northstar_implementation_authorised: false
+  launch_permit_issued: false
+  final_workstream6_gate_complete: false
   original_methodology_binaries_committed: false
   founder_accountability_preserved: true
