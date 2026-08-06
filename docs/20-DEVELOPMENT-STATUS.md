@@ -225,6 +225,42 @@ See:
 - `contracts/runtime-adapter-contracts.json`
 - `reports/pcr05-validation-evidence.md`
 
+### PCR-06 — Hermes adoption and compatibility pack
+
+Status: **complete as a governed stacked implementation in PR #22; final merge remains dependent on PCR-03 through PCR-05**.
+
+PCR-06 pins the assessed Hermes Agent release and defines restricted compatibility for skills, foreground bounded worker execution, tools and non-canonical memory. Hermes installation and activation remain prohibited, and `hermes_activation_authorized=false`.
+
+See:
+
+- `docs/45-PCR-06-HERMES-ADOPTION-AND-COMPATIBILITY-PACK.md`
+- `contracts/hermes-compatibility-pack.json`
+- `reports/pcr06-validation-evidence.md`
+
+### PCR-07 — Northstar end-to-end integration blueprint
+
+Status: **complete as a governed stacked implementation in PR #23; final merge remains dependent on PCR-03 through PCR-06**.
+
+PCR-07 maps the existing synthetic Northstar AI-audit fixture through all thirteen lifecycle stages, thirteen components, twenty contract edges, seven end-to-end scenarios and eight dependency-ordered implementation waves. It is a blueprint only and records `northstar_implementation_authorized=false`.
+
+See:
+
+- `docs/46-PCR-07-NORTHSTAR-END-TO-END-INTEGRATION-BLUEPRINT.md`
+- `contracts/northstar-integration-blueprint.json`
+- `reports/pcr07-validation-evidence.md`
+
+### PCR-08 — Initial operating-control configuration
+
+Status: **complete as a governed stacked implementation on `governance/pcr08-initial-operating-controls`; final merge remains dependent on PCR-03 through PCR-07**.
+
+PCR-08 assigns all forty-eight security controls exactly once across ten Founder-owned operating domains, configures eight unauthorised operating gates, six fail-closed switches, a zero paid-provider spend cap, incident and retention routing, evidence-state honesty and the final pre-Codex activation sequence. Hosted, operating-environment and production evidence remain incomplete, and `initial_operating_controls_activation_authorized=false`.
+
+See:
+
+- `docs/47-PCR-08-INITIAL-OPERATING-CONTROL-CONFIGURATION.md`
+- `contracts/initial-operating-controls.json`
+- `reports/pcr08-validation-evidence.md`
+
 
 ### Deterministic consulting kernel
 
@@ -257,11 +293,14 @@ See:
 Complete the governed merge and activation sequence without bypassing Founder authority:
 
 1. Founder reviews and merges PCR-03 PR #18.
-2. Retarget PCR-04 PR #20 to `main`, rerun the exact complete gate and merge only after Founder approval.
-3. Retarget PCR-05 PR #21 to the merged PCR-04 base, rerun the exact complete gate and merge only after Founder approval.
-4. Verify every GitHub-hosted control in issue #19.
-5. Confirm a clean macOS development environment.
-6. Give explicit Founder approval for Codex Phase 0 only.
+2. Retarget and revalidate PCR-04 PR #20, then merge only after Founder approval.
+3. Retarget and revalidate PCR-05 PR #21, then merge only after Founder approval.
+4. Retarget and revalidate PCR-06 PR #22, then merge only after Founder approval.
+5. Retarget and revalidate PCR-07 PR #23, then merge only after Founder approval.
+6. Retarget and revalidate the PCR-08 pull request, then merge only after Founder approval.
+7. Verify every GitHub-hosted control in issue #19.
+8. Confirm a clean macOS development environment.
+9. Give explicit Founder approval for Codex Phase 0 only.
 
 Codex must integrate and execute the committed design rather than rediscover or duplicate it.
 
@@ -269,7 +308,7 @@ Codex must integrate and execute the committed design rather than rediscover or 
 
 Only the following are useful now:
 
-1. Review the PCR-03, PCR-04 and PCR-05 pull requests in sequence.
+1. Review the PCR-03 through PCR-08 pull requests in sequence.
 2. Complete the hosted-control checklist in issue #19, including MFA and `main` protection.
 3. Install and sign into the Codex macOS app.
 4. Confirm PowerPoint, Word and Excel availability.
@@ -286,7 +325,10 @@ Codex may begin only when all activation conditions in `handoff/codex-phase0-han
 
 ```bash
 python scripts/validate_pcr05_runtime_adapters.py
+python scripts/validate_pcr06_hermes_compatibility.py
+python scripts/validate_pcr07_northstar_blueprint.py
+python scripts/validate_pcr08_initial_operating_controls.py
 python scripts/validate_pcr04_codex_handoff.py
 ```
 
-`runtime_activation_authorized=false` remains binding. The initial assignment is Phase 0 only on branch `codex/phase-0-foundation`, using synthetic data and a draft pull request. Phase 1 progression, paid services, secrets, OAuth, DNS changes, production deployment, external actions, restricted-oracle exposure and real client data remain prohibited.
+`initial_operating_controls_activation_authorized=false`, `runtime_activation_authorized=false`, `hermes_activation_authorized=false` and `northstar_implementation_authorized=false` remain binding. The initial assignment is Phase 0 only on branch `codex/phase-0-foundation`, using synthetic data and a draft pull request. Phase 1 progression, paid services, secrets, OAuth, DNS changes, production deployment, external actions, restricted-oracle exposure and real client data remain prohibited.

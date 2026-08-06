@@ -2,11 +2,11 @@
 
 ## Controlling handoff
 
-Codex must use `handoff/codex-phase0-handoff.json` as the machine-readable execution contract for the first implementation phase. The file is generated from `configs/codex-handoff.yaml`, validated against `schemas/codex-handoff.schema.json`, and semantically checked by `scripts/validate_pcr04_codex_handoff.py`. Runtime execution boundaries are separately governed by `contracts/runtime-adapter-contracts.json` and `scripts/validate_pcr05_runtime_adapters.py`.
+Codex must use `handoff/codex-phase0-handoff.json` as the machine-readable execution contract for the first implementation phase. The file is generated from `configs/codex-handoff.yaml`, validated against `schemas/codex-handoff.schema.json`, and semantically checked by `scripts/validate_pcr04_codex_handoff.py`. Runtime execution boundaries are separately governed by `contracts/runtime-adapter-contracts.json` and `scripts/validate_pcr05_runtime_adapters.py`. Hermes compatibility is governed by `contracts/hermes-compatibility-pack.json` and `scripts/validate_pcr06_hermes_compatibility.py`; the Northstar implementation path is governed by `contracts/northstar-integration-blueprint.json` and `scripts/validate_pcr07_northstar_blueprint.py`; and the initial deny-by-default operating posture is governed by `contracts/initial-operating-controls.json` and `scripts/validate_pcr08_initial_operating_controls.py`.
 
 The handoff does not itself authorise execution. Phase 0 begins only after:
 
-1. PCR-03, PCR-04 and PCR-05 are merged to `main`;
+1. PCR-03 through PCR-08 are merged to `main`;
 2. the GitHub-hosted controls tracked in issue #19 are verified;
 3. the Founder explicitly approves Phase 0; and
 4. a clean macOS development environment is available.
@@ -26,6 +26,9 @@ handoff/codex-phase0-handoff.json before proposing or changing code.
 
 Run:
 python scripts/validate_pcr05_runtime_adapters.py
+python scripts/validate_pcr06_hermes_compatibility.py
+python scripts/validate_pcr07_northstar_blueprint.py
+python scripts/validate_pcr08_initial_operating_controls.py
 python scripts/validate_pcr04_codex_handoff.py
 
 Do not continue if the handoff is stale, invalid, missing a prerequisite,
@@ -43,7 +46,7 @@ parallel replacements for them.
 Follow every required command, prohibited action, stop condition, approval
 boundary and completion-report field in the handoff.
 
-Treat `runtime_activation_authorized=false` as binding. Use synthetic data only. Do not purchase services, request secrets, approve
+Treat `initial_operating_controls_activation_authorized=false`, `runtime_activation_authorized=false`, `hermes_activation_authorized=false` and `northstar_implementation_authorized=false` as binding. Use synthetic data only. Do not purchase services, request secrets, approve
 OAuth, alter DNS, deploy production infrastructure, send external messages,
 enable real client data, expose restricted oracle material, weaken tests or
 progress beyond Phase 0.
@@ -75,7 +78,7 @@ Act as an independent engineering, security and quality reviewer for the
 current offdata phase. Do not assume the implementation is correct because
 another agent produced it.
 
-Read AGENTS.md, contracts/runtime-adapter-contracts.json and handoff/codex-phase0-handoff.json. Inspect the changed files,
+Read AGENTS.md, contracts/runtime-adapter-contracts.json, contracts/hermes-compatibility-pack.json, contracts/northstar-integration-blueprint.json, contracts/initial-operating-controls.json and handoff/codex-phase0-handoff.json. Inspect the changed files,
 test evidence, costs, permissions and rollback instructions. Attempt to falsify
 the claim that the approved phase is complete.
 

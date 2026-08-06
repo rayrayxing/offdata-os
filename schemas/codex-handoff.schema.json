@@ -1,1 +1,398 @@
-{"$id":"https://offdata.com/schemas/codex-handoff.schema.json","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,"properties":{"activation_conditions":{"items":{"type":"string"},"minItems":4,"type":"array","uniqueItems":true},"authority":{"required":["controlling_instruction","precedence","historical_repositories_are_non_controlling"],"type":"object"},"boundaries":{"additionalProperties":false,"properties":{"autonomous_merge_authorised":{"const":false},"external_actions_authorised":{"const":false},"founder_accountability_preserved":{"const":true},"original_methodology_binaries_committed":{"const":false},"paid_services_authorised":{"const":false},"production_deployment_authorised":{"const":false},"real_client_data_enabled":{"const":false}},"required":["real_client_data_enabled","external_actions_authorised","paid_services_authorised","production_deployment_authorised","autonomous_merge_authorised","original_methodology_binaries_committed","founder_accountability_preserved"],"type":"object"},"canonical_branch":{"const":"main"},"completion_report_fields":{"items":{"type":"string"},"minItems":10,"type":"array","uniqueItems":true},"execution":{"additionalProperties":false,"properties":{"branch_name":{"const":"codex/phase-0-foundation"},"implementation_method":{"items":{"type":"string"},"minItems":5,"type":"array"},"merge_requires_founder_approval":{"const":true},"pull_request_mode":{"const":"draft"},"required_commands":{"items":{"type":"string"},"minItems":20,"type":"array","uniqueItems":true}},"required":["branch_name","pull_request_mode","merge_requires_founder_approval","implementation_method","required_commands"],"type":"object"},"existing_assets":{"type":"object"},"generated_from":{"const":"configs/codex-handoff.yaml"},"handoff_id":{"pattern":"^CODEX-PHASE0-HANDOFF-","type":"string"},"phase_id":{"const":"PCR-04"},"prerequisite_records":{"items":{"required":["id","path","validator","required_status"],"type":"object"},"minItems":4,"type":"array"},"prohibited_actions":{"items":{"type":"string"},"minItems":10,"type":"array","uniqueItems":true},"read_order":{"items":{"minLength":1,"type":"string"},"minItems":10,"type":"array","uniqueItems":true},"readiness_snapshot":{"additionalProperties":false,"properties":{"activation_blockers":{"items":{"type":"string"},"minItems":4,"type":"array","uniqueItems":true},"canonical_release":{"required":["passed","release_id","phases","final_validation_conclusion","boundaries"],"type":"object"},"codex_start_authorized":{"const":false},"local_prerequisites_passed":{"const":true},"referential_integrity":{"required":["passed","status","issue_count","counts","report_digest"],"type":"object"},"repository_governance":{"required":["passed","failures","required_file_count","workflow_invariant_count","hosted_settings_required_before_codex"],"type":"object"},"runtime_adapters":{"required":["passed","contract_id","adapter_kind_count","adapter_profile_count","tool_class_count","conformance_case_count","runtime_activation_authorized","boundaries"],"type":"object"}},"required":["canonical_release","referential_integrity","repository_governance","runtime_adapters","local_prerequisites_passed","codex_start_authorized","activation_blockers"],"type":"object"},"repository":{"const":"rayrayxing/offdata-os"},"schema_version":{"const":1},"stacked_base_branch":{"type":"string"},"stop_conditions":{"items":{"type":"string"},"minItems":8,"type":"array","uniqueItems":true},"target":{"additionalProperties":false,"properties":{"backlog_document":{"const":"docs/11-BUILD-BACKLOG.md"},"maximum_authorised_phase":{"const":0},"next_phase_is_prohibited":{"const":true},"phase_gate":{"minLength":1,"type":"string"},"phase_name":{"const":"Controlled project foundation"},"phase_number":{"const":0},"start_requires_explicit_founder_approval":{"const":true}},"required":["phase_number","phase_name","backlog_document","start_requires_explicit_founder_approval","maximum_authorised_phase","next_phase_is_prohibited"],"type":"object"},"task_graph":{"items":{"additionalProperties":false,"properties":{"acceptance":{"items":{"type":"string"},"minItems":1,"type":"array","uniqueItems":true},"deliverables":{"items":{"type":"string"},"minItems":1,"type":"array","uniqueItems":true},"dependencies":{"items":{"type":"string"},"type":"array","uniqueItems":true},"id":{"enum":["P0.1","P0.2","P0.3","P0.4"]},"title":{"minLength":1,"type":"string"}},"required":["id","title","dependencies","deliverables","acceptance"],"type":"object"},"maxItems":4,"minItems":4,"type":"array"},"title":{"type":"string"}},"required":["schema_version","phase_id","handoff_id","repository","canonical_branch","target","authority","read_order","prerequisite_records","existing_assets","task_graph","execution","prohibited_actions","stop_conditions","activation_conditions","completion_report_fields","boundaries","generated_from","readiness_snapshot"],"title":"offdata Codex Phase 0 Handoff","type":"object"}
+{
+  "$id": "https://offdata.com/schemas/codex-handoff.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "activation_conditions": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 9,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "authority": {
+      "required": [
+        "controlling_instruction",
+        "precedence",
+        "historical_repositories_are_non_controlling"
+      ],
+      "type": "object"
+    },
+    "boundaries": {
+      "additionalProperties": false,
+      "properties": {
+        "autonomous_merge_authorised": {
+          "const": false
+        },
+        "external_actions_authorised": {
+          "const": false
+        },
+        "founder_accountability_preserved": {
+          "const": true
+        },
+        "original_methodology_binaries_committed": {
+          "const": false
+        },
+        "paid_services_authorised": {
+          "const": false
+        },
+        "production_deployment_authorised": {
+          "const": false
+        },
+        "real_client_data_enabled": {
+          "const": false
+        }
+      },
+      "required": [
+        "real_client_data_enabled",
+        "external_actions_authorised",
+        "paid_services_authorised",
+        "production_deployment_authorised",
+        "autonomous_merge_authorised",
+        "original_methodology_binaries_committed",
+        "founder_accountability_preserved"
+      ],
+      "type": "object"
+    },
+    "canonical_branch": {
+      "const": "main"
+    },
+    "completion_report_fields": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 10,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "execution": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_name": {
+          "const": "codex/phase-0-foundation"
+        },
+        "implementation_method": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 5,
+          "type": "array"
+        },
+        "merge_requires_founder_approval": {
+          "const": true
+        },
+        "pull_request_mode": {
+          "const": "draft"
+        },
+        "required_commands": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 30,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "branch_name",
+        "pull_request_mode",
+        "merge_requires_founder_approval",
+        "implementation_method",
+        "required_commands"
+      ],
+      "type": "object"
+    },
+    "existing_assets": {
+      "type": "object"
+    },
+    "generated_from": {
+      "const": "configs/codex-handoff.yaml"
+    },
+    "handoff_id": {
+      "pattern": "^CODEX-PHASE0-HANDOFF-",
+      "type": "string"
+    },
+    "phase_id": {
+      "const": "PCR-04"
+    },
+    "prerequisite_records": {
+      "items": {
+        "required": [
+          "id",
+          "path",
+          "validator",
+          "required_status"
+        ],
+        "type": "object"
+      },
+      "minItems": 8,
+      "type": "array"
+    },
+    "prohibited_actions": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 10,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "read_order": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 20,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "readiness_snapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "activation_blockers": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 4,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "canonical_release": {
+          "required": [
+            "passed",
+            "release_id",
+            "phases",
+            "final_validation_conclusion",
+            "boundaries"
+          ],
+          "type": "object"
+        },
+        "codex_start_authorized": {
+          "const": false
+        },
+        "hermes_compatibility": {
+          "required": [
+            "passed",
+            "contract_id",
+            "compatibility_surface_count",
+            "capability_mapping_count",
+            "repository_skill_count",
+            "hermes_activation_authorized",
+            "boundaries"
+          ],
+          "type": "object"
+        },
+        "initial_operating_controls": {
+          "required": [
+            "passed",
+            "contract_id",
+            "control_domain_count",
+            "security_control_count",
+            "operating_gate_count",
+            "control_switch_count",
+            "hosted_control_evidence_complete",
+            "operating_environment_evidence_complete",
+            "production_evidence_complete",
+            "initial_operating_controls_activation_authorized",
+            "boundaries"
+          ],
+          "type": "object"
+        },
+        "local_prerequisites_passed": {
+          "const": true
+        },
+        "northstar_blueprint": {
+          "required": [
+            "passed",
+            "contract_id",
+            "lifecycle_stage_count",
+            "integration_component_count",
+            "scenario_count",
+            "implementation_wave_count",
+            "northstar_implementation_authorized",
+            "boundaries"
+          ],
+          "type": "object"
+        },
+        "referential_integrity": {
+          "required": [
+            "passed",
+            "status",
+            "issue_count",
+            "counts",
+            "report_digest"
+          ],
+          "type": "object"
+        },
+        "repository_governance": {
+          "required": [
+            "passed",
+            "failures",
+            "required_file_count",
+            "workflow_invariant_count",
+            "hosted_settings_required_before_codex"
+          ],
+          "type": "object"
+        },
+        "runtime_adapters": {
+          "required": [
+            "passed",
+            "contract_id",
+            "adapter_kind_count",
+            "adapter_profile_count",
+            "tool_class_count",
+            "conformance_case_count",
+            "runtime_activation_authorized",
+            "boundaries"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "canonical_release",
+        "referential_integrity",
+        "repository_governance",
+        "runtime_adapters",
+        "hermes_compatibility",
+        "northstar_blueprint",
+        "initial_operating_controls",
+        "local_prerequisites_passed",
+        "codex_start_authorized",
+        "activation_blockers"
+      ],
+      "type": "object"
+    },
+    "repository": {
+      "const": "rayrayxing/offdata-os"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "stacked_base_branch": {
+      "type": "string"
+    },
+    "stop_conditions": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 8,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "target": {
+      "additionalProperties": false,
+      "properties": {
+        "backlog_document": {
+          "const": "docs/11-BUILD-BACKLOG.md"
+        },
+        "maximum_authorised_phase": {
+          "const": 0
+        },
+        "next_phase_is_prohibited": {
+          "const": true
+        },
+        "phase_gate": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "phase_name": {
+          "const": "Controlled project foundation"
+        },
+        "phase_number": {
+          "const": 0
+        },
+        "start_requires_explicit_founder_approval": {
+          "const": true
+        }
+      },
+      "required": [
+        "phase_number",
+        "phase_name",
+        "backlog_document",
+        "start_requires_explicit_founder_approval",
+        "maximum_authorised_phase",
+        "next_phase_is_prohibited"
+      ],
+      "type": "object"
+    },
+    "task_graph": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "acceptance": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "deliverables": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "dependencies": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "id": {
+            "enum": [
+              "P0.1",
+              "P0.2",
+              "P0.3",
+              "P0.4"
+            ]
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "dependencies",
+          "deliverables",
+          "acceptance"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "phase_id",
+    "handoff_id",
+    "repository",
+    "canonical_branch",
+    "target",
+    "authority",
+    "read_order",
+    "prerequisite_records",
+    "existing_assets",
+    "task_graph",
+    "execution",
+    "prohibited_actions",
+    "stop_conditions",
+    "activation_conditions",
+    "completion_report_fields",
+    "boundaries",
+    "generated_from",
+    "readiness_snapshot"
+  ],
+  "title": "offdata Codex Phase 0 Handoff",
+  "type": "object"
+}
