@@ -147,12 +147,22 @@ def semantic_failures(
     snapshot = contract.get("readiness_snapshot", {})
 
     require(
-        contract.get("status") == "final_launch_control_reconciled_manual_gates_pending",
+        contract.get("status")
+        == "repository_launch_control_complete_manual_gates_pending",
+        "legacy launch-control status alias is invalid",
+    )
+    require(
+        contract.get("final_status")
+        == "final_launch_control_reconciled_manual_gates_pending",
         "final launch-control contract status is invalid",
     )
     require(
         snapshot.get("repository_final_launch_control_complete") is True,
         "repository final launch-control package is incomplete",
+    )
+    require(
+        snapshot.get("repository_launch_control_complete") is True,
+        "legacy repository launch-control projection is incomplete",
     )
     require(
         snapshot.get("codex_start_authorized") is False,
