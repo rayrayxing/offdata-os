@@ -1,0 +1,25 @@
+name: Workstream 6 configuration contradictions
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: write
+
+concurrency:
+  group: workstream6-configuration-contradictions-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-configuration-contradictions:
+    name: Validate WS6.7 configuration contradictions and complete prior components
+    uses: ./.github/workflows/workstream6-final-launch-control.yml
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: write

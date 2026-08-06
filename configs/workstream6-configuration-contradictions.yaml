@@ -1,0 +1,44 @@
+schema_version: 1
+work_package_id: WS6.7
+base_main_sha: 16e45598da7214d2cf9086405b7439b254eae472
+status: configuration_contradictions_reconciled
+defect:
+  id: WS6-CONSIST-004
+  title: Example model budget conflicts with zero-spend operating controls
+environment_file: .env.example
+environment_variable: OFFDATA_MONTHLY_MODEL_BUDGET_USD
+required_committed_value: "0"
+controlling_contract: contracts/initial-operating-controls.json
+contract_paths:
+  paid_provider_spend_hard_cap: cost_and_usage.paid_provider_spend_hard_cap
+  purchases_authorized: cost_and_usage.purchases_authorized
+  paid_services_authorized: boundaries.paid_services_authorized
+required_contract_values:
+  paid_provider_spend_hard_cap: 0
+  purchases_authorized: false
+  paid_services_authorized: false
+paid_provider_keys:
+  - OPENAI_API_KEY
+  - ANTHROPIC_API_KEY
+  - GOOGLE_API_KEY
+required_key_default: ""
+closed_defects:
+  - WS6-CONSIST-004
+remaining_blocking_defects:
+  - WS6-BLOCK-006
+completion:
+  all_required_prior_components_pass: true
+  ws67_complete: true
+  committed_defaults_zero_spend: true
+  configuration_and_contract_consistent: true
+  final_reconciliation_complete: false
+  all_blocking_defects_closed: false
+  next_permitted_work_package: WS6.8
+boundaries:
+  codex_start_authorized: false
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  runtime_activation_authorized: false
+  production_deployment_authorized: false
+  phase1_authorized: false
+  founder_accountability_preserved: true

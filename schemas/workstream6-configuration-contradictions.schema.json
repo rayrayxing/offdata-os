@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "work_package_id",
+    "base_main_sha",
+    "status",
+    "defect",
+    "observed_environment_value",
+    "observed_provider_key_defaults",
+    "observed_contract_values",
+    "completion",
+    "boundaries"
+  ],
+  "properties": {
+    "work_package_id": {"const": "WS6.7"},
+    "base_main_sha": {"const": "16e45598da7214d2cf9086405b7439b254eae472"},
+    "status": {"const": "configuration_contradictions_reconciled"},
+    "observed_environment_value": {"const": "0"},
+    "observed_provider_key_defaults": {
+      "type": "object",
+      "additionalProperties": {"const": ""}
+    },
+    "observed_contract_values": {
+      "type": "object",
+      "required": ["paid_provider_spend_hard_cap", "purchases_authorized", "paid_services_authorized"]
+    },
+    "completion": {"type": "object"},
+    "boundaries": {"type": "object"}
+  },
+  "additionalProperties": true
+}
