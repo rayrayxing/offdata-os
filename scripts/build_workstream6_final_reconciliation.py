@@ -66,12 +66,30 @@ def _validate_source(source: dict[str, Any]) -> None:
             raise ValueError(f"boundary {key} must remain false")
 
 
-def build_records() -> tuple[dict[str, Any], str, dict[str, Any]]:
+def _load_source() -> dict[str, Any]:
     source = _load_yaml(SOURCE_PATH)
+    defect_paths = source.get("defect_sources", [])
+    if not isinstance(defect_paths, list) or not defect_paths:
+        raise ValueError("defect_sources must list the governed defect fragments")
+    defects: list[dict[str, Any]] = []
+    for relative in defect_paths:
+        value = yaml.safe_load((ROOT / relative).read_text(encoding="utf-8"))
+        if not isinstance(value, list) or not all(
+            isinstance(item, dict) for item in value
+        ):
+            raise ValueError(f"{relative} must contain a list of defect mappings")
+        defects.extend(value)
+    source["defects"] = defects
+    return source
+
+
+def build_records() -> tuple[dict[str, Any], str, dict[str, Any]]:
+    source = _load_source()
     _validate_source(source)
     defects = source["defects"]
     contract = dict(source)
     contract["generated_from"] = str(SOURCE_PATH.relative_to(ROOT))
+    contract["generated_from_fragments"] = source["defect_sources"]
     contract["status"] = "baseline_locked_repairs_pending"
     contract["defect_summary"] = {
         "total": len(defects),
