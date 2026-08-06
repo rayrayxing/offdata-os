@@ -10,22 +10,36 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Any
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 SECRET_NAME_RE = re.compile(r"(token|secret|password|credential|api[_-]?key)", re.IGNORECASE)
+COMMAND_TIMEOUT_SECONDS = 15
+
+
+def _run_command(
+    command: list[str], *, cwd: Path | None = None
+) -> subprocess.CompletedProcess[str] | None:
+    try:
+        return subprocess.run(
+            command,
+            cwd=cwd,
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=COMMAND_TIMEOUT_SECONDS,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
 
 
 def _command_version(command: str, args: list[str]) -> dict[str, Any]:
     path = shutil.which(command)
     if path is None:
         return {"available": False, "path": None, "version": None}
-    result = subprocess.run(
-        [path, *args],
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=15,
-    )
+    result = _run_command([path, *args])
+    if result is None:
+        return {"available": False, "path": path, "version": None}
     output = (result.stdout or result.stderr).strip().splitlines()
     return {
         "available": result.returncode == 0,
@@ -37,35 +51,19 @@ def _command_version(command: str, args: list[str]) -> dict[str, Any]:
 def _git_state() -> dict[str, Any]:
     if not (ROOT / ".git").exists():
         return {"repository": False, "clean": False, "head": None, "branch": None}
-    status = subprocess.run(
-        ["git", "status", "--porcelain"],
-        cwd=ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=15,
-    )
-    head = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
-        cwd=ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=15,
-    )
-    branch = subprocess.run(
-        ["git", "branch", "--show-current"],
-        cwd=ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=15,
-    )
+    status = _run_command(["git", "status", "--porcelain"], cwd=ROOT)
+    head = _run_command(["git", "rev-parse", "HEAD"], cwd=ROOT)
+    branch = _run_command(["git", "branch", "--show-current"], cwd=ROOT)
+    status_ok = status is not None and status.returncode == 0
     return {
-        "repository": status.returncode == 0,
-        "clean": status.returncode == 0 and not status.stdout.strip(),
-        "head": head.stdout.strip() if head.returncode == 0 else None,
-        "branch": branch.stdout.strip() if branch.returncode == 0 else None,
+        "repository": status_ok,
+        "clean": status_ok and not status.stdout.strip(),
+        "head": head.stdout.strip() if head is not None and head.returncode == 0 else None,
+        "branch": (
+            branch.stdout.strip()
+            if branch is not None and branch.returncode == 0
+            else None
+        ),
     }
 
 
@@ -81,9 +79,9 @@ def _resource_state() -> dict[str, Any]:
 
 def _environment_name_check() -> dict[str, Any]:
     suspicious = sorted(
-        name for name in os.environ
-        if SECRET_NAME_RE.search(name)
-        and name not in {"GITHUB_TOKEN", "GH_TOKEN"}
+        name
+        for name in os.environ
+        if SECRET_NAME_RE.search(name) and name not in {"GITHUB_TOKEN", "GH_TOKEN"}
     )
     return {
         "secret_named_environment_variables_detected": len(suspicious),
@@ -158,6 +156,21 @@ def _self_test() -> None:
     assert report["clean_macos_environment_verified"] is False
     assert report["codex_start_authorized"] is False
     assert all(value is False for value in report["manual_attestations"].values())
+
+    timeout = subprocess.TimeoutExpired(
+        cmd=["/usr/bin/gh", "--version"], timeout=COMMAND_TIMEOUT_SECONDS
+    )
+    with (
+        mock.patch.object(shutil, "which", return_value="/usr/bin/gh"),
+        mock.patch.object(subprocess, "run", side_effect=timeout),
+    ):
+        timeout_result = _command_version("gh", ["--version"])
+    assert timeout_result == {
+        "available": False,
+        "path": "/usr/bin/gh",
+        "version": None,
+    }
+
     sentinel_name = "OFFDATA_TEST_SECRET_TOKEN"
     sentinel_value = "offdata-self-test-secret-value-should-not-appear"
     previous = os.environ.get(sentinel_name)
@@ -171,7 +184,10 @@ def _self_test() -> None:
             os.environ.pop(sentinel_name, None)
         else:
             os.environ[sentinel_name] = previous
-    print("Pre-Codex macOS doctor self-test passed: non-destructive, redacted, authorization denied.")
+    print(
+        "Pre-Codex macOS doctor self-test passed: non-destructive, redacted, "
+        "timeout-safe, authorization denied."
+    )
 
 
 def main() -> None:
