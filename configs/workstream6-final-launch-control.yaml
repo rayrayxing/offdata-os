@@ -1,0 +1,51 @@
+schema_version: 1.0.0
+workstream_id: WORKSTREAM-6
+work_package_id: WS6.2
+contract_id: WORKSTREAM6-FINAL-LAUNCH-CONTROL-RECONCILIATION
+title: WS6.2 final launch-control reconciliation
+repository: rayrayxing/offdata-os
+canonical_branch: main
+base_main_sha: a3fb3ea21029f01c52bc8e871dd7bcb284a31f7c
+authority:
+  controlling_instruction: AGENTS.md
+  launch_source: configs/codex-phase0-launch-control.yaml
+  launch_contract: contracts/codex-phase0-launch-control.json
+  final_issue_body: handoff/codex-phase0-issue-final.md
+  launch_verifier: scripts/prepare_codex_phase0_launch.py
+repairs:
+  historical_workstream5_authority_retained: true
+  final_issue_body_rebound: true
+  final_release_gate_required: true
+  final_status_check_identity_bound: true
+  permit_requires_final_release_digest: true
+  stale_workstream5_issue_digest_rejected: true
+closed_defects:
+- WS6-BLOCK-004
+- WS6-BLOCK-005
+remaining_blocking_defects:
+- WS6-BLOCK-003
+- WS6-BLOCK-006
+completion:
+  all_required_prior_components_pass: true
+  ws62_complete: true
+  final_reconciliation_complete: false
+  all_blocking_defects_closed: false
+  next_permitted_work_package: WS6.3
+boundaries:
+  founder_accountability_preserved: true
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  phase1_authorized: false
+  merge_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  northstar_implementation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  oauth_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
+rollback:
+  before_merge: 'Close the WS6.2 pull request, restore issue #1 from handoff/codex-phase0-issue-workstream5.md and delete only governance/workstream6-final-launch-control.'
+  after_merge: Revert the WS6.2 merge and restore the Workstream 5 contract, verifier, templates and issue body together; keep all authorization flags false.
