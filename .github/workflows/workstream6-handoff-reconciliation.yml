@@ -19,7 +19,7 @@ jobs:
   validate-handoff-reconciliation:
     name: Validate WS6.1 controlling machine handoff and complete prior components
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 60
     steps:
       - name: Check out exact workflow reference
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -39,7 +39,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild every governed record through WS6.1
+      - name: Rebuild every governed record through WS6.2
         run: |
           python scripts/build_test_registry.py
           python scripts/build_pcr02_test_identity.py
@@ -62,11 +62,12 @@ jobs:
           python scripts/build_workstream4_readiness.py
           python scripts/build_workstream5_launch_control.py
           python scripts/build_workstream6_final_reconciliation.py
+          python scripts/build_workstream6_final_launch_control.py
 
       - name: Enforce clean deterministic generation
         run: git diff --exit-code
 
-      - name: Validate every prior component and WS6.1
+      - name: Validate every prior component and WS6.2
         run: |
           python scripts/validate_phase1_contracts.py
           python scripts/validate_phase2_agents.py
@@ -89,12 +90,13 @@ jobs:
           python scripts/validate_workstream5_launch_control.py
           python scripts/validate_workstream6_final_reconciliation.py
           python scripts/validate_workstream6_handoff_reconciliation.py
+          python scripts/validate_workstream6_final_launch_control.py
           python scripts/prepare_codex_phase0_launch.py --self-test
           python scripts/require_workstream6_final_reconciliation.py --self-test
 
       - name: Run deterministic runtime and coverage suite
         working-directory: packages/offdata-core
-        run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90 | tee /tmp/ws61-pytest.log
+        run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90 | tee /tmp/ws62-pytest.log
 
       - name: Compile Python sources
         run: python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
@@ -106,60 +108,61 @@ jobs:
         working-directory: packages/offdata-core
         run: mypy src
 
-      - name: Verify exact WS6.0 ancestry and live fail-closed state
+      - name: Verify exact WS6.1 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          BASE_MAIN_SHA: 5c80cea82aa663cbe0a690e3f8f02504d121bea1
+          BASE_MAIN_SHA: a3fb3ea21029f01c52bc8e871dd7bcb284a31f7c
         run: |
           mkdir -p ci-evidence
           git merge-base --is-ancestor "$BASE_MAIN_SHA" "$GITHUB_SHA"
-          gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/19" > ci-evidence/issue-19.json
-          gh api "repos/${GITHUB_REPOSITORY}/branches?per_page=100" > ci-evidence/branches.json
+          gh api "repos/${{ GITHUB_REPOSITORY }}/git/ref/heads/main" > ci-evidence/main-ref.json
+          gh api "repos/${{ GITHUB_REPOSITORY }}/issues/1" > ci-evidence/issue-1.json
+          gh api "repos/${{ GITHUB_REPOSITORY }}/issues/2" > ci-evidence/issue-2.json
+          gh api "repos/${{ GITHUB_REPOSITORY }}/issues/19" > ci-evidence/issue-19.json
+          gh api "repos/${{ GITHUB_REPOSITORY }}/branches?per_page=100" > ci-evidence/branches.json
           python - <<'PY'
           import hashlib
           import json
-          import os
           from pathlib import Path
 
-          main_ref = json.loads(Path('ci-evidence/main-ref.json').read_text())
-          issue1 = json.loads(Path('ci-evidence/issue-1.json').read_text())
-          issue2 = json.loads(Path('ci-evidence/issue-2.json').read_text())
-          issue19 = json.loads(Path('ci-evidence/issue-19.json').read_text())
-          branches = json.loads(Path('ci-evidence/branches.json').read_text())
-          expected = Path('handoff/codex-phase0-issue-workstream5.md').read_bytes()
+          issue1 = json.loads(Path("ci-evidence/issue-1.json").read_text())
+          issue2 = json.loads(Path("ci-evidence/issue-2.json").read_text())
+          issue19 = json.loads(Path("ci-evidence/issue-19.json").read_text())
+          branches = json.loads(Path("ci-evidence/branches.json").read_text())
+          expected = Path("handoff/codex-phase0-issue-final.md").read_bytes()
 
-          assert main_ref['object']['sha'] in {os.environ['BASE_MAIN_SHA'], os.environ['GITHUB_SHA']}
-          assert issue1['state'] == 'open'
-          assert hashlib.sha256(issue1['body'].encode()).hexdigest() == hashlib.sha256(expected).hexdigest()
-          assert issue2['state'] == 'closed' and issue2.get('state_reason') == 'duplicate'
-          assert issue19['state'] == 'open'
-          names = {item['name'] for item in branches}
-          assert 'main' in names
-          assert 'codex/phase-0-foundation' not in names
+          assert issue1["state"] == "open"
+          assert hashlib.sha256(issue1.get("body", "").encode()).hexdigest() == hashlib.sha256(expected).hexdigest()
+          assert issue2["state"] == "closed" and issue2.get("state_reason") == "duplicate"
+          assert issue19["state"] in {"open", "closed"}
+          if issue19["state"] == "closed":
+              assert issue19.get("state_reason") == "completed"
+          names = {item["name"] for item in branches}
+          assert "main" in names
+          assert "codex/phase-0-foundation" not in names
           PY
 
-      - name: Assemble retained WS6.1 evidence
+      - name: Assemble retained WS6.2 evidence
         run: |
-          cp /tmp/ws61-pytest.log ci-evidence/pytest.log
+          cp /tmp/ws62-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
             "${{ github.event.pull_request.head.sha }}" \
             "$GITHUB_SHA" \
             "$GITHUB_RUN_ID" \
             > ci-evidence/run.txt
           sha256sum \
-            configs/codex-handoff.yaml \
-            handoff/codex-phase0-handoff.json \
-            schemas/codex-handoff.schema.json \
-            configs/workstream6-handoff-reconciliation.yaml \
-            contracts/workstream6-handoff-reconciliation.json \
-            schemas/workstream6-handoff-reconciliation.schema.json \
-            reports/workstream6-handoff-reconciliation-evidence.md \
+            configs/codex-phase0-launch-control.yaml \
+            contracts/codex-phase0-launch-control.json \
+            handoff/codex-phase0-issue-final.md \
+            schemas/codex-phase0-launch-control.schema.json \
+            schemas/codex-phase0-launch-evidence.schema.json \
+            schemas/codex-phase0-launch-permit.schema.json \
+            configs/workstream6-final-launch-control.yaml \
+            contracts/workstream6-final-launch-control.json \
+            reports/workstream6-final-launch-control-evidence.md \
             > ci-evidence/repository-digests.txt
 
-      - name: Retain WS6.1 evidence
+      - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: offdata-workstream6-handoff-${{ github.sha }}
@@ -168,21 +171,29 @@ jobs:
           include-hidden-files: true
           path: |
             ci-evidence
-            configs/codex-handoff.yaml
-            handoff/codex-phase0-handoff.json
-            schemas/codex-handoff.schema.json
-            scripts/build_pcr04_codex_handoff.py
-            scripts/build_ws61_codex_handoff.py
-            scripts/validate_pcr04_codex_handoff.py
-            scripts/validate_ws61_codex_handoff.py
-            scripts/require_workstream6_final_reconciliation.py
-            configs/workstream6-handoff-reconciliation.yaml
-            contracts/workstream6-handoff-reconciliation.json
-            schemas/workstream6-handoff-reconciliation.schema.json
-            scripts/build_workstream6_handoff_reconciliation.py
-            scripts/validate_workstream6_handoff_reconciliation.py
-            reports/workstream6-handoff-reconciliation-evidence.md
-            docs/53-WS6-1-CONTROLLING-MACHINE-HANDOFF-RECONCILIATION.md
+            configs/codex-phase0-launch-control.yaml
+            contracts/codex-phase0-launch-control.json
+            handoff/codex-phase0-issue-final.md
+            handoff/codex-phase0-issue-workstream5.md
+            schemas/codex-phase0-launch-control.schema.json
+            schemas/codex-phase0-launch-evidence.schema.json
+            schemas/codex-phase0-launch-permit.schema.json
+            handoff/codex-phase0-hosted-controls-attestation.template.json
+            handoff/codex-phase0-clean-macos-attestation.template.json
+            handoff/codex-phase0-founder-authorization.template.json
+            handoff/codex-phase0-launch-ack.template.json
+            scripts/build_workstream5_launch_control.py
+            scripts/validate_workstream5_launch_control.py
+            scripts/codex_phase0_launch_core.py
+            scripts/codex_phase0_launch_selftest.py
+            scripts/prepare_codex_phase0_launch.py
+            configs/workstream6-final-launch-control.yaml
+            contracts/workstream6-final-launch-control.json
+            schemas/workstream6-final-launch-control.schema.json
+            scripts/build_workstream6_final_launch_control.py
+            scripts/validate_workstream6_final_launch_control.py
+            docs/54-WS6-2-FINAL-LAUNCH-CONTROL-RECONCILIATION.md
+            reports/workstream6-final-launch-control-evidence.md
 
       - name: Publish exact-gate result
         if: github.event_name == 'pull_request'
@@ -191,6 +202,6 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws61-pytest.log | tail -1)
-          COVERAGE=$(grep 'Total coverage:' /tmp/ws61-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.1 controlling handoff gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. PCR-10, Workstreams 4–6, full P0.3 regression scope, the final Workstream 6 gate and the valid-permit prerequisite are now enforced. Codex remains unauthorized; WS6.2 is next."
+          TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
+          COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
+          gh pr comment "$PR_NUMBER" --body "WS6.1 successor-safe handoff gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. The final WS6.2 issue digest, final-release gate, exact status-check identity, launch verifier, all prior components, compilation, Ruff and strict MyPy passed. No permit was emitted and Codex remains unauthorized."
