@@ -1,6 +1,7 @@
 name: Workstream 6 final launch control reconciliation
 
 on:
+  workflow_call:
   push:
     branches: [main]
   pull_request:
@@ -39,74 +40,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild every governed record through WS6.2
-        run: |
-          python scripts/build_test_registry.py
-          python scripts/build_pcr02_test_identity.py
-          python scripts/export_machine_contracts.py
-          python scripts/build_phase3_oracle.py
-          python scripts/build_phase4_deliverable_semantic_model.py
-          python scripts/build_phase5_fixture_programme.py
-          python scripts/build_phase6_knowledge_intelligence.py
-          python scripts/build_phase7_security_regionalisation.py
-          python scripts/build_pcr01_canonical_release.py
-          python scripts/build_pcr03_repository_hygiene.py
-          python scripts/build_pcr05_runtime_adapters.py
-          python scripts/build_pcr06_hermes_compatibility.py
-          python scripts/build_pcr07_northstar_blueprint.py
-          python scripts/build_pcr08_initial_operating_controls.py
-          python scripts/build_pcr09_codex_issue.py
-          python scripts/build_workstream6_handoff_reconciliation.py
-          python scripts/build_pcr04_codex_handoff.py
-          python scripts/build_pcr10_pre_codex_readiness.py
-          python scripts/build_workstream4_readiness.py
-          python scripts/build_workstream5_launch_control.py
-          python scripts/build_workstream6_final_reconciliation.py
-          python scripts/build_workstream6_final_launch_control.py
-
-      - name: Enforce clean deterministic generation
-        run: git diff --exit-code
-
-      - name: Validate every prior component and WS6.2
-        run: |
-          python scripts/validate_phase1_contracts.py
-          python scripts/validate_phase2_agents.py
-          python scripts/validate_phase3_ai_audit_oracle.py
-          python scripts/validate_phase4_deliverable_semantic_model.py
-          python scripts/validate_phase5_fixture_programme.py
-          python scripts/validate_phase6_knowledge_intelligence.py
-          python scripts/validate_phase7_security_regionalisation.py
-          python scripts/validate_pcr01_canonical_release.py
-          python scripts/validate_pcr02_referential_integrity.py
-          python scripts/validate_pcr03_repository_hygiene.py
-          python scripts/validate_pcr05_runtime_adapters.py
-          python scripts/validate_pcr06_hermes_compatibility.py
-          python scripts/validate_pcr07_northstar_blueprint.py
-          python scripts/validate_pcr08_initial_operating_controls.py
-          python scripts/validate_pcr09_codex_issue.py
-          python scripts/validate_pcr04_codex_handoff.py
-          python scripts/validate_pcr10_pre_codex_readiness.py
-          python scripts/validate_workstream4_readiness.py
-          python scripts/validate_workstream5_launch_control.py
-          python scripts/validate_workstream6_final_reconciliation.py
-          python scripts/validate_workstream6_handoff_reconciliation.py
-          python scripts/validate_workstream6_final_launch_control.py
-          python scripts/prepare_codex_phase0_launch.py --self-test
-          python scripts/require_workstream6_final_reconciliation.py --self-test
-
-      - name: Run deterministic runtime and coverage suite
-        working-directory: packages/offdata-core
-        run: pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90 | tee /tmp/ws62-pytest.log
-
-      - name: Compile Python sources
-        run: python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
-
-      - name: Enforce Ruff baseline
-        run: ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests scripts
-
-      - name: Enforce strict MyPy baseline
-        working-directory: packages/offdata-core
-        run: mypy src
+      - name: Rebuild, validate and test through WS6.2
+        run: bash scripts/run_ws62_ci.sh
 
       - name: Verify exact WS6.1 ancestry and live fail-closed state
         env:
@@ -115,11 +50,11 @@ jobs:
         run: |
           mkdir -p ci-evidence
           git merge-base --is-ancestor "$BASE_MAIN_SHA" "$GITHUB_SHA"
-          gh api "repos/${{ GITHUB_REPOSITORY }}/git/ref/heads/main" > ci-evidence/main-ref.json
-          gh api "repos/${{ GITHUB_REPOSITORY }}/issues/1" > ci-evidence/issue-1.json
-          gh api "repos/${{ GITHUB_REPOSITORY }}/issues/2" > ci-evidence/issue-2.json
-          gh api "repos/${{ GITHUB_REPOSITORY }}/issues/19" > ci-evidence/issue-19.json
-          gh api "repos/${{ GITHUB_REPOSITORY }}/branches?per_page=100" > ci-evidence/branches.json
+          gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
+          gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
+          gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
+          gh api "repos/${GITHUB_REPOSITORY}/issues/19" > ci-evidence/issue-19.json
+          gh api "repos/${GITHUB_REPOSITORY}/branches?per_page=100" > ci-evidence/branches.json
           python - <<'PY'
           import hashlib
           import json
@@ -182,6 +117,7 @@ jobs:
             handoff/codex-phase0-clean-macos-attestation.template.json
             handoff/codex-phase0-founder-authorization.template.json
             handoff/codex-phase0-launch-ack.template.json
+            scripts/run_ws62_ci.sh
             scripts/build_workstream5_launch_control.py
             scripts/validate_workstream5_launch_control.py
             scripts/codex_phase0_launch_core.py
