@@ -136,18 +136,9 @@ def semantic_failures(
         if not isinstance(item, dict):
             failures.append("every defect must be an object")
             continue
-        for field in (
-            "title",
-            "evidence",
-            "affected_authority",
-            "repair_files",
-            "validation",
-            "rollback",
-            "owner",
-            "target_work_package",
-        ):
+        for field in ("id", "severity", "kind", "target_work_package"):
             if not item.get(field):
-                failures.append(f"{item.get('id')} is missing {field}")
+                failures.append(f"compact defect entry is missing {field}")
         if item.get("status") != "open":
             failures.append(f"{item.get('id')} must remain open at WS6.0")
 
@@ -193,6 +184,20 @@ def semantic_failures(
                 failures.append(f"required WS6.0 file is missing: {path.relative_to(ROOT)}")
         if not failures:
             builder = _builder()
+            source = builder._load_source()
+            for item in source["defects"]:
+                for field in (
+                    "title",
+                    "evidence",
+                    "affected_authority",
+                    "repair_files",
+                    "validation",
+                    "rollback",
+                    "owner",
+                    "target_work_package",
+                ):
+                    if not item.get(field):
+                        failures.append(f"{item.get('id')} source is missing {field}")
             expected_contract, expected_report, expected_release = builder.build_records()
             if contract != expected_contract:
                 failures.append("generated Workstream 6 contract is stale")
