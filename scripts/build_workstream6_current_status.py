@@ -24,8 +24,9 @@ def _canonical(value: object) -> str:
     return json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
-def _digest(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def _git_blob_sha(path: Path) -> str:
+    data = path.read_bytes()
+    return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
 
 
 def build_records() -> tuple[dict[str, Any], str]:
@@ -33,22 +34,20 @@ def build_records() -> tuple[dict[str, Any], str]:
     if source.get("work_package_id") != "WS6.3":
         raise ValueError("source must describe WS6.3")
     files = source.get("current_authority_files", [])
+    fingerprints = source.get("document_fingerprints", {})
     if not isinstance(files, list) or len(files) != 6:
         raise ValueError("WS6.3 must govern exactly six current authority surfaces")
-    evidence: list[dict[str, Any]] = []
+    if set(files) != set(fingerprints):
+        raise ValueError("document fingerprint keys must match current authority files")
+    evidence: list[dict[str, str]] = []
     for relative in files:
         path = ROOT / relative
         if not path.is_file():
             raise ValueError(f"missing current authority file: {relative}")
-        text = path.read_text(encoding="utf-8")
-        evidence.append(
-            {
-                "path": relative,
-                "sha256": _digest(path),
-                "byte_count": len(path.read_bytes()),
-                "line_count": len(text.splitlines()),
-            }
-        )
+        actual = _git_blob_sha(path)
+        if actual != fingerprints[relative]:
+            raise ValueError(f"current authority fingerprint drift: {relative}")
+        evidence.append({"path": relative, "git_blob_sha": actual})
     boundaries = source["boundaries"]
     if boundaries.get("founder_accountability_preserved") is not True:
         raise ValueError("Founder accountability must be preserved")
@@ -77,9 +76,9 @@ def build_records() -> tuple[dict[str, Any], str]:
             "- Final release, hosted controls, branch cleanup, clean macOS, Founder approval and permit remain pending.",
             "- `codex_start_authorized=false`; implementation, merge and Phase 1 remain unauthorized.",
             "",
-            "## Document digests",
+            "## Document fingerprints",
             "",
-            *[f"- `{item['path']}` — `{item['sha256']}`" for item in evidence],
+            *[f"- `{item['path']}` — `{item['git_blob_sha']}`" for item in evidence],
             "",
             "Next permitted work package: `WS6.4`.",
             "",
