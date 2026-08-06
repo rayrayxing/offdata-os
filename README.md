@@ -46,6 +46,10 @@ Codex may not begin merely because repository validation passes. Every one of th
 
 Create `codex/phase-0-foundation` only after that permit exists and only from its approved SHA. The first commit must contain the governed launch acknowledgement. The pull request must remain draft; merge and Phase 1 remain unauthorised.
 
+## Retained runtime boundary
+
+The provider-independent runtime contract remains `contracts/runtime-adapter-contracts.json` and must pass `scripts/validate_pcr05_runtime_adapters.py` in every complete gate. Contract existence never activates a runtime: `runtime_activation_authorized=false`.
+
 ## Product objective
 
 offdata should support the full consulting lifecycle from qualified opportunity and mandate intake through framing, research, analysis, recommendation, deliverable production, implementation and benefits verification. It should also support controlled origination, CRM continuity, methodology scouting and continuous quality improvement.
