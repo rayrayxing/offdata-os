@@ -1,0 +1,151 @@
+schema_version: 1.0.0
+workstream_id: WORKSTREAM-4
+title: Hosted controls, evidence and environment readiness
+repository: rayrayxing/offdata-os
+canonical_branch: main
+baseline_main_sha: 617e4fe59a9f712d75da29f88508819c0296fc84
+status: repository_preparation_complete_manual_attestations_pending
+
+canonical_authority:
+  controlling_instruction: AGENTS.md
+  final_pre_codex_contract: contracts/pre-codex-readiness.json
+  canonical_issue: 1
+  hosted_controls_issue: 19
+  duplicate_issue: 2
+
+node24_action_pins:
+  checkout:
+    repository: actions/checkout
+    version: v7.0.1
+    sha: 3d3c42e5aac5ba805825da76410c181273ba90b1
+    runtime: node24
+  setup_python:
+    repository: actions/setup-python
+    version: v7.0.0
+    sha: 5fda3b95a4ea91299a34e894583c3862153e4b97
+    runtime: node24
+  upload_artifact:
+    repository: actions/upload-artifact
+    version: v7.0.1
+    sha: 043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+    runtime: node24
+
+required_status_check:
+  workflow_file: .github/workflows/pcr10-pre-codex-readiness.yml
+  workflow_name: PCR-10 pre-Codex readiness and quality acceptance
+  job_name: Validate complete chat-first Phase 1–7 and PCR-01–10 release
+
+machine_verified_repository_state:
+  repository_admin_access: true
+  repository_private: true
+  default_branch_is_main: true
+  pcr03_through_pcr10_integrated: true
+  final_main_tree_matches_tested_merge_reference: true
+  canonical_issue_1_open_and_synchronized: true
+  issue_2_closed_as_duplicate: true
+  final_release_workflows_green: true
+  durable_release_manifest_committed: true
+  node24_exact_pins_committed: true
+  clean_macos_doctor_committed: true
+
+hosted_controls_manual_attestations:
+  github_mfa_enabled: false
+  pull_request_required_for_main: false
+  final_status_check_required_for_main: false
+  stale_approvals_dismissed: false
+  review_conversation_resolution_required: false
+  force_push_to_main_blocked: false
+  main_branch_deletion_blocked: false
+  merged_head_branches_auto_deleted: false
+
+branch_cleanup:
+  deletion_policy: exact_allowlist_only
+  verify_merged_ancestry_before_deletion: true
+  merged_or_obsolete_branches:
+    - agent/phase2-first-agent-system
+    - ci/phase1-contract-validation-20260804
+    - deliverable/phase4-semantic-model
+    - fix/phase1-policy-typing
+    - fix/phase1-policy-typing-2
+    - fixtures/phase5-additional-engagements
+    - fixtures/phase5-engagement-suite
+    - fixtures/phase5-strategy-cost
+    - governance/pcr01-canonical-release
+    - governance/pcr02-test-identity
+    - governance/pcr03-repository-hygiene
+    - governance/pcr04-codex-handoff
+    - governance/pcr05-runtime-adapters
+    - governance/pcr06-hermes-compatibility
+    - governance/pcr07-northstar-integration
+    - governance/pcr08-initial-operating-controls
+    - governance/pcr09-first-codex-issue-clean
+    - governance/pcr10-integration-reconciliation
+    - governance/pcr10-pre-codex-readiness
+    - knowledge/phase6-ingestion-intelligence
+    - oracle/phase3-ai-audit
+    - security/phase7-regionalisation
+  explicitly_superseded_branches:
+    - branch: governance/pcr06-hermes-adoption
+      reason: superseded_by_governance_pcr06_hermes_compatibility
+    - branch: governance/pcr09-first-codex-issue
+      reason: defective_pcr09_audit_history_superseded_by_clean_replacement
+  superseded_dependabot_branches:
+    - dependabot/github_actions/actions/checkout-7.0.1
+    - dependabot/github_actions/actions/setup-python-7.0.0
+    - dependabot/github_actions/actions/upload-artifact-7.0.1
+
+release_evidence:
+  release_id: CHAT-FIRST-PRE-CODEX-2026-08-06
+  integration_pr: 32
+  tested_merge_reference: 6abc4785422e878c160aeb33065e98967c0e3b89
+  integrated_main_sha: 617e4fe59a9f712d75da29f88508819c0296fc84
+  pcr10_run_id: 31069304377
+  pcr10_job_id: 92513690720
+  pcr10_artifact_id: 8955036460
+  pcr10_artifact_sha256: 9e5425bae029a7a383632767b213e3a1114fb88e44d4c634e5261bf94e322511
+  complete_release_run_id: 31069304330
+  complete_release_artifact_id: 8955039054
+  complete_release_artifact_sha256: 64c6a71c7bbb961c689cdf89a7a9c0ed2c8a670f5c9e29f44d5f28b3306452bd
+  issue_1_body_sha256: 01871803444487ef3e808f155a85cc13ac6fc2350eb11a401e6b5c14fc4a79ad
+  runtime_tests_passed: 247
+  coverage_percent: 93.14
+  executable_test_nodes: 245
+  semantic_tests: 99
+  reference_edges: 604
+  unresolved_references: 0
+
+clean_macos_environment:
+  doctor_path: scripts/doctor_pre_codex_macos.py
+  required_os: macOS
+  preferred_architecture: arm64
+  clean_clone_required: true
+  no_real_client_data_required: true
+  no_credentials_in_repository_required: true
+  no_paid_services_required: true
+  machine_report_attached: false
+  founder_environment_attestation_received: false
+  clean_macos_environment_verified: false
+
+readiness:
+  repository_side_preparation_complete: true
+  hosted_controls_verified: false
+  branch_cleanup_complete: false
+  permanent_release_evidence_complete: true
+  clean_macos_environment_verified: false
+  explicit_founder_phase_0_approval_received: false
+  workstream_4_complete: false
+  codex_start_authorized: false
+  next_permitted_phase_after_all_gates: Codex Phase 0 only
+
+boundaries:
+  phase1_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  northstar_implementation_authorized: false
+  initial_operating_controls_activation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
+  founder_accountability_preserved: true
