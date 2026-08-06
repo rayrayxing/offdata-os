@@ -42,6 +42,8 @@ The Workstream 4 check `Validate complete chat-first Phase 1–7 and PCR-01–10
 6. rejects predecessor aliases, duplicate identities, early automatic activation, early hosted enforcement, and authorization drift;
 7. runs after every required prior builder and validator in the complete gate.
 
+PR #43 is the clean automatic-CI retry for the same WS6.6 package after GitHub Actions infrastructure failures prevented the original matrix from reaching complete terminal results.
+
 ## Completion boundary
 
 WS6.6 closes only `WS6-CONSIST-003`. `WS6-BLOCK-006` remains open. Final reconciliation, hosted controls, branch cleanup, clean macOS, exact-SHA Founder approval, permit issuance, IMP-P0 implementation, merge and IMP-P1 remain unauthorized.
