@@ -4,7 +4,7 @@
 
 - Base main: `a3fb3ea21029f01c52bc8e871dd7bcb284a31f7c`
 - Controlling launch contract: `contracts/codex-phase0-launch-control.json`
-- Launch-contract SHA-256: `fa5bee7c64182344545cd9ddd51d6bafc4d0040ae717f559f0879b3a19ac99de`
+- Launch-contract SHA-256: `5cb4e6bcf6028cba125b6f0a9cd991cd6d136f89bed33f9c394d34e956dbd344`
 - Final canonical issue: `handoff/codex-phase0-issue-final.md`
 - Final issue SHA-256: `7adf6dd64b1e597bf349be3c4b54bebf58e0d8141a5ece499ed6571c8dd7ff92`
 - Historical Workstream 5 issue SHA-256: `9f5bff38d973405be03d5b78e4ceb29280e77e1fd89a972c9d3fbb9e43df2791`
