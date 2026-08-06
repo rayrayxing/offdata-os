@@ -21,7 +21,7 @@ document_fingerprints:
   docs/00-START-HERE.md: db1a83ef62c08b533ec6f37a6efe7b07b386189f
   docs/14-CODEX-KICKOFF.md: e7dff27a6c18dcbdab094ba4ff2d1191354c263a
   docs/19-PHASE-0-VALIDATION-ADDENDUM.md: f234705e94ad2267ea932efeae14ae4bbb89d496
-  docs/20-DEVELOPMENT-STATUS.md: fd1a0ccd72423c32ac286bd4a4a07cb332a2ca5c
+  docs/20-DEVELOPMENT-STATUS.md: 6e8375a2ed3d2a7288bb2ee7fb86c458f9bff2f9
   handoff/codex-phase0-hosted-controls-issue-final.md: d572e54bd6519ccd86160d4fb421d12f5c71eb0d
 required_common_tokens:
 - codex_start_authorized=false

@@ -20,7 +20,7 @@
 - `docs/11-BUILD-BACKLOG.md` — `4c6005535bf0d4233bea39e36553d49f72d53202` (10360 bytes)
 - `docs/14-CODEX-KICKOFF.md` — `e7dff27a6c18dcbdab094ba4ff2d1191354c263a` (6221 bytes)
 - `docs/19-PHASE-0-VALIDATION-ADDENDUM.md` — `f234705e94ad2267ea932efeae14ae4bbb89d496` (5867 bytes)
-- `docs/20-DEVELOPMENT-STATUS.md` — `fd1a0ccd72423c32ac286bd4a4a07cb332a2ca5c` (8129 bytes)
+- `docs/20-DEVELOPMENT-STATUS.md` — `6e8375a2ed3d2a7288bb2ee7fb86c458f9bff2f9` (8128 bytes)
 - `handoff/codex-phase0-issue-final.md` — `893079d861cde6d4a771728d27faadd3dfc5850c` (12275 bytes)
 - `handoff/codex-phase0-hosted-controls-issue-final.md` — `d572e54bd6519ccd86160d4fb421d12f5c71eb0d` (7103 bytes)
 - `docs/57-WS6-5-PHASE-NAMESPACE-NORMALIZATION.md` — `aa0c80e15be1c381b735a9f096c104f1567dd418` (3376 bytes)
