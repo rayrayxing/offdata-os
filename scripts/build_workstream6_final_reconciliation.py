@@ -1,0 +1,210 @@
+from __future__ import annotations
+
+import json
+from collections import Counter
+from pathlib import Path
+from typing import Any
+
+import yaml
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE_PATH = ROOT / "configs" / "workstream6-final-reconciliation.yaml"
+CONTRACT_PATH = ROOT / "contracts" / "workstream6-final-reconciliation.json"
+REPORT_PATH = ROOT / "reports" / "workstream6-initial-defect-register.md"
+RELEASE_PATH = ROOT / "releases" / "workstream6-baseline-lock-2026-08-06.json"
+
+
+def _load_yaml(path: Path) -> dict[str, Any]:
+    value = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ValueError(f"{path} must contain a YAML mapping")
+    return value
+
+
+def _canonical_json(value: object) -> str:
+    return json.dumps(
+        value,
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ) + "\n"
+
+
+def _count(items: list[dict[str, Any]], field: str) -> dict[str, int]:
+    return dict(sorted(Counter(str(item[field]) for item in items).items()))
+
+
+def _validate_source(source: dict[str, Any]) -> None:
+    if source.get("work_package_id") != "WS6.0":
+        raise ValueError("source must describe WS6.0")
+    if source.get("baseline", {}).get("main_sha") != (
+        "ad24030200e421016066e7039e202ff9f0c5398d"
+    ):
+        raise ValueError("baseline main SHA must be the Workstream 5 merge")
+    defects = source.get("defects")
+    if not isinstance(defects, list) or not defects:
+        raise ValueError("defect register must be non-empty")
+    identifiers = [item.get("id") for item in defects if isinstance(item, dict)]
+    if len(identifiers) != len(set(identifiers)):
+        raise ValueError("defect identifiers must be unique")
+    if any(item.get("status") != "open" for item in defects):
+        raise ValueError("WS6.0 must not pre-close defects")
+    blockers = [item for item in defects if item.get("severity") == "blocking"]
+    if len(blockers) != 6:
+        raise ValueError("the initial register must contain six blocking defects")
+    checks = source.get("prior_component_checks", {})
+    if not isinstance(checks, dict) or not checks or not all(checks.values()):
+        raise ValueError("every prior repository component check must be true")
+    manual = source.get("manual_gates", {})
+    if not isinstance(manual, dict) or any(manual.values()):
+        raise ValueError("manual launch gates must remain false")
+    boundaries = source.get("boundaries", {})
+    if boundaries.get("founder_accountability_preserved") is not True:
+        raise ValueError("Founder accountability must be preserved")
+    for key, value in boundaries.items():
+        if key != "founder_accountability_preserved" and value is not False:
+            raise ValueError(f"boundary {key} must remain false")
+
+
+def _load_source() -> dict[str, Any]:
+    source = _load_yaml(SOURCE_PATH)
+    defect_paths = source.get("defect_sources", [])
+    if not isinstance(defect_paths, list) or not defect_paths:
+        raise ValueError("defect_sources must list the governed defect fragments")
+    defects: list[dict[str, Any]] = []
+    for relative in defect_paths:
+        value = yaml.safe_load((ROOT / relative).read_text(encoding="utf-8"))
+        if not isinstance(value, list) or not all(
+            isinstance(item, dict) for item in value
+        ):
+            raise ValueError(f"{relative} must contain a list of defect mappings")
+        defects.extend(value)
+    source["defects"] = defects
+    return source
+
+
+def build_records() -> tuple[dict[str, Any], str, dict[str, Any]]:
+    source = _load_source()
+    _validate_source(source)
+    defects = source["defects"]
+    contract = dict(source)
+    contract["defects"] = [
+        {
+            "id": item["id"],
+            "severity": item["severity"],
+            "kind": item["kind"],
+            "target_work_package": item["target_work_package"],
+            "status": item["status"],
+        }
+        for item in defects
+    ]
+    contract["generated_from"] = str(SOURCE_PATH.relative_to(ROOT))
+    contract["generated_from_fragments"] = source["defect_sources"]
+    contract["status"] = "baseline_locked_repairs_pending"
+    contract["defect_summary"] = {
+        "total": len(defects),
+        "by_severity": _count(defects, "severity"),
+        "by_kind": _count(defects, "kind"),
+        "by_status": _count(defects, "status"),
+        "by_work_package": _count(defects, "target_work_package"),
+    }
+    contract["prior_component_summary"] = {
+        "total": len(source["prior_components"]),
+        "complete_integrated": sum(
+            item["state"] == "complete_integrated"
+            for item in source["prior_components"]
+        ),
+        "repository_complete_manual_gates_pending": sum(
+            item["state"] == "repository_complete_manual_gates_pending"
+            for item in source["prior_components"]
+        ),
+        "all_required": all(item["required"] for item in source["prior_components"]),
+    }
+    contract["durable_release"] = {
+        "release_id": "WORKSTREAM6-BASELINE-LOCK-2026-08-06",
+        "path": str(RELEASE_PATH.relative_to(ROOT)),
+    }
+
+    report_lines = [
+        "# Workstream 6 initial defect register",
+        "",
+        "<!-- Generated by scripts/build_workstream6_final_reconciliation.py. -->",
+        "",
+        "## Locked baseline",
+        "",
+        f"- Repository: `{source['repository']}`",
+        f"- Canonical branch: `{source['canonical_branch']}`",
+        f"- Main SHA: `{source['baseline']['main_sha']}`",
+        f"- Captured: `{source['baseline']['captured_at']}`",
+        (
+            "- Workstream 5 evidence: "
+            f"PR #{source['baseline']['workstream5_pr']}, "
+            f"run `{source['baseline']['workstream5_run_id']}`, "
+            f"{source['baseline']['runtime_tests_passed']} tests, "
+            f"{source['baseline']['coverage_percent']:.2f}% coverage."
+        ),
+        (
+            "- Authorization: `codex_start_authorized=false`; "
+            "all hosted, environment, Founder and permit gates remain false."
+        ),
+        "",
+        "## Summary",
+        "",
+        f"- Total entries: {len(defects)}",
+        f"- Blocking: {contract['defect_summary']['by_severity'].get('blocking', 0)}",
+        f"- Important: {contract['defect_summary']['by_severity'].get('important', 0)}",
+        f"- Planned scope: {contract['defect_summary']['by_severity'].get('planned', 0)}",
+        "",
+        "## Register",
+        "",
+        "| ID | Severity | Kind | Target | Status | Title |",
+        "|---|---|---|---|---|---|",
+    ]
+    for item in defects:
+        report_lines.append(
+            "| {id} | {severity} | {kind} | {target_work_package} | "
+            "{status} | {title} |".format(**item)
+        )
+    report_lines.extend(
+        [
+            "",
+            "## Completion boundary",
+            "",
+            "WS6.0 locks evidence and registers work; it repairs none of the "
+            "listed defects and authorizes no Codex implementation.",
+            "",
+            f"Next permitted work package: "
+            f"`{source['completion_rule']['next_permitted_work_package']}`.",
+            "",
+        ]
+    )
+    report = "\n".join(report_lines)
+
+    release = {
+        "schema_version": source["schema_version"],
+        "release_id": "WORKSTREAM6-BASELINE-LOCK-2026-08-06",
+        "release_class": "permanent_workstream_baseline",
+        "repository": source["repository"],
+        "canonical_branch": source["canonical_branch"],
+        "baseline": source["baseline"],
+        "authority": source["authority"],
+        "defect_summary": contract["defect_summary"],
+        "prior_component_summary": contract["prior_component_summary"],
+        "manual_gates": source["manual_gates"],
+        "boundaries": source["boundaries"],
+        "next_permitted_work_package": source["completion_rule"][
+            "next_permitted_work_package"
+        ],
+    }
+    return contract, report, release
+
+
+def main() -> None:
+    contract, report, release = build_records()
+    CONTRACT_PATH.write_text(_canonical_json(contract), encoding="utf-8")
+    REPORT_PATH.write_text(report, encoding="utf-8")
+    RELEASE_PATH.write_text(_canonical_json(release), encoding="utf-8")
+
+
+if __name__ == "__main__":
+    main()
