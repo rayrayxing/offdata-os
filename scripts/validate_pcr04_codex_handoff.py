@@ -25,6 +25,7 @@ EXPECTED_ACTIVATION_CONDITIONS = {
     "pcr06_merged_to_main",
     "pcr07_merged_to_main",
     "pcr08_merged_to_main",
+    "pcr09_merged_to_main",
     "github_hosted_controls_in_issue_19_verified",
     "explicit_founder_phase_0_approval_received",
     "clean_macos_environment_available",
@@ -40,6 +41,8 @@ REQUIRED_DOCUMENT_TOKENS = {
     "contracts/northstar-integration-blueprint.json",
     "scripts/validate_pcr08_initial_operating_controls.py",
     "contracts/initial-operating-controls.json",
+    "scripts/validate_pcr09_codex_issue.py",
+    "contracts/codex-phase0-issue.json",
     "codex/phase-0-foundation",
 }
 ROOT_PYTEST_COMMAND = (
@@ -275,6 +278,8 @@ def semantic_failures(
                 failures.append("PCR-07 validation command is missing")
             if "python scripts/validate_pcr08_initial_operating_controls.py" not in commands:
                 failures.append("PCR-08 validation command is missing")
+            if "python scripts/validate_pcr09_codex_issue.py" not in commands:
+                failures.append("PCR-09 validation command is missing")
             if ROOT_PYTEST_COMMAND not in commands:
                 failures.append("root-executable package test command is missing")
             if ROOT_MYPY_COMMAND not in commands:
@@ -380,6 +385,16 @@ def _run_mutation_cases(handoff: dict[str, Any]) -> int:
         "python scripts/validate_pcr08_initial_operating_controls.py"
     )
     mutations.append(pcr08_command_mutation)
+
+    pcr09_command_mutation = copy.deepcopy(handoff)
+    pcr09_command_mutation["execution"]["required_commands"].remove(
+        "python scripts/validate_pcr09_codex_issue.py"
+    )
+    mutations.append(pcr09_command_mutation)
+
+    pcr09_activation_mutation = copy.deepcopy(handoff)
+    pcr09_activation_mutation["activation_conditions"].remove("pcr09_merged_to_main")
+    mutations.append(pcr09_activation_mutation)
 
     for index, mutation in enumerate(mutations, start=1):
         if not semantic_failures(mutation, check_paths=False):

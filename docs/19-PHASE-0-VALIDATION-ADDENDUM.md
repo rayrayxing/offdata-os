@@ -91,3 +91,12 @@ PCR-04 adds a deterministic handoff validator and mutation checks. PCR-05 adds t
 ## Phase boundary
 
 Phase 0 creates the controlled project foundation only. It must not begin knowledge-ingestion implementation, product workflows, production infrastructure, real-client processing, external integrations or Phase 1 work.
+
+## PCR-09 first Codex issue contract
+
+Before Phase 0 can be authorised, the generated first-issue contract must remain current and pass its dedicated validator:
+
+- `contracts/codex-phase0-issue.json`
+- `scripts/validate_pcr09_codex_issue.py`
+
+Preparing or validating this contract does not authorise Codex to start.

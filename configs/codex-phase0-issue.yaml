@@ -1,0 +1,80 @@
+schema_version: 1
+phase_id: PCR-09
+title: First Codex issue rewrite
+contract_id: CODEX-PHASE0-ISSUE-2026-08-05
+repository: rayrayxing/offdata-os
+canonical_branch: main
+status: canonical_issue_prepared
+target_issue:
+  number: 1
+  original_title: "Phase 0 — Build the controlled local foundation"
+  original_body_sha256: d594f985cb37280d696e9273fb98cb3cab83efd468d463b482e86fd105093225
+  rewritten_title: "Codex Phase 0 — Validate and build the controlled local foundation"
+  canonical_body_path: handoff/codex-phase0-issue.md
+  machine_contract_path: contracts/codex-phase0-issue.json
+  preserve_assignees: true
+  preserve_open_state: true
+supersession:
+  issue_numbers:
+  - 2
+  canonical_issue_number: 1
+  treatment: close_as_duplicate_after_target_rewrite
+  preserve_history: true
+  snapshots:
+  - number: 2
+    title: Validate the chat-built core and complete Phase 0 locally
+    body_sha256: ebd33e84dc15307a51b48247b3c886056b4b6a546243e2121c01d7009ec3d82b
+authority:
+  controlling_instruction: AGENTS.md
+  machine_handoff: handoff/codex-phase0-handoff.json
+  issue_is_execution_summary_not_authority: true
+  conflict_resolution: AGENTS_and_machine_handoff_win
+  founder_explicit_approval_required_to_start: true
+presentation:
+  status_banner: NOT AUTHORISED TO START
+  section_order:
+  - status
+  - authority
+  - activation_gate
+  - objective
+  - required_read_order
+  - preflight
+  - task_graph
+  - required_method
+  - prohibited_actions
+  - stop_conditions
+  - acceptance_evidence
+  - phase_gate
+  - supersession
+  include_activation_checkboxes: true
+  include_exact_required_commands: true
+  include_task_dependencies: true
+  include_completion_report_fields: true
+  include_rollback: true
+  include_supersession_notice: true
+  dynamic_test_counts_prohibited: true
+rewrite_rules:
+  single_canonical_phase0_issue: true
+  historical_comments_are_non_controlling: true
+  no_implicit_activation: true
+  no_phase1_scope: true
+  no_secret_request: true
+  draft_pull_request_only: true
+  merge_by_codex_prohibited: true
+  real_client_data_prohibited: true
+  paid_services_prohibited: true
+  external_actions_prohibited: true
+boundaries:
+  issue_rewrite_is_codex_start: false
+  codex_start_authorized: false
+  phase1_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  northstar_implementation_authorized: false
+  initial_operating_controls_activation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
+  founder_accountability_preserved: true
