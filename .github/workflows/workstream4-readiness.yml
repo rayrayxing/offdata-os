@@ -159,7 +159,8 @@ jobs:
 
   cleanup-merged-branches:
     name: Clean exact allowlisted historical branches
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Disabled during WS6: branch cleanup remains a manual issue #19 gate.
+    if: ${{ false }}
     needs: validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
