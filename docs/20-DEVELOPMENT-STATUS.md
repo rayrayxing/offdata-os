@@ -61,6 +61,10 @@ Validate final pre-Codex canonical handoff and complete release
 
 The completed PCR-05 contract remains `contracts/runtime-adapter-contracts.json`. Every complete gate must run `scripts/validate_pcr05_runtime_adapters.py`; current and future repository status remains `runtime_activation_authorized=false` until a separately governed activation package exists.
 
+## Canonical CF-P1–7 release evidence
+
+The permanent canonical chat-first release remains `releases/canonical-chat-first-phase1-7-release.json`. Its controlling integrated commit is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, with authoritative validation run `30976222896` and retained artifact `8918355687`. These values are historical release identity, not current launch authorization.
+
 ## Verified predecessor baseline
 
 The complete WS6.2 exact merge-reference gate recorded:
