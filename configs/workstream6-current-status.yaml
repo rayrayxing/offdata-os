@@ -14,6 +14,13 @@ current_authority_files:
 - docs/19-PHASE-0-VALIDATION-ADDENDUM.md
 - docs/20-DEVELOPMENT-STATUS.md
 - handoff/codex-phase0-hosted-controls-issue-final.md
+document_fingerprints:
+  README.md: 071bfa1f60ef64ca88a57322faf2075d6e8bd2f7
+  docs/00-START-HERE.md: a4cd7ba7f039b57891ba95ab258b5d90feea7910
+  docs/14-CODEX-KICKOFF.md: fd75e4bd8b68567ad96a6529cd49225a073cc96c
+  docs/19-PHASE-0-VALIDATION-ADDENDUM.md: 7a1eba4f6e96c0cc9576ebcea30af512bf193dd1
+  docs/20-DEVELOPMENT-STATUS.md: b7b95e131e85a7a6018c422312a8a30c266c6544
+  handoff/codex-phase0-hosted-controls-issue-final.md: f5023c0ad10d90c23cd8777e52409b1e36dff6b2
 required_common_tokens:
 - codex_start_authorized=false
 - Validate final pre-Codex canonical handoff and complete release
