@@ -1,0 +1,91 @@
+schema_version: 1.0.0
+workstream_id: WORKSTREAM-6
+work_package_id: WS6.3
+contract_id: WORKSTREAM6-CURRENT-STATUS-RECONCILIATION
+title: WS6.3 current human authority and status repair
+repository: rayrayxing/offdata-os
+canonical_branch: main
+base_main_sha: 1b518253abb187bbc31b1c809ee4f7ca5506f7e8
+canonical_status_phrase: 'Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.'
+current_authority_files:
+- README.md
+- docs/00-START-HERE.md
+- docs/14-CODEX-KICKOFF.md
+- docs/19-PHASE-0-VALIDATION-ADDENDUM.md
+- docs/20-DEVELOPMENT-STATUS.md
+- handoff/codex-phase0-hosted-controls-issue-final.md
+required_common_tokens:
+- codex_start_authorized=false
+- Validate final pre-Codex canonical handoff and complete release
+- releases/pre-codex-final-reconciliation-2026-08-06.json
+- scripts/prepare_codex_phase0_launch.py
+- codex/phase-0-foundation
+required_file_tokens:
+  README.md:
+  - Create `codex/phase-0-foundation` only after that permit exists
+  - handoff/codex-phase0-issue-final.md
+  docs/00-START-HERE.md:
+  - The repository is **pre-Codex**
+  - Create `codex/phase-0-foundation` only after the permit exists
+  docs/14-CODEX-KICKOFF.md:
+  - This file is preparation guidance, not an instruction to start Codex
+  - Permit-gated kickoff prompt
+  docs/19-PHASE-0-VALIDATION-ADDENDUM.md:
+  - Permit-gated branch rule
+  - Create `codex/phase-0-foundation` only after a valid permit exists
+  docs/20-DEVELOPMENT-STATUS.md:
+  - WS6.3 closes `WS6-BLOCK-003` and `WS6-CONSIST-008`
+  - `WS6.4` is the next permitted chat-first work package
+  handoff/codex-phase0-hosted-controls-issue-final.md:
+  - This issue is the authoritative human evidence record
+  - Close this issue as completed only after every hosted-control
+forbidden_patterns:
+- 'through PCR-05'
+- 'ready for Founder review in PR #18'
+- 'stacked implementation in PR #20'
+- 'stacked implementation in PR #21'
+- 'stacked implementation in PR #22'
+- 'stacked implementation in PR #23'
+- 'governance/pcr08-initial-operating-controls'
+- 'Validate Codex Phase 0 launch control and complete prior release'
+- 'Create the branch codex/phase-0-foundation'
+- 'The repository is in **Phase 0'
+- 'PCR-03 through PCR-08 are merged to `main`'
+- 'Complete the governed merge and activation sequence'
+- 'Review the PCR-03 through PCR-08 pull requests in sequence'
+repairs:
+  one_canonical_status_phrase: true
+  obsolete_pr_sequence_removed: true
+  obsolete_status_check_removed: true
+  pre_permit_branch_creation_removed: true
+  current_issue19_body_prepared: true
+  historical_completion_evidence_preserved: true
+closed_defects:
+- WS6-BLOCK-003
+- WS6-CONSIST-008
+remaining_blocking_defects:
+- WS6-BLOCK-006
+completion:
+  all_required_prior_components_pass: true
+  ws63_complete: true
+  final_reconciliation_complete: false
+  all_blocking_defects_closed: false
+  next_permitted_work_package: WS6.4
+boundaries:
+  founder_accountability_preserved: true
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  phase1_authorized: false
+  merge_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  northstar_implementation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  oauth_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
+rollback:
+  before_merge: Close the WS6.3 pull request, restore the five prior documents and issue #19 body, and delete only governance/workstream6-current-status-documents.
+  after_merge: Revert the WS6.3 merge as one unit and restore issue #19 from the last synchronized body while keeping every authorization flag false.
