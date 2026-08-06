@@ -1,0 +1,40 @@
+name: Governance change proposal
+description: Propose a bounded change to repository, authority, data, security, or release governance.
+title: "[Governance] "
+labels: []
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What governance gap or conflict exists?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Identify the exact policy, control, workflow, or record to change.
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Authority and approvals
+      description: State the governing source and Founder approval required.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and affected boundaries
+      description: Cover data, security, rights, costs, external actions, tests, and rollback.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance evidence
+      description: Define deterministic tests, review evidence, and completion criteria.
+    validations:
+      required: true

@@ -1,0 +1,95 @@
+schema_version: 1
+phase_id: PCR-03
+title: Repository and governance hygiene
+canonical_branch: main
+accountable_owner: rayrayxing
+real_client_data_allowed: false
+
+required_files:
+  - path: AGENTS.md
+    digest: false
+  - path: README.md
+    digest: true
+  - path: CONTRIBUTING.md
+    digest: true
+  - path: GOVERNANCE.md
+    digest: true
+  - path: SECURITY.md
+    digest: true
+  - path: .gitignore
+    digest: true
+  - path: .github/CODEOWNERS
+    digest: true
+  - path: .github/pull_request_template.md
+    digest: true
+  - path: .github/ISSUE_TEMPLATE/config.yml
+    digest: true
+  - path: .github/ISSUE_TEMPLATE/bug.yml
+    digest: true
+  - path: .github/ISSUE_TEMPLATE/governance-change.yml
+    digest: true
+  - path: .github/dependabot.yml
+    digest: true
+  - path: .github/workflows/contracts.yml
+    digest: true
+  - path: configs/repository-governance.yaml
+    digest: true
+  - path: scripts/build_pcr03_repository_hygiene.py
+    digest: true
+  - path: scripts/validate_pcr03_repository_hygiene.py
+    digest: true
+  - path: docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md
+    digest: true
+  - path: reports/pcr03-validation-evidence.md
+    digest: false
+
+prohibited_tracked_patterns:
+  - "**/*.egg-info/**"
+  - "**/__pycache__/**"
+  - "**/*.pyc"
+  - "**/*.pyo"
+  - "**/.pytest_cache/**"
+  - "**/.mypy_cache/**"
+  - "**/.ruff_cache/**"
+  - ".DS_Store"
+  - "**/.DS_Store"
+  - ".env"
+  - ".env.*"
+  - "**/*.pem"
+  - "**/*.key"
+  - "**/*.p12"
+  - "**/*.pfx"
+  - "client-data/**"
+  - "restricted/**"
+  - "knowledge/source/private/**"
+  - "reports/test-results/**"
+  - "playwright-report/**"
+  - "test-results/**"
+
+allowed_pattern_exceptions:
+  - ".env.example"
+
+workflow_required_tokens:
+  - "permissions:"
+  - "contents: read"
+  - "pull_request:"
+  - "branches: [main]"
+  - "concurrency:"
+  - "cancel-in-progress: true"
+  - "persist-credentials: false"
+  - "actions/checkout@11d5960a326750d5838078e36cf38b85af677262"
+  - "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065"
+  - "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02"
+  - "include-hidden-files: true"
+  - "python scripts/build_pcr03_repository_hygiene.py"
+  - "python scripts/validate_pcr03_repository_hygiene.py"
+  - "repository/repository-governance-baseline.json"
+
+hosted_settings_required_before_codex:
+  - require_pull_request_for_main
+  - require_complete_validation_workflow
+  - dismiss_stale_approvals
+  - require_conversation_resolution
+  - block_force_push_and_branch_deletion
+  - automatically_delete_merged_head_branches
+  - verify_github_mfa
