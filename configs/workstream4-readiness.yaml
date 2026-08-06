@@ -5,14 +5,12 @@ repository: rayrayxing/offdata-os
 canonical_branch: main
 baseline_main_sha: 617e4fe59a9f712d75da29f88508819c0296fc84
 status: repository_preparation_complete_manual_attestations_pending
-
 canonical_authority:
   controlling_instruction: AGENTS.md
   final_pre_codex_contract: contracts/pre-codex-readiness.json
   canonical_issue: 1
   hosted_controls_issue: 19
   duplicate_issue: 2
-
 node24_action_pins:
   checkout:
     repository: actions/checkout
@@ -29,12 +27,10 @@ node24_action_pins:
     version: v7.0.1
     sha: 043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
     runtime: node24
-
 required_status_check:
   workflow_file: .github/workflows/pcr10-pre-codex-readiness.yml
   workflow_name: PCR-10 pre-Codex readiness and quality acceptance
   job_name: Validate complete chat-first Phase 1–7 and PCR-01–10 release
-
 machine_verified_repository_state:
   repository_admin_access: true
   repository_private: true
@@ -47,7 +43,6 @@ machine_verified_repository_state:
   durable_release_manifest_committed: true
   node24_exact_pins_committed: true
   clean_macos_doctor_committed: true
-
 hosted_controls_manual_attestations:
   github_mfa_enabled: false
   pull_request_required_for_main: false
@@ -57,43 +52,55 @@ hosted_controls_manual_attestations:
   force_push_to_main_blocked: false
   main_branch_deletion_blocked: false
   merged_head_branches_auto_deleted: false
-
 branch_cleanup:
   deletion_policy: exact_allowlist_only
   verify_merged_ancestry_before_deletion: true
   merged_or_obsolete_branches:
-    - agent/phase2-first-agent-system
-    - ci/phase1-contract-validation-20260804
-    - deliverable/phase4-semantic-model
-    - fix/phase1-policy-typing
-    - fix/phase1-policy-typing-2
-    - fixtures/phase5-additional-engagements
-    - fixtures/phase5-engagement-suite
-    - fixtures/phase5-strategy-cost
-    - governance/pcr01-canonical-release
-    - governance/pcr02-test-identity
-    - governance/pcr03-repository-hygiene
-    - governance/pcr04-codex-handoff
-    - governance/pcr05-runtime-adapters
-    - governance/pcr06-hermes-compatibility
-    - governance/pcr07-northstar-integration
-    - governance/pcr08-initial-operating-controls
-    - governance/pcr09-first-codex-issue-clean
-    - governance/pcr10-integration-reconciliation
-    - governance/pcr10-pre-codex-readiness
-    - knowledge/phase6-ingestion-intelligence
-    - oracle/phase3-ai-audit
-    - security/phase7-regionalisation
+  - governance/pcr03-repository-hygiene
+  - governance/pcr04-codex-handoff
+  - governance/pcr05-runtime-adapters
+  - governance/pcr06-hermes-compatibility
+  - governance/pcr07-northstar-integration
+  - governance/pcr08-initial-operating-controls
+  - governance/pcr09-first-codex-issue-clean
+  - governance/pcr10-integration-reconciliation
+  - governance/pcr10-pre-codex-readiness
+  - governance/workstream4-hosted-controls-readiness
   explicitly_superseded_branches:
-    - branch: governance/pcr06-hermes-adoption
-      reason: superseded_by_governance_pcr06_hermes_compatibility
-    - branch: governance/pcr09-first-codex-issue
-      reason: defective_pcr09_audit_history_superseded_by_clean_replacement
+  - branch: agent/phase2-first-agent-system
+    reason: canonicalized_into_integrated_phase2_release
+  - branch: ci/phase1-contract-validation-20260804
+    reason: superseded_by_current_complete_release_workflow
+  - branch: deliverable/phase4-semantic-model
+    reason: canonicalized_into_integrated_phase4_release
+  - branch: fix/phase1-policy-typing
+    reason: superseded_by_integrated_phase1_policy_typing
+  - branch: fix/phase1-policy-typing-2
+    reason: superseded_by_integrated_phase1_policy_typing
+  - branch: fixtures/phase5-additional-engagements
+    reason: canonicalized_into_integrated_phase5_fixture_release
+  - branch: fixtures/phase5-engagement-suite
+    reason: superseded_by_integrated_phase5_fixture_release
+  - branch: fixtures/phase5-strategy-cost
+    reason: superseded_by_integrated_phase5_fixture_release
+  - branch: governance/pcr01-canonical-release
+    reason: canonicalized_into_main_by_pcr01_release
+  - branch: governance/pcr02-test-identity
+    reason: canonicalized_into_main_by_pcr02_release
+  - branch: governance/pcr06-hermes-adoption
+    reason: superseded_by_governance_pcr06_hermes_compatibility
+  - branch: governance/pcr09-first-codex-issue
+    reason: defective_pcr09_audit_history_superseded_by_clean_replacement
+  - branch: knowledge/phase6-ingestion-intelligence
+    reason: canonicalized_into_integrated_phase6_release
+  - branch: oracle/phase3-ai-audit
+    reason: canonicalized_into_integrated_phase3_release
+  - branch: security/phase7-regionalisation
+    reason: canonicalized_into_integrated_phase7_release
   superseded_dependabot_branches:
-    - dependabot/github_actions/actions/checkout-7.0.1
-    - dependabot/github_actions/actions/setup-python-7.0.0
-    - dependabot/github_actions/actions/upload-artifact-7.0.1
-
+  - dependabot/github_actions/actions/checkout-7.0.1
+  - dependabot/github_actions/actions/setup-python-7.0.0
+  - dependabot/github_actions/actions/upload-artifact-7.0.1
 release_evidence:
   release_id: CHAT-FIRST-PRE-CODEX-2026-08-06
   integration_pr: 32
@@ -113,7 +120,6 @@ release_evidence:
   semantic_tests: 99
   reference_edges: 604
   unresolved_references: 0
-
 clean_macos_environment:
   doctor_path: scripts/doctor_pre_codex_macos.py
   required_os: macOS
@@ -125,7 +131,6 @@ clean_macos_environment:
   machine_report_attached: false
   founder_environment_attestation_received: false
   clean_macos_environment_verified: false
-
 readiness:
   repository_side_preparation_complete: true
   hosted_controls_verified: false
@@ -136,7 +141,6 @@ readiness:
   workstream_4_complete: false
   codex_start_authorized: false
   next_permitted_phase_after_all_gates: Codex Phase 0 only
-
 boundaries:
   phase1_authorized: false
   runtime_activation_authorized: false
