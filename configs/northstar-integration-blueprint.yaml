@@ -1,0 +1,412 @@
+schema_version: 1
+phase_id: PCR-07
+contract_id: OFFDATA-NORTHSTAR-E2E-BLUEPRINT-2026-08-05
+repository: rayrayxing/offdata-os
+canonical_branch: main
+status: integration_blueprint_only
+northstar_fixture:
+  fixture_id: FIXTURE-DAI-001
+  client_name: Northstar
+  engagement_type: digital_and_ai_transformation
+  engagement_archetype: ai_audit
+  data_mode: synthetic_only
+  region: Singapore
+  decision_owner: Northstar CEO
+  semantic_model_id: DSM-DAI-001
+  story_model_id: STORY-DAI-001
+  oracle_version: 1.0.0
+  objective: Complete one governed synthetic AI-audit engagement from mandate intake through evidence, analysis, decision-ready
+    delivery, independent quality, internal release, implementation planning, benefit verification and closeout.
+architecture_principles:
+- database_is_system_of_record
+- commands_only_canonical_writes
+- runtime_memory_noncanonical
+- evidence_before_assertion
+- deterministic_calculation
+- one_story_many_surfaces
+- independent_quality_before_release
+- founder_accountability_for_material_decisions
+- provider_and_runtime_replaceability
+- synthetic_local_first
+activation:
+  blueprint_complete: true
+  implementation_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  codex_start_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  production_deployment_authorized: false
+  paid_services_authorized: false
+  autonomous_merge_authorized: false
+canonical_ownership:
+  structured_state: postgresql_via_validated_commands
+  file_state: object_storage_immutable_versions
+  workflow_state: durable_runtime_checkpoint_only
+  agent_memory: noncanonical_ephemeral
+  hermes_memory: noncanonical_disabled_for_client_truth
+  story_state: versioned_semantic_model
+  release_authority: founder_scoped_approval
+components:
+- - COMP-UI
+  - Founder cockpit and engagement workspace
+  - interface
+  - false
+- - COMP-API
+  - Offdata API and policy engine
+  - control_plane
+  - false
+- - COMP-STATE
+  - PostgreSQL engagement system of record
+  - canonical_state
+  - true
+- - COMP-OBJECT
+  - Object storage and immutable artefact baselines
+  - canonical_files
+  - true
+- - COMP-WORKFLOW
+  - Durable workflow adapter
+  - orchestration
+  - false
+- - COMP-AGENT
+  - Typed agent runtime adapter
+  - reasoning
+  - false
+- - COMP-WORKER
+  - Bounded worker harness
+  - execution
+  - false
+- - COMP-TOOLS
+  - Declared tool runtime
+  - tools
+  - false
+- - COMP-KNOWLEDGE
+  - Knowledge, source and evidence services
+  - evidence
+  - false
+- - COMP-ANALYTICS
+  - Governed deterministic analytics
+  - analysis
+  - false
+- - COMP-DELIVERY
+  - Semantic story and multi-format renderer boundary
+  - deliverables
+  - false
+- - COMP-QA
+  - Independent quality and release control
+  - assurance
+  - false
+- - COMP-BENEFITS
+  - Implementation and benefits tracking
+  - outcomes
+  - false
+edges:
+- - EDGE-01
+  - COMP-UI
+  - COMP-API
+  - CommandEnvelope
+  - request_response
+- - EDGE-02
+  - COMP-API
+  - COMP-STATE
+  - CommandResponse and DomainEvent
+  - validated_canonical_write
+- - EDGE-03
+  - COMP-STATE
+  - COMP-WORKFLOW
+  - TransitionRequest
+  - read_and_checkpoint
+- - EDGE-04
+  - COMP-WORKFLOW
+  - COMP-AGENT
+  - AgentRuntimeRequest
+  - bounded_invocation
+- - EDGE-05
+  - COMP-AGENT
+  - COMP-API
+  - record_agent_output
+  - propose_only
+- - EDGE-06
+  - COMP-WORKFLOW
+  - COMP-WORKER
+  - WorkerPackage
+  - bounded_invocation
+- - EDGE-07
+  - COMP-WORKER
+  - COMP-TOOLS
+  - ToolInvocation
+  - allowlisted_invocation
+- - EDGE-08
+  - COMP-TOOLS
+  - COMP-API
+  - ToolResult
+  - record_via_command
+- - EDGE-09
+  - COMP-KNOWLEDGE
+  - COMP-AGENT
+  - ContextPackage
+  - minimum_sufficient_context
+- - EDGE-10
+  - COMP-OBJECT
+  - COMP-KNOWLEDGE
+  - SourceDocument
+  - immutable_source_reference
+- - EDGE-11
+  - COMP-ANALYTICS
+  - COMP-API
+  - record_agent_output
+  - named_output_recording
+- - EDGE-12
+  - COMP-STATE
+  - COMP-DELIVERY
+  - StoryModel inputs
+  - versioned_read
+- - EDGE-13
+  - COMP-DELIVERY
+  - COMP-OBJECT
+  - DeliverableManifest
+  - immutable_baseline_write
+- - EDGE-14
+  - COMP-DELIVERY
+  - COMP-QA
+  - CrossFormatReconciliation
+  - independent_review_input
+- - EDGE-15
+  - COMP-QA
+  - COMP-API
+  - request_approval
+  - founder_gate
+- - EDGE-16
+  - COMP-UI
+  - COMP-API
+  - record_approval
+  - scoped_founder_decision
+- - EDGE-17
+  - COMP-API
+  - COMP-OBJECT
+  - release_artefact
+  - idempotent_internal_synthetic_release
+- - EDGE-18
+  - COMP-STATE
+  - COMP-BENEFITS
+  - approved recommendation and benefit baseline
+  - versioned_read
+- - EDGE-19
+  - COMP-BENEFITS
+  - COMP-API
+  - record_agent_output
+  - verified_outcome_recording
+- - EDGE-20
+  - COMP-WORKFLOW
+  - COMP-STATE
+  - DomainEvent checkpoint
+  - durable_resume
+journey:
+- - NS-STAGE-01
+  - LIFE-STAGE-01
+  - - engagement_partner
+  - - create_engagement
+    - update_mandate
+    - propose_transition
+  - true
+- - NS-STAGE-02
+  - LIFE-STAGE-02
+  - - problem_architect
+    - engagement_partner
+  - - record_agent_output
+    - propose_transition
+  - false
+- - NS-STAGE-03
+  - LIFE-STAGE-03
+  - - research_evidence
+  - - record_agent_output
+    - propose_transition
+  - false
+- - NS-STAGE-04
+  - LIFE-STAGE-04
+  - - problem_architect
+  - - record_agent_output
+    - propose_transition
+  - false
+- - NS-STAGE-05
+  - LIFE-STAGE-05
+  - - method_architect
+  - - record_agent_output
+    - propose_transition
+  - false
+- - NS-STAGE-06
+  - LIFE-STAGE-06
+  - - engagement_partner
+  - - update_mandate
+    - request_approval
+    - record_approval
+    - propose_transition
+  - true
+- - NS-STAGE-07
+  - LIFE-STAGE-07
+  - - engagement_partner
+  - - record_agent_output
+    - propose_transition
+  - false
+- - NS-STAGE-08
+  - LIFE-STAGE-08
+  - - research_evidence
+    - quantitative_value
+    - method_architect
+    - engagement_partner
+  - - record_agent_output
+    - propose_transition
+  - false
+- - NS-STAGE-09
+  - LIFE-STAGE-09
+  - - storyline
+    - deliverable_production
+    - independent_quality
+    - engagement_partner
+  - - record_agent_output
+    - request_approval
+    - record_approval
+    - release_artefact
+    - propose_transition
+  - true
+- - NS-STAGE-10
+  - LIFE-STAGE-10
+  - - implementation_benefits
+  - - record_agent_output
+    - propose_transition
+  - false
+- - NS-STAGE-11
+  - LIFE-STAGE-11
+  - - implementation_benefits
+    - independent_quality
+  - - record_agent_output
+    - propose_transition
+  - true
+- - NS-STAGE-12
+  - LIFE-STAGE-12
+  - - engagement_partner
+    - methodology_librarian
+    - independent_quality
+  - - record_agent_output
+    - request_approval
+    - record_approval
+    - propose_transition
+  - true
+- - NS-STAGE-13
+  - LIFE-STAGE-13
+  - - origination_opportunity
+    - engagement_partner
+  - - record_agent_output
+    - propose_transition
+  - true
+scenarios:
+- - E2E-NS-001
+  - synthetic_happy_path
+  - completed
+  - - all_13_lifecycle_gates_recorded
+    - independent_quality_precedes_release
+    - benefit_verification_defined
+- - E2E-NS-002
+  - restart_after_analysis_checkpoint
+  - completed
+  - - resume_from_checkpoint_08
+    - no_duplicate_agent_output
+    - no_duplicate_release_action
+- - E2E-NS-003
+  - approval_wait_and_resume
+  - completed
+  - - workflow_blocks_until_scoped_approval
+    - approval_version_recorded
+    - workflow_resumed_event_recorded
+- - E2E-NS-004
+  - blocking_quality_defect_recycle
+  - completed
+  - - release_prohibited
+    - recycle_to_affected_gate
+    - repair_and_retest_recorded
+- - E2E-NS-005
+  - idempotent_release_replay
+  - completed
+  - - single_artefact_released_event
+    - immutable_baseline_unchanged
+    - duplicate_effect_prevented
+- - E2E-NS-006
+  - founder_cancellation
+  - cancelled
+  - - engagement_cancelled_event_recorded
+    - further_execution_prohibited
+    - completed_effects_not_repeated
+- - E2E-NS-007
+  - tenant_and_data_boundary_rejection
+  - blocked
+  - - request_denied
+    - no_cross_tenant_context
+    - no_real_client_data_persisted
+waves:
+- - NS-WAVE-01
+  - foundation_and_contract_shells
+  - null
+  - phase_0_founder_demo
+- - NS-WAVE-02
+  - canonical_state_and_fixture_loading
+  - NS-WAVE-01
+  - records_survive_restart
+- - NS-WAVE-03
+  - durable_lifecycle_and_policy
+  - NS-WAVE-02
+  - interruption_and_replay_scenarios_pass
+- - NS-WAVE-04
+  - bounded_agent_and_context_integration
+  - NS-WAVE-03
+  - agent_contract_and_permission_tests_pass
+- - NS-WAVE-05
+  - evidence_and_analytical_oracle_execution
+  - NS-WAVE-04
+  - oracle_grade_and_traceability_pass
+- - NS-WAVE-06
+  - semantic_story_and_renderer_integration
+  - NS-WAVE-05
+  - office_and_visual_validation_pass
+- - NS-WAVE-07
+  - independent_quality_and_release
+  - NS-WAVE-06
+  - no_blocking_defects_and_scoped_approval
+- - NS-WAVE-08
+  - implementation_benefits_and_closeout
+  - NS-WAVE-07
+  - benefit_verification_and_closure_pass
+acceptance_obligations:
+- one_command_local_start
+- synthetic_fixture_load_is_deterministic
+- all_13_lifecycle_stages_and_gates_are_recorded
+- restart_resumes_from_last_durable_checkpoint
+- idempotent_commands_do_not_duplicate_effects
+- every_material_claim_traces_to_evidence_or_named_analysis
+- all_material_numbers_resolve_to_deterministic_outputs
+- independent_quality_context_is_separate_from_creator_context
+- blocking_defects_prevent_release
+- founder_approval_is_scoped_to_exact_version_and_action
+- six_deliverable_surfaces_reconcile_to_one_story_model
+- no_real_client_data_or_external_send
+- tenant_isolation_passes
+- audit_correlation_spans_command_event_agent_tool_and_artefact
+- benefits_use_baseline_counterfactual_owner_and_verification
+- rollback_preserves_prior_governance_and_evidence
+prior_phase_dependencies:
+- PCR-01
+- PCR-02
+- PCR-03
+- PCR-04
+- PCR-05
+- PCR-06
+boundaries:
+  founder_accountability_preserved: true
+  canonical_write_mode: commands_only
+  runtime_memory_is_canonical: false
+  release_mode: internal_synthetic_only
+  external_send_enabled: false
+  real_client_data_enabled: false
+  production_deployment_enabled: false
+  paid_services_enabled: false
+  autonomous_merge_enabled: false
+  phase_progression_authorized: false
