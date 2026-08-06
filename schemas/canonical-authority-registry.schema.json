@@ -37,173 +37,22 @@
     "canonical_branch": {"const": "main"},
     "base_main_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "canonical_status_phrase": {"type": "string", "minLength": 40},
-    "authority_precedence": {
-      "type": "array",
-      "minItems": 6,
-      "uniqueItems": true,
-      "items": {"type": "string", "minLength": 1}
-    },
-    "read_order_sources": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["machine_handoff", "canonical_issue_body"],
-      "properties": {
-        "machine_handoff": {"const": "handoff/codex-phase0-handoff.json"},
-        "canonical_issue_body": {"const": "handoff/codex-phase0-issue-final.md"}
-      }
-    },
-    "scan_roots": {
-      "type": "array",
-      "minItems": 9,
-      "uniqueItems": true,
-      "items": {"type": "string", "minLength": 1}
-    },
-    "exact_records": {
-      "type": "array",
-      "minItems": 35,
-      "maxItems": 35,
-      "items": {"$ref": "#/$defs/localRecord"}
-    },
-    "classification_rules": {
-      "type": "array",
-      "minItems": 11,
-      "maxItems": 11,
-      "items": {"$ref": "#/$defs/classificationRule"}
-    },
-    "external_records": {
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
-      "items": {"$ref": "#/$defs/externalRecord"}
-    },
-    "uniqueness_constraints": {
-      "type": "object",
-      "additionalProperties": {"const": 1},
-      "required": [
-        "controlling_instruction",
-        "current_authority_registry",
-        "current_machine_handoff",
-        "current_launch_contract",
-        "current_issue_body",
-        "current_actionable_assignment",
-        "current_manual_gate"
-      ]
-    },
-    "closed_defects": {
-      "const": ["WS6-CONSIST-001", "WS6-CONSIST-007"]
-    },
-    "remaining_blocking_defects": {
-      "const": ["WS6-BLOCK-006"]
-    },
-    "completion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "all_required_prior_components_pass",
-        "ws64_complete",
-        "all_current_read_order_items_classified",
-        "all_evidence_roots_classified",
-        "final_reconciliation_complete",
-        "all_blocking_defects_closed",
-        "next_permitted_work_package"
-      ],
-      "properties": {
-        "all_required_prior_components_pass": {"const": true},
-        "ws64_complete": {"const": true},
-        "all_current_read_order_items_classified": {"const": true},
-        "all_evidence_roots_classified": {"const": true},
-        "final_reconciliation_complete": {"const": false},
-        "all_blocking_defects_closed": {"const": false},
-        "next_permitted_work_package": {"const": "WS6.5"}
-      }
-    },
-    "boundaries": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "founder_accountability_preserved",
-        "codex_start_authorized",
-        "phase0_implementation_authorized",
-        "phase0_merge_authorized",
-        "phase1_authorized",
-        "runtime_activation_authorized",
-        "hermes_activation_authorized",
-        "northstar_implementation_authorized",
-        "real_client_data_enabled",
-        "external_actions_authorized",
-        "paid_services_authorized",
-        "oauth_authorized",
-        "production_deployment_authorized",
-        "autonomous_merge_authorized"
-      ],
-      "properties": {
-        "founder_accountability_preserved": {"const": true},
-        "codex_start_authorized": {"const": false},
-        "phase0_implementation_authorized": {"const": false},
-        "phase0_merge_authorized": {"const": false},
-        "phase1_authorized": {"const": false},
-        "runtime_activation_authorized": {"const": false},
-        "hermes_activation_authorized": {"const": false},
-        "northstar_implementation_authorized": {"const": false},
-        "real_client_data_enabled": {"const": false},
-        "external_actions_authorized": {"const": false},
-        "paid_services_authorized": {"const": false},
-        "oauth_authorized": {"const": false},
-        "production_deployment_authorized": {"const": false},
-        "autonomous_merge_authorized": {"const": false}
-      }
-    },
-    "rollback": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["before_merge", "after_merge"],
-      "properties": {
-        "before_merge": {"type": "string", "minLength": 1},
-        "after_merge": {"type": "string", "minLength": 1}
-      }
-    }
+    "authority_precedence": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "read_order_sources": {"type": "object", "additionalProperties": false, "required": ["machine_handoff", "canonical_issue_body"], "properties": {"machine_handoff": {"const": "handoff/codex-phase0-handoff.json"}, "canonical_issue_body": {"const": "handoff/codex-phase0-issue-final.md"}}},
+    "scan_roots": {"type": "array", "minItems": 9, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "exact_records": {"type": "array", "minItems": 39, "maxItems": 39, "items": {"$ref": "#/$defs/localRecord"}},
+    "classification_rules": {"type": "array", "minItems": 11, "maxItems": 11, "items": {"$ref": "#/$defs/classificationRule"}},
+    "external_records": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/externalRecord"}},
+    "uniqueness_constraints": {"type": "object", "additionalProperties": {"const": 1}, "required": ["controlling_instruction", "current_authority_registry", "current_machine_handoff", "current_launch_contract", "current_issue_body", "current_actionable_assignment", "current_manual_gate", "current_phase_namespace"]},
+    "closed_defects": {"const": ["WS6-CONSIST-001", "WS6-CONSIST-007"]},
+    "remaining_blocking_defects": {"const": ["WS6-BLOCK-006"]},
+    "completion": {"type": "object", "additionalProperties": false, "required": ["all_required_prior_components_pass", "ws64_complete", "all_current_read_order_items_classified", "all_evidence_roots_classified", "final_reconciliation_complete", "all_blocking_defects_closed", "next_permitted_work_package"], "properties": {"all_required_prior_components_pass": {"const": true}, "ws64_complete": {"const": true}, "all_current_read_order_items_classified": {"const": true}, "all_evidence_roots_classified": {"const": true}, "final_reconciliation_complete": {"const": false}, "all_blocking_defects_closed": {"const": false}, "next_permitted_work_package": {"const": "WS6.6"}}},
+    "boundaries": {"type": "object", "additionalProperties": false, "required": ["founder_accountability_preserved", "codex_start_authorized", "phase0_implementation_authorized", "phase0_merge_authorized", "phase1_authorized", "runtime_activation_authorized", "hermes_activation_authorized", "northstar_implementation_authorized", "real_client_data_enabled", "external_actions_authorized", "paid_services_authorized", "oauth_authorized", "production_deployment_authorized", "autonomous_merge_authorized"], "properties": {"founder_accountability_preserved": {"const": true}, "codex_start_authorized": {"const": false}, "phase0_implementation_authorized": {"const": false}, "phase0_merge_authorized": {"const": false}, "phase1_authorized": {"const": false}, "runtime_activation_authorized": {"const": false}, "hermes_activation_authorized": {"const": false}, "northstar_implementation_authorized": {"const": false}, "real_client_data_enabled": {"const": false}, "external_actions_authorized": {"const": false}, "paid_services_authorized": {"const": false}, "oauth_authorized": {"const": false}, "production_deployment_authorized": {"const": false}, "autonomous_merge_authorized": {"const": false}}},
+    "rollback": {"type": "object", "additionalProperties": false, "required": ["before_merge", "after_merge"], "properties": {"before_merge": {"type": "string", "minLength": 1}, "after_merge": {"type": "string", "minLength": 1}}}
   },
   "$defs": {
-    "localRecord": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["path", "classification", "authority_level", "current", "read_order_required", "reason"],
-      "properties": {
-        "path": {"type": "string", "minLength": 1},
-        "classification": {"type": "string", "minLength": 1},
-        "authority_level": {"type": "integer", "minimum": 1, "maximum": 6},
-        "current": {"type": "boolean"},
-        "read_order_required": {"type": "boolean"},
-        "reason": {"type": "string", "minLength": 1}
-      }
-    },
-    "classificationRule": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "pattern", "priority", "classification", "authority_level", "current", "reason"],
-      "properties": {
-        "id": {"type": "string", "minLength": 1},
-        "pattern": {"type": "string", "minLength": 1},
-        "priority": {"type": "integer", "minimum": 1},
-        "classification": {"type": "string", "minLength": 1},
-        "authority_level": {"type": "integer", "minimum": 1, "maximum": 6},
-        "current": {"type": "boolean"},
-        "reason": {"type": "string", "minLength": 1}
-      }
-    },
-    "externalRecord": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["kind", "number", "classification", "current", "expected_state"],
-      "properties": {
-        "kind": {"const": "github_issue"},
-        "number": {"type": "integer", "minimum": 1},
-        "classification": {"type": "string", "minLength": 1},
-        "current": {"type": "boolean"},
-        "expected_state": {"enum": ["open", "closed"]},
-        "state_reason": {"type": "string", "minLength": 1},
-        "body_path": {"type": "string", "minLength": 1}
-      }
-    }
+    "localRecord": {"type": "object", "additionalProperties": false, "required": ["path", "classification", "authority_level", "current", "read_order_required", "reason"], "properties": {"path": {"type": "string", "minLength": 1}, "classification": {"type": "string", "minLength": 1}, "authority_level": {"type": "integer", "minimum": 1, "maximum": 6}, "current": {"type": "boolean"}, "read_order_required": {"type": "boolean"}, "reason": {"type": "string", "minLength": 1}}},
+    "classificationRule": {"type": "object", "additionalProperties": false, "required": ["id", "pattern", "priority", "classification", "authority_level", "current", "reason"], "properties": {"id": {"type": "string", "minLength": 1}, "pattern": {"type": "string", "minLength": 1}, "priority": {"type": "integer", "minimum": 1}, "classification": {"type": "string", "minLength": 1}, "authority_level": {"type": "integer", "minimum": 1, "maximum": 6}, "current": {"type": "boolean"}, "reason": {"type": "string", "minLength": 1}}},
+    "externalRecord": {"type": "object", "additionalProperties": false, "required": ["kind", "number", "classification", "current", "expected_state"], "properties": {"kind": {"const": "github_issue"}, "number": {"type": "integer", "minimum": 1}, "classification": {"type": "string", "minLength": 1}, "current": {"type": "boolean"}, "expected_state": {"enum": ["open", "closed"]}, "state_reason": {"type": "string", "minLength": 1}, "body_path": {"type": "string", "minLength": 1}}}
   }
 }

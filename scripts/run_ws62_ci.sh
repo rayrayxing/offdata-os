@@ -24,6 +24,7 @@ python scripts/build_workstream5_launch_control.py
 python scripts/build_workstream6_final_reconciliation.py
 python scripts/build_workstream6_final_launch_control.py
 python scripts/build_workstream6_current_status.py
+python scripts/build_workstream6_phase_namespace.py
 python scripts/build_workstream6_canonical_authority.py
 
 git diff --exit-code
@@ -51,6 +52,7 @@ python scripts/validate_workstream6_final_reconciliation.py
 python scripts/validate_workstream6_handoff_reconciliation.py
 python scripts/validate_workstream6_final_launch_control.py
 python scripts/validate_workstream6_current_status.py
+python scripts/validate_workstream6_phase_namespace.py
 python scripts/validate_workstream6_canonical_authority.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test

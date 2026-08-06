@@ -1,21 +1,24 @@
-# 19 — Phase 0 Validation Addendum
+# 19 — IMP-P0 Validation Addendum
 
 ## Current state and boundary
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.4; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.5; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
-The repository remains pre-Codex. This addendum defines validation expectations for a future permitted Codex Phase 0 session. It does not authorise implementation, branch creation, merge or Phase 1.
+The repository remains pre-Codex. This addendum defines validation expectations for a future permitted IMP-P0 session. It does not authorise implementation, branch creation, merge or IMP-P1.
 
 ## Controlling contracts
 
 The authoritative classification, input inventory, task graph, command set, boundaries, stop conditions and activation conditions are in:
 
 - `repository/canonical-authority-registry.json`;
+- `contracts/workstream6-phase-namespace.json`;
 - `handoff/codex-phase0-handoff.json`;
 - `contracts/codex-phase0-launch-control.json`;
 - `handoff/codex-phase0-issue-final.md`;
 - the future permanent release `releases/pre-codex-final-reconciliation-2026-08-06.json`;
 - the valid local single-use permit produced by `scripts/prepare_codex_phase0_launch.py`.
+
+The canonical implementation identifier is `IMP-P0`; stable `phase0` filenames and machine keys are compatibility identifiers only.
 
 The required hosted status check is exactly `Validate final pre-Codex canonical handoff and complete release`.
 
@@ -29,9 +32,9 @@ Before a permit may be issued:
 4. confirm issue #2 remains closed as duplicate;
 5. complete issue #19 with hosted-control and exact-allowlist branch-cleanup evidence;
 6. complete the clean macOS doctor report and Founder environment attestation;
-7. record exact-SHA Founder approval for Phase 0 tasks P0.1–P0.4 only;
+7. record exact-SHA Founder approval for IMP-P0 tasks P0.1–P0.4 only;
 8. run `scripts/prepare_codex_phase0_launch.py` with all evidence files;
-9. confirm no Codex branch or Phase 0 pull request exists before permit issuance.
+9. confirm no Codex branch or IMP-P0 pull request exists before permit issuance.
 
 A passing repository-local validation does not satisfy the final release, hosted-control, environment, Founder-approval or permit gates.
 
@@ -43,7 +46,7 @@ The pre-existing provider-independent runtime boundary remains governed by `cont
 
 Create `codex/phase-0-foundation` only after a valid permit exists. The branch must start from the permit’s approved `main` SHA. The first commit must add `governance/codex-phase0-launch-ack.json`. Any SHA, release, issue-body, required-check, evidence, approval or scope drift invalidates the permit and requires a stop.
 
-The Phase 0 pull request must remain draft. Merge and Phase 1 are not authorised by the permit.
+The IMP-P0 pull request must remain draft. Merge and IMP-P1 are not authorised by the permit.
 
 ## Pre-existing governed inputs
 
@@ -58,7 +61,7 @@ Codex must integrate rather than duplicate the committed deterministic package, 
 - Workstream 5 historical launch-control evidence;
 - all current WS6 contracts and reports.
 
-Founder-supplied methodology binaries remain outside the repository. Their governed profiles and checksums are in `knowledge/source-manifest.yaml`; Phase 0 must not import, expose or redistribute the originals.
+Founder-supplied methodology binaries remain outside the repository. Their governed profiles and checksums are in `knowledge/source-manifest.yaml`; IMP-P0 must not import, expose or redistribute the originals.
 
 ## Required implementation validation
 
@@ -98,4 +101,4 @@ This baseline is predecessor evidence. The authoritative current result is the l
 
 ## Phase boundary
 
-A valid Codex Phase 0 permit may authorise only P0.1–P0.4: repository baseline, local development environment, engineering quality baseline and security/operating documentation. It does not authorise product workflows, production infrastructure, real-client processing, external integrations, merge or Phase 1.
+A valid IMP-P0 permit may authorise only P0.1–P0.4: repository baseline, local development environment, engineering quality baseline and security/operating documentation. It does not authorise product workflows, production infrastructure, real-client processing, external integrations, merge or IMP-P1.

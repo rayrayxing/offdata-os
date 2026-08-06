@@ -1,14 +1,19 @@
-# 11 — Phase-Gated Build Backlog
+# 11 — IMP phase-gated build backlog
 
-## Backlog rules
+## Namespace and backlog rules
 
-- Build in phase order.
-- A phase may contain parallel tasks only when dependencies permit.
+The canonical implementation namespace is `IMP-P0` through `IMP-P12`.
+
+- Build in `IMP-P0` to `IMP-P12` order.
+- Task identifiers remain `P0.1`, `P1.1` and so on for compatibility.
+- A completed `CF-P*`, `PCR-*` or `WS-*` package is not an implemented product phase.
+- An implementation phase may contain parallel tasks only when dependencies permit.
 - Each task requires tests, documentation and rollback instructions.
-- Codex stops at every phase gate.
+- Codex stops at every implementation phase gate.
 - Paid services, OAuth, credentials, DNS and external communications require Founder action.
+- Legacy numeric phase wording and the former Codex display name is a display alias only; it never changes authority.
 
-## Phase 0 — Controlled project foundation
+## IMP-P0 — Controlled project foundation
 
 ### P0.1 Repository baseline
 
@@ -69,11 +74,11 @@ Deliver:
 - Architecture decision template
 - Build status ledger
 
-### Phase 0 gate
+### IMP-P0 gate
 
 Founder receives a local demonstration and completion report. No substantive product workflow is required yet.
 
-## Phase 1 — Knowledge ingestion and method registry
+## IMP-P1 — Knowledge ingestion and method registry
 
 ### P1.1 Source import
 
@@ -109,13 +114,13 @@ Founder receives a local demonstration and completion report. No substantive pro
 - Source filters and access controls
 - Retrieval evaluation set
 
-### Phase 1 gate
+### IMP-P1 gate
 
 - Initial 150-plus method records are structured and searchable
 - Every record links to original source
 - Re-ingestion is deterministic
 
-## Phase 2 — Engagement system of record
+## IMP-P2 — Engagement system of record
 
 ### P2.1 Identity and tenancy
 
@@ -142,13 +147,13 @@ Implement organisations, contacts, opportunities, engagements, mandates, decisio
 - Blockers and risks
 - Cost summary
 
-### Phase 2 gate
+### IMP-P2 gate
 
 - Records survive restart
 - Backup and restore works locally
 - Engagement-isolation tests pass
 
-## Phase 3 — Lifecycle and durable workflow
+## IMP-P3 — Lifecycle and durable workflow
 
 ### P3.1 Workflow abstraction
 
@@ -176,11 +181,11 @@ Define runtime-independent workflow contracts.
 - Gate history
 - Recycle and pause controls
 
-### Phase 3 gate
+### IMP-P3 gate
 
 A synthetic engagement completes the lifecycle, survives interruption and does not duplicate actions.
 
-## Phase 4 — Initial specialist agents
+## IMP-P4 — Initial specialist agents
 
 ### P4.1 Context compiler
 
@@ -213,11 +218,11 @@ Implement typed contracts for:
 - Schema and permission checks
 - Grounding, escalation and injection tests
 
-### Phase 4 gate
+### IMP-P4 gate
 
 Agents pass evaluation thresholds and cannot directly bypass policy or canonical APIs.
 
-## Phase 5 — Research and evidence layer
+## IMP-P5 — Research and evidence layer
 
 ### P5.1 Research planning
 
@@ -245,11 +250,11 @@ Agents pass evaluation thresholds and cannot directly bypass policy or canonical
 - Source-scope checks
 - Staleness and broken-link checks
 
-### Phase 5 gate
+### IMP-P5 gate
 
 A reviewer can trace a recommendation to source passages and contradicting evidence.
 
-## Phase 6 — Quantitative and modelling services
+## IMP-P6 — Quantitative and modelling services
 
 ### P6.1 Governed analytical runtime
 
@@ -281,11 +286,11 @@ A reviewer can trace a recommendation to source passages and contradicting evide
 - Missing data
 - Random-seed reproducibility
 
-### Phase 6 gate
+### IMP-P6 gate
 
 A complete value case reproduces from source inputs and reconciles to approved outputs.
 
-## Phase 7 — Storyline and deliverable studio
+## IMP-P7 — Storyline and deliverable studio
 
 ### P7.1 Semantic story model
 
@@ -325,11 +330,11 @@ Implement priority archetypes:
 - Office open-and-save tests where available
 - Cross-format reconciliation
 
-### Phase 7 gate
+### IMP-P7 gate
 
 One engagement produces consistent, professional PPTX, DOCX, XLSX, PDF, SVG and HTML outputs.
 
-## Phase 8 — HubSpot Free integration
+## IMP-P8 — HubSpot Free integration
 
 ### P8.1 Synthetic CRM adapter
 
@@ -351,11 +356,11 @@ Founder completes private-app or OAuth setup and enters credentials securely.
 
 Convert an opportunity into an engagement while preserving relationship continuity.
 
-### Phase 8 gate
+### IMP-P8 gate
 
 CRM continuity works without leaking confidential engagement content.
 
-## Phase 9 — Controlled origination engine
+## IMP-P9 — Controlled origination engine
 
 ### P9.1 Source watch lists
 
@@ -376,11 +381,11 @@ Match approved offers and methods to opportunity hypotheses.
 - Suppression and frequency
 - No autonomous external sending initially
 
-### Phase 9 gate
+### IMP-P9 gate
 
 The system identifies and prepares qualified opportunities from synthetic and public test cases.
 
-## Phase 10 — Methodology Radar
+## IMP-P10 — Methodology Radar
 
 ### P10.1 Scheduled discovery
 
@@ -401,11 +406,11 @@ Original offdata method record and tests.
 
 Review, regression, Founder approval and versioned library release.
 
-### Phase 10 gate
+### IMP-P10 gate
 
 New candidates can be found and evaluated without automatic canonical promotion.
 
-## Phase 11 — Security and production readiness
+## IMP-P11 — Security and production readiness
 
 ### P11.1 Managed Singapore staging
 
@@ -430,11 +435,11 @@ Only after Founder approval and cost review.
 - Recovery
 - Kill switch
 
-### Phase 11 gate
+### IMP-P11 gate
 
 Formal production-readiness report and Founder approval before real client data.
 
-## Phase 12 — Synthetic engagement suite and launch
+## IMP-P12 — Synthetic engagement suite and launch
 
 ### P12.1 Primary engagement fixtures
 
@@ -456,7 +461,7 @@ Measure human time saved, correction effort, output quality, cost and reliabilit
 - Pilot protocol
 - Support and incident process
 
-### Phase 12 gate
+### IMP-P12 gate
 
 Founder approves a controlled real-client pilot.
 
