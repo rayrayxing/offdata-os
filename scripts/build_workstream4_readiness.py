@@ -54,10 +54,6 @@ def _sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
-def _sha256_path(path: Path) -> str:
-    return _sha256_bytes(path.read_bytes())
-
-
 def _workflow_inventory(source: dict[str, Any]) -> tuple[list[dict[str, Any]], list[str]]:
     pins = source["node24_action_pins"]
     inventory: list[dict[str, Any]] = []
@@ -82,8 +78,6 @@ def _workflow_inventory(source: dict[str, Any]) -> tuple[list[dict[str, Any]], l
         inventory.append(
             {
                 "path": relative,
-                "sha256": _sha256_path(path),
-                "bytes": path.stat().st_size,
                 "official_action_uses": uses,
             }
         )
