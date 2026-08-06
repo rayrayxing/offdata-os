@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   validate-final-launch-control:
-    name: Validate WS6.3 current status documents and complete prior components
+    name: Validate WS6.4 canonical authority registry and complete prior components
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -40,13 +40,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.3
+      - name: Rebuild, validate and test through WS6.4
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.2 ancestry and live fail-closed state
+      - name: Verify exact WS6.3 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          BASE_MAIN_SHA: 1b518253abb187bbc31b1c809ee4f7ca5506f7e8
+          BASE_MAIN_SHA: be83de22a1178ad9fb5c814d993a0ade8a54f53c
         run: |
           mkdir -p ci-evidence
           git merge-base --is-ancestor "$BASE_MAIN_SHA" "$GITHUB_SHA"
@@ -77,7 +77,7 @@ jobs:
           assert "codex/phase-0-foundation" not in names
           PY
 
-      - name: Assemble retained WS6.3 evidence
+      - name: Assemble retained WS6.4 evidence
         run: |
           cp /tmp/ws62-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
@@ -93,8 +93,10 @@ jobs:
             contracts/workstream6-final-launch-control.json \
             configs/workstream6-current-status.yaml \
             contracts/workstream6-current-status.json \
-            schemas/workstream6-current-status.schema.json \
-            handoff/codex-phase0-hosted-controls-issue-final.md \
+            configs/workstream6-canonical-authority.yaml \
+            repository/canonical-authority-registry.json \
+            schemas/canonical-authority-registry.schema.json \
+            reports/workstream6-canonical-authority-evidence.md \
             README.md \
             docs/00-START-HERE.md \
             docs/14-CODEX-KICKOFF.md \
@@ -105,7 +107,7 @@ jobs:
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: offdata-workstream6-current-status-${{ github.sha }}
+          name: offdata-workstream6-canonical-authority-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
@@ -116,17 +118,17 @@ jobs:
             docs/14-CODEX-KICKOFF.md
             docs/19-PHASE-0-VALIDATION-ADDENDUM.md
             docs/20-DEVELOPMENT-STATUS.md
+            docs/56-WS6-4-CANONICAL-AUTHORITY-AND-EVIDENCE-REGISTRY.md
             handoff/codex-phase0-issue-final.md
             handoff/codex-phase0-hosted-controls-issue-final.md
             configs/workstream6-current-status.yaml
             contracts/workstream6-current-status.json
-            schemas/workstream6-current-status.schema.json
-            scripts/build_workstream6_current_status.py
-            scripts/validate_workstream6_current_status.py
-            docs/55-WS6-3-CURRENT-STATUS-DOCUMENT-REPAIR.md
-            reports/workstream6-current-status-evidence.md
-            configs/workstream6-final-launch-control.yaml
-            contracts/workstream6-final-launch-control.json
+            configs/workstream6-canonical-authority.yaml
+            repository/canonical-authority-registry.json
+            schemas/canonical-authority-registry.schema.json
+            scripts/build_workstream6_canonical_authority.py
+            scripts/validate_workstream6_canonical_authority.py
+            reports/workstream6-canonical-authority-evidence.md
             scripts/run_ws62_ci.sh
 
       - name: Publish exact-gate result
@@ -138,4 +140,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.3 current-status gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All six current authority surfaces, stale-state mutations, live issues, prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. No permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.4 canonical-authority gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Both read orders, all configured authority/evidence roots, uniqueness constraints, 23 WS6.4 mutations, live issues, all prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. No permit was emitted and Codex remains unauthorized."

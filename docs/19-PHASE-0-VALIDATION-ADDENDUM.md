@@ -2,14 +2,15 @@
 
 ## Current state and boundary
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.4; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 The repository remains pre-Codex. This addendum defines validation expectations for a future permitted Codex Phase 0 session. It does not authorise implementation, branch creation, merge or Phase 1.
 
 ## Controlling contracts
 
-The authoritative input inventory, task graph, command set, boundaries, stop conditions and activation conditions are in:
+The authoritative classification, input inventory, task graph, command set, boundaries, stop conditions and activation conditions are in:
 
+- `repository/canonical-authority-registry.json`;
 - `handoff/codex-phase0-handoff.json`;
 - `contracts/codex-phase0-launch-control.json`;
 - `handoff/codex-phase0-issue-final.md`;
@@ -22,7 +23,7 @@ The required hosted status check is exactly `Validate final pre-Codex canonical 
 
 Before a permit may be issued:
 
-1. run the complete command set in `handoff/codex-phase0-handoff.json`;
+1. validate `repository/canonical-authority-registry.json` and run the complete command set in `handoff/codex-phase0-handoff.json`;
 2. require `python scripts/require_workstream6_final_reconciliation.py` to pass against the exact current `main` SHA;
 3. confirm issue #1 matches `handoff/codex-phase0-issue-final.md` and remains open;
 4. confirm issue #2 remains closed as duplicate;
@@ -50,6 +51,7 @@ Codex must integrate rather than duplicate the committed deterministic package, 
 
 - `packages/offdata-core/`;
 - `configs/`, `contracts/`, `schemas/`, `requirements/`, `fixtures/`, `knowledge/`, `security/` and `repository/` governed records;
+- `repository/canonical-authority-registry.json` and its exact current/superseded classifications;
 - `api/openapi.json`;
 - the canonical CF-P1–7 release and PCR-01–10 records;
 - Workstream 4 readiness evidence;
@@ -76,7 +78,7 @@ After a valid permit and before opening the draft pull request, Codex must:
 
 ## Current verified repository baseline
 
-The latest complete WS6.2 exact merge-reference gate recorded:
+The latest complete WS6.3 exact merge-reference gate recorded:
 
 - 123 mapped requirements;
 - 99 semantic tests;
@@ -86,6 +88,7 @@ The latest complete WS6.2 exact merge-reference gate recorded:
 - 247 runtime tests passed;
 - 93.14 percent coverage against a 90 percent floor;
 - successful Python compilation, Ruff and strict MyPy across 32 source files;
+- 38 WS6.3 status mutations rejected;
 - 41 invalid launch bundles rejected;
 - no permit emitted;
 - no repository or GitHub mutation by launch self-tests;

@@ -4,9 +4,9 @@
 
 Date: 2026-08-06
 
-**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.4; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
-This is the current human-readable status document. Historical phase-completion documents, PR descriptions, issue comments and reports remain evidence for their own packages but do not supersede this snapshot.
+This is the current human-readable status document. Historical phase-completion documents, PR descriptions, issue comments and reports remain evidence for their own packages but do not supersede this snapshot. `repository/canonical-authority-registry.json` now makes those current, retained and superseded classifications machine-readable.
 
 ## Completed chat-first packages
 
@@ -38,16 +38,20 @@ Repository-readiness, hosted-control evidence structures, clean-macOS doctor too
 - WS6.0 — baseline lock and final defect register;
 - WS6.1 — controlling machine handoff reconciliation;
 - WS6.2 — final launch-control reconciliation and final issue-body rebinding;
-- WS6.3 — current human status and authority document repair.
+- WS6.3 — current human status and authority document repair;
+- WS6.4 — canonical authority, supersession and evidence registry.
 
-WS6.3 closes `WS6-BLOCK-003` and `WS6-CONSIST-008`. `WS6-BLOCK-006` remains open until the permanent post-merge final release is produced in the final reconciliation package.
+WS6.4 closes `WS6-CONSIST-001` and `WS6-CONSIST-007`. The registry classifies every current read-order item, every configured authority/evidence root, all current external issue roles, and exactly one current machine handoff and generated issue body. `WS6-BLOCK-006` remains open until the permanent post-merge final release is produced in WS6.16.
+
+Retained WS6.3 package evidence continues to state: WS6.3 closes `WS6-BLOCK-003` and `WS6-CONSIST-008`; at that package boundary, `WS6.4` is the next permitted chat-first work package. That historical statement does not override the current next package below.
 
 ## Current controlling authority
 
 - `AGENTS.md` — controlling instruction;
-- `handoff/codex-phase0-handoff.json` — machine execution contract;
+- `repository/canonical-authority-registry.json` — current/superseded authority and evidence classification;
+- `handoff/codex-phase0-handoff.json` — sole current machine execution contract;
 - `contracts/codex-phase0-launch-control.json` — final launch control;
-- `handoff/codex-phase0-issue-final.md` — only current generated issue #1 body;
+- `handoff/codex-phase0-issue-final.md` — sole current generated issue #1 body;
 - `contracts/workstream6-current-status.json` — current-status document reconciliation;
 - `releases/pre-codex-final-reconciliation-2026-08-06.json` — required future permanent final release.
 
@@ -56,6 +60,12 @@ The exact required future branch-protection check is:
 ```text
 Validate final pre-Codex canonical handoff and complete release
 ```
+
+## Authority and evidence registry
+
+The governed source is `configs/workstream6-canonical-authority.yaml`; the registry is `repository/canonical-authority-registry.json`; and the semantic gate is `scripts/validate_workstream6_canonical_authority.py`.
+
+The registry contains 35 exact records, 11 ordered rules and three external issue records. Exact records take precedence over rules. Earlier Phase 0 issue bodies and the PCR-09 machine snapshot remain retained evidence but are explicitly superseded. Reports, releases and attachments are evidence, not execution authority unless a current exact record or gate names them.
 
 ## Retained runtime boundary
 
@@ -67,9 +77,9 @@ The permanent canonical chat-first release remains `releases/canonical-chat-firs
 
 ## Verified predecessor baseline
 
-The complete WS6.2 exact merge-reference gate recorded:
+The complete WS6.3 exact merge-reference gate recorded:
 
-- 247 runtime tests passed in 27.05 seconds;
+- 247 runtime tests passed in 29.62 seconds in the dedicated gate;
 - 93.14 percent coverage across 4,604 statements;
 - 245 executable test nodes;
 - 99 semantic tests;
@@ -78,14 +88,15 @@ The complete WS6.2 exact merge-reference gate recorded:
 - Python compilation passed;
 - Ruff passed;
 - strict MyPy passed across 32 source files;
+- 38 WS6.3 mutations rejected;
 - 41 invalid launch bundles rejected;
 - no permit emitted and no GitHub mutation performed by launch self-tests.
 
-WS6.3 must retain or improve this baseline and add deterministic stale-state scanning for the current human authority documents.
+WS6.4 must retain or improve this baseline and add deterministic authority, supersession, read-order and evidence-root classification.
 
 ## Work remaining before Codex
 
-The remaining chat-first WS6 packages continue in sequence beginning with WS6.4. They include authority classification, terminology normalization, final workflow/check consolidation, remaining consistency and quality repairs, final evidence reconciliation and the permanent post-merge release.
+The remaining chat-first WS6 packages continue in sequence beginning with WS6.5. They include phase namespace normalization, final workflow/check consolidation, remaining configuration and issue consistency repairs, implementation-obligation maps, developer and Founder experience specifications, quality preparation, cross-authority consistency, final evidence reconciliation and the permanent post-merge release.
 
 Codex remains blocked until all repository-side packages are complete and the following manual gates are independently evidenced:
 
@@ -113,4 +124,4 @@ Create `codex/phase-0-foundation` only after a valid permit exists and only from
 
 ## Next permitted package
 
-`WS6.4` is the next permitted chat-first work package after WS6.3 integration.
+`WS6.5` is the next permitted chat-first work package after WS6.4 integration.
