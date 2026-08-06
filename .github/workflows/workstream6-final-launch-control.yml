@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   validate-final-launch-control:
-    name: Validate WS6.2 final launch control and complete prior components
+    name: Validate WS6.3 current status documents and complete prior components
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -40,13 +40,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.2
+      - name: Rebuild, validate and test through WS6.3
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.1 ancestry and live fail-closed state
+      - name: Verify exact WS6.2 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          BASE_MAIN_SHA: a3fb3ea21029f01c52bc8e871dd7bcb284a31f7c
+          BASE_MAIN_SHA: 1b518253abb187bbc31b1c809ee4f7ca5506f7e8
         run: |
           mkdir -p ci-evidence
           git merge-base --is-ancestor "$BASE_MAIN_SHA" "$GITHUB_SHA"
@@ -64,20 +64,20 @@ jobs:
           issue2 = json.loads(Path("ci-evidence/issue-2.json").read_text())
           issue19 = json.loads(Path("ci-evidence/issue-19.json").read_text())
           branches = json.loads(Path("ci-evidence/branches.json").read_text())
-          expected = Path("handoff/codex-phase0-issue-final.md").read_bytes()
+          expected_issue1 = Path("handoff/codex-phase0-issue-final.md").read_bytes()
+          expected_issue19 = Path("handoff/codex-phase0-hosted-controls-issue-final.md").read_bytes()
 
           assert issue1["state"] == "open"
-          assert hashlib.sha256(issue1.get("body", "").encode()).hexdigest() == hashlib.sha256(expected).hexdigest()
+          assert hashlib.sha256(issue1.get("body", "").encode()).hexdigest() == hashlib.sha256(expected_issue1).hexdigest()
           assert issue2["state"] == "closed" and issue2.get("state_reason") == "duplicate"
-          assert issue19["state"] in {"open", "closed"}
-          if issue19["state"] == "closed":
-              assert issue19.get("state_reason") == "completed"
+          assert issue19["state"] == "open"
+          assert hashlib.sha256(issue19.get("body", "").encode()).hexdigest() == hashlib.sha256(expected_issue19).hexdigest()
           names = {item["name"] for item in branches}
           assert "main" in names
           assert "codex/phase-0-foundation" not in names
           PY
 
-      - name: Assemble retained WS6.2 evidence
+      - name: Assemble retained WS6.3 evidence
         run: |
           cp /tmp/ws62-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
@@ -89,47 +89,45 @@ jobs:
             configs/codex-phase0-launch-control.yaml \
             contracts/codex-phase0-launch-control.json \
             handoff/codex-phase0-issue-final.md \
-            schemas/codex-phase0-launch-control.schema.json \
-            schemas/codex-phase0-launch-evidence.schema.json \
-            schemas/codex-phase0-launch-permit.schema.json \
             configs/workstream6-final-launch-control.yaml \
             contracts/workstream6-final-launch-control.json \
-            reports/workstream6-final-launch-control-evidence.md \
+            configs/workstream6-current-status.yaml \
+            contracts/workstream6-current-status.json \
+            schemas/workstream6-current-status.schema.json \
+            handoff/codex-phase0-hosted-controls-issue-final.md \
+            README.md \
+            docs/00-START-HERE.md \
+            docs/14-CODEX-KICKOFF.md \
+            docs/19-PHASE-0-VALIDATION-ADDENDUM.md \
+            docs/20-DEVELOPMENT-STATUS.md \
             > ci-evidence/repository-digests.txt
 
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: offdata-workstream6-final-launch-control-${{ github.sha }}
+          name: offdata-workstream6-current-status-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
           path: |
             ci-evidence
-            configs/codex-phase0-launch-control.yaml
-            contracts/codex-phase0-launch-control.json
+            README.md
+            docs/00-START-HERE.md
+            docs/14-CODEX-KICKOFF.md
+            docs/19-PHASE-0-VALIDATION-ADDENDUM.md
+            docs/20-DEVELOPMENT-STATUS.md
             handoff/codex-phase0-issue-final.md
-            handoff/codex-phase0-issue-workstream5.md
-            schemas/codex-phase0-launch-control.schema.json
-            schemas/codex-phase0-launch-evidence.schema.json
-            schemas/codex-phase0-launch-permit.schema.json
-            handoff/codex-phase0-hosted-controls-attestation.template.json
-            handoff/codex-phase0-clean-macos-attestation.template.json
-            handoff/codex-phase0-founder-authorization.template.json
-            handoff/codex-phase0-launch-ack.template.json
-            scripts/run_ws62_ci.sh
-            scripts/build_workstream5_launch_control.py
-            scripts/validate_workstream5_launch_control.py
-            scripts/codex_phase0_launch_core.py
-            scripts/codex_phase0_launch_selftest.py
-            scripts/prepare_codex_phase0_launch.py
+            handoff/codex-phase0-hosted-controls-issue-final.md
+            configs/workstream6-current-status.yaml
+            contracts/workstream6-current-status.json
+            schemas/workstream6-current-status.schema.json
+            scripts/build_workstream6_current_status.py
+            scripts/validate_workstream6_current_status.py
+            docs/55-WS6-3-CURRENT-STATUS-DOCUMENT-REPAIR.md
+            reports/workstream6-current-status-evidence.md
             configs/workstream6-final-launch-control.yaml
             contracts/workstream6-final-launch-control.json
-            schemas/workstream6-final-launch-control.schema.json
-            scripts/build_workstream6_final_launch_control.py
-            scripts/validate_workstream6_final_launch_control.py
-            docs/54-WS6-2-FINAL-LAUNCH-CONTROL-RECONCILIATION.md
-            reports/workstream6-final-launch-control-evidence.md
+            scripts/run_ws62_ci.sh
 
       - name: Publish exact-gate result
         if: github.event_name == 'pull_request'
@@ -140,4 +138,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.2 final launch-control gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. The final WS6.2 issue digest, final-release gate, exact status-check identity, launch verifier, all prior components, compilation, Ruff and strict MyPy passed. No permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.3 current-status gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All six current authority surfaces, stale-state mutations, live issues, prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. No permit was emitted and Codex remains unauthorized."

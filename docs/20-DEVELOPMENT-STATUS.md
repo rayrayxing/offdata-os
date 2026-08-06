@@ -2,333 +2,115 @@
 
 ## Snapshot
 
-Date: 2026-08-05
+Date: 2026-08-06
 
-## Completed in ChatGPT and committed
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
-### Governance and product design
+This is the current human-readable status document. Historical phase-completion documents, PR descriptions, issue comments and reports remain evidence for their own packages but do not supersede this snapshot.
 
-- Build Pack and governing `AGENTS.md`.
-- Chat-first master workplan.
-- Numbered catalogue of 123 requirements.
-- Implemented-versus-planned requirement traceability.
-- Architecture and decision records.
-- Third-party tool registry.
-- Founder approval matrix, operating guide and setup checklist.
+## Completed chat-first packages
 
-### Phase 1 — Machine-readable contracts
+### CF-P1–7
 
-Status: **chat-first completion and independent CI gate passed**.
+The chat-first package contains the governed machine contracts, bounded agent system, restricted AI-audit oracle, deliverable semantic model, primary engagement fixtures, knowledge-ingestion intelligence and security/regionalisation controls. These are design and deterministic implementation inputs, not completed product implementation phases.
 
-The governed baseline contains 58 registered models, Draft 2020-12 schemas, four governed configurations, 26 OpenAPI paths, ten commands, fifteen events, a PostgreSQL baseline, complete requirement traceability and mandatory generation, coverage, compilation, Ruff and strict MyPy gates.
+### PCR-01–10
 
-See:
+The full reconciliation sequence is integrated:
 
-- `docs/33-PHASE-1-MACHINE-CONTRACT-COMPLETION.md`
-- `reports/phase1-validation-evidence.md`
+- canonical release reconciliation;
+- test identity and referential-integrity repair;
+- repository and governance hygiene;
+- machine-readable Codex handoff;
+- runtime adapter contracts;
+- Hermes compatibility;
+- Northstar integration blueprint;
+- initial operating controls;
+- canonical Codex issue preparation;
+- pre-Codex release and quality acceptance.
 
-### Phase 2 — First agent system
+### WS-4 and WS-5
 
-Status: **chat-first completion and independent CI gate passed**.
+Repository-readiness, hosted-control evidence structures, clean-macOS doctor tooling and the predecessor launch-control package are integrated. Workstream 5 records remain historical predecessor evidence after WS6.2.
 
-The governed release contains eleven bounded agent definitions and skill packages, deterministic context, tool, record, write, budget, routing, escalation and admission controls, 33 positive, negative and adversarial evaluation cases and eight mandatory failure conditions.
+### WS6 completed packages
 
-See:
+- WS6.0 — baseline lock and final defect register;
+- WS6.1 — controlling machine handoff reconciliation;
+- WS6.2 — final launch-control reconciliation and final issue-body rebinding;
+- WS6.3 — current human status and authority document repair.
 
-- `docs/34-PHASE-2-FIRST-AGENT-SYSTEM-COMPLETION.md`
-- `reports/phase2-validation-evidence.md`
+WS6.3 closes `WS6-BLOCK-003` and `WS6-CONSIST-008`. `WS6-BLOCK-006` remains open until the permanent post-merge final release is produced in the final reconciliation package.
 
-### Phase 3 — AI-audit analytical oracle
+## Current controlling authority
 
-Status: **chat-first completion and independent CI gate passed**.
+- `AGENTS.md` — controlling instruction;
+- `handoff/codex-phase0-handoff.json` — machine execution contract;
+- `contracts/codex-phase0-launch-control.json` — final launch control;
+- `handoff/codex-phase0-issue-final.md` — only current generated issue #1 body;
+- `contracts/workstream6-current-status.json` — current-status document reconciliation;
+- `releases/pre-codex-final-reconciliation-2026-08-06.json` — required future permanent final release.
 
-The governed release contains the restricted deterministic Northstar AI-audit oracle, client-visible-input isolation, source checksums, six evidence findings, eight use-case assessments, reconciled financial logic, controlled recommendation switching, 74 restricted grade checks, prompt-injection controls, mutation tests and a clean reproducible baseline.
+The exact required future branch-protection check is:
 
-See:
+```text
+Validate final pre-Codex canonical handoff and complete release
+```
 
-- `docs/35-PHASE-3-AI-AUDIT-ANALYTICAL-ORACLE-COMPLETION.md`
-- `reports/phase3-validation-evidence.md`
+## Retained runtime boundary
 
-### Phase 4 — First deliverable semantic model
+The completed PCR-05 contract remains `contracts/runtime-adapter-contracts.json`. Every complete gate must run `scripts/validate_pcr05_runtime_adapters.py`; current and future repository status remains `runtime_activation_authorized=false` until a separately governed activation package exists.
 
-Status: **chat-first completion and independent CI gate passed**.
+## Canonical CF-P1–7 release evidence
 
-The governed release contains immutable story model `STORY-DAI-001`, twelve governed assertions, eighteen approved named numbers, six citation records, six editable visual specifications, twelve reusable semantic objects and six renderer-independent plans covering PPTX, DOCX, XLSX, PDF, SVG and HTML. It includes deterministic cross-format reconciliation, a Founder release boundary, an independent 115-check semantic grader and a byte-reproducible restricted baseline.
+The permanent canonical chat-first release remains `releases/canonical-chat-first-phase1-7-release.json`. Its controlling integrated commit is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, with authoritative validation run `30976222896` and retained artifact `8918355687`. These values are historical release identity, not current launch authorization.
 
-The Phase 4 boundary is semantic, not rendered. Physical deliverable generation, Office open-and-save, native editability and visual-regression evidence remain later renderer work. `VIS-CITATION-001`, `VIS-EDIT-001` and `VIS-PPTX-001` remain planned.
+## Verified predecessor baseline
 
-See:
+The complete WS6.2 exact merge-reference gate recorded:
 
-- `docs/36-PHASE-4-DELIVERABLE-SEMANTIC-MODEL-COMPLETION.md`
-- `reports/phase4-validation-evidence.md`
-
-### Phase 5 — Additional engagement fixtures
-
-Status: **chat-first completion and independent CI gate passed**.
-
-The governed release completes the twelve remaining primary golden engagement fixture packs. Together with the detailed Northstar digital-and-AI fixture, all thirteen primary engagement types now have governed chat-first fixture definitions.
-
-Each additional fixture contains a synthetic Singapore client and mandate, CRM context, source and interview evidence, structured data, deliberate defects, expected problem archetypes, two minimum-sufficient method stacks, rejected method traps, contradictions, calculation ranges, assumptions, falsifiers, recommendations, alternatives, storyline expectations, D3/D4 Founder interruptions, implementation records and governed benefit records.
-
-Compound fixture packs and full application execution remain later work. `E2E-PRIMARY-FIXTURES-001` and `E2E-COMPOUND-FIXTURES-001` remain planned.
-
-See:
-
-- `docs/37-PHASE-5-ADDITIONAL-ENGAGEMENT-FIXTURES-COMPLETION.md`
-- `reports/phase5-validation-evidence.md`
-
-### Phase 6 — Knowledge-ingestion intelligence
-
-Status: **chat-first completion and independent CI gate passed**.
-
-The governed release includes:
-
-- 23 profiled Founder-supplied sources: eleven core Markdown standards and twelve domain DOCX methodology packs;
-- actual SHA-256 checksums, byte sizes, structural counts, stable source IDs, provenance and conservative rights classifications;
-- explicit status `profiled_original_not_committed` for every source;
-- canonical source manifest and 99 deterministic alias rules;
-- ambiguity quarantine, invalid-reference rejection and controlled unresolved dependency gaps;
-- 21 dependency-resolution cases;
-- 154 source-local domain method headings indexed as `indexed_not_promoted`;
-- twelve method-collision families with no automatic merging;
-- twelve source-grounded, independently written method-record examples;
-- twelve answer-neutral domain overlays;
-- 46 retrieval gold cases covering every profiled source;
-- ten Methodology Radar source categories with novelty, provenance, rights and promotion controls;
-- deterministic rights decisions that deny external redistribution by default;
-- byte-reproducible `knowledge-ingestion-baseline.json`;
-- mutation and failure tests for source identity, checksums, aliases, rights, promotion status, retrieval scope and stale baselines;
-- twenty additional mapped executable test nodes;
-- `UT-ALIAS-001`, `UT-OVERLAY-001` and `UT-RIGHTS-001` converted to executable evidence;
-- a read-only clean-generation gate covering all governed Phase 1–6 baselines.
-
-The original methodology source files remain unchanged and uncommitted. Physical file import, object storage, passage extraction, indexing and searchable retrieval remain Codex integration work; `IT-INGEST-001` remains planned.
-
-See:
-
-- `docs/38-PHASE-6-KNOWLEDGE-INGESTION-INTELLIGENCE-COMPLETION.md`
-- `reports/phase6-validation-evidence.md`
-
-### Phase 7 — Security and regionalisation
-
-Status: **chat-first completion and independent CI gate passed**.
-
-The governed release includes:
-
-- four deterministic data-classification levels and minimum handling controls;
-- tenant, engagement, region, environment, MFA, capability and time-limited-support access decisions;
-- explicit Founder authority for material export, deletion, external action and production enablement;
-- three Singapore-first regional-cell definitions covering local development and planned staging and production;
-- real-client-data enablement fixed at `false`;
-- client-data cross-region transfer denied by default;
-- controlled global metadata fields with client, evidence, model and personal-data fields prohibited;
-- four configurable retention-policy defaults with legal-hold, archive, export, deletion and verification rules;
-- a governed provider and processor register schema with zero real-client processors approved;
-- three synthetic processor fixtures isolated from the real register;
-- twenty threats and abuse cases;
-- forty-eight security controls;
-- eighteen mandatory controls for any future real-client-data gate;
-- thirty-six governed security tests;
-- twelve incident playbooks;
-- a deterministic default-deny production gate requiring current environment-and-region-specific evidence and explicit Founder approval;
-- incident severity, containment and escalation logic that prohibits autonomous closure of material incidents;
-- a byte-reproducible `security-regionalisation-baseline.json`;
-- thirty-seven additional runtime tests and mapped requirement evidence;
-- `UT-PROCESSOR-REGISTER-001` converted to executable evidence;
-- a read-only clean-generation gate covering all governed Phase 1–7 baselines.
-
-Latest complete independent validation:
-
-- Phase 1 regression gate passed;
-- Phase 2 regression gate passed;
-- Phase 3 analytical-oracle gate passed;
-- Phase 4 semantic-model gate passed;
-- Phase 5 additional-fixture gate passed;
-- Phase 6 knowledge-ingestion-intelligence gate passed;
-- Phase 7 security-and-regionalisation gate passed;
-- read-only clean generation across all Phase 1–7 governed records passed;
-- 215 implemented test nodes and 55 remaining planned tests;
-- 19 completed planned-test IDs;
-- all 123 requirements mapped;
-- 217 runtime tests passed;
-- 93.34 percent coverage against a 90 percent floor;
+- 247 runtime tests passed in 27.05 seconds;
+- 93.14 percent coverage across 4,604 statements;
+- 245 executable test nodes;
+- 99 semantic tests;
+- 604 typed reference edges;
+- zero unresolved references;
 - Python compilation passed;
 - Ruff passed;
-- strict MyPy passed across 30 source files;
-- 65-file release artefact retained for 30 days.
+- strict MyPy passed across 32 source files;
+- 41 invalid launch bundles rejected;
+- no permit emitted and no GitHub mutation performed by launch self-tests.
 
-Operating identity, MFA, environment separation, encryption, region isolation, backup restoration, supply-chain scanning, monitoring, retention execution, infrastructure rollback, provider contracts and production Founder acceptance remain Codex, provider or Founder gates. Real client data remains prohibited.
+WS6.3 must retain or improve this baseline and add deterministic stale-state scanning for the current human authority documents.
 
-See:
+## Work remaining before Codex
 
-- `docs/39-PHASE-7-SECURITY-AND-REGIONALISATION-COMPLETION.md`
-- `reports/phase7-validation-evidence.md`
+The remaining chat-first WS6 packages continue in sequence beginning with WS6.4. They include authority classification, terminology normalization, final workflow/check consolidation, remaining consistency and quality repairs, final evidence reconciliation and the permanent post-merge release.
 
-### PCR-01 — Canonical release reconciliation
+Codex remains blocked until all repository-side packages are complete and the following manual gates are independently evidenced:
 
-Status: **complete and independently CI-validated**.
-
-PCR-01 governs the final Phase 1–7 release through `configs/canonical-release.yaml` and the deterministic `releases/canonical-chat-first-phase1-7-release.json`. The controlling completed chat-first source release is `7dc5531e641158e5a84fbbb9fdf07cefefd4782b`, validated by final run `30976222896` and retained artifact `8918355687`. Earlier successful Phase 7 runs remain recorded as superseded snapshots rather than controlling evidence.
-
-The PCR-01 implementation gate passed in run `30983105556`, job `92231688824`, through merge reference `cd4e72dac2cce80d238477c9e1b0288c616b2947`: all Phase 1–7 and PCR-01 validators passed, 226 implemented test nodes and 55 planned tests were registered, all 123 requirements remained mapped, 228 runtime tests passed at 93.39 percent coverage, compilation and Ruff passed, and strict MyPy passed across 31 source files. The 68-file artifact `8920937473` has SHA-256 `6cc7168786e2484a99d558d57e261194cc124943f3c4e9ece4b6c2d8480784d6`.
-
-PCR-01 does not enable real client data, commit original methodology binaries or claim operating infrastructure.
-
-See:
-
-- `docs/40-PCR-01-CANONICAL-RELEASE-RECONCILIATION.md`
-- `reports/pcr01-validation-evidence.md`
-
-### PCR-02 — Test identity and referential-integrity repair
-
-Status: **complete as governed implementation; exact validation evidence is recorded in `reports/pcr02-validation-evidence.md`**.
-
-PCR-02 adds a stable semantic test-definition registry, preserves completed planned-test identities, repairs dangling and wrong-kind threat references, and validates typed relationships among requirements, tests, executable nodes, controls, threats, playbooks, agents, commands, events, fixtures, source profiles and aliases. `META-TEST-HIERARCHY-001` is executable. Deferred integration and production tests remain planned.
-
-See:
-
-- `docs/41-PCR-02-TEST-IDENTITY-AND-REFERENTIAL-INTEGRITY.md`
-- `reports/pcr02-validation-evidence.md`
-
-### PCR-03 — Repository and governance hygiene
-
-Status: **complete as governed implementation and ready for Founder review in PR #18**.
-
-PCR-03 adds contribution, governance, security, ownership, issue and pull-request controls; removes tracked generated package metadata; hardens the complete CI workflow; generates and validates a deterministic repository-governance baseline; rejects prohibited paths and case collisions; and preserves explicit Founder-administered hosted-setting boundaries.
-
-See:
-
-- `docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md`
-- `reports/pcr03-validation-evidence.md`
-
-### PCR-04 — Machine-readable Codex handoff
-
-Status: **complete as a governed stacked implementation in PR #20; final merge to `main` remains dependent on PCR-03**.
-
-PCR-04 replaces prompt-only transfer with a generated and schema-validated Phase 0 handoff containing the read order, prerequisite health, existing assets, P0.1–P0.4 dependency graph, root-executable validation commands, activation blockers, prohibited actions, stop conditions, Founder report fields and immutable authority boundaries. The handoff deliberately records `codex_start_authorized=false`.
-
-See:
-
-- `docs/43-PCR-04-MACHINE-READABLE-CODEX-HANDOFF.md`
-- `handoff/codex-phase0-handoff.json`
-- `reports/pcr04-validation-evidence.md`
-
-### PCR-05 — Runtime adapter contracts
-
-Status: **complete as a governed stacked implementation in PR #21; final merge remains dependent on PCR-03 and PCR-04**.
-
-PCR-05 defines provider-independent contracts for agent runtimes, durable workflow runtimes, bounded worker harnesses and tool runtimes. The deterministic contract covers eight implementation profiles, twenty tool classes, typed request and response messages, budget and audit requirements, fourteen conformance cases and eighteen controlled mutation cases. Canonical writes remain command-only, every external-side-effect tool remains unavailable pending scoped Founder approval and idempotency, and `runtime_activation_authorized=false`.
-
-See:
-
-- `docs/44-PCR-05-RUNTIME-ADAPTER-CONTRACTS.md`
-- `contracts/runtime-adapter-contracts.json`
-- `reports/pcr05-validation-evidence.md`
-
-### PCR-06 — Hermes adoption and compatibility pack
-
-Status: **complete as a governed stacked implementation in PR #22; final merge remains dependent on PCR-03 through PCR-05**.
-
-PCR-06 pins the assessed Hermes Agent release and defines restricted compatibility for skills, foreground bounded worker execution, tools and non-canonical memory. Hermes installation and activation remain prohibited, and `hermes_activation_authorized=false`.
-
-See:
-
-- `docs/45-PCR-06-HERMES-ADOPTION-AND-COMPATIBILITY-PACK.md`
-- `contracts/hermes-compatibility-pack.json`
-- `reports/pcr06-validation-evidence.md`
-
-### PCR-07 — Northstar end-to-end integration blueprint
-
-Status: **complete as a governed stacked implementation in PR #23; final merge remains dependent on PCR-03 through PCR-06**.
-
-PCR-07 maps the existing synthetic Northstar AI-audit fixture through all thirteen lifecycle stages, thirteen components, twenty contract edges, seven end-to-end scenarios and eight dependency-ordered implementation waves. It is a blueprint only and records `northstar_implementation_authorized=false`.
-
-See:
-
-- `docs/46-PCR-07-NORTHSTAR-END-TO-END-INTEGRATION-BLUEPRINT.md`
-- `contracts/northstar-integration-blueprint.json`
-- `reports/pcr07-validation-evidence.md`
-
-### PCR-08 — Initial operating-control configuration
-
-Status: **complete as a governed stacked implementation on `governance/pcr08-initial-operating-controls`; final merge remains dependent on PCR-03 through PCR-07**.
-
-PCR-08 assigns all forty-eight security controls exactly once across ten Founder-owned operating domains, configures eight unauthorised operating gates, six fail-closed switches, a zero paid-provider spend cap, incident and retention routing, evidence-state honesty and the final pre-Codex activation sequence. Hosted, operating-environment and production evidence remain incomplete, and `initial_operating_controls_activation_authorized=false`.
-
-See:
-
-- `docs/47-PCR-08-INITIAL-OPERATING-CONTROL-CONFIGURATION.md`
-- `contracts/initial-operating-controls.json`
-- `reports/pcr08-validation-evidence.md`
-
-
-### Deterministic consulting kernel
-
-- Lifecycle and transition logic.
-- Decision and approval policy.
-- Agent envelopes, context packages and Founder packets.
-- Knowledge, source, passage, method and methodology-candidate records.
-- Commands, domain events and approvals.
-- Quality, defect, exception and release-gate contracts.
-- Story, visual, deliverable and reconciliation contracts.
-- CRM, opportunity and controlled-outreach contracts.
-- Provider-independent agent-system controls.
-- Restricted synthetic analytical oracle and independent grader.
-- Immutable cross-format deliverable semantic model and independent semantic grader.
-- Deterministic primary engagement fixture programme.
-- Deterministic source profiling, alias, rights, method-index and retrieval-evaluation intelligence.
-- Deterministic classification, access, regionalisation, retention, processor, production-gate and incident intelligence.
-- Deterministic canonical release reconciliation with exact governed-record and source-profile digests.
-
-### Synthetic engagement system
-
-- All thirteen primary engagement types have governed chat-first fixture definitions.
-- `FIXTURE-DAI-001` contains the detailed synthetic Northstar SME AI-audit evidence room, analytical oracle and semantic model.
-- Twelve additional primary fixtures are expanded deterministically from governed seeds.
-- Fixture tests cover scope, evidence, calculations, controls, contradictions, method traps, assumptions, falsifiers, human-authority boundaries, mutation detection and reproducibility.
-- Compound fixtures remain planned.
-
-## Current strategy
-
-Complete the governed merge and activation sequence without bypassing Founder authority:
-
-1. Founder reviews and merges PCR-03 PR #18.
-2. Retarget and revalidate PCR-04 PR #20, then merge only after Founder approval.
-3. Retarget and revalidate PCR-05 PR #21, then merge only after Founder approval.
-4. Retarget and revalidate PCR-06 PR #22, then merge only after Founder approval.
-5. Retarget and revalidate PCR-07 PR #23, then merge only after Founder approval.
-6. Retarget and revalidate the PCR-08 pull request, then merge only after Founder approval.
-7. Verify every GitHub-hosted control in issue #19.
-8. Confirm a clean macOS development environment.
-9. Give explicit Founder approval for Codex Phase 0 only.
-
-Codex must integrate and execute the committed design rather than rediscover or duplicate it.
+1. issue #19 hosted controls are verified;
+2. exact-allowlist historical branch cleanup is complete;
+3. branch protection requires `Validate final pre-Codex canonical handoff and complete release`;
+4. a clean supported macOS report and Founder environment attestation are complete;
+5. the Founder explicitly approves Codex Phase 0 tasks P0.1–P0.4 against the exact current `main` SHA;
+6. `scripts/prepare_codex_phase0_launch.py` emits a valid local single-use permit.
 
 ## Current Founder actions
 
-Only the following are useful now:
+No Codex implementation action is required now. The useful Founder-controlled actions remain:
 
-1. Review the PCR-03 through PCR-08 pull requests in sequence.
-2. Complete the hosted-control checklist in issue #19, including MFA and `main` protection.
-3. Install and sign into the Codex macOS app.
-4. Confirm PowerPoint, Word and Excel availability.
-5. Keep the original methodology files unchanged in one local source-library folder.
-6. Confirm at least 30 GB free disk space.
-7. Later confirm source usage rights before any external redistribution or canonical import gate.
-8. Do not authorise real client data until the production-security evidence packet is complete.
+- preserve issue #19 as the manual hosted-control and environment evidence record;
+- prepare evidence for MFA, `main` protection, stale-review dismissal, resolved conversations, force-push/deletion blocking and automatic merged-branch deletion;
+- complete only exact-allowlist branch cleanup while retaining branch SHAs as evidence;
+- prepare a clean macOS environment and run the redacted doctor after the final repository SHA is known;
+- withhold Phase 0 approval until the permanent final release and all evidence are complete;
+- do not purchase services, approve OAuth, enter credentials, enable real client data or permit external actions.
 
-Do not purchase the deferred orchestration, paid CRM, enrichment or cloud stack yet.
+## Codex launch rule
 
-## Current Codex gate
+Create `codex/phase-0-foundation` only after a valid permit exists and only from the permit’s approved SHA. The first commit must contain `governance/codex-phase0-launch-ack.json`. The pull request must remain draft. Merge, production deployment, real client data, runtime activation and Phase 1 remain unauthorised.
 
-Codex may begin only when all activation conditions in `handoff/codex-phase0-handoff.json` are satisfied. The first commands are:
+## Next permitted package
 
-```bash
-python scripts/validate_pcr05_runtime_adapters.py
-python scripts/validate_pcr06_hermes_compatibility.py
-python scripts/validate_pcr07_northstar_blueprint.py
-python scripts/validate_pcr08_initial_operating_controls.py
-python scripts/validate_pcr04_codex_handoff.py
-```
-
-`initial_operating_controls_activation_authorized=false`, `runtime_activation_authorized=false`, `hermes_activation_authorized=false` and `northstar_implementation_authorized=false` remain binding. The initial assignment is Phase 0 only on branch `codex/phase-0-foundation`, using synthetic data and a draft pull request. Phase 1 progression, paid services, secrets, OAuth, DNS changes, production deployment, external actions, restricted-oracle exposure and real client data remain prohibited.
+`WS6.4` is the next permitted chat-first work package after WS6.3 integration.

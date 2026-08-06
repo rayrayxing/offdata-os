@@ -1,118 +1,117 @@
 # 14 — Codex Kickoff
 
-## Controlling handoff
+## Current state
 
-Codex must use `handoff/codex-phase0-handoff.json` as the machine-readable execution contract for the first implementation phase. The file is generated from `configs/codex-handoff.yaml`, validated against `schemas/codex-handoff.schema.json`, and semantically checked by `scripts/validate_pcr04_codex_handoff.py`. Runtime execution boundaries are separately governed by `contracts/runtime-adapter-contracts.json` and `scripts/validate_pcr05_runtime_adapters.py`. Hermes compatibility is governed by `contracts/hermes-compatibility-pack.json` and `scripts/validate_pcr06_hermes_compatibility.py`; the Northstar implementation path is governed by `contracts/northstar-integration-blueprint.json` and `scripts/validate_pcr07_northstar_blueprint.py`; and the initial deny-by-default operating posture is governed by `contracts/initial-operating-controls.json` and `scripts/validate_pcr08_initial_operating_controls.py`.
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
-The handoff does not itself authorise execution. Phase 0 begins only after:
+This file is preparation guidance, not an instruction to start Codex. Do not paste a kickoff prompt into Codex, create the implementation branch or change application code until the final release and every manual launch gate have passed and a valid local single-use permit exists.
 
-1. PCR-03 through PCR-08 are merged to `main`;
-2. the GitHub-hosted controls tracked in issue #19 are verified;
-3. the Founder explicitly approves Phase 0; and
-4. a clean macOS development environment is available.
+## Controlling authority
 
-## Phase 0 kickoff prompt
+Codex Phase 0 is governed by:
 
-Paste the following into Codex after opening `rayrayxing/offdata-os`:
+- `AGENTS.md`;
+- `handoff/codex-phase0-handoff.json`;
+- `contracts/codex-phase0-launch-control.json`;
+- `handoff/codex-phase0-issue-final.md` and issue #1;
+- `releases/pre-codex-final-reconciliation-2026-08-06.json` after it exists and passes the independent gate;
+- a valid local permit emitted by `scripts/prepare_codex_phase0_launch.py`.
+
+The handoff, final issue body, a green workflow, an assignment or a branch name does not authorise execution.
+
+## Preconditions before any Codex session
+
+All of the following are mandatory:
+
+1. `python scripts/require_workstream6_final_reconciliation.py` passes against the exact current `main` SHA;
+2. issue #19 is closed as completed with evidence for hosted controls and exact-allowlist branch cleanup;
+3. branch protection requires exactly `Validate final pre-Codex canonical handoff and complete release`;
+4. a clean macOS doctor report and Founder environment attestation are complete and SHA-bound;
+5. the Founder explicitly approves Codex Phase 0 only, tasks P0.1–P0.4, against the same SHA;
+6. `scripts/prepare_codex_phase0_launch.py` validates all evidence and emits a valid local single-use permit;
+7. `codex/phase-0-foundation` and any Phase 0 pull request are absent before launch.
+
+## Launch preparation command
+
+Run the verifier only after the evidence files are completed:
+
+```bash
+python scripts/prepare_codex_phase0_launch.py \
+  --hosted-controls .local/codex-phase0-launch/hosted-controls.json \
+  --macos-report .local/codex-phase0-launch/macos-doctor.json \
+  --macos-attestation .local/codex-phase0-launch/macos-attestation.json \
+  --founder-approval .local/codex-phase0-launch/founder-approval.json
+```
+
+A successful run writes a local permit. It does not create a branch, open a pull request, activate services or authorise merge.
+
+## Retained runtime boundary
+
+Before any permitted session, validate `contracts/runtime-adapter-contracts.json` with `scripts/validate_pcr05_runtime_adapters.py`. The contract is provider-independent and remains inactive: `runtime_activation_authorized=false`.
+
+## Permit-gated kickoff prompt
+
+Use the following only after independently confirming that the permit is valid for the exact checked-out `main` SHA:
 
 ```text
 You are the principal engineering agent for offdata, a Founder-governed,
 AI-native consulting operating system.
 
-Open and inspect the private repository rayrayxing/offdata-os.
+Open and inspect the private repository rayrayxing/offdata-os. Treat AGENTS.md
+as the controlling instruction. Load handoff/codex-phase0-handoff.json,
+contracts/codex-phase0-launch-control.json and the valid local launch permit.
 
-Treat AGENTS.md as the controlling instruction. Then load and validate
-handoff/codex-phase0-handoff.json before proposing or changing code.
+Before changing files, verify that the current main SHA, final Workstream 6
+release, final issue-body digest, required status-check identity, evidence
+digests, approved task scope and permit all match. Stop immediately if any
+value is missing, stale or ambiguous.
 
-Run:
-python scripts/validate_pcr05_runtime_adapters.py
-python scripts/validate_pcr06_hermes_compatibility.py
-python scripts/validate_pcr07_northstar_blueprint.py
-python scripts/validate_pcr08_initial_operating_controls.py
-python scripts/validate_pcr04_codex_handoff.py
+Only after that verification, create codex/phase-0-foundation from the permit's
+approved SHA. Add governance/codex-phase0-launch-ack.json as the first commit.
 
-Do not continue if the handoff is stale, invalid, missing a prerequisite,
-or if any activation condition has not been confirmed by the Founder.
+Your authorised assignment is Codex Phase 0 only, tasks P0.1-P0.4 in the
+machine handoff's dependency order. Integrate the governed chat-first assets;
+do not replace canonical lifecycle, policy, contract, fixture, security,
+knowledge, release, test-identity or launch-control records.
 
-Your authorised assignment is Phase 0 only. Use the task graph P0.1-P0.4
-and dependency order in the handoff. Do not begin Phase 1.
+Use synthetic data only. Do not purchase services, request or expose secrets,
+approve OAuth, alter DNS, send external communications, deploy staging or
+production, activate runtime or Hermes, implement Northstar beyond the approved
+Phase 0 foundation, enable real client data, weaken tests, merge the pull
+request or begin Phase 1.
 
-Create the branch codex/phase-0-foundation. Validate all pre-existing
-chat-first assets before adding application code. Integrate the existing runtime adapter contract and
-deterministic lifecycle, policy, contracts, fixtures, knowledge, security,
-release, test-identity and repository-governance records. Do not create
-parallel replacements for them.
-
-Follow every required command, prohibited action, stop condition, approval
-boundary and completion-report field in the handoff.
-
-Treat `initial_operating_controls_activation_authorized=false`, `runtime_activation_authorized=false`, `hermes_activation_authorized=false` and `northstar_implementation_authorized=false` as binding. Use synthetic data only. Do not purchase services, request secrets, approve
-OAuth, alter DNS, deploy production infrastructure, send external messages,
-enable real client data, expose restricted oracle material, weaken tests or
-progress beyond Phase 0.
-
-Perform a separate review pass, repair defects without weakening controls,
-open a DRAFT pull request, and stop at the Phase 0 gate. Do not merge.
+Run every required command, perform an independent review, repair defects
+without weakening controls, open a DRAFT pull request and stop at the Founder
+gate. Do not merge.
 ```
 
-## Phase completion repair prompt
+## Review and repair prompt
 
 ```text
-Review the current draft pull request against AGENTS.md,
-handoff/codex-phase0-handoff.json, the approved phase requirements and
-docs/10-TESTING-STRATEGY.md.
+Review the current draft Codex Phase 0 pull request against AGENTS.md, the
+machine handoff, final launch contract, launch acknowledgement, approved permit
+scope and docs/10-TESTING-STRATEGY.md.
 
 Create a defect register with severity, cause, affected requirement and repair
-plan. Repair all critical, high and required medium defects without weakening
-tests or changing golden expectations merely to obtain a pass.
-
-Rerun the complete required command set in the handoff, update documentation
-and provide a revised plain-English Founder report. Keep the pull request in
-draft and do not progress to the next phase.
+plan. Repair all blocking and required defects without weakening tests or
+changing golden expectations merely to obtain a pass. Rerun the complete
+command set, update documentation and provide a revised Founder report. Keep
+the pull request in draft and do not merge or progress to Phase 1.
 ```
 
 ## Independent review prompt
 
 ```text
-Act as an independent engineering, security and quality reviewer for the
-current offdata phase. Do not assume the implementation is correct because
-another agent produced it.
+Act as an independent engineering, security and quality reviewer. Verify the
+permit, approved SHA and first-commit acknowledgement before reviewing the
+implementation. Attempt to falsify the claim that Codex Phase 0 is complete.
 
-Read AGENTS.md, contracts/runtime-adapter-contracts.json, contracts/hermes-compatibility-pack.json, contracts/northstar-integration-blueprint.json, contracts/initial-operating-controls.json and handoff/codex-phase0-handoff.json. Inspect the changed files,
-test evidence, costs, permissions and rollback instructions. Attempt to falsify
-the claim that the approved phase is complete.
-
-Review for requirements omissions, unsafe permissions, secret handling,
-duplicate canonical implementations, hidden coupling, insufficient or hollow
-tests, data-isolation failures, recovery weaknesses, unnecessary paid
-dependencies and usability problems for a non-technical Founder.
-
-Return a defect register with severity and evidence. Do not merge or approve
-material work with unresolved blocking defects.
+Review requirements coverage, permissions, secret handling, canonical-model
+duplication, hidden coupling, test quality, data isolation, recovery,
+supply-chain controls, costs and usability for a non-technical Founder. Return
+a defect register with evidence. Do not approve merge or Phase 1.
 ```
 
-## Later phase progression template
+## Later phases
 
-```text
-The Founder has explicitly approved progression to Phase [NUMBER AND NAME].
-
-Read AGENTS.md and the current machine-readable phase handoff. Work only on the
-approved phase. First verify every prior phase gate remains satisfied.
-
-Create the canonical phase branch, implement in dependency order, run all
-required tests, perform an isolated review, repair defects, open a draft pull
-request and stop at the phase gate.
-
-Do not purchase services, enter credentials, approve OAuth, deploy real client
-data or perform external actions. Present a decision-ready Founder packet when
-one of those actions is required.
-```
-
-## PCR-09 first Codex issue contract
-
-Before Phase 0 can be authorised, the generated first-issue contract must remain current and pass its dedicated validator:
-
-- `contracts/codex-phase0-issue.json`
-- `scripts/validate_pcr09_codex_issue.py`
-
-Preparing or validating this contract does not authorise Codex to start.
+No later implementation phase may reuse the Phase 0 permit. Each phase requires a new machine handoff, explicit Founder approval, fresh evidence and its own bounded authorization. Phase 0 completion never implies Phase 1 authorization.

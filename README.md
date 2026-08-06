@@ -2,96 +2,71 @@
 
 **offdata** is a Founder-governed, AI-native consulting operating system designed to execute most analyst, consultant and engagement-management work while preserving human accountability for material decisions, external commitments, commercial choices and client relationships.
 
-This repository is the **canonical build repository** for the new offdata consulting platform. The older `rayrayxing/offdata` and `rayrayxing/offdata-clean` repositories are historical references only and must not be treated as controlling specifications.
+This repository is the **canonical build repository** for the new offdata consulting platform. The older `rayrayxing/offdata` and `rayrayxing/offdata-clean` repositories are historical references only.
 
-## Current status
+## Current canonical status
 
-- Repository stage: chat-first pre-Codex foundation hardened through PCR-05
-- Initial operator: Founder only
-- Initial hosting/data region: Singapore
-- Initial data: synthetic only; real client data remains prohibited
-- Engineering execution: Codex, operating through gated phases
-- Production orchestrator: not yet approved; the build must preserve replaceability
-- Canonical release: Phase 1–7 reconciled by PCR-01
-- Test and reference integrity: governed by PCR-02
-- Repository and governance hygiene: governed by PCR-03
-- Codex Phase 0 handoff: governed by PCR-04
-- Runtime adapter boundaries: governed by PCR-05
-- Codex start: not automatically authorised; all activation conditions in `handoff/codex-phase0-handoff.json` remain mandatory
+**Chat-first development is complete through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.3; final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
-## Product objective
+- Initial operator: Founder only.
+- Initial hosting and data region: Singapore.
+- Data: synthetic only; real client data remains prohibited.
+- Codex implementation phase: not started and not authorised.
+- Current canonical issue: `handoff/codex-phase0-issue-final.md`, synchronized to issue #1.
+- Current launch control: `contracts/codex-phase0-launch-control.json`.
+- Current machine handoff: `handoff/codex-phase0-handoff.json`.
+- Required future branch-protection check: `Validate final pre-Codex canonical handoff and complete release`.
+- Required permanent final release: `releases/pre-codex-final-reconciliation-2026-08-06.json`.
 
-offdata should support the full consulting lifecycle from qualified opportunity and mandate intake through framing, research, analysis, recommendation, deliverable production, implementation and benefits verification. It should also support controlled origination, CRM continuity, methodology scouting and continuous quality improvement.
+Historical PCR and Workstream completion documents remain evidence of their own completed packages. They do not supersede the current status above or authorise Codex.
 
-## Read order
+## Authority and read order
 
 1. `AGENTS.md`
 2. `GOVERNANCE.md`
 3. `SECURITY.md`
 4. `CONTRIBUTING.md`
 5. `docs/00-START-HERE.md`
-6. `docs/01-PRODUCT-VISION.md`
-7. `docs/02-FUNCTIONAL-REQUIREMENTS.md`
-8. `docs/03-ARCHITECTURE.md`
-9. `docs/10-TESTING-STRATEGY.md`
-10. `docs/11-BUILD-BACKLOG.md`
-11. `docs/14-CODEX-KICKOFF.md`
-12. `docs/19-PHASE-0-VALIDATION-ADDENDUM.md`
-13. `docs/20-DEVELOPMENT-STATUS.md`
-14. `docs/42-PCR-03-REPOSITORY-AND-GOVERNANCE-HYGIENE.md`
-15. `docs/43-PCR-04-MACHINE-READABLE-CODEX-HANDOFF.md`
-16. `docs/44-PCR-05-RUNTIME-ADAPTER-CONTRACTS.md`
-17. `contracts/runtime-adapter-contracts.json`
-18. `handoff/codex-phase0-handoff.json`
+6. `docs/20-DEVELOPMENT-STATUS.md`
+7. `handoff/codex-phase0-handoff.json`
+8. `contracts/codex-phase0-launch-control.json`
+9. `handoff/codex-phase0-issue-final.md`
 
-## Codex entry point
+The complete implementation read order and command set are machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
 
-After PCR-03, PCR-04 and PCR-05 are merged, the hosted controls in issue #19 are verified and the Founder explicitly approves Phase 0, Codex must begin by running:
+## Codex entry gate
 
-```bash
-python scripts/validate_pcr05_runtime_adapters.py
-python scripts/validate_pcr04_codex_handoff.py
-```
+Codex may not begin merely because repository validation passes. Every one of the following must first be independently satisfied:
 
-`runtime_activation_authorized=false` remains mandatory. The runtime adapter contract fixes the replaceable execution boundaries, and the generated handoff is the machine-readable Phase 0 execution contract. It defines the read order, prerequisite records, P0.1–P0.4 dependency graph, required commands, boundaries, stop conditions, branch name, draft-pull-request rule and Founder report fields.
+1. the permanent final Workstream 6 release exists and passes `scripts/require_workstream6_final_reconciliation.py`;
+2. issue #19 is completed with evidence for hosted controls and exact-allowlist historical branch cleanup;
+3. a clean macOS doctor report and Founder environment attestation are complete;
+4. the Founder gives explicit approval for Codex Phase 0 only against the exact current `main` SHA; and
+5. `scripts/prepare_codex_phase0_launch.py` emits a valid local single-use permit.
+
+Create `codex/phase-0-foundation` only after that permit exists and only from its approved SHA. The first commit must contain the governed launch acknowledgement. The pull request must remain draft; merge and Phase 1 remain unauthorised.
+
+## Retained runtime boundary
+
+The provider-independent runtime contract remains `contracts/runtime-adapter-contracts.json` and must pass `scripts/validate_pcr05_runtime_adapters.py` in every complete gate. Contract existence never activates a runtime: `runtime_activation_authorized=false`.
+
+## Product objective
+
+offdata should support the full consulting lifecycle from qualified opportunity and mandate intake through framing, research, analysis, recommendation, deliverable production, implementation and benefits verification. It should also support controlled origination, CRM continuity, methodology scouting and continuous quality improvement.
 
 ## Non-negotiable principles
 
-1. **Operational autonomy, not accountability autonomy.** Routine internal work may be automated. Material, external, commercial, legal, irreversible or high-risk actions require Founder approval.
+1. **Operational autonomy, not accountability autonomy.** Material, external, commercial, legal, irreversible or high-risk actions require Founder approval.
 2. **The database is the system of record.** Chat history, model memory and agent sessions are not authoritative engagement truth.
-3. **Evidence before assertion.** Material claims must be traceable internally to evidence, analysis, assumptions and review state.
+3. **Evidence before assertion.** Material claims must be traceable to evidence, analysis, assumptions and review state.
 4. **One story, many surfaces.** PPTX, DOCX, XLSX, PDF, SVG and HTML outputs must be rendered from a shared semantic engagement model.
-5. **Deterministic calculations.** Models calculate; language models interpret and communicate. Numbers must never be invented by narration.
-6. **Independent quality review.** The same agent or context that creates material work cannot be the sole approver of that work.
-7. **Client separation.** No cross-engagement retrieval, memory or reuse of confidential client material without explicit authority.
-8. **Specification-first, test-first, phase-gated.** Codex must not build ahead of the approved phase.
-9. **No secrets in source control or chat.** Credentials are entered only through approved secret-management or OAuth interfaces.
-10. **Copyright-safe methodology development.** External ideas may inform independently reconstructed methods; protected wording, diagrams, templates and confidential materials must not be copied.
+5. **Deterministic calculations.** Models calculate; language models interpret and communicate.
+6. **Independent quality review.** The creator of material work cannot be its sole approver.
+7. **Client separation.** Cross-engagement retrieval or reuse of confidential client material requires explicit authority.
+8. **Specification-first, test-first, phase-gated.** Implementation must not build ahead of the approved phase.
+9. **No secrets in source control or chat.** Credentials belong only in approved secret-management or OAuth interfaces.
+10. **Copyright-safe methodology development.** External ideas may inform independently reconstructed methods; protected or confidential material must not be copied.
 
-## Initial build target
+## Initial implementation target
 
-The first target is a local, synthetic-data prototype that can complete one end-to-end AI audit engagement, then expand into a permanent fixture suite covering each major engagement type.
-
-## Repository structure
-
-```text
-offdata-os/
-├── AGENTS.md
-├── GOVERNANCE.md
-├── SECURITY.md
-├── CONTRIBUTING.md
-├── docs/
-├── configs/
-├── handoff/
-├── repository/
-├── requirements/
-├── knowledge/
-├── fixtures/
-├── apps/
-├── services/
-├── packages/
-├── infrastructure/
-└── tests/
-```
-
-Application and operating-infrastructure directories are populated only through approved implementation phases.
+After a valid permit is issued, Codex Phase 0 may establish only the controlled local project foundation defined by tasks P0.1–P0.4. Application and operating-infrastructure directories are populated only through separately approved implementation phases.
