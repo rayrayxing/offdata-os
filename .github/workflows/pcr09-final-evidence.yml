@@ -25,7 +25,7 @@ jobs:
           cache-dependency-path: packages/offdata-core/pyproject.toml
       - name: Install validation dependencies
         run: python -m pip install --upgrade pip && python -m pip install -e 'packages/offdata-core[dev]'
-      - name: Rebuild every governed machine record
+      - name: Rebuild every governed machine record through PCR-09
         run: |
           python scripts/build_test_registry.py
           python scripts/build_pcr02_test_identity.py
@@ -43,9 +43,9 @@ jobs:
           python scripts/build_pcr08_initial_operating_controls.py
           python scripts/build_pcr09_codex_issue.py
           python scripts/build_pcr04_codex_handoff.py
-      - name: Enforce clean deterministic generation
+      - name: Enforce clean deterministic generation through PCR-09
         run: git diff --exit-code
-      - name: Validate every chat-first phase and PCR boundary
+      - name: Validate every chat-first phase and PCR boundary through PCR-09
         run: |
           python scripts/validate_phase1_contracts.py
           python scripts/validate_phase2_agents.py
@@ -76,8 +76,6 @@ jobs:
       - name: Verify live canonical and superseded issues
         env:
           GH_TOKEN: ${{ github.token }}
-          EXPECTED_TITLE: Codex Phase 0 — Validate and build the controlled local foundation
-          EXPECTED_BODY_SHA256: eb36942b5db4d344edc47465bca0101f1458e7a1f5e67d47060831197aa2fb3f
         run: |
           mkdir -p ci-evidence
           gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
@@ -85,23 +83,27 @@ jobs:
           python - <<'PY'
           import hashlib
           import json
-          import os
           from pathlib import Path
 
           issue1 = json.loads(Path('ci-evidence/issue-1.json').read_text())
           issue2 = json.loads(Path('ci-evidence/issue-2.json').read_text())
-          assert issue1['title'] == os.environ['EXPECTED_TITLE']
-          digest = hashlib.sha256(issue1['body'].encode('utf-8')).hexdigest()
-          assert digest == os.environ['EXPECTED_BODY_SHA256'], digest
+          final_body = Path('handoff/codex-phase0-issue-pcr10.md')
+          expected_path = final_body if final_body.is_file() else Path('handoff/codex-phase0-issue.md')
+          expected = expected_path.read_text(encoding='utf-8')
+          expected_digest = hashlib.sha256(expected.encode('utf-8')).hexdigest()
+          actual_digest = hashlib.sha256(issue1['body'].encode('utf-8')).hexdigest()
+          assert issue1['title'] == 'Codex Phase 0 — Validate and build the controlled local foundation'
           assert issue1['state'] == 'open'
+          assert actual_digest == expected_digest, (actual_digest, expected_digest, str(expected_path))
           assert issue2['state'] == 'closed'
           assert issue2.get('state_reason') == 'duplicate'
           Path('ci-evidence/remote-verification.txt').write_text(
-              f"issue_1_title_verified=true\n"
-              f"issue_1_body_sha256={digest}\n"
-              f"issue_1_state=open\n"
-              f"issue_2_state=closed\n"
-              f"issue_2_state_reason=duplicate\n",
+              f'issue_1_title_verified=true\n'
+              f'issue_1_body_path={expected_path}\n'
+              f'issue_1_body_sha256={actual_digest}\n'
+              'issue_1_state=open\n'
+              'issue_2_state=closed\n'
+              'issue_2_state_reason=duplicate\n',
               encoding='utf-8',
           )
           PY
@@ -125,6 +127,7 @@ jobs:
             handoff/codex-phase0-handoff.json
             reports/pcr09-validation-evidence.md
       - name: Publish successful exact-gate evidence to pull request
+        if: github.event_name == 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -132,4 +135,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/pcr09-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/pcr09-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "PCR-09 final evidence gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Deterministic Phase 1–7/PCR-01–09 generation and validation, compilation, Ruff, strict MyPy, issue #1 title/body digest, and issue #2 duplicate closure all passed. Codex remains unauthorized to start."
+          gh pr comment "$PR_NUMBER" --body "PCR-09 retained evidence gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Deterministic Phase 1–7/PCR-01–09 generation and validation, compilation, Ruff, strict MyPy, final canonical issue-body digest, and issue #2 duplicate closure all passed. Codex remains unauthorized to start."
