@@ -97,15 +97,22 @@ jobs:
 
           issue1 = json.loads(Path('ci-evidence/issue-1.json').read_text())
           issue2 = json.loads(Path('ci-evidence/issue-2.json').read_text())
-          expected = Path('handoff/codex-phase0-issue-pcr10.md').read_text(encoding='utf-8')
-          expected_digest = hashlib.sha256(expected.encode('utf-8')).hexdigest()
+          allowed_paths = (
+              Path('handoff/codex-phase0-issue-pcr10.md'),
+              Path('handoff/codex-phase0-issue-workstream5.md'),
+          )
+          allowed = {
+              hashlib.sha256(path.read_bytes()).hexdigest(): str(path)
+              for path in allowed_paths
+          }
           actual_digest = hashlib.sha256(issue1['body'].encode('utf-8')).hexdigest()
           assert issue1['title'] == 'Codex Phase 0 — Validate and build the controlled local foundation'
           assert issue1['state'] == 'open'
-          assert actual_digest == expected_digest, (actual_digest, expected_digest)
+          assert actual_digest in allowed, (actual_digest, sorted(allowed))
           assert issue2['state'] == 'closed'
           assert issue2.get('state_reason') == 'duplicate'
           Path('ci-evidence/remote-verification.txt').write_text(
+              f'issue_1_body_path={allowed[actual_digest]}\n'
               f'issue_1_body_sha256={actual_digest}\n'
               'issue_1_state=open\n'
               'issue_2_state=closed\n'
@@ -117,7 +124,7 @@ jobs:
         run: |
           cp /tmp/pcr10-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nmerge_ref=%s\nrun_id=%s\n' "${{ github.event.pull_request.head.sha }}" "$GITHUB_SHA" "$GITHUB_RUN_ID" > ci-evidence/run.txt
-          sha256sum contracts/pre-codex-readiness.json handoff/codex-phase0-issue-pcr10.md contracts/codex-phase0-issue.json handoff/codex-phase0-handoff.json > ci-evidence/repository-digests.txt
+          sha256sum contracts/pre-codex-readiness.json handoff/codex-phase0-issue-pcr10.md handoff/codex-phase0-issue-workstream5.md contracts/codex-phase0-issue.json handoff/codex-phase0-handoff.json > ci-evidence/repository-digests.txt
       - name: Retain PCR-10 evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -142,4 +149,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/pcr10-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/pcr10-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "PCR-10 final gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Deterministic Phase 1–7/PCR-01–10 generation and validation, compilation, Ruff, strict MyPy and live issue synchronization all passed. Codex remains unauthorized to start."
+          gh pr comment "$PR_NUMBER" --body "PCR-10 retained gate passed on head \`$HEAD_SHA\` and exact merge ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Deterministic Phase 1–7/PCR-01–10 generation and validation, compilation, Ruff, strict MyPy and a cryptographically known PCR-10-or-successor issue body all passed. Codex remains unauthorized to start."
