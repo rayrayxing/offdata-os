@@ -48,9 +48,9 @@
       "sha256": "fba106327ec94482986c6a43804e8f0666ab0ab472066432c34273871a210f2f"
     },
     {
-      "bytes": 7847,
+      "bytes": 7859,
       "path": ".github/workflows/contracts.yml",
-      "sha256": "4e7c70aee8ee3bc571f47639d25ccc8c980cf30ce47e0c7ebed66856eaeb1154"
+      "sha256": "d52cc6b33b5a67f040e518d37807e4b6665594ae5601d42e61918989f3d10fa3"
     },
     {
       "bytes": 799,
@@ -83,7 +83,7 @@
     {
       "bytes": 2851,
       "path": "configs/repository-governance.yaml",
-      "sha256": "d29d4f9f8bad2a92451f16f2e4432fea84461db9cdbaa397fc84168352726242"
+      "sha256": "afd7b8a9b7a925d66b890f11de39d037743b5346048cbd754a89708471443690"
     },
     {
       "bytes": 4173,
@@ -106,9 +106,9 @@
   ],
   "schema_version": 1,
   "workflow_checks": {
-    "actions/checkout@11d5960a326750d5838078e36cf38b85af677262": true,
-    "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065": true,
-    "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02": true,
+    "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1": true,
+    "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97": true,
+    "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a": true,
     "branches: [main]": true,
     "cancel-in-progress: true": true,
     "concurrency:": true,
