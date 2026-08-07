@@ -35,6 +35,7 @@ python scripts/build_workstream6_founder_experience_specification.py
 python scripts/build_workstream6_deliverable_quality_implementation_specification.py
 python scripts/build_workstream6_renderer_preimplementation_assets.py
 python scripts/build_workstream6_operational_quality_specification.py
+python scripts/build_workstream6_phase0_licence_decision_placeholder.py
 
 git diff --exit-code
 
@@ -72,6 +73,7 @@ python scripts/validate_workstream6_founder_experience_specification.py
 python scripts/validate_workstream6_deliverable_quality_implementation_specification.py
 python scripts/validate_workstream6_renderer_preimplementation_assets.py
 python scripts/validate_workstream6_operational_quality_specification.py
+python scripts/validate_workstream6_phase0_licence_decision_placeholder.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
