@@ -1,0 +1,22 @@
+name: Actions runner diagnostic
+
+on:
+  push:
+    branches:
+      - diagnostic/ws6-actions-runner
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  echo:
+    name: Minimal hosted runner diagnostic
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Prove runner acquired
+        run: |
+          echo "runner_acquired=true"
+          uname -a
+          python --version || true
