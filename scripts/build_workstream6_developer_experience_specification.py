@@ -18,6 +18,41 @@ OBLIGATION_MAP = ROOT / "requirements" / "implementation-obligation-map.json"
 BACKLOG = ROOT / "docs" / "11-BUILD-BACKLOG.md"
 TASK_HEADING = re.compile(r"^### (P(?:[0-9]|1[0-2])\.[0-9]+) (.+)$", re.MULTILINE)
 ACCEPTANCE_CLASSES = ("positive", "failure", "safety", "retry")
+PURPOSES = {
+    "doctor": "Inspect the supported local environment without installing or activating services.",
+    "bootstrap": "Prepare only the local synthetic IMP-P0 workspace and verified dependencies.",
+    "up": "Start the approved local synthetic service profile and prove readiness.",
+    "down": "Stop approved local services while preserving synthetic state and evidence.",
+    "restart": "Perform one bounded stop/start cycle without resetting configuration or data.",
+    "health": "Report distinct liveness, readiness and dependency health without repair.",
+    "test": "Run declared synthetic test suites and retain reproducible local evidence.",
+    "lint": "Run read-only lint checks across declared source surfaces.",
+    "format": "Check or atomically format only the declared editable source allowlist.",
+    "scan": "Run local secret, dependency and container scans without repository upload.",
+    "reset-synthetic": "Reset only verified synthetic local state after a verified backup.",
+    "backup": "Create an immutable verified synthetic backup with a manifest and digest.",
+    "restore": "Verify and transactionally restore one compatible synthetic backup.",
+    "clean": "Remove only allowlisted ephemeral build, cache and test artifacts.",
+    "support-bundle": "Create a bounded local diagnostic bundle after redaction validation.",
+}
+CASE_TEMPLATES = {
+    "positive": (
+        "The governed `{name}` operation completes successfully.",
+        ["expected_state_observed", "exit_code_matches", "redacted_evidence_retained"],
+    ),
+    "failure": (
+        "A declared `{name}` validation or dependency fails.",
+        ["failure_classified", "safe_remediation_reported", "no_false_success_claim"],
+    ),
+    "safety": (
+        "The `{name}` request crosses a governed safety boundary.",
+        ["request_denied", "no_unsafe_state_change", "boundary_recorded"],
+    ),
+    "retry": (
+        "A retryable `{name}` condition resolves within the bounded retry budget.",
+        ["retry_budget_respected", "state_rechecked", "final_result_reported"],
+    ),
+}
 
 
 def _load_yaml(path: Path) -> dict[str, Any]:
@@ -170,11 +205,16 @@ def _render_specification(
                 command["purpose"],
                 "",
                 f"- Owner: `{command['task']}` / `{command['component']}`.",
-                f"- Success: {command['success']}",
-                f"- Failure: {command['failure']}",
-                f"- Safety: {command['safety']}",
+                f"- Mutation class: `{command['mutation']}`.",
+                f"- Idempotency: `{command['idempotency']}`.",
+                f"- Network: `{command['network']}`.",
+                f"- Confirmation: `{json.dumps(command['confirmation'], sort_keys=True)}`.",
                 f"- Allowed exits: {', '.join(f'`{item}`' for item in command['exits'])}.",
                 f"- Maximum attempts: `{command['retry']['maximum_attempts']}`.",
+                "- Failure contract: classify component and cause, provide safe remediation,",
+                "  preserve accurate final state, and never claim false success.",
+                "- Safety contract: deny unsafe data, path, network, credential and approval",
+                "  requests before effects.",
                 "",
                 "### Flags",
                 "",
@@ -261,7 +301,7 @@ def build_records() -> tuple[dict[str, Any], str, str]:
         unknown = sorted(set(command["criteria"]) - obligation_ids)
         if unknown:
             raise ValueError(f"unknown obligations for {command['name']}: {unknown}")
-        if tuple(command["cases"]) != ACCEPTANCE_CLASSES:
+        if tuple(command["case_exits"]) != ACCEPTANCE_CLASSES:
             raise ValueError(f"invalid acceptance classes for {command['name']}")
         parsed_flags = [_parse_flag(item) for item in command["flags"]]
         retry_source = command["retry"]
@@ -274,14 +314,14 @@ def build_records() -> tuple[dict[str, Any], str, str]:
         }
         cases = []
         for acceptance_class in ACCEPTANCE_CLASSES:
-            source_case = command["cases"][acceptance_class]
+            scenario, assertions = CASE_TEMPLATES[acceptance_class]
             case = {
                 "case_id": f"DX-{_slug(command['name'])}-{acceptance_class.upper()}-001",
                 "command": command["name"],
                 "acceptance_class": acceptance_class,
-                "scenario": source_case[1],
-                "expected_exit_code": source_case[0],
-                "assertions": source_case[2],
+                "scenario": scenario.format(name=command["name"]),
+                "expected_exit_code": command["case_exits"][acceptance_class],
+                "assertions": assertions,
                 "registration_status": "planned_unregistered",
                 "executable_test_exists": False,
             }
@@ -292,6 +332,7 @@ def build_records() -> tuple[dict[str, Any], str, str]:
         display_commands.append(
             {
                 **command,
+                "purpose": PURPOSES[command["name"]],
                 "parsed_flags": parsed_flags,
                 "retry": retry,
                 "task_title": tasks[command["task"]],
