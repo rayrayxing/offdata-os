@@ -56,7 +56,7 @@ def source_failures(source: dict[str, Any]) -> list[str]:
     require(exc.get("event") == "pull_request", "preparation exception event drift")
     require(exc.get("head_branch") == "governance/ws616-permanent-release-record", "preparation exception head drift")
     require(exc.get("base_branch") == "main", "preparation exception base drift")
-    require(exc.get("base_sha") == "1361fff88bd08ae16218673337621571a7d315c6", "preparation exception base SHA drift")
+    require(exc.get("base_sha") == "8ad0ea95b8d01c83347161e4ccf893f1844a219d", "preparation exception base SHA drift")
     require(exc.get("requires_permanent_release") is False, "preparation exception release requirement drift")
     require(exc.get("requires_release_absent") is True, "preparation exception no longer requires release absence")
     require(exc.get("must_expire_after_preparation_merge") is True, "preparation exception expiry weakened")
@@ -129,8 +129,8 @@ def repository_failures(contract: dict[str, Any]) -> list[str]:
         "name: Final pre-Codex canonical handoff and release",
         f"name: {EXACT_CHECK}",
         "governance/ws616-permanent-release-record",
-        "governance/ws615-final-workflow",
-        "1361fff88bd08ae16218673337621571a7d315c6",
+        "EXPECTED_BASE: main",
+        "8ad0ea95b8d01c83347161e4ccf893f1844a219d",
         "WS6.16 exact preparation PR verified",
         "python scripts/require_workstream6_final_reconciliation.py",
     ):
@@ -173,9 +173,9 @@ def main() -> None:
         lambda v: v.update(work_package_id="WS6.15"),
         lambda v: v.update(package_state="complete"),
         lambda v: v["predecessor"].update(head_sha="bad"),
-        lambda v: v["predecessor"].update(integrated_to_main=True),
+        lambda v: v["predecessor"].update(integrated_to_main=False),
         lambda v: v["current_main"].update(observed_sha="0"*40),
-        lambda v: v["current_main"].update(integrated_through="WS6.15"),
+        lambda v: v["current_main"].update(integrated_through="WS6.14"),
         lambda v: v["current_main"].update(eligible_for_permanent_release=True),
         lambda v: v["permanent_release"].update(release_id="wrong"),
         lambda v: v["permanent_release"].update(path="wrong"),
@@ -184,7 +184,7 @@ def main() -> None:
         lambda v: v["permanent_release"].update(finalization_branch="main"),
         lambda v: v["preparation_exception"].update(event="push"),
         lambda v: v["preparation_exception"].update(head_branch="main"),
-        lambda v: v["preparation_exception"].update(base_branch="main"),
+        lambda v: v["preparation_exception"].update(base_branch="stale-base"),
         lambda v: v["preparation_exception"].update(base_sha="0"*40),
         lambda v: v["preparation_exception"].update(requires_permanent_release=True),
         lambda v: v["preparation_exception"].update(requires_release_absent=False),
