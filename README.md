@@ -6,7 +6,7 @@ This repository is the **canonical build repository** for the new offdata consul
 
 ## Current canonical status
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.13; WS6.14–WS6.16 final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.14; WS6.15–WS6.16 final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 - Initial operator: Founder only.
 - Initial hosting and data region: Singapore.
