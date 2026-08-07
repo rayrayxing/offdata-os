@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "work_package_id": "WS6.8",
+  "base_main_sha": "cb2bffe74e62804250ac36168c4206cb8b9d021a",
+  "status": "issue_and_backlog_normalized",
+  "defect_ids": [
+    "WS6-CONSIST-005",
+    "WS6-CODEXPREP-007"
+  ],
+  "backlog_file": "docs/11-BUILD-BACKLOG.md",
+  "pack_directory": "handoff/future-implementation-issue-pack",
+  "phase_range": {
+    "first": 1,
+    "last": 12
+  },
+  "live_issue_policy": {
+    "only_actionable_implementation_issue": 1,
+    "only_manual_prelaunch_gate_issue": 19,
+    "duplicate_issue": 2,
+    "normalized_issues": [
+      {
+        "number": 3,
+        "original_title": "Build the complete synthetic SME AI-audit source pack",
+        "normalized_title": "[Superseded][Blocked] Synthetic SME AI-audit source pack",
+        "target_phases": [
+          "IMP-P7",
+          "IMP-P12"
+        ],
+        "body_path": "handoff/future-implementation-issue-pack/live-issue-3-superseded.md"
+      },
+      {
+        "number": 4,
+        "original_title": "Implement the engagement aggregate and API service",
+        "normalized_title": "[Superseded][Blocked] Engagement aggregate and API service",
+        "target_phases": [
+          "IMP-P2",
+          "IMP-P3"
+        ],
+        "body_path": "handoff/future-implementation-issue-pack/live-issue-4-superseded.md"
+      },
+      {
+        "number": 5,
+        "original_title": "Implement canonical knowledge ingestion and alias resolution",
+        "normalized_title": "[Superseded][Blocked] Knowledge ingestion and alias resolution",
+        "target_phases": [
+          "IMP-P1"
+        ],
+        "body_path": "handoff/future-implementation-issue-pack/live-issue-5-superseded.md"
+      }
+    ]
+  },
+  "closed_defects": [
+    "WS6-CONSIST-005",
+    "WS6-CODEXPREP-007"
+  ],
+  "remaining_blocking_defects": [
+    "WS6-BLOCK-006"
+  ],
+  "completion": {
+    "all_required_prior_components_pass": true,
+    "ws68_complete": true,
+    "live_issues_3_to_5_normalized": true,
+    "future_issue_pack_complete": true,
+    "only_issue_1_actionable": true,
+    "only_issue_19_manual_gate": true,
+    "final_reconciliation_complete": false,
+    "all_blocking_defects_closed": false,
+    "next_permitted_work_package": "WS6.9"
+  },
+  "boundaries": {
+    "founder_accountability_preserved": true,
+    "codex_start_authorized": false,
+    "phase0_implementation_authorized": false,
+    "phase0_merge_authorized": false,
+    "phase1_authorized": false,
+    "runtime_activation_authorized": false,
+    "production_deployment_authorized": false,
+    "real_client_data_enabled": false,
+    "external_actions_authorized": false,
+    "paid_services_authorized": false,
+    "oauth_authorized": false,
+    "autonomous_merge_authorized": false
+  }
+}

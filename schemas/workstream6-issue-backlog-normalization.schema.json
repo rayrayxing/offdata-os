@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "work_package_id",
+    "base_main_sha",
+    "status",
+    "live_issue_policy",
+    "future_phases",
+    "generated_files",
+    "completion",
+    "boundaries"
+  ],
+  "properties": {
+    "work_package_id": {
+      "const": "WS6.8"
+    },
+    "base_main_sha": {
+      "const": "cb2bffe74e62804250ac36168c4206cb8b9d021a"
+    },
+    "status": {
+      "const": "issue_and_backlog_normalized"
+    },
+    "live_issue_policy": {
+      "type": "object",
+      "required": [
+        "only_actionable_implementation_issue",
+        "only_manual_prelaunch_gate_issue",
+        "normalized_issues"
+      ]
+    },
+    "future_phases": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12
+    },
+    "generated_files": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "completion": {
+      "type": "object"
+    },
+    "boundaries": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
