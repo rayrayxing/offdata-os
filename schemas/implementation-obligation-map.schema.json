@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "work_package_id",
+    "predecessor",
+    "canonical_sources",
+    "criterion_count",
+    "phase0_blocking_criterion_count",
+    "later_phase_criterion_count",
+    "obligations",
+    "test_obligation_count",
+    "registered_test_count",
+    "satisfied_evidence_count",
+    "closed_defects",
+    "remaining_blocking_defects",
+    "remaining_preparation_defects",
+    "completion",
+    "boundaries"
+  ],
+  "properties": {
+    "work_package_id": {"const": "WS6.9"},
+    "criterion_count": {"const": 38},
+    "phase0_blocking_criterion_count": {"const": 16},
+    "later_phase_criterion_count": {"const": 22},
+    "test_obligation_count": {"const": 38},
+    "registered_test_count": {"const": 0},
+    "satisfied_evidence_count": {"const": 0},
+    "obligations": {
+      "type": "array",
+      "minItems": 38,
+      "maxItems": 38,
+      "items": {
+        "type": "object",
+        "required": [
+          "criterion_id",
+          "criterion_kind",
+          "source_section",
+          "description",
+          "evidence_class",
+          "implementation_owner",
+          "test_obligation",
+          "evidence_requirement",
+          "blocking_gate",
+          "implementation_authorized",
+          "evidence_satisfied"
+        ],
+        "properties": {
+          "criterion_id": {"type": "string", "pattern": "^(DX|FX|OP|XC|OQ)-[A-Z]+$"},
+          "criterion_kind": {"enum": ["acceptance_criterion", "metric"]},
+          "evidence_class": {"enum": ["phase0_acceptance", "later_implementation_acceptance"]},
+          "implementation_owner": {
+            "type": "object",
+            "required": ["phase_id", "task_id", "task_title", "component_id", "component_name"],
+            "properties": {
+              "phase_id": {"type": "string", "pattern": "^IMP-P([0-9]|1[0-2])$"},
+              "task_id": {"type": "string", "pattern": "^P([0-9]|1[0-2])\\.[0-9]+$"},
+              "component_id": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": true
+          },
+          "test_obligation": {
+            "type": "object",
+            "required": ["test_obligation_id", "registration_status", "registration_owner", "executable_test_exists", "separate_registration_defect"],
+            "properties": {
+              "test_obligation_id": {"type": "string", "pattern": "^IOM-TST-(DX|FX|OP|XC|OQ)-[A-Z]+$"},
+              "registration_status": {"const": "planned_unregistered"},
+              "registration_owner": {"type": "string", "minLength": 1},
+              "executable_test_exists": {"const": false},
+              "separate_registration_defect": {"const": "WS6-CODEXPREP-002"}
+            },
+            "additionalProperties": false
+          },
+          "evidence_requirement": {
+            "type": "object",
+            "required": ["evidence_type", "status", "required_attributes"],
+            "properties": {
+              "evidence_type": {"type": "string", "minLength": 1},
+              "status": {"const": "not_available_pre_implementation"},
+              "required_attributes": {"type": "array", "minItems": 8, "uniqueItems": true}
+            },
+            "additionalProperties": false
+          },
+          "blocking_gate": {
+            "type": "object",
+            "required": ["gate_id", "canonical_gate_heading", "blocks_phase_completion", "blocks_imp_p0", "status"],
+            "properties": {
+              "gate_id": {"type": "string", "pattern": "^IMP-P([0-9]|1[0-2])-GATE$"},
+              "canonical_gate_heading": {"type": "string", "pattern": "^### IMP-P([0-9]|1[0-2]) gate$"},
+              "blocks_phase_completion": {"const": true},
+              "blocks_imp_p0": {"type": "boolean"},
+              "status": {"const": "not_evaluated"}
+            },
+            "additionalProperties": false
+          },
+          "implementation_authorized": {"const": false},
+          "evidence_satisfied": {"const": false}
+        },
+        "additionalProperties": true
+      }
+    },
+    "closed_defects": {"const": ["WS6-QUALITY-001"]},
+    "remaining_blocking_defects": {"const": ["WS6-BLOCK-006"]},
+    "remaining_preparation_defects": {"const": ["WS6-CODEXPREP-002"]}
+  },
+  "additionalProperties": true
+}
