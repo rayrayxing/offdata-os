@@ -69,12 +69,20 @@ jobs:
           python - <<'PY'
           import json
           import os
+          import subprocess
           from pathlib import Path
 
           def load(path):
               return json.loads(Path(path).read_text())
 
+          def is_ancestor(base, head):
+              return subprocess.run(
+                  ['git', 'merge-base', '--is-ancestor', base, head],
+                  check=False,
+              ).returncode == 0
+
           main_ref = load('ci-evidence/main-ref.json')
+          live_main_sha = main_ref['object']['sha']
           assert load('ci-evidence/issue-1.json')['state'] == 'open'
           issue2 = load('ci-evidence/issue-2.json')
           assert issue2['state'] == 'closed' and issue2.get('state_reason') == 'duplicate'
@@ -150,12 +158,25 @@ jobs:
               if event == 'pull_request':
                   payload = load(os.environ['GITHUB_EVENT_PATH'])
                   pr = payload['pull_request']
-                  assert pr['base']['ref'] == 'main'
-                  assert main_ref['object']['sha'] == pr['base']['sha']
+                  base_ref = pr['base']['ref']
+                  base_sha = pr['base']['sha']
+                  if base_ref == 'main':
+                      assert live_main_sha == base_sha
+                  else:
+                      # Post-release corrective packages may be stacked, but their exact
+                      # base must descend from live main and be included in the tested ref.
+                      assert base_ref != 'codex/phase-0-foundation'
+                      assert is_ancestor(live_main_sha, base_sha)
+                      assert is_ancestor(base_sha, os.environ['GITHUB_SHA'])
+                      if Path('repository/current-operational-state.json').is_file():
+                          successor = load('repository/current-operational-state.json')
+                          assert successor['manual_launch_gates']['codex_start_authorized'] is False
+                          assert successor['boundaries']['merge_authorized'] is False
+                          assert successor['boundaries']['phase0_implementation_authorized'] is False
               else:
-                  assert main_ref['object']['sha'] == os.environ['GITHUB_SHA']
+                  assert live_main_sha == os.environ['GITHUB_SHA']
           else:
-              assert main_ref['object']['sha'] == os.environ['EXPECTED_INTEGRATED_MAIN_SHA']
+              assert live_main_sha == os.environ['EXPECTED_INTEGRATED_MAIN_SHA']
               assert not Path('reports/workstream6-final-evidence.md').exists()
               assert not Path('repository/workstream6-final-defect-closure-ledger.json').exists()
           PY
