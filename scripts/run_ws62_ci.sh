@@ -33,6 +33,7 @@ python scripts/build_workstream6_implementation_obligation_map.py
 python scripts/build_workstream6_developer_experience_specification.py
 python scripts/build_workstream6_founder_experience_specification.py
 python scripts/build_workstream6_deliverable_quality_implementation_specification.py
+python scripts/build_workstream6_renderer_preimplementation_assets.py
 
 git diff --exit-code
 
@@ -68,6 +69,7 @@ python scripts/validate_workstream6_implementation_obligation_map.py
 python scripts/validate_workstream6_developer_experience_specification.py
 python scripts/validate_workstream6_founder_experience_specification.py
 python scripts/validate_workstream6_deliverable_quality_implementation_specification.py
+python scripts/validate_workstream6_renderer_preimplementation_assets.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
