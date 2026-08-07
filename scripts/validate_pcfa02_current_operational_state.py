@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import copy
-from pathlib import Path
 from typing import Any
 
 from jsonschema import Draft202012Validator
@@ -25,9 +24,13 @@ STATE_SCHEMA_PATH = ROOT / "schemas" / "current-operational-state.schema.json"
 PERMIT_SCHEMA_PATH = ROOT / "schemas" / "codex-phase0-launch-permit.schema.json"
 CURRENT_HANDOFF_PATH = ROOT / "handoff" / "codex-phase0-current-handoff.json"
 TEMPLATE_PATHS = {
-    "hosted_controls": ROOT / "handoff" / "codex-phase0-current-hosted-controls-attestation.template.json",
+    "hosted_controls": ROOT
+    / "handoff"
+    / "codex-phase0-current-hosted-controls-attestation.template.json",
     "clean_macos": ROOT / "handoff" / "codex-phase0-current-clean-macos-attestation.template.json",
-    "founder_approval": ROOT / "handoff" / "codex-phase0-current-founder-authorization.template.json",
+    "founder_approval": ROOT
+    / "handoff"
+    / "codex-phase0-current-founder-authorization.template.json",
     "launch_ack": ROOT / "handoff" / "codex-phase0-current-launch-ack.template.json",
 }
 HISTORICAL_PATHS = {
@@ -64,12 +67,16 @@ def _template_failures(templates: dict[str, dict[str, Any]]) -> list[str]:
     ack = templates["launch_ack"]
     for label, value in templates.items():
         require(value.get("schema_version") == "2.2.0", f"{label} template version drifted")
-    for label, value in (("hosted", hosted), ("mac", mac), ("approval", approval), ("ack", ack)):
+    for label, value in (
+        ("hosted", hosted),
+        ("mac", mac),
+        ("approval", approval),
+        ("ack", ack),
+    ):
         require(
             "current_operational_state_sha256" in value,
             f"{label} template does not bind current operational state",
         )
-    for label, value in (("hosted", hosted), ("mac", mac), ("approval", approval), ("ack", ack)):
         require(
             "final_workstream6_release_sha256" in value,
             f"{label} template does not bind permanent release digest",
@@ -91,27 +98,7 @@ def _template_failures(templates: dict[str, dict[str, Any]]) -> list[str]:
     return failures
 
 
-def main() -> None:
-    state = load_json(CURRENT_STATE_PATH)
-    predecessor = load_json(PREDECESSOR_CONTRACT_PATH)
-    repair = load_json(CORRECTION_PATH)
-    release = load_json(FINAL_RELEASE_PATH)
-
-    schema = load_json(STATE_SCHEMA_PATH)
-    Draft202012Validator.check_schema(schema)
-    errors = list(Draft202012Validator(schema).iter_errors(state))
-    _require(not errors, "current operational-state schema validation failed: " + "; ".join(error.message for error in errors))
-
-    expected_state, expected_report = build_records()
-    _require(state == expected_state, "current operational-state JSON does not match its governed YAML source")
-    _require(REPORT_PATH.read_text(encoding="utf-8") == expected_report, "PCFA-02 generated evidence report drifted")
-
-    failures = current_state_failures(state, predecessor, repair)
-    _require(not failures, "PCFA-02 current-state semantics failed: " + "; ".join(failures))
-    release_failures = final_release_record_failures(release)
-    _require(not release_failures, "permanent WS6.16 release failed current-state validation: " + "; ".join(release_failures))
-
-    # Prove the predecessor records retain package-time state instead of being rewritten.
+def _validate_historical_retention() -> None:
     old_launch = load_json(HISTORICAL_PATHS["launch_control"])
     old_ws62 = load_json(HISTORICAL_PATHS["ws62"])
     old_ws63 = load_json(HISTORICAL_PATHS["ws63"])
@@ -137,14 +124,18 @@ def main() -> None:
         "WS6.4 package-time authority registry was rewritten",
     )
     _require(
-        old_handoff["authority"]["current_launch_control"] == "contracts/codex-phase0-launch-control.json",
+        old_handoff["authority"]["current_launch_control"]
+        == "contracts/codex-phase0-launch-control.json",
         "pre-PCFA handoff was rewritten instead of retained",
     )
 
+
+def _validate_current_surfaces() -> None:
     handoff = load_json(CURRENT_HANDOFF_PATH)
     _require(handoff.get("schema_version") == "3.0.0", "current machine handoff version drifted")
     _require(
-        handoff["authority"]["current_operational_state"] == "repository/current-operational-state.json"
+        handoff["authority"]["current_operational_state"]
+        == "repository/current-operational-state.json"
         and handoff["authority"]["current_issue_body"] == "handoff/codex-phase0-current-issue.md",
         "current machine handoff does not use successor authority",
     )
@@ -173,7 +164,7 @@ def main() -> None:
     for token in (
         "repository/current-operational-state.json",
         "current_operational_state_sha256",
-        "remaining_branches=[\"main\"]",
+        'remaining_branches=["main"]',
         "release_parent_main_sha",
     ):
         _require(token in issue19, f"current Issue #19 body missing token: {token}")
@@ -186,9 +177,46 @@ def main() -> None:
         "current Issue #19 reintroduced the historical release/current-main equality bug",
     )
 
+
+def main() -> None:
+    state = load_json(CURRENT_STATE_PATH)
+    predecessor = load_json(PREDECESSOR_CONTRACT_PATH)
+    repair = load_json(CORRECTION_PATH)
+    release = load_json(FINAL_RELEASE_PATH)
+
+    schema = load_json(STATE_SCHEMA_PATH)
+    Draft202012Validator.check_schema(schema)
+    errors = list(Draft202012Validator(schema).iter_errors(state))
+    _require(
+        not errors,
+        "current operational-state schema validation failed: "
+        + "; ".join(error.message for error in errors),
+    )
+
+    expected_state, expected_report = build_records()
+    _require(state == expected_state, "current operational-state JSON does not match its governed YAML source")
+    _require(
+        REPORT_PATH.read_text(encoding="utf-8") == expected_report,
+        "PCFA-02 generated evidence report drifted",
+    )
+
+    failures = current_state_failures(state, predecessor, repair)
+    _require(not failures, "PCFA-02 current-state semantics failed: " + "; ".join(failures))
+    release_failures = final_release_record_failures(release)
+    _require(
+        not release_failures,
+        "permanent WS6.16 release failed current-state validation: " + "; ".join(release_failures),
+    )
+
+    _validate_historical_retention()
+    _validate_current_surfaces()
+
     templates = {key: load_json(path) for key, path in TEMPLATE_PATHS.items()}
     template_errors = _template_failures(templates)
-    _require(not template_errors, "current evidence-template validation failed: " + "; ".join(template_errors))
+    _require(
+        not template_errors,
+        "current evidence-template validation failed: " + "; ".join(template_errors),
+    )
 
     permit_schema = load_json(PERMIT_SCHEMA_PATH)
     Draft202012Validator.check_schema(permit_schema)
@@ -196,8 +224,9 @@ def main() -> None:
         permit_schema["properties"]["schema_version"]["const"] == "2.2.0",
         "current permit schema version drifted",
     )
+    digest_required = permit_schema["properties"]["evidence_digests"]["required"]
     _require(
-        "current_operational_state" in permit_schema["properties"]["evidence_digests"]["required"],
+        "current_operational_state" in digest_required,
         "permit schema does not bind current operational-state digest",
     )
     _require(
@@ -205,29 +234,79 @@ def main() -> None:
         "permit schema does not become stale on current-state change",
     )
 
-    # The current-state record itself is immutable evidence for any filled launch bundle.
-    _require(len(digest_file(CURRENT_STATE_PATH)) == 64, "current operational-state digest is unavailable")
-    _require(len(digest_file(ISSUE_BODY_PATH)) == 64, "current Issue #1 digest is unavailable")
-    _require(len(digest_file(ISSUE19_BODY_PATH)) == 64, "current Issue #19 digest is unavailable")
+    for path, label in (
+        (CURRENT_STATE_PATH, "current operational-state"),
+        (ISSUE_BODY_PATH, "current Issue #1"),
+        (ISSUE19_BODY_PATH, "current Issue #19"),
+    ):
+        _require(len(digest_file(path)) == 64, f"{label} digest is unavailable")
 
     state_mutations: list[tuple[str, tuple[str, ...], Any]] = [
         ("status", ("status",), "ready"),
-        ("operational path", ("current_authority", "operational_state"), "contracts/codex-phase0-launch-control.json"),
-        ("handoff path", ("current_authority", "machine_handoff"), "handoff/codex-phase0-handoff.json"),
-        ("issue path", ("current_authority", "canonical_issue_body"), "handoff/codex-phase0-issue-final.md"),
-        ("repair path", ("current_authority", "launch_semantics_repair"), "contracts/codex-phase0-launch-control.json"),
-        ("historical readiness semantics", ("state_semantics", "historical_snapshot_readiness_must_not_drive_current_launch_decisions"), False),
-        ("sole projection semantics", ("state_semantics", "current_operational_state_is_the_only_live_machine_readiness_projection"), False),
+        (
+            "operational path",
+            ("current_authority", "operational_state"),
+            "contracts/codex-phase0-launch-control.json",
+        ),
+        (
+            "handoff path",
+            ("current_authority", "machine_handoff"),
+            "handoff/codex-phase0-handoff.json",
+        ),
+        (
+            "issue path",
+            ("current_authority", "canonical_issue_body"),
+            "handoff/codex-phase0-issue-final.md",
+        ),
+        (
+            "repair path",
+            ("current_authority", "launch_semantics_repair"),
+            "contracts/codex-phase0-launch-control.json",
+        ),
+        (
+            "historical readiness semantics",
+            ("state_semantics", "historical_snapshot_readiness_must_not_drive_current_launch_decisions"),
+            False,
+        ),
+        (
+            "sole projection semantics",
+            ("state_semantics", "current_operational_state_is_the_only_live_machine_readiness_projection"),
+            False,
+        ),
         ("release parent history", ("state_semantics", "release_parent_main_sha_is_historical"), False),
-        ("release parent ancestry", ("release_semantics", "release_parent_must_be_ancestor_of_approved_launch_main"), False),
-        ("release record ancestry", ("release_semantics", "release_record_commit_must_be_ancestor_of_approved_launch_main"), False),
-        ("release parent exclusion", ("release_semantics", "release_parent_excluded_from_current_launch_sha_equality"), False),
-        ("release record exclusion", ("release_semantics", "release_record_commit_excluded_from_current_launch_sha_equality"), False),
+        (
+            "release parent ancestry",
+            ("release_semantics", "release_parent_must_be_ancestor_of_approved_launch_main"),
+            False,
+        ),
+        (
+            "release record ancestry",
+            ("release_semantics", "release_record_commit_must_be_ancestor_of_approved_launch_main"),
+            False,
+        ),
+        (
+            "release parent exclusion",
+            ("release_semantics", "release_parent_excluded_from_current_launch_sha_equality"),
+            False,
+        ),
+        (
+            "release record exclusion",
+            ("release_semantics", "release_record_commit_excluded_from_current_launch_sha_equality"),
+            False,
+        ),
         ("phase scope", ("launch_target", "permitted_tasks"), ["P0.1"]),
         ("branch", ("launch_target", "required_branch"), "feature"),
         ("status check", ("launch_target", "required_status_check"), "old check"),
-        ("permit current-state staleness", ("launch_permit", "stale_on_current_operational_state_change"), False),
-        ("repository readiness", ("repository_readiness", "pcfa01_launch_semantics_repaired"), False),
+        (
+            "permit current-state staleness",
+            ("launch_permit", "stale_on_current_operational_state_change"),
+            False,
+        ),
+        (
+            "repository readiness",
+            ("repository_readiness", "pcfa01_launch_semantics_repaired"),
+            False,
+        ),
         ("manual authorization", ("manual_launch_gates", "codex_start_authorized"), True),
         ("implementation authorization", ("boundaries", "phase0_implementation_authorized"), True),
         ("merge authorization", ("boundaries", "merge_authorized"), True),
@@ -238,14 +317,12 @@ def main() -> None:
     for label, path, replacement in state_mutations:
         mutated = copy.deepcopy(state)
         _set(mutated, path, replacement)
-        if path[0] == "allowed_scope" or path[0] == "prohibited_scope":
-            mutation_failures = current_state_failures(mutated, predecessor, repair)
-        else:
-            mutation_failures = current_state_failures(mutated, predecessor, repair)
-        _require(bool(mutation_failures), f"PCFA-02 state mutation was not rejected: {label}")
+        _require(
+            bool(current_state_failures(mutated, predecessor, repair)),
+            f"PCFA-02 state mutation was not rejected: {label}",
+        )
         rejected += 1
 
-    # Reclassifying the retained WS6.2 launch contract as current must fail.
     mutated = copy.deepcopy(state)
     for item in mutated["historical_package_snapshots"]:
         if item["path"] == "contracts/codex-phase0-launch-control.json":
