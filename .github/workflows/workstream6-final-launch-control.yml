@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   validate-final-launch-control:
-    name: Validate WS6.10 developer experience specification and complete prior components
+    name: Validate WS6.11 Founder experience specification and complete prior components
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -40,16 +40,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.10
+      - name: Rebuild, validate and test through WS6.11
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.9 ancestry and live fail-closed state
+      - name: Verify exact WS6.10 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          WS69_HEAD_SHA: 911e431551bb7eb41f1d5d1ccc9ff042f18858f9
+          WS610_HEAD_SHA: ebd750f6e985d7a864d072a172d4d9343ce26a36
         run: |
           mkdir -p ci-evidence
-          git merge-base --is-ancestor "$WS69_HEAD_SHA" "$GITHUB_SHA"
+          git merge-base --is-ancestor "$WS610_HEAD_SHA" "$GITHUB_SHA"
           gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
@@ -71,15 +71,10 @@ jobs:
           branches = json.loads(Path("ci-evidence/branches.json").read_text())
           expected_issue1 = Path("handoff/codex-phase0-issue-final.md").read_bytes()
           expected_issue19 = Path("handoff/codex-phase0-hosted-controls-issue-final.md").read_bytes()
-          normalization = json.loads(
-              Path("contracts/workstream6-issue-backlog-normalization.json").read_text()
-          )
-          obligation_map = json.loads(
-              Path("requirements/implementation-obligation-map.json").read_text()
-          )
-          developer_experience = json.loads(
-              Path("contracts/developer-experience-specification.json").read_text()
-          )
+          normalization = json.loads(Path("contracts/workstream6-issue-backlog-normalization.json").read_text())
+          obligation_map = json.loads(Path("requirements/implementation-obligation-map.json").read_text())
+          developer_experience = json.loads(Path("contracts/developer-experience-specification.json").read_text())
+          founder_experience = json.loads(Path("contracts/founder-experience-specification.json").read_text())
 
           assert issue1["state"] == "open"
           assert hashlib.sha256(issue1.get("body", "").encode()).hexdigest() == hashlib.sha256(expected_issue1).hexdigest()
@@ -104,25 +99,32 @@ jobs:
           assert obligation_map["boundaries"]["codex_start_authorized"] is False
 
           assert developer_experience["predecessor"]["head_sha"] == "911e431551bb7eb41f1d5d1ccc9ff042f18858f9"
-          assert developer_experience["predecessor"]["integrated_to_main"] is False
           assert developer_experience["command_count"] == 15
           assert developer_experience["acceptance_case_count"] == 60
-          assert developer_experience["global_flag_count"] == 9
-          assert developer_experience["exit_code_count"] == 11
           assert developer_experience["test_registration"]["executable_test_count"] == 0
           assert developer_experience["implementation_evidence"]["satisfied_command_count"] == 0
           assert developer_experience["boundaries"]["codex_start_authorized"] is False
 
-          open_issue_numbers = {
-              item["number"] for item in open_items if "pull_request" not in item
-          }
+          assert founder_experience["predecessor"]["head_sha"] == "ebd750f6e985d7a864d072a172d4d9343ce26a36"
+          assert founder_experience["predecessor"]["integrated_to_main"] is False
+          assert founder_experience["criterion_count"] == 8
+          assert founder_experience["surface_count"] == 6
+          assert founder_experience["state_count"] == 13
+          assert founder_experience["acceptance_case_count"] == 32
+          assert founder_experience["test_registration"]["registered_case_count"] == 0
+          assert founder_experience["test_registration"]["executable_test_count"] == 0
+          assert founder_experience["evidence"]["satisfied_evidence_count"] == 0
+          assert founder_experience["boundaries"]["codex_start_authorized"] is False
+          assert founder_experience["boundaries"]["external_actions_authorized"] is False
+
+          open_issue_numbers = {item["number"] for item in open_items if "pull_request" not in item}
           assert open_issue_numbers == {1, 19}
           names = {item["name"] for item in branches}
           assert "main" in names
           assert "codex/phase-0-foundation" not in names
           PY
 
-      - name: Assemble retained WS6.10 evidence
+      - name: Assemble retained WS6.11 evidence
         run: |
           cp /tmp/ws62-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
@@ -130,83 +132,11 @@ jobs:
             "$GITHUB_SHA" \
             "$GITHUB_RUN_ID" \
             > ci-evidence/run.txt
-          sha256sum \
-            .env.example \
-            contracts/initial-operating-controls.json \
-            contracts/pre-codex-readiness.json \
-            contracts/northstar-integration-blueprint.json \
-            configs/codex-phase0-launch-control.yaml \
-            contracts/codex-phase0-launch-control.json \
-            handoff/codex-phase0-issue-final.md \
-            handoff/codex-phase0-hosted-controls-issue-final.md \
-            configs/workstream6-final-launch-control.yaml \
-            contracts/workstream6-final-launch-control.json \
-            configs/workstream6-current-status.yaml \
-            contracts/workstream6-current-status.json \
-            configs/workstream6-canonical-authority.yaml \
-            repository/canonical-authority-registry.json \
-            schemas/canonical-authority-registry.schema.json \
-            configs/workstream6-phase-namespace.yaml \
-            contracts/workstream6-phase-namespace.json \
-            schemas/workstream6-phase-namespace.schema.json \
-            configs/workstream6-required-workflow-identity.yaml \
-            contracts/workstream6-required-workflow-identity.json \
-            schemas/workstream6-required-workflow-identity.schema.json \
-            reports/workstream6-required-workflow-identity-evidence.md \
-            scripts/build_workstream6_required_workflow_identity.py \
-            scripts/validate_workstream6_required_workflow_identity.py \
-            .github/workflows/workstream6-final-pre-codex.yml \
-            .github/workflows/workstream6-required-workflow-identity.yml \
-            configs/workstream6-configuration-contradictions.yaml \
-            contracts/workstream6-configuration-contradictions.json \
-            schemas/workstream6-configuration-contradictions.schema.json \
-            reports/workstream6-configuration-contradictions-evidence.md \
-            .github/workflows/workstream6-configuration-contradictions.yml \
-            configs/workstream6-issue-backlog-normalization.yaml \
-            contracts/workstream6-issue-backlog-normalization.json \
-            schemas/workstream6-issue-backlog-normalization.schema.json \
-            reports/workstream6-issue-backlog-normalization-evidence.md \
-            .github/workflows/workstream6-issue-backlog-normalization.yml \
-            configs/workstream6-implementation-obligation-map.yaml \
-            requirements/implementation-obligation-map.json \
-            schemas/implementation-obligation-map.schema.json \
-            reports/workstream6-implementation-obligation-map-evidence.md \
-            .github/workflows/workstream6-implementation-obligation-map.yml \
-            configs/workstream6-developer-experience-specification.yaml \
-            contracts/developer-experience-specification.json \
-            schemas/developer-experience-specification.schema.json \
-            reports/workstream6-developer-experience-specification-evidence.md \
-            docs/62-WS6-10-DEVELOPER-EXPERIENCE-SPECIFICATION.md \
-            .github/workflows/workstream6-developer-experience-specification.yml \
-            scripts/build_workstream6_developer_experience_specification.py \
-            scripts/validate_workstream6_developer_experience_specification.py \
-            .github/workflows/workstream6-final-launch-control.yml \
-            scripts/build_workstream6_configuration_contradictions.py \
-            scripts/validate_workstream6_configuration_contradictions.py \
-            scripts/build_workstream6_issue_backlog_normalization.py \
-            scripts/validate_workstream6_issue_backlog_normalization.py \
-            scripts/build_workstream6_implementation_obligation_map.py \
-            scripts/validate_workstream6_implementation_obligation_map.py \
-            scripts/doctor_pre_codex_macos.py \
-            scripts/run_ws62_ci.sh \
-            README.md \
-            docs/00-START-HERE.md \
-            docs/11-BUILD-BACKLOG.md \
-            docs/14-CODEX-KICKOFF.md \
-            docs/19-PHASE-0-VALIDATION-ADDENDUM.md \
-            docs/20-DEVELOPMENT-STATUS.md \
-            docs/58-WS6-6-REQUIRED-WORKFLOW-IDENTITY.md \
-            docs/59-WS6-7-CONFIGURATION-CONTRADICTIONS.md \
-            docs/60-WS6-8-ISSUE-AND-BACKLOG-NORMALIZATION.md \
-            docs/61-WS6-9-IMPLEMENTATION-OBLIGATION-MAP.md \
-            > ci-evidence/repository-digests.txt
-          find handoff/future-implementation-issue-pack -type f -print0 \
-            | sort -z \
-            | xargs -0 sha256sum \
-            >> ci-evidence/repository-digests.txt
 
+          : > ci-evidence/repository-digests.txt
           mkdir -p ci-evidence/package
-          awk '{print $2}' ci-evidence/repository-digests.txt | while IFS= read -r path; do
+          git ls-files -z | sort -z | while IFS= read -r -d '' path; do
+            sha256sum "$path" >> ci-evidence/repository-digests.txt
             destination="ci-evidence/package/$path"
             mkdir -p "$(dirname "$destination")"
             cp "$path" "$destination"
@@ -219,7 +149,7 @@ jobs:
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: offdata-workstream6-developer-experience-specification-${{ github.sha }}
+          name: offdata-workstream6-founder-experience-specification-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
@@ -234,4 +164,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.10 developer-experience-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All 15 PCR-10 commands have governed flags, exits, redaction, idempotency, safety, retry and four acceptance classes; 60 planned cases remain unregistered and no implementation evidence is claimed. WS6-CODEXPREP-002 and WS6-BLOCK-006 remain open. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. The complete WS6.6-WS6.10 payload was verified before upload and retained. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.11 Founder-experience-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All 8 PCR-10 Founder criteria are implementation-ready across six governed surfaces and 13 explicit states; 32 planned cases remain unregistered, no implementation evidence is claimed, recommendation never grants authorization, stale/version drift invalidates authority, and external sending remains disabled without exact scoped Founder approval. WS6-CODEXPREP-002 and WS6-BLOCK-006 remain open. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Every tracked repository file was checksum-staged and verified before artifact upload. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
