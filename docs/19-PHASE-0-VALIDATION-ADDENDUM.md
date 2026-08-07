@@ -2,7 +2,7 @@
 
 ## Current state and boundary
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.16; the permanent Workstream 6 release/final reconciliation is complete; all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 The repository remains pre-Codex. This addendum defines validation expectations for a future permitted IMP-P0 session. It does not authorise implementation, branch creation, merge or IMP-P1.
 
@@ -16,12 +16,12 @@ The authoritative classification, input inventory, task graph, command set, boun
 - `handoff/codex-phase0-handoff.json`;
 - `contracts/codex-phase0-launch-control.json`;
 - `handoff/codex-phase0-issue-final.md`;
-- the future permanent release `releases/pre-codex-final-reconciliation-2026-08-06.json`;
+- the permanent release `releases/pre-codex-final-reconciliation-2026-08-06.json`;
 - the valid local single-use permit produced by `scripts/prepare_codex_phase0_launch.py`.
 
 The canonical implementation identifier is `IMP-P0`; stable `phase0` filenames and machine keys are compatibility identifiers only.
 
-The required hosted status check is exactly `Validate final pre-Codex canonical handoff and complete release`. WS6.6 reserves that identity in `.github/workflows/workstream6-final-pre-codex.yml`; the workflow remains manual-only and deliberately fail-closed until WS6.15 activates the final implementation.
+The required hosted status check is exactly `Validate final pre-Codex canonical handoff and complete release`. WS6.6 reserved that identity, WS6.15 activated `.github/workflows/workstream6-final-pre-codex.yml`, and WS6.16 bound the permanent release. Hosted enforcement still requires issue #19 evidence.
 
 ## Mandatory pre-launch validation
 

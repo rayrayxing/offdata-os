@@ -2,7 +2,7 @@
 # Codex Phase 0 — Validate and build the controlled local foundation
 
 > [!CAUTION]
-> **NOT AUTHORISED TO START.** This final issue body, a green workflow, an assignment, a branch name, or a future final release does not authorize Codex. Every activation item below must be independently verified and a valid local single-use permit must exist.
+> **NOT AUTHORISED TO START.** This final issue body, a green workflow, an assignment, a branch name, or the completed permanent Workstream 6 release does not authorize Codex. Every remaining activation item below must be independently verified and a valid local single-use permit must exist.
 
 ## Canonical authority
 
@@ -11,7 +11,7 @@
 - `contracts/codex-phase0-launch-control.json` is the controlling final launch-control contract.
 - `contracts/workstream6-final-launch-control.json` records WS6.2 reconciliation and defect closure.
 - `handoff/codex-phase0-issue-final.md` is the only generated issue body accepted by the final launch verifier.
-- `releases/pre-codex-final-reconciliation-2026-08-06.json` must exist and pass the final Workstream 6 gate before permit issuance.
+- `releases/pre-codex-final-reconciliation-2026-08-06.json` now exists and must continue to pass the final Workstream 6 gate before permit issuance.
 - `handoff/codex-phase0-issue-workstream5.md` and earlier bodies are historical, non-controlling evidence.
 - Historical comments, chat snapshots and predecessor digests do not grant authority.
 
@@ -27,13 +27,13 @@
 - [x] `pcr10_merged_to_main`
 - [x] `workstream4_repository_package_merged_to_main`
 - [x] `workstream5_launch_control_merged_to_main`
-- [ ] `workstream6_final_reconciliation_merged_to_main`
+- [x] `workstream6_final_reconciliation_merged_to_main`
 - [ ] `github_hosted_controls_in_issue_19_verified`
 - [ ] `clean_macos_environment_available`
 - [ ] `explicit_founder_phase_0_approval_received`
 - [ ] `valid_codex_phase0_launch_permit_issued`
 
-The final Workstream 6 release, issue #19 evidence, clean-macOS attestation, exact-SHA Founder approval and valid permit are independent gates. Do not infer any gate from repository files or a successful workflow.
+The permanent final Workstream 6 release is complete. Issue #19 evidence, clean-macOS attestation, exact-SHA Founder approval and a valid permit remain independent gates. Do not infer any remaining gate from repository files or a successful workflow.
 
 ## Objective
 
@@ -149,7 +149,7 @@ ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/s
 cd packages/offdata-core && mypy src
 ```
 
-The non-self-test final Workstream 6 gate is intentionally expected to fail until the permanent final release exists. That failure blocks launch; it is not permission to bypass the gate.
+The non-self-test final Workstream 6 gate must now pass against the permanent final release. Any failure blocks launch; it is not permission to bypass the gate.
 
 ## Phase 0 scope
 
@@ -239,7 +239,7 @@ The draft Phase 0 pull request and Founder report must include what was built, w
 
 ## Supersession
 
-This is the single canonical Codex Phase 0 issue body after WS6.2. PCR-09, PCR-10 and Workstream 5 issue bodies remain immutable historical evidence only. Issue #2 remains closed as a duplicate.
+This is the single canonical Codex Phase 0 issue body after WS6.16 reconciliation. PCR-09, PCR-10 and Workstream 5 issue bodies remain immutable historical evidence only. Issue #2 remains closed as a duplicate.
 
 ## Rollback
 

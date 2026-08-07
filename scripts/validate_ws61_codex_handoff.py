@@ -245,7 +245,13 @@ def semantic_failures(
     if boundaries.get("founder_accountability_preserved") is not True:
         failures.append("Founder accountability must remain preserved")
     for key, value in boundaries.items():
-        if key != "founder_accountability_preserved" and value is not False:
+        if key == "founder_accountability_preserved":
+            continue
+        if key == "final_workstream6_gate_complete":
+            if value is not True:
+                failures.append("final Workstream 6 gate must be complete after WS6.16")
+            continue
+        if value is not False:
             failures.append(f"boundary {key} must remain false")
 
     readiness = handoff.get("readiness_snapshot", {})
@@ -267,8 +273,9 @@ def semantic_failures(
             failures.append(f"repository prerequisite {name} must pass")
     if readiness.get("local_prerequisites_passed") is not True:
         failures.append("local repository prerequisites must pass")
+    if readiness.get("final_workstream6_gate_complete") is not True:
+        failures.append("final Workstream 6 readiness gate must be complete")
     for field in (
-        "final_workstream6_gate_complete",
         "hosted_controls_verified",
         "clean_macos_environment_verified",
         "explicit_founder_phase0_approval_received",
@@ -280,14 +287,14 @@ def semantic_failures(
     activation_status = readiness.get("activation_status", {})
     if set(activation_status) != set(EXPECTED_ACTIVATION):
         failures.append("activation status must cover the exact activation conditions")
-    for condition in EXPECTED_ACTIVATION[:10]:
+    for condition in EXPECTED_ACTIVATION[:11]:
         if activation_status.get(condition) is not True:
             failures.append(f"merged repository condition {condition} must be true")
-    for condition in EXPECTED_ACTIVATION[10:]:
+    for condition in EXPECTED_ACTIVATION[11:]:
         if activation_status.get(condition) is not False:
             failures.append(f"pending condition {condition} must remain false")
-    if readiness.get("activation_blockers") != EXPECTED_ACTIVATION[10:]:
-        failures.append("activation blockers must be the five remaining gates")
+    if readiness.get("activation_blockers") != EXPECTED_ACTIVATION[11:]:
+        failures.append("activation blockers must be the four remaining manual gates")
 
     if check_files:
         for relative in sorted(_referenced_paths(handoff)):
@@ -346,7 +353,7 @@ def _mutation_count(handoff: dict[str, Any]) -> int:
     add(lambda item: item["boundaries"].__setitem__("phase0_implementation_authorised", True))
     add(lambda item: item["readiness_snapshot"].__setitem__("codex_start_authorized", True))
     add(lambda item: item["readiness_snapshot"].__setitem__("launch_permit_issued", True))
-    add(lambda item: item["readiness_snapshot"].__setitem__("final_workstream6_gate_complete", True))
+    add(lambda item: item["readiness_snapshot"].__setitem__("final_workstream6_gate_complete", False))
 
     schema = _load_json(SCHEMA_PATH)
     validator = Draft202012Validator(schema)
@@ -381,7 +388,7 @@ def main() -> None:
         f"{len(handoff['prerequisite_records'])} prerequisites, "
         f"{len(handoff['read_order'])} read-order paths, "
         f"{len(handoff['execution']['required_commands'])} commands, "
-        f"{mutation_count} mutations rejected, final_workstream6_gate_complete=false, "
+        f"{mutation_count} mutations rejected, final_workstream6_gate_complete=true, "
         "launch_permit_issued=false, codex_start_authorized=false."
     )
 

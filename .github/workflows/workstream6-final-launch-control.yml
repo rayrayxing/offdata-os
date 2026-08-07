@@ -124,8 +124,9 @@ jobs:
           assert ws616['completion']['ws616_complete'] is False
           assert ws616['boundaries']['codex_start_authorized'] is False
           assert ledger['repository_addressed_count'] == 25 and ledger['expected_unresolved_count'] == 3
-          assert 'WS6.15' in current['canonical_status_phrase']
+          assert 'WS6.16' in current['canonical_status_phrase']
           assert current['canonical_status_phrase'] == authority['canonical_status_phrase']
+          assert handoff['readiness_snapshot']['final_workstream6_gate_complete'] is True
           assert handoff['readiness_snapshot']['codex_start_authorized'] is False
           assert handoff['boundaries']['launch_permit_issued'] is False
 
@@ -149,10 +150,8 @@ jobs:
               if event == 'pull_request':
                   payload = load(os.environ['GITHUB_EVENT_PATH'])
                   pr = payload['pull_request']
-                  assert pr['head']['ref'] == 'release/ws616-permanent-release-record'
                   assert pr['base']['ref'] == 'main'
-                  assert pr['base']['sha'] == release['release_parent_main_sha']
-                  assert main_ref['object']['sha'] == release['release_parent_main_sha']
+                  assert main_ref['object']['sha'] == pr['base']['sha']
               else:
                   assert main_ref['object']['sha'] == os.environ['GITHUB_SHA']
           else:

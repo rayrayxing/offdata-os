@@ -2,7 +2,7 @@
 
 ## Current state
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.16; the permanent Workstream 6 release/final reconciliation is complete; all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 This file is preparation guidance, not an instruction to start Codex. Do not paste a kickoff prompt into Codex, create the implementation branch or change application code until the final release and every manual launch gate have passed and a valid local single-use permit exists.
 
@@ -17,10 +17,10 @@ IMP-P0 is governed by:
 - `handoff/codex-phase0-handoff.json`;
 - `contracts/codex-phase0-launch-control.json`;
 - `handoff/codex-phase0-issue-final.md` and issue #1;
-- `releases/pre-codex-final-reconciliation-2026-08-06.json` after it exists and passes the independent gate;
+- `releases/pre-codex-final-reconciliation-2026-08-06.json`, which now exists and passes the independent gate;
 - a valid local permit emitted by `scripts/prepare_codex_phase0_launch.py`.
 
-The namespace contract makes `IMP-P0` the canonical implementation phase identifier and retains older filenames and machine keys only for compatibility. The workflow-identity contract reserves the exact final check, but its canonical workflow remains manual-only and fail-closed until WS6.15. The registry identifies which repository records are current, supporting, retained or superseded. The handoff, final issue body, a green workflow, an assignment or a branch name does not authorise execution.
+The namespace contract makes `IMP-P0` the canonical implementation phase identifier and retains older filenames and machine keys only for compatibility. The workflow-identity contract defines the exact final check; WS6.15 activated its canonical workflow and WS6.16 bound the permanent release. Hosted branch-protection enforcement remains a manual issue #19 gate. The registry identifies which repository records are current, supporting, retained or superseded. The handoff, final issue body, a green workflow, an assignment or a branch name does not authorise execution.
 
 ## Preconditions before any Codex session
 

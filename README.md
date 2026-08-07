@@ -6,7 +6,7 @@ This repository is the **canonical build repository** for the new offdata consul
 
 ## Current canonical status
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.16; the permanent Workstream 6 release/final reconciliation is complete; all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 - Initial operator: Founder only.
 - Initial hosting and data region: Singapore.
@@ -18,8 +18,8 @@ This repository is the **canonical build repository** for the new offdata consul
 - Current canonical issue: `handoff/codex-phase0-issue-final.md`, synchronized to issue #1.
 - Current launch control: `contracts/codex-phase0-launch-control.json`.
 - Current machine handoff: `handoff/codex-phase0-handoff.json`.
-- Required future branch-protection check: `Validate final pre-Codex canonical handoff and complete release`.
-- Required permanent final release: `releases/pre-codex-final-reconciliation-2026-08-06.json`.
+- Active final check identity: `Validate final pre-Codex canonical handoff and complete release`; hosted branch-protection enforcement remains an issue #19 manual gate.
+- Permanent final release: `releases/pre-codex-final-reconciliation-2026-08-06.json`.
 
 Historical PCR and Workstream completion documents remain evidence of their own completed packages. They do not supersede the current status above or authorise Codex.
 
@@ -38,7 +38,7 @@ Historical PCR and Workstream completion documents remain evidence of their own 
 11. `contracts/codex-phase0-launch-control.json`
 12. `handoff/codex-phase0-issue-final.md`
 
-The phase namespace contract separates chat-first packages from `IMP-P0–12`. The workflow-identity contract reserves the exact future branch-protection check and remains manual-only and deliberately fail-closed until WS6.15 activates it. The authority registry classifies every current read-order item and retained evidence surface. The complete implementation read order and command set remain machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
+The phase namespace contract separates chat-first packages from `IMP-P0–12`. The workflow-identity contract defines the exact active final check identity; WS6.15 activated the workflow and WS6.16 bound the permanent release, while hosted enforcement remains an issue #19 manual gate. The authority registry classifies every current read-order item and retained evidence surface. The complete implementation read order and command set remain machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
 
 ## Codex entry gate
 

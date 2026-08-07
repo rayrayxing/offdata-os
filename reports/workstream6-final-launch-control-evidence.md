@@ -4,9 +4,9 @@
 
 - Base main: `a3fb3ea21029f01c52bc8e871dd7bcb284a31f7c`
 - Controlling launch contract: `contracts/codex-phase0-launch-control.json`
-- Launch-contract SHA-256: `5cb4e6bcf6028cba125b6f0a9cd991cd6d136f89bed33f9c394d34e956dbd344`
+- Launch-contract SHA-256: `5ae5c09cb6b10cfb22969380dfcb1f7ea62c87f152dfd00a3bcc45120280eda8`
 - Final canonical issue: `handoff/codex-phase0-issue-final.md`
-- Final issue SHA-256: `7adf6dd64b1e597bf349be3c4b54bebf58e0d8141a5ece499ed6571c8dd7ff92`
+- Final issue SHA-256: `6acfa2816c8f81a30d56a961e6c60e9b43b97e5978e746f127ceeeb68a8a892c`
 - Historical Workstream 5 issue SHA-256: `9f5bff38d973405be03d5b78e4ceb29280e77e1fd89a972c9d3fbb9e43df2791`
 - Required status check: `Validate final pre-Codex canonical handoff and complete release`
 - Closed defects: `WS6-BLOCK-004`, `WS6-BLOCK-005`

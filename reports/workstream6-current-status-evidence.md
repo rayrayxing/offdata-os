@@ -5,19 +5,19 @@
 - Base main: `1b518253abb187bbc31b1c809ee4f7ca5506f7e8`
 - Current authority surfaces: `6`
 - Forbidden stale-state patterns: `13`
-- Canonical status: Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.
+- Canonical status: Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.16; the permanent Workstream 6 release/final reconciliation is complete; all manual launch gates remain pending; `codex_start_authorized=false`.
 - Closed defects: `WS6-BLOCK-003`, `WS6-CONSIST-008`
-- Remaining blocking defect: `WS6-BLOCK-006`
-- Final release, hosted controls, branch cleanup, clean macOS, Founder approval and permit remain pending.
+- Historical WS6.3 remaining blocker: `WS6-BLOCK-006` (closed later by the WS6.16 permanent release).
+- Current successor status is represented by the canonical status phrase; WS6.3 package completion fields remain historical.
 - `codex_start_authorized=false`; implementation, merge and Phase 1 remain unauthorized.
 
 ## Document fingerprints
 
-- `README.md` — `81005ebf0efba7a761e625329968c06766533a70`
-- `docs/00-START-HERE.md` — `5f8319f461a272c96233d68712a2a96c9f20e588`
-- `docs/14-CODEX-KICKOFF.md` — `ab2a0d9577ed33963b5c99d24f841f38ed7770ca`
-- `docs/19-PHASE-0-VALIDATION-ADDENDUM.md` — `f11ec0d63f113896e06c801d41cf9d579bc91dfd`
-- `docs/20-DEVELOPMENT-STATUS.md` — `a0f516ec03604d32cdfc1e497ae871c32ea00a8a`
-- `handoff/codex-phase0-hosted-controls-issue-final.md` — `b84bd6847cb0f88140e90b8c57bd1ecdf3a38984`
+- `README.md` — `eee6d29a0e2e98e7b90219f3c81cb5095d78c828`
+- `docs/00-START-HERE.md` — `5152035263bbce572bb7d485206fa24fbf2d5612`
+- `docs/14-CODEX-KICKOFF.md` — `ca27bb99f998e9b5ab3f9b2e68c26b920b66d5ad`
+- `docs/19-PHASE-0-VALIDATION-ADDENDUM.md` — `bd0cde35ba4f2447e354c69d7d0dd9ad913ee2f3`
+- `docs/20-DEVELOPMENT-STATUS.md` — `620742841234fbbb4b606ffde50bc838d18b5960`
+- `handoff/codex-phase0-hosted-controls-issue-final.md` — `dfd39f7c67961a1d925266c58457ae1526a85ced`
 
-Next permitted work package: `WS6.4`.
+Historical WS6.3 next permitted work package: `WS6.4`.

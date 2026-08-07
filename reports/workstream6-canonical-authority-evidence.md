@@ -14,8 +14,8 @@
 - Current manual gate: `#19`
 - Superseded duplicate issue: `#2`
 - Closed defects: `WS6-CONSIST-001`, `WS6-CONSIST-007`
-- Remaining blocking defect: `WS6-BLOCK-006`
-- Current status reconciled to integrated `main` through WS6.15; WS6.16 remains pending.
+- Historical WS6.4 closure snapshot: `WS6-BLOCK-006` was still pending at package time.
+- Current successor status is integrated through WS6.16 with the permanent release complete; manual launch gates remain pending.
 - Every authority and implementation boundary remains fail-closed.
 
 The semantic validator parses both current read orders, scans every configured

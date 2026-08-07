@@ -191,7 +191,7 @@
         "hermes_activation_authorised": {"const": false},
         "northstar_implementation_authorised": {"const": false},
         "launch_permit_issued": {"const": false},
-        "final_workstream6_gate_complete": {"const": false},
+        "final_workstream6_gate_complete": {"const": true},
         "original_methodology_binaries_committed": {"const": false},
         "founder_accountability_preserved": {"const": true}
       }
@@ -223,14 +223,14 @@
       ],
       "properties": {
         "local_prerequisites_passed": {"const": true},
-        "final_workstream6_gate_complete": {"const": false},
+        "final_workstream6_gate_complete": {"const": true},
         "hosted_controls_verified": {"const": false},
         "clean_macos_environment_verified": {"const": false},
         "explicit_founder_phase0_approval_received": {"const": false},
         "launch_permit_issued": {"const": false},
         "codex_start_authorized": {"const": false},
         "activation_status": {"type": "object", "minProperties": 15},
-        "activation_blockers": {"type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true}
+        "activation_blockers": {"type": "array", "minItems": 4, "maxItems": 4, "uniqueItems": true}
       }
     }
   }

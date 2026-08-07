@@ -6,7 +6,7 @@ This document tells the Founder, reviewers and future Codex sessions how to inte
 
 ## Current canonical status
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.16; the permanent Workstream 6 release/final reconciliation is complete; all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 The repository is **pre-Codex**. It is not presently executing implementation IMP-P0. A deterministic consulting kernel and governed chat-first package exist in `packages/offdata-core/`, but they remain inputs to a future permitted implementation session.
 
@@ -27,9 +27,9 @@ Current authority is interpreted in this order:
 7. `handoff/codex-phase0-handoff.json`;
 8. `contracts/codex-phase0-launch-control.json`;
 9. `handoff/codex-phase0-issue-final.md` and synchronized issue #1;
-10. the future permanent release `releases/pre-codex-final-reconciliation-2026-08-06.json`.
+10. the permanent release `releases/pre-codex-final-reconciliation-2026-08-06.json`.
 
-The phase namespace contract defines `CF-P1–7`, `PCR-01–10`, `WS-*` and `IMP-P0–12`. The workflow-identity contract reserves the exact future check `Validate final pre-Codex canonical handoff and complete release`; the reserved workflow is manual-only and deliberately fails until WS6.15 activates it. The authority registry classifies current, supporting, retained and superseded repository records. Historical completion documents remain evidence for the package they describe. Old PR numbers, branch names, issue bodies, run summaries and chat messages do not override current authority.
+The phase namespace contract defines `CF-P1–7`, `PCR-01–10`, `WS-*` and `IMP-P0–12`. The workflow-identity contract defines the exact active check `Validate final pre-Codex canonical handoff and complete release`; WS6.15 activated it and WS6.16 completed the permanent release, while hosted enforcement remains pending in issue #19. The authority registry classifies current, supporting, retained and superseded repository records. Historical completion documents remain evidence for the package they describe. Old PR numbers, branch names, issue bodies, run summaries and chat messages do not override current authority.
 
 ## Build labels
 
