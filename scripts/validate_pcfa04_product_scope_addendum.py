@@ -8,7 +8,7 @@ from typing import Any
 from jsonschema import Draft202012Validator
 
 from build_pcfa04_product_scope_addendum import REPORT_PATH, build_records
-from codex_phase0_launch_core import CURRENT_STATE_PATH, ROOT, digest_file, load_json
+from codex_phase0_launch_core import CURRENT_STATE_PATH, ROOT, load_json
 from pcfa04_product_scope import PRODUCT_SCOPE_PATH, product_scope_failures, run_self_test
 
 SCHEMA_PATH = ROOT / "schemas" / "pcfa04-product-scope-implementation-addendum.schema.json"
@@ -107,7 +107,10 @@ def _semantic_failures(record: dict[str, Any]) -> list[str]:
     reference_counts = Counter(references)
 
     require(len(areas) == 14, "PCFA-04 must contain exactly 14 product areas")
-    require(set(area_ids) == REQUIRED_AREA_IDS and len(area_ids) == len(set(area_ids)), "PCFA-04 product-area identities drifted")
+    require(
+        set(area_ids) == REQUIRED_AREA_IDS and len(area_ids) == len(set(area_ids)),
+        "PCFA-04 product-area identities drifted",
+    )
     require(len(requirements) == 29, "PCFA-04 must contain exactly 29 requirements")
     require(len(requirement_ids) == len(set(requirement_ids)), "PCFA-04 requirement IDs are not unique")
     require(cq_ids == REQUIRED_CQ, "PCFA-04 Consulting Craft requirement family is incomplete")
@@ -153,7 +156,11 @@ def _semantic_failures(record: dict[str, Any]) -> list[str]:
     boundaries = record.get("boundaries", {})
     require(
         boundaries.get("founder_accountability_preserved") is True
-        and all(value is False for key, value in boundaries.items() if key != "founder_accountability_preserved"),
+        and all(
+            value is False
+            for key, value in boundaries.items()
+            if key != "founder_accountability_preserved"
+        ),
         "PCFA-04 authorization boundaries drifted",
     )
     return failures
@@ -161,14 +168,19 @@ def _semantic_failures(record: dict[str, Any]) -> list[str]:
 
 def _validate_existing_backlog_bindings(record: dict[str, Any]) -> None:
     text = BACKLOG_PATH.read_text(encoding="utf-8")
-    task_ids = set(re.findall(r"^### (P(?:[0-9]|1[0-2])\.[0-9]+)\b", text, flags=re.MULTILINE))
+    task_ids = set(
+        re.findall(r"^### (P(?:[0-9]|1[0-2])\.[0-9]+)\b", text, flags=re.MULTILINE)
+    )
     referenced = {
         task
         for area in record["product_areas"]
         for task in area["integration_points"]
     }
     missing = sorted(referenced - task_ids)
-    _require(not missing, "PCFA-04 references missing existing backlog tasks: " + ", ".join(missing))
+    _require(
+        not missing,
+        "PCFA-04 references missing existing backlog tasks: " + ", ".join(missing),
+    )
 
 
 def _validate_current_surfaces(state: dict[str, Any]) -> None:
@@ -184,11 +196,13 @@ def _validate_current_surfaces(state: dict[str, Any]) -> None:
     )
     _require(
         "repository/pcfa04-product-scope-implementation-addendum.json" in handoff["read_order"]
-        and "docs/71-PCFA-04-PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM.md" in handoff["read_order"],
+        and "docs/71-PCFA-04-PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM.md"
+        in handoff["read_order"],
         "current handoff read order omits PCFA-04",
     )
     _require(
-        "python scripts/validate_pcfa04_product_scope_addendum.py" in handoff["execution"]["required_commands"],
+        "python scripts/validate_pcfa04_product_scope_addendum.py"
+        in handoff["execution"]["required_commands"],
         "current handoff preflight omits PCFA-04 validation",
     )
     _require(
@@ -235,13 +249,29 @@ def main() -> None:
         ("requirement status", ("requirements", "0", "status"), "implemented"),
         ("IMP-P0 owner", ("product_areas", "0", "owning_imp_phases"), ["IMP-P0"]),
         ("missing ownership", ("product_areas", "1", "owning_imp_phases"), []),
-        ("duplicate requirement reference", ("product_areas", "1", "requirement_ids"), ["PS-MANDATE-001"]),
+        (
+            "duplicate requirement reference",
+            ("product_areas", "1", "requirement_ids"),
+            ["PS-MANDATE-001"],
+        ),
         ("CQ family drift", ("requirements", "7", "id"), "CQ-OTHER"),
         ("runtime implemented", ("scope_boundary", "product_runtime_implemented"), True),
-        ("canonical mutation implemented", ("scope_boundary", "canonical_state_mutation_implemented"), True),
+        (
+            "canonical mutation implemented",
+            ("scope_boundary", "canonical_state_mutation_implemented"),
+            True,
+        ),
         ("P0 scope widened", ("scope_boundary", "imp_phase_scope_widened"), True),
-        ("MVCL obligation removed", ("scope_boundary", "pcfa05_mvcl_contract_required"), False),
-        ("registry reconciliation removed", ("scope_boundary", "pcfa07_registry_reconciliation_required"), False),
+        (
+            "MVCL obligation removed",
+            ("scope_boundary", "pcfa05_mvcl_contract_required"),
+            False,
+        ),
+        (
+            "registry reconciliation removed",
+            ("scope_boundary", "pcfa07_registry_reconciliation_required"),
+            False,
+        ),
         ("Codex authorized", ("boundaries", "codex_start_authorized"), True),
     ]
     rejected = 0
