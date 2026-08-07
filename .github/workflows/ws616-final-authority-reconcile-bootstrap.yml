@@ -30,6 +30,20 @@ jobs:
       - name: Install reconciliation dependency
         run: python -m pip install PyYAML jsonschema
 
+      - name: Preserve JSON-compatible authority source serialization
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/reconcile_ws616_final_authority.py')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace('import hashlib\n', 'import hashlib\nimport json\n', 1)
+          old = '    update_yaml("configs/workstream6-canonical-authority.yaml", mutate_authority)'
+          new = '''    authority_path = ROOT / "configs/workstream6-canonical-authority.yaml"\n    authority = yaml.safe_load(authority_path.read_text(encoding="utf-8"))\n    if not isinstance(authority, dict):\n        raise SystemExit("canonical authority source must be a mapping")\n    mutate_authority(authority)\n    authority_path.write_text(json.dumps(authority, ensure_ascii=False, separators=(",", ":")) + "\\n", encoding="utf-8")'''
+          if old not in text:
+              raise SystemExit('authority serialization patch target missing')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+
       - name: Reconcile current authority and regenerate machine artifacts
         run: |
           python scripts/reconcile_ws616_final_authority.py
