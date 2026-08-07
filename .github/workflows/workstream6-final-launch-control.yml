@@ -12,13 +12,17 @@ permissions:
   issues: read
   pull-requests: write
 
+env:
+  EXPECTED_INTEGRATED_MAIN_SHA: 141ac6ab458fa7354f9b3f8cc57a887f3fceac21
+  WS613_HEAD_SHA: e22a8357c98c31b62c654ba3734b51b5671232f7
+
 concurrency:
   group: workstream6-final-launch-control-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   validate-final-launch-control:
-    name: Validate WS6.13 operational quality specification and complete prior components
+    name: Validate WS6.14 cross-authority consistency gate and complete prior components
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -40,100 +44,102 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.13
+      - name: Rebuild, validate and test through WS6.14
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.12 ancestry and live fail-closed state
+      - name: Verify integrated main, live authority and integrated predecessors
         env:
           GH_TOKEN: ${{ github.token }}
-          WS612_HEAD_SHA: b6e6ba2a8408b7634a0d7e31980f5b505bc726a5
         run: |
           mkdir -p ci-evidence
-          git merge-base --is-ancestor "$WS612_HEAD_SHA" "$GITHUB_SHA"
+          git merge-base --is-ancestor "$WS613_HEAD_SHA" "$GITHUB_SHA"
           gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
+          gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/19" > ci-evidence/issue-19.json
           gh api "repos/${GITHUB_REPOSITORY}/issues?state=open&per_page=100" > ci-evidence/open-issues.json
           gh api "repos/${GITHUB_REPOSITORY}/branches?per_page=100" > ci-evidence/branches.json
+          for pr in 49 50 51 52 53 54; do
+            gh api "repos/${GITHUB_REPOSITORY}/pulls/${pr}" > "ci-evidence/pr-${pr}.json"
+          done
           python - <<'PY'
           import json
+          import os
           from pathlib import Path
 
-          issue1 = json.loads(Path("ci-evidence/issue-1.json").read_text())
-          issue19 = json.loads(Path("ci-evidence/issue-19.json").read_text())
-          open_items = json.loads(Path("ci-evidence/open-issues.json").read_text())
-          branches = json.loads(Path("ci-evidence/branches.json").read_text())
-          renderer_prep = json.loads(Path("contracts/workstream6-renderer-preimplementation-assets.json").read_text())
-          operational = json.loads(Path("contracts/operational-quality-specification.json").read_text())
-          blueprint = json.loads(Path("contracts/phase0-implementation-blueprint.json").read_text())
-          api = json.loads(Path("contracts/api-interface-contracts.json").read_text())
-          knowledge = json.loads(Path("contracts/knowledge-ingestion-contracts.json").read_text())
-          registry = json.loads(Path("tests/registry/ws613-planned-acceptance-tests.json").read_text())
-          overlay = json.loads(Path("requirements/implementation-obligation-test-registration.json").read_text())
-          licence = json.loads(Path("contracts/phase0-licence-decision-placeholder.json").read_text())
+          def load(path):
+              return json.loads(Path(path).read_text())
 
+          main_ref = load("ci-evidence/main-ref.json")
+          assert main_ref["object"]["sha"] == os.environ["EXPECTED_INTEGRATED_MAIN_SHA"]
+
+          issue1 = load("ci-evidence/issue-1.json")
+          issue2 = load("ci-evidence/issue-2.json")
+          issue19 = load("ci-evidence/issue-19.json")
           assert issue1["state"] == "open"
+          assert issue2["state"] == "closed" and issue2.get("state_reason") == "duplicate"
           assert issue19["state"] == "open"
-          open_issue_numbers = {item["number"] for item in open_items if "pull_request" not in item}
-          assert open_issue_numbers == {1, 19}
+          open_items = load("ci-evidence/open-issues.json")
+          assert {item["number"] for item in open_items if "pull_request" not in item} == {1, 19}
+          branches = load("ci-evidence/branches.json")
           names = {item["name"] for item in branches}
-          assert "main" in names
-          assert "codex/phase-0-foundation" not in names
+          assert "main" in names and "codex/phase-0-foundation" not in names
 
-          assert renderer_prep["closed_defects"] == ["WS6-CODEXPREP-006"]
-          assert renderer_prep["renderer_count"] == 6
-          assert renderer_prep["golden_entry_count"] == 6
-          assert renderer_prep["completion"]["physical_renderer_outputs_present"] is False
-          assert renderer_prep["completion"]["approved_golden_baselines_present"] is False
+          expected_heads = {
+              49: "46abab02ad08a3a1cca519391e0114555f11230c",
+              50: "911e431551bb7eb41f1d5d1ccc9ff042f18858f9",
+              51: "ebd750f6e985d7a864d072a172d4d9343ce26a36",
+              52: "9f138fd3f35fb9826c6da0ab696e83775312508e",
+              53: "7fc1734b5a495f95c68c9adce1cc85783f3d0299",
+              54: "e22a8357c98c31b62c654ba3734b51b5671232f7",
+          }
+          for number, head in expected_heads.items():
+              pr = load(f"ci-evidence/pr-{number}.json")
+              assert pr["state"] == "closed" and pr["merged"] is True
+              assert pr["base"]["ref"] == "main"
+              assert pr["head"]["sha"] == head
 
-          assert operational["predecessor"]["head_sha"] == "b6e6ba2a8408b7634a0d7e31980f5b505bc726a5"
-          assert operational["operational_signal_count"] == 8
-          assert operational["learning_metric_count"] == 11
-          assert operational["test_registration"]["phase0_total"] == 76
-          assert operational["test_registration"]["planned_total"] == 83
-          assert operational["test_registration"]["executable"] == 0
-          assert operational["remaining_preparation_defects"] == []
-          assert operational["remaining_blocking_defects"] == ["WS6-BLOCK-006"]
+          gate = load("contracts/workstream6-cross-authority-consistency-gate.json")
+          ledger = load("repository/workstream6-defect-closure-ledger.json")
+          current = load("contracts/workstream6-current-status.json")
+          authority = load("repository/canonical-authority-registry.json")
+          phase = load("contracts/workstream6-phase-namespace.json")
+          workflow = load("contracts/workstream6-required-workflow-identity.json")
+          operational = load("contracts/operational-quality-specification.json")
+          licence = load("contracts/phase0-licence-decision-placeholder.json")
+
+          assert gate["predecessor"]["head_sha"] == os.environ["WS613_HEAD_SHA"]
+          assert gate["predecessor"]["integrated_to_main"] is True
+          assert gate["main_integration"]["integrated_main_sha"] == os.environ["EXPECTED_INTEGRATED_MAIN_SHA"]
+          assert gate["main_integration"]["integrated_through"] == "WS6.13"
+          assert gate["main_integration"]["earliest_unintegrated"] == "WS6.14"
+          assert gate["authority_domain_count"] == 12
+          assert gate["defect_count"] == 28
+          assert gate["repository_addressed_count"] == 25
+          assert gate["expected_unresolved_count"] == 3
+          assert set(gate["expected_unresolved_defects"]) == {"WS6-BLOCK-006", "WS6-CONSIST-006", "WS6-CONSIST-010"}
+          assert gate["completion"]["final_workflow_active"] is False
+          assert gate["completion"]["permanent_release_complete"] is False
+          assert gate["completion"]["manual_launch_gates_complete"] is False
+          assert gate["completion"]["next_permitted_work_package"] == "WS6.15"
+          assert gate["boundaries"]["codex_start_authorized"] is False
+          assert ledger["repository_addressed_count"] == 25 and ledger["expected_unresolved_count"] == 3
+          assert current["canonical_status_phrase"] == gate["canonical_status_phrase"]
+          assert authority["canonical_status_phrase"] == gate["canonical_status_phrase"]
+          assert any(item["prefix"] == "IMP-P" and item["state"] == "not_started" for item in phase["namespaces"])
+          assert workflow["canonical_identity"]["job_name"] == "Validate final pre-Codex canonical handoff and complete release"
+          assert workflow["activation"]["activation_work_package"] == "WS6.15"
+          assert workflow["activation"]["automatic_triggers_enabled"] is False
           assert operational["completion"]["telemetry_enabled"] is False
-          assert operational["boundaries"]["codex_start_authorized"] is False
-          assert operational["boundaries"]["external_actions_authorized"] is False
-
-          assert blueprint["task_count"] == 4
-          assert blueprint["service_count"] == 4
-          assert blueprint["root_command_count"] == 15
-          assert blueprint["registered_phase0_test_count"] == 76
-          assert blueprint["status"] == "planned_not_implemented"
-          assert blueprint["network"] == {"binding": "loopback_only", "external_default": "denied", "paid_cloud": False}
-          assert not any(blueprint["guards"].values())
-
-          assert api["binding"] == "loopback_only" and api["external_binding"] is False and api["runtime_active"] is False
-          assert knowledge["ingestion"]["real_document_import"] is False
-          assert knowledge["external_object_storage"] is False and knowledge["runtime_active"] is False
-          assert registry["counts"]["phase0_total"] == 76
-          assert registry["counts"]["conformance"] == 7
-          assert registry["counts"]["executable"] == 0
-          assert registry["defaults"]["registration_status"] == "registered_planned"
-          assert registry["defaults"]["executable"] is False
-          assert overlay["registration_count"] == 16 and overlay["source_map_immutable"] is True
-
-          assert licence["defect_id"] == "WS6-CONSIST-009"
-          assert licence["owner"] == "Founder"
-          assert licence["decision_timing"]["implementation_task"] == "P0.1"
-          assert all(item["selection"] is False for item in licence["options"])
           assert licence["licence_state"]["selected_licence"] is None
           assert licence["licence_state"]["implicit_licence_grant"] is False
-          assert licence["licence_state"]["public_distribution_authorized"] is False
-          assert licence["adr"]["approved"] is False
-          assert licence["boundaries"]["codex_start_authorized"] is False
           PY
 
-      - name: Assemble retained WS6.13 evidence
+      - name: Assemble retained WS6.14 evidence
         run: |
           cp /tmp/ws62-pytest.log ci-evidence/pytest.log
-          printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
-            "${{ github.event.pull_request.head.sha }}" \
-            "$GITHUB_SHA" \
-            "$GITHUB_RUN_ID" \
+          printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\nmain_sha=%s\n' \
+            "${{ github.event.pull_request.head.sha }}" "$GITHUB_SHA" "$GITHUB_RUN_ID" "$EXPECTED_INTEGRATED_MAIN_SHA" \
             > ci-evidence/run.txt
           : > ci-evidence/repository-digests.txt
           mkdir -p ci-evidence/package
@@ -143,15 +149,12 @@ jobs:
             mkdir -p "$(dirname "$destination")"
             cp "$path" "$destination"
           done
-          (
-            cd ci-evidence/package
-            sha256sum -c ../repository-digests.txt
-          )
+          (cd ci-evidence/package && sha256sum -c ../repository-digests.txt)
 
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: offdata-workstream6-operational-quality-specification-${{ github.sha }}
+          name: offdata-workstream6-cross-authority-consistency-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
@@ -166,4 +169,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.13 operational-quality-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Eight operational signals and eleven learning metrics are governed with source, privacy, retention, phase availability and evidence; telemetry/export/raw content remain disabled. The P0.1-P0.4 topology, API/UI shell, storage/ingestion contracts, 76 registered planned IMP-P0 tests and seven workflow/agent conformance cases remain planning-only with zero new executable evidence. WS6-QUALITY-005, WS6-CODEXPREP-001 through -005 and WS6-CONSIST-009 are closed by this package; WS6-BLOCK-006 remains open. The Phase 0 licence placeholder selects no licence, grants no implicit licence and does not authorize public distribution. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Every tracked file was checksum-staged before artifact upload. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.14 cross-authority consistency gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Integrated main is \`$EXPECTED_INTEGRATED_MAIN_SHA\` through WS6.13; WS6.14+ remain unintegrated. Twelve authority domains reconcile current status, phase namespace, exact required workflow identity, issues, launch controls, implementation obligations, experience/quality specifications, licence state and the 28-defect closure overlay. Exactly WS6-BLOCK-006, WS6-CONSIST-006 and WS6-CONSIST-010 remain unresolved. The final workflow remains reserved/manual-only for WS6.15; no permit exists and codex_start_authorized=false."
