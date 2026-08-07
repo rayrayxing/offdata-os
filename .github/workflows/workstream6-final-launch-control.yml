@@ -70,6 +70,7 @@ jobs:
           knowledge = json.loads(Path("contracts/knowledge-ingestion-contracts.json").read_text())
           registry = json.loads(Path("tests/registry/ws613-planned-acceptance-tests.json").read_text())
           overlay = json.loads(Path("requirements/implementation-obligation-test-registration.json").read_text())
+          licence = json.loads(Path("contracts/phase0-licence-decision-placeholder.json").read_text())
 
           assert issue1["state"] == "open"
           assert issue19["state"] == "open"
@@ -114,6 +115,16 @@ jobs:
           assert registry["defaults"]["registration_status"] == "registered_planned"
           assert registry["defaults"]["executable"] is False
           assert overlay["registration_count"] == 16 and overlay["source_map_immutable"] is True
+
+          assert licence["defect_id"] == "WS6-CONSIST-009"
+          assert licence["owner"] == "Founder"
+          assert licence["decision_timing"]["implementation_task"] == "P0.1"
+          assert all(item["selection"] is False for item in licence["options"])
+          assert licence["licence_state"]["selected_licence"] is None
+          assert licence["licence_state"]["implicit_licence_grant"] is False
+          assert licence["licence_state"]["public_distribution_authorized"] is False
+          assert licence["adr"]["approved"] is False
+          assert licence["boundaries"]["codex_start_authorized"] is False
           PY
 
       - name: Assemble retained WS6.13 evidence
@@ -155,4 +166,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.13 operational-quality-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Eight operational signals and eleven learning metrics are governed with source, privacy, retention, phase availability and evidence; telemetry/export/raw content remain disabled. The P0.1-P0.4 topology, API/UI shell, storage/ingestion contracts, 76 registered planned IMP-P0 tests and seven workflow/agent conformance cases remain planning-only with zero new executable evidence. WS6-QUALITY-005 and WS6-CODEXPREP-001 through -005 are closed by this package; WS6-BLOCK-006 remains open. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Every tracked file was checksum-staged before artifact upload. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.13 operational-quality-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Eight operational signals and eleven learning metrics are governed with source, privacy, retention, phase availability and evidence; telemetry/export/raw content remain disabled. The P0.1-P0.4 topology, API/UI shell, storage/ingestion contracts, 76 registered planned IMP-P0 tests and seven workflow/agent conformance cases remain planning-only with zero new executable evidence. WS6-QUALITY-005, WS6-CODEXPREP-001 through -005 and WS6-CONSIST-009 are closed by this package; WS6-BLOCK-006 remains open. The Phase 0 licence placeholder selects no licence, grants no implicit licence and does not authorize public distribution. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Every tracked file was checksum-staged before artifact upload. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
