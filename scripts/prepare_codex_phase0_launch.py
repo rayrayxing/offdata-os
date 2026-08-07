@@ -8,6 +8,7 @@ from jsonschema import Draft202012Validator
 
 from codex_phase0_launch_core import (
     CONTRACT_PATH,
+    CORRECTION_PATH,
     ROOT,
     build_permit,
     canonical_json,
@@ -32,7 +33,7 @@ def _safe_output(path: Path, contract: dict[str, object]) -> Path:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Fail-closed WS6.2 Codex Phase 0 launch-permit preparation."
+        description="Fail-closed PCFA-01-corrected Codex Phase 0 launch-permit preparation."
     )
     parser.add_argument("--self-test", action="store_true")
     parser.add_argument("--hosted-controls", type=Path)
@@ -42,12 +43,14 @@ def main() -> None:
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     contract = load_json(CONTRACT_PATH)
+    repair = load_json(CORRECTION_PATH)
     if args.self_test:
-        count = run_self_test(contract)
+        count = run_self_test(contract, repair)
         print(
-            "WS6.2 final Codex Phase 0 launch verifier self-test passed: "
-            f"{count} invalid launch bundles rejected; the valid synthetic bundle "
-            "included final Workstream 6 evidence and the final issue digest; "
+            "PCFA-01 Codex Phase 0 launch verifier self-test passed: "
+            f"{count} invalid launch or corrective-contract mutations rejected; "
+            "the actual WS6.16 schema-v2 permanent release was accepted without a legacy "
+            "launch-main field; the valid synthetic launch used a descendant approved main; "
             "no permit emitted and no repository or GitHub mutation performed."
         )
         return
@@ -68,15 +71,17 @@ def main() -> None:
         live = live_repository_state(contract)
     except RuntimeError as error:
         raise SystemExit(str(error)) from error
+    repo = repository_state(contract)
     failures = semantic_failures(
         contract,
         hosted,
         doctor,
         mac,
         approval,
-        repository_state(contract),
+        repo,
         live,
         doctor_digest=digest_file(paths[1]),
+        repair=repair,
     )
     if failures:
         raise SystemExit("Codex Phase 0 launch denied:\n- " + "\n- ".join(failures))
@@ -88,7 +93,7 @@ def main() -> None:
     )
     if output.exists():
         raise SystemExit(f"single-use permit already exists: {output}")
-    permit = build_permit(contract, paths, approval)
+    permit = build_permit(contract, paths, approval, repo)
     errors = list(Draft202012Validator(load_json(PERMIT_SCHEMA_PATH)).iter_errors(permit))
     if errors:
         raise SystemExit(
@@ -101,6 +106,14 @@ def main() -> None:
     print(f"Codex Phase 0 launch permit issued locally: {output}")
     print(f"launch_id={permit['launch_id']}")
     print(f"approved_main_sha={permit['approved_main_sha']}")
+    print(
+        "final_release_parent_main_sha="
+        f"{permit['final_workstream6_release_parent_main_sha']}"
+    )
+    print(
+        "final_release_record_commit_sha="
+        f"{permit['final_workstream6_release_record_commit_sha']}"
+    )
     print(f"required_status_check={permit['required_status_check']}")
     print(
         "Next permitted action: create codex/phase-0-foundation from the approved SHA "
