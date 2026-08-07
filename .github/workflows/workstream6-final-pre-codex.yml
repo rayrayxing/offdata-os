@@ -39,60 +39,60 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Run complete repository validation through WS6.15
+      - name: Run complete repository validation through WS6.16 preparation
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.15 activation boundary
-        id: activation-boundary
+      - name: Verify exact WS6.16 preparation boundary
+        id: release-boundary
         env:
-          EXPECTED_HEAD: governance/ws615-final-workflow
-          EXPECTED_BASE: governance/ws614-cross-authority-consistency-gate
-          EXPECTED_BASE_SHA: 272450f7aa4ac1c5c94c644bd9e1bbaa015685d1
+          EXPECTED_HEAD: governance/ws616-permanent-release-record
+          EXPECTED_BASE: governance/ws615-final-workflow
+          EXPECTED_BASE_SHA: 161014fd8598977d05e0d8c1ac9723739e54dcca
           FINAL_RELEASE: releases/pre-codex-final-reconciliation-2026-08-06.json
         run: |
+          python scripts/finalize_workstream6_permanent_release.py --self-test
           python scripts/require_workstream6_final_reconciliation.py --self-test
           python - <<'PY'
           import json
           import os
           from pathlib import Path
 
-          contract = json.loads(Path('contracts/workstream6-final-workflow.json').read_text())
-          assert contract['canonical_identity']['job_name'] == 'Validate final pre-Codex canonical handoff and complete release'
-          assert contract['activation']['state'] == 'active_fail_closed_pending_permanent_release'
-          assert contract['completion']['final_workflow_active'] is True
-          assert contract['completion']['permanent_release_complete'] is False
-          assert contract['completion']['manual_launch_gates_complete'] is False
-          assert contract['boundaries']['codex_start_authorized'] is False
+          prep = json.loads(Path('contracts/workstream6-permanent-release-record.json').read_text())
+          assert prep['work_package_id'] == 'WS6.16'
+          assert prep['completion']['release_machinery_prepared'] is True
+          assert prep['completion']['permanent_release_record_complete'] is False
+          assert prep['completion']['ws616_complete'] is False
+          assert prep['boundaries']['codex_start_authorized'] is False
 
           event = os.environ.get('GITHUB_EVENT_NAME')
           payload = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
-          activation_exception = False
+          preparation_exception = False
           if event == 'pull_request':
               pr = payload['pull_request']
-              activation_exception = (
+              preparation_exception = (
                   pr['head']['ref'] == os.environ['EXPECTED_HEAD']
                   and pr['base']['ref'] == os.environ['EXPECTED_BASE']
                   and pr['base']['sha'] == os.environ['EXPECTED_BASE_SHA']
               )
 
           release = Path(os.environ['FINAL_RELEASE'])
-          if activation_exception:
-              assert not release.exists(), 'WS6.15 activation PR must not contain the WS6.16 permanent release'
-              print('WS6.15 exact activation PR verified; permanent release intentionally absent; codex_start_authorized=false.')
+          if preparation_exception:
+              assert not release.exists(), 'WS6.16 preparation PR must not fabricate the permanent release'
+              print('WS6.16 exact preparation PR verified; permanent release intentionally absent; codex_start_authorized=false.')
           elif not release.exists():
-              raise SystemExit('WS6.16 permanent final release is required for every non-activation final-workflow run; codex_start_authorized=false.')
+              raise SystemExit('Permanent WS6.16 release is required outside the exact preparation PR; codex_start_authorized=false.')
           PY
           if [[ "$GITHUB_EVENT_NAME" == "pull_request" \
             && "${{ github.event.pull_request.head.ref }}" == "$EXPECTED_HEAD" \
             && "${{ github.event.pull_request.base.ref }}" == "$EXPECTED_BASE" \
             && "${{ github.event.pull_request.base.sha }}" == "$EXPECTED_BASE_SHA" ]]; then
-            echo "mode=ws615-activation-exception" >> "$GITHUB_OUTPUT"
+            echo "mode=ws616-preparation-exception" >> "$GITHUB_OUTPUT"
           else
             echo "mode=permanent-release-required" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Require permanent WS6 release outside exact activation PR
-        if: github.event_name != 'pull_request' || github.event.pull_request.head.ref != 'governance/ws615-final-workflow' || github.event.pull_request.base.ref != 'governance/ws614-cross-authority-consistency-gate' || github.event.pull_request.base.sha != '272450f7aa4ac1c5c94c644bd9e1bbaa015685d1'
+      - name: Require permanent WS6 release outside exact preparation PR
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.ref != 'governance/ws616-permanent-release-record' || github.event.pull_request.base.ref != 'governance/ws615-final-workflow' || github.event.pull_request.base.sha != '161014fd8598977d05e0d8c1ac9723739e54dcca'
         run: python scripts/require_workstream6_final_reconciliation.py
 
       - name: Assemble exact final-check evidence
@@ -104,7 +104,7 @@ jobs:
             "$GITHUB_SHA" \
             "$GITHUB_RUN_ID" \
             "Validate final pre-Codex canonical handoff and complete release" \
-            "${{ steps.activation-boundary.outputs.mode }}" \
+            "${{ steps.release-boundary.outputs.mode }}" \
             > ci-evidence/run.txt
           : > ci-evidence/repository-digests.txt
           git ls-files -z | sort -z | while IFS= read -r -d '' path; do
@@ -127,5 +127,6 @@ jobs:
       - name: Record fail-closed final-check result
         run: |
           echo 'Final workflow repository validation passed.'
-          echo 'This check does not authorize Codex, merge, runtime activation, external actions, real client data or production deployment.'
+          echo 'A preparation-PR pass does not mean the permanent release exists.'
+          echo 'The permanent release never replaces issue #19, clean macOS, Founder approval or launch-permit gates.'
           echo 'codex_start_authorized=false'
