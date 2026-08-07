@@ -31,16 +31,9 @@ jobs:
           from pathlib import Path
           p = Path('scripts/validate_workstream6_cross_authority_consistency_gate.py')
           text = p.read_text(encoding='utf-8')
-          replacements = {
-              'main.get("integrated_through")=="WS6.7"': 'main.get("integrated_through")=="WS6.13"',
-              'main.get("earliest_unintegrated")=="WS6.8"': 'main.get("earliest_unintegrated")=="WS6.14"',
-              '"WS6.7" in source.get("canonical_status_phrase","") and "later WS6 work remains unintegrated" in source.get("canonical_status_phrase","")': '"WS6.13" in source.get("canonical_status_phrase","") and "WS6.14–WS6.16 final reconciliation" in source.get("canonical_status_phrase","")',
-              'v["main_integration"].update(integrated_through="WS6.8")': 'v["main_integration"].update(integrated_through="WS6.12")',
-              'v["main_integration"].update(earliest_unintegrated="WS6.9")': 'v["main_integration"].update(earliest_unintegrated="WS6.13")',
-              'integrated_through=WS6.7': 'integrated_through=WS6.13',
-          }
-          for old, new in replacements.items():
-              text = text.replace(old, new)
+          text = text.replace('WS6.7', 'WS6.13')
+          text = text.replace('WS6.8', 'WS6.14')
+          text = text.replace('later WS6 work remains unintegrated', 'WS6.14–WS6.16 final reconciliation')
           p.write_text(text, encoding='utf-8')
           PY
           python scripts/validate_workstream6_cross_authority_consistency_gate.py
