@@ -28,13 +28,25 @@ jobs:
           git fetch origin governance/ws615-final-workflow:refs/remotes/origin/governance/ws615-final-workflow --no-tags
           python scripts/ws614_integration_repair.py || true
           python - <<'PY'
+          import json, re
           from pathlib import Path
           p = Path('scripts/validate_workstream6_cross_authority_consistency_gate.py')
           text = p.read_text(encoding='utf-8')
-          text = text.replace('WS6.7', 'WS6.13')
-          text = text.replace('WS6.8', 'WS6.14')
-          text = text.replace('later WS6 work remains unintegrated', 'WS6.14–WS6.16 final reconciliation')
+          text, n1 = re.subn(r'main\.get\("integrated_through"\)\s*==\s*"WS6\.7"', 'main.get("integrated_through") == "WS6.13"', text, count=1)
+          text, n2 = re.subn(r'main\.get\("earliest_unintegrated"\)\s*==\s*"WS6\.8"', 'main.get("earliest_unintegrated") == "WS6.14"', text, count=1)
+          text, n3 = re.subn(r'"WS6\.7"\s+in\s+phrase\s+and\s+"later WS6 work remains unintegrated"\s+in\s+phrase', '"WS6.13" in phrase and "WS6.14–WS6.16 final reconciliation" in phrase', text, count=1)
+          text = text.replace('integrated_through="WS6.8"', 'integrated_through="WS6.12"')
+          text = text.replace('earliest_unintegrated="WS6.9"', 'earliest_unintegrated="WS6.13"')
+          text = text.replace('integrated_through=WS6.7', 'integrated_through=WS6.13')
+          if (n1, n2, n3) != (1, 1, 1):
+              raise SystemExit(f'predicate rewrite count drift: {(n1,n2,n3)}')
           p.write_text(text, encoding='utf-8')
+          source = json.loads(Path('configs/workstream6-cross-authority-consistency-gate.yaml').read_text())
+          print('source integration=', source['main_integration'])
+          print('source phrase=', source['canonical_status_phrase'])
+          for line in text.splitlines():
+              if 'integrated_through' in line or 'earliest_unintegrated' in line or ('WS6.13' in line and 'phrase' in line):
+                  print('validator:', line)
           PY
           python scripts/validate_workstream6_cross_authority_consistency_gate.py
           python -m compileall -q scripts
