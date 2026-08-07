@@ -118,8 +118,11 @@ def validate(contract: dict[str, Any]) -> None:
 
 def mutations(base: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
     result: list[tuple[str, dict[str, Any]]] = []
+
     def add(name: str, fn: Callable[[dict[str, Any]], None]) -> None:
-        item = copy.deepcopy(base); fn(item); result.append((name, item))
+        item = copy.deepcopy(base)
+        fn(item)
+        result.append((name, item))
 
     add("work-package", lambda x: x.__setitem__("work_package_id", "WS6.13"))
     add("predecessor", lambda x: x["predecessor"].__setitem__("head_sha", "0" * 40))
