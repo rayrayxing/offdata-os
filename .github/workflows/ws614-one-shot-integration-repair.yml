@@ -1,0 +1,159 @@
+name: WS6.14 one-shot integration repair
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ws614-one-shot-repair
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    if: github.event.pull_request.number == 55 && github.event.pull_request.head.ref == 'governance/ws614-cross-authority-consistency-gate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repair branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: governance/ws614-cross-authority-consistency-gate
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Reconstruct truthful WS6.14 integrated state
+        env:
+          OLD_WS614: 272450f7aa4ac1c5c94c644bd9e1bbaa015685d1
+          INTEGRATED_MAIN: 141ac6ab458fa7354f9b3f8cc57a887f3fceac21
+          WS613_HEAD: e22a8357c98c31b62c654ba3734b51b5671232f7
+        run: |
+          python -m pip install --quiet pyyaml jsonschema
+          git cat-file -e "$OLD_WS614^{commit}" || git fetch origin "$OLD_WS614"
+          for path in \
+            .github/workflows/workstream6-cross-authority-consistency-gate.yml \
+            .github/workflows/workstream6-final-launch-control.yml \
+            configs/workstream6-cross-authority-consistency-gate.yaml \
+            schemas/workstream6-cross-authority-consistency-gate.schema.json \
+            scripts/build_workstream6_cross_authority_consistency_gate.py \
+            scripts/validate_workstream6_cross_authority_consistency_gate.py; do
+            mkdir -p "$(dirname "$path")"
+            git show "$OLD_WS614:$path" > "$path"
+          done
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, os, yaml
+
+          root = Path('.')
+          old_phrase = 'Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.7; later WS6 work remains unintegrated, final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.'
+          new_phrase = 'Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.13; WS6.14–WS6.16 final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.'
+
+          # Advance every human current-status surface.
+          for rel in ['README.md','docs/00-START-HERE.md','docs/14-CODEX-KICKOFF.md','docs/19-PHASE-0-VALIDATION-ADDENDUM.md','docs/20-DEVELOPMENT-STATUS.md']:
+              p = root / rel
+              text = p.read_text(encoding='utf-8')
+              if old_phrase not in text:
+                  raise SystemExit(f'missing prior status phrase in {rel}')
+              p.write_text(text.replace(old_phrase, new_phrase), encoding='utf-8')
+
+          p = root / 'docs/20-DEVELOPMENT-STATUS.md'
+          text = p.read_text(encoding='utf-8')
+          marker = '- WS6.7 — configuration contradictions and zero-spend committed defaults.\n'
+          additions = '''- WS6.8 — issue and backlog normalization;\n- WS6.9 — implementation-obligation map;\n- WS6.10 — developer experience specification;\n- WS6.11 — Founder experience specification;\n- WS6.12 — deliverable quality implementation specification and renderer preparation;\n- WS6.13 — operational quality specification, Phase 0 preparation assets and licence-decision placeholder.\n'''
+          if additions not in text:
+              text = text.replace(marker, marker + additions)
+          text = text.replace('WS6.8 through WS6.16 are not integrated to `main`. Draft stacked packages may be prepared sequentially, but they do not change integration authority or permit later packages to merge ahead of predecessors. The remaining work includes issue/backlog normalization, implementation obligations, developer and Founder experience specifications, deliverable and operational quality preparation, cross-authority consistency, final workflow activation, permanent evidence reconciliation and the post-merge release.', 'WS6.14 through WS6.16 are not yet integrated to `main`. The remaining repository-side work is cross-authority consistency, final workflow activation and the permanent post-merge release record; manual launch gates remain separate.')
+          text = text.replace('`WS6.8` is the earliest WS6 package not integrated to `main`.', '`WS6.14` is the earliest WS6 package not integrated to `main`.')
+          p.write_text(text, encoding='utf-8')
+
+          # Advance WS6.3 current-status source while retaining WS6.3 provenance fields.
+          p = root / 'configs/workstream6-current-status.yaml'
+          current = yaml.safe_load(p.read_text(encoding='utf-8'))
+          current['canonical_status_phrase'] = new_phrase
+          for rel in current['current_authority_files']:
+              data = (root / rel).read_bytes()
+              current['document_fingerprints'][rel] = hashlib.sha1(f'blob {len(data)}\0'.encode('ascii') + data).hexdigest()
+          p.write_text(yaml.safe_dump(current, sort_keys=False, allow_unicode=True), encoding='utf-8')
+
+          # Advance the WS6.4 current authority registry source, keeping WS6.4 sequencing fields historical.
+          p = root / 'configs/workstream6-canonical-authority.yaml'
+          authority = json.loads(p.read_text(encoding='utf-8'))
+          authority['canonical_status_phrase'] = new_phrase
+          p.write_text(json.dumps(authority, separators=(',', ':'), ensure_ascii=False) + '\n', encoding='utf-8')
+
+          # Make WS6.14 the truthful current integration gate.
+          p = root / 'configs/workstream6-cross-authority-consistency-gate.yaml'
+          gate = json.loads(p.read_text(encoding='utf-8'))
+          gate['predecessor']['head_sha'] = os.environ['WS613_HEAD']
+          gate['predecessor']['integrated_to_main'] = True
+          gate['main_integration']['integrated_main_sha'] = os.environ['INTEGRATED_MAIN']
+          gate['main_integration']['integrated_through'] = 'WS6.13'
+          gate['main_integration']['earliest_unintegrated'] = 'WS6.14'
+          gate['canonical_status_phrase'] = new_phrase
+          gate['authority_domains'][0]['assertion'] = 'main_integrated_through_ws613_exact'
+          p.write_text(json.dumps(gate, separators=(',', ':'), ensure_ascii=False) + '\n', encoding='utf-8')
+
+          # Current authority builder/validator must validate current semantics, not the old WS6.7 snapshot.
+          p = root / 'scripts/build_workstream6_canonical_authority.py'
+          text = p.read_text(encoding='utf-8').replace('Current status reconciled to integrated `main` through WS6.7; later WS6 packages remain unintegrated.', 'Current status reconciled to integrated `main` through WS6.13; WS6.14–WS6.16 remain pending.').replace('integrated_through=WS6.7', 'integrated_through=WS6.13')
+          p.write_text(text, encoding='utf-8')
+          p = root / 'scripts/validate_workstream6_canonical_authority.py'
+          text = p.read_text(encoding='utf-8').replace('"WS6.7" in status, "canonical integrated WS6.7 status missing"', '"WS6.13" in status, "canonical integrated WS6.13 status missing"').replace('"later WS6 work remains unintegrated" in status, "unintegrated successor boundary missing"', '"WS6.14–WS6.16 final reconciliation" in status, "unintegrated successor boundary missing"').replace('integrated_through=WS6.7, remaining_blockers=1', 'integrated_through=WS6.13, remaining_blockers=1')
+          p.write_text(text, encoding='utf-8')
+
+          # Fix WS6.14 generated report to use the configured integration boundary.
+          p = root / 'scripts/build_workstream6_cross_authority_consistency_gate.py'
+          text = p.read_text(encoding='utf-8').replace("f\"- Integrated main: `{source['main_integration']['integrated_main_sha']}` through `WS6.7`.\"", "f\"- Integrated main: `{source['main_integration']['integrated_main_sha']}` through `{source['main_integration']['integrated_through']}`.\"")
+          p.write_text(text, encoding='utf-8')
+
+          # Advance WS6.14 deterministic validator to the real integrated predecessor/main.
+          p = root / 'scripts/validate_workstream6_cross_authority_consistency_gate.py'
+          text = p.read_text(encoding='utf-8')
+          replacements = {
+              '"5a7c39f55c9d2e69e1be45894dfb82db53af4fa8"': f'"{os.environ["WS613_HEAD"]}"',
+              '"cb2bffe74e62804250ac36168c4206cb8b9d021a"': f'"{os.environ["INTEGRATED_MAIN"]}"',
+              'main.get("integrated_through")=="WS6.7"': 'main.get("integrated_through")=="WS6.13"',
+              'main.get("earliest_unintegrated")=="WS6.8"': 'main.get("earliest_unintegrated")=="WS6.14"',
+              '"WS6.7" in source.get("canonical_status_phrase","") and "later WS6 work remains unintegrated" in source.get("canonical_status_phrase","")': '"WS6.13" in source.get("canonical_status_phrase","") and "WS6.14–WS6.16 final reconciliation" in source.get("canonical_status_phrase","")',
+              'v["main_integration"].update(integrated_through="WS6.8")': 'v["main_integration"].update(integrated_through="WS6.12")',
+              'v["main_integration"].update(earliest_unintegrated="WS6.9")': 'v["main_integration"].update(earliest_unintegrated="WS6.13")',
+              'integrated_through=WS6.7': 'integrated_through=WS6.13',
+          }
+          for old, new in replacements.items():
+              text = text.replace(old, new)
+          p.write_text(text, encoding='utf-8')
+
+          # Shared hosted gate: all predecessors are now integrated and current main is exact.
+          p = root / '.github/workflows/workstream6-final-launch-control.yml'
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('EXPECTED_INTEGRATED_MAIN_SHA: cb2bffe74e62804250ac36168c4206cb8b9d021a', f'EXPECTED_INTEGRATED_MAIN_SHA: {os.environ["INTEGRATED_MAIN"]}')
+          text = text.replace('WS613_HEAD_SHA: 5a7c39f55c9d2e69e1be45894dfb82db53af4fa8', f'WS613_HEAD_SHA: {os.environ["WS613_HEAD"]}')
+          old_expected = '''          expected = {\n              49: ("main", "46abab02ad08a3a1cca519391e0114555f11230c"),\n              50: ("governance/ws68-issue-backlog-normalization", "911e431551bb7eb41f1d5d1ccc9ff042f18858f9"),\n              51: ("governance/ws69-implementation-obligation-map", "ebd750f6e985d7a864d072a172d4d9343ce26a36"),\n              52: ("governance/ws610-developer-experience-specification", "9f138fd3f35fb9826c6da0ab696e83775312508e"),\n              53: ("governance/ws611-founder-experience-specification", "b6e6ba2a8408b7634a0d7e31980f5b505bc726a5"),\n              54: ("governance/ws612-deliverable-quality-implementation-specification", "5a7c39f55c9d2e69e1be45894dfb82db53af4fa8"),\n          }\n          for number, (base, head) in expected.items():\n              pr = load(f"ci-evidence/pr-{number}.json")\n              assert pr["state"] == "open" and pr["draft"] is True and pr["merged"] is False\n              assert pr["base"]["ref"] == base and pr["head"]["sha"] == head\n'''
+          new_expected = '''          expected = {\n              49: "46abab02ad08a3a1cca519391e0114555f11230c",\n              50: "911e431551bb7eb41f1d5d1ccc9ff042f18858f9",\n              51: "ebd750f6e985d7a864d072a172d4d9343ce26a36",\n              52: "9f138fd3f35fb9826c6da0ab696e83775312508e",\n              53: "7fc1734b5a495f95c68c9adce1cc85783f3d0299",\n              54: "e22a8357c98c31b62c654ba3734b51b5671232f7",\n          }\n          for number, head in expected.items():\n              pr = load(f"ci-evidence/pr-{number}.json")\n              assert pr["state"] == "closed" and pr["merged"] is True\n              assert pr["base"]["ref"] == "main" and pr["head"]["sha"] == head\n'''
+          if old_expected not in text:
+              raise SystemExit('WS6.14 predecessor PR assertion block drifted')
+          text = text.replace(old_expected, new_expected)
+          text = text.replace('assert gate["main_integration"]["integrated_through"] == "WS6.7"', 'assert gate["main_integration"]["integrated_through"] == "WS6.13"')
+          text = text.replace('assert gate["main_integration"]["earliest_unintegrated"] == "WS6.8"', 'assert gate["main_integration"]["earliest_unintegrated"] == "WS6.14"')
+          text = text.replace('through WS6.7 and WS6.8+ remain unintegrated', 'through WS6.13 and WS6.14+ remain unintegrated')
+          p.write_text(text, encoding='utf-8')
+          PY
+
+          python scripts/build_workstream6_current_status.py
+          python scripts/build_workstream6_canonical_authority.py
+          python scripts/build_pcr03_repository_hygiene.py
+          python scripts/build_workstream6_cross_authority_consistency_gate.py
+          python scripts/validate_workstream6_current_status.py
+          python scripts/validate_workstream6_canonical_authority.py
+          python scripts/validate_workstream6_cross_authority_consistency_gate.py
+          python -m compileall -q scripts
+
+          # The one-shot workflow must not survive in the repaired branch.
+          rm .github/workflows/ws614-one-shot-integration-repair.yml
+          git config user.name 'offdata WS6 integration repair'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Reconcile WS6.14 with integrated WS6.13 authority'
+          git push origin HEAD:governance/ws614-cross-authority-consistency-gate
