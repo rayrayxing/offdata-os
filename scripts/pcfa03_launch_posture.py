@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 import copy
-from pathlib import Path
 from typing import Any
 
-from codex_phase0_launch_core import CURRENT_STATE_PATH, ROOT, digest_file, load_json
+from codex_phase0_launch_core import ROOT, digest_file, load_json
 
 POSTURE_PATH = ROOT / "repository" / "repository-visibility-and-licence-posture.json"
 WS613_PLACEHOLDER_PATH = ROOT / "configs" / "workstream6-phase0-licence-decision-placeholder.yaml"
@@ -91,7 +90,9 @@ def posture_failures(state: dict[str, Any], posture: dict[str, Any]) -> list[str
         "WS6.13 licence placeholder is not retained as historical predecessor evidence",
     )
     require(
-        isinstance(enforcement, dict) and bool(enforcement) and all(value is True for value in enforcement.values()),
+        isinstance(enforcement, dict)
+        and bool(enforcement)
+        and all(value is True for value in enforcement.values()),
         "PCFA-03 operational enforcement must remain fully fail-closed",
     )
     require(
@@ -152,7 +153,9 @@ def hosted_visibility_failures(hosted: dict[str, Any]) -> list[str]:
     )
 
 
-def live_visibility_failures(posture: dict[str, Any], repository_metadata: dict[str, Any]) -> list[str]:
+def live_visibility_failures(
+    posture: dict[str, Any], repository_metadata: dict[str, Any]
+) -> list[str]:
     required = posture.get("visibility_posture", {}).get(
         "required_repository_visibility_for_codex_launch"
     )
@@ -199,15 +202,31 @@ def run_self_test(state: dict[str, Any]) -> int:
     mutations.append(("hosted private visibility unattested", posture, unattested, live))
 
     posture_mutations = [
-        ("launch visibility public", ("visibility_posture", "required_repository_visibility_for_codex_launch"), "public"),
-        ("phase0 visibility public", ("visibility_posture", "required_repository_visibility_for_phase0_implementation"), "public"),
+        (
+            "launch visibility public",
+            ("visibility_posture", "required_repository_visibility_for_codex_launch"),
+            "public",
+        ),
+        (
+            "phase0 visibility public",
+            ("visibility_posture", "required_repository_visibility_for_phase0_implementation"),
+            "public",
+        ),
         ("public repository allowed", ("visibility_posture", "public_repository_is_launch_blocker"), False),
         ("open-source licence selected", ("licence_posture", "selected_open_source_licence"), "MIT"),
         ("public distribution authorized", ("licence_posture", "public_distribution_authorized"), True),
         ("external contributions authorized", ("licence_posture", "external_contributions_authorized"), True),
         ("implicit licence grant", ("licence_posture", "implicit_licence_grant"), True),
-        ("hosted private pre-attested", ("repository_side_completion", "hosted_visibility_private_verified"), True),
-        ("setting no longer pending", ("repository_side_completion", "repository_setting_change_pending"), False),
+        (
+            "hosted private pre-attested",
+            ("repository_side_completion", "hosted_visibility_private_verified"),
+            True,
+        ),
+        (
+            "setting no longer pending",
+            ("repository_side_completion", "repository_setting_change_pending"),
+            False,
+        ),
         ("Codex authorized", ("boundaries", "codex_start_authorized"), True),
     ]
     for label, path, replacement in posture_mutations:
