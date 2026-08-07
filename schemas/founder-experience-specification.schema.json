@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "work_package_id",
+    "predecessor",
+    "source_sha256",
+    "surface_count",
+    "state_count",
+    "criterion_count",
+    "acceptance_case_count",
+    "surfaces",
+    "states",
+    "criteria",
+    "test_registration",
+    "evidence",
+    "closed_defects",
+    "remaining_blocking_defects",
+    "remaining_preparation_defects",
+    "completion",
+    "boundaries"
+  ],
+  "properties": {
+    "work_package_id": {"const": "WS6.11"},
+    "surface_count": {"const": 6},
+    "state_count": {"const": 13},
+    "criterion_count": {"const": 8},
+    "acceptance_case_count": {"const": 32},
+    "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "surfaces": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"type": "object", "required": ["id", "route"]}
+    },
+    "states": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": {
+        "type": "object",
+        "required": ["id", "terminal"],
+        "properties": {"id": {"type": "string"}, "terminal": {"type": "boolean"}}
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["criterion_id", "phase_id", "task_id", "component_id", "surface_id", "required_fields", "invariants", "source_digest", "acceptance_cases", "implementation_status", "evidence_satisfied"],
+        "properties": {
+          "criterion_id": {"pattern": "^FX-[A-Z]+$"},
+          "phase_id": {"pattern": "^IMP-P([0-9]|1[0-2])$"},
+          "task_id": {"pattern": "^P([0-9]|1[0-2])\\.[0-9]+$"},
+          "source_digest": {"pattern": "^[0-9a-f]{64}$"},
+          "acceptance_cases": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "required": ["case_id", "case_class", "registration_status", "executable_test_exists"],
+              "properties": {
+                "registration_status": {"const": "planned_unregistered"},
+                "executable_test_exists": {"const": false}
+              }
+            }
+          },
+          "implementation_status": {"const": "specified_not_implemented"},
+          "evidence_satisfied": {"const": false}
+        }
+      }
+    },
+    "closed_defects": {"const": ["WS6-QUALITY-003"]},
+    "remaining_blocking_defects": {"const": ["WS6-BLOCK-006"]},
+    "remaining_preparation_defects": {"const": ["WS6-CODEXPREP-002"]}
+  },
+  "additionalProperties": true
+}
