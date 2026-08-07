@@ -36,7 +36,7 @@ PCFA-03 resolves the current policy posture as follows:
 - required GitHub repository visibility before Codex launch and IMP-P0 implementation: `private`;
 - a live public repository is a launch blocker;
 - the launch verifier independently queries GitHub repository metadata and cannot be overridden by an attestation;
-- licence mode: `no_public_licence_grant_proprietary_internal`;
+- licence posture: **no public licence grant**, with machine mode `no_public_licence_grant_proprietary_internal`;
 - selected open-source licence: none;
 - implicit licence grant: false;
 - public/open-source distribution: unauthorized;
