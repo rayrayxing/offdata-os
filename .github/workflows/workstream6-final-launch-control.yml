@@ -43,10 +43,10 @@ jobs:
       - name: Rebuild, validate and test through WS6.7
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.5 ancestry and live fail-closed state
+      - name: Verify exact WS6.7 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          BASE_MAIN_SHA: 08f043b8dd1102bebd0186d3fc52041261f51920
+          BASE_MAIN_SHA: 68d0c92283a52a673f0bae02cdf6bd5dfd982604
         run: |
           mkdir -p ci-evidence
           git merge-base --is-ancestor "$BASE_MAIN_SHA" "$GITHUB_SHA"
@@ -106,6 +106,8 @@ jobs:
             contracts/workstream6-required-workflow-identity.json \
             schemas/workstream6-required-workflow-identity.schema.json \
             reports/workstream6-required-workflow-identity-evidence.md \
+            scripts/build_workstream6_required_workflow_identity.py \
+            scripts/validate_workstream6_required_workflow_identity.py \
             .github/workflows/workstream6-final-pre-codex.yml \
             .github/workflows/workstream6-required-workflow-identity.yml \
             configs/workstream6-configuration-contradictions.yaml \
@@ -157,4 +159,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.7 configuration-contradictions gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. The exact final check identity remains unique and reserved in a manual-only fail-closed workflow; WS6.7 zero-spend defaults and cross-file controls, all prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. The complete WS6.7 payload was staged from its digest manifest, verified before upload and retained. The final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.7 configuration-contradictions gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. The exact final check identity remains unique and reserved in a manual-only fail-closed workflow; WS6.7 zero-spend defaults and cross-file controls, all prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. The complete WS6.6 and WS6.7 payload was staged from its digest manifest, verified before upload and retained. The final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
