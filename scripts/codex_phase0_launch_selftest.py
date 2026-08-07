@@ -4,9 +4,14 @@ import copy
 from typing import Any
 
 from codex_phase0_launch_core import (
+    CURRENT_STATE_PATH,
     FINAL_RELEASE_PATH,
+    ISSUE19_BODY_PATH,
+    ISSUE_BODY_PATH,
     canonical_json,
+    current_state_failures,
     digest_bytes,
+    digest_file,
     final_release_record_failures,
     load_json,
     repair_failures,
@@ -14,13 +19,16 @@ from codex_phase0_launch_core import (
 )
 
 
-def synthetic_bundle(contract: dict[str, Any]) -> tuple[Any, ...]:
+def synthetic_bundle(state: dict[str, Any]) -> tuple[Any, ...]:
     current_sha = "b" * 40
     release_parent_sha = "a" * 40
     release_record_commit_sha = "c" * 40
     release_digest = "f" * 64
-    issue19_digest = "9" * 64
-    issue1_digest = contract["generated_issue"]["body_sha256"]
+    state_digest = digest_file(CURRENT_STATE_PATH)
+    issue1_digest = digest_file(ISSUE_BODY_PATH)
+    issue19_digest = digest_file(ISSUE19_BODY_PATH)
+    target = state["launch_target"]
+
     doctor = {
         "report_type": "offdata_pre_codex_macos_doctor",
         "non_destructive": True,
@@ -32,15 +40,16 @@ def synthetic_bundle(contract: dict[str, Any]) -> tuple[Any, ...]:
     }
     doctor_digest = digest_bytes(canonical_json(doctor).encode())
     hosted = {
-        "schema_version": "2.1.0",
+        "schema_version": "2.2.0",
         "evidence_type": "github_hosted_controls_attestation",
-        "repository": contract["repository"],
+        "repository": state["repository"],
         "issue_number": 19,
         "issue_state": "closed",
         "issue_state_reason": "completed",
         "approved_main_sha": current_sha,
-        "required_status_check_name": contract["required_status_check"]["job_name"],
+        "required_status_check_name": target["required_status_check"],
         "final_workstream6_release_sha256": release_digest,
+        "current_operational_state_sha256": state_digest,
         "canonical_issue_body_sha256": issue1_digest,
         "issue_19_body_sha256": issue19_digest,
         "controls": {f"control_{index}": True for index in range(8)},
@@ -50,33 +59,35 @@ def synthetic_bundle(contract: dict[str, Any]) -> tuple[Any, ...]:
         "attested_by": "rayrayxing",
     }
     mac = {
-        "schema_version": "2.1.0",
+        "schema_version": "2.2.0",
         "evidence_type": "clean_macos_environment_attestation",
-        "repository": contract["repository"],
+        "repository": state["repository"],
         "approved_main_sha": current_sha,
         "doctor_report_sha256": doctor_digest,
         "final_workstream6_release_sha256": release_digest,
+        "current_operational_state_sha256": state_digest,
         "manual_attestations": {f"attestation_{index}": True for index in range(5)},
         "clean_macos_environment_verified": True,
         "attested": True,
         "attested_by": "rayrayxing",
     }
     approval = {
-        "schema_version": "2.1.0",
+        "schema_version": "2.2.0",
         "evidence_type": "founder_codex_phase0_authorization",
-        "repository": contract["repository"],
+        "repository": state["repository"],
         "canonical_issue": 1,
         "decision": "approve_codex_phase0_only",
         "approved_main_sha": current_sha,
         "canonical_issue_body_sha256": issue1_digest,
         "final_workstream6_release_sha256": release_digest,
+        "current_operational_state_sha256": state_digest,
         "approved_phase": "Codex Phase 0 only",
-        "approved_tasks": contract["launch_target"]["permitted_tasks"],
-        "required_branch": contract["launch_target"]["required_branch"],
+        "approved_tasks": target["permitted_tasks"],
+        "required_branch": target["required_branch"],
         "draft_pull_request_required": True,
         "merge_authorized": False,
         "phase1_authorized": False,
-        "authorized_at": "2026-08-07T22:30:00+08:00",
+        "authorized_at": "2026-08-07T22:49:00+08:00",
         "attested": True,
         "attested_by": "rayrayxing",
     }
@@ -93,7 +104,6 @@ def synthetic_bundle(contract: dict[str, Any]) -> tuple[Any, ...]:
         "final_release_digest": release_digest,
         "final_workstream6_gate_complete": True,
         "codex_branch_absent": True,
-        "ws61_main_is_ancestor": True,
     }
     live = {
         "issue1_state": "open",
@@ -115,10 +125,17 @@ def _set(value: dict[str, Any], path: tuple[str, ...], replacement: Any) -> None
     node[path[-1]] = replacement
 
 
-def run_self_test(contract: dict[str, Any], repair: dict[str, Any]) -> int:
-    repair_errors = repair_failures(contract, repair)
+def run_self_test(
+    state: dict[str, Any],
+    predecessor: dict[str, Any],
+    repair: dict[str, Any],
+) -> int:
+    repair_errors = repair_failures(predecessor, repair)
     if repair_errors:
         raise SystemExit("PCFA-01 corrective launch contract was rejected: " + "; ".join(repair_errors))
+    state_errors = current_state_failures(state, predecessor, repair)
+    if state_errors:
+        raise SystemExit("PCFA-02 current operational state was rejected: " + "; ".join(state_errors))
 
     actual_release = load_json(FINAL_RELEASE_PATH)
     release_errors = final_release_record_failures(actual_release)
@@ -127,9 +144,10 @@ def run_self_test(contract: dict[str, Any], repair: dict[str, Any]) -> int:
     if "integrated_main_sha" in actual_release or "main_sha" in actual_release:
         raise SystemExit("actual WS6.16 release unexpectedly contains a legacy launch-main field")
 
-    base = synthetic_bundle(contract)
+    base = synthetic_bundle(state)
     if semantic_failures(
-        contract,
+        state,
+        predecessor,
         *base[:-1],
         doctor_digest=base[-1],
         repair=repair,
@@ -138,33 +156,38 @@ def run_self_test(contract: dict[str, Any], repair: dict[str, Any]) -> int:
 
     cases: list[tuple[str, str, tuple[str, ...], Any]] = [
         *(("hosted", f"control_{index}", ("controls", f"control_{index}"), False) for index in range(8)),
+        ("hosted", "old evidence version", ("schema_version",), "2.1.0"),
         ("hosted", "cleanup incomplete", ("branch_cleanup", "complete"), False),
         ("hosted", "extra branch", ("branch_cleanup", "remaining_branches"), ["main", "old"]),
         ("hosted", "issue open", ("issue_state",), "open"),
-        ("hosted", "old status check", ("required_status_check_name",), "Validate Codex Phase 0 launch control and complete prior release"),
+        ("hosted", "old status check", ("required_status_check_name",), "old check"),
         ("hosted", "unattested", ("attested",), False),
         ("hosted", "release digest drift", ("final_workstream6_release_sha256",), "d" * 64),
+        ("hosted", "state digest drift", ("current_operational_state_sha256",), "d" * 64),
         ("hosted", "issue1 digest drift", ("canonical_issue_body_sha256",), "d" * 64),
         ("hosted", "issue19 digest drift", ("issue_19_body_sha256",), "d" * 64),
         ("doctor", "failed", ("machine_checks_passed",), False),
         ("doctor", "dirty", ("git", "clean"), False),
         ("doctor", "wrong branch", ("git", "branch"), "feature"),
         ("doctor", "authorizes", ("codex_start_authorized",), True),
+        ("mac", "old evidence version", ("schema_version",), "2.1.0"),
         ("mac", "unverified", ("clean_macos_environment_verified",), False),
         ("mac", "unattested", ("attested",), False),
         ("mac", "release digest drift", ("final_workstream6_release_sha256",), "d" * 64),
+        ("mac", "state digest drift", ("current_operational_state_sha256",), "d" * 64),
+        ("approval", "old evidence version", ("schema_version",), "2.1.0"),
         ("approval", "missing", ("decision",), "not_approved"),
         ("approval", "merge", ("merge_authorized",), True),
         ("approval", "phase1", ("phase1_authorized",), True),
         ("approval", "scope", ("approved_tasks",), ["P0.1"]),
         ("approval", "unattested", ("attested",), False),
         ("approval", "release digest drift", ("final_workstream6_release_sha256",), "d" * 64),
+        ("approval", "state digest drift", ("current_operational_state_sha256",), "d" * 64),
         ("approval", "issue1 digest drift", ("canonical_issue_body_sha256",), "d" * 64),
         ("repo", "linux", ("platform",), "Linux"),
         ("repo", "wrong branch", ("branch",), "feature"),
         ("repo", "dirty", ("clean",), False),
         ("repo", "branch exists", ("codex_branch_absent",), False),
-        ("repo", "WS6.1 missing", ("ws61_main_is_ancestor",), False),
         ("repo", "final release missing", ("final_workstream6_gate_complete",), False),
         ("repo", "final release digest missing", ("final_release_digest",), None),
         ("repo", "final release digest drift", ("final_release_digest",), "d" * 64),
@@ -174,7 +197,7 @@ def run_self_test(contract: dict[str, Any], repair: dict[str, Any]) -> int:
         ("repo", "release parent equals launch main", ("final_release_parent_main_sha",), "b" * 40),
         ("repo", "release record equals release parent", ("final_release_record_commit_sha",), "a" * 40),
         ("live", "issue1 closed", ("issue1_state",), "closed"),
-        ("live", "issue1 old Workstream 5 digest", ("issue1_body_sha256",), contract["historical_authority"]["workstream5_issue_body"]["sha256"]),
+        ("live", "issue1 old Workstream 5 digest", ("issue1_body_sha256",), predecessor["historical_authority"]["workstream5_issue_body"]["sha256"]),
         ("live", "issue1 drift", ("issue1_body_sha256",), "c" * 64),
         ("live", "issue19 open", ("issue19_state",), "open"),
         ("live", "issue19 body drift", ("issue19_body_sha256",), "c" * 64),
@@ -216,14 +239,17 @@ def run_self_test(contract: dict[str, Any], repair: dict[str, Any]) -> int:
     values[4]["final_release_record_is_ancestor"] = False
     mutations.append((*values, base[-1], "pre-release ancestor used as launch main"))
 
+    rejected = 0
     for index, (*values, digest, label) in enumerate(mutations, start=1):
         if not semantic_failures(
-            contract,
+            state,
+            predecessor,
             *values,
             doctor_digest=digest,
             repair=repair,
         ):
-            raise SystemExit(f"PCFA-01 launch self-test mutation {index} was not rejected: {label}")
+            raise SystemExit(f"PCFA-02 launch self-test mutation {index} was not rejected: {label}")
+        rejected += 1
 
     repair_mutations = [
         ("release parent treated as launch SHA", ("permanent_release", "release_parent_is_historical_not_launch_sha"), False),
@@ -237,7 +263,25 @@ def run_self_test(contract: dict[str, Any], repair: dict[str, Any]) -> int:
     for label, path, replacement in repair_mutations:
         mutated = copy.deepcopy(repair)
         _set(mutated, path, replacement)
-        if not repair_failures(contract, mutated):
+        if not repair_failures(predecessor, mutated):
             raise SystemExit(f"PCFA-01 corrective-contract mutation was not rejected: {label}")
+        rejected += 1
 
-    return len(mutations) + len(repair_mutations)
+    state_mutations = [
+        ("old launch contract promoted", ("current_authority", "operational_state"), "contracts/codex-phase0-launch-control.json"),
+        ("old handoff promoted", ("current_authority", "machine_handoff"), "handoff/codex-phase0-handoff.json"),
+        ("old issue promoted", ("current_authority", "canonical_issue_body"), "handoff/codex-phase0-issue-final.md"),
+        ("historical readiness enabled", ("state_semantics", "historical_snapshot_readiness_must_not_drive_current_launch_decisions"), False),
+        ("release parent equality enabled", ("release_semantics", "release_parent_excluded_from_current_launch_sha_equality"), False),
+        ("current-state permit staleness disabled", ("launch_permit", "stale_on_current_operational_state_change"), False),
+        ("manual Codex authorization committed", ("manual_launch_gates", "codex_start_authorized"), True),
+        ("runtime authorized", ("boundaries", "runtime_activation_authorized"), True),
+    ]
+    for label, path, replacement in state_mutations:
+        mutated = copy.deepcopy(state)
+        _set(mutated, path, replacement)
+        if not current_state_failures(mutated, predecessor, repair):
+            raise SystemExit(f"PCFA-02 current-state mutation was not rejected: {label}")
+        rejected += 1
+
+    return rejected
