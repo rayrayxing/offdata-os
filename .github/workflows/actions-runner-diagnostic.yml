@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - diagnostic/ws6-actions-runner
+  pull_request:
   workflow_dispatch:
 
 permissions:
