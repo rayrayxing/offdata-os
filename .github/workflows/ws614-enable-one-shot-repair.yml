@@ -1,0 +1,36 @@
+name: Enable WS6.14 one-shot repair
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  enable:
+    if: github.event.pull_request.head.ref == 'governance/ws614-cross-authority-consistency-gate'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: governance/ws614-cross-authority-consistency-gate
+          persist-credentials: true
+      - name: Bind one-shot repair to replacement PR and self-remove
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          path = Path('.github/workflows/ws614-one-shot-integration-repair.yml')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace('github.event.pull_request.number == 55', f'github.event.pull_request.number == {os.environ["PR_NUMBER"]}')
+          path.write_text(text, encoding='utf-8')
+          PY
+          rm .github/workflows/ws614-enable-one-shot-repair.yml
+          git config user.name 'offdata WS6 integration repair'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Bind WS6.14 one-shot repair to replacement PR'
+          git push origin HEAD:governance/ws614-cross-authority-consistency-gate
