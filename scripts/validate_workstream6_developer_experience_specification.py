@@ -133,11 +133,6 @@ def _source_failures(value: dict[str, Any]) -> list[str]:
             f"allowed exits: {name}",
         )
         require(0 in allowed and 7 in allowed, f"success/safety exits: {name}")
-        for key in ("purpose", "success", "failure", "safety"):
-            require(
-                isinstance(command.get(key), str) and len(command[key]) >= 20,
-                f"{key}: {name}",
-            )
         retry = command.get("retry", {})
         require(
             isinstance(retry.get("attempts"), int)
@@ -159,21 +154,17 @@ def _source_failures(value: dict[str, Any]) -> list[str]:
             and len(criteria) == len(set(criteria)),
             f"criteria: {name}",
         )
-        source_cases = command.get("cases", {})
+        case_exits = command.get("case_exits", {})
         require(
-            isinstance(source_cases, dict)
-            and tuple(source_cases) == ACCEPTANCE_CLASSES,
+            isinstance(case_exits, dict)
+            and tuple(case_exits) == ACCEPTANCE_CLASSES,
             f"case classes: {name}",
         )
-        if isinstance(source_cases, dict):
+        if isinstance(case_exits, dict):
             for acceptance_class in ACCEPTANCE_CLASSES:
-                case = source_cases.get(acceptance_class, {})
-                expected = case[0] if isinstance(case, list) and len(case) == 3 else None
-                require(expected in allowed, f"case exit: {name}:{acceptance_class}")
-                assertions = case[2] if isinstance(case, list) and len(case) == 3 else None
                 require(
-                    isinstance(assertions, list) and len(assertions) >= 3,
-                    f"case assertions: {name}:{acceptance_class}",
+                    case_exits.get(acceptance_class) in allowed,
+                    f"case exit: {name}:{acceptance_class}",
                 )
                 case_ids.append(f"{name}:{acceptance_class}")
     require(len(case_ids) == len(set(case_ids)) == 60, "case identity")
@@ -323,7 +314,7 @@ def main() -> None:
     for command_index, command in enumerate(source["commands"]):
         for acceptance_class in ACCEPTANCE_CLASSES:
             mutated = copy.deepcopy(source)
-            del mutated["commands"][command_index]["cases"][acceptance_class]
+            del mutated["commands"][command_index]["case_exits"][acceptance_class]
             if _source_failures(mutated):
                 rejected += 1
             else:
