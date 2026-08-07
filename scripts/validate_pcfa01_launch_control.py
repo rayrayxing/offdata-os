@@ -5,6 +5,7 @@ from jsonschema import Draft202012Validator
 from codex_phase0_launch_core import (
     CONTRACT_PATH,
     CORRECTION_PATH,
+    CURRENT_STATE_PATH,
     FINAL_RELEASE_PATH,
     ROOT,
     _final_release_state,
@@ -48,9 +49,18 @@ def main() -> None:
     )
 
     state = _final_release_state()
-    _require(state["final_workstream6_gate_complete"] is True, "actual permanent release ancestry is invalid")
-    _require(state["final_release_parent_is_ancestor"] is True, "release parent is not in current ancestry")
-    _require(state["final_release_record_is_ancestor"] is True, "release record commit is not in current ancestry")
+    _require(
+        state["final_workstream6_gate_complete"] is True,
+        "actual permanent release ancestry is invalid",
+    )
+    _require(
+        state["final_release_parent_is_ancestor"] is True,
+        "release parent is not in current ancestry",
+    )
+    _require(
+        state["final_release_record_is_ancestor"] is True,
+        "release record commit is not in current ancestry",
+    )
     _require(
         state["final_release_parent_main_sha"] != state["final_release_record_commit_sha"],
         "release parent and permanent record commit must be distinct",
@@ -61,7 +71,8 @@ def main() -> None:
         "predecessor launch control must remain the immutable WS6.2 package snapshot",
     )
     _require(
-        repair["predecessor_launch_control"]["classification"] == "retained_historical_package_snapshot",
+        repair["predecessor_launch_control"]["classification"]
+        == "retained_historical_package_snapshot",
         "PCFA-01 did not classify the predecessor launch-control snapshot correctly",
     )
     _require(
@@ -74,10 +85,22 @@ def main() -> None:
     mac = load_json(TEMPLATE_PATHS["clean_macos"])
     approval = load_json(TEMPLATE_PATHS["founder_approval"])
     ack = load_json(TEMPLATE_PATHS["launch_ack"])
-    _require(hosted.get("schema_version") == "2.1.0", "hosted-controls template version drifted")
-    _require(mac.get("schema_version") == "2.1.0", "clean-macOS template version drifted")
-    _require(approval.get("schema_version") == "2.1.0", "Founder template version drifted")
-    _require(ack.get("schema_version") == "2.1.0", "launch acknowledgement template version drifted")
+    _require(
+        hosted.get("schema_version") == "2.1.0",
+        "PCFA-01 hosted-controls snapshot version drifted",
+    )
+    _require(
+        mac.get("schema_version") == "2.1.0",
+        "PCFA-01 clean-macOS snapshot version drifted",
+    )
+    _require(
+        approval.get("schema_version") == "2.1.0",
+        "PCFA-01 Founder snapshot version drifted",
+    )
+    _require(
+        ack.get("schema_version") == "2.1.0",
+        "PCFA-01 launch acknowledgement snapshot version drifted",
+    )
     for value, label in (
         (hosted, "hosted-controls"),
         (mac, "clean-macOS"),
@@ -103,9 +126,15 @@ def main() -> None:
 
     schema = load_json(PERMIT_SCHEMA_PATH)
     Draft202012Validator.check_schema(schema)
-    _require(schema["properties"]["schema_version"]["const"] == "2.1.0", "permit schema version drifted")
+    _require(
+        schema["properties"]["schema_version"]["const"] in {"2.1.0", "2.2.0"},
+        "successor permit schema is incompatible with the PCFA-01 repair",
+    )
     digest_required = schema["properties"]["evidence_digests"]["required"]
-    _require("launch_control_repair" in digest_required, "permit schema omits corrective-contract digest")
+    _require(
+        "launch_control_repair" in digest_required,
+        "permit schema omits the PCFA-01 corrective-contract digest",
+    )
     required = schema["required"]
     _require(
         "final_workstream6_release_parent_main_sha" in required
@@ -113,17 +142,47 @@ def main() -> None:
         "permit schema omits permanent release ancestry identities",
     )
 
+    if CURRENT_STATE_PATH.is_file():
+        successor = load_json(CURRENT_STATE_PATH)
+        snapshot_map = {
+            item.get("path"): item.get("classification")
+            for item in successor.get("historical_package_snapshots", [])
+            if isinstance(item, dict)
+        }
+        for path in (
+            "handoff/pcfa01-codex-phase0-hosted-controls-attestation.template.json",
+            "handoff/pcfa01-codex-phase0-clean-macos-attestation.template.json",
+            "handoff/pcfa01-codex-phase0-founder-authorization.template.json",
+            "handoff/pcfa01-codex-phase0-launch-ack.template.json",
+        ):
+            _require(
+                snapshot_map.get(path) == "retained_corrective_package_snapshot",
+                f"PCFA-01 corrective asset not retained by successor current state: {path}",
+            )
+        _require(
+            "current_operational_state" in digest_required,
+            "successor permit does not bind its current operational-state authority",
+        )
+
     boundaries = repair["authorization_boundaries"]
-    _require(boundaries["founder_accountability_preserved"] is True, "Founder accountability drifted")
     _require(
-        all(value is False for key, value in boundaries.items() if key != "founder_accountability_preserved"),
+        boundaries["founder_accountability_preserved"] is True,
+        "Founder accountability drifted",
+    )
+    _require(
+        all(
+            value is False
+            for key, value in boundaries.items()
+            if key != "founder_accountability_preserved"
+        ),
         "PCFA-01 must not authorize Codex, merge, runtime or external actions",
     )
 
     print(
-        "PCFA-01 launch-control validation passed: actual WS6.16 schema-v2 release accepted, "
-        "release-parent and permanent-record ancestry verified independently from current launch SHA, "
-        "corrected evidence templates and permit schema bound, all authorization boundaries false."
+        "PCFA-01 launch-control successor validation passed: actual WS6.16 schema-v2 release "
+        "accepted, release-parent and permanent-record ancestry remain independent from the "
+        "current launch SHA, PCFA-01 v2.1 assets are retained snapshots, and the current permit "
+        "still binds the PCFA-01 corrective contract; all authorization boundaries remain false."
     )
 
 

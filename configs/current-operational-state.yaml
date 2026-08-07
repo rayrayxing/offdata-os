@@ -1,0 +1,213 @@
+schema_version: 1.0.0
+projection_id: CURRENT-OPERATIONAL-STATE
+introduced_by: PCFA-02
+title: Current operational state and authority projection
+repository: rayrayxing/offdata-os
+canonical_branch: main
+status: repository_corrective_state_ready_manual_launch_gates_pending
+
+current_authority:
+  controlling_instruction: AGENTS.md
+  operational_state: repository/current-operational-state.json
+  human_status: docs/CURRENT-OPERATIONAL-STATE.md
+  machine_handoff: handoff/codex-phase0-current-handoff.json
+  canonical_issue_body: handoff/codex-phase0-current-issue.md
+  hosted_controls_issue_body: handoff/codex-phase0-current-hosted-controls-issue.md
+  launch_semantics_repair: contracts/pcfa01-launch-control-repair.json
+  permanent_release: releases/pre-codex-final-reconciliation-2026-08-06.json
+  launch_entrypoint: scripts/prepare_codex_phase0_launch.py
+  permanent_release_gate: scripts/require_workstream6_final_reconciliation.py
+  permit_schema: schemas/codex-phase0-launch-permit.schema.json
+  evidence_templates:
+    hosted_controls: handoff/codex-phase0-current-hosted-controls-attestation.template.json
+    clean_macos: handoff/codex-phase0-current-clean-macos-attestation.template.json
+    founder_approval: handoff/codex-phase0-current-founder-authorization.template.json
+    launch_ack: handoff/codex-phase0-current-launch-ack.template.json
+
+historical_package_snapshots:
+  - path: contracts/codex-phase0-launch-control.json
+    package: WS6.2
+    classification: retained_historical_package_snapshot
+    reason: Package-time launch-control state; not a live readiness projection after PCFA-01/02.
+  - path: contracts/workstream6-final-launch-control.json
+    package: WS6.2
+    classification: retained_historical_package_snapshot
+    reason: Immutable WS6.2 reconciliation state.
+  - path: contracts/workstream6-current-status.json
+    package: WS6.3
+    classification: retained_historical_package_snapshot
+    reason: Immutable WS6.3 package-time status and next-package state.
+  - path: repository/canonical-authority-registry.json
+    package: WS6.4
+    classification: retained_historical_package_snapshot
+    reason: WS6.4 package-time authority registry superseded for live operational decisions by this projection.
+  - path: handoff/codex-phase0-handoff.json
+    package: PCR-04/WS6.1
+    classification: retained_historical_package_snapshot
+    reason: Pre-PCFA machine handoff containing predecessor readiness snapshots.
+  - path: handoff/codex-phase0-issue-final.md
+    package: WS6.2
+    classification: retained_historical_package_snapshot
+    reason: WS6.2 generated Issue #1 body with predecessor launch wording.
+  - path: handoff/codex-phase0-hosted-controls-issue-final.md
+    package: WS6.3+
+    classification: retained_historical_package_snapshot
+    reason: Pre-PCFA hosted-controls issue body with predecessor SHA wording.
+  - path: handoff/codex-phase0-hosted-controls-attestation.template.json
+    package: WS6.2
+    classification: retained_historical_package_snapshot
+    reason: Pre-PCFA evidence template.
+  - path: handoff/codex-phase0-clean-macos-attestation.template.json
+    package: WS6.2
+    classification: retained_historical_package_snapshot
+    reason: Pre-PCFA evidence template.
+  - path: handoff/codex-phase0-founder-authorization.template.json
+    package: WS6.2
+    classification: retained_historical_package_snapshot
+    reason: Pre-PCFA evidence template.
+  - path: handoff/codex-phase0-launch-ack.template.json
+    package: WS6.2
+    classification: retained_historical_package_snapshot
+    reason: Pre-PCFA acknowledgement template.
+  - path: handoff/pcfa01-codex-phase0-hosted-controls-attestation.template.json
+    package: PCFA-01
+    classification: retained_corrective_package_snapshot
+    reason: PCFA-01 evidence template retained after promotion to neutral current template names.
+  - path: handoff/pcfa01-codex-phase0-clean-macos-attestation.template.json
+    package: PCFA-01
+    classification: retained_corrective_package_snapshot
+    reason: PCFA-01 evidence template retained after promotion to neutral current template names.
+  - path: handoff/pcfa01-codex-phase0-founder-authorization.template.json
+    package: PCFA-01
+    classification: retained_corrective_package_snapshot
+    reason: PCFA-01 evidence template retained after promotion to neutral current template names.
+  - path: handoff/pcfa01-codex-phase0-launch-ack.template.json
+    package: PCFA-01
+    classification: retained_corrective_package_snapshot
+    reason: PCFA-01 acknowledgement template retained after promotion to neutral current template names.
+
+state_semantics:
+  historical_snapshot_fields_are_package_time_facts: true
+  historical_snapshot_readiness_must_not_drive_current_launch_decisions: true
+  current_operational_state_is_the_only_live_machine_readiness_projection: true
+  immutable_release_is_evidence_not_current_launch_sha: true
+  release_parent_main_sha_is_historical: true
+  current_launch_sha_is_bound_only_at_manual_evidence_and_permit_time: true
+
+release_semantics:
+  release_id: PRE-CODEX-FINAL-RECONCILIATION-2026-08-06
+  record_type: permanent_post_merge_release
+  main_binding_semantics: release_parent_main_sha_is_exact_integrated_main_before_release_record_commit
+  release_parent_must_be_ancestor_of_approved_launch_main: true
+  release_record_commit_must_be_ancestor_of_approved_launch_main: true
+  release_parent_excluded_from_current_launch_sha_equality: true
+  release_record_commit_excluded_from_current_launch_sha_equality: true
+
+launch_target:
+  permitted_phase: Codex Phase 0 only
+  permitted_tasks: [P0.1, P0.2, P0.3, P0.4]
+  required_branch: codex/phase-0-foundation
+  required_pull_request_state: draft
+  required_first_commit_ack: governance/codex-phase0-launch-ack.json
+  required_status_check: Validate final pre-Codex canonical handoff and complete release
+  implementation_may_start_only_after_valid_permit: true
+  merge_authorized: false
+  phase1_authorized: false
+
+launch_permit:
+  output_directory: .local/codex-phase0-launch
+  output_path: .local/codex-phase0-launch/permit.json
+  file_mode: '0600'
+  single_use: true
+  commit_prohibited: true
+  stale_on_main_advance: true
+  stale_on_permanent_release_change: true
+  stale_on_current_operational_state_change: true
+  stale_on_issue_body_change: true
+  stale_on_evidence_digest_change: true
+
+allowed_scope:
+  - validate_complete_chat_first_repository
+  - verify_final_workstream6_release
+  - create_codex_phase0_branch_after_permit
+  - implement_p0_1_repository_baseline
+  - implement_p0_2_local_development_environment
+  - implement_p0_3_engineering_quality_baseline
+  - implement_p0_4_security_and_operating_documentation
+  - use_synthetic_data_only
+  - open_draft_pull_request
+  - stop_at_phase0_founder_gate
+
+prohibited_scope:
+  - begin_phase1
+  - merge_phase0_pull_request
+  - activate_runtime
+  - activate_hermes
+  - implement_northstar_product_runtime
+  - enable_real_client_data
+  - use_paid_services_or_trials
+  - request_or_commit_credentials
+  - approve_oauth_or_third_party_access
+  - alter_dns_or_godaddy
+  - send_external_communications
+  - deploy_staging_or_production
+  - autonomous_merge
+  - weaken_tests_or_golden_expectations
+
+repository_readiness:
+  chat_first_specification_complete: true
+  workstream6_permanent_release_verified: true
+  pcfa01_launch_semantics_repaired: true
+  pcfa02_current_projection_active: true
+  repository_side_corrective_work_complete: true
+
+manual_launch_gates:
+  github_hosted_controls_verified: false
+  historical_branch_cleanup_complete: false
+  clean_macos_environment_verified: false
+  explicit_founder_phase0_approval_received: false
+  approved_main_sha_bound: false
+  launch_permit_issued: false
+  codex_start_authorized: false
+
+live_issue_expectations:
+  canonical_issue:
+    number: 1
+    expected_state_at_permit: open
+    body_must_match_current_file: true
+  hosted_controls_issue:
+    number: 19
+    expected_state_at_permit: closed
+    expected_state_reason_at_permit: completed
+    body_must_match_current_file: true
+  duplicate_issue:
+    number: 2
+    expected_state_at_permit: closed
+    expected_state_reason_at_permit: duplicate
+
+sync_policy:
+  current_issue_files_must_be_synced_only_after_their_repository_change_is_integrated: true
+  permit_fails_closed_until_live_issue_bodies_match_current_files: true
+
+required_preflight_commands:
+  - bash scripts/run_ws62_ci.sh
+  - python scripts/validate_pcfa01_launch_control.py
+  - python scripts/validate_pcfa02_current_operational_state.py
+  - python scripts/prepare_codex_phase0_launch.py --self-test
+  - python scripts/require_workstream6_final_reconciliation.py
+
+boundaries:
+  founder_accountability_preserved: true
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  phase1_authorized: false
+  merge_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  northstar_implementation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  oauth_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false

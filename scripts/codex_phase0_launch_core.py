@@ -10,9 +10,13 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-CONTRACT_PATH = ROOT / "contracts" / "codex-phase0-launch-control.json"
+CURRENT_STATE_PATH = ROOT / "repository" / "current-operational-state.json"
+PREDECESSOR_CONTRACT_PATH = ROOT / "contracts" / "codex-phase0-launch-control.json"
+# Compatibility alias for older validation imports. This is historical package evidence only.
+CONTRACT_PATH = PREDECESSOR_CONTRACT_PATH
 CORRECTION_PATH = ROOT / "contracts" / "pcfa01-launch-control-repair.json"
-ISSUE_BODY_PATH = ROOT / "handoff" / "codex-phase0-issue-final.md"
+ISSUE_BODY_PATH = ROOT / "handoff" / "codex-phase0-current-issue.md"
+ISSUE19_BODY_PATH = ROOT / "handoff" / "codex-phase0-current-hosted-controls-issue.md"
 FINAL_RELEASE_PATH = ROOT / "releases" / "pre-codex-final-reconciliation-2026-08-06.json"
 
 _SHA_RE = re.compile(r"^[0-9a-f]{40}$")
@@ -39,7 +43,14 @@ def digest_file(path: Path) -> str:
 
 
 def run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(command, cwd=ROOT, check=False, capture_output=True, text=True, timeout=30)
+    return subprocess.run(
+        command,
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
 
 
 def git_value(*args: str) -> str | None:
@@ -62,7 +73,7 @@ def _is_ancestor(base: object, head: object) -> bool:
     return result.returncode == 0
 
 
-def repair_failures(contract: dict[str, Any], repair: dict[str, Any]) -> list[str]:
+def repair_failures(predecessor: dict[str, Any], repair: dict[str, Any]) -> list[str]:
     failures: list[str] = []
 
     def require(condition: bool, message: str) -> None:
@@ -72,7 +83,7 @@ def repair_failures(contract: dict[str, Any], repair: dict[str, Any]) -> list[st
     permanent = repair.get("permanent_release", {})
     binding = repair.get("launch_sha_binding", {})
     issue_binding = repair.get("issue_digest_binding", {})
-    predecessor = repair.get("predecessor_launch_control", {})
+    predecessor_record = repair.get("predecessor_launch_control", {})
     boundaries = repair.get("authorization_boundaries", {})
 
     require(repair.get("work_package_id") == "PCFA-01", "PCFA-01 repair identity is invalid")
@@ -80,10 +91,17 @@ def repair_failures(contract: dict[str, Any], repair: dict[str, Any]) -> list[st
         repair.get("status") == "corrective_launch_semantics_ready_manual_gates_pending",
         "PCFA-01 repair status is invalid",
     )
-    require(repair.get("repository") == contract.get("repository"), "PCFA-01 repair repository drifted")
     require(
-        predecessor.get("path") == "contracts/codex-phase0-launch-control.json"
-        and predecessor.get("classification") == "retained_historical_package_snapshot",
+        repair.get("repository") == predecessor.get("repository"),
+        "PCFA-01 repair repository drifted",
+    )
+    require(
+        predecessor.get("work_package_id") == "WS6.2",
+        "predecessor launch control is not the retained WS6.2 package snapshot",
+    )
+    require(
+        predecessor_record.get("path") == "contracts/codex-phase0-launch-control.json"
+        and predecessor_record.get("classification") == "retained_historical_package_snapshot",
         "WS6.2 launch-control predecessor classification is invalid",
     )
     require(
@@ -99,7 +117,7 @@ def repair_failures(contract: dict[str, Any], repair: dict[str, Any]) -> list[st
     )
     require(
         permanent.get("release_parent_is_historical_not_launch_sha") is True,
-        "release parent must be classified as historical rather than launch SHA",
+        "release parent must be historical rather than the launch SHA",
     )
     require(
         permanent.get("release_parent_must_be_ancestor_of_approved_launch_main") is True
@@ -128,8 +146,174 @@ def repair_failures(contract: dict[str, Any], repair: dict[str, Any]) -> list[st
     )
     require(
         boundaries.get("founder_accountability_preserved") is True
-        and all(value is False for key, value in boundaries.items() if key != "founder_accountability_preserved"),
+        and all(
+            value is False
+            for key, value in boundaries.items()
+            if key != "founder_accountability_preserved"
+        ),
         "PCFA-01 authorization boundaries must remain fail-closed",
+    )
+    return failures
+
+
+def current_state_failures(
+    state: dict[str, Any],
+    predecessor: dict[str, Any],
+    repair: dict[str, Any],
+) -> list[str]:
+    failures = repair_failures(predecessor, repair)
+
+    def require(condition: bool, message: str) -> None:
+        if not condition:
+            failures.append(message)
+
+    authority = state.get("current_authority", {})
+    semantics = state.get("state_semantics", {})
+    release = state.get("release_semantics", {})
+    target = state.get("launch_target", {})
+    permit = state.get("launch_permit", {})
+    readiness = state.get("repository_readiness", {})
+    manual = state.get("manual_launch_gates", {})
+    boundaries = state.get("boundaries", {})
+    snapshots = state.get("historical_package_snapshots", [])
+
+    require(state.get("projection_id") == "CURRENT-OPERATIONAL-STATE", "current state identity is invalid")
+    require(state.get("introduced_by") == "PCFA-02", "current state introduction package is invalid")
+    require(
+        state.get("status") == "repository_corrective_state_ready_manual_launch_gates_pending",
+        "current operational state status is invalid",
+    )
+    require(state.get("repository") == predecessor.get("repository"), "current state repository drifted")
+    require(state.get("canonical_branch") == "main", "current operational branch must be main")
+    require(
+        authority.get("operational_state") == "repository/current-operational-state.json"
+        and authority.get("machine_handoff") == "handoff/codex-phase0-current-handoff.json"
+        and authority.get("canonical_issue_body") == "handoff/codex-phase0-current-issue.md"
+        and authority.get("hosted_controls_issue_body")
+        == "handoff/codex-phase0-current-hosted-controls-issue.md"
+        and authority.get("launch_semantics_repair")
+        == "contracts/pcfa01-launch-control-repair.json",
+        "current authority paths are invalid",
+    )
+    require(
+        authority.get("permanent_release") == str(FINAL_RELEASE_PATH.relative_to(ROOT))
+        and authority.get("launch_entrypoint") == "scripts/prepare_codex_phase0_launch.py"
+        and authority.get("permit_schema") == "schemas/codex-phase0-launch-permit.schema.json",
+        "current launch authority is incomplete",
+    )
+    templates = authority.get("evidence_templates", {})
+    require(
+        templates
+        == {
+            "hosted_controls": "handoff/codex-phase0-current-hosted-controls-attestation.template.json",
+            "clean_macos": "handoff/codex-phase0-current-clean-macos-attestation.template.json",
+            "founder_approval": "handoff/codex-phase0-current-founder-authorization.template.json",
+            "launch_ack": "handoff/codex-phase0-current-launch-ack.template.json",
+        },
+        "current evidence-template registry is invalid",
+    )
+
+    snapshot_map = {
+        item.get("path"): item.get("classification")
+        for item in snapshots
+        if isinstance(item, dict)
+    }
+    required_historical = {
+        "contracts/codex-phase0-launch-control.json",
+        "contracts/workstream6-final-launch-control.json",
+        "contracts/workstream6-current-status.json",
+        "repository/canonical-authority-registry.json",
+        "handoff/codex-phase0-handoff.json",
+        "handoff/codex-phase0-issue-final.md",
+        "handoff/codex-phase0-hosted-controls-issue-final.md",
+    }
+    require(
+        required_historical.issubset(snapshot_map),
+        "required historical package snapshots are not explicitly classified",
+    )
+    require(
+        all(
+            snapshot_map[path] == "retained_historical_package_snapshot"
+            for path in required_historical
+        ),
+        "a predecessor package snapshot is incorrectly classified as current",
+    )
+    require(
+        authority.get("operational_state") not in snapshot_map
+        and authority.get("machine_handoff") not in snapshot_map
+        and authority.get("canonical_issue_body") not in snapshot_map,
+        "current authority is also classified as historical",
+    )
+
+    require(
+        semantics.get("historical_snapshot_fields_are_package_time_facts") is True
+        and semantics.get("historical_snapshot_readiness_must_not_drive_current_launch_decisions")
+        is True
+        and semantics.get("current_operational_state_is_the_only_live_machine_readiness_projection")
+        is True
+        and semantics.get("immutable_release_is_evidence_not_current_launch_sha") is True
+        and semantics.get("release_parent_main_sha_is_historical") is True,
+        "current-versus-historical state semantics are incomplete",
+    )
+    require(
+        release.get("release_id") == "PRE-CODEX-FINAL-RECONCILIATION-2026-08-06"
+        and release.get("record_type") == "permanent_post_merge_release"
+        and release.get("main_binding_semantics")
+        == "release_parent_main_sha_is_exact_integrated_main_before_release_record_commit"
+        and release.get("release_parent_must_be_ancestor_of_approved_launch_main") is True
+        and release.get("release_record_commit_must_be_ancestor_of_approved_launch_main") is True
+        and release.get("release_parent_excluded_from_current_launch_sha_equality") is True
+        and release.get("release_record_commit_excluded_from_current_launch_sha_equality") is True,
+        "current release semantics are invalid",
+    )
+    require(
+        target.get("permitted_phase") == "Codex Phase 0 only"
+        and target.get("permitted_tasks") == ["P0.1", "P0.2", "P0.3", "P0.4"]
+        and target.get("required_branch") == "codex/phase-0-foundation"
+        and target.get("required_pull_request_state") == "draft"
+        and target.get("required_first_commit_ack") == "governance/codex-phase0-launch-ack.json"
+        and target.get("required_status_check")
+        == "Validate final pre-Codex canonical handoff and complete release"
+        and target.get("implementation_may_start_only_after_valid_permit") is True
+        and target.get("merge_authorized") is False
+        and target.get("phase1_authorized") is False,
+        "current launch target drifted",
+    )
+    require(
+        permit.get("single_use") is True
+        and permit.get("commit_prohibited") is True
+        and permit.get("stale_on_main_advance") is True
+        and permit.get("stale_on_permanent_release_change") is True
+        and permit.get("stale_on_current_operational_state_change") is True
+        and permit.get("stale_on_issue_body_change") is True
+        and permit.get("stale_on_evidence_digest_change") is True,
+        "current permit staleness policy is incomplete",
+    )
+    require(
+        isinstance(readiness, dict)
+        and bool(readiness)
+        and all(value is True for value in readiness.values()),
+        "repository-side corrective readiness is incomplete",
+    )
+    require(
+        isinstance(manual, dict)
+        and bool(manual)
+        and all(value is False for value in manual.values()),
+        "committed manual launch gates must remain false",
+    )
+    require(
+        boundaries.get("founder_accountability_preserved") is True
+        and all(
+            value is False
+            for key, value in boundaries.items()
+            if key != "founder_accountability_preserved"
+        ),
+        "current operational authorization boundaries must remain fail-closed",
+    )
+    require(
+        state.get("allowed_scope") == predecessor.get("allowed_scope")
+        and state.get("prohibited_scope") == predecessor.get("prohibited_scope"),
+        "current scope must preserve the approved WS6.2 scope exactly",
     )
     return failures
 
@@ -151,7 +335,8 @@ def final_release_record_failures(record: dict[str, Any]) -> list[str]:
         "exact_main_sha_bound": True,
         "tested_merge_reference_bound": True,
         "codex_start_authorized": False,
-        "main_binding_semantics": "release_parent_main_sha_is_exact_integrated_main_before_release_record_commit",
+        "main_binding_semantics":
+            "release_parent_main_sha_is_exact_integrated_main_before_release_record_commit",
     }
     for key, expected in required.items():
         require(record.get(key) == expected, f"final release field {key} is invalid")
@@ -205,15 +390,11 @@ def _final_release_state(head: str | None = None) -> dict[str, Any]:
     }
 
 
-def repository_state(contract: dict[str, Any]) -> dict[str, Any]:
+def repository_state(state: dict[str, Any]) -> dict[str, Any]:
     remote = git_value("ls-remote", "origin", "refs/heads/main")
-    codex = git_value(
-        "ls-remote",
-        "origin",
-        f"refs/heads/{contract['launch_target']['required_branch']}",
-    )
+    branch = state["launch_target"]["required_branch"]
+    codex = git_value("ls-remote", "origin", f"refs/heads/{branch}")
     head = git_value("rev-parse", "HEAD")
-    ancestor = run(["git", "merge-base", "--is-ancestor", contract["base_main_sha"], "HEAD"])
     return {
         "platform": platform.system(),
         "branch": git_value("branch", "--show-current"),
@@ -221,7 +402,6 @@ def repository_state(contract: dict[str, Any]) -> dict[str, Any]:
         "clean": git_value("status", "--porcelain") == "",
         "remote_main_sha": remote.split()[0] if remote else None,
         "codex_branch_absent": codex == "",
-        "ws61_main_is_ancestor": ancestor.returncode == 0,
         **_final_release_state(head),
     }
 
@@ -235,13 +415,13 @@ def gh_json(endpoint: str) -> Any:
     return json.loads(result.stdout)
 
 
-def live_repository_state(contract: dict[str, Any]) -> dict[str, Any]:
-    repository = contract["repository"]
+def live_repository_state(state: dict[str, Any]) -> dict[str, Any]:
+    repository = state["repository"]
     issue1 = gh_json(f"repos/{repository}/issues/1")
     issue2 = gh_json(f"repos/{repository}/issues/2")
     issue19 = gh_json(f"repos/{repository}/issues/19")
     owner = repository.split("/", 1)[0]
-    branch = contract["launch_target"]["required_branch"]
+    branch = state["launch_target"]["required_branch"]
     pulls = gh_json(f"repos/{repository}/pulls?state=open&head={owner}:{branch}")
     return {
         "issue1_state": issue1.get("state"),
@@ -256,7 +436,8 @@ def live_repository_state(contract: dict[str, Any]) -> dict[str, Any]:
 
 
 def semantic_failures(
-    contract: dict[str, Any],
+    state: dict[str, Any],
+    predecessor: dict[str, Any],
     hosted: dict[str, Any],
     doctor: dict[str, Any],
     mac: dict[str, Any],
@@ -267,47 +448,20 @@ def semantic_failures(
     doctor_digest: str,
     repair: dict[str, Any] | None = None,
 ) -> list[str]:
-    failures: list[str] = []
+    repair_value = repair or {}
+    failures = current_state_failures(state, predecessor, repair_value)
 
     def require(condition: bool, message: str) -> None:
         if not condition:
             failures.append(message)
 
-    repair_value = repair or {}
-    failures.extend(repair_failures(contract, repair_value))
-    target = contract["launch_target"]
-    repository = contract["repository"]
-    snapshot = contract.get("readiness_snapshot", {})
+    target = state["launch_target"]
+    repository = state["repository"]
+    state_digest = digest_file(CURRENT_STATE_PATH)
+    issue1_digest = digest_file(ISSUE_BODY_PATH)
+    issue19_digest = digest_file(ISSUE19_BODY_PATH)
 
-    require(
-        contract.get("status") == "repository_launch_control_complete_manual_gates_pending",
-        "legacy launch-control status alias is invalid",
-    )
-    require(
-        contract.get("final_status") == "final_launch_control_reconciled_manual_gates_pending",
-        "final launch-control contract status is invalid",
-    )
-    require(
-        snapshot.get("repository_final_launch_control_complete") is True,
-        "repository final launch-control package is incomplete",
-    )
-    require(
-        snapshot.get("repository_launch_control_complete") is True,
-        "legacy repository launch-control projection is incomplete",
-    )
-    require(
-        snapshot.get("codex_start_authorized") is False,
-        "committed launch-control contract must remain unauthorized",
-    )
-    require(
-        contract.get("generated_issue", {}).get("body_path") == "handoff/codex-phase0-issue-final.md",
-        "controlling issue path is not final",
-    )
-    require(
-        contract.get("final_release_gate", {}).get("must_exist_before_permit") is True,
-        "final Workstream 6 release gate is not mandatory",
-    )
-
+    require(hosted.get("schema_version") == "2.2.0", "hosted-controls evidence version is stale")
     require(
         hosted.get("evidence_type") == "github_hosted_controls_attestation",
         "hosted-controls evidence type is invalid",
@@ -321,12 +475,14 @@ def semantic_failures(
         "hosted-controls issue must be closed as completed",
     )
     require(
-        hosted.get("required_status_check_name") == contract["required_status_check"]["job_name"],
+        hosted.get("required_status_check_name") == target["required_status_check"],
         "hosted-controls status-check identity is stale",
     )
     controls = hosted.get("controls", {})
     require(
-        isinstance(controls, dict) and len(controls) == 8 and all(value is True for value in controls.values()),
+        isinstance(controls, dict)
+        and len(controls) == 8
+        and all(value is True for value in controls.values()),
         "all eight hosted controls require explicit true attestations",
     )
     cleanup = hosted.get("branch_cleanup", {})
@@ -346,7 +502,8 @@ def semantic_failures(
         "macOS doctor report type is invalid",
     )
     require(
-        doctor.get("non_destructive") is True and doctor.get("generated_values_include_secrets") is False,
+        doctor.get("non_destructive") is True
+        and doctor.get("generated_values_include_secrets") is False,
         "macOS doctor report must be non-destructive and redacted",
     )
     require(doctor.get("machine_checks_passed") is True, "macOS doctor machine checks did not all pass")
@@ -362,6 +519,7 @@ def semantic_failures(
     )
     require(doctor.get("codex_start_authorized") is False, "macOS doctor may never authorize Codex")
 
+    require(mac.get("schema_version") == "2.2.0", "clean-macOS evidence version is stale")
     require(
         mac.get("evidence_type") == "clean_macos_environment_attestation",
         "clean-macOS attestation type is invalid",
@@ -370,18 +528,18 @@ def semantic_failures(
     require(mac.get("doctor_report_sha256") == doctor_digest, "clean-macOS attestation doctor digest mismatch")
     manual = mac.get("manual_attestations", {})
     require(
-        isinstance(manual, dict) and len(manual) == 5 and all(value is True for value in manual.values()),
+        isinstance(manual, dict)
+        and len(manual) == 5
+        and all(value is True for value in manual.values()),
         "all clean-macOS manual attestations are required",
     )
-    require(
-        mac.get("clean_macos_environment_verified") is True,
-        "clean-macOS environment is not verified",
-    )
+    require(mac.get("clean_macos_environment_verified") is True, "clean-macOS environment is not verified")
     require(
         mac.get("attested") is True and mac.get("attested_by") == "rayrayxing",
         "clean-macOS Founder attestation is missing",
     )
 
+    require(approval.get("schema_version") == "2.2.0", "Founder approval evidence version is stale")
     require(
         approval.get("evidence_type") == "founder_codex_phase0_authorization",
         "Founder approval evidence type is invalid",
@@ -400,10 +558,7 @@ def semantic_failures(
         "Founder approval tasks must be exactly P0.1-P0.4",
     )
     require(approval.get("required_branch") == target["required_branch"], "Founder approval branch is invalid")
-    require(
-        approval.get("draft_pull_request_required") is True,
-        "Founder approval must require a draft pull request",
-    )
+    require(approval.get("draft_pull_request_required") is True, "Founder approval must require a draft PR")
     require(
         approval.get("merge_authorized") is False and approval.get("phase1_authorized") is False,
         "Founder approval cannot authorize merge or Phase 1",
@@ -424,7 +579,7 @@ def semantic_failures(
     }
     require(
         None not in current_sha_values and len(current_sha_values) == 1,
-        "all current launch evidence and repository state must bind to one exact main SHA",
+        "all current launch evidence and repository state must bind one exact main SHA",
     )
     current_sha = approval.get("approved_main_sha")
 
@@ -443,8 +598,23 @@ def semantic_failures(
         "permanent Workstream 6 release digest binding is malformed",
     )
 
+    state_digest_values = {
+        hosted.get("current_operational_state_sha256"),
+        mac.get("current_operational_state_sha256"),
+        approval.get("current_operational_state_sha256"),
+        state_digest,
+    }
+    require(
+        None not in state_digest_values and len(state_digest_values) == 1,
+        "all launch evidence must bind the exact current operational-state digest",
+    )
+    require(
+        all(_is_digest(value) for value in state_digest_values),
+        "current operational-state digest binding is malformed",
+    )
+
     issue1_digest_values = {
-        contract.get("generated_issue", {}).get("body_sha256"),
+        issue1_digest,
         hosted.get("canonical_issue_body_sha256"),
         approval.get("canonical_issue_body_sha256"),
         live.get("issue1_body_sha256"),
@@ -453,9 +623,13 @@ def semantic_failures(
         None not in issue1_digest_values and len(issue1_digest_values) == 1,
         "canonical issue #1 body digest drifted across launch evidence",
     )
+    issue19_digest_values = {
+        issue19_digest,
+        hosted.get("issue_19_body_sha256"),
+        live.get("issue19_body_sha256"),
+    }
     require(
-        hosted.get("issue_19_body_sha256") == live.get("issue19_body_sha256")
-        and _is_digest(hosted.get("issue_19_body_sha256")),
+        None not in issue19_digest_values and len(issue19_digest_values) == 1,
         "issue #19 body digest drifted after hosted-controls attestation",
     )
 
@@ -464,7 +638,6 @@ def semantic_failures(
         repo.get("branch") == "main" and repo.get("clean") is True,
         "launch preparation requires a clean local main branch",
     )
-    require(repo.get("ws61_main_is_ancestor") is True, "approved main does not include WS6.1")
     require(
         repo.get("final_workstream6_gate_complete") is True,
         "final Workstream 6 release is missing, invalid, stale or outside approved-main ancestry",
@@ -490,18 +663,27 @@ def semantic_failures(
     )
     require(repo.get("codex_branch_absent") is True, "Codex Phase 0 branch already exists")
 
-    require(live.get("issue1_state") == "open", "canonical issue #1 must remain open")
-    historical_digest = contract["historical_authority"]["workstream5_issue_body"]["sha256"]
+    expectations = state["live_issue_expectations"]
+    require(
+        live.get("issue1_state") == expectations["canonical_issue"]["expected_state_at_permit"],
+        "canonical issue #1 must remain open",
+    )
+    historical_digest = predecessor["historical_authority"]["workstream5_issue_body"]["sha256"]
     require(
         live.get("issue1_body_sha256") != historical_digest,
-        "Workstream 5 issue body is historical and cannot satisfy final launch",
+        "Workstream 5 issue body is historical and cannot satisfy current launch",
     )
     require(
-        live.get("issue2_state") == "closed" and live.get("issue2_state_reason") == "duplicate",
+        live.get("issue2_state") == expectations["duplicate_issue"]["expected_state_at_permit"]
+        and live.get("issue2_state_reason")
+        == expectations["duplicate_issue"]["expected_state_reason_at_permit"],
         "issue #2 must remain closed as duplicate",
     )
     require(
-        live.get("issue19_state") == "closed" and live.get("issue19_state_reason") == "completed",
+        live.get("issue19_state")
+        == expectations["hosted_controls_issue"]["expected_state_at_permit"]
+        and live.get("issue19_state_reason")
+        == expectations["hosted_controls_issue"]["expected_state_reason_at_permit"],
         "issue #19 must be closed as completed",
     )
     require(
@@ -512,14 +694,16 @@ def semantic_failures(
 
 
 def build_permit(
-    contract: dict[str, Any],
+    state: dict[str, Any],
+    predecessor: dict[str, Any],
     paths: list[Path],
     approval: dict[str, Any],
     repo: dict[str, Any],
 ) -> dict[str, Any]:
     digests = {
-        "final_launch_control": digest_file(CONTRACT_PATH),
+        "final_launch_control": digest_file(PREDECESSOR_CONTRACT_PATH),
         "launch_control_repair": digest_file(CORRECTION_PATH),
+        "current_operational_state": digest_file(CURRENT_STATE_PATH),
         "canonical_issue_body": digest_file(ISSUE_BODY_PATH),
         "final_workstream6_release": digest_file(FINAL_RELEASE_PATH),
         "hosted_controls": digest_file(paths[0]),
@@ -527,40 +711,42 @@ def build_permit(
         "macos_attestation": digest_file(paths[2]),
         "founder_approval": digest_file(paths[3]),
     }
+    target = state["launch_target"]
     identity = {
-        "repository": contract["repository"],
+        "repository": state["repository"],
         "approved_main_sha": approval["approved_main_sha"],
         "final_release_parent_main_sha": repo["final_release_parent_main_sha"],
         "final_release_record_commit_sha": repo["final_release_record_commit_sha"],
-        "branch": contract["launch_target"]["required_branch"],
-        "tasks": contract["launch_target"]["permitted_tasks"],
-        "required_status_check": contract["required_status_check"]["job_name"],
+        "branch": target["required_branch"],
+        "tasks": target["permitted_tasks"],
+        "required_status_check": target["required_status_check"],
         "evidence_digests": digests,
     }
     return {
-        "schema_version": "2.1.0",
+        "schema_version": "2.2.0",
         "permit_type": "codex_phase0_launch_permit",
         "launch_id": digest_bytes(canonical_json(identity).encode()),
         "issued_at": approval["authorized_at"],
-        "repository": contract["repository"],
+        "repository": state["repository"],
         "approved_main_sha": approval["approved_main_sha"],
         "final_workstream6_release_parent_main_sha": repo["final_release_parent_main_sha"],
         "final_workstream6_release_record_commit_sha": repo["final_release_record_commit_sha"],
         "canonical_issue": 1,
         "hosted_controls_issue": 19,
-        "required_status_check": contract["required_status_check"]["job_name"],
-        "branch": contract["launch_target"]["required_branch"],
-        "phase": "Codex Phase 0 only",
-        "tasks": contract["launch_target"]["permitted_tasks"],
-        "required_first_commit_ack": contract["launch_target"]["required_first_commit_ack"],
+        "required_status_check": target["required_status_check"],
+        "branch": target["required_branch"],
+        "phase": target["permitted_phase"],
+        "tasks": target["permitted_tasks"],
+        "required_first_commit_ack": target["required_first_commit_ack"],
         "draft_pull_request_required": True,
         "merge_authorized": False,
         "phase1_authorized": False,
         "single_use": True,
         "stale_on_main_advance": True,
         "stale_on_final_release_advance": True,
+        "stale_on_current_operational_state_change": True,
         "evidence_digests": digests,
-        "scope": contract["allowed_scope"],
-        "prohibitions": contract["prohibited_scope"],
+        "scope": state["allowed_scope"],
+        "prohibitions": state["prohibited_scope"],
         "codex_start_authorized": True,
     }
