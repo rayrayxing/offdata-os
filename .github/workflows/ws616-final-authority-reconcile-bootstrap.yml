@@ -3,18 +3,22 @@ name: WS6.16 final authority reconciliation bootstrap
 on:
   push:
     branches: [governance/ws616-final-authority-reconciliation]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
   reconcile:
+    if: github.head_ref == '' || github.head_ref == 'governance/ws616-final-authority-reconciliation'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - name: Check out reconciliation branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: governance/ws616-final-authority-reconciliation
           fetch-depth: 0
           persist-credentials: true
 
