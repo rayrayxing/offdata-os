@@ -1,0 +1,39 @@
+name: WS6.16 validator repair
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.event.pull_request.number == 62 && github.event.pull_request.head.ref == 'governance/ws616-permanent-release-record'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: governance/ws616-permanent-release-record
+          persist-credentials: true
+      - name: Correct WS6.16 preparation base-SHA validation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/validate_workstream6_permanent_release_record.py')
+          text = p.read_text(encoding='utf-8')
+          old = 'require(exc.get("base_sha") == "1361fff88bd08ae16218673337621571a7d315c6", "preparation exception base SHA drift")'
+          new = 'require(exc.get("base_sha") == "8ad0ea95b8d01c83347161e4ccf893f1844a219d", "preparation exception base SHA drift")'
+          if old not in text:
+              raise SystemExit('stale WS6.16 base-SHA validator line not found')
+          p.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+          python -m pip install --quiet jsonschema pyyaml
+          python scripts/build_workstream6_permanent_release_record.py
+          python scripts/validate_workstream6_permanent_release_record.py
+          git diff --check
+          git config user.name 'offdata WS6 integration repair'
+          git config user.email 'actions@users.noreply.github.com'
+          git add scripts/validate_workstream6_permanent_release_record.py
+          git commit -m 'Correct WS6.16 preparation base-SHA validation'
+          git push origin HEAD:governance/ws616-permanent-release-record
