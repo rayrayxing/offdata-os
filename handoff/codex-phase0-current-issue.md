@@ -47,7 +47,7 @@ The permanent WS6.16 record does **not** define the future launch SHA.
 2. the permanent release-record commit must be an ancestor of the approved launch `main`;
 3. neither historical release SHA participates in current-launch SHA equality;
 4. Founder approval, hosted-controls evidence, clean-macOS evidence, macOS doctor `HEAD`, local `HEAD` and remote `main` must all equal one exact approved current `main` SHA;
-5. hosted-controls, clean-macOS and Founder evidence must bind the exact permanent-release SHA-256 and `repository/current-operational-state.json` SHA-256.
+5. hosted-controls, clean-macOS and Founder evidence must bind the exact permanent-release SHA-256 and `repository/current-operational-state.json` SHA-256 through the `current_operational_state_sha256` field.
 
 Any drift fails closed.
 
@@ -106,7 +106,7 @@ Each applicable evidence file must bind:
 
 - the exact approved current `main` SHA;
 - the permanent WS6.16 release SHA-256;
-- the SHA-256 of `repository/current-operational-state.json`;
+- the SHA-256 of `repository/current-operational-state.json` in `current_operational_state_sha256`;
 - current Issue #1 and/or Issue #19 body digests where required.
 
 Then run:
