@@ -1,0 +1,133 @@
+{
+  "boundaries": {
+    "autonomous_merge_authorized": false,
+    "codex_start_authorized": false,
+    "external_actions_authorized": false,
+    "founder_accountability_preserved": true,
+    "oauth_authorized": false,
+    "paid_services_authorized": false,
+    "phase0_implementation_authorized": false,
+    "phase0_merge_authorized": false,
+    "phase1_authorized": false,
+    "production_deployment_authorized": false,
+    "real_client_data_enabled": false,
+    "runtime_activation_authorized": false
+  },
+  "canonical_sources": {
+    "component_contract": "contracts/northstar-integration-blueprint.json",
+    "implementation_backlog": "docs/11-BUILD-BACKLOG.md",
+    "quality_contract": "contracts/pre-codex-readiness.json"
+  },
+  "closed_defects": [
+    "WS6-QUALITY-001"
+  ],
+  "completion": {
+    "all_blocking_defects_closed": false,
+    "all_required_prior_components_pass": true,
+    "criterion_mapping_complete": true,
+    "final_reconciliation_complete": false,
+    "next_permitted_work_package": "WS6.10",
+    "phase0_blocking_split_verified": true,
+    "stacked_on_exact_ws68_head": true,
+    "test_registration_complete": false,
+    "ws68_integrated_to_main": false,
+    "ws69_repository_package_complete": true
+  },
+  "defect_ids": [
+    "WS6-QUALITY-001"
+  ],
+  "evidence_policy": {
+    "required_attributes": [
+      "criterion_id",
+      "implementation_phase",
+      "implementation_task",
+      "component_id",
+      "test_obligation_id",
+      "exact_commit_sha",
+      "result",
+      "recorded_at"
+    ],
+    "status": "not_available_pre_implementation"
+  },
+  "foundation_components": [
+    {
+      "component_id": "COMP-FOUNDATION-REPOSITORY",
+      "implementation_task": "P0.1",
+      "name": "Repository and governance baseline"
+    },
+    {
+      "component_id": "COMP-FOUNDATION-DEVENV",
+      "implementation_task": "P0.2",
+      "name": "Local development environment and command surface"
+    },
+    {
+      "component_id": "COMP-FOUNDATION-QUALITY",
+      "implementation_task": "P0.3",
+      "name": "Engineering quality and release evidence baseline"
+    },
+    {
+      "component_id": "COMP-FOUNDATION-SECURITY",
+      "implementation_task": "P0.4",
+      "name": "Security and operating documentation baseline"
+    }
+  ],
+  "mappings": [
+    {"component_id":"COMP-FOUNDATION-DEVENV","criterion_id":"DX-ROOT","evidence_type":"root_command_contract_report","implementation_phase":"IMP-P0","implementation_task":"P0.2","test_obligation_id":"IOM-TST-DX-ROOT"},
+    {"component_id":"COMP-FOUNDATION-DEVENV","criterion_id":"DX-DIAG","evidence_type":"negative_command_diagnostics_report","implementation_phase":"IMP-P0","implementation_task":"P0.2","test_obligation_id":"IOM-TST-DX-DIAG"},
+    {"component_id":"COMP-FOUNDATION-DEVENV","criterion_id":"DX-PORTS","evidence_type":"startup_preflight_report","implementation_phase":"IMP-P0","implementation_task":"P0.2","test_obligation_id":"IOM-TST-DX-PORTS"},
+    {"component_id":"COMP-FOUNDATION-DEVENV","criterion_id":"DX-PATH","evidence_type":"path_safety_report","implementation_phase":"IMP-P0","implementation_task":"P0.2","test_obligation_id":"IOM-TST-DX-PATH"},
+    {"component_id":"COMP-FOUNDATION-SECURITY","criterion_id":"DX-SECRETS","evidence_type":"redacted_output_scan_report","implementation_phase":"IMP-P0","implementation_task":"P0.4","test_obligation_id":"IOM-TST-DX-SECRETS"},
+    {"component_id":"COMP-FOUNDATION-DEVENV","criterion_id":"DX-BACKUP","evidence_type":"synthetic_backup_restore_report","implementation_phase":"IMP-P0","implementation_task":"P0.2","test_obligation_id":"IOM-TST-DX-BACKUP"},
+    {"component_id":"COMP-FOUNDATION-DEVENV","criterion_id":"DX-MAC","evidence_type":"clean_macos_acceptance_report","implementation_phase":"IMP-P0","implementation_task":"P0.2","test_obligation_id":"IOM-TST-DX-MAC"},
+    {"component_id":"COMP-UI","criterion_id":"FX-INBOX","evidence_type":"founder_decision_inbox_timing_report","implementation_phase":"IMP-P2","implementation_task":"P2.4","test_obligation_id":"IOM-TST-FX-INBOX"},
+    {"component_id":"COMP-UI","criterion_id":"FX-CONSEQUENCE","evidence_type":"decision_consequence_contract_report","implementation_phase":"IMP-P2","implementation_task":"P2.4","test_obligation_id":"IOM-TST-FX-CONSEQUENCE"},
+    {"component_id":"COMP-UI","criterion_id":"FX-AUTH","evidence_type":"authorization_separation_ui_report","implementation_phase":"IMP-P3","implementation_task":"P3.3","test_obligation_id":"IOM-TST-FX-AUTH"},
+    {"component_id":"COMP-UI","criterion_id":"FX-PREVIEW","evidence_type":"approval_preview_report","implementation_phase":"IMP-P3","implementation_task":"P3.3","test_obligation_id":"IOM-TST-FX-PREVIEW"},
+    {"component_id":"COMP-KNOWLEDGE","criterion_id":"FX-EVIDENCE","evidence_type":"evidence_drillthrough_report","implementation_phase":"IMP-P5","implementation_task":"P5.3","test_obligation_id":"IOM-TST-FX-EVIDENCE"},
+    {"component_id":"COMP-UI","criterion_id":"FX-STATES","evidence_type":"workflow_state_ui_report","implementation_phase":"IMP-P3","implementation_task":"P3.4","test_obligation_id":"IOM-TST-FX-STATES"},
+    {"component_id":"COMP-UI","criterion_id":"FX-ACCESS","evidence_type":"accessibility_audit_report","implementation_phase":"IMP-P3","implementation_task":"P3.4","test_obligation_id":"IOM-TST-FX-ACCESS"},
+    {"component_id":"COMP-API","criterion_id":"FX-SEND","evidence_type":"unauthorized_send_policy_report","implementation_phase":"IMP-P9","implementation_task":"P9.4","test_obligation_id":"IOM-TST-FX-SEND"},
+    {"component_id":"COMP-FOUNDATION-QUALITY","criterion_id":"OP-CORR","evidence_type":"correlation_trace_report","implementation_phase":"IMP-P0","implementation_task":"P0.3","test_obligation_id":"IOM-TST-OP-CORR"},
+    {"component_id":"COMP-FOUNDATION-QUALITY","criterion_id":"OP-ERROR","evidence_type":"error_taxonomy_report","implementation_phase":"IMP-P0","implementation_task":"P0.3","test_obligation_id":"IOM-TST-OP-ERROR"},
+    {"component_id":"COMP-FOUNDATION-QUALITY","criterion_id":"OP-TRACE","evidence_type":"privacy_safe_trace_contract_report","implementation_phase":"IMP-P0","implementation_task":"P0.3","test_obligation_id":"IOM-TST-OP-TRACE"},
+    {"component_id":"COMP-FOUNDATION-DEVENV","criterion_id":"OP-HEALTH","evidence_type":"health_semantics_report","implementation_phase":"IMP-P0","implementation_task":"P0.2","test_obligation_id":"IOM-TST-OP-HEALTH"},
+    {"component_id":"COMP-AGENT","criterion_id":"OP-COST","evidence_type":"cost_usage_latency_attribution_report","implementation_phase":"IMP-P4","implementation_task":"P4.3","test_obligation_id":"IOM-TST-OP-COST"},
+    {"component_id":"COMP-API","criterion_id":"OP-FLAGS","evidence_type":"kill_switch_audit_report","implementation_phase":"IMP-P3","implementation_task":"P3.3","test_obligation_id":"IOM-TST-OP-FLAGS"},
+    {"component_id":"COMP-FOUNDATION-QUALITY","criterion_id":"OP-SBOM","evidence_type":"release_supply_chain_report","implementation_phase":"IMP-P0","implementation_task":"P0.3","test_obligation_id":"IOM-TST-OP-SBOM"},
+    {"component_id":"COMP-FOUNDATION-SECURITY","criterion_id":"OP-RECOVERY","evidence_type":"recovery_drill_report","implementation_phase":"IMP-P0","implementation_task":"P0.4","test_obligation_id":"IOM-TST-OP-RECOVERY"},
+    {"component_id":"COMP-FOUNDATION-DEVENV","criterion_id":"XC-TIME","evidence_type":"timezone_handling_report","implementation_phase":"IMP-P0","implementation_task":"P0.2","test_obligation_id":"IOM-TST-XC-TIME"},
+    {"component_id":"COMP-ANALYTICS","criterion_id":"XC-UNIT","evidence_type":"unit_dimension_validation_report","implementation_phase":"IMP-P6","implementation_task":"P6.4","test_obligation_id":"IOM-TST-XC-UNIT"},
+    {"component_id":"COMP-STATE","criterion_id":"XC-PORT","evidence_type":"export_portability_report","implementation_phase":"IMP-P11","implementation_task":"P11.2","test_obligation_id":"IOM-TST-XC-PORT"},
+    {"component_id":"COMP-FOUNDATION-QUALITY","criterion_id":"XC-MIGRATE","evidence_type":"migration_compatibility_report","implementation_phase":"IMP-P0","implementation_task":"P0.3","test_obligation_id":"IOM-TST-XC-MIGRATE"},
+    {"component_id":"COMP-DELIVERY","criterion_id":"XC-FONTS","evidence_type":"font_substitution_render_report","implementation_phase":"IMP-P7","implementation_task":"P7.5","test_obligation_id":"IOM-TST-XC-FONTS"},
+    {"component_id":"COMP-FOUNDATION-SECURITY","criterion_id":"XC-PRIV","evidence_type":"telemetry_default_off_report","implementation_phase":"IMP-P0","implementation_task":"P0.4","test_obligation_id":"IOM-TST-XC-PRIV"},
+    {"component_id":"COMP-AGENT","criterion_id":"XC-MODEL","evidence_type":"model_route_quality_policy_report","implementation_phase":"IMP-P4","implementation_task":"P4.3","test_obligation_id":"IOM-TST-XC-MODEL"},
+    {"component_id":"COMP-KNOWLEDGE","criterion_id":"OQ-CITE","evidence_type":"citation_resolution_report","implementation_phase":"IMP-P5","implementation_task":"P5.4","test_obligation_id":"IOM-TST-OQ-CITE"},
+    {"component_id":"COMP-QA","criterion_id":"OQ-CLAIM","evidence_type":"unsupported_claims_report","implementation_phase":"IMP-P5","implementation_task":"P5.4","test_obligation_id":"IOM-TST-OQ-CLAIM"},
+    {"component_id":"COMP-DELIVERY","criterion_id":"OQ-LABEL","evidence_type":"semantic_label_coverage_report","implementation_phase":"IMP-P7","implementation_task":"P7.1","test_obligation_id":"IOM-TST-OQ-LABEL"},
+    {"component_id":"COMP-KNOWLEDGE","criterion_id":"OQ-CONTRA","evidence_type":"contradicting_evidence_retention_report","implementation_phase":"IMP-P5","implementation_task":"P5.3","test_obligation_id":"IOM-TST-OQ-CONTRA"},
+    {"component_id":"COMP-ANALYTICS","criterion_id":"OQ-NUM","evidence_type":"number_reconciliation_report","implementation_phase":"IMP-P6","implementation_task":"P6.4","test_obligation_id":"IOM-TST-OQ-NUM"},
+    {"component_id":"COMP-ANALYTICS","criterion_id":"OQ-HARD","evidence_type":"hardcoded_number_scan_report","implementation_phase":"IMP-P6","implementation_task":"P6.4","test_obligation_id":"IOM-TST-OQ-HARD"},
+    {"component_id":"COMP-ANALYTICS","criterion_id":"OQ-RECALC","evidence_type":"independent_recalculation_report","implementation_phase":"IMP-P6","implementation_task":"P6.4","test_obligation_id":"IOM-TST-OQ-RECALC"},
+    {"component_id":"COMP-QA","criterion_id":"OQ-XFMT","evidence_type":"cross_format_reconciliation_report","implementation_phase":"IMP-P7","implementation_task":"P7.5","test_obligation_id":"IOM-TST-OQ-XFMT"}
+  ],
+  "predecessor": {
+    "branch": "governance/ws68-issue-backlog-normalization",
+    "head_sha": "46abab02ad08a3a1cca519391e0114555f11230c",
+    "integrated_to_main": false,
+    "pull_request": 49,
+    "work_package_id": "WS6.8"
+  },
+  "remaining_blocking_defects": ["WS6-BLOCK-006"],
+  "remaining_preparation_defects": ["WS6-CODEXPREP-002"],
+  "schema_version": 1,
+  "test_registration_policy": {
+    "executable_test_exists": false,
+    "later_registration_owner": "assigned_implementation_phase",
+    "phase0_registration_owner": "WS6.13",
+    "registration_status": "planned_unregistered",
+    "separate_defect_remains_open": "WS6-CODEXPREP-002"
+  },
+  "title": "Implementation obligation map",
+  "work_package_id": "WS6.9"
+}
