@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   validate-final-launch-control:
-    name: Validate WS6.9 implementation obligation map and complete prior components
+    name: Validate WS6.10 developer experience specification and complete prior components
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -40,16 +40,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.9
+      - name: Rebuild, validate and test through WS6.10
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.8 ancestry and live fail-closed state
+      - name: Verify exact WS6.9 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          WS68_HEAD_SHA: 46abab02ad08a3a1cca519391e0114555f11230c
+          WS69_HEAD_SHA: 911e431551bb7eb41f1d5d1ccc9ff042f18858f9
         run: |
           mkdir -p ci-evidence
-          git merge-base --is-ancestor "$WS68_HEAD_SHA" "$GITHUB_SHA"
+          git merge-base --is-ancestor "$WS69_HEAD_SHA" "$GITHUB_SHA"
           gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
@@ -77,6 +77,9 @@ jobs:
           obligation_map = json.loads(
               Path("requirements/implementation-obligation-map.json").read_text()
           )
+          developer_experience = json.loads(
+              Path("contracts/developer-experience-specification.json").read_text()
+          )
 
           assert issue1["state"] == "open"
           assert hashlib.sha256(issue1.get("body", "").encode()).hexdigest() == hashlib.sha256(expected_issue1).hexdigest()
@@ -93,14 +96,22 @@ jobs:
               assert observed["title"] == expected["normalized_title"]
               assert hashlib.sha256(observed.get("body", "").encode()).hexdigest() == hashlib.sha256(body).hexdigest()
 
-          assert obligation_map["predecessor"]["head_sha"] == "46abab02ad08a3a1cca519391e0114555f11230c"
-          assert obligation_map["predecessor"]["integrated_to_main"] is False
           assert obligation_map["criterion_count"] == 38
           assert obligation_map["phase0_blocking_criterion_count"] == 16
           assert obligation_map["later_phase_criterion_count"] == 22
           assert obligation_map["test_policy"]["executable_test_count"] == 0
           assert obligation_map["evidence_policy"]["satisfied_evidence_count"] == 0
           assert obligation_map["boundaries"]["codex_start_authorized"] is False
+
+          assert developer_experience["predecessor"]["head_sha"] == "911e431551bb7eb41f1d5d1ccc9ff042f18858f9"
+          assert developer_experience["predecessor"]["integrated_to_main"] is False
+          assert developer_experience["command_count"] == 15
+          assert developer_experience["acceptance_case_count"] == 60
+          assert developer_experience["global_flag_count"] == 9
+          assert developer_experience["exit_code_count"] == 11
+          assert developer_experience["test_registration"]["executable_test_count"] == 0
+          assert developer_experience["implementation_evidence"]["satisfied_command_count"] == 0
+          assert developer_experience["boundaries"]["codex_start_authorized"] is False
 
           open_issue_numbers = {
               item["number"] for item in open_items if "pull_request" not in item
@@ -111,7 +122,7 @@ jobs:
           assert "codex/phase-0-foundation" not in names
           PY
 
-      - name: Assemble retained WS6.9 evidence
+      - name: Assemble retained WS6.10 evidence
         run: |
           cp /tmp/ws62-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
@@ -161,6 +172,14 @@ jobs:
             schemas/implementation-obligation-map.schema.json \
             reports/workstream6-implementation-obligation-map-evidence.md \
             .github/workflows/workstream6-implementation-obligation-map.yml \
+            configs/workstream6-developer-experience-specification.yaml \
+            contracts/developer-experience-specification.json \
+            schemas/developer-experience-specification.schema.json \
+            reports/workstream6-developer-experience-specification-evidence.md \
+            docs/62-WS6-10-DEVELOPER-EXPERIENCE-SPECIFICATION.md \
+            .github/workflows/workstream6-developer-experience-specification.yml \
+            scripts/build_workstream6_developer_experience_specification.py \
+            scripts/validate_workstream6_developer_experience_specification.py \
             .github/workflows/workstream6-final-launch-control.yml \
             scripts/build_workstream6_configuration_contradictions.py \
             scripts/validate_workstream6_configuration_contradictions.py \
@@ -200,7 +219,7 @@ jobs:
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: offdata-workstream6-implementation-obligation-map-${{ github.sha }}
+          name: offdata-workstream6-developer-experience-specification-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
@@ -215,4 +234,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.9 implementation-obligation-map gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All 38 PCR-10 criteria map exactly once; 16 IMP-P0 criteria block only IMP-P0 and 22 later criteria block only their assigned phases. All 38 test obligations remain planned and unregistered, no implementation evidence is claimed, and WS6-CODEXPREP-002 remains open. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. The complete WS6.6-WS6.9 payload was verified before upload and retained. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.10 developer-experience-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All 15 PCR-10 commands have governed flags, exits, redaction, idempotency, safety, retry and four acceptance classes; 60 planned cases remain unregistered and no implementation evidence is claimed. WS6-CODEXPREP-002 and WS6-BLOCK-006 remain open. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. The complete WS6.6-WS6.10 payload was verified before upload and retained. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."

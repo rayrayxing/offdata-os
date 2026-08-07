@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "acceptance_case_count": {"const": 60},
+    "closed_defects": {"const": ["WS6-QUALITY-002"]},
+    "command_count": {"const": 15},
+    "commands": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case_exits": {
+            "additionalProperties": false,
+            "properties": {
+              "failure": {"type": "integer"},
+              "positive": {"type": "integer"},
+              "retry": {"type": "integer"},
+              "safety": {"type": "integer"}
+            },
+            "required": ["positive", "failure", "safety", "retry"],
+            "type": "object"
+          },
+          "component": {"minLength": 1, "type": "string"},
+          "exits": {
+            "items": {"enum": [0,2,3,4,5,6,7,8,9,10,130]},
+            "minItems": 2,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "flag_names": {"type": "array", "uniqueItems": true},
+          "idempotency": {"minLength": 1, "type": "string"},
+          "implementation_status": {"const": "specified_not_implemented"},
+          "name": {"type": "string"},
+          "network": {"minLength": 1, "type": "string"},
+          "retry_attempts": {"maximum": 20, "minimum": 1, "type": "integer"},
+          "source_record_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+          "state_recheck_required": {"const": true},
+          "task": {"enum": ["P0.2", "P0.3", "P0.4"]}
+        },
+        "required": [
+          "name", "task", "component", "idempotency", "network",
+          "flag_names", "exits", "retry_attempts", "state_recheck_required",
+          "case_exits", "source_record_sha256", "implementation_status"
+        ],
+        "type": "object"
+      },
+      "maxItems": 15,
+      "minItems": 15,
+      "type": "array"
+    },
+    "exit_code_count": {"const": 11},
+    "exit_codes": {
+      "items": {"enum": [0,2,3,4,5,6,7,8,9,10,130]},
+      "maxItems": 11,
+      "minItems": 11,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "global_flag_count": {"const": 9},
+    "global_flags": {
+      "items": {"pattern": "^--", "type": "string"},
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "implementation_evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "satisfied_command_count": {"const": 0},
+        "status": {"const": "not_available_pre_implementation"}
+      },
+      "required": ["satisfied_command_count", "status"],
+      "type": "object"
+    },
+    "remaining_blocking_defects": {"const": ["WS6-BLOCK-006"]},
+    "remaining_preparation_defects": {"const": ["WS6-CODEXPREP-002"]},
+    "test_registration": {
+      "additionalProperties": false,
+      "properties": {
+        "executable_test_count": {"const": 0},
+        "planned_case_count": {"const": 60},
+        "registered_case_count": {"const": 0},
+        "separate_registration_defect": {"const": "WS6-CODEXPREP-002"}
+      },
+      "required": [
+        "planned_case_count", "registered_case_count",
+        "executable_test_count", "separate_registration_defect"
+      ],
+      "type": "object"
+    },
+    "work_package_id": {"const": "WS6.10"}
+  },
+  "required": [
+    "work_package_id", "predecessor", "surface", "shared_contracts",
+    "global_flags", "exit_codes", "commands", "command_count",
+    "acceptance_case_count", "test_registration", "implementation_evidence",
+    "closed_defects", "remaining_blocking_defects",
+    "remaining_preparation_defects", "completion", "boundaries"
+  ],
+  "type": "object"
+}
