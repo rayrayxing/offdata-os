@@ -1,0 +1,329 @@
+schema_version: 1.0.0
+work_package_id: PCFA-05
+contract_id: MINIMUM-VALUABLE-CONSULTING-LOOP
+title: Minimum Valuable Consulting Loop
+repository: rayrayxing/offdata-os
+status: repository_specification_complete_planned_not_implemented
+owner: Founder
+
+scope_boundary:
+  specification_only: true
+  product_runtime_implemented: false
+  workflow_runtime_implemented: false
+  canonical_state_mutation_implemented: false
+  imp_phase_scope_widened: false
+  codex_start_authorized: false
+  pcfa07_registry_reconciliation_required: true
+  pcfa08_final_acceptance_required: true
+
+truth_chain:
+  - opportunity
+  - mandate
+  - engagement
+  - decision_framing
+  - hypothesis_tree
+  - research_plan
+  - evidence
+  - claim_ledger
+  - method
+  - analysis_and_value
+  - options
+  - recommendation
+  - founder_decision
+  - storyline
+  - deliverables
+  - independent_qa
+  - implementation_initiatives
+  - benefits
+  - closeout
+
+loop_invariants:
+  - id: MVCL-INV-ENGAGEMENT-ID
+    statement: One stable engagement ID spans the consulting loop and all derived records.
+  - id: MVCL-INV-CANONICAL-STATE
+    statement: Canonical engagement truth lives only in governed system-of-record state; chat, model and runtime memory are noncanonical.
+  - id: MVCL-INV-CLAIM-TRACE
+    statement: Every material claim traces to source evidence, a named deterministic analysis, or an explicitly approved assumption.
+  - id: MVCL-INV-NUMBER-REPRO
+    statement: Every material number is reproducible from governed inputs, formulas, code, model version and run metadata.
+  - id: MVCL-INV-CONTRARY-EVIDENCE
+    statement: Material contradicting evidence, evidence gaps and falsifiers are retained rather than suppressed.
+  - id: MVCL-INV-METHOD-JUSTIFICATION
+    statement: Method selection records the decision need, evidence burden, selected method stack and material rejected alternatives.
+  - id: MVCL-INV-IDEMPOTENCY
+    statement: Retried or replayed commands and external-effect requests cannot create duplicate canonical effects.
+  - id: MVCL-INV-EXACT-APPROVAL
+    statement: Founder approval binds the exact version, decision, action and scope being approved and becomes stale when those inputs change.
+  - id: MVCL-INV-RESTART-SAFE
+    statement: Durable checkpoints allow restart from the latest committed state without losing history or duplicating completed effects.
+  - id: MVCL-INV-INDEPENDENT-QA
+    statement: Material work is reviewed independently from the creator context before release or a material Founder decision.
+  - id: MVCL-INV-CROSS-FORMAT
+    statement: PPTX, DOCX, XLSX, PDF, SVG and HTML outputs reconcile to the same approved story, claims and numbers where applicable.
+  - id: MVCL-INV-REC-TO-BENEFIT
+    statement: Implementation initiatives and benefits trace to an approved recommendation, baseline, owner and verification method.
+  - id: MVCL-INV-AUDIT-HISTORY
+    statement: Material commands, events, approvals, defects, versions, agent/tool actions and releases remain auditable.
+  - id: MVCL-INV-FOUNDER-CONTROL
+    statement: The Founder can approve, recycle, pause, cancel or stop material work without losing completed evidence or governance history.
+  - id: MVCL-INV-NO-SELF-APPROVAL
+    statement: No agent, worker, model or creator context can be the sole approver of its own material work.
+
+stages:
+  - stage_id: MVCL-01
+    name: opportunity
+    purpose: Establish a governed opportunity or internal consulting need before substantive work begins.
+    canonical_outputs: [opportunity_record, source_context, fit_and_value_hypothesis, relationship_continuity]
+    owning_imp_phases: [IMP-P2, IMP-P8, IMP-P9]
+    integration_points: [P2.2, P8.4, P9.2, P9.3]
+    founder_gate: material_commitment_only
+    status: planned_not_implemented
+  - stage_id: MVCL-02
+    name: mandate
+    purpose: Convert available context into a decision-oriented mandate with scope, constraints, evidence burden and material gaps.
+    canonical_outputs: [mandate_packet, governing_decision, decision_owner, scope, constraints, evidence_standard, gaps]
+    owning_imp_phases: [IMP-P2, IMP-P4, IMP-P5]
+    integration_points: [P2.2, P2.4, P4.1, P5.1]
+    founder_gate: required_for_material_mandate
+    status: planned_not_implemented
+  - stage_id: MVCL-03
+    name: engagement
+    purpose: Instantiate the engagement identity, tenancy, lifecycle and governed operating workspace without creating parallel state.
+    canonical_outputs: [engagement_record, tenant_boundary, lifecycle_instance, accountable_founder]
+    owning_imp_phases: [IMP-P2, IMP-P3]
+    integration_points: [P2.1, P2.2, P3.1, P3.2]
+    founder_gate: none
+    status: planned_not_implemented
+  - stage_id: MVCL-04
+    name: decision_framing
+    purpose: Translate the mandate into explicit decision questions, decision criteria, uncertainties and units of analysis.
+    canonical_outputs: [decision_frame, decision_questions, criteria, uncertainties, units_of_analysis]
+    owning_imp_phases: [IMP-P2, IMP-P4]
+    integration_points: [P2.2, P4.1, P4.2, P4.4]
+    founder_gate: material_frame_change_only
+    status: planned_not_implemented
+  - stage_id: MVCL-05
+    name: hypothesis_tree
+    purpose: Form a testable issue architecture with rival explanations, falsifiers and evidence needs.
+    canonical_outputs: [issue_tree, hypotheses, rival_explanations, falsifiers, evidence_needs]
+    owning_imp_phases: [IMP-P4, IMP-P5]
+    integration_points: [P4.2, P4.4, P5.1]
+    founder_gate: none
+    status: planned_not_implemented
+  - stage_id: MVCL-06
+    name: research_plan
+    purpose: Define source strategy, research questions, stopping criteria, access boundaries and evidence-quality expectations.
+    canonical_outputs: [research_plan, source_strategy, stopping_criteria, access_scope, evidence_quality_plan]
+    owning_imp_phases: [IMP-P5]
+    integration_points: [P5.1]
+    founder_gate: material_external_access_only
+    status: planned_not_implemented
+  - stage_id: MVCL-07
+    name: evidence
+    purpose: Acquire and preserve governed source material with provenance, access controls, versioning and malicious-input handling.
+    canonical_outputs: [source_records, evidence_records, provenance_locators, source_versions, quarantine_records]
+    owning_imp_phases: [IMP-P1, IMP-P5, IMP-P11]
+    integration_points: [P1.1, P1.2, P5.2, P5.4, P11.3]
+    founder_gate: restricted_source_exception_only
+    status: planned_not_implemented
+  - stage_id: MVCL-08
+    name: claim_ledger
+    purpose: Record material claims with support, contradiction, confidence, gaps and citation-ready provenance.
+    canonical_outputs: [claim_records, support_links, contradiction_links, confidence, evidence_gaps, falsifiers]
+    owning_imp_phases: [IMP-P2, IMP-P5]
+    integration_points: [P2.2, P5.3, P5.4]
+    founder_gate: none
+    status: planned_not_implemented
+  - stage_id: MVCL-09
+    name: method
+    purpose: Select the minimum sufficient method stack and retain justification, dependencies and rejected material alternatives.
+    canonical_outputs: [method_selection, method_dependencies, rejected_methods, method_rationale, review_requirements]
+    owning_imp_phases: [IMP-P1, IMP-P4]
+    integration_points: [P1.4, P1.5, P4.2, P4.4]
+    founder_gate: material_method_exception_only
+    status: planned_not_implemented
+  - stage_id: MVCL-10
+    name: analysis_and_value
+    purpose: Execute deterministic and reproducible analysis, value modelling, scenario work and sensitivity checks.
+    canonical_outputs: [analysis_records, model_runs, value_case, scenarios, sensitivities, reproducibility_metadata]
+    owning_imp_phases: [IMP-P6]
+    integration_points: [P6.1, P6.2, P6.4]
+    founder_gate: none
+    status: planned_not_implemented
+  - stage_id: MVCL-11
+    name: options
+    purpose: Develop credible alternatives and trade-offs grounded in the evidence, analysis and decision criteria.
+    canonical_outputs: [option_records, tradeoffs, risks, dependencies, reversibility]
+    owning_imp_phases: [IMP-P4, IMP-P6, IMP-P7]
+    integration_points: [P4.2, P4.4, P6.2, P7.1]
+    founder_gate: none
+    status: planned_not_implemented
+  - stage_id: MVCL-12
+    name: recommendation
+    purpose: Form an answer-first recommendation with rationale, value, risks, actions and success conditions.
+    canonical_outputs: [recommendation_record, rationale, value_case_link, risk_summary, action_path, success_conditions]
+    owning_imp_phases: [IMP-P2, IMP-P4, IMP-P6]
+    integration_points: [P2.2, P4.2, P4.4, P6.4]
+    founder_gate: none
+    status: planned_not_implemented
+  - stage_id: MVCL-13
+    name: founder_decision
+    purpose: Present an exact-version decision packet and record approve, reject, recycle, pause or stop outcomes.
+    canonical_outputs: [decision_packet, approval_record, decision_rationale, recycle_or_stop_instruction]
+    owning_imp_phases: [IMP-P2, IMP-P3]
+    integration_points: [P2.2, P2.3, P3.3, P3.4]
+    founder_gate: required
+    status: planned_not_implemented
+  - stage_id: MVCL-14
+    name: storyline
+    purpose: Convert the approved recommendation into a coherent governing thought and proposition hierarchy without changing canonical meaning.
+    canonical_outputs: [story_model, governing_thought, proposition_hierarchy, section_contracts, visual_plan]
+    owning_imp_phases: [IMP-P4, IMP-P7]
+    integration_points: [P4.2, P4.4, P7.1]
+    founder_gate: material_message_change_only
+    status: planned_not_implemented
+  - stage_id: MVCL-15
+    name: deliverables
+    purpose: Render governed client and internal artefacts from shared semantic state while preserving version and provenance links.
+    canonical_outputs: [deliverable_manifests, pptx, docx, xlsx, pdf, svg, html]
+    owning_imp_phases: [IMP-P7]
+    integration_points: [P7.1, P7.2, P7.3, P7.4, P7.5]
+    founder_gate: none
+    status: planned_not_implemented
+  - stage_id: MVCL-16
+    name: independent_qa
+    purpose: Independently test evidence, calculations, consulting craft, rendering, reconciliation, defects and release readiness.
+    canonical_outputs: [qa_record, defect_register, rerun_evidence, cross_format_reconciliation, release_recommendation]
+    owning_imp_phases: [IMP-P4, IMP-P5, IMP-P6, IMP-P7, IMP-P11]
+    integration_points: [P4.4, P5.4, P6.4, P7.5, P11.3]
+    founder_gate: required_for_release
+    status: planned_not_implemented
+  - stage_id: MVCL-17
+    name: implementation_initiatives
+    purpose: Translate approved recommendations into initiatives, milestones, dependencies, owners, adoption measures and delivery evidence.
+    canonical_outputs: [initiative_records, milestones, dependencies, owners, adoption_measures, delivery_status]
+    owning_imp_phases: [IMP-P2, IMP-P3, IMP-P12]
+    integration_points: [P2.2, P3.2, P3.4, P12.3]
+    founder_gate: material_commitment_only
+    status: planned_not_implemented
+  - stage_id: MVCL-18
+    name: benefits
+    purpose: Track outcome and realised benefit against approved baselines, counterfactuals, owners and verification methods.
+    canonical_outputs: [benefit_records, baseline, counterfactual, verification, outcome_status, scale_adapt_stop_packet]
+    owning_imp_phases: [IMP-P2, IMP-P6, IMP-P12]
+    integration_points: [P2.2, P6.4, P12.3]
+    founder_gate: required_for_scale_adapt_stop
+    status: planned_not_implemented
+  - stage_id: MVCL-19
+    name: closeout
+    purpose: Close the engagement with complete audit history, lessons, method candidates, archival disposition and explicit Founder closure.
+    canonical_outputs: [closeout_record, engagement_archive, lessons, method_candidates, retention_disposition, closure_approval]
+    owning_imp_phases: [IMP-P2, IMP-P3, IMP-P10, IMP-P12]
+    integration_points: [P2.3, P3.4, P10.3, P10.4, P12.3, P12.4]
+    founder_gate: required
+    status: planned_not_implemented
+
+founder_interrupts:
+  - interrupt_id: MVCL-FI-01
+    trigger: material_mandate_or_scope_commitment
+    stage_ids: [MVCL-02]
+    permitted_outcomes: [approve, reject, recycle, pause, stop]
+  - interrupt_id: MVCL-FI-02
+    trigger: material_evidence_method_risk_or_external_access_exception
+    stage_ids: [MVCL-06, MVCL-07, MVCL-09, MVCL-10, MVCL-11, MVCL-12]
+    permitted_outcomes: [approve_exception, reject, recycle, pause, stop]
+  - interrupt_id: MVCL-FI-03
+    trigger: recommendation_decision
+    stage_ids: [MVCL-13]
+    permitted_outcomes: [approve, reject, recycle, pause, stop]
+  - interrupt_id: MVCL-FI-04
+    trigger: artefact_release_after_independent_qa
+    stage_ids: [MVCL-16]
+    permitted_outcomes: [approve_release, reject_release, recycle, pause, stop]
+  - interrupt_id: MVCL-FI-05
+    trigger: benefit_scale_adapt_stop_decision
+    stage_ids: [MVCL-18]
+    permitted_outcomes: [scale, adapt, stop, continue_measurement, recycle]
+  - interrupt_id: MVCL-FI-06
+    trigger: founder_discretionary_control
+    stage_ids: [MVCL-01, MVCL-02, MVCL-03, MVCL-04, MVCL-05, MVCL-06, MVCL-07, MVCL-08, MVCL-09, MVCL-10, MVCL-11, MVCL-12, MVCL-13, MVCL-14, MVCL-15, MVCL-16, MVCL-17, MVCL-18, MVCL-19]
+    permitted_outcomes: [recycle, pause, cancel, stop]
+
+transition_policy:
+  forward_sequence_required: true
+  stage_skipping_default: false
+  recycle_to_affected_prior_stage_allowed: true
+  recycle_requires_reason_and_audit_record: true
+  pause_resume_requires_durable_checkpoint: true
+  founder_cancel_prohibits_further_execution: true
+  blocking_defect_prohibits_release: true
+  stale_approval_prohibits_resume: true
+  duplicate_effects_prohibited: true
+  terminal_states: [completed, cancelled, blocked, paused]
+
+negative_cases:
+  - case_id: MVCL-NEG-01
+    name: missing_material_evidence
+    expected: block_claim_or_recommendation_and_record_gap
+  - case_id: MVCL-NEG-02
+    name: material_contradicting_evidence
+    expected: retain_contradiction_reassess_confidence_and_prevent_silent_override
+  - case_id: MVCL-NEG-03
+    name: approval_wait
+    expected: checkpoint_and_block_until_exact_scoped_approval
+  - case_id: MVCL-NEG-04
+    name: stale_approval_after_material_change
+    expected: invalidate_approval_and_require_new_founder_decision
+  - case_id: MVCL-NEG-05
+    name: restart_after_checkpoint
+    expected: resume_without_duplicate_effect_or_lost_history
+  - case_id: MVCL-NEG-06
+    name: duplicate_command_or_action
+    expected: preserve_single_canonical_effect_and_record_idempotent_replay
+  - case_id: MVCL-NEG-07
+    name: founder_cancellation
+    expected: transition_to_cancelled_and_prohibit_further_execution
+  - case_id: MVCL-NEG-08
+    name: blocking_qa_defect
+    expected: prohibit_release_recycle_to_affected_stage_repair_and_retest
+  - case_id: MVCL-NEG-09
+    name: cross_engagement_access_attempt
+    expected: deny_access_and_preserve_tenant_and_engagement_isolation
+  - case_id: MVCL-NEG-10
+    name: malicious_or_instruction_bearing_document
+    expected: quarantine_or_neutralise_instructions_while_preserving_source_evidence
+  - case_id: MVCL-NEG-11
+    name: provider_or_agent_runtime_failure
+    expected: fail_closed_or_use_declared_fallback_without_mutating_canonical_truth
+  - case_id: MVCL-NEG-12
+    name: numeric_or_formula_defect
+    expected: block_dependent_claims_deliverables_and_release_until_recalculated
+  - case_id: MVCL-NEG-13
+    name: renderer_or_cross_format_reconciliation_defect
+    expected: block_release_preserve_semantic_source_and_regenerate_after_repair
+
+pcfa07_reconciliation_contract:
+  every_stage_must_receive_exact_task_bindings: true
+  every_stage_must_receive_planned_test_ids: true
+  every_invariant_must_receive_planned_test_ids: true
+  every_negative_case_must_receive_planned_test_ids: true
+  every_stage_must_receive_evidence_types: true
+  every_stage_must_receive_dependencies: true
+  every_stage_must_receive_blocking_phase_gate: true
+  status_must_remain_planned_not_implemented_until_codex_evidence: true
+
+boundaries:
+  founder_accountability_preserved: true
+  codex_start_authorized: false
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  phase1_authorized: false
+  merge_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  oauth_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false

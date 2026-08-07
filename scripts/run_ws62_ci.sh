@@ -42,6 +42,7 @@ python scripts/build_workstream6_permanent_release_record.py
 # Post-release PCFA authority is generated only after all immutable WS6 package snapshots.
 python scripts/build_pcfa03_repository_posture.py
 python scripts/build_pcfa04_product_scope_addendum.py
+python scripts/build_pcfa05_mvcl.py
 python scripts/build_pcfa02_current_operational_state.py
 
 git diff --exit-code
@@ -92,6 +93,7 @@ python scripts/validate_pcfa01_launch_control.py
 python scripts/validate_pcfa02_current_operational_state.py
 python scripts/validate_pcfa03_repository_posture.py
 python scripts/validate_pcfa04_product_scope_addendum.py
+python scripts/validate_pcfa05_mvcl.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
