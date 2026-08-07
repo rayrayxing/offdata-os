@@ -15,6 +15,7 @@ current_authority:
   hosted_controls_issue_body: handoff/codex-phase0-current-hosted-controls-issue.md
   launch_semantics_repair: contracts/pcfa01-launch-control-repair.json
   repository_posture: repository/repository-visibility-and-licence-posture.json
+  product_scope_addendum: repository/pcfa04-product-scope-implementation-addendum.json
   permanent_release: releases/pre-codex-final-reconciliation-2026-08-06.json
   launch_entrypoint: scripts/prepare_codex_phase0_launch.py
   permanent_release_gate: scripts/require_workstream6_final_reconciliation.py
@@ -165,6 +166,7 @@ repository_readiness:
   pcfa01_launch_semantics_repaired: true
   pcfa02_current_projection_active: true
   pcfa03_repository_posture_resolved: true
+  pcfa04_product_scope_addendum_complete: true
   repository_side_corrective_work_complete: true
 
 manual_launch_gates:
@@ -201,6 +203,7 @@ required_preflight_commands:
   - python scripts/validate_pcfa01_launch_control.py
   - python scripts/validate_pcfa02_current_operational_state.py
   - python scripts/validate_pcfa03_repository_posture.py
+  - python scripts/validate_pcfa04_product_scope_addendum.py
   - python scripts/prepare_codex_phase0_launch.py --self-test
   - python scripts/require_workstream6_final_reconciliation.py
 
