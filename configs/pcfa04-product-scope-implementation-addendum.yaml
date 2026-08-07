@@ -1,0 +1,283 @@
+schema_version: 1.0.0
+work_package_id: PCFA-04
+addendum_id: PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM
+title: Product-scope implementation addendum
+repository: rayrayxing/offdata-os
+status: repository_specification_complete_planned_not_implemented
+owner: Founder
+
+scope_boundary:
+  specification_only: true
+  product_runtime_implemented: false
+  canonical_state_mutation_implemented: false
+  imp_phase_scope_widened: false
+  codex_start_authorized: false
+  pcfa05_mvcl_contract_required: true
+  pcfa07_registry_reconciliation_required: true
+
+implementation_rules:
+  - one_canonical_engagement_state
+  - engagement_workspace_is_view_over_canonical_state
+  - quality_console_is_view_over_canonical_state
+  - implementation_benefits_trace_to_approved_recommendations
+  - material_claims_and_numbers_remain_traceable
+  - founder_accountability_preserved
+  - no_uncontrolled_self_modification
+  - no_requirement_marked_implemented_before_codex_evidence
+
+product_areas:
+  - area_id: PSA-MANDATE
+    title: Mandate Intake Workbench
+    requirement_ids: [PS-MANDATE-001]
+    owning_imp_phases: [IMP-P2, IMP-P4, IMP-P5]
+    integration_points: [P2.2, P2.4, P4.1, P5.1]
+    planned_test_family: PCFA04-MANDATE
+    status: planned_not_implemented
+  - area_id: PSA-ENGAGEMENT-WORKSPACE
+    title: Explicit Engagement Workspace
+    requirement_ids: [PS-ENGAGEMENT-001]
+    owning_imp_phases: [IMP-P2, IMP-P3, IMP-P4, IMP-P5, IMP-P6, IMP-P7]
+    integration_points: [P2.4, P3.4, P4.1, P5.3, P6.4, P7.1]
+    planned_test_family: PCFA04-ENGAGEMENT-WORKSPACE
+    status: planned_not_implemented
+  - area_id: PSA-QUALITY-CONSOLE
+    title: Quality and Assurance Console
+    requirement_ids: [PS-QA-001]
+    owning_imp_phases: [IMP-P2, IMP-P3, IMP-P4, IMP-P5, IMP-P6, IMP-P7, IMP-P11]
+    integration_points: [P2.3, P3.4, P4.4, P5.4, P6.4, P7.5, P11.3]
+    planned_test_family: PCFA04-QA-CONSOLE
+    status: planned_not_implemented
+  - area_id: PSA-IMPLEMENTATION-BENEFITS
+    title: Implementation and Benefits Workspace
+    requirement_ids: [PS-IMPLEMENTATION-001]
+    owning_imp_phases: [IMP-P2, IMP-P3, IMP-P12]
+    integration_points: [P2.2, P3.2, P3.4, P12.3]
+    planned_test_family: PCFA04-IMPLEMENTATION-BENEFITS
+    status: planned_not_implemented
+  - area_id: PSA-INGESTION
+    title: Broader ingestion source matrix and native locators
+    requirement_ids: [PS-INGEST-001, PS-LOCATOR-001]
+    owning_imp_phases: [IMP-P1, IMP-P5]
+    integration_points: [P1.1, P1.2, P1.5, P5.2, P5.3]
+    planned_test_family: PCFA04-INGESTION
+    status: planned_not_implemented
+  - area_id: PSA-LIBRARY-COMPLETENESS
+    title: Canonical library completeness gate
+    requirement_ids: [PS-LIBRARY-001]
+    owning_imp_phases: [IMP-P1, IMP-P12]
+    integration_points: [P1.3, P1.4, P1.5, P12.3]
+    planned_test_family: PCFA04-LIBRARY-COMPLETENESS
+    status: planned_not_implemented
+  - area_id: PSA-CONSULTING-CRAFT
+    title: Consulting Craft quality family
+    requirement_ids: [CQ-DECISION, CQ-ANSWER, CQ-TITLE, CQ-STORY, CQ-MECE, CQ-ALT, CQ-UNCERT, CQ-DENSITY, CQ-VISUAL, CQ-HIER, CQ-REDUND, CQ-ACTION, CQ-RISK, CQ-AUDIENCE, CQ-EXEC]
+    owning_imp_phases: [IMP-P4, IMP-P7, IMP-P12]
+    integration_points: [P4.4, P7.1, P7.5, P12.3]
+    planned_test_family: PCFA04-CONSULTING-CRAFT
+    status: planned_not_implemented
+  - area_id: PSA-GOLDEN-OUTPUTS
+    title: Broader golden output programme
+    requirement_ids: [PS-GOLDEN-001]
+    owning_imp_phases: [IMP-P7, IMP-P12]
+    integration_points: [P7.5, P12.1, P12.2, P12.3]
+    planned_test_family: PCFA04-GOLDEN-OUTPUTS
+    status: planned_not_implemented
+  - area_id: PSA-OFFICE-ROUNDTRIP
+    title: Office round-trip reconciliation
+    requirement_ids: [PS-ROUNDTRIP-001]
+    owning_imp_phases: [IMP-P7, IMP-P12]
+    integration_points: [P7.3, P7.5, P12.3]
+    planned_test_family: PCFA04-OFFICE-ROUNDTRIP
+    status: planned_not_implemented
+  - area_id: PSA-HOUSE-STYLE
+    title: Founder and house style profile
+    requirement_ids: [PS-STYLE-001]
+    owning_imp_phases: [IMP-P2, IMP-P7, IMP-P12]
+    integration_points: [P2.2, P7.1, P7.2, P7.3, P12.3]
+    planned_test_family: PCFA04-HOUSE-STYLE
+    status: planned_not_implemented
+  - area_id: PSA-ASSET-RIGHTS
+    title: Deliverable asset-rights provenance
+    requirement_ids: [PS-ASSET-RIGHTS-001]
+    owning_imp_phases: [IMP-P1, IMP-P7, IMP-P11]
+    integration_points: [P1.1, P7.2, P7.3, P7.4, P7.5, P11.2]
+    planned_test_family: PCFA04-ASSET-RIGHTS
+    status: planned_not_implemented
+  - area_id: PSA-FOUNDER-ATTENTION
+    title: Founder attention burden metrics
+    requirement_ids: [PS-FOUNDER-ATTENTION-001]
+    owning_imp_phases: [IMP-P2, IMP-P3, IMP-P12]
+    integration_points: [P2.3, P3.3, P12.3]
+    planned_test_family: PCFA04-FOUNDER-ATTENTION
+    status: planned_not_implemented
+  - area_id: PSA-DELIVERABLE-VARIANTS
+    title: Explicit deliverable variants
+    requirement_ids: [PS-DELIVERABLE-VARIANTS-001]
+    owning_imp_phases: [IMP-P7]
+    integration_points: [P7.1, P7.3, P7.5]
+    planned_test_family: PCFA04-DELIVERABLE-VARIANTS
+    status: planned_not_implemented
+  - area_id: PSA-REVIEW-WORKFLOW
+    title: Review and change-request workflow
+    requirement_ids: [PS-REVIEW-001]
+    owning_imp_phases: [IMP-P2, IMP-P3, IMP-P7]
+    integration_points: [P2.2, P2.3, P3.2, P3.4, P7.5]
+    planned_test_family: PCFA04-REVIEW-WORKFLOW
+    status: planned_not_implemented
+
+requirements:
+  - id: PS-MANDATE-001
+    statement: Convert notes, transcripts, documents and CRM context into a governed mandate packet containing decision statement, owner/date, problem, scope, constraints, options, facts, assumptions, interpretations, gaps, evidence standard, hypotheses, methods, data requests and engagement plan, escalating only material gaps to the Founder.
+    acceptance: Mandate packet fields are traceable to source or labelled assumption and do not create a second engagement state.
+    status: planned_not_implemented
+  - id: PS-ENGAGEMENT-001
+    statement: Provide one Engagement Workspace with Overview, Mandate, Decisions, Hypotheses, Evidence, Methods, Analysis, Recommendations, Story, Deliverables, Implementation, Benefits, Quality and Audit surfaces as views over canonical state.
+    acceptance: No workspace surface owns duplicate canonical state.
+    status: planned_not_implemented
+  - id: PS-QA-001
+    statement: Provide a Quality and Assurance Console showing defect, severity, materiality, affected record, creator, independent reviewer, rubric/test, block status, repair, disposition, waiver, rerun evidence and release impact.
+    acceptance: Material blocking defects cannot be hidden by presentation state or waived without governed disposition.
+    status: planned_not_implemented
+  - id: PS-IMPLEMENTATION-001
+    statement: Trace recommendation to initiative, milestone, dependency, owner, delivery, adoption, outcome, benefit and verification while distinguishing work completed, adoption, outcome and realised benefit.
+    acceptance: Benefits cannot exist without an approved recommendation and baseline linkage.
+    status: planned_not_implemented
+  - id: PS-INGEST-001
+    statement: Support governed ingestion for Markdown/TXT, DOCX, digital PDF, PPTX, XLSX, CSV and HTML/web snapshots first, with scanned images/OCR, email packages, transcripts/audio-video derivatives and archives treated as later adapters.
+    acceptance: Original bytes/checksum are preserved and unsupported or malformed sources are quarantined rather than silently normalised.
+    status: planned_not_implemented
+  - id: PS-LOCATOR-001
+    statement: Preserve native provenance locators for PDF page/region, DOCX section/paragraph/table, PPTX slide/shape, XLSX sheet/cell/range/formula, HTML URL/snapshot/DOM-text locator and transcript speaker/timestamp.
+    acceptance: Material claims can resolve to source-native locations after ingestion and re-ingestion.
+    status: planned_not_implemented
+  - id: PS-LIBRARY-001
+    statement: Replace count-only library readiness with 100 percent accounting of approved canonical library sources as structured records, ingested unstructured sources, duplicates, superseded items, quarantined items or explicit exclusions with reason.
+    acceptance: No approved canonical source is silently unaccounted for.
+    status: planned_not_implemented
+  - id: CQ-DECISION
+    statement: Outputs remain explicitly relevant to the governing decision and decision owner.
+    acceptance: Material sections can state which decision they inform.
+    status: planned_not_implemented
+  - id: CQ-ANSWER
+    statement: Executive and section outputs are answer-first rather than chronology-first.
+    acceptance: Governing answer appears before supporting detail where the format permits.
+    status: planned_not_implemented
+  - id: CQ-TITLE
+    statement: Titles are assertion-led where a conclusion is supported rather than generic topic labels.
+    acceptance: Assertion titles reconcile with supporting content and evidence.
+    status: planned_not_implemented
+  - id: CQ-STORY
+    statement: Storyline progresses coherently from question through evidence, implications, options and recommendation.
+    acceptance: Independent review finds no material narrative jump or unsupported conclusion.
+    status: planned_not_implemented
+  - id: CQ-MECE
+    statement: Decompositions are mutually exclusive and collectively sufficient where MECE structure is appropriate, with exceptions made explicit.
+    acceptance: Overlap and omission checks are documented for material decompositions.
+    status: planned_not_implemented
+  - id: CQ-ALT
+    statement: Material recommendations show credible alternatives and trade-offs.
+    acceptance: At least one meaningful rejected alternative is retained for material decisions unless explicitly inapplicable.
+    status: planned_not_implemented
+  - id: CQ-UNCERT
+    statement: Confidence and uncertainty are calibrated to evidence strength and model sensitivity.
+    acceptance: No unsupported precision or certainty is presented as fact.
+    status: planned_not_implemented
+  - id: CQ-DENSITY
+    statement: Information density is sufficient for professional consulting use without unnecessary clutter.
+    acceptance: Reviewer rubric flags neither material under-explanation nor avoidable overload.
+    status: planned_not_implemented
+  - id: CQ-VISUAL
+    statement: Visual archetypes fit the analytical message rather than decorating it.
+    acceptance: Major visuals have an explicit message-to-archetype rationale.
+    status: planned_not_implemented
+  - id: CQ-HIER
+    statement: Visual hierarchy, whitespace and emphasis support rapid executive scanning.
+    acceptance: Primary message, evidence and caveats are visually distinguishable.
+    status: planned_not_implemented
+  - id: CQ-REDUND
+    statement: Redundant statements and repeated evidence are controlled across sections and deliverable variants.
+    acceptance: Repetition is intentional and audience-appropriate when retained.
+    status: planned_not_implemented
+  - id: CQ-ACTION
+    statement: Recommendations identify concrete actions, owners, timing and success conditions at a level appropriate to the engagement.
+    acceptance: Material recommendations can transition into implementation records without semantic reinvention.
+    status: planned_not_implemented
+  - id: CQ-RISK
+    statement: Material recommendations disclose risks, dependencies, reversibility and key failure modes.
+    acceptance: Decision packets retain material downside and dependency information.
+    status: planned_not_implemented
+  - id: CQ-AUDIENCE
+    statement: Language, depth, terminology and evidence density fit the intended audience while preserving canonical meaning.
+    acceptance: Audience adaptation does not change approved claims, numbers or recommendation meaning.
+    status: planned_not_implemented
+  - id: CQ-EXEC
+    statement: Executive summaries are standalone decision-useful artefacts.
+    acceptance: Executive summary states decision context, answer, rationale, value, risks and next actions without requiring the full deliverable.
+    status: planned_not_implemented
+  - id: PS-GOLDEN-001
+    statement: Maintain representative golden-output programmes across strategy, growth/pricing, cost/value, CX, operating model, organisation/workforce, AI/digital, risk/control, M&A, carve-out, valuation/capital, implementation and benefits using invariants/ranges rather than exact prose.
+    acceptance: Golden evaluation covers all engagement families without freezing wording.
+    status: planned_not_implemented
+  - id: PS-ROUNDTRIP-001
+    statement: Support canonical-to-Office render, human external edit, re-import, semantic/numeric/layout diff, classification, Founder adopt/reject and regeneration without overwriting human edits.
+    acceptance: Wording, title, number, formula, chart, layout, recommendation, assumption, citation and structure changes are classified and reviewable.
+    status: planned_not_implemented
+  - id: PS-STYLE-001
+    statement: Maintain a versioned canonical Founder/house-style profile for writing, titles, slide density, number formats, chart/table preferences, terminology, risk phrasing, citations, templates/brand, fonts, executive-summary form and decision-packet density.
+    acceptance: Style preferences remain separate from agent memory and can be versioned, audited and overridden per engagement.
+    status: planned_not_implemented
+  - id: PS-ASSET-RIGHTS-001
+    statement: Track provenance, owner, licence, permitted use, client-provided status, alteration/distribution rights, attribution and expiry for fonts, photos, icons, logos, templates, third-party charts/data and maps.
+    acceptance: External release is blocked for material assets with unknown or incompatible rights.
+    status: planned_not_implemented
+  - id: PS-FOUNDER-ATTENTION-001
+    statement: Measure material interruptions per engagement, Founder review minutes, false escalations, recycled decisions, stale-approval invalidation, output acceptance/edit level and material recommendation overrides.
+    acceptance: Workload reduction is assessed with Founder attention burden, not only compute/runtime metrics.
+    status: planned_not_implemented
+  - id: PS-DELIVERABLE-VARIANTS-001
+    statement: Produce board deck, working-team deck, decision memo, detailed report, workbook, implementation plan and one-page executive summary from the same approved semantic story and number sources.
+    acceptance: Variants reconcile material claims, recommendations and numbers to one canonical approved state.
+    status: planned_not_implemented
+  - id: PS-REVIEW-001
+    statement: Support draft, review, anchored comment, resolve/reject, reissue and version history with reviewer, affected semantic object, disposition and audit trail.
+    acceptance: Review comments and dispositions remain anchored across versions and cannot silently mutate approved canonical content.
+    status: planned_not_implemented
+
+phase_ownership_summary:
+  IMP-P0: No new product-runtime scope; only foundation must preserve extension points and fail-closed boundaries.
+  IMP-P1: Broader source matrix, native provenance locators, canonical-library accounting and asset-rights provenance foundation.
+  IMP-P2: Mandate workbench shell, Engagement Workspace, QA Console shell, Implementation/Benefits records, house-style profile and review records.
+  IMP-P3: Review/recycle workflow, implementation/benefit lifecycle and governed interaction states.
+  IMP-P4: Mandate/context enhancement and Consulting Craft evaluation harnesses.
+  IMP-P5: Source-locator evidence adapters, mandate research support and evidence traceability.
+  IMP-P6: Existing quantitative reproducibility remains the numeric foundation consumed by new workspaces and QA.
+  IMP-P7: Consulting Craft quality, output variants, golden outputs, style application, rights checks and Office round-trip reconciliation.
+  IMP-P8: No new standalone surface; CRM conversion must populate the same mandate and engagement model.
+  IMP-P9: No new standalone state; origination must feed the same CRM/opportunity/mandate path.
+  IMP-P10: No new standalone method state; Radar feeds the governed source/method registry without auto-promotion.
+  IMP-P11: Mature QA/security release controls and material asset-rights enforcement.
+  IMP-P12: Founder-attention metrics, golden/CQ/round-trip/variant/library completeness acceptance and cross-engagement validation.
+
+pcfa07_reconciliation_contract:
+  every_requirement_must_receive_exact_task_binding: true
+  every_requirement_must_receive_planned_test_id: true
+  every_requirement_must_receive_evidence_type: true
+  every_requirement_must_receive_blocking_phase_gate: true
+  every_requirement_must_receive_dependency_mapping: true
+  status_must_remain_planned_not_implemented_until_codex_evidence: true
+
+boundaries:
+  founder_accountability_preserved: true
+  codex_start_authorized: false
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  phase1_authorized: false
+  merge_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  oauth_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
