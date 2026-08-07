@@ -183,15 +183,21 @@ def main() -> None:
     }
     if registry["counts"] != expected_counts:
         raise ValueError("planned registry count drift")
-    if len(registry["tests"]) != 83 or len({item["id"] for item in registry["tests"]}) != 83:
+    grouped = (
+        registry["phase0_obligation_registrations"]
+        + registry["developer_command_cases"]
+        + registry["workflow_agent_conformance_cases"]
+    )
+    if len(grouped) != 83 or len({item["id"] for item in grouped}) != 83:
         raise ValueError("planned registry identity drift")
-    if any(
-        item["status"] != "registered_planned"
-        or item["executable"]
-        or item["evidence_satisfied"]
-        for item in registry["tests"]
+    defaults = registry["defaults"]
+    if (
+        defaults["registration_status"] != "registered_planned"
+        or defaults["executable"]
+        or defaults["evidence_satisfied"]
+        or defaults["provider_execution_required_preimplementation"]
     ):
-        raise ValueError("planned test falsely executable or satisfied")
+        raise ValueError("planned test defaults widened")
     if overlay["registration_count"] != 16 or len(overlay["registrations"]) != 16:
         raise ValueError("obligation overlay count drift")
     if not overlay["source_map_immutable"]:
