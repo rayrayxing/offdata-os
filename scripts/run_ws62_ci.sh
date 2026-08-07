@@ -84,6 +84,7 @@ if [[ -f releases/pre-codex-final-reconciliation-2026-08-06.json ]]; then
 else
   python scripts/validate_workstream6_permanent_release_record.py
 fi
+python scripts/validate_pcfa01_launch_control.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
