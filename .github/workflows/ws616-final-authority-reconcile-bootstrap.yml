@@ -30,18 +30,31 @@ jobs:
       - name: Install reconciliation dependency
         run: python -m pip install PyYAML jsonschema
 
-      - name: Preserve JSON-compatible authority source serialization
+      - name: Preserve source serialization and advance final-state schema
         run: |
           python - <<'PY'
           from pathlib import Path
-          path = Path('scripts/reconcile_ws616_final_authority.py')
-          text = path.read_text(encoding='utf-8')
+
+          helper = Path('scripts/reconcile_ws616_final_authority.py')
+          text = helper.read_text(encoding='utf-8')
           text = text.replace('import hashlib\n', 'import hashlib\nimport json\n', 1)
           old = '    update_yaml("configs/workstream6-canonical-authority.yaml", mutate_authority)'
           new = '''    authority_path = ROOT / "configs/workstream6-canonical-authority.yaml"\n    authority = yaml.safe_load(authority_path.read_text(encoding="utf-8"))\n    if not isinstance(authority, dict):\n        raise SystemExit("canonical authority source must be a mapping")\n    mutate_authority(authority)\n    authority_path.write_text(json.dumps(authority, ensure_ascii=False, separators=(",", ":")) + "\\n", encoding="utf-8")'''
           if old not in text:
               raise SystemExit('authority serialization patch target missing')
-          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          helper.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          schema = Path('schemas/codex-handoff.schema.json')
+          schema_text = schema.read_text(encoding='utf-8')
+          old_const = '"final_workstream6_gate_complete": {"const": false}'
+          if schema_text.count(old_const) != 2:
+              raise SystemExit('expected two final Workstream 6 false schema constants')
+          schema_text = schema_text.replace(old_const, '"final_workstream6_gate_complete": {"const": true}')
+          old_blockers = '"activation_blockers": {"type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true}'
+          if schema_text.count(old_blockers) != 1:
+              raise SystemExit('activation blocker schema target missing')
+          schema_text = schema_text.replace(old_blockers, '"activation_blockers": {"type": "array", "minItems": 4, "maxItems": 4, "uniqueItems": true}', 1)
+          schema.write_text(schema_text, encoding='utf-8')
           PY
 
       - name: Reconcile current authority and regenerate machine artifacts
