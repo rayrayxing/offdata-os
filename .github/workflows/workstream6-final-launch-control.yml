@@ -16,6 +16,10 @@ env:
   EXPECTED_INTEGRATED_MAIN_SHA: cb2bffe74e62804250ac36168c4206cb8b9d021a
   WS613_HEAD_SHA: 5a7c39f55c9d2e69e1be45894dfb82db53af4fa8
 
+concurrency:
+  group: workstream6-final-launch-control-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate-final-launch-control:
     name: Validate WS6.14 cross-authority consistency gate and complete prior components
