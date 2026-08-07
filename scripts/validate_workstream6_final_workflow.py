@@ -50,7 +50,7 @@ def source_failures(source: dict[str, Any]) -> list[str]:
     require(exception.get("event") == "pull_request", "exception event drift")
     require(exception.get("head_branch") == "governance/ws615-final-workflow", "exception head drift")
     require(exception.get("base_branch") == "main", "exception base drift")
-    require(exception.get("base_sha") == "a4e45baf836c86d7264f08aa6d351a31caa896dd", "exception base SHA drift")
+    require(exception.get("base_sha") == "05e9dfa9f9038a56061d376e1783b78f9607665f", "exception base SHA drift")
     require(exception.get("requires_permanent_release") is False, "activation PR wrongly requires release")
     require(exception.get("requires_release_absent") is True, "activation PR no longer rejects premature release")
     require(exception.get("requires_final_gate_self_test") is True, "activation PR self-test removed")
