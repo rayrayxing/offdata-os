@@ -36,6 +36,7 @@ MERGED_ACTIVATION_CONDITIONS = {
     "pcr10_merged_to_main",
     "workstream4_repository_package_merged_to_main",
     "workstream5_launch_control_merged_to_main",
+    "workstream6_final_reconciliation_merged_to_main",
 }
 
 
@@ -352,9 +353,17 @@ def build_handoff(*, check_dependencies: bool = True) -> dict[str, Any]:
         for item in activation
         if isinstance(item, str)
     }
+    final_release_path = ROOT / "releases" / "pre-codex-final-reconciliation-2026-08-06.json"
+    final_release = _load_json(final_release_path) if final_release_path.is_file() else {}
+    final_workstream6_gate_complete = (
+        final_release.get("work_package_id") == "WS6.16"
+        and final_release.get("final_reconciliation_complete") is True
+        and final_release.get("all_blocking_defects_closed") is True
+        and final_release.get("codex_start_authorized") is False
+    )
     readiness.update(
         {
-            "final_workstream6_gate_complete": False,
+            "final_workstream6_gate_complete": final_workstream6_gate_complete,
             "hosted_controls_verified": False,
             "clean_macos_environment_verified": False,
             "explicit_founder_phase0_approval_received": False,

@@ -9,8 +9,8 @@ target:
   phase_number: 0
   phase_name: Controlled project foundation
   backlog_document: docs/11-BUILD-BACKLOG.md
-  phase_gate: Founder receives a local demonstration and completion report; no substantive
-    product workflow is required.
+  phase_gate: Founder receives a local demonstration and completion report; no substantive product workflow
+    is required.
   start_requires_explicit_founder_approval: true
   start_requires_valid_launch_permit: true
   start_requires_final_workstream6_reconciliation: true
@@ -329,12 +329,10 @@ execution:
   - python scripts/prepare_codex_phase0_launch.py --self-test
   - python scripts/require_workstream6_final_reconciliation.py
   - git diff --exit-code
-  - cd packages/offdata-core && pytest --cov=offdata_core --cov-report=term-missing
-    --cov-fail-under=90
-  - python -m compileall -q packages/offdata-core/src packages/offdata-core/tests
+  - cd packages/offdata-core && pytest --cov=offdata_core --cov-report=term-missing --cov-fail-under=90
+  - python -m compileall -q packages/offdata-core/src packages/offdata-core/tests scripts
+  - ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src packages/offdata-core/tests
     scripts
-  - ruff check --config packages/offdata-core/pyproject.toml packages/offdata-core/src
-    packages/offdata-core/tests scripts
   - cd packages/offdata-core && mypy src
 prohibited_actions:
 - purchase_or_activate_services_or_trials
@@ -406,6 +404,6 @@ boundaries:
   hermes_activation_authorised: false
   northstar_implementation_authorised: false
   launch_permit_issued: false
-  final_workstream6_gate_complete: false
+  final_workstream6_gate_complete: true
   original_methodology_binaries_committed: false
   founder_accountability_preserved: true

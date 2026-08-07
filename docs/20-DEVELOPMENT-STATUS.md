@@ -4,7 +4,7 @@
 
 Date: 2026-08-07
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.16; the permanent Workstream 6 release/final reconciliation is complete; all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 This is the current human-readable status document. Historical phase-completion documents, PR descriptions, issue comments and reports remain evidence for their own packages but do not supersede this snapshot. `repository/canonical-authority-registry.json` makes those current, retained and superseded classifications machine-readable.
 
@@ -51,14 +51,15 @@ Repository-readiness, hosted-control evidence structures, clean-macOS doctor too
 - WS6.13 — operational quality specification, Phase 0 preparation assets and licence-decision placeholder.
 - WS6.14 — cross-authority consistency gate and integrated-current-authority reconciliation.
 - WS6.15 — exact final pre-Codex workflow activation with fail-closed permanent-release boundary.
+- WS6.16 — exact preparation acceptance, permanent post-merge release record and final evidence reconciliation.
 
 WS6.7 closes `WS6-CONSIST-004`. Committed model-provider spend defaults remain zero and no paid provider use is authorized without a separate Founder gate.
 
-WS6.6 closes `WS6-CONSIST-003`. The only current future branch-protection identity is `Validate final pre-Codex canonical handoff and complete release`, reserved in `.github/workflows/workstream6-final-pre-codex.yml` and governed by `contracts/workstream6-required-workflow-identity.json`. The reserved workflow is manual-only and deliberately fails closed; WS6.15 must activate its final implementation, WS6.16 must bind the permanent release, and issue #19 must still evidence hosted enforcement.
+WS6.6 closes `WS6-CONSIST-003`. The only current future branch-protection identity is `Validate final pre-Codex canonical handoff and complete release`, reserved in `.github/workflows/workstream6-final-pre-codex.yml` and governed by `contracts/workstream6-required-workflow-identity.json`. WS6.15 activated the final workflow and WS6.16 bound the permanent release; issue #19 must still evidence hosted enforcement.
 
 WS6.5 closes `WS6-CONSIST-002`. The canonical phase families are now `CF-P1–7`, `PCR-01–10`, `WS-4`, `WS-5`, `WS6.x` and `IMP-P0–12`. Legacy phase wording survives only as an explicitly mapped display alias or stable compatibility identifier. No `IMP-*` phase has started.
 
-WS6.4 closes `WS6-CONSIST-001` and `WS6-CONSIST-007`. The registry classifies every current read-order item, every configured authority/evidence root, all current external issue roles, and exactly one current machine handoff and generated issue body. `WS6-BLOCK-006` remains open until the permanent post-merge final release is produced in WS6.16.
+WS6.4 closes `WS6-CONSIST-001` and `WS6-CONSIST-007`. The registry classifies every current read-order item, every configured authority/evidence root, all current external issue roles, and exactly one current machine handoff and generated issue body. `WS6-BLOCK-006` was closed by the WS6.16 permanent release; `WS6-CONSIST-006` remains the separate manual branch-cleanup gate.
 
 Retained WS6.3 package evidence continues to state: WS6.3 closes `WS6-BLOCK-003` and `WS6-CONSIST-008`; at that package boundary, `WS6.4` is the next permitted chat-first work package. That historical statement does not override the current integration state.
 
@@ -68,14 +69,14 @@ Retained WS6.3 package evidence continues to state: WS6.3 closes `WS6-BLOCK-003`
 - `repository/canonical-authority-registry.json` — current/superseded authority and evidence classification;
 - `contracts/workstream6-phase-namespace.json` — canonical phase-family and compatibility mapping;
 - `contracts/workstream6-required-workflow-identity.json` — unique required check identity and predecessor supersession map;
-- `.github/workflows/workstream6-final-pre-codex.yml` — reserved manual-only, fail-closed final workflow identity;
+- `.github/workflows/workstream6-final-pre-codex.yml` — active fail-closed final workflow identity;
 - `handoff/codex-phase0-handoff.json` — sole current machine execution contract;
 - `contracts/codex-phase0-launch-control.json` — final launch control;
 - `handoff/codex-phase0-issue-final.md` — sole current generated issue #1 body;
 - `contracts/workstream6-current-status.json` — current-status document reconciliation;
-- `releases/pre-codex-final-reconciliation-2026-08-06.json` — required future permanent final release.
+- `releases/pre-codex-final-reconciliation-2026-08-06.json` — current permanent final Workstream 6 release.
 
-The exact required future branch-protection check, reserved but not yet activated or enforced, is:
+The exact active final check identity, with hosted branch-protection enforcement still to be evidenced in issue #19, is:
 
 ```text
 Validate final pre-Codex canonical handoff and complete release
@@ -101,13 +102,13 @@ The latest successful complete hosted evidence remains predecessor evidence and 
 
 ## Work remaining before Codex
 
-WS6.16 is not yet integrated to `main`. The remaining repository-side work is the permanent post-merge release record and final evidence reconciliation; manual launch gates remain separate.
+WS6.0–WS6.16 are integrated and the permanent post-merge release record/final evidence reconciliation is complete. No repository-side WS6 package remains; manual launch gates remain separate.
 
 Codex remains blocked until all repository-side packages are complete and integrated and the following manual gates are independently evidenced:
 
 1. issue #19 hosted controls are verified;
 2. exact-allowlist historical branch cleanup is complete;
-3. WS6.15 activates the canonical final workflow and branch protection requires `Validate final pre-Codex canonical handoff and complete release`;
+3. hosted branch protection is verified to require `Validate final pre-Codex canonical handoff and complete release`;
 4. a clean supported macOS report and Founder environment attestation are complete;
 5. the Founder explicitly approves IMP-P0 tasks P0.1–P0.4 against the exact current `main` SHA;
 6. `scripts/prepare_codex_phase0_launch.py` emits a valid local single-use permit.
@@ -129,4 +130,4 @@ Create `codex/phase-0-foundation` only after a valid permit exists and only from
 
 ## Earliest unintegrated package
 
-`WS6.16` is the earliest WS6 package not integrated to `main`. Any later draft package remains dependent on ordered integration and exact predecessor revalidation.
+None. WS6.0–WS6.16 and the permanent release record are integrated. The remaining launch gates are manual and do not constitute another WS6 repository package.

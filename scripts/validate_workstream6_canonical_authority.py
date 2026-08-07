@@ -152,8 +152,8 @@ def failures(registry: dict[str, Any]) -> list[str]:
     require(ext.get(2, {}).get("state_reason") == "duplicate", "issue #2 reason drift")
 
     status = registry.get("canonical_status_phrase")
-    require(isinstance(status, str) and "WS6.15" in status, "canonical integrated WS6.15 status missing")
-    require(isinstance(status, str) and "WS6.16 permanent release/final reconciliation" in status, "unintegrated successor boundary missing")
+    require(isinstance(status, str) and "WS6.16" in status, "canonical integrated WS6.16 status missing")
+    require(isinstance(status, str) and "permanent Workstream 6 release/final reconciliation is complete" in status, "completed permanent release boundary missing")
     if isinstance(status, str):
         for relative in STATUS_FILES:
             text = (ROOT / relative).read_text(encoding="utf-8")
@@ -240,7 +240,7 @@ def main() -> None:
     print(
         f"WS6.4 canonical authority successor validation passed: scanned_files={len(scanned_paths(registry))}, "
         f"exact=43, rules=11, external=3, {rejected} mutations rejected, "
-        "integrated_through=WS6.15, remaining_blockers=1, codex_start_authorized=false."
+        "integrated_through=WS6.16, manual_remainder=1, codex_start_authorized=false."
     )
 
 

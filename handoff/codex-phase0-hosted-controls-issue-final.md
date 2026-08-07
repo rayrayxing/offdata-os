@@ -1,4 +1,4 @@
-<!-- Canonical issue #19 body for WS6.6. Keep synchronized through the WS6.6 gate. -->
+<!-- Current canonical issue #19 body after WS6.16 permanent release. -->
 # Verify hosted controls and clean environment before Codex
 
 The canonical implementation identifier is `IMP-P0`; stable `phase0` filenames and gate keys remain compatibility identifiers only.
@@ -20,15 +20,15 @@ This issue is the authoritative human evidence record for GitHub-hosted settings
 - [x] WS6.4 canonical authority and evidence registry is integrated.
 - [x] WS6.5 phase namespace normalization is integrated.
 - [x] WS6.6 required workflow identity is included in this package and becomes integrated when this package merges.
-- [ ] All remaining WS6 packages are integrated.
-- [ ] `releases/pre-codex-final-reconciliation-2026-08-06.json` exists and passes `scripts/require_workstream6_final_reconciliation.py`.
+- [x] All WS6.0–WS6.16 packages are integrated.
+- [x] `releases/pre-codex-final-reconciliation-2026-08-06.json` exists and passes `scripts/require_workstream6_final_reconciliation.py`.
 - [x] Issue #1 is open and synchronized to `handoff/codex-phase0-issue-final.md`.
 - [x] Issue #2 remains closed as duplicate.
 - [x] The final required status-check identity is uniquely reserved as `Validate final pre-Codex canonical handoff and complete release`.
-- [ ] WS6.15 has activated `.github/workflows/workstream6-final-pre-codex.yml`; until then the reserved workflow remains manual-only and deliberately fail-closed.
+- [x] WS6.15 activated `.github/workflows/workstream6-final-pre-codex.yml`; hosted enforcement of the exact check remains to be evidenced below.
 - [ ] `codex/phase-0-foundation` and any IMP-P0 pull request remain absent at permit issuance.
 
-The latest successful complete gate for the exact pull-request merge reference is predecessor evidence. Record the final release, run, job, artifact and digest evidence only after the final WS6 package is merged.
+The permanent WS6.16 release and exact preparation evidence are retained in `releases/pre-codex-final-reconciliation-2026-08-06.json` and `reports/workstream6-final-evidence.md`. Manual hosted controls, branch cleanup, clean macOS, exact-SHA Founder approval and the local permit remain pending.
 
 ## Founder-hosted GitHub attestations
 
@@ -127,7 +127,7 @@ Create `codex/phase-0-foundation` only after the valid permit exists and only fr
 
 Close this issue as completed only after every hosted-control, cleanup and clean-environment item is checked with attached evidence. Closing this issue does not itself authorise Codex.
 
-Until the permanent final release, completed issue evidence, exact-SHA approval and permit all exist:
+Until completed issue evidence, exact-SHA approval and permit all exist:
 
 - `github_hosted_controls_in_issue_19_verified=false`
 - `clean_macos_environment_available=false`
