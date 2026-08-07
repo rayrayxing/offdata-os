@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -10,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE_PATH = ROOT / "configs" / "current-operational-state.yaml"
 OUTPUT_PATH = ROOT / "repository" / "current-operational-state.json"
 REPORT_PATH = ROOT / "reports" / "pcfa02-current-operational-state-evidence.md"
+POSTURE_PATH = ROOT / "repository" / "repository-visibility-and-licence-posture.json"
 
 
 def _load_source() -> dict[str, Any]:
@@ -23,12 +25,18 @@ def _canonical(value: object) -> str:
     return json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
+def _digest_file(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def build_records() -> tuple[dict[str, Any], str]:
     source = _load_source()
     if source.get("projection_id") != "CURRENT-OPERATIONAL-STATE":
         raise ValueError("current operational-state projection identity drifted")
     if source.get("introduced_by") != "PCFA-02":
         raise ValueError("current operational-state introduction package drifted")
+    if not POSTURE_PATH.is_file():
+        raise ValueError("current repository visibility/licence posture record is missing")
 
     state = dict(source)
     snapshots = []
@@ -44,8 +52,10 @@ def build_records() -> tuple[dict[str, Any], str]:
         )
     state["historical_package_snapshots"] = snapshots
     state["generated_from"] = str(SOURCE_PATH.relative_to(ROOT))
+    authority = dict(state["current_authority"])
+    authority["repository_posture_sha256"] = _digest_file(POSTURE_PATH)
+    state["current_authority"] = authority
 
-    authority = state["current_authority"]
     manual = state["manual_launch_gates"]
     boundaries = state["boundaries"]
     report = "\n".join(
@@ -61,10 +71,12 @@ def build_records() -> tuple[dict[str, Any], str]:
             f"- Manual launch gates committed false: `{sum(value is False for value in manual.values())}`",
             f"- Authorization boundaries: `{len(boundaries)}`",
             "- Sole live machine readiness projection: `repository/current-operational-state.json`",
+            "- Current repository posture: `repository/repository-visibility-and-licence-posture.json`",
+            f"- Repository posture SHA-256: `{authority['repository_posture_sha256']}`",
             "- Current machine handoff: `handoff/codex-phase0-current-handoff.json`",
             "- Current Issue #1 body: `handoff/codex-phase0-current-issue.md`",
             "- Current Issue #19 body: `handoff/codex-phase0-current-hosted-controls-issue.md`",
-            "- WS6.2/WS6.3/WS6.4 embedded readiness remains retained package-time evidence only.",
+            "- WS6.2/WS6.3/WS6.4/WS6.13 embedded readiness and licence state remain retained package-time evidence only.",
             "- Permanent WS6.16 release remains immutable evidence, not the current launch SHA.",
             "- `codex_start_authorized=false`; merge, IMP-P1, runtime and external actions remain denied.",
             "",
@@ -80,7 +92,7 @@ def main() -> None:
     print(
         "Built PCFA-02 current operational state: "
         f"historical_snapshots={len(state['historical_package_snapshots'])}, "
-        "manual_gates=false, codex_start_authorized=false."
+        "repository_posture_bound=true, manual_gates=false, codex_start_authorized=false."
     )
 
 
