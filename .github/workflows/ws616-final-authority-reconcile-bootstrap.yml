@@ -103,10 +103,11 @@ jobs:
           python scripts/validate_pcr04_codex_handoff.py
           python scripts/require_workstream6_final_reconciliation.py
 
-      - name: Remove bootstrap helper and commit deterministic outputs
+      - name: Commit validated non-workflow reconciliation
         run: |
           rm scripts/reconcile_ws616_final_authority.py
-          rm .github/workflows/ws616-final-authority-reconcile-bootstrap.yml
+          git checkout HEAD -- .github/workflows/workstream6-final-launch-control.yml
+          git checkout HEAD -- .github/workflows/ws616-final-authority-reconcile-bootstrap.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
