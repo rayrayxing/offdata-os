@@ -7,7 +7,7 @@
 - Product areas: `14`
 - Requirements: `29`
 - Consulting Craft requirements: `15`
-- Owning IMP phases represented: `12`
+- Owning IMP phases represented: `9`
 - Status for every requirement: `planned_not_implemented`
 - Product runtime implemented: `false`
 - PCFA-05 MVCL contract remains required: `true`
