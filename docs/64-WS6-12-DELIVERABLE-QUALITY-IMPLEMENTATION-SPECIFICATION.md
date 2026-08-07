@@ -20,13 +20,6 @@ The semantic model remains the source of truth; renderers may not change materia
 - Satisfied implementation evidence: `0`.
 - `codex_start_authorized=false`.
 
-## Pre-implementation renderer assets
-
-WS6.12 also closes `WS6-CODEXPREP-006` by preparing deterministic renderer-interface and golden-output planning assets without producing a physical renderer output.
-- `contracts/renderer-interface-contracts.json` defines six planned, provider-neutral renderer interfaces bound to the semantic model and the 30 renderer acceptance cases.
-- `fixtures/golden-output-manifest.json` registers six planned synthetic golden entries for `FIXTURE-DAI-001` / `DSM-DAI-001`.
-- Every golden entry remains `physical_artifact_present=false`, `visual_baseline_captured=false` and `approved_golden=false` until future implementation executes independent Office/parser and visual tests.
-
 ## Canonical path
 
 The defect register suggested `docs/55-DELIVERABLE-QUALITY-IMPLEMENTATION-SPEC.md`, but `docs/55-WS6-3-CURRENT-STATUS-DOCUMENT-REPAIR.md` is immutable retained WS6.3 evidence.
@@ -363,13 +356,13 @@ On failure, retain the original unmodified artifact and diagnostics; a repaired 
 
 ## Completion boundary
 
-WS6.12 closes `WS6-QUALITY-004` and `WS6-CODEXPREP-006`. `WS6-QUALITY-005`, `WS6-CODEXPREP-001` through `WS6-CODEXPREP-005`, and `WS6-BLOCK-006` remain open.
+WS6.12 closes only `WS6-QUALITY-004`. `WS6-QUALITY-005`, `WS6-CODEXPREP-002` and `WS6-BLOCK-006` remain open.
 No renderer, visual-QA implementation or external deliverable release is claimed.
 
 The next permitted chat-first work package is `WS6.13` after the governed predecessor sequence and exact hosted acceptance requirements are satisfied.
 
 ## Rollback
 
-Close the WS6.12 pull request and delete only governance/ws612-deliverable-quality-implementation-specification; no physical renderer output or golden baseline exists.
+Close the WS6.12 pull request and delete only governance/ws612-deliverable-quality-implementation-specification.
 
 Revert the WS6.12 specification package as one unit; preserve canonical semantic requirements and keep every authorization boundary false.
