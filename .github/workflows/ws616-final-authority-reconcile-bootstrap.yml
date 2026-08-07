@@ -55,6 +55,41 @@ jobs:
               raise SystemExit('activation blocker schema target missing')
           schema_text = schema_text.replace(old_blockers, '"activation_blockers": {"type": "array", "minItems": 4, "maxItems": 4, "uniqueItems": true}', 1)
           schema.write_text(schema_text, encoding='utf-8')
+
+          validator = Path('scripts/validate_ws61_codex_handoff.py')
+          validator_text = validator.read_text(encoding='utf-8')
+          old_mutation = 'add(lambda item: item["readiness_snapshot"].__setitem__("final_workstream6_gate_complete", True))'
+          if validator_text.count(old_mutation) != 1:
+              raise SystemExit('final Workstream 6 mutation target missing')
+          validator_text = validator_text.replace(
+              old_mutation,
+              'add(lambda item: item["readiness_snapshot"].__setitem__("final_workstream6_gate_complete", False))',
+              1,
+          )
+          validator_text = validator_text.replace(
+              'mutations rejected, final_workstream6_gate_complete=false, ',
+              'mutations rejected, final_workstream6_gate_complete=true, ',
+              1,
+          )
+          validator.write_text(validator_text, encoding='utf-8')
+
+          builder = Path('scripts/build_ws61_codex_handoff.py')
+          builder_text = builder.read_text(encoding='utf-8')
+          builder_text = builder_text.replace(
+              'final_workstream6_gate_complete=false, launch_permit_issued=false, codex_start_authorized=false.',
+              'final_workstream6_gate_complete=true, launch_permit_issued=false, codex_start_authorized=false.',
+              1,
+          )
+          builder.write_text(builder_text, encoding='utf-8')
+
+          authority_validator = Path('scripts/validate_workstream6_canonical_authority.py')
+          authority_validator_text = authority_validator.read_text(encoding='utf-8')
+          authority_validator_text = authority_validator_text.replace(
+              'integrated_through=WS6.15, remaining_blockers=1, codex_start_authorized=false.',
+              'integrated_through=WS6.16, manual_remainder=1, codex_start_authorized=false.',
+              1,
+          )
+          authority_validator.write_text(authority_validator_text, encoding='utf-8')
           PY
 
       - name: Reconcile current authority and regenerate machine artifacts
