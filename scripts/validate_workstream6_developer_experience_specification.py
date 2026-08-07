@@ -235,6 +235,8 @@ def _contract_failures(value: dict[str, Any]) -> list[str]:
     require(value.get("acceptance_case_count") == 60, "case count")
     require(value.get("global_flag_count") == 9, "flag count")
     require(value.get("exit_code_count") == 11, "exit count")
+    require(tuple(value.get("global_flags", [])) == EXPECTED_FLAGS, "contract flags")
+    require(tuple(value.get("exit_codes", [])) == EXPECTED_EXITS, "contract exits")
     commands = value.get("commands", [])
     if not isinstance(commands, list):
         commands = []
@@ -252,15 +254,13 @@ def _contract_failures(value: dict[str, Any]) -> list[str]:
             command.get("implementation_status") == "specified_not_implemented",
             f"contract status: {name}",
         )
-        cases = command.get("acceptance_cases", [])
-        require(isinstance(cases, list) and len(cases) == 4, f"contract cases: {name}")
+        require(command.get("state_recheck_required") is True, f"contract recheck: {name}")
+        require(command.get("retry_attempts") >= 1, f"contract retry: {name}")
+        case_exits = command.get("case_exits", {})
         require(
-            tuple(item.get("acceptance_class") for item in cases if isinstance(item, dict))
-            == ACCEPTANCE_CLASSES,
-            f"contract case classes: {name}",
+            isinstance(case_exits, dict) and set(case_exits) == set(ACCEPTANCE_CLASSES),
+            f"contract case exits: {name}",
         )
-        for case in cases:
-            require(case.get("assertion_count") >= 3, f"assertion count: {name}")
     tests = value.get("test_registration", {})
     require(tests.get("planned_case_count") == 60, "planned tests")
     require(tests.get("registered_case_count") == 0, "registered tests")
