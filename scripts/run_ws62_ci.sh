@@ -24,8 +24,8 @@ python scripts/build_workstream5_launch_control.py
 python scripts/build_workstream6_final_reconciliation.py
 python scripts/build_workstream6_final_launch_control.py
 python scripts/build_workstream6_current_status.py
-python scripts/build_workstream6_phase_namespace.py
-python scripts/build_workstream6_required_workflow_identity.py
+# WS6.5 and WS6.6 surface fingerprints are immutable package-time snapshots.
+# WS6.14 revalidates their current semantic namespace/workflow decisions against live authority.
 python scripts/build_workstream6_canonical_authority.py
 python scripts/build_workstream6_configuration_contradictions.py
 python scripts/build_workstream6_issue_backlog_normalization.py
@@ -36,6 +36,7 @@ python scripts/build_workstream6_deliverable_quality_implementation_specificatio
 python scripts/build_workstream6_renderer_preimplementation_assets.py
 python scripts/build_workstream6_operational_quality_specification.py
 python scripts/build_workstream6_phase0_licence_decision_placeholder.py
+python scripts/build_workstream6_cross_authority_consistency_gate.py
 
 git diff --exit-code
 
@@ -62,8 +63,7 @@ python scripts/validate_workstream6_final_reconciliation.py
 python scripts/validate_workstream6_handoff_reconciliation.py
 python scripts/validate_workstream6_final_launch_control.py
 python scripts/validate_workstream6_current_status.py
-python scripts/validate_workstream6_phase_namespace.py
-python scripts/validate_workstream6_required_workflow_identity.py
+# Current WS6.5 namespace and WS6.6 workflow identity semantics are checked by WS6.14.
 python scripts/validate_workstream6_canonical_authority.py
 python scripts/validate_workstream6_configuration_contradictions.py
 python scripts/validate_workstream6_issue_backlog_normalization.py
@@ -74,6 +74,7 @@ python scripts/validate_workstream6_deliverable_quality_implementation_specifica
 python scripts/validate_workstream6_renderer_preimplementation_assets.py
 python scripts/validate_workstream6_operational_quality_specification.py
 python scripts/validate_workstream6_phase0_licence_decision_placeholder.py
+python scripts/validate_workstream6_cross_authority_consistency_gate.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
