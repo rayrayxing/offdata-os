@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   validate-final-launch-control:
-    name: Validate WS6.11 Founder experience specification and complete prior components
+    name: Validate WS6.12 deliverable quality implementation specification and complete prior components
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -40,16 +40,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.11
+      - name: Rebuild, validate and test through WS6.12
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.10 ancestry and live fail-closed state
+      - name: Verify exact WS6.11 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          WS610_HEAD_SHA: ebd750f6e985d7a864d072a172d4d9343ce26a36
+          WS611_HEAD_SHA: 9f138fd3f35fb9826c6da0ab696e83775312508e
         run: |
           mkdir -p ci-evidence
-          git merge-base --is-ancestor "$WS610_HEAD_SHA" "$GITHUB_SHA"
+          git merge-base --is-ancestor "$WS611_HEAD_SHA" "$GITHUB_SHA"
           gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
@@ -75,6 +75,7 @@ jobs:
           obligation_map = json.loads(Path("requirements/implementation-obligation-map.json").read_text())
           developer_experience = json.loads(Path("contracts/developer-experience-specification.json").read_text())
           founder_experience = json.loads(Path("contracts/founder-experience-specification.json").read_text())
+          deliverable_quality = json.loads(Path("contracts/deliverable-quality-implementation-specification.json").read_text())
 
           assert issue1["state"] == "open"
           assert hashlib.sha256(issue1.get("body", "").encode()).hexdigest() == hashlib.sha256(expected_issue1).hexdigest()
@@ -117,6 +118,25 @@ jobs:
           assert founder_experience["boundaries"]["codex_start_authorized"] is False
           assert founder_experience["boundaries"]["external_actions_authorized"] is False
 
+          assert deliverable_quality["predecessor"]["head_sha"] == "9f138fd3f35fb9826c6da0ab696e83775312508e"
+          assert deliverable_quality["predecessor"]["integrated_to_main"] is False
+          assert deliverable_quality["renderer_count"] == 6
+          assert deliverable_quality["mandatory_dimension_count"] == 5
+          assert deliverable_quality["canonical_pcr10_requirement_count"] == 26
+          assert deliverable_quality["surface_requirement_binding_count"] == 37
+          assert deliverable_quality["renderer_acceptance_case_count"] == 30
+          assert deliverable_quality["cross_format_acceptance_case_count"] == 8
+          assert deliverable_quality["acceptance_case_count"] == 38
+          assert deliverable_quality["test_registration"]["registered_case_count"] == 0
+          assert deliverable_quality["test_registration"]["executable_test_count"] == 0
+          assert deliverable_quality["implementation_evidence"]["satisfied_renderer_count"] == 0
+          assert deliverable_quality["implementation_evidence"]["satisfied_cross_format_criterion_count"] == 0
+          assert deliverable_quality["remaining_quality_defects"] == ["WS6-QUALITY-005"]
+          assert deliverable_quality["remaining_blocking_defects"] == ["WS6-BLOCK-006"]
+          assert deliverable_quality["boundaries"]["codex_start_authorized"] is False
+          assert deliverable_quality["boundaries"]["external_actions_authorized"] is False
+          assert deliverable_quality["boundaries"]["production_deployment_authorized"] is False
+
           open_issue_numbers = {item["number"] for item in open_items if "pull_request" not in item}
           assert open_issue_numbers == {1, 19}
           names = {item["name"] for item in branches}
@@ -124,7 +144,7 @@ jobs:
           assert "codex/phase-0-foundation" not in names
           PY
 
-      - name: Assemble retained WS6.11 evidence
+      - name: Assemble retained WS6.12 evidence
         run: |
           cp /tmp/ws62-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
@@ -149,7 +169,7 @@ jobs:
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: offdata-workstream6-founder-experience-specification-${{ github.sha }}
+          name: offdata-workstream6-deliverable-quality-implementation-specification-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
@@ -164,4 +184,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.11 Founder-experience-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All 8 PCR-10 Founder criteria are implementation-ready across six governed surfaces and 13 explicit states; 32 planned cases remain unregistered, no implementation evidence is claimed, recommendation never grants authorization, stale/version drift invalidates authority, and external sending remains disabled without exact scoped Founder approval. WS6-CODEXPREP-002 and WS6-BLOCK-006 remain open. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Every tracked repository file was checksum-staged and verified before artifact upload. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.12 deliverable-quality-implementation-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All six PPTX/DOCX/XLSX/PDF/SVG/HTML renderer contracts cover package integrity, editability/structure, accessibility, semantic reconciliation and visual regression; all 26 PCR-10 renderer requirements have 37 exact surface bindings, and eight OQ obligations remain mapped to their WS6.9 owners. All 38 planned cases remain unregistered, no renderer implementation or implementation evidence is claimed, automatic repair and semantic drift remain fail-closed, WS6-QUALITY-005 and WS6-BLOCK-006 remain open, and Codex remains unauthorized. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Every tracked repository file was checksum-staged and verified before artifact upload. The reserved final workflow remains inactive and no permit was emitted."
