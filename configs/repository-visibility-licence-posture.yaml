@@ -49,7 +49,7 @@ operational_enforcement:
   hosted_controls_attestation_requires_private_visibility: true
   launch_verifier_must_query_live_repository_visibility: true
   launch_permit_requires_private_visibility: true
-  launch_permit_must_bind_posture_sha256: true
+  launch_permit_must_transitively_bind_posture_sha256_via_current_state: true
   public_distribution_remains_denied: true
 
 repository_side_completion:
