@@ -28,6 +28,7 @@ python scripts/build_workstream6_phase_namespace.py
 python scripts/build_workstream6_required_workflow_identity.py
 python scripts/build_workstream6_canonical_authority.py
 python scripts/build_workstream6_configuration_contradictions.py
+python scripts/build_workstream6_issue_backlog_normalization.py
 
 git diff --exit-code
 
@@ -58,6 +59,7 @@ python scripts/validate_workstream6_phase_namespace.py
 python scripts/validate_workstream6_required_workflow_identity.py
 python scripts/validate_workstream6_canonical_authority.py
 python scripts/validate_workstream6_configuration_contradictions.py
+python scripts/validate_workstream6_issue_backlog_normalization.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 

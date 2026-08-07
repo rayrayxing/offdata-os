@@ -1,0 +1,251 @@
+{
+  "backlog_file": "docs/11-BUILD-BACKLOG.md",
+  "codex_start_authorized": false,
+  "normalized_live_issues": [
+    {
+      "expected_state": "closed",
+      "expected_state_reason": "not_planned",
+      "issue_number": 3,
+      "path": "handoff/future-implementation-issue-pack/live-issue-3-superseded.md",
+      "title": "[Superseded][Blocked] Synthetic SME AI-audit source pack"
+    },
+    {
+      "expected_state": "closed",
+      "expected_state_reason": "not_planned",
+      "issue_number": 4,
+      "path": "handoff/future-implementation-issue-pack/live-issue-4-superseded.md",
+      "title": "[Superseded][Blocked] Engagement aggregate and API service"
+    },
+    {
+      "expected_state": "closed",
+      "expected_state_reason": "not_planned",
+      "issue_number": 5,
+      "path": "handoff/future-implementation-issue-pack/live-issue-5-superseded.md",
+      "title": "[Superseded][Blocked] Knowledge ingestion and alias resolution"
+    }
+  ],
+  "only_actionable_implementation_issue": 1,
+  "only_manual_prelaunch_gate_issue": 19,
+  "pack_id": "WS6.8-FUTURE-IMPLEMENTATION-ISSUE-PACK",
+  "phase_drafts": [
+    {
+      "anchor": "imp-p1",
+      "depends_on": [
+        "IMP-P0"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P1",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P1.1",
+        "P1.2",
+        "P1.3",
+        "P1.4",
+        "P1.5"
+      ],
+      "title": "Knowledge ingestion and method registry"
+    },
+    {
+      "anchor": "imp-p2",
+      "depends_on": [
+        "IMP-P1"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P2",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P2.1",
+        "P2.2",
+        "P2.3",
+        "P2.4"
+      ],
+      "title": "Engagement system of record"
+    },
+    {
+      "anchor": "imp-p3",
+      "depends_on": [
+        "IMP-P2"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P3",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P3.1",
+        "P3.2",
+        "P3.3",
+        "P3.4"
+      ],
+      "title": "Lifecycle and durable workflow"
+    },
+    {
+      "anchor": "imp-p4",
+      "depends_on": [
+        "IMP-P3"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P4",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P4.1",
+        "P4.2",
+        "P4.3",
+        "P4.4"
+      ],
+      "title": "Initial specialist agents"
+    },
+    {
+      "anchor": "imp-p5",
+      "depends_on": [
+        "IMP-P4"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P5",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P5.1",
+        "P5.2",
+        "P5.3",
+        "P5.4"
+      ],
+      "title": "Research and evidence layer"
+    },
+    {
+      "anchor": "imp-p6",
+      "depends_on": [
+        "IMP-P5"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P6",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P6.1",
+        "P6.2",
+        "P6.3",
+        "P6.4"
+      ],
+      "title": "Quantitative and modelling services"
+    },
+    {
+      "anchor": "imp-p7",
+      "depends_on": [
+        "IMP-P6"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P7",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P7.1",
+        "P7.2",
+        "P7.3",
+        "P7.4",
+        "P7.5"
+      ],
+      "title": "Storyline and deliverable studio"
+    },
+    {
+      "anchor": "imp-p8",
+      "depends_on": [
+        "IMP-P7"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P8",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P8.1",
+        "P8.2",
+        "P8.3",
+        "P8.4"
+      ],
+      "title": "HubSpot Free integration"
+    },
+    {
+      "anchor": "imp-p9",
+      "depends_on": [
+        "IMP-P8"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P9",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P9.1",
+        "P9.2",
+        "P9.3",
+        "P9.4"
+      ],
+      "title": "Controlled origination engine"
+    },
+    {
+      "anchor": "imp-p10",
+      "depends_on": [
+        "IMP-P9"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P10",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P10.1",
+        "P10.2",
+        "P10.3",
+        "P10.4"
+      ],
+      "title": "Methodology Radar"
+    },
+    {
+      "anchor": "imp-p11",
+      "depends_on": [
+        "IMP-P10"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P11",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P11.1",
+        "P11.2",
+        "P11.3"
+      ],
+      "title": "Security and production readiness"
+    },
+    {
+      "anchor": "imp-p12",
+      "depends_on": [
+        "IMP-P11"
+      ],
+      "draft_only": true,
+      "implementation_authorized": false,
+      "live_issue_created": false,
+      "phase_id": "IMP-P12",
+      "source_path": "handoff/future-implementation-issue-pack/future-implementation-issues.md",
+      "task_ids": [
+        "P12.1",
+        "P12.2",
+        "P12.3",
+        "P12.4"
+      ],
+      "title": "Synthetic engagement suite and launch"
+    }
+  ],
+  "schema_version": 1,
+  "status": "blocked_non_authorizing_drafts"
+}
