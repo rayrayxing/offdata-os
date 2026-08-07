@@ -1,0 +1,28 @@
+name: WS6.14 lint repair
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.event.pull_request.number == 60 && github.event.pull_request.head.ref == 'governance/ws614-cross-authority-consistency-gate'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: governance/ws614-cross-authority-consistency-gate
+          persist-credentials: true
+      - name: Remove unused Path import and push
+        run: |
+          sed -i '/^from pathlib import Path$/d' scripts/validate_workstream6_cross_authority_consistency_gate.py
+          python -m pip install --quiet ruff
+          ruff check --config packages/offdata-core/pyproject.toml scripts/validate_workstream6_cross-authority-consistency-gate.py 2>/dev/null || ruff check --config packages/offdata-core/pyproject.toml scripts/validate_workstream6_cross_authority_consistency_gate.py
+          git config user.name 'offdata WS6 integration repair'
+          git config user.email 'actions@users.noreply.github.com'
+          git add scripts/validate_workstream6_cross_authority_consistency_gate.py
+          git commit -m 'Remove unused WS6.14 validator import'
+          git push origin HEAD:governance/ws614-cross-authority-consistency-gate
