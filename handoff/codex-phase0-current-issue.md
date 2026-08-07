@@ -1,4 +1,4 @@
-<!-- Current operational Issue #1 body introduced by PCFA-02 and extended through PCFA-05. Synchronize only after integration. -->
+<!-- Current operational Issue #1 body introduced by PCFA-02 and extended through PCFA-06. Synchronize only after integration. -->
 # Codex Phase 0 — Validate and build the controlled local foundation
 
 > [!CAUTION]
@@ -13,6 +13,7 @@ For current launch decisions, use:
 - `repository/repository-visibility-and-licence-posture.json` — current repository visibility and licence posture;
 - `repository/pcfa04-product-scope-implementation-addendum.json` — current product-scope implementation obligations, all `planned_not_implemented`;
 - `repository/pcfa05-minimum-valuable-consulting-loop.json` — current Minimum Valuable Consulting Loop contract, all stages `planned_not_implemented`;
+- `repository/pcfa06-hermes-bounded-adoption-refresh.json` — current Hermes bounded-adoption refresh, all capability assessments `planned_not_implemented`;
 - `handoff/codex-phase0-current-handoff.json` — current machine execution handoff;
 - `contracts/pcfa01-launch-control-repair.json` — corrected release/launch SHA semantics;
 - `handoff/codex-phase0-current-issue.md` — current Issue #1 body;
@@ -22,7 +23,7 @@ For current launch decisions, use:
 - `scripts/prepare_codex_phase0_launch.py` — fail-closed permit entrypoint;
 - `scripts/require_workstream6_final_reconciliation.py` — permanent release gate.
 
-The WS6.2 launch-control contract, WS6.2/WS6.3 status records, WS6.4 authority registry, WS6.13 licence placeholder, pre-PCFA machine handoff and earlier issue bodies remain retained package-time evidence. Their embedded readiness, next-package, blocker and licence-decision fields are not current operational state.
+The WS6.2 launch-control contract, WS6.2/WS6.3 status records, WS6.4 authority registry, WS6.13 licence placeholder, PCR-06 Hermes compatibility pack, pre-PCFA machine handoff and earlier issue bodies remain retained package-time evidence. Their embedded readiness, next-package, blocker and licence-decision fields are not current operational state.
 
 ## Current repository state
 
@@ -34,6 +35,7 @@ The WS6.2 launch-control contract, WS6.2/WS6.3 status records, WS6.4 authority r
 - [x] PCFA-03 resolves the repository posture to private/internal development with no public licence grant and no public distribution authorization.
 - [x] PCFA-04 defines the missing product-scope implementation obligations and assigns them to existing IMP phases without widening IMP-P0.
 - [x] PCFA-05 defines the Minimum Valuable Consulting Loop, Founder interrupts, restart/recycle/idempotency invariants and negative-path programme without implementing runtime.
+- [x] PCFA-06 refreshes Hermes bounded-adoption policy against the current public documentation without changing the v0.18.2 stable pin or activating Hermes.
 - [ ] Live GitHub repository visibility must be `private` and independently verified; a public repository is a launch blocker.
 - [ ] GitHub hosted controls are verified in Issue #19.
 - [ ] Historical branch cleanup is complete with final inventory containing only `main` before launch.
@@ -73,6 +75,16 @@ The governing sequence is `opportunity → mandate → engagement → decision f
 
 The contract requires one engagement ID and canonical state, material claim traceability, reproducible numbers, retained contrary evidence, method justification, idempotency, exact-version Founder approval, restart-safe checkpoints, independent QA, cross-format reconciliation, recommendation-to-benefit traceability, audit history, Founder recycle/pause/cancel/stop control and no sole self-approval. PCFA-07 must register exact task/test/evidence/dependency/phase-gate bindings; PCFA-08 final cross-authority acceptance remains required.
 
+## PCFA-06 Hermes bounded-adoption refresh
+
+PCFA-06 is a specification and policy refresh, not Hermes installation or activation. The stable upstream pin remains `v0.18.2` / `v2026.7.7.2` / `9de9c25`; current public documentation is treated as a capability-policy snapshot and is **not** asserted to be identical to the pinned release. Every Hermes capability assessment remains `planned_not_implemented`.
+
+The refresh explicitly keeps raw `/goal` from becoming workflow authority: any future use must map its completion contract into a governed `WorkerPackage`, with `WorkerPackage.acceptance` and offdata test evidence as completion authority, bounded turn budgets, offdata-owned durable checkpoints and Founder interrupts. Raw top-level background delegation, nested delegation and parallel fan-out remain denied; initial adapter concurrency remains one.
+
+Hermes bundled, hub and learned skills remain candidate-only. `/learn` is suggestion-only, `/journey` is read-only observability, curator is disabled, and no automatic skill or methodology promotion is allowed. Mixture-of-Agents is candidate-only behind the offdata model router, requires explicit cost/provider/evaluation controls, and cannot by itself satisfy independent QA. Hermes memory remains noncanonical; MCP, tool gateway, messaging, cron/background sessions and optional Codex app-server runtime remain deferred or denied pending later controls.
+
+PCFA-07 must map every PCFA-06 capability to exact requirement IDs, IMP tasks, planned tests, evidence, dependencies and phase gates. PCFA-08 final cross-authority acceptance remains required.
+
 ## Release and launch SHA semantics
 
 The permanent WS6.16 record does **not** define the future launch SHA.
@@ -86,7 +98,8 @@ The permanent WS6.16 record does **not** define the future launch SHA.
 5. hosted-controls, clean-macOS and Founder evidence must bind the exact permanent-release SHA-256 and `repository/current-operational-state.json` SHA-256 through the `current_operational_state_sha256` field;
 6. the current operational-state digest transitively binds the exact PCFA-03 repository-posture SHA-256;
 7. the current operational-state authority directly binds the exact PCFA-04 product-scope addendum SHA-256;
-8. the current operational-state authority directly binds the exact PCFA-05 MVCL SHA-256, and the launch entrypoint rejects missing, reordered, falsely implemented or permissive MVCL state.
+8. the current operational-state authority directly binds the exact PCFA-05 MVCL SHA-256, and the launch entrypoint rejects missing, reordered, falsely implemented or permissive MVCL state;
+9. the current operational-state authority directly binds the exact PCFA-06 Hermes bounded-adoption refresh SHA-256, and the launch entrypoint rejects activation, raw `/goal` authority, background delegation, automatic learning/promotion or MoA-router drift.
 
 Any drift fails closed.
 
@@ -97,28 +110,30 @@ Any drift fails closed.
 3. `repository/repository-visibility-and-licence-posture.json`
 4. `repository/pcfa04-product-scope-implementation-addendum.json`
 5. `repository/pcfa05-minimum-valuable-consulting-loop.json`
-6. `docs/CURRENT-OPERATIONAL-STATE.md`
-7. `docs/71-PCFA-04-PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM.md`
-8. `docs/72-PCFA-05-MINIMUM-VALUABLE-CONSULTING-LOOP.md`
-9. `handoff/codex-phase0-current-handoff.json`
-10. `contracts/pcfa01-launch-control-repair.json`
-11. `handoff/codex-phase0-current-issue.md`
-12. `handoff/codex-phase0-current-hosted-controls-issue.md`
-13. `releases/pre-codex-final-reconciliation-2026-08-06.json`
-14. `docs/01-PRODUCT-VISION.md`
-15. `docs/02-FUNCTIONAL-REQUIREMENTS.md`
-16. `docs/03-ARCHITECTURE.md`
-17. `docs/10-TESTING-STRATEGY.md`
-18. `docs/11-BUILD-BACKLOG.md`
-19. `docs/14-CODEX-KICKOFF.md`
-20. `docs/19-PHASE-0-VALIDATION-ADDENDUM.md`
-21. `handoff/codex-phase0-current-hosted-controls-attestation.template.json`
-22. `handoff/codex-phase0-current-clean-macos-attestation.template.json`
-23. `handoff/codex-phase0-current-founder-authorization.template.json`
-24. `handoff/codex-phase0-current-launch-ack.template.json`
-25. `schemas/codex-phase0-launch-permit.schema.json`
-26. `scripts/prepare_codex_phase0_launch.py`
-27. `scripts/require_workstream6_final_reconciliation.py`
+6. `repository/pcfa06-hermes-bounded-adoption-refresh.json`
+7. `docs/CURRENT-OPERATIONAL-STATE.md`
+8. `docs/71-PCFA-04-PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM.md`
+9. `docs/72-PCFA-05-MINIMUM-VALUABLE-CONSULTING-LOOP.md`
+10. `docs/73-PCFA-06-HERMES-BOUNDED-ADOPTION-REFRESH.md`
+11. `handoff/codex-phase0-current-handoff.json`
+12. `contracts/pcfa01-launch-control-repair.json`
+13. `handoff/codex-phase0-current-issue.md`
+14. `handoff/codex-phase0-current-hosted-controls-issue.md`
+15. `releases/pre-codex-final-reconciliation-2026-08-06.json`
+16. `docs/01-PRODUCT-VISION.md`
+17. `docs/02-FUNCTIONAL-REQUIREMENTS.md`
+18. `docs/03-ARCHITECTURE.md`
+19. `docs/10-TESTING-STRATEGY.md`
+20. `docs/11-BUILD-BACKLOG.md`
+21. `docs/14-CODEX-KICKOFF.md`
+22. `docs/19-PHASE-0-VALIDATION-ADDENDUM.md`
+23. `handoff/codex-phase0-current-hosted-controls-attestation.template.json`
+24. `handoff/codex-phase0-current-clean-macos-attestation.template.json`
+25. `handoff/codex-phase0-current-founder-authorization.template.json`
+26. `handoff/codex-phase0-current-launch-ack.template.json`
+27. `schemas/codex-phase0-launch-permit.schema.json`
+28. `scripts/prepare_codex_phase0_launch.py`
+29. `scripts/require_workstream6_final_reconciliation.py`
 
 Historical PCR/WS package records remain available for audit and deterministic regression but do not override the current projection above.
 

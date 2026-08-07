@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://offdata.local/schemas/pcfa06-hermes-bounded-adoption-refresh.schema.json",
+  "title": "PCFA-06 Hermes bounded-adoption refresh",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "work_package_id",
+    "contract_id",
+    "title",
+    "repository",
+    "status",
+    "owner",
+    "assessment_date",
+    "upstream_baseline",
+    "scope_boundary",
+    "operating_principles",
+    "upstream_evidence",
+    "capability_assessments",
+    "worker_goal_mapping",
+    "skills_learning_policy",
+    "model_orchestration_policy",
+    "delegation_policy",
+    "pcfa07_reconciliation_contract",
+    "boundaries",
+    "generated_from"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "work_package_id": {"const": "PCFA-06"},
+    "contract_id": {"const": "HERMES-BOUNDED-ADOPTION-REFRESH"},
+    "title": {"type": "string", "minLength": 1},
+    "repository": {"const": "rayrayxing/offdata-os"},
+    "status": {"const": "repository_specification_complete_not_activated"},
+    "owner": {"const": "Founder"},
+    "assessment_date": {"const": "2026-08-08"},
+    "generated_from": {"const": "configs/pcfa06-hermes-bounded-adoption-refresh.yaml"},
+    "upstream_baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "documentation", "stable_release", "stable_tag", "stable_commit", "stable_release_date", "predecessor_package", "predecessor_contract", "version_change_from_pcr06", "update_policy", "documentation_snapshot_is_release_pin", "documentation_snapshot_note"],
+      "properties": {
+        "repository": {"const": "NousResearch/hermes-agent"},
+        "documentation": {"const": "https://hermes-agent.nousresearch.com/docs"},
+        "stable_release": {"const": "v0.18.2"},
+        "stable_tag": {"const": "v2026.7.7.2"},
+        "stable_commit": {"const": "9de9c25"},
+        "stable_release_date": {"const": "2026-07-07"},
+        "predecessor_package": {"const": "PCR-06"},
+        "predecessor_contract": {"const": "contracts/hermes-compatibility-pack.json"},
+        "version_change_from_pcr06": {"const": false},
+        "update_policy": {"const": "pinned_review_required"},
+        "documentation_snapshot_is_release_pin": {"const": false},
+        "documentation_snapshot_note": {"type": "string", "minLength": 1}
+      }
+    },
+    "scope_boundary": {"$ref": "#/$defs/booleanMap"},
+    "operating_principles": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "statement"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^HERMES-BOUND-[0-9]{2}$"},
+          "statement": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "upstream_evidence": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["evidence_id", "source_kind", "url", "observed"],
+        "properties": {
+          "evidence_id": {"type": "string", "pattern": "^HERMES-EVID-[A-Z-]+$"},
+          "source_kind": {"enum": ["stable_release", "current_documentation"]},
+          "url": {"type": "string", "format": "uri"},
+          "observed": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "capability_assessments": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["capability_id", "upstream_surface", "offdata_mode", "status", "owning_imp_phases", "integration_points", "required_controls", "denied_raw_actions"],
+        "properties": {
+          "capability_id": {"type": "string", "pattern": "^HERMES-CAP-[A-Z-]+$"},
+          "upstream_surface": {"type": "string", "minLength": 1},
+          "offdata_mode": {"type": "string", "minLength": 1},
+          "status": {"const": "planned_not_implemented"},
+          "owning_imp_phases": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^IMP-P(?:[1-9]|1[0-2])$"}, "uniqueItems": true},
+          "integration_points": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^P(?:[1-9]|1[0-2])\\.[0-9]+$"}, "uniqueItems": true},
+          "required_controls": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "denied_raw_actions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+        }
+      }
+    },
+    "worker_goal_mapping": {"type": "object", "minProperties": 6, "additionalProperties": true},
+    "skills_learning_policy": {"type": "object", "minProperties": 10, "additionalProperties": true},
+    "model_orchestration_policy": {"type": "object", "minProperties": 8, "additionalProperties": true},
+    "delegation_policy": {"type": "object", "minProperties": 8, "additionalProperties": true},
+    "pcfa07_reconciliation_contract": {"$ref": "#/$defs/booleanMap"},
+    "boundaries": {"$ref": "#/$defs/booleanMap"}
+  },
+  "$defs": {
+    "booleanMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "boolean"}
+    }
+  }
+}

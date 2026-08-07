@@ -17,6 +17,7 @@ current_authority:
   repository_posture: repository/repository-visibility-and-licence-posture.json
   product_scope_addendum: repository/pcfa04-product-scope-implementation-addendum.json
   mvcl_contract: repository/pcfa05-minimum-valuable-consulting-loop.json
+  hermes_bounded_adoption_refresh: repository/pcfa06-hermes-bounded-adoption-refresh.json
   permanent_release: releases/pre-codex-final-reconciliation-2026-08-06.json
   launch_entrypoint: scripts/prepare_codex_phase0_launch.py
   permanent_release_gate: scripts/require_workstream6_final_reconciliation.py
@@ -88,6 +89,10 @@ historical_package_snapshots:
     package: PCFA-01
     classification: retained_corrective_package_snapshot
     reason: PCFA-01 acknowledgement template retained after promotion to neutral current template names.
+  - path: contracts/hermes-compatibility-pack.json
+    package: PCR-06
+    classification: retained_historical_package_snapshot
+    reason: PCR-06 package-time Hermes compatibility snapshot retained after PCFA-06 becomes current bounded-adoption authority.
   - path: configs/workstream6-phase0-licence-decision-placeholder.yaml
     package: WS6.13
     classification: retained_historical_package_snapshot
@@ -169,6 +174,7 @@ repository_readiness:
   pcfa03_repository_posture_resolved: true
   pcfa04_product_scope_addendum_complete: true
   pcfa05_mvcl_contract_complete: true
+  pcfa06_hermes_bounded_adoption_refresh_complete: true
   repository_side_corrective_work_complete: true
 
 manual_launch_gates:
@@ -207,6 +213,7 @@ required_preflight_commands:
   - python scripts/validate_pcfa03_repository_posture.py
   - python scripts/validate_pcfa04_product_scope_addendum.py
   - python scripts/validate_pcfa05_mvcl.py
+  - python scripts/validate_pcfa06_hermes_refresh.py
   - python scripts/prepare_codex_phase0_launch.py --self-test
   - python scripts/require_workstream6_final_reconciliation.py
 
