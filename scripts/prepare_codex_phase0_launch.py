@@ -33,6 +33,10 @@ from pcfa05_mvcl import (
     mvcl_failures,
     run_self_test as run_mvcl_self_test,
 )
+from pcfa06_hermes_refresh import (
+    hermes_refresh_failures,
+    run_self_test as run_hermes_refresh_self_test,
+)
 
 PERMIT_SCHEMA_PATH = ROOT / "schemas" / "codex-phase0-launch-permit.schema.json"
 
@@ -48,8 +52,8 @@ def _safe_output(path: Path, state: dict[str, object]) -> Path:
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "Fail-closed PCFA-05 MVCL, PCFA-04 product-scope, PCFA-03 repository-posture and "
-            "PCFA-02 current-state-bound Codex Phase 0 launch preparation."
+            "Fail-closed PCFA-06 Hermes bounded-adoption, PCFA-05 MVCL, PCFA-04 product-scope, "
+            "PCFA-03 repository-posture and PCFA-02 current-state-bound Codex Phase 0 launch preparation."
         )
     )
     parser.add_argument("--self-test", action="store_true")
@@ -68,13 +72,16 @@ def main() -> None:
         posture_count = run_posture_self_test(state)
         product_scope_count = run_product_scope_self_test(state)
         mvcl_count = run_mvcl_self_test(state)
+        hermes_refresh_count = run_hermes_refresh_self_test(state)
         print(
-            "PCFA-05 Codex Phase 0 launch verifier self-test passed: "
-            f"{count + posture_count + product_scope_count + mvcl_count} invalid launch, current-state, "
-            "corrective-contract, repository-posture, product-scope or MVCL mutations rejected; "
+            "PCFA-06 Codex Phase 0 launch verifier self-test passed: "
+            f"{count + posture_count + product_scope_count + mvcl_count + hermes_refresh_count} invalid "
+            "launch, current-state, corrective-contract, repository-posture, product-scope, MVCL or "
+            "Hermes bounded-adoption mutations rejected; "
             "historical package readiness was excluded from current launch decisions; public "
-            "repository visibility, product-scope drift and MVCL drift were rejected; all PCFA-04 "
-            "obligations and PCFA-05 stages remain planned_not_implemented; no permit emitted and "
+            "repository visibility, product-scope drift, MVCL drift and Hermes activation/policy drift "
+            "were rejected; all PCFA-04 obligations, PCFA-05 stages and PCFA-06 Hermes capabilities "
+            "remain planned_not_implemented; no permit emitted and "
             "no repository or GitHub mutation performed."
         )
         return
@@ -98,7 +105,8 @@ def main() -> None:
     except RuntimeError as error:
         raise SystemExit(str(error)) from error
     repo = repository_state(state)
-    failures = mvcl_failures(state)
+    failures = hermes_refresh_failures(state)
+    failures.extend(mvcl_failures(state))
     failures.extend(product_scope_failures(state))
     failures.extend(launch_posture_failures(state, hosted, repository_metadata))
     failures.extend(
@@ -143,6 +151,7 @@ def main() -> None:
     print("repository_visibility=private")
     print("pcfa04_product_scope_addendum=validated_planned_not_implemented")
     print("pcfa05_mvcl=validated_planned_not_implemented")
+    print("pcfa06_hermes_bounded_adoption=validated_planned_not_implemented_not_activated")
     print(
         "final_release_parent_main_sha="
         f"{permit['final_workstream6_release_parent_main_sha']}"

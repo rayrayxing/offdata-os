@@ -1,0 +1,268 @@
+schema_version: 1.0.0
+work_package_id: PCFA-06
+contract_id: HERMES-BOUNDED-ADOPTION-REFRESH
+title: Hermes bounded-adoption refresh
+repository: rayrayxing/offdata-os
+status: repository_specification_complete_not_activated
+owner: Founder
+assessment_date: "2026-08-08"
+
+upstream_baseline:
+  repository: NousResearch/hermes-agent
+  documentation: https://hermes-agent.nousresearch.com/docs
+  stable_release: v0.18.2
+  stable_tag: v2026.7.7.2
+  stable_commit: 9de9c25
+  stable_release_date: "2026-07-07"
+  predecessor_package: PCR-06
+  predecessor_contract: contracts/hermes-compatibility-pack.json
+  version_change_from_pcr06: false
+  update_policy: pinned_review_required
+  documentation_snapshot_is_release_pin: false
+  documentation_snapshot_note: Current public Hermes documentation may describe post-release surfaces; PCFA-06 records capability policy, not availability in the pinned stable release.
+
+scope_boundary:
+  specification_only: true
+  hermes_installation_authorized: false
+  hermes_runtime_activation_authorized: false
+  hermes_is_control_plane: false
+  hermes_canonical_state_authority: false
+  hermes_skill_promotion_authorized: false
+  hermes_memory_authority: false
+  hermes_background_execution_authorized: false
+  hermes_model_router_authority: false
+  imp_phase0_scope_widened: false
+  codex_start_authorized: false
+  pcfa07_registry_reconciliation_required: true
+  pcfa08_final_acceptance_required: true
+
+operating_principles:
+  - id: HERMES-BOUND-01
+    statement: offdata owns the consulting control plane, lifecycle, policy decisions and canonical engagement state; Hermes remains a replaceable runtime or worker candidate.
+  - id: HERMES-BOUND-02
+    statement: Hermes session, goal, memory, skill, journey, background-task and subagent state are never canonical engagement truth.
+  - id: HERMES-BOUND-03
+    statement: No raw Hermes surface may widen tools, data access, providers, credentials, external effects or approval scope beyond an offdata-issued package.
+  - id: HERMES-BOUND-04
+    statement: Completion is determined by offdata acceptance evidence and tests, never solely by a Hermes judge, subagent summary or self-assessment.
+  - id: HERMES-BOUND-05
+    statement: Hermes-created or Hermes-discovered skills remain candidates until independently reviewed, tested, provenance-checked and explicitly promoted through offdata governance.
+  - id: HERMES-BOUND-06
+    statement: Background, nested or parallel execution is disabled unless a later implementation phase proves durability, isolation, idempotency, cost and policy conformance.
+  - id: HERMES-BOUND-07
+    statement: Model fan-out and Mixture-of-Agents are advisory computation patterns behind the offdata model router and cannot themselves satisfy independent-quality requirements.
+  - id: HERMES-BOUND-08
+    statement: Persistent memory and learning surfaces may suggest useful context or reusable procedures but cannot write client truth, methodology authority or approvals.
+  - id: HERMES-BOUND-09
+    statement: External skill registries, MCP servers, tool gateways, messaging channels, scheduled jobs and provider integrations require separate allowlisting and applicable Founder approvals before use.
+  - id: HERMES-BOUND-10
+    statement: Hermes adoption must remain removable without loss of canonical state, audit history, evidence, workflow checkpoints or deliverable provenance.
+
+upstream_evidence:
+  - evidence_id: HERMES-EVID-RELEASE
+    source_kind: stable_release
+    url: https://github.com/NousResearch/hermes-agent/releases/tag/v2026.7.7.2
+    observed: Hermes Agent v0.18.2 remains the latest stable release, tagged v2026.7.7.2 at commit 9de9c25.
+  - evidence_id: HERMES-EVID-GOAL
+    source_kind: current_documentation
+    url: https://hermes-agent.nousresearch.com/docs/user-guide/features/goals
+    observed: Persistent /goal loops auto-continue across turns and may use completion contracts with outcome, verification, constraints, boundaries and stop_when fields.
+  - evidence_id: HERMES-EVID-DELEGATION
+    source_kind: current_documentation
+    url: https://hermes-agent.nousresearch.com/docs/user-guide/features/delegation
+    observed: delegate_task creates isolated subagents; top-level delegation runs in the background, default parallelism is three, and execution is not crash-durable while children are still running.
+  - evidence_id: HERMES-EVID-SKILLS
+    source_kind: current_documentation
+    url: https://hermes-agent.nousresearch.com/docs/user-guide/features/skills
+    observed: Skills support progressive disclosure, external directories, hub registries, bundles, agent-managed writes and optional write approval.
+  - evidence_id: HERMES-EVID-LEARN
+    source_kind: current_documentation
+    url: https://hermes-agent.nousresearch.com/docs/reference/slash-commands
+    observed: /learn can distill reusable skills from described sources and workflows; /journey exposes a learned-skill and memory timeline with edit and delete surfaces.
+  - evidence_id: HERMES-EVID-MEMORY
+    source_kind: current_documentation
+    url: https://hermes-agent.nousresearch.com/docs/user-guide/features/memory
+    observed: Hermes persistent memory is injected across sessions and may be modified by the agent.
+  - evidence_id: HERMES-EVID-CURATOR
+    source_kind: current_documentation
+    url: https://hermes-agent.nousresearch.com/docs/user-guide/features/curator
+    observed: The curator performs background maintenance and may archive or patch agent-created skills after inactivity.
+  - evidence_id: HERMES-EVID-MOA
+    source_kind: current_documentation
+    url: https://hermes-agent.nousresearch.com/docs/user-guide/features/mixture-of-agents
+    observed: Mixture-of-Agents is a model-provider surface that fans out reference-model calls and uses an aggregator as the acting tool-capable model.
+
+capability_assessments:
+  - capability_id: HERMES-CAP-SKILLS
+    upstream_surface: skills_progressive_disclosure_and_bundles
+    offdata_mode: candidate_procedure_library_only
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P1, IMP-P4, IMP-P10]
+    integration_points: [P1.1, P1.4, P4.1, P4.2, P10.3, P10.4]
+    required_controls: [repository_canonical_skills, read_only_external_directory, checksum_and_provenance, independent_review, explicit_promotion]
+    denied_raw_actions: [hub_install_without_review, automatic_update, canonical_write, direct_external_send]
+  - capability_id: HERMES-CAP-LEARN
+    upstream_surface: learn_and_skill_manage
+    offdata_mode: suggestion_only_candidate_drafting
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P4, IMP-P10]
+    integration_points: [P4.4, P10.2, P10.3, P10.4]
+    required_controls: [write_approval, noncanonical_staging, provenance_capture, regression_tests, founder_promotion_gate]
+    denied_raw_actions: [canonical_skill_write, automatic_method_promotion, background_skill_write]
+  - capability_id: HERMES-CAP-JOURNEY
+    upstream_surface: learning_journey
+    offdata_mode: read_only_suggestion_observability
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P4, IMP-P10]
+    integration_points: [P4.4, P10.2, P10.4]
+    required_controls: [no_canonical_authority, read_only_consumption, audit_link_if_used]
+    denied_raw_actions: [journey_edit_as_canonical_change, journey_delete_as_governance_action]
+  - capability_id: HERMES-CAP-GOAL
+    upstream_surface: persistent_goal_and_completion_contract
+    offdata_mode: workerpackage_completion_adapter_candidate
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P3, IMP-P4]
+    integration_points: [P3.1, P3.2, P3.3, P4.2, P4.4]
+    required_controls: [workerpackage_required, bounded_turn_budget, offdata_acceptance_is_authority, durable_offdata_checkpoint, explicit_stop_conditions]
+    denied_raw_actions: [raw_goal_as_workflow_authority, hermes_judge_as_completion_authority, unbounded_resume]
+  - capability_id: HERMES-CAP-DELEGATION
+    upstream_surface: delegate_task_and_nested_orchestration
+    offdata_mode: raw_surface_denied_adapter_required
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P3, IMP-P4]
+    integration_points: [P3.1, P3.2, P3.3, P4.2, P4.4]
+    required_controls: [foreground_adapter, concurrency_one_until_proven, isolated_workspace, inherited_allowlist_only, parent_verification, idempotency]
+    denied_raw_actions: [top_level_background_delegation, nested_delegation, parallel_fanout, direct_canonical_write]
+  - capability_id: HERMES-CAP-MOA
+    upstream_surface: mixture_of_agents
+    offdata_mode: model_router_candidate_only
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P4]
+    integration_points: [P4.3, P4.4]
+    required_controls: [offdata_router_owns_selection, explicit_cost_budget, provider_allowlist, evaluation_thresholds, advisory_reference_outputs]
+    denied_raw_actions: [direct_provider_authority, moa_as_independent_qa, uncontrolled_reference_fanout]
+  - capability_id: HERMES-CAP-MEMORY
+    upstream_surface: persistent_memory_and_honcho_like_user_modeling
+    offdata_mode: noncanonical_ephemeral_or_suggestion_only
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P2, IMP-P4, IMP-P11]
+    integration_points: [P2.2, P2.3, P4.1, P4.4, P11.2]
+    required_controls: [canonical_state_external_to_hermes, no_client_truth, no_cross_engagement_recall, retention_policy, explicit_data_class_scope]
+    denied_raw_actions: [autonomous_client_memory_write, canonical_memory_read, cross_engagement_profile]
+  - capability_id: HERMES-CAP-CURATOR
+    upstream_surface: skill_curator_and_background_review
+    offdata_mode: disabled_suggestions_may_be_reimplemented_offdata_side
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P10]
+    integration_points: [P10.2, P10.3, P10.4]
+    required_controls: [no_background_mutation, candidate_only_output, rollback_and_versioning]
+    denied_raw_actions: [automatic_archive, automatic_patch, automatic_delete]
+  - capability_id: HERMES-CAP-EXECUTE-CODE
+    upstream_surface: execute_code_programmatic_tool_calling
+    offdata_mode: bounded_worker_tool_candidate
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P4, IMP-P6]
+    integration_points: [P4.2, P4.4, P6.1, P6.4]
+    required_controls: [declared_tool_classes, sandbox, reproducible_inputs, captured_outputs, no_direct_canonical_write]
+    denied_raw_actions: [unbounded_terminal_bridge, hidden_external_effects]
+  - capability_id: HERMES-CAP-EXTERNAL-TOOLS
+    upstream_surface: mcp_tool_gateway_browser_and_external_skill_registries
+    offdata_mode: denied_until_separate_tool_processor_review
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P4, IMP-P5, IMP-P11]
+    integration_points: [P4.2, P4.4, P5.2, P11.2, P11.3]
+    required_controls: [tool_allowlist, processor_review, credential_boundary, data_scope, network_scope, audit_log]
+    denied_raw_actions: [mcp_auto_enable, provider_gateway_auto_enable, credential_collection, unrestricted_browser]
+  - capability_id: HERMES-CAP-RUNTIME-SURFACES
+    upstream_surface: messaging_cron_background_sessions_and_codex_app_server_runtime
+    offdata_mode: deferred_replaceable_runtime_candidates
+    status: planned_not_implemented
+    owning_imp_phases: [IMP-P3, IMP-P4, IMP-P9, IMP-P11]
+    integration_points: [P3.1, P3.2, P4.3, P9.4, P11.2, P11.3]
+    required_controls: [separate_activation_decision, durable_workflow_owned_by_offdata, external_send_policy, credential_review, kill_switch]
+    denied_raw_actions: [messaging_send, scheduled_external_action, background_session_authority, codex_runtime_auto_activation]
+
+worker_goal_mapping:
+  raw_goal_authorized: false
+  hermes_goal_state_canonical: false
+  hermes_goal_judge_completion_authority: false
+  offdata_acceptance_completion_authority: true
+  mapping:
+    outcome: WorkerPackage.expected_outputs
+    verification: WorkerPackage.acceptance
+    constraints: WorkerPackage.constraints
+    boundaries: WorkerPackage.workspace_tool_and_data_scope
+    stop_when: WorkerPackage.escalation_and_stop_conditions
+    subgoals: additional_acceptance_criteria_recorded_by_offdata
+  required_runtime_controls:
+    turn_budget_bounded: true
+    automatic_resume_after_budget: false
+    durable_checkpoint_owned_by_offdata: true
+    worker_result_recorded_via_command: true
+    retry_policy_owned_by_offdata: true
+    founder_interrupt_preempts_loop: true
+
+skills_learning_policy:
+  canonical_repository_skill_glob: agents/*/SKILL.md
+  hermes_local_skills_canonical: false
+  bundled_skills_status: candidate_only
+  hub_skills_status: quarantined_candidate_only
+  learned_skills_status: suggestion_only
+  skill_bundles_status: candidate_task_profiles_only
+  learn_command_mode: suggestion_only
+  skill_manage_mode: noncanonical_staging_with_review
+  journey_mode: read_only_observability
+  curator_mode: disabled
+  autonomous_skill_write_authorized: false
+  automatic_skill_promotion_authorized: false
+  automatic_method_promotion_authorized: false
+
+model_orchestration_policy:
+  moa_status: candidate_only
+  moa_selected_directly_by_hermes: false
+  offdata_model_router_owns_selection: true
+  reference_outputs_are_advisory: true
+  aggregator_must_obey_offdata_contracts: true
+  moa_counts_as_independent_quality_review: false
+  fanout_requires_explicit_cost_budget: true
+  provider_allowlist_required: true
+  evaluation_before_activation_required: true
+
+delegation_policy:
+  raw_delegate_task_authorized: false
+  top_level_background_delegation_authorized: false
+  nested_delegation_authorized: false
+  parallel_fanout_authorized: false
+  initial_adapter_concurrency_limit: 1
+  child_summary_is_verified_evidence: false
+  parent_or_offdata_verification_required: true
+  child_direct_canonical_write_authorized: false
+  hermes_process_is_durable_workflow_authority: false
+
+pcfa07_reconciliation_contract:
+  every_capability_must_receive_requirement_ids: true
+  every_capability_must_receive_imp_task_ownership: true
+  every_capability_must_receive_planned_test_ids: true
+  every_capability_must_receive_evidence_type: true
+  every_capability_must_receive_phase_gate: true
+  every_capability_must_receive_dependencies: true
+  every_capability_must_remain_planned_not_implemented: true
+  upstream_evidence_classification_must_be_preserved: true
+
+boundaries:
+  founder_accountability_preserved: true
+  implementation_authorized: false
+  installation_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  background_execution_authorized: false
+  model_fanout_authorized: false
+  autonomous_skill_promotion_authorized: false
+  autonomous_memory_authorized: false
+  external_actions_authorized: false
+  real_client_data_enabled: false
+  paid_services_authorized: false
+  oauth_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
+  codex_start_authorized: false
