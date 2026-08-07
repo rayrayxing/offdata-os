@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   validate-final-launch-control:
-    name: Validate WS6.12 deliverable quality implementation specification and complete prior components
+    name: Validate WS6.13 operational quality specification and complete prior components
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -40,111 +40,83 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.12
+      - name: Rebuild, validate and test through WS6.13
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.11 ancestry and live fail-closed state
+      - name: Verify exact WS6.12 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          WS611_HEAD_SHA: 9f138fd3f35fb9826c6da0ab696e83775312508e
+          WS612_HEAD_SHA: b6e6ba2a8408b7634a0d7e31980f5b505bc726a5
         run: |
           mkdir -p ci-evidence
-          git merge-base --is-ancestor "$WS611_HEAD_SHA" "$GITHUB_SHA"
+          git merge-base --is-ancestor "$WS612_HEAD_SHA" "$GITHUB_SHA"
           gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/3" > ci-evidence/issue-3.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/4" > ci-evidence/issue-4.json
-          gh api "repos/${GITHUB_REPOSITORY}/issues/5" > ci-evidence/issue-5.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/19" > ci-evidence/issue-19.json
           gh api "repos/${GITHUB_REPOSITORY}/issues?state=open&per_page=100" > ci-evidence/open-issues.json
           gh api "repos/${GITHUB_REPOSITORY}/branches?per_page=100" > ci-evidence/branches.json
           python - <<'PY'
-          import hashlib
           import json
           from pathlib import Path
 
           issue1 = json.loads(Path("ci-evidence/issue-1.json").read_text())
-          issue2 = json.loads(Path("ci-evidence/issue-2.json").read_text())
           issue19 = json.loads(Path("ci-evidence/issue-19.json").read_text())
           open_items = json.loads(Path("ci-evidence/open-issues.json").read_text())
           branches = json.loads(Path("ci-evidence/branches.json").read_text())
-          expected_issue1 = Path("handoff/codex-phase0-issue-final.md").read_bytes()
-          expected_issue19 = Path("handoff/codex-phase0-hosted-controls-issue-final.md").read_bytes()
-          normalization = json.loads(Path("contracts/workstream6-issue-backlog-normalization.json").read_text())
-          obligation_map = json.loads(Path("requirements/implementation-obligation-map.json").read_text())
-          developer_experience = json.loads(Path("contracts/developer-experience-specification.json").read_text())
-          founder_experience = json.loads(Path("contracts/founder-experience-specification.json").read_text())
-          deliverable_quality = json.loads(Path("contracts/deliverable-quality-implementation-specification.json").read_text())
+          renderer_prep = json.loads(Path("contracts/workstream6-renderer-preimplementation-assets.json").read_text())
+          operational = json.loads(Path("contracts/operational-quality-specification.json").read_text())
+          blueprint = json.loads(Path("contracts/phase0-implementation-blueprint.json").read_text())
+          api = json.loads(Path("contracts/api-interface-contracts.json").read_text())
+          knowledge = json.loads(Path("contracts/knowledge-ingestion-contracts.json").read_text())
+          registry = json.loads(Path("tests/registry/ws613-planned-acceptance-tests.json").read_text())
+          overlay = json.loads(Path("requirements/implementation-obligation-test-registration.json").read_text())
 
           assert issue1["state"] == "open"
-          assert hashlib.sha256(issue1.get("body", "").encode()).hexdigest() == hashlib.sha256(expected_issue1).hexdigest()
-          assert issue2["state"] == "closed" and issue2.get("state_reason") == "duplicate"
           assert issue19["state"] == "open"
-          assert hashlib.sha256(issue19.get("body", "").encode()).hexdigest() == hashlib.sha256(expected_issue19).hexdigest()
-
-          for expected in normalization["live_issue_policy"]["normalized_issues"]:
-              number = expected["number"]
-              observed = json.loads(Path(f"ci-evidence/issue-{number}.json").read_text())
-              body = Path(expected["body_path"]).read_bytes()
-              assert observed["state"] == "closed"
-              assert observed.get("state_reason") == "not_planned"
-              assert observed["title"] == expected["normalized_title"]
-              assert hashlib.sha256(observed.get("body", "").encode()).hexdigest() == hashlib.sha256(body).hexdigest()
-
-          assert obligation_map["criterion_count"] == 38
-          assert obligation_map["phase0_blocking_criterion_count"] == 16
-          assert obligation_map["later_phase_criterion_count"] == 22
-          assert obligation_map["test_policy"]["executable_test_count"] == 0
-          assert obligation_map["evidence_policy"]["satisfied_evidence_count"] == 0
-          assert obligation_map["boundaries"]["codex_start_authorized"] is False
-
-          assert developer_experience["predecessor"]["head_sha"] == "911e431551bb7eb41f1d5d1ccc9ff042f18858f9"
-          assert developer_experience["command_count"] == 15
-          assert developer_experience["acceptance_case_count"] == 60
-          assert developer_experience["test_registration"]["executable_test_count"] == 0
-          assert developer_experience["implementation_evidence"]["satisfied_command_count"] == 0
-          assert developer_experience["boundaries"]["codex_start_authorized"] is False
-
-          assert founder_experience["predecessor"]["head_sha"] == "ebd750f6e985d7a864d072a172d4d9343ce26a36"
-          assert founder_experience["predecessor"]["integrated_to_main"] is False
-          assert founder_experience["criterion_count"] == 8
-          assert founder_experience["surface_count"] == 6
-          assert founder_experience["state_count"] == 13
-          assert founder_experience["acceptance_case_count"] == 32
-          assert founder_experience["test_registration"]["registered_case_count"] == 0
-          assert founder_experience["test_registration"]["executable_test_count"] == 0
-          assert founder_experience["evidence"]["satisfied_evidence_count"] == 0
-          assert founder_experience["boundaries"]["codex_start_authorized"] is False
-          assert founder_experience["boundaries"]["external_actions_authorized"] is False
-
-          assert deliverable_quality["predecessor"]["head_sha"] == "9f138fd3f35fb9826c6da0ab696e83775312508e"
-          assert deliverable_quality["predecessor"]["integrated_to_main"] is False
-          assert deliverable_quality["renderer_count"] == 6
-          assert deliverable_quality["mandatory_dimension_count"] == 5
-          assert deliverable_quality["canonical_pcr10_requirement_count"] == 26
-          assert deliverable_quality["surface_requirement_binding_count"] == 37
-          assert deliverable_quality["renderer_acceptance_case_count"] == 30
-          assert deliverable_quality["cross_format_acceptance_case_count"] == 8
-          assert deliverable_quality["acceptance_case_count"] == 38
-          assert deliverable_quality["test_registration"]["registered_case_count"] == 0
-          assert deliverable_quality["test_registration"]["executable_test_count"] == 0
-          assert deliverable_quality["implementation_evidence"]["satisfied_renderer_count"] == 0
-          assert deliverable_quality["implementation_evidence"]["satisfied_cross_format_criterion_count"] == 0
-          assert deliverable_quality["remaining_quality_defects"] == ["WS6-QUALITY-005"]
-          assert deliverable_quality["remaining_blocking_defects"] == ["WS6-BLOCK-006"]
-          assert deliverable_quality["boundaries"]["codex_start_authorized"] is False
-          assert deliverable_quality["boundaries"]["external_actions_authorized"] is False
-          assert deliverable_quality["boundaries"]["production_deployment_authorized"] is False
-
           open_issue_numbers = {item["number"] for item in open_items if "pull_request" not in item}
           assert open_issue_numbers == {1, 19}
           names = {item["name"] for item in branches}
           assert "main" in names
           assert "codex/phase-0-foundation" not in names
+
+          assert renderer_prep["closed_defects"] == ["WS6-CODEXPREP-006"]
+          assert renderer_prep["renderer_count"] == 6
+          assert renderer_prep["golden_entry_count"] == 6
+          assert renderer_prep["completion"]["physical_renderer_outputs_present"] is False
+          assert renderer_prep["completion"]["approved_golden_baselines_present"] is False
+
+          assert operational["predecessor"]["head_sha"] == "b6e6ba2a8408b7634a0d7e31980f5b505bc726a5"
+          assert operational["operational_signal_count"] == 8
+          assert operational["learning_metric_count"] == 11
+          assert operational["test_registration"]["phase0_total"] == 76
+          assert operational["test_registration"]["planned_total"] == 83
+          assert operational["test_registration"]["executable"] == 0
+          assert operational["remaining_preparation_defects"] == []
+          assert operational["remaining_blocking_defects"] == ["WS6-BLOCK-006"]
+          assert operational["completion"]["telemetry_enabled"] is False
+          assert operational["boundaries"]["codex_start_authorized"] is False
+          assert operational["boundaries"]["external_actions_authorized"] is False
+
+          assert blueprint["task_count"] == 4
+          assert blueprint["service_count"] == 4
+          assert blueprint["root_command_count"] == 15
+          assert blueprint["registered_phase0_test_count"] == 76
+          assert blueprint["status"] == "planned_not_implemented"
+          assert blueprint["network"] == {"binding": "loopback_only", "external_default": "denied", "paid_cloud": False}
+          assert not any(blueprint["guards"].values())
+
+          assert api["binding"] == "loopback_only" and api["external_binding"] is False and api["runtime_active"] is False
+          assert knowledge["ingestion"]["real_document_import"] is False
+          assert knowledge["external_object_storage"] is False and knowledge["runtime_active"] is False
+          assert registry["counts"]["phase0_total"] == 76
+          assert registry["counts"]["conformance"] == 7
+          assert registry["counts"]["executable"] == 0
+          assert registry["defaults"]["registration_status"] == "registered_planned"
+          assert registry["defaults"]["executable"] is False
+          assert overlay["registration_count"] == 16 and overlay["source_map_immutable"] is True
           PY
 
-      - name: Assemble retained WS6.12 evidence
+      - name: Assemble retained WS6.13 evidence
         run: |
           cp /tmp/ws62-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
@@ -152,7 +124,6 @@ jobs:
             "$GITHUB_SHA" \
             "$GITHUB_RUN_ID" \
             > ci-evidence/run.txt
-
           : > ci-evidence/repository-digests.txt
           mkdir -p ci-evidence/package
           git ls-files -z | sort -z | while IFS= read -r -d '' path; do
@@ -169,7 +140,7 @@ jobs:
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: offdata-workstream6-deliverable-quality-implementation-specification-${{ github.sha }}
+          name: offdata-workstream6-operational-quality-specification-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
@@ -184,4 +155,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.12 deliverable-quality-implementation-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All six PPTX/DOCX/XLSX/PDF/SVG/HTML renderer contracts cover package integrity, editability/structure, accessibility, semantic reconciliation and visual regression; all 26 PCR-10 renderer requirements have 37 exact surface bindings, and eight OQ obligations remain mapped to their WS6.9 owners. All 38 planned cases remain unregistered, no renderer implementation or implementation evidence is claimed, automatic repair and semantic drift remain fail-closed, WS6-QUALITY-005 and WS6-BLOCK-006 remain open, and Codex remains unauthorized. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Every tracked repository file was checksum-staged and verified before artifact upload. The reserved final workflow remains inactive and no permit was emitted."
+          gh pr comment "$PR_NUMBER" --body "WS6.13 operational-quality-specification gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Eight operational signals and eleven learning metrics are governed with source, privacy, retention, phase availability and evidence; telemetry/export/raw content remain disabled. The P0.1-P0.4 topology, API/UI shell, storage/ingestion contracts, 76 registered planned IMP-P0 tests and seven workflow/agent conformance cases remain planning-only with zero new executable evidence. WS6-QUALITY-005 and WS6-CODEXPREP-001 through -005 are closed by this package; WS6-BLOCK-006 remains open. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. Every tracked file was checksum-staged before artifact upload. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
