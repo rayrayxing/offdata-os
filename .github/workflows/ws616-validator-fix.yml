@@ -16,7 +16,7 @@ jobs:
         with:
           ref: governance/ws616-permanent-release-record
           persist-credentials: true
-      - name: Correct WS6.16 integrated preparation workflow validation
+      - name: Correct WS6.16 integrated preparation validation
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -26,6 +26,9 @@ jobs:
               'require(exc.get("base_sha") == "1361fff88bd08ae16218673337621571a7d315c6", "preparation exception base SHA drift")': 'require(exc.get("base_sha") == "8ad0ea95b8d01c83347161e4ccf893f1844a219d", "preparation exception base SHA drift")',
               '        "governance/ws615-final-workflow",\n': '        "EXPECTED_BASE: main",\n',
               '        "1361fff88bd08ae16218673337621571a7d315c6",\n': '        "8ad0ea95b8d01c83347161e4ccf893f1844a219d",\n',
+              'lambda v: v["predecessor"].update(integrated_to_main=True)': 'lambda v: v["predecessor"].update(integrated_to_main=False)',
+              'lambda v: v["current_main"].update(integrated_through="WS6.15")': 'lambda v: v["current_main"].update(integrated_through="WS6.14")',
+              'lambda v: v["preparation_exception"].update(base_branch="main")': 'lambda v: v["preparation_exception"].update(base_branch="stale-base")',
           }
           for old, new in replacements.items():
               if old not in text:
