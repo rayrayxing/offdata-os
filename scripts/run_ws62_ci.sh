@@ -36,9 +36,10 @@ python scripts/build_workstream6_deliverable_quality_implementation_specificatio
 python scripts/build_workstream6_renderer_preimplementation_assets.py
 python scripts/build_workstream6_operational_quality_specification.py
 python scripts/build_workstream6_phase0_licence_decision_placeholder.py
-# WS6.14 is retained as a deterministic predecessor snapshot; its builder is still safe.
+# WS6.14 and WS6.15 remain deterministic predecessor snapshots.
 python scripts/build_workstream6_cross_authority_consistency_gate.py
 python scripts/build_workstream6_final_workflow.py
+python scripts/build_workstream6_permanent_release_record.py
 
 git diff --exit-code
 
@@ -76,8 +77,9 @@ python scripts/validate_workstream6_deliverable_quality_implementation_specifica
 python scripts/validate_workstream6_renderer_preimplementation_assets.py
 python scripts/validate_workstream6_operational_quality_specification.py
 python scripts/validate_workstream6_phase0_licence_decision_placeholder.py
-# WS6.14 validator intentionally asserts the pre-WS6.15 inactive workflow state; WS6.15 revalidates its other invariants.
-python scripts/validate_workstream6_final_workflow.py
+# WS6.14/15 validators assert predecessor package-boundary workflow states.
+# WS6.16 revalidates their current identity, activation and defect invariants.
+python scripts/validate_workstream6_permanent_release_record.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
