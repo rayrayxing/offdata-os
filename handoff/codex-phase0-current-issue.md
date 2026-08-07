@@ -1,4 +1,4 @@
-<!-- Current operational Issue #1 body introduced by PCFA-02 and extended through PCFA-04. Synchronize only after integration. -->
+<!-- Current operational Issue #1 body introduced by PCFA-02 and extended through PCFA-05. Synchronize only after integration. -->
 # Codex Phase 0 — Validate and build the controlled local foundation
 
 > [!CAUTION]
@@ -12,6 +12,7 @@ For current launch decisions, use:
 - `repository/current-operational-state.json` — sole live machine readiness and authority projection;
 - `repository/repository-visibility-and-licence-posture.json` — current repository visibility and licence posture;
 - `repository/pcfa04-product-scope-implementation-addendum.json` — current product-scope implementation obligations, all `planned_not_implemented`;
+- `repository/pcfa05-minimum-valuable-consulting-loop.json` — current Minimum Valuable Consulting Loop contract, all stages `planned_not_implemented`;
 - `handoff/codex-phase0-current-handoff.json` — current machine execution handoff;
 - `contracts/pcfa01-launch-control-repair.json` — corrected release/launch SHA semantics;
 - `handoff/codex-phase0-current-issue.md` — current Issue #1 body;
@@ -32,6 +33,7 @@ The WS6.2 launch-control contract, WS6.2/WS6.3 status records, WS6.4 authority r
 - [x] PCFA-02 defines the successor current operational-state projection and current authority surfaces.
 - [x] PCFA-03 resolves the repository posture to private/internal development with no public licence grant and no public distribution authorization.
 - [x] PCFA-04 defines the missing product-scope implementation obligations and assigns them to existing IMP phases without widening IMP-P0.
+- [x] PCFA-05 defines the Minimum Valuable Consulting Loop, Founder interrupts, restart/recycle/idempotency invariants and negative-path programme without implementing runtime.
 - [ ] Live GitHub repository visibility must be `private` and independently verified; a public repository is a launch blocker.
 - [ ] GitHub hosted controls are verified in Issue #19.
 - [ ] Historical branch cleanup is complete with final inventory containing only `main` before launch.
@@ -61,7 +63,15 @@ PCFA-04 is a specification overlay, not implementation. Its canonical record con
 
 The addendum covers mandate intake; the explicit Engagement Workspace; Quality and Assurance Console; Implementation and Benefits Workspace; broader ingestion formats and native provenance locators; 100% canonical-library source accounting; Consulting Craft quality; broader golden outputs; Office round-trip reconciliation; Founder/house style; asset-rights provenance; Founder attention burden metrics; explicit deliverable variants; and review/change-request workflow.
 
-PCFA-04 does not create new IMP phases or new product-runtime scope in IMP-P0. It binds the additions to existing IMP-P1–P12 integration points. PCFA-05 must still define the MVCL machine contract, and PCFA-07 must still reconcile these requirements into exact implementation-task, planned-test, evidence, dependency and phase-gate registrations.
+PCFA-04 does not create new IMP phases or new product-runtime scope in IMP-P0. It binds the additions to existing IMP-P1–P12 integration points. PCFA-05 now fulfills the MVCL dependency, while PCFA-07 must still reconcile these requirements into exact implementation-task, planned-test, evidence, dependency and phase-gate registrations.
+
+## PCFA-05 Minimum Valuable Consulting Loop
+
+PCFA-05 is a specification contract, not runtime implementation. It defines the 19-stage consulting loop from opportunity through closeout, 15 cross-loop invariants, six Founder interrupt classes and 13 mandatory negative-path cases. Every stage remains `planned_not_implemented`.
+
+The governing sequence is `opportunity → mandate → engagement → decision framing → hypothesis tree → research plan → evidence → claim ledger → method → analysis and value → options → recommendation → Founder decision → storyline → deliverables → independent QA → implementation initiatives → benefits → closeout`.
+
+The contract requires one engagement ID and canonical state, material claim traceability, reproducible numbers, retained contrary evidence, method justification, idempotency, exact-version Founder approval, restart-safe checkpoints, independent QA, cross-format reconciliation, recommendation-to-benefit traceability, audit history, Founder recycle/pause/cancel/stop control and no sole self-approval. PCFA-07 must register exact task/test/evidence/dependency/phase-gate bindings; PCFA-08 final cross-authority acceptance remains required.
 
 ## Release and launch SHA semantics
 
@@ -75,7 +85,8 @@ The permanent WS6.16 record does **not** define the future launch SHA.
 4. Founder approval, hosted-controls evidence, clean-macOS evidence, macOS doctor `HEAD`, local `HEAD` and remote `main` must all equal one exact approved current `main` SHA;
 5. hosted-controls, clean-macOS and Founder evidence must bind the exact permanent-release SHA-256 and `repository/current-operational-state.json` SHA-256 through the `current_operational_state_sha256` field;
 6. the current operational-state digest transitively binds the exact PCFA-03 repository-posture SHA-256;
-7. the current operational-state authority directly binds the exact PCFA-04 product-scope addendum SHA-256 and the launch entrypoint rejects missing or drifted PCFA-04 scope.
+7. the current operational-state authority directly binds the exact PCFA-04 product-scope addendum SHA-256;
+8. the current operational-state authority directly binds the exact PCFA-05 MVCL SHA-256, and the launch entrypoint rejects missing, reordered, falsely implemented or permissive MVCL state.
 
 Any drift fails closed.
 
@@ -85,27 +96,29 @@ Any drift fails closed.
 2. `repository/current-operational-state.json`
 3. `repository/repository-visibility-and-licence-posture.json`
 4. `repository/pcfa04-product-scope-implementation-addendum.json`
-5. `docs/CURRENT-OPERATIONAL-STATE.md`
-6. `docs/71-PCFA-04-PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM.md`
-7. `handoff/codex-phase0-current-handoff.json`
-8. `contracts/pcfa01-launch-control-repair.json`
-9. `handoff/codex-phase0-current-issue.md`
-10. `handoff/codex-phase0-current-hosted-controls-issue.md`
-11. `releases/pre-codex-final-reconciliation-2026-08-06.json`
-12. `docs/01-PRODUCT-VISION.md`
-13. `docs/02-FUNCTIONAL-REQUIREMENTS.md`
-14. `docs/03-ARCHITECTURE.md`
-15. `docs/10-TESTING-STRATEGY.md`
-16. `docs/11-BUILD-BACKLOG.md`
-17. `docs/14-CODEX-KICKOFF.md`
-18. `docs/19-PHASE-0-VALIDATION-ADDENDUM.md`
-19. `handoff/codex-phase0-current-hosted-controls-attestation.template.json`
-20. `handoff/codex-phase0-current-clean-macos-attestation.template.json`
-21. `handoff/codex-phase0-current-founder-authorization.template.json`
-22. `handoff/codex-phase0-current-launch-ack.template.json`
-23. `schemas/codex-phase0-launch-permit.schema.json`
-24. `scripts/prepare_codex_phase0_launch.py`
-25. `scripts/require_workstream6_final_reconciliation.py`
+5. `repository/pcfa05-minimum-valuable-consulting-loop.json`
+6. `docs/CURRENT-OPERATIONAL-STATE.md`
+7. `docs/71-PCFA-04-PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM.md`
+8. `docs/72-PCFA-05-MINIMUM-VALUABLE-CONSULTING-LOOP.md`
+9. `handoff/codex-phase0-current-handoff.json`
+10. `contracts/pcfa01-launch-control-repair.json`
+11. `handoff/codex-phase0-current-issue.md`
+12. `handoff/codex-phase0-current-hosted-controls-issue.md`
+13. `releases/pre-codex-final-reconciliation-2026-08-06.json`
+14. `docs/01-PRODUCT-VISION.md`
+15. `docs/02-FUNCTIONAL-REQUIREMENTS.md`
+16. `docs/03-ARCHITECTURE.md`
+17. `docs/10-TESTING-STRATEGY.md`
+18. `docs/11-BUILD-BACKLOG.md`
+19. `docs/14-CODEX-KICKOFF.md`
+20. `docs/19-PHASE-0-VALIDATION-ADDENDUM.md`
+21. `handoff/codex-phase0-current-hosted-controls-attestation.template.json`
+22. `handoff/codex-phase0-current-clean-macos-attestation.template.json`
+23. `handoff/codex-phase0-current-founder-authorization.template.json`
+24. `handoff/codex-phase0-current-launch-ack.template.json`
+25. `schemas/codex-phase0-launch-permit.schema.json`
+26. `scripts/prepare_codex_phase0_launch.py`
+27. `scripts/require_workstream6_final_reconciliation.py`
 
 Historical PCR/WS package records remain available for audit and deterministic regression but do not override the current projection above.
 
@@ -119,6 +132,7 @@ python scripts/validate_pcfa01_launch_control.py
 python scripts/validate_pcfa02_current_operational_state.py
 python scripts/validate_pcfa03_repository_posture.py
 python scripts/validate_pcfa04_product_scope_addendum.py
+python scripts/validate_pcfa05_mvcl.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py
 ```
@@ -154,7 +168,7 @@ python scripts/prepare_codex_phase0_launch.py \
   --founder-approval .local/codex-phase0-launch/founder-approval.json
 ```
 
-The output permit is local, ignored, mode `0600`, single-use and stale on any approved-main, release, current-state, repository-posture, product-scope, issue-body, evidence, required-check or scope change.
+The output permit is local, ignored, mode `0600`, single-use and stale on any approved-main, release, current-state, repository-posture, product-scope, MVCL, issue-body, evidence, required-check or scope change.
 
 ## Authorized scope after a valid permit exists
 
