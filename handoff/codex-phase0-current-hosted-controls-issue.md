@@ -43,7 +43,7 @@ The hosted-controls attestation must bind:
 
 - the exact then-current approved `main` SHA;
 - the exact permanent WS6.16 release SHA-256;
-- the exact SHA-256 of `repository/current-operational-state.json`;
+- the exact SHA-256 of `repository/current-operational-state.json` in `current_operational_state_sha256`;
 - the exact current Issue #1 body SHA-256;
 - the exact current Issue #19 body SHA-256;
 - the required status-check name;
@@ -87,7 +87,7 @@ Verify:
 - [ ] no paid service or trial is required for IMP-P0;
 - [ ] the Founder environment attestation is complete.
 
-The clean-macOS evidence must bind the exact current approved `main` SHA, permanent-release digest and current-operational-state digest. The permanent release's historical parent SHA does **not** need to equal the approved current `main` SHA; its parent and record commit must instead be ancestors of that current SHA.
+The clean-macOS evidence must bind the exact current approved `main` SHA, permanent-release digest and `current_operational_state_sha256`. The permanent release's historical parent SHA does **not** need to equal the approved current `main` SHA; its parent and record commit must instead be ancestors of that current SHA.
 
 ## Founder authorization and permit
 
@@ -121,6 +121,6 @@ At permit time the verifier requires:
 - only `main` remaining before Codex branch creation;
 - no Codex Phase 0 branch or open pull request;
 - exact-SHA Founder IMP-P0-only approval;
-- all evidence bound to the permanent-release digest and current-operational-state digest.
+- all evidence bound to the permanent-release digest and `current_operational_state_sha256`.
 
 Until then, all implementation and activation boundaries remain false.
