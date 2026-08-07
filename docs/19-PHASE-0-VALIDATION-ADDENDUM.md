@@ -2,7 +2,7 @@
 
 ## Current state and boundary
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.14; WS6.15–WS6.16 final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 The repository remains pre-Codex. This addendum defines validation expectations for a future permitted IMP-P0 session. It does not authorise implementation, branch creation, merge or IMP-P1.
 

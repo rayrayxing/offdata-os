@@ -4,7 +4,7 @@
 
 Date: 2026-08-07
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.14; WS6.15–WS6.16 final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 This is the current human-readable status document. Historical phase-completion documents, PR descriptions, issue comments and reports remain evidence for their own packages but do not supersede this snapshot. `repository/canonical-authority-registry.json` makes those current, retained and superseded classifications machine-readable.
 
@@ -50,6 +50,7 @@ Repository-readiness, hosted-control evidence structures, clean-macOS doctor too
 - WS6.12 — deliverable quality implementation specification and renderer preparation;
 - WS6.13 — operational quality specification, Phase 0 preparation assets and licence-decision placeholder.
 - WS6.14 — cross-authority consistency gate and integrated-current-authority reconciliation.
+- WS6.15 — exact final pre-Codex workflow activation with fail-closed permanent-release boundary.
 
 WS6.7 closes `WS6-CONSIST-004`. Committed model-provider spend defaults remain zero and no paid provider use is authorized without a separate Founder gate.
 
@@ -100,7 +101,7 @@ The latest successful complete hosted evidence remains predecessor evidence and 
 
 ## Work remaining before Codex
 
-WS6.15 through WS6.16 are not yet integrated to `main`. The remaining repository-side work is final workflow activation and the permanent post-merge release record; manual launch gates remain separate.
+WS6.16 is not yet integrated to `main`. The remaining repository-side work is the permanent post-merge release record and final evidence reconciliation; manual launch gates remain separate.
 
 Codex remains blocked until all repository-side packages are complete and integrated and the following manual gates are independently evidenced:
 
@@ -128,4 +129,4 @@ Create `codex/phase-0-foundation` only after a valid permit exists and only from
 
 ## Earliest unintegrated package
 
-`WS6.15` is the earliest WS6 package not integrated to `main`. Any later draft package remains dependent on ordered integration and exact predecessor revalidation.
+`WS6.16` is the earliest WS6 package not integrated to `main`. Any later draft package remains dependent on ordered integration and exact predecessor revalidation.

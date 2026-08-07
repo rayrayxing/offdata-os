@@ -6,7 +6,7 @@ This document tells the Founder, reviewers and future Codex sessions how to inte
 
 ## Current canonical status
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.14; WS6.15–WS6.16 final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.15; WS6.16 permanent release/final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 The repository is **pre-Codex**. It is not presently executing implementation IMP-P0. A deterministic consulting kernel and governed chat-first package exist in `packages/offdata-core/`, but they remain inputs to a future permitted implementation session.
 

@@ -1,0 +1,25 @@
+name: Workstream 6 permanent release record
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: write
+
+concurrency:
+  group: workstream6-permanent-release-record-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-permanent-release-record:
+    name: Validate WS6.16 permanent release preparation and complete prior components
+    uses: ./.github/workflows/workstream6-final-launch-control.yml
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: write

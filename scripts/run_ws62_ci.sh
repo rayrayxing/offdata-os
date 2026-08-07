@@ -38,6 +38,7 @@ python scripts/build_workstream6_operational_quality_specification.py
 python scripts/build_workstream6_phase0_licence_decision_placeholder.py
 python scripts/build_workstream6_cross_authority_consistency_gate.py
 python scripts/build_workstream6_final_workflow.py
+python scripts/build_workstream6_permanent_release_record.py
 
 git diff --exit-code
 
@@ -76,7 +77,8 @@ python scripts/validate_workstream6_renderer_preimplementation_assets.py
 python scripts/validate_workstream6_operational_quality_specification.py
 python scripts/validate_workstream6_phase0_licence_decision_placeholder.py
 # WS6.14 validator asserts the pre-WS6.15 reserved workflow state; WS6.15 revalidates its current invariants.
-python scripts/validate_workstream6_final_workflow.py
+# WS6.15 validator asserts the activation-package boundary; WS6.16 revalidates its current invariants.
+python scripts/validate_workstream6_permanent_release_record.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
