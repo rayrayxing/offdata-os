@@ -7,8 +7,8 @@ repository: rayrayxing/offdata-os
 canonical_branch: main
 base_main_sha: 1b518253abb187bbc31b1c809ee4f7ca5506f7e8
 canonical_status_phrase: Chat-first development is integrated through CF-P1–7, PCR-01–10,
-  WS-4, WS-5 and WS6.7; later WS6 work remains unintegrated, final Workstream 6 reconciliation
-  and all manual launch gates remain pending; `codex_start_authorized=false`.
+  WS-4, WS-5 and WS6.13; WS6.14–WS6.16 final reconciliation and all manual launch
+  gates remain pending; `codex_start_authorized=false`.
 current_authority_files:
 - README.md
 - docs/00-START-HERE.md
@@ -17,11 +17,11 @@ current_authority_files:
 - docs/20-DEVELOPMENT-STATUS.md
 - handoff/codex-phase0-hosted-controls-issue-final.md
 document_fingerprints:
-  README.md: c59499a896a88d69235986a3e663c414c03200c4
-  docs/00-START-HERE.md: 5505dd79e96524d099fe9db3cb803ac168085f82
-  docs/14-CODEX-KICKOFF.md: 133c8855a3a81405f69dfc74be1c0d0ef0b94d73
-  docs/19-PHASE-0-VALIDATION-ADDENDUM.md: 652cd750c46648548e7dcc58d301ef5625ce852b
-  docs/20-DEVELOPMENT-STATUS.md: e2055b1e5b9a62b7f5d05cecf1c548aa05fddf48
+  README.md: 162de23e3b9c3933d0884d0ed20df8602a2476f7
+  docs/00-START-HERE.md: 707d3638590a7f76b40bb2907a70d420e633287d
+  docs/14-CODEX-KICKOFF.md: 7137553731520fbc3e4fef8907fc4abe42728533
+  docs/19-PHASE-0-VALIDATION-ADDENDUM.md: a254bf3ee0f7147a380ea8cae897c51a4109098b
+  docs/20-DEVELOPMENT-STATUS.md: 63ee149fd4c8c8fc3bba591d2d8dc1f27c7e3a63
   handoff/codex-phase0-hosted-controls-issue-final.md: b84bd6847cb0f88140e90b8c57bd1ecdf3a38984
 required_common_tokens:
 - codex_start_authorized=false
