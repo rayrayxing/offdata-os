@@ -15,11 +15,11 @@
 - Superseded duplicate issue: `#2`
 - Closed defects: `WS6-CONSIST-001`, `WS6-CONSIST-007`
 - Remaining blocking defect: `WS6-BLOCK-006`
-- Registry reconciled through WS6.6 required workflow identity.
+- Current status reconciled to integrated `main` through WS6.7; later WS6 packages remain unintegrated.
 - Every authority and implementation boundary remains fail-closed.
 
 The semantic validator parses both current read orders, scans every configured
 authority and evidence root, rejects unclassified paths, and enforces all
 current-authority uniqueness constraints.
 
-Next permitted work package: `WS6.7`.
+Historical WS6.4 package sequencing remains retained provenance; it does not override current integrated status.

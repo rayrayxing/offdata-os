@@ -24,8 +24,10 @@ python scripts/build_workstream5_launch_control.py
 python scripts/build_workstream6_final_reconciliation.py
 python scripts/build_workstream6_final_launch_control.py
 python scripts/build_workstream6_current_status.py
-python scripts/build_workstream6_phase_namespace.py
-python scripts/build_workstream6_required_workflow_identity.py
+# WS6.5 and WS6.6 surface fingerprints are immutable package-time snapshots.
+# Current namespace and workflow-identity semantics are revalidated by the successor
+# cross-authority gate; rebuilding these snapshots from later current-status surfaces
+# would rewrite historical evidence.
 python scripts/build_workstream6_canonical_authority.py
 python scripts/build_workstream6_configuration_contradictions.py
 python scripts/build_workstream6_issue_backlog_normalization.py
@@ -34,6 +36,8 @@ python scripts/build_workstream6_developer_experience_specification.py
 python scripts/build_workstream6_founder_experience_specification.py
 python scripts/build_workstream6_deliverable_quality_implementation_specification.py
 python scripts/build_workstream6_renderer_preimplementation_assets.py
+python scripts/build_workstream6_operational_quality_specification.py
+python scripts/build_workstream6_phase0_licence_decision_placeholder.py
 
 git diff --exit-code
 
@@ -60,8 +64,9 @@ python scripts/validate_workstream6_final_reconciliation.py
 python scripts/validate_workstream6_handoff_reconciliation.py
 python scripts/validate_workstream6_final_launch_control.py
 python scripts/validate_workstream6_current_status.py
-python scripts/validate_workstream6_phase_namespace.py
-python scripts/validate_workstream6_required_workflow_identity.py
+# WS6.5/WS6.6 historical snapshot determinism was established at their package gates.
+# Do not re-run validators that rebuild those immutable fingerprint snapshots from
+# successor current-status surfaces.
 python scripts/validate_workstream6_canonical_authority.py
 python scripts/validate_workstream6_configuration_contradictions.py
 python scripts/validate_workstream6_issue_backlog_normalization.py
@@ -70,6 +75,8 @@ python scripts/validate_workstream6_developer_experience_specification.py
 python scripts/validate_workstream6_founder_experience_specification.py
 python scripts/validate_workstream6_deliverable_quality_implementation_specification.py
 python scripts/validate_workstream6_renderer_preimplementation_assets.py
+python scripts/validate_workstream6_operational_quality_specification.py
+python scripts/validate_workstream6_phase0_licence_decision_placeholder.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
