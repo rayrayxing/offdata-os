@@ -19,12 +19,12 @@ This issue is the authoritative human evidence record for GitHub-hosted settings
 - [x] WS6.3 current status repair is integrated.
 - [x] WS6.4 canonical authority and evidence registry is integrated.
 - [x] WS6.5 phase namespace normalization is integrated.
-- [x] WS6.6 required workflow identity is included in this package and becomes integrated when this package merges.
+- [x] WS6.6 required workflow identity is integrated.
 - [x] All WS6.0–WS6.16 packages are integrated.
 - [x] `releases/pre-codex-final-reconciliation-2026-08-06.json` exists and passes `scripts/require_workstream6_final_reconciliation.py`.
 - [x] Issue #1 is open and synchronized to `handoff/codex-phase0-issue-final.md`.
 - [x] Issue #2 remains closed as duplicate.
-- [x] The final required status-check identity is uniquely reserved as `Validate final pre-Codex canonical handoff and complete release`.
+- [x] The exact final status-check identity is active as `Validate final pre-Codex canonical handoff and complete release`; hosted enforcement remains pending below.
 - [x] WS6.15 activated `.github/workflows/workstream6-final-pre-codex.yml`; hosted enforcement of the exact check remains to be evidenced below.
 - [ ] `codex/phase-0-foundation` and any IMP-P0 pull request remain absent at permit issuance.
 
