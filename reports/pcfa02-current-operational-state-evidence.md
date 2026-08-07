@@ -10,7 +10,7 @@
 - Authorization boundaries: `14`
 - Sole live machine readiness projection: `repository/current-operational-state.json`
 - Current repository posture: `repository/repository-visibility-and-licence-posture.json`
-- Repository posture SHA-256: `112a9b73eb90ba9e2e2803328ee3a3aefd98cba34d9b2760abab80a72e7b401e`
+- Repository posture SHA-256: `b9ad8e1d08d52bf0e598f932e432319e12a336f735627f447f1269ce66e4ece1`
 - Current machine handoff: `handoff/codex-phase0-current-handoff.json`
 - Current Issue #1 body: `handoff/codex-phase0-current-issue.md`
 - Current Issue #19 body: `handoff/codex-phase0-current-hosted-controls-issue.md`
