@@ -144,93 +144,49 @@ def build_records() -> tuple[object, ...]:
         "boundaries": source["boundaries"],
     }
 
-    tests: list[dict[str, object]] = []
-    for item in obligations:
-        tests.append(
-            {
-                "id": item["test_obligation_id"],
-                "kind": "criterion_acceptance",
-                "criterion": item["criterion_id"],
-                "owner": "WS6.13",
-                "phase": item["phase_id"],
-                "task": item["task_id"],
-                "component": item["component_id"],
-                "evidence": item["evidence_type"],
-                "status": "registered_planned",
-                "executable": False,
-                "evidence_satisfied": False,
-            }
-        )
-
-    for command in developer["commands"]:
-        token = command["name"].upper()
-        for case_class in ("positive", "failure", "safety", "retry"):
-            tests.append(
-                {
-                    "id": f"DX-{token}-{case_class.upper()}-001",
-                    "kind": "developer_command_acceptance",
-                    "command": command["name"],
-                    "class": case_class,
-                    "owner": "WS6.13",
-                    "phase": "IMP-P0",
-                    "task": command["task"],
-                    "component": command["component"],
-                    "evidence": "developer_command_acceptance_report",
-                    "status": "registered_planned",
-                    "executable": False,
-                    "evidence_satisfied": False,
-                }
-            )
-
-    conformance_cases = [
-        ("WS613-WF-WAIT-001", "wait", "IMP-P3", "P3.2", "COMP-WORKFLOW"),
-        ("WS613-WF-RETRY-001", "retry", "IMP-P3", "P3.2", "COMP-WORKFLOW"),
-        ("WS613-WF-CANCEL-001", "cancel", "IMP-P3", "P3.2", "COMP-WORKFLOW"),
-        ("WS613-WF-IDEMPOTENCY-001", "idempotency", "IMP-P3", "P3.3", "COMP-API"),
-        (
-            "WS613-AGENT-TOOL-PERMISSION-001",
-            "tool_permission",
-            "IMP-P4",
-            "P4.4",
-            "COMP-QA",
-        ),
-        (
-            "WS613-AGENT-COST-BUDGET-001",
-            "cost_budget",
-            "IMP-P4",
-            "P4.4",
-            "COMP-QA",
-        ),
-        (
-            "WS613-AGENT-CONTEXT-MINIMIZATION-001",
-            "context_minimization",
-            "IMP-P4",
-            "P4.4",
-            "COMP-QA",
-        ),
+    obligation_tests = [
+        {
+            "id": item["test_obligation_id"],
+            "criterion": item["criterion_id"],
+            "task": item["task_id"],
+            "component": item["component_id"],
+            "evidence": item["evidence_type"],
+        }
+        for item in obligations
     ]
-    for test_id, case, phase, task, component in conformance_cases:
-        tests.append(
-            {
-                "id": test_id,
-                "kind": "workflow_agent_conformance",
-                "case": case,
-                "owner": phase,
-                "phase": phase,
-                "task": task,
-                "component": component,
-                "evidence": "conformance_report",
-                "provider_execution_required_preimplementation": False,
-                "status": "registered_planned",
-                "executable": False,
-                "evidence_satisfied": False,
-            }
-        )
-
+    developer_tests = [
+        {
+            "id": f"DX-{command['name'].upper()}-{case_class.upper()}-001",
+            "command": command["name"],
+            "class": case_class,
+            "task": command["task"],
+            "component": command["component"],
+        }
+        for command in developer["commands"]
+        for case_class in ("positive", "failure", "safety", "retry")
+    ]
+    conformance_tests = [
+        {"id": "WS613-WF-WAIT-001", "case": "wait", "phase": "IMP-P3", "task": "P3.2", "component": "COMP-WORKFLOW"},
+        {"id": "WS613-WF-RETRY-001", "case": "retry", "phase": "IMP-P3", "task": "P3.2", "component": "COMP-WORKFLOW"},
+        {"id": "WS613-WF-CANCEL-001", "case": "cancel", "phase": "IMP-P3", "task": "P3.2", "component": "COMP-WORKFLOW"},
+        {"id": "WS613-WF-IDEMPOTENCY-001", "case": "idempotency", "phase": "IMP-P3", "task": "P3.3", "component": "COMP-API"},
+        {"id": "WS613-AGENT-TOOL-PERMISSION-001", "case": "tool_permission", "phase": "IMP-P4", "task": "P4.4", "component": "COMP-QA"},
+        {"id": "WS613-AGENT-COST-BUDGET-001", "case": "cost_budget", "phase": "IMP-P4", "task": "P4.4", "component": "COMP-QA"},
+        {"id": "WS613-AGENT-CONTEXT-MINIMIZATION-001", "case": "context_minimization", "phase": "IMP-P4", "task": "P4.4", "component": "COMP-QA"},
+    ]
     registry = {
         "schema_version": 1,
         "work_package_id": "WS6.13",
         "status": "planning_only",
+        "defaults": {
+            "owner": "WS6.13",
+            "phase": "IMP-P0",
+            "evidence": "developer_command_acceptance_report",
+            "registration_status": "registered_planned",
+            "executable": False,
+            "evidence_satisfied": False,
+            "provider_execution_required_preimplementation": False,
+        },
         "counts": {
             "phase0_criteria": 16,
             "developer_cases": 60,
@@ -240,7 +196,9 @@ def build_records() -> tuple[object, ...]:
             "executable": 0,
             "evidence": 0,
         },
-        "tests": tests,
+        "phase0_obligation_registrations": obligation_tests,
+        "developer_command_cases": developer_tests,
+        "workflow_agent_conformance_cases": conformance_tests,
         "boundaries": source["boundaries"],
     }
     overlay = {
