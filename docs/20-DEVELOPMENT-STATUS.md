@@ -4,7 +4,7 @@
 
 Date: 2026-08-07
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.7; later WS6 work remains unintegrated, final Workstream 6 reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
+**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.13; WS6.14–WS6.16 final reconciliation and all manual launch gates remain pending; `codex_start_authorized=false`.**
 
 This is the current human-readable status document. Historical phase-completion documents, PR descriptions, issue comments and reports remain evidence for their own packages but do not supersede this snapshot. `repository/canonical-authority-registry.json` makes those current, retained and superseded classifications machine-readable.
 
@@ -43,6 +43,12 @@ Repository-readiness, hosted-control evidence structures, clean-macOS doctor too
 - WS6.5 — phase namespace normalization across current authority and issue surfaces;
 - WS6.6 — required final workflow and status-check identity reservation;
 - WS6.7 — configuration contradictions and zero-spend committed defaults.
+- WS6.8 — issue and backlog normalization;
+- WS6.9 — implementation-obligation map;
+- WS6.10 — developer experience specification;
+- WS6.11 — Founder experience specification;
+- WS6.12 — deliverable quality implementation specification and renderer preparation;
+- WS6.13 — operational quality specification, Phase 0 preparation assets and licence-decision placeholder.
 
 WS6.7 closes `WS6-CONSIST-004`. Committed model-provider spend defaults remain zero and no paid provider use is authorized without a separate Founder gate.
 
@@ -93,7 +99,7 @@ The latest successful complete hosted evidence remains predecessor evidence and 
 
 ## Work remaining before Codex
 
-WS6.8 through WS6.16 are not integrated to `main`. Draft stacked packages may be prepared sequentially, but they do not change integration authority or permit later packages to merge ahead of predecessors. The remaining work includes issue/backlog normalization, implementation obligations, developer and Founder experience specifications, deliverable and operational quality preparation, cross-authority consistency, final workflow activation, permanent evidence reconciliation and the post-merge release.
+WS6.14 through WS6.16 are not yet integrated to `main`. The remaining repository-side work is cross-authority consistency, final workflow activation and the permanent post-merge release record; manual launch gates remain separate.
 
 Codex remains blocked until all repository-side packages are complete and integrated and the following manual gates are independently evidenced:
 
@@ -121,4 +127,4 @@ Create `codex/phase-0-foundation` only after a valid permit exists and only from
 
 ## Earliest unintegrated package
 
-`WS6.8` is the earliest WS6 package not integrated to `main`. Any later draft package remains dependent on ordered integration and exact predecessor revalidation.
+`WS6.14` is the earliest WS6 package not integrated to `main`. Any later draft package remains dependent on ordered integration and exact predecessor revalidation.
