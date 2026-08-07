@@ -1,0 +1,25 @@
+name: Workstream 6 implementation obligation map
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: write
+
+concurrency:
+  group: workstream6-implementation-obligation-map-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-implementation-obligation-map:
+    name: Validate WS6.9 implementation obligation map and complete prior components
+    uses: ./.github/workflows/workstream6-final-launch-control.yml
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: write
