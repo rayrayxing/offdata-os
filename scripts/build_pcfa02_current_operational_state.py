@@ -12,6 +12,7 @@ SOURCE_PATH = ROOT / "configs" / "current-operational-state.yaml"
 OUTPUT_PATH = ROOT / "repository" / "current-operational-state.json"
 REPORT_PATH = ROOT / "reports" / "pcfa02-current-operational-state-evidence.md"
 POSTURE_PATH = ROOT / "repository" / "repository-visibility-and-licence-posture.json"
+PRODUCT_SCOPE_PATH = ROOT / "repository" / "pcfa04-product-scope-implementation-addendum.json"
 
 
 def _load_source() -> dict[str, Any]:
@@ -37,6 +38,8 @@ def build_records() -> tuple[dict[str, Any], str]:
         raise ValueError("current operational-state introduction package drifted")
     if not POSTURE_PATH.is_file():
         raise ValueError("current repository visibility/licence posture record is missing")
+    if not PRODUCT_SCOPE_PATH.is_file():
+        raise ValueError("current PCFA-04 product-scope implementation addendum is missing")
 
     state = dict(source)
     snapshots = []
@@ -54,6 +57,7 @@ def build_records() -> tuple[dict[str, Any], str]:
     state["generated_from"] = str(SOURCE_PATH.relative_to(ROOT))
     authority = dict(state["current_authority"])
     authority["repository_posture_sha256"] = _digest_file(POSTURE_PATH)
+    authority["product_scope_addendum_sha256"] = _digest_file(PRODUCT_SCOPE_PATH)
     state["current_authority"] = authority
 
     manual = state["manual_launch_gates"]
@@ -73,11 +77,14 @@ def build_records() -> tuple[dict[str, Any], str]:
             "- Sole live machine readiness projection: `repository/current-operational-state.json`",
             "- Current repository posture: `repository/repository-visibility-and-licence-posture.json`",
             f"- Repository posture SHA-256: `{authority['repository_posture_sha256']}`",
+            "- Current product-scope addendum: `repository/pcfa04-product-scope-implementation-addendum.json`",
+            f"- Product-scope addendum SHA-256: `{authority['product_scope_addendum_sha256']}`",
             "- Current machine handoff: `handoff/codex-phase0-current-handoff.json`",
             "- Current Issue #1 body: `handoff/codex-phase0-current-issue.md`",
             "- Current Issue #19 body: `handoff/codex-phase0-current-hosted-controls-issue.md`",
             "- WS6.2/WS6.3/WS6.4/WS6.13 embedded readiness and licence state remain retained package-time evidence only.",
             "- Permanent WS6.16 release remains immutable evidence, not the current launch SHA.",
+            "- PCFA-04 requirements remain `planned_not_implemented`; PCFA-05 and PCFA-07 remain required.",
             "- `codex_start_authorized=false`; merge, IMP-P1, runtime and external actions remain denied.",
             "",
         ]
@@ -92,7 +99,8 @@ def main() -> None:
     print(
         "Built PCFA-02 current operational state: "
         f"historical_snapshots={len(state['historical_package_snapshots'])}, "
-        "repository_posture_bound=true, manual_gates=false, codex_start_authorized=false."
+        "repository_posture_bound=true, product_scope_bound=true, manual_gates=false, "
+        "codex_start_authorized=false."
     )
 
 
