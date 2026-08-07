@@ -1,0 +1,20 @@
+name: Actions public runner diagnostic
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  echo:
+    name: Minimal public hosted runner diagnostic
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Prove runner acquired
+        run: |
+          echo "runner_acquired=true"
+          uname -a
+          python --version || true
