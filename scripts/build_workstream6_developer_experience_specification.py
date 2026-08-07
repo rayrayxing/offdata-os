@@ -35,24 +35,6 @@ PURPOSES = {
     "clean": "Remove only allowlisted ephemeral build, cache and test artifacts.",
     "support-bundle": "Create a bounded local diagnostic bundle after redaction validation.",
 }
-CASE_TEMPLATES = {
-    "positive": (
-        "The governed `{name}` operation completes successfully.",
-        ["expected_state_observed", "exit_code_matches", "redacted_evidence_retained"],
-    ),
-    "failure": (
-        "A declared `{name}` validation or dependency fails.",
-        ["failure_classified", "safe_remediation_reported", "no_false_success_claim"],
-    ),
-    "safety": (
-        "The `{name}` request crosses a governed safety boundary.",
-        ["request_denied", "no_unsafe_state_change", "boundary_recorded"],
-    ),
-    "retry": (
-        "A retryable `{name}` condition resolves within the bounded retry budget.",
-        ["retry_budget_respected", "state_rechecked", "final_result_reported"],
-    ),
-}
 
 
 def _load_yaml(path: Path) -> dict[str, Any]:
@@ -78,189 +60,132 @@ def _sha256(value: str) -> str:
 
 
 def _backlog_tasks() -> dict[str, str]:
-    text = BACKLOG.read_text(encoding="utf-8")
-    tasks = {match.group(1): match.group(2).strip() for match in TASK_HEADING.finditer(text)}
+    tasks = {
+        match.group(1): match.group(2).strip()
+        for match in TASK_HEADING.finditer(BACKLOG.read_text(encoding="utf-8"))
+    }
     for required in ("P0.1", "P0.2", "P0.3", "P0.4"):
         if required not in tasks:
             raise ValueError(f"missing IMP-P0 task: {required}")
     return tasks
 
 
-def _parse_flag(spec: str) -> dict[str, Any]:
-    parts = spec.split(":")
-    if len(parts) < 2 or not parts[0].startswith("--"):
+def _flag_name(spec: str) -> str:
+    name = spec.split(":", 1)[0]
+    if not name.startswith("--"):
         raise ValueError(f"invalid flag specification: {spec}")
-    result: dict[str, Any] = {
-        "name": parts[0],
-        "type": parts[1],
-        "required": "required" in parts[2:],
-    }
-    for part in parts[2:]:
-        if part.startswith("default="):
-            result["default"] = json.loads(part.removeprefix("default="))
-        elif part.startswith("values="):
-            result["allowed_values"] = part.removeprefix("values=").split("|")
-        elif part.startswith("min="):
-            result["minimum"] = float(part.removeprefix("min="))
-        elif part.startswith("max="):
-            result["maximum"] = float(part.removeprefix("max="))
-        elif part != "required":
-            raise ValueError(f"unknown flag modifier: {part}")
-    return result
+    return name
 
 
-def _render_specification(
-    source: dict[str, Any],
-    commands: list[dict[str, Any]],
-    global_flags: list[dict[str, Any]],
-    exit_codes: list[dict[str, Any]],
-) -> str:
+def _render_specification(source: dict[str, Any], commands: list[dict[str, Any]]) -> str:
     lines = [
         "# WS6.10 — Developer experience specification",
         "",
         "> [!CAUTION]",
-        "> **SPECIFIED, NOT IMPLEMENTED OR AUTHORISED.** This document defines the future",
-        "> IMP-P0 local command surface. It does not create the dispatcher, start services,",
-        "> authorize Codex, or satisfy implementation evidence.",
+        "> **SPECIFIED, NOT IMPLEMENTED OR AUTHORISED.** This defines the future",
+        "> IMP-P0 local command surface. It creates no dispatcher, runtime or authority.",
         "",
-        "## Purpose",
+        "## Purpose and boundary",
         "",
-        "The future root dispatcher is `./offdata`. Every command runs from the repository",
-        "root, remains local-first and synthetic-only, and follows one shared output,",
-        "redaction, path-safety, network, failure and retry contract.",
-        "",
-        f"- Commands specified: `{len(commands)}`.",
-        f"- Acceptance cases: `{sum(len(item['acceptance_cases']) for item in commands)}`.",
-        "- Acceptance classes per command: `positive`, `failure`, `safety`, `retry`.",
-        "- Registered executable tests: `0`.",
-        "- Satisfied command evidence: `0`.",
-        "- `codex_start_authorized=false`.",
+        "The future dispatcher is `./offdata`, invoked from the repository root on the",
+        "supported macOS/Apple Silicon environment. All commands are local-first,",
+        "synthetic-only and fail closed. Registered executable tests and satisfied",
+        "implementation evidence remain zero. `codex_start_authorized=false`.",
         "",
         "The defect register suggested `docs/53-PHASE-0-DEVELOPER-EXPERIENCE-SPEC.md`,",
-        "but numeric prefix `53` is already immutable WS6.1 evidence. This file is the",
-        "canonical WS6.10 specification. The broader Phase 0 implementation blueprint",
-        "remains deferred to WS6.13.",
+        "but prefix `53` is immutable WS6.1 evidence. This `docs/62-*` file is canonical.",
+        "The wider Phase 0 topology blueprint remains deferred to WS6.13.",
         "",
-        "## Shared command contract",
+        "## Shared contract",
         "",
-        f"- Dispatcher: `{source['surface']['dispatcher']}`.",
-        f"- Working directory: `{source['surface']['working_directory']}`.",
-        f"- Primary environment: `{source['surface']['primary_environment']}`.",
-        "- Human and JSON output have semantic parity.",
-        "- Errors identify a non-secret code, component, cause, safe remediation and retryability.",
+        "- Human and JSON results have semantic parity and RFC 3339 UTC timestamps.",
+        "- Errors identify code, component, cause, safe remediation and retryability.",
         "- Raw exceptions are never the primary user message.",
-        "- Redaction occurs before console or artifact writes.",
-        "- Paths are resolved before access; symlink escape is rejected.",
-        "- Destructive operations require a synthetic-only marker and exact confirmation.",
+        "- Secret-like keys and values are redacted before console or artifact output.",
+        "- Paths are resolved first; symlink escape and protected-path writes are denied.",
+        "- Destructive operations require a synthetic marker and exact confirmation.",
         "- A real-client marker denies mutation.",
-        "- Network is denied by default; external upload, OAuth, credentials and paid services",
+        "- Network is denied by default; only declared dependency or vulnerability-data",
+        "  fetches may be explicitly opted in. Upload, OAuth, credentials and paid services",
         "  remain prohibited.",
         "",
         "### Global flags",
         "",
-        "| Flag | Type | Required | Default |",
-        "|---|---|:---:|---:|",
+        ", ".join(f"`{_flag_name(item)}`" for item in source["global_flags"]),
+        "",
+        "### Exit codes",
+        "",
+        "| Code | Name | Retryable | Meaning |",
+        "|---:|---|:---:|---|",
     ]
-    for item in global_flags:
-        default = "`—`" if "default" not in item else f"`{item.get('default')}`"
+    for code, name, retryable, meaning in source["exit_codes"]:
+        lines.append(f"| `{code}` | `{name}` | `{str(retryable).lower()}` | {meaning} |")
+    lines.extend(
+        [
+            "",
+            "## Acceptance model",
+            "",
+            "Every command has exactly four planned, unregistered cases:",
+            "",
+            "- `positive`: expected state, exit code and redacted evidence are correct.",
+            "- `failure`: cause is classified, remediation is safe and success is not claimed.",
+            "- `safety`: request is denied before effects and the boundary is recorded.",
+            "- `retry`: bounded attempts, state recheck and final result are evidenced.",
+            "",
+            "## Command contracts",
+            "",
+            "| Command | Owner | Purpose | Flags | Exits | Idempotency | Attempts | Case exits |",
+            "|---|---|---|---|---|---|---:|---|",
+        ]
+    )
+    for command in commands:
+        flags = ", ".join(f"`{item}`" for item in command["flag_names"]) or "—"
+        exits = ", ".join(str(item) for item in command["exits"])
+        case_exits = ", ".join(
+            f"{key}={command['case_exits'][key]}" for key in ACCEPTANCE_CLASSES
+        )
         lines.append(
-            f"| `{item['name']}` | `{item['type']}` | "
-            f"`{str(item['required']).lower()}` | {default} |"
+            f"| `./offdata {command['name']}` | `{command['task']}` / "
+            f"`{command['component']}` | {command['purpose']} | {flags} | `{exits}` | "
+            f"`{command['idempotency']}` | `{command['retry_attempts']}` | "
+            f"`{case_exits}` |"
         )
     lines.extend(
         [
             "",
-            "### Exit codes",
+            "## Command-specific safety and retry rules",
             "",
-            "| Code | Name | Retryable | Meaning |",
-            "|---:|---|:---:|---|",
-        ]
-    )
-    for item in exit_codes:
-        lines.append(
-            f"| `{item['code']}` | `{item['name']}` | "
-            f"`{str(item['retryable']).lower()}` | {item['meaning']} |"
-        )
-    lines.extend(
-        [
-            "",
-            "## Command summary",
-            "",
-            "| Command | Task | Category | Mutation | Idempotency | Network |",
-            "|---|---|---|---|---|---|",
         ]
     )
     for command in commands:
-        lines.append(
-            f"| `./offdata {command['name']}` | `{command['task']}` | "
-            f"`{command['category']}` | `{command['mutation']}` | "
-            f"`{command['idempotency']}` | `{command['network']}` |"
-        )
-    for command in commands:
+        confirmation = json.dumps(command["confirmation"], sort_keys=True)
         lines.extend(
             [
+                f"### `./offdata {command['name']}`",
                 "",
-                f"## `./offdata {command['name']}`",
-                "",
-                command["purpose"],
-                "",
-                f"- Owner: `{command['task']}` / `{command['component']}`.",
-                f"- Mutation class: `{command['mutation']}`.",
-                f"- Idempotency: `{command['idempotency']}`.",
+                f"- Category/mutation: `{command['category']}` / `{command['mutation']}`.",
                 f"- Network: `{command['network']}`.",
-                f"- Confirmation: `{json.dumps(command['confirmation'], sort_keys=True)}`.",
-                f"- Allowed exits: {', '.join(f'`{item}`' for item in command['exits'])}.",
-                f"- Maximum attempts: `{command['retry']['maximum_attempts']}`.",
-                "- Failure contract: classify component and cause, provide safe remediation,",
-                "  preserve accurate final state, and never claim false success.",
-                "- Safety contract: deny unsafe data, path, network, credential and approval",
-                "  requests before effects.",
+                f"- Confirmation: `{confirmation}`.",
+                f"- Retryable: {', '.join(f'`{item}`' for item in command['retryable']) or '`none`'}.",
+                f"- Non-retryable: {', '.join(f'`{item}`' for item in command['non_retryable'])}.",
+                f"- Quality obligations: {', '.join(f'`{item}`' for item in command['criteria'])}.",
                 "",
-                "### Flags",
-                "",
-                "| Flag | Type | Required | Default |",
-                "|---|---|:---:|---:|",
             ]
         )
-        for item in command["parsed_flags"]:
-            default = "`—`" if "default" not in item else f"`{item.get('default')}`"
-            lines.append(
-                f"| `{item['name']}` | `{item['type']}` | "
-                f"`{str(item['required']).lower()}` | {default} |"
-            )
-        if not command["parsed_flags"]:
-            lines.append("| — | — | — | — |")
-        lines.extend(
-            [
-                "",
-                "### Acceptance cases",
-                "",
-                "| ID | Class | Expected exit | Scenario |",
-                "|---|---|---:|---|",
-            ]
-        )
-        for case in command["acceptance_cases"]:
-            lines.append(
-                f"| `{case['case_id']}` | `{case['acceptance_class']}` | "
-                f"`{case['expected_exit_code']}` | {case['scenario']} |"
-            )
     lines.extend(
         [
-            "",
             "## Completion boundary",
             "",
-            "WS6.10 closes only `WS6-QUALITY-002`. It does not register executable tests,",
-            "create the Phase 0 topology blueprint, implement `./offdata`, activate services,",
-            "or satisfy command evidence. `WS6-CODEXPREP-002` and `WS6-BLOCK-006` remain open.",
+            "WS6.10 closes only `WS6-QUALITY-002`. It does not implement `./offdata`,",
+            "register executable tests, create the WS6.13 blueprint, start services or",
+            "satisfy command evidence. `WS6-CODEXPREP-002` and `WS6-BLOCK-006` remain open.",
             "",
-            "The next permitted package is WS6.11 after the governed WS6.8 → WS6.9 →",
-            "WS6.10 integration sequence.",
+            "Next permitted package: `WS6.11`, after the governed predecessor sequence.",
             "",
             "## Rollback",
             "",
-            "Before merge, close the WS6.10 pull request and delete only its branch. After",
-            "merge, revert this specification package as one unit. No runtime exists to",
-            "roll back.",
+            "Before merge, close the PR and delete only its branch. After merge, revert the",
+            "specification package as one unit. No runtime exists to roll back.",
             "",
         ]
     )
@@ -273,29 +198,18 @@ def build_records() -> tuple[dict[str, Any], str, str]:
     quality = _load_json(QUALITY)
     obligation_map = _load_json(OBLIGATION_MAP)
     tasks = _backlog_tasks()
-
     canonical = quality["developer_experience"]["phase0_required_commands"]
-    source_commands = source["commands"]
-    names = [item["name"] for item in source_commands]
-    if names != canonical:
-        raise ValueError("WS6.10 commands must exactly match PCR-10 order")
-    if len(names) != 15 or len(names) != len(set(names)):
-        raise ValueError("WS6.10 command identities are invalid")
-
-    global_flags = [_parse_flag(item) for item in source["global_flags"]]
-    exit_codes = [
-        {"code": item[0], "name": item[1], "retryable": item[2], "meaning": item[3]}
-        for item in source["exit_codes"]
-    ]
+    names = [item["name"] for item in source["commands"]]
+    if names != canonical or len(names) != len(set(names)) != 15:
+        raise ValueError("WS6.10 commands must exactly match the 15 PCR-10 commands")
     obligation_ids = {
         item["criterion_id"]
         for item in obligation_map["obligations"]
         if isinstance(item, dict) and isinstance(item.get("criterion_id"), str)
     }
-    display_commands: list[dict[str, Any]] = []
-    index_commands: list[dict[str, Any]] = []
-    all_cases = []
-    for command in source_commands:
+    commands: list[dict[str, Any]] = []
+    case_ids: list[str] = []
+    for command in source["commands"]:
         if command["task"] not in tasks:
             raise ValueError(f"unknown implementation task: {command['task']}")
         unknown = sorted(set(command["criteria"]) - obligation_ids)
@@ -303,70 +217,48 @@ def build_records() -> tuple[dict[str, Any], str, str]:
             raise ValueError(f"unknown obligations for {command['name']}: {unknown}")
         if tuple(command["case_exits"]) != ACCEPTANCE_CLASSES:
             raise ValueError(f"invalid acceptance classes for {command['name']}")
-        parsed_flags = [_parse_flag(item) for item in command["flags"]]
-        retry_source = command["retry"]
-        retry = {
-            "maximum_attempts": retry_source["attempts"],
-            "backoff_seconds": retry_source["backoff"],
-            "retryable_conditions": retry_source["retryable"],
-            "non_retryable_conditions": retry_source["non_retryable"],
-            "state_recheck_required": True,
-        }
-        cases = []
         for acceptance_class in ACCEPTANCE_CLASSES:
-            scenario, assertions = CASE_TEMPLATES[acceptance_class]
-            case = {
-                "case_id": f"DX-{_slug(command['name'])}-{acceptance_class.upper()}-001",
-                "command": command["name"],
-                "acceptance_class": acceptance_class,
-                "scenario": scenario.format(name=command["name"]),
-                "expected_exit_code": command["case_exits"][acceptance_class],
-                "assertions": assertions,
-                "registration_status": "planned_unregistered",
-                "executable_test_exists": False,
-            }
-            if case["expected_exit_code"] not in command["exits"]:
-                raise ValueError(f"acceptance exit is not allowed: {case['case_id']}")
-            cases.append(case)
-            all_cases.append(case)
-        display_commands.append(
-            {
-                **command,
-                "purpose": PURPOSES[command["name"]],
-                "parsed_flags": parsed_flags,
-                "retry": retry,
-                "task_title": tasks[command["task"]],
-                "implementation_status": "specified_not_implemented",
-                "acceptance_cases": cases,
-            }
-        )
-        index_commands.append(
+            case_id = f"DX-{_slug(command['name'])}-{acceptance_class.upper()}-001"
+            if command["case_exits"][acceptance_class] not in command["exits"]:
+                raise ValueError(f"case exit is not allowed: {case_id}")
+            case_ids.append(case_id)
+        commands.append(
             {
                 "name": command["name"],
                 "task": command["task"],
                 "component": command["component"],
+                "purpose": PURPOSES[command["name"]],
                 "category": command["category"],
                 "mutation": command["mutation"],
                 "idempotency": command["idempotency"],
                 "confirmation": command["confirmation"],
                 "network": command["network"],
-                "flags": parsed_flags,
+                "flag_names": [_flag_name(item) for item in command["flags"]],
                 "exits": command["exits"],
-                "retry": retry,
+                "retry_attempts": command["retry"]["attempts"],
+                "retryable": command["retry"]["retryable"],
+                "non_retryable": command["retry"]["non_retryable"],
+                "state_recheck_required": True,
                 "criteria": command["criteria"],
-                "acceptance_cases": [
-                    {
-                        "case_id": case["case_id"],
-                        "acceptance_class": case["acceptance_class"],
-                        "expected_exit_code": case["expected_exit_code"],
-                        "assertion_count": len(case["assertions"]),
-                    }
-                    for case in cases
-                ],
+                "case_exits": command["case_exits"],
+                "source_record_sha256": _sha256(
+                    json.dumps(command, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+                ),
                 "implementation_status": "specified_not_implemented",
             }
         )
-
+    contract_commands = [
+        {
+            key: command[key]
+            for key in (
+                "name", "task", "component", "idempotency", "network",
+                "flag_names", "exits", "retry_attempts",
+                "state_recheck_required", "case_exits", "source_record_sha256",
+                "implementation_status",
+            )
+        }
+        for command in commands
+    ]
     contract = {
         "schema_version": source["schema_version"],
         "work_package_id": source["work_package_id"],
@@ -379,15 +271,15 @@ def build_records() -> tuple[dict[str, Any], str, str]:
         "shared_contracts": source["shared_contracts"],
         "generated_from": SOURCE.relative_to(ROOT).as_posix(),
         "source_sha256": _sha256(source_text),
-        "global_flags": global_flags,
-        "exit_codes": exit_codes,
-        "global_flag_count": len(global_flags),
-        "exit_code_count": len(exit_codes),
-        "command_count": len(index_commands),
-        "acceptance_case_count": len(all_cases),
-        "commands": index_commands,
+        "global_flags": [_flag_name(item) for item in source["global_flags"]],
+        "exit_codes": [item[0] for item in source["exit_codes"]],
+        "global_flag_count": len(source["global_flags"]),
+        "exit_code_count": len(source["exit_codes"]),
+        "command_count": len(contract_commands),
+        "acceptance_case_count": len(case_ids),
+        "commands": contract_commands,
         "test_registration": {
-            "planned_case_count": len(all_cases),
+            "planned_case_count": len(case_ids),
             "registered_case_count": 0,
             "executable_test_count": 0,
             "separate_registration_defect": "WS6-CODEXPREP-002",
@@ -402,7 +294,7 @@ def build_records() -> tuple[dict[str, Any], str, str]:
         "completion": source["completion"],
         "boundaries": source["boundaries"],
     }
-    specification = _render_specification(source, display_commands, global_flags, exit_codes)
+    specification = _render_specification(source, commands)
     report = "\n".join(
         [
             "# WS6.10 developer experience specification evidence",
@@ -410,10 +302,10 @@ def build_records() -> tuple[dict[str, Any], str, str]:
             "<!-- Generated by scripts/build_workstream6_developer_experience_specification.py. -->",
             "",
             f"- Exact WS6.9 predecessor head: `{source['predecessor']['head_sha']}`.",
-            f"- Exact PCR-10 commands specified: `{len(index_commands)}`.",
-            f"- Command acceptance cases: `{len(all_cases)}` (`4` per command).",
-            f"- Global flags: `{contract['global_flag_count']}`.",
-            f"- Governed exit codes: `{contract['exit_code_count']}`.",
+            "- Exact PCR-10 commands specified: `15`.",
+            "- Command acceptance cases: `60` (`4` per command).",
+            "- Global flags: `9`.",
+            "- Governed exit codes: `11`.",
             "- Registered or executable command tests claimed: `0`.",
             "- Satisfied implementation evidence claimed: `0`.",
             "- Closed defect: `WS6-QUALITY-002`.",
@@ -438,9 +330,9 @@ def main() -> None:
     SPECIFICATION.write_text(specification, encoding="utf-8")
     REPORT.write_text(report, encoding="utf-8")
     print(
-        "Built WS6.10 developer experience specification: "
-        "commands=15, acceptance_cases=60, registered_tests=0, "
-        "implementation_evidence=0, next=WS6.11, codex_start_authorized=false."
+        "Built WS6.10 developer experience specification: commands=15, "
+        "acceptance_cases=60, registered_tests=0, implementation_evidence=0, "
+        "next=WS6.11, codex_start_authorized=false."
     )
 
 
