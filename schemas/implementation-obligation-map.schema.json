@@ -1,6 +1,139 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "closed_defects": {
+      "const": [
+        "WS6-QUALITY-001"
+      ]
+    },
+    "criterion_count": {
+      "const": 38
+    },
+    "evidence_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "required_attributes": {
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "satisfied_evidence_count": {
+          "const": 0
+        },
+        "status": {
+          "const": "not_available_pre_implementation"
+        }
+      },
+      "required": [
+        "status",
+        "satisfied_evidence_count",
+        "required_attributes"
+      ],
+      "type": "object"
+    },
+    "gate_policy": {
+      "const": {
+        "all_obligations_block_assigned_phase_completion": true,
+        "only_phase0_acceptance_blocks_imp_p0": true
+      }
+    },
+    "later_phase_criterion_count": {
+      "const": 22
+    },
+    "obligations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blocks_imp_p0": {
+            "type": "boolean"
+          },
+          "component_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "criterion_id": {
+            "pattern": "^(DX|FX|OP|XC|OQ)-[A-Z]+$",
+            "type": "string"
+          },
+          "evidence_class": {
+            "enum": [
+              "phase0_acceptance",
+              "later_implementation_acceptance"
+            ]
+          },
+          "evidence_type": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "gate_id": {
+            "pattern": "^IMP-P([0-9]|1[0-2])-GATE$",
+            "type": "string"
+          },
+          "phase_id": {
+            "pattern": "^IMP-P([0-9]|1[0-2])$",
+            "type": "string"
+          },
+          "task_id": {
+            "pattern": "^P([0-9]|1[0-2])\\.[0-9]+$",
+            "type": "string"
+          },
+          "test_obligation_id": {
+            "pattern": "^IOM-TST-(DX|FX|OP|XC|OQ)-[A-Z]+$",
+            "type": "string"
+          },
+          "test_registration_owner": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "criterion_id",
+          "evidence_class",
+          "phase_id",
+          "task_id",
+          "component_id",
+          "test_obligation_id",
+          "test_registration_owner",
+          "evidence_type",
+          "gate_id",
+          "blocks_imp_p0"
+        ],
+        "type": "object"
+      },
+      "maxItems": 38,
+      "minItems": 38,
+      "type": "array"
+    },
+    "phase0_blocking_criterion_count": {
+      "const": 16
+    },
+    "phase_summary": {
+      "minItems": 1,
+      "type": "array"
+    },
+    "remaining_blocking_defects": {
+      "const": [
+        "WS6-BLOCK-006"
+      ]
+    },
+    "remaining_preparation_defects": {
+      "const": [
+        "WS6-CODEXPREP-002"
+      ]
+    },
+    "test_policy": {
+      "const": {
+        "executable_test_count": 0,
+        "registration_status": "planned_unregistered",
+        "separate_registration_defect": "WS6-CODEXPREP-002"
+      }
+    },
+    "work_package_id": {
+      "const": "WS6.9"
+    }
+  },
   "required": [
     "work_package_id",
     "predecessor",
@@ -9,99 +142,15 @@
     "phase0_blocking_criterion_count",
     "later_phase_criterion_count",
     "obligations",
-    "test_obligation_count",
-    "registered_test_count",
-    "satisfied_evidence_count",
+    "phase_summary",
+    "test_policy",
+    "evidence_policy",
+    "gate_policy",
     "closed_defects",
     "remaining_blocking_defects",
     "remaining_preparation_defects",
     "completion",
     "boundaries"
   ],
-  "properties": {
-    "work_package_id": {"const": "WS6.9"},
-    "criterion_count": {"const": 38},
-    "phase0_blocking_criterion_count": {"const": 16},
-    "later_phase_criterion_count": {"const": 22},
-    "test_obligation_count": {"const": 38},
-    "registered_test_count": {"const": 0},
-    "satisfied_evidence_count": {"const": 0},
-    "obligations": {
-      "type": "array",
-      "minItems": 38,
-      "maxItems": 38,
-      "items": {
-        "type": "object",
-        "required": [
-          "criterion_id",
-          "criterion_kind",
-          "source_section",
-          "description",
-          "evidence_class",
-          "implementation_owner",
-          "test_obligation",
-          "evidence_requirement",
-          "blocking_gate",
-          "implementation_authorized",
-          "evidence_satisfied"
-        ],
-        "properties": {
-          "criterion_id": {"type": "string", "pattern": "^(DX|FX|OP|XC|OQ)-[A-Z]+$"},
-          "criterion_kind": {"enum": ["acceptance_criterion", "metric"]},
-          "evidence_class": {"enum": ["phase0_acceptance", "later_implementation_acceptance"]},
-          "implementation_owner": {
-            "type": "object",
-            "required": ["phase_id", "task_id", "task_title", "component_id", "component_name"],
-            "properties": {
-              "phase_id": {"type": "string", "pattern": "^IMP-P([0-9]|1[0-2])$"},
-              "task_id": {"type": "string", "pattern": "^P([0-9]|1[0-2])\\.[0-9]+$"},
-              "component_id": {"type": "string", "minLength": 1}
-            },
-            "additionalProperties": true
-          },
-          "test_obligation": {
-            "type": "object",
-            "required": ["test_obligation_id", "registration_status", "registration_owner", "executable_test_exists", "separate_registration_defect"],
-            "properties": {
-              "test_obligation_id": {"type": "string", "pattern": "^IOM-TST-(DX|FX|OP|XC|OQ)-[A-Z]+$"},
-              "registration_status": {"const": "planned_unregistered"},
-              "registration_owner": {"type": "string", "minLength": 1},
-              "executable_test_exists": {"const": false},
-              "separate_registration_defect": {"const": "WS6-CODEXPREP-002"}
-            },
-            "additionalProperties": false
-          },
-          "evidence_requirement": {
-            "type": "object",
-            "required": ["evidence_type", "status", "required_attributes"],
-            "properties": {
-              "evidence_type": {"type": "string", "minLength": 1},
-              "status": {"const": "not_available_pre_implementation"},
-              "required_attributes": {"type": "array", "minItems": 8, "uniqueItems": true}
-            },
-            "additionalProperties": false
-          },
-          "blocking_gate": {
-            "type": "object",
-            "required": ["gate_id", "canonical_gate_heading", "blocks_phase_completion", "blocks_imp_p0", "status"],
-            "properties": {
-              "gate_id": {"type": "string", "pattern": "^IMP-P([0-9]|1[0-2])-GATE$"},
-              "canonical_gate_heading": {"type": "string", "pattern": "^### IMP-P([0-9]|1[0-2]) gate$"},
-              "blocks_phase_completion": {"const": true},
-              "blocks_imp_p0": {"type": "boolean"},
-              "status": {"const": "not_evaluated"}
-            },
-            "additionalProperties": false
-          },
-          "implementation_authorized": {"const": false},
-          "evidence_satisfied": {"const": false}
-        },
-        "additionalProperties": true
-      }
-    },
-    "closed_defects": {"const": ["WS6-QUALITY-001"]},
-    "remaining_blocking_defects": {"const": ["WS6-BLOCK-006"]},
-    "remaining_preparation_defects": {"const": ["WS6-CODEXPREP-002"]}
-  },
-  "additionalProperties": true
+  "type": "object"
 }
