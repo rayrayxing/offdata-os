@@ -14,6 +14,7 @@ current_authority:
   canonical_issue_body: handoff/codex-phase0-current-issue.md
   hosted_controls_issue_body: handoff/codex-phase0-current-hosted-controls-issue.md
   launch_semantics_repair: contracts/pcfa01-launch-control-repair.json
+  repository_posture: repository/repository-visibility-and-licence-posture.json
   permanent_release: releases/pre-codex-final-reconciliation-2026-08-06.json
   launch_entrypoint: scripts/prepare_codex_phase0_launch.py
   permanent_release_gate: scripts/require_workstream6_final_reconciliation.py
@@ -85,6 +86,10 @@ historical_package_snapshots:
     package: PCFA-01
     classification: retained_corrective_package_snapshot
     reason: PCFA-01 acknowledgement template retained after promotion to neutral current template names.
+  - path: configs/workstream6-phase0-licence-decision-placeholder.yaml
+    package: WS6.13
+    classification: retained_historical_package_snapshot
+    reason: Historical pre-PCFA licence placeholder retained after PCFA-03 resolves the current posture.
 
 state_semantics:
   historical_snapshot_fields_are_package_time_facts: true
@@ -159,9 +164,11 @@ repository_readiness:
   workstream6_permanent_release_verified: true
   pcfa01_launch_semantics_repaired: true
   pcfa02_current_projection_active: true
+  pcfa03_repository_posture_resolved: true
   repository_side_corrective_work_complete: true
 
 manual_launch_gates:
+  repository_visibility_private_verified: false
   github_hosted_controls_verified: false
   historical_branch_cleanup_complete: false
   clean_macos_environment_verified: false
@@ -193,6 +200,7 @@ required_preflight_commands:
   - bash scripts/run_ws62_ci.sh
   - python scripts/validate_pcfa01_launch_control.py
   - python scripts/validate_pcfa02_current_operational_state.py
+  - python scripts/validate_pcfa03_repository_posture.py
   - python scripts/prepare_codex_phase0_launch.py --self-test
   - python scripts/require_workstream6_final_reconciliation.py
 

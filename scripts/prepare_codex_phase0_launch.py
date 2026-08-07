@@ -14,12 +14,17 @@ from codex_phase0_launch_core import (
     build_permit,
     canonical_json,
     digest_file,
+    gh_json,
     live_repository_state,
     load_json,
     repository_state,
     semantic_failures,
 )
 from codex_phase0_launch_selftest import run_self_test
+from pcfa03_launch_posture import (
+    launch_posture_failures,
+    run_self_test as run_posture_self_test,
+)
 
 PERMIT_SCHEMA_PATH = ROOT / "schemas" / "codex-phase0-launch-permit.schema.json"
 
@@ -34,7 +39,10 @@ def _safe_output(path: Path, state: dict[str, object]) -> Path:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Fail-closed PCFA-02 current-state-bound Codex Phase 0 launch preparation."
+        description=(
+            "Fail-closed PCFA-03 repository-posture and PCFA-02 current-state-bound "
+            "Codex Phase 0 launch preparation."
+        )
     )
     parser.add_argument("--self-test", action="store_true")
     parser.add_argument("--hosted-controls", type=Path)
@@ -49,13 +57,14 @@ def main() -> None:
     repair = load_json(CORRECTION_PATH)
     if args.self_test:
         count = run_self_test(state, predecessor, repair)
+        posture_count = run_posture_self_test(state)
         print(
-            "PCFA-02 Codex Phase 0 launch verifier self-test passed: "
-            f"{count} invalid launch, current-state or corrective-contract mutations rejected; "
-            "historical package readiness was excluded from current launch decisions; "
-            "the valid synthetic launch bound a descendant main, permanent release digest and "
-            "current operational-state digest; no permit emitted and no repository or GitHub "
-            "mutation performed."
+            "PCFA-03 Codex Phase 0 launch verifier self-test passed: "
+            f"{count + posture_count} invalid launch, current-state, corrective-contract or "
+            "repository-posture mutations rejected; historical package readiness was excluded "
+            "from current launch decisions; public repository visibility was rejected; the valid "
+            "synthetic posture required private visibility; no permit emitted and no repository "
+            "or GitHub mutation performed."
         )
         return
 
@@ -74,20 +83,24 @@ def main() -> None:
 
     try:
         live = live_repository_state(state)
+        repository_metadata = gh_json(f"repos/{state['repository']}")
     except RuntimeError as error:
         raise SystemExit(str(error)) from error
     repo = repository_state(state)
-    failures = semantic_failures(
-        state,
-        predecessor,
-        hosted,
-        doctor,
-        mac,
-        approval,
-        repo,
-        live,
-        doctor_digest=digest_file(paths[1]),
-        repair=repair,
+    failures = launch_posture_failures(state, hosted, repository_metadata)
+    failures.extend(
+        semantic_failures(
+            state,
+            predecessor,
+            hosted,
+            doctor,
+            mac,
+            approval,
+            repo,
+            live,
+            doctor_digest=digest_file(paths[1]),
+            repair=repair,
+        )
     )
     if failures:
         raise SystemExit("Codex Phase 0 launch denied:\n- " + "\n- ".join(failures))
@@ -114,6 +127,7 @@ def main() -> None:
     print(f"Codex Phase 0 launch permit issued locally: {output}")
     print(f"launch_id={permit['launch_id']}")
     print(f"approved_main_sha={permit['approved_main_sha']}")
+    print("repository_visibility=private")
     print(
         "final_release_parent_main_sha="
         f"{permit['final_workstream6_release_parent_main_sha']}"
@@ -132,8 +146,8 @@ def main() -> None:
         "and add the launch acknowledgement as the first commit."
     )
     print(
-        "Merge, Phase 1, runtime activation, real client data, paid services and "
-        "external actions remain unauthorized."
+        "Merge, Phase 1, runtime activation, public distribution, real client data, paid "
+        "services and external actions remain unauthorized."
     )
 
 
