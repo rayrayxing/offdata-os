@@ -1,18 +1,131 @@
 name: Final pre-Codex canonical handoff and release
 
 on:
+  pull_request:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
+  issues: read
+  pull-requests: read
+
+concurrency:
+  group: final-pre-codex-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate-final-pre-codex:
     name: Validate final pre-Codex canonical handoff and complete release
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 60
     steps:
-      - name: Refuse activation before WS6.15
+      - name: Check out exact workflow reference
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: packages/offdata-core/pyproject.toml
+
+      - name: Install validation dependencies
         run: |
-          echo "::error::WS6.6 reserves this exact check identity. WS6.15 must activate the final workflow and WS6.16 must bind the permanent release before this check may pass."
-          exit 1
+          python -m pip install --upgrade pip
+          python -m pip install -e 'packages/offdata-core[dev]'
+
+      - name: Run complete repository validation through WS6.15
+        run: bash scripts/run_ws62_ci.sh
+
+      - name: Verify exact WS6.15 activation boundary
+        id: activation-boundary
+        env:
+          EXPECTED_HEAD: governance/ws615-final-workflow
+          EXPECTED_BASE: main
+          EXPECTED_BASE_SHA: 05e9dfa9f9038a56061d376e1783b78f9607665f
+          FINAL_RELEASE: releases/pre-codex-final-reconciliation-2026-08-06.json
+        run: |
+          python scripts/require_workstream6_final_reconciliation.py --self-test
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          contract = json.loads(Path('contracts/workstream6-final-workflow.json').read_text())
+          assert contract['canonical_identity']['job_name'] == 'Validate final pre-Codex canonical handoff and complete release'
+          assert contract['activation']['state'] == 'active_fail_closed_pending_permanent_release'
+          assert contract['completion']['final_workflow_active'] is True
+          assert contract['completion']['permanent_release_complete'] is False
+          assert contract['completion']['manual_launch_gates_complete'] is False
+          assert contract['boundaries']['codex_start_authorized'] is False
+
+          event = os.environ.get('GITHUB_EVENT_NAME')
+          payload = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          activation_exception = False
+          if event == 'pull_request':
+              pr = payload['pull_request']
+              activation_exception = (
+                  pr['head']['ref'] == os.environ['EXPECTED_HEAD']
+                  and pr['base']['ref'] == os.environ['EXPECTED_BASE']
+                  and pr['base']['sha'] == os.environ['EXPECTED_BASE_SHA']
+              )
+
+          release = Path(os.environ['FINAL_RELEASE'])
+          if activation_exception:
+              assert not release.exists(), 'WS6.15 activation PR must not contain the WS6.16 permanent release'
+              print('WS6.15 exact activation PR verified; permanent release intentionally absent; codex_start_authorized=false.')
+          elif not release.exists():
+              raise SystemExit('WS6.16 permanent final release is required for every non-activation final-workflow run; codex_start_authorized=false.')
+          PY
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" \
+            && "${{ github.event.pull_request.head.ref }}" == "$EXPECTED_HEAD" \
+            && "${{ github.event.pull_request.base.ref }}" == "$EXPECTED_BASE" \
+            && "${{ github.event.pull_request.base.sha }}" == "$EXPECTED_BASE_SHA" ]]; then
+            echo "mode=ws615-activation-exception" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=permanent-release-required" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Require permanent WS6 release outside exact activation PR
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.ref != 'governance/ws615-final-workflow' || github.event.pull_request.base.ref != 'main' || github.event.pull_request.base.sha != '05e9dfa9f9038a56061d376e1783b78f9607665f'
+        run: python scripts/require_workstream6_final_reconciliation.py
+
+      - name: Assemble exact final-check evidence
+        run: |
+          mkdir -p ci-evidence/package
+          cp /tmp/ws62-pytest.log ci-evidence/pytest.log
+          printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\njob_name=%s\nmode=%s\n' \
+            "${{ github.event.pull_request.head.sha || github.sha }}" \
+            "$GITHUB_SHA" \
+            "$GITHUB_RUN_ID" \
+            "Validate final pre-Codex canonical handoff and complete release" \
+            "${{ steps.activation-boundary.outputs.mode }}" \
+            > ci-evidence/run.txt
+          : > ci-evidence/repository-digests.txt
+          git ls-files -z | sort -z | while IFS= read -r -d '' path; do
+            sha256sum "$path" >> ci-evidence/repository-digests.txt
+            destination="ci-evidence/package/$path"
+            mkdir -p "$(dirname "$destination")"
+            cp "$path" "$destination"
+          done
+          (cd ci-evidence/package && sha256sum -c ../repository-digests.txt)
+
+      - name: Retain exact final-check evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: offdata-final-pre-codex-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 30
+          include-hidden-files: true
+          path: ci-evidence
+
+      - name: Record fail-closed final-check result
+        run: |
+          echo 'Final workflow repository validation passed.'
+          echo 'This check does not authorize Codex, merge, runtime activation, external actions, real client data or production deployment.'
+          echo 'codex_start_authorized=false'
