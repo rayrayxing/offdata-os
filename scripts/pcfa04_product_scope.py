@@ -1,11 +1,62 @@
 from __future__ import annotations
 
 import copy
+from collections import Counter
 from typing import Any
 
 from codex_phase0_launch_core import CURRENT_STATE_PATH, ROOT, digest_file, load_json
 
 PRODUCT_SCOPE_PATH = ROOT / "repository" / "pcfa04-product-scope-implementation-addendum.json"
+
+REQUIRED_CQ = {
+    "CQ-DECISION",
+    "CQ-ANSWER",
+    "CQ-TITLE",
+    "CQ-STORY",
+    "CQ-MECE",
+    "CQ-ALT",
+    "CQ-UNCERT",
+    "CQ-DENSITY",
+    "CQ-VISUAL",
+    "CQ-HIER",
+    "CQ-REDUND",
+    "CQ-ACTION",
+    "CQ-RISK",
+    "CQ-AUDIENCE",
+    "CQ-EXEC",
+}
+REQUIRED_PS = {
+    "PS-MANDATE-001",
+    "PS-ENGAGEMENT-001",
+    "PS-QA-001",
+    "PS-IMPLEMENTATION-001",
+    "PS-INGEST-001",
+    "PS-LOCATOR-001",
+    "PS-LIBRARY-001",
+    "PS-GOLDEN-001",
+    "PS-ROUNDTRIP-001",
+    "PS-STYLE-001",
+    "PS-ASSET-RIGHTS-001",
+    "PS-FOUNDER-ATTENTION-001",
+    "PS-DELIVERABLE-VARIANTS-001",
+    "PS-REVIEW-001",
+}
+REQUIRED_AREA_IDS = {
+    "PSA-MANDATE",
+    "PSA-ENGAGEMENT-WORKSPACE",
+    "PSA-QUALITY-CONSOLE",
+    "PSA-IMPLEMENTATION-BENEFITS",
+    "PSA-INGESTION",
+    "PSA-LIBRARY-COMPLETENESS",
+    "PSA-CONSULTING-CRAFT",
+    "PSA-GOLDEN-OUTPUTS",
+    "PSA-OFFICE-ROUNDTRIP",
+    "PSA-HOUSE-STYLE",
+    "PSA-ASSET-RIGHTS",
+    "PSA-FOUNDER-ATTENTION",
+    "PSA-DELIVERABLE-VARIANTS",
+    "PSA-REVIEW-WORKFLOW",
+}
 
 
 def product_scope_failures(
@@ -66,31 +117,86 @@ def product_scope_failures(
         and target.get("permitted_phase") == "Codex Phase 0 only",
         "PCFA-04 cannot widen the current Codex Phase 0 launch target",
     )
+
+    requirement_ids = [
+        item.get("id")
+        for item in requirements
+        if isinstance(item, dict)
+    ] if isinstance(requirements, list) else []
+    cq_ids = {
+        item
+        for item in requirement_ids
+        if isinstance(item, str) and item.startswith("CQ-")
+    }
+    ps_ids = {
+        item
+        for item in requirement_ids
+        if isinstance(item, str) and item.startswith("PS-")
+    }
     require(
         isinstance(requirements, list)
         and len(requirements) == 29
-        and all(
-            isinstance(item, dict) and item.get("status") == "planned_not_implemented"
-            for item in requirements
-        ),
-        "PCFA-04 requirements must remain exactly 29 planned_not_implemented obligations",
-    )
-    require(
-        isinstance(areas, list)
-        and len(areas) == 14
+        and len(requirement_ids) == 29
+        and len(set(requirement_ids)) == 29
+        and cq_ids == REQUIRED_CQ
+        and ps_ids == REQUIRED_PS
         and all(
             isinstance(item, dict)
             and item.get("status") == "planned_not_implemented"
+            and bool(item.get("statement"))
+            and bool(item.get("acceptance"))
+            for item in requirements
+        ),
+        "PCFA-04 exact requirement identities or planned_not_implemented semantics drifted",
+    )
+
+    area_ids = [
+        item.get("area_id")
+        for item in areas
+        if isinstance(item, dict)
+    ] if isinstance(areas, list) else []
+    references = [
+        requirement_id
+        for area in areas
+        if isinstance(area, dict)
+        for requirement_id in area.get("requirement_ids", [])
+    ] if isinstance(areas, list) else []
+    reference_counts = Counter(references)
+    require(
+        isinstance(areas, list)
+        and len(areas) == 14
+        and len(area_ids) == 14
+        and set(area_ids) == REQUIRED_AREA_IDS
+        and len(set(area_ids)) == 14
+        and set(references) == set(requirement_ids)
+        and all(reference_counts[requirement_id] == 1 for requirement_id in requirement_ids)
+        and all(
+            isinstance(item, dict)
+            and item.get("status") == "planned_not_implemented"
+            and bool(item.get("owning_imp_phases"))
+            and bool(item.get("integration_points"))
             and "IMP-P0" not in item.get("owning_imp_phases", [])
             for item in areas
         ),
-        "PCFA-04 product areas drifted or incorrectly widened IMP-P0 product scope",
+        "PCFA-04 exact product-area ownership/reference semantics drifted or widened IMP-P0",
+    )
+    require(
+        set(value.get("phase_ownership_summary", {}))
+        == {f"IMP-P{index}" for index in range(13)},
+        "PCFA-04 phase ownership summary no longer covers IMP-P0 through IMP-P12",
+    )
+    reconciliation = value.get("pcfa07_reconciliation_contract", {})
+    require(
+        isinstance(reconciliation, dict)
+        and len(reconciliation) == 6
+        and all(item is True for item in reconciliation.values()),
+        "PCFA-04 PCFA-07 reconciliation contract drifted",
     )
     require(
         package_boundaries.get("founder_accountability_preserved") is True
         and all(
-            value is False
-            for key, value in package_boundaries.items()
+            item is False
+            for key, item in package_boundaries.items()
             if key != "founder_accountability_preserved"
         ),
         "PCFA-04 authorization boundaries must remain fail-closed",
@@ -140,6 +246,8 @@ def run_self_test(state: dict[str, Any]) -> int:
         ("registry reconciliation no longer required", ("scope_boundary", "pcfa07_registry_reconciliation_required"), False),
         ("Codex pre-authorized", ("boundaries", "codex_start_authorized"), True),
         ("requirement implemented", ("requirements", "0", "status"), "implemented"),
+        ("CQ semantic substitution", ("requirements", "7", "id"), "CQ-OTHER"),
+        ("duplicate requirement ownership", ("product_areas", "1", "requirement_ids"), ["PS-MANDATE-001"]),
         ("IMP-P0 product owner", ("product_areas", "0", "owning_imp_phases"), ["IMP-P0"]),
     ]
     for label, path, replacement in record_mutations:
