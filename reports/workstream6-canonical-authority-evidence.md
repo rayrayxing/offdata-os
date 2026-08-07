@@ -15,7 +15,7 @@
 - Superseded duplicate issue: `#2`
 - Closed defects: `WS6-CONSIST-001`, `WS6-CONSIST-007`
 - Remaining blocking defect: `WS6-BLOCK-006`
-- Current status reconciled to integrated `main` through WS6.13; WS6.14–WS6.16 remain pending.
+- Current status reconciled to integrated `main` through WS6.14; WS6.15–WS6.16 remain pending.
 - Every authority and implementation boundary remains fail-closed.
 
 The semantic validator parses both current read orders, scans every configured
