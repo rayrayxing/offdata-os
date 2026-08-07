@@ -53,6 +53,12 @@ def source_failures(source: dict[str, Any]) -> list[str]:
     require(exception.get("requires_release_absent") is True, "activation PR no longer rejects premature release")
     require(exception.get("requires_final_gate_self_test") is True, "activation PR self-test removed")
     require(exception.get("must_be_removed_or_expire_in") == "WS6.16", "exception expiry drift")
+    supersession = source.get("supersession", {})
+    require(supersession.get("identity_snapshot_contract") == "contracts/workstream6-required-workflow-identity.json", "identity snapshot authority drift")
+    require(supersession.get("current_activation_authority") == "contracts/workstream6-final-workflow.json", "current activation authority drift")
+    require(supersession.get("preserved_identity_fields") == ["workflow_file", "workflow_name", "job_key", "job_name"], "preserved identity field drift")
+    require(supersession.get("historical_snapshot_fields") == ["activation.state", "activation.allowed_triggers", "activation.automatic_triggers_enabled", "activation.final_release_verified", "activation.hosted_branch_protection_configured", "activation.manual_dispatch_must_fail"], "historical activation snapshot drift")
+    require(supersession.get("rule") == "WS6.6 remains authoritative for the exact workflow/check identity and retained package evidence; WS6.15 supersedes only its package-time activation-state fields.", "supersession rule drift")
     pred = source.get("predecessor_consistency", {})
     require(pred.get("authority_domains") == 12 and pred.get("baseline_defects") == 28 and pred.get("repository_addressed") == 25, "WS6.14 counts drift")
     require(set(pred.get("expected_unresolved", [])) == {"WS6-BLOCK-006", "WS6-CONSIST-006", "WS6-CONSIST-010"}, "WS6.14 unresolved drift")
@@ -106,6 +112,10 @@ def repository_failures(contract: dict[str, Any]) -> list[str]:
         "python scripts/require_workstream6_final_reconciliation.py --self-test",
         "python scripts/require_workstream6_final_reconciliation.py",
         "releases/pre-codex-final-reconciliation-2026-08-06.json",
+        "Assemble exact final-check evidence",
+        "Retain exact final-check evidence",
+        "sha256sum -c ../repository-digests.txt",
+        "offdata-final-pre-codex-${{ github.sha }}",
     ):
         require(token in workflow, f"final workflow missing token: {token}")
     require("Refuse activation before WS6.15" not in workflow, "reserved hard-fail step still active")
@@ -117,6 +127,7 @@ def repository_failures(contract: dict[str, Any]) -> list[str]:
     require(handoff.get("execution", {}).get("launch_permit_required") is True, "permit requirement lost")
     launch = obj("contracts/codex-phase0-launch-control.json")
     bools = []
+
     def walk(value: Any) -> None:
         if isinstance(value, dict):
             for key, child in value.items():
@@ -126,6 +137,7 @@ def repository_failures(contract: dict[str, Any]) -> list[str]:
         elif isinstance(value, list):
             for child in value:
                 walk(child)
+
     walk(launch)
     require(all(value is False for _, value in bools), "launch-control boundary widened")
     require(contract.get("remaining_defect_count") == 3, "contract remaining defect count drift")
@@ -167,6 +179,11 @@ def main() -> None:
         lambda v: v["activation"]["activation_exception"].update(requires_release_absent=False),
         lambda v: v["activation"]["activation_exception"].update(requires_final_gate_self_test=False),
         lambda v: v["activation"]["activation_exception"].update(must_be_removed_or_expire_in="never"),
+        lambda v: v["supersession"].update(identity_snapshot_contract="wrong"),
+        lambda v: v["supersession"].update(current_activation_authority="wrong"),
+        lambda v: v["supersession"].update(preserved_identity_fields=[]),
+        lambda v: v["supersession"].update(historical_snapshot_fields=[]),
+        lambda v: v["supersession"].update(rule="wrong"),
         lambda v: v["predecessor_consistency"].update(authority_domains=11),
         lambda v: v["predecessor_consistency"].update(baseline_defects=27),
         lambda v: v["predecessor_consistency"].update(repository_addressed=26),
