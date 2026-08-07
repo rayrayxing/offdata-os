@@ -39,6 +39,8 @@ python scripts/build_workstream6_phase0_licence_decision_placeholder.py
 python scripts/build_workstream6_cross_authority_consistency_gate.py
 python scripts/build_workstream6_final_workflow.py
 python scripts/build_workstream6_permanent_release_record.py
+# Post-release corrective state is generated only after all immutable WS6 package snapshots.
+python scripts/build_pcfa02_current_operational_state.py
 
 git diff --exit-code
 
@@ -85,6 +87,7 @@ else
   python scripts/validate_workstream6_permanent_release_record.py
 fi
 python scripts/validate_pcfa01_launch_control.py
+python scripts/validate_pcfa02_current_operational_state.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 
