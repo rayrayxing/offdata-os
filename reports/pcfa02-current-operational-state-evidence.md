@@ -4,16 +4,19 @@
 
 - Projection: `CURRENT-OPERATIONAL-STATE`
 - Introduced by: `PCFA-02`
-- Current authority entries: `14`
+- Current authority entries: `16`
 - Historical/corrective snapshots: `16`
 - Manual launch gates committed false: `8`
 - Authorization boundaries: `14`
 - Sole live machine readiness projection: `repository/current-operational-state.json`
 - Current repository posture: `repository/repository-visibility-and-licence-posture.json`
 - Repository posture SHA-256: `b9ad8e1d08d52bf0e598f932e432319e12a336f735627f447f1269ce66e4ece1`
+- Current product-scope addendum: `repository/pcfa04-product-scope-implementation-addendum.json`
+- Product-scope addendum SHA-256: `4fc34f58149ca5363def1b8e451c12aed8523adc430343cc35301cb2078532ce`
 - Current machine handoff: `handoff/codex-phase0-current-handoff.json`
 - Current Issue #1 body: `handoff/codex-phase0-current-issue.md`
 - Current Issue #19 body: `handoff/codex-phase0-current-hosted-controls-issue.md`
 - WS6.2/WS6.3/WS6.4/WS6.13 embedded readiness and licence state remain retained package-time evidence only.
 - Permanent WS6.16 release remains immutable evidence, not the current launch SHA.
+- PCFA-04 requirements remain `planned_not_implemented`; PCFA-05 and PCFA-07 remain required.
 - `codex_start_authorized=false`; merge, IMP-P1, runtime and external actions remain denied.
