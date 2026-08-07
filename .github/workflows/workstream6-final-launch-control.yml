@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   validate-final-launch-control:
-    name: Validate WS6.8 issue and backlog normalization and complete prior components
+    name: Validate WS6.9 implementation obligation map and complete prior components
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -40,16 +40,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.8
+      - name: Rebuild, validate and test through WS6.9
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify exact WS6.7 ancestry and live fail-closed state
+      - name: Verify exact WS6.8 ancestry and live fail-closed state
         env:
           GH_TOKEN: ${{ github.token }}
-          BASE_MAIN_SHA: cb2bffe74e62804250ac36168c4206cb8b9d021a
+          WS68_HEAD_SHA: 46abab02ad08a3a1cca519391e0114555f11230c
         run: |
           mkdir -p ci-evidence
-          git merge-base --is-ancestor "$BASE_MAIN_SHA" "$GITHUB_SHA"
+          git merge-base --is-ancestor "$WS68_HEAD_SHA" "$GITHUB_SHA"
           gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/main" > ci-evidence/main-ref.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/1" > ci-evidence/issue-1.json
           gh api "repos/${GITHUB_REPOSITORY}/issues/2" > ci-evidence/issue-2.json
@@ -71,8 +71,11 @@ jobs:
           branches = json.loads(Path("ci-evidence/branches.json").read_text())
           expected_issue1 = Path("handoff/codex-phase0-issue-final.md").read_bytes()
           expected_issue19 = Path("handoff/codex-phase0-hosted-controls-issue-final.md").read_bytes()
-          contract = json.loads(
+          normalization = json.loads(
               Path("contracts/workstream6-issue-backlog-normalization.json").read_text()
+          )
+          obligation_map = json.loads(
+              Path("requirements/implementation-obligation-map.json").read_text()
           )
 
           assert issue1["state"] == "open"
@@ -81,7 +84,7 @@ jobs:
           assert issue19["state"] == "open"
           assert hashlib.sha256(issue19.get("body", "").encode()).hexdigest() == hashlib.sha256(expected_issue19).hexdigest()
 
-          for expected in contract["live_issue_policy"]["normalized_issues"]:
+          for expected in normalization["live_issue_policy"]["normalized_issues"]:
               number = expected["number"]
               observed = json.loads(Path(f"ci-evidence/issue-{number}.json").read_text())
               body = Path(expected["body_path"]).read_bytes()
@@ -89,6 +92,15 @@ jobs:
               assert observed.get("state_reason") == "not_planned"
               assert observed["title"] == expected["normalized_title"]
               assert hashlib.sha256(observed.get("body", "").encode()).hexdigest() == hashlib.sha256(body).hexdigest()
+
+          assert obligation_map["predecessor"]["head_sha"] == "46abab02ad08a3a1cca519391e0114555f11230c"
+          assert obligation_map["predecessor"]["integrated_to_main"] is False
+          assert obligation_map["criterion_count"] == 38
+          assert obligation_map["phase0_blocking_criterion_count"] == 16
+          assert obligation_map["later_phase_criterion_count"] == 22
+          assert obligation_map["test_policy"]["executable_test_count"] == 0
+          assert obligation_map["evidence_policy"]["satisfied_evidence_count"] == 0
+          assert obligation_map["boundaries"]["codex_start_authorized"] is False
 
           open_issue_numbers = {
               item["number"] for item in open_items if "pull_request" not in item
@@ -99,7 +111,7 @@ jobs:
           assert "codex/phase-0-foundation" not in names
           PY
 
-      - name: Assemble retained WS6.8 evidence
+      - name: Assemble retained WS6.9 evidence
         run: |
           cp /tmp/ws62-pytest.log ci-evidence/pytest.log
           printf 'head_sha=%s\nworkflow_sha=%s\nrun_id=%s\n' \
@@ -110,6 +122,8 @@ jobs:
           sha256sum \
             .env.example \
             contracts/initial-operating-controls.json \
+            contracts/pre-codex-readiness.json \
+            contracts/northstar-integration-blueprint.json \
             configs/codex-phase0-launch-control.yaml \
             contracts/codex-phase0-launch-control.json \
             handoff/codex-phase0-issue-final.md \
@@ -142,11 +156,18 @@ jobs:
             schemas/workstream6-issue-backlog-normalization.schema.json \
             reports/workstream6-issue-backlog-normalization-evidence.md \
             .github/workflows/workstream6-issue-backlog-normalization.yml \
+            configs/workstream6-implementation-obligation-map.yaml \
+            requirements/implementation-obligation-map.json \
+            schemas/implementation-obligation-map.schema.json \
+            reports/workstream6-implementation-obligation-map-evidence.md \
+            .github/workflows/workstream6-implementation-obligation-map.yml \
             .github/workflows/workstream6-final-launch-control.yml \
             scripts/build_workstream6_configuration_contradictions.py \
             scripts/validate_workstream6_configuration_contradictions.py \
             scripts/build_workstream6_issue_backlog_normalization.py \
             scripts/validate_workstream6_issue_backlog_normalization.py \
+            scripts/build_workstream6_implementation_obligation_map.py \
+            scripts/validate_workstream6_implementation_obligation_map.py \
             scripts/doctor_pre_codex_macos.py \
             scripts/run_ws62_ci.sh \
             README.md \
@@ -158,6 +179,7 @@ jobs:
             docs/58-WS6-6-REQUIRED-WORKFLOW-IDENTITY.md \
             docs/59-WS6-7-CONFIGURATION-CONTRADICTIONS.md \
             docs/60-WS6-8-ISSUE-AND-BACKLOG-NORMALIZATION.md \
+            docs/61-WS6-9-IMPLEMENTATION-OBLIGATION-MAP.md \
             > ci-evidence/repository-digests.txt
           find handoff/future-implementation-issue-pack -type f -print0 \
             | sort -z \
@@ -178,7 +200,7 @@ jobs:
       - name: Retain evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: offdata-workstream6-issue-backlog-normalization-${{ github.sha }}
+          name: offdata-workstream6-implementation-obligation-map-${{ github.sha }}
           if-no-files-found: error
           retention-days: 30
           include-hidden-files: true
@@ -193,4 +215,4 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.8 issue-and-backlog-normalization gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Issues #3-#5 are closed, superseded and non-actionable; issue #1 is the only actionable implementation assignment; issue #19 is the only manual pre-launch gate; twelve IMP-P1-P12 drafts are blocked and repository-only. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. The complete WS6.6-WS6.8 payload was verified before upload and retained. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
+          gh pr comment "$PR_NUMBER" --body "WS6.9 implementation-obligation-map gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. All 38 PCR-10 criteria map exactly once; 16 IMP-P0 criteria block only IMP-P0 and 22 later criteria block only their assigned phases. All 38 test obligations remain planned and unregistered, no implementation evidence is claimed, and WS6-CODEXPREP-002 remains open. All prior builders and validators, launch self-tests, compilation, Ruff and strict MyPy passed. The complete WS6.6-WS6.9 payload was verified before upload and retained. The reserved final workflow remains inactive, no permit was emitted and Codex remains unauthorized."
