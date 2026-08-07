@@ -44,12 +44,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e 'packages/offdata-core[dev]'
 
-      - name: Rebuild, validate and test through WS6.16 preparation
+      - name: Rebuild, validate and test through current WS6.16 state
         run: bash scripts/run_ws62_ci.sh
 
-      - name: Verify integrated main, live authority and WS6.16 preparation
+      - name: Verify integrated main, live authority and WS6.16 state
         env:
           GH_TOKEN: ${{ github.token }}
+          FINAL_RELEASE: releases/pre-codex-final-reconciliation-2026-08-06.json
         run: |
           mkdir -p ci-evidence
           git merge-base --is-ancestor "$WS615_HEAD_SHA" "$GITHUB_SHA"
@@ -62,6 +63,9 @@ jobs:
           for pr in 49 50 51 52 53 54 60 61; do
             gh api "repos/${GITHUB_REPOSITORY}/pulls/${pr}" > "ci-evidence/pr-${pr}.json"
           done
+          if [[ -f "$FINAL_RELEASE" ]]; then
+            gh api "repos/${GITHUB_REPOSITORY}/pulls/62" > ci-evidence/pr-62.json
+          fi
           python - <<'PY'
           import json
           import os
@@ -70,7 +74,7 @@ jobs:
           def load(path):
               return json.loads(Path(path).read_text())
 
-          assert load('ci-evidence/main-ref.json')['object']['sha'] == os.environ['EXPECTED_INTEGRATED_MAIN_SHA']
+          main_ref = load('ci-evidence/main-ref.json')
           assert load('ci-evidence/issue-1.json')['state'] == 'open'
           issue2 = load('ci-evidence/issue-2.json')
           assert issue2['state'] == 'closed' and issue2.get('state_reason') == 'duplicate'
@@ -124,9 +128,37 @@ jobs:
           assert current['canonical_status_phrase'] == authority['canonical_status_phrase']
           assert handoff['readiness_snapshot']['codex_start_authorized'] is False
           assert handoff['boundaries']['launch_permit_issued'] is False
-          assert not Path('releases/pre-codex-final-reconciliation-2026-08-06.json').exists()
-          assert not Path('reports/workstream6-final-evidence.md').exists()
-          assert not Path('repository/workstream6-final-defect-closure-ledger.json').exists()
+
+          release_path = Path(os.environ['FINAL_RELEASE'])
+          if release_path.is_file():
+              release = load(release_path)
+              final_ledger = load('repository/workstream6-final-defect-closure-ledger.json')
+              pr62 = load('ci-evidence/pr-62.json')
+              assert pr62['state'] == 'closed' and pr62['merged'] is True
+              assert pr62['base']['ref'] == 'main'
+              assert pr62['head']['sha'] == release['preparation_head_sha'] == '4b83c8f1d80f83e82b05c30a0774b2e4ad62c200'
+              assert release['preparation_pr_number'] == 62
+              assert release['release_parent_main_sha'] == 'd3c4cb6097d0257a5bfdfc309ae4b3b1c2e7364c'
+              assert release['tested_merge_reference'] == 'c13a78d48d19c2c9e968b8af8d85f08a69eb2d51'
+              assert release['final_reconciliation_complete'] is True
+              assert release['all_blocking_defects_closed'] is True
+              assert release['codex_start_authorized'] is False
+              assert final_ledger['all_blocking_defects_closed'] is True
+              assert final_ledger['remaining_manual_defects'] == ['WS6-CONSIST-006']
+              event = os.environ['GITHUB_EVENT_NAME']
+              if event == 'pull_request':
+                  payload = load(os.environ['GITHUB_EVENT_PATH'])
+                  pr = payload['pull_request']
+                  assert pr['head']['ref'] == 'release/ws616-permanent-release-record'
+                  assert pr['base']['ref'] == 'main'
+                  assert pr['base']['sha'] == release['release_parent_main_sha']
+                  assert main_ref['object']['sha'] == release['release_parent_main_sha']
+              else:
+                  assert main_ref['object']['sha'] == os.environ['GITHUB_SHA']
+          else:
+              assert main_ref['object']['sha'] == os.environ['EXPECTED_INTEGRATED_MAIN_SHA']
+              assert not Path('reports/workstream6-final-evidence.md').exists()
+              assert not Path('repository/workstream6-final-defect-closure-ledger.json').exists()
           PY
 
       - name: Assemble retained WS6.16 preparation evidence
@@ -163,4 +195,8 @@ jobs:
         run: |
           TEST_SUMMARY=$(grep -Eo '[0-9]+ passed in [0-9.]+s' /tmp/ws62-pytest.log | tail -1)
           COVERAGE=$(grep 'Total coverage:' /tmp/ws62-pytest.log | tail -1)
-          gh pr comment "$PR_NUMBER" --body "WS6.16 release-preparation gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Integrated main is \`$EXPECTED_INTEGRATED_MAIN_SHA\` through WS6.15. Finalization preconditions are truthfully 1/6: predecessor chain integrated, while preparation integration/current artifact/parent-main/release-branch gates remain pending. WS6-BLOCK-006 and WS6-CONSIST-010 remain open until the permanent record is generated; WS6-CONSIST-006 remains manual; codex_start_authorized=false."
+          if [[ -f releases/pre-codex-final-reconciliation-2026-08-06.json ]]; then
+            gh pr comment "$PR_NUMBER" --body "WS6.16 permanent-release gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. The permanent record binds preparation PR #62, exact tested merge ref, current final-check evidence and release-parent main. WS6-BLOCK-006 and WS6-CONSIST-010 are release-addressed; WS6-CONSIST-006 remains manual; codex_start_authorized=false."
+          else
+            gh pr comment "$PR_NUMBER" --body "WS6.16 release-preparation gate passed on head \`$HEAD_SHA\` and exact workflow ref \`$GITHUB_SHA\`. Run \`$GITHUB_RUN_ID\`. $TEST_SUMMARY. $COVERAGE. Integrated main is \`$EXPECTED_INTEGRATED_MAIN_SHA\` through WS6.15. Finalization preconditions are truthfully 1/6: predecessor chain integrated, while preparation integration/current artifact/parent-main/release-branch gates remain pending. WS6-BLOCK-006 and WS6-CONSIST-010 remain open until the permanent record is generated; WS6-CONSIST-006 remains manual; codex_start_authorized=false."
+          fi
