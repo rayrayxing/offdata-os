@@ -465,6 +465,14 @@ Measure human time saved, correction effort, output quality, cost and reliabilit
 
 Founder approves a controlled real-client pilot.
 
+## PCFA-07 reconciled corrective obligation overlay
+
+PCFA-07 does not add a new IMP phase or task. It binds the corrective PCFA-04, PCFA-05 and PCFA-06 specifications into this existing backlog through the machine authority `requirements/pcfa07-codex-implementation-backlog-reconciliation.json`.
+
+The overlay contains exactly 93 `planned_not_implemented` obligations: 29 PCFA-04 product/consulting-craft requirements, 19 MVCL stages, 15 MVCL invariants, 13 MVCL negative-path cases, six Founder interrupt classes and 11 Hermes bounded-adoption capabilities. Each obligation has exact existing task bindings, a primary implementation task, component bindings, dependency tasks, one blocking IMP phase gate, one unique `PCFA07-TST-*` planned test identity and one evidence type.
+
+No PCFA-07 obligation is assigned to IMP-P0. The Codex launch scope remains only P0.1–P0.4. The PCFA-07 planned tests are not executed evidence; implementation status can change only during the bound later IMP tasks with required evidence and gate acceptance. PCFA-08 final cross-authority acceptance remains required.
+
 ## Deferred integrations
 
 OpenClaw, Hermes, Buzz, additional model providers, paid CRM tiers, enrichment services and advanced research subscriptions remain deferred until a documented problem justifies them.

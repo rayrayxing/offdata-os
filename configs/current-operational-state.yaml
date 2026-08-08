@@ -18,6 +18,7 @@ current_authority:
   product_scope_addendum: repository/pcfa04-product-scope-implementation-addendum.json
   mvcl_contract: repository/pcfa05-minimum-valuable-consulting-loop.json
   hermes_bounded_adoption_refresh: repository/pcfa06-hermes-bounded-adoption-refresh.json
+  codex_implementation_backlog_reconciliation: requirements/pcfa07-codex-implementation-backlog-reconciliation.json
   permanent_release: releases/pre-codex-final-reconciliation-2026-08-06.json
   launch_entrypoint: scripts/prepare_codex_phase0_launch.py
   permanent_release_gate: scripts/require_workstream6_final_reconciliation.py
@@ -175,6 +176,7 @@ repository_readiness:
   pcfa04_product_scope_addendum_complete: true
   pcfa05_mvcl_contract_complete: true
   pcfa06_hermes_bounded_adoption_refresh_complete: true
+  pcfa07_implementation_backlog_reconciled: true
   repository_side_corrective_work_complete: true
 
 manual_launch_gates:
@@ -214,6 +216,7 @@ required_preflight_commands:
   - python scripts/validate_pcfa04_product_scope_addendum.py
   - python scripts/validate_pcfa05_mvcl.py
   - python scripts/validate_pcfa06_hermes_refresh.py
+  - python scripts/validate_pcfa07_backlog_reconciliation.py
   - python scripts/prepare_codex_phase0_launch.py --self-test
   - python scripts/require_workstream6_final_reconciliation.py
 

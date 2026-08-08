@@ -1,0 +1,353 @@
+schema_version: 1.0.0
+work_package_id: PCFA-07
+reconciliation_id: CODEX-IMPLEMENTATION-BACKLOG-RECONCILIATION
+title: Codex implementation backlog reconciliation
+repository: rayrayxing/offdata-os
+status: repository_reconciliation_complete_planned_not_implemented
+owner: Founder
+source_authorities:
+  product_scope: repository/pcfa04-product-scope-implementation-addendum.json
+  mvcl: repository/pcfa05-minimum-valuable-consulting-loop.json
+  hermes_bounded_adoption: repository/pcfa06-hermes-bounded-adoption-refresh.json
+  implementation_backlog: docs/11-BUILD-BACKLOG.md
+  component_contract: contracts/northstar-integration-blueprint.json
+expected_counts:
+  pcfa04_requirements: 29
+  pcfa05_stages: 19
+  pcfa05_invariants: 15
+  pcfa05_negative_cases: 13
+  pcfa05_founder_interrupts: 6
+  pcfa06_capabilities: 11
+  total_obligations: 93
+  planned_tests: 93
+reconciliation_policy:
+  no_new_imp_phases: true
+  no_new_imp_tasks: true
+  imp_p0_scope_widened: false
+  phase0_obligation_count: 0
+  one_planned_test_per_obligation: true
+  planned_tests_are_not_executed_evidence: true
+  planned_test_registry_is_pcfa07_specific: true
+  blocking_gate_is_latest_bound_task_phase: true
+  dependency_tasks_are_prior_bound_tasks: true
+  all_statuses_remain_planned_not_implemented: true
+  implementation_evidence_available: false
+  pcfa08_final_acceptance_required: true
+test_kind_by_obligation_kind:
+  pcfa04_requirement: integration
+  pcfa04_consulting_craft: consulting_quality
+  pcfa05_stage: integration
+  pcfa05_invariant: integration
+  pcfa05_negative_case: negative_path
+  pcfa05_founder_interrupt: founder_acceptance
+  pcfa06_capability: integration
+evidence_type_by_obligation_kind:
+  pcfa04_requirement: product_scope_acceptance_evidence
+  pcfa04_consulting_craft: consulting_quality_evaluation_evidence
+  pcfa05_stage: mvcl_stage_execution_evidence
+  pcfa05_invariant: mvcl_invariant_evidence
+  pcfa05_negative_case: mvcl_negative_path_execution_evidence
+  pcfa05_founder_interrupt: founder_interrupt_acceptance_evidence
+  pcfa06_capability: hermes_adapter_conformance_evidence
+task_component_map:
+  P1.1:
+  - COMP-OBJECT
+  - COMP-KNOWLEDGE
+  P1.2:
+  - COMP-KNOWLEDGE
+  - COMP-TOOLS
+  P1.3:
+  - COMP-KNOWLEDGE
+  P1.4:
+  - COMP-KNOWLEDGE
+  P1.5:
+  - COMP-KNOWLEDGE
+  P2.1:
+  - COMP-STATE
+  - COMP-API
+  P2.2:
+  - COMP-STATE
+  P2.3:
+  - COMP-STATE
+  - COMP-API
+  P2.4:
+  - COMP-UI
+  - COMP-API
+  P3.1:
+  - COMP-WORKFLOW
+  - COMP-API
+  P3.2:
+  - COMP-WORKFLOW
+  P3.3:
+  - COMP-API
+  - COMP-WORKFLOW
+  P3.4:
+  - COMP-UI
+  - COMP-WORKFLOW
+  P4.1:
+  - COMP-AGENT
+  - COMP-STATE
+  P4.2:
+  - COMP-AGENT
+  - COMP-WORKER
+  P4.3:
+  - COMP-AGENT
+  - COMP-API
+  P4.4:
+  - COMP-QA
+  - COMP-AGENT
+  P5.1:
+  - COMP-KNOWLEDGE
+  - COMP-AGENT
+  P5.2:
+  - COMP-TOOLS
+  - COMP-KNOWLEDGE
+  P5.3:
+  - COMP-KNOWLEDGE
+  - COMP-STATE
+  P5.4:
+  - COMP-QA
+  - COMP-KNOWLEDGE
+  P6.1:
+  - COMP-ANALYTICS
+  - COMP-WORKER
+  P6.2:
+  - COMP-ANALYTICS
+  P6.3:
+  - COMP-ANALYTICS
+  - COMP-DELIVERY
+  P6.4:
+  - COMP-QA
+  - COMP-ANALYTICS
+  P7.1:
+  - COMP-DELIVERY
+  P7.2:
+  - COMP-DELIVERY
+  P7.3:
+  - COMP-DELIVERY
+  P7.4:
+  - COMP-DELIVERY
+  P7.5:
+  - COMP-QA
+  - COMP-DELIVERY
+  P8.1:
+  - COMP-API
+  P8.2:
+  - COMP-API
+  P8.3:
+  - COMP-API
+  - COMP-STATE
+  P8.4:
+  - COMP-API
+  - COMP-STATE
+  P9.1:
+  - COMP-TOOLS
+  - COMP-AGENT
+  P9.2:
+  - COMP-AGENT
+  - COMP-ANALYTICS
+  P9.3:
+  - COMP-AGENT
+  - COMP-KNOWLEDGE
+  P9.4:
+  - COMP-AGENT
+  - COMP-API
+  P10.1:
+  - COMP-TOOLS
+  - COMP-KNOWLEDGE
+  P10.2:
+  - COMP-AGENT
+  - COMP-KNOWLEDGE
+  P10.3:
+  - COMP-KNOWLEDGE
+  - COMP-AGENT
+  P10.4:
+  - COMP-KNOWLEDGE
+  - COMP-QA
+  P11.1:
+  - COMP-API
+  - COMP-QA
+  P11.2:
+  - COMP-API
+  - COMP-QA
+  P11.3:
+  - COMP-QA
+  P12.1:
+  - COMP-QA
+  - COMP-STATE
+  P12.2:
+  - COMP-QA
+  - COMP-WORKFLOW
+  P12.3:
+  - COMP-QA
+  P12.4:
+  - COMP-QA
+  - COMP-API
+manual_task_bindings:
+  pcfa05_invariants:
+    MVCL-INV-ENGAGEMENT-ID:
+    - P2.1
+    - P2.2
+    - P8.4
+    - P12.3
+    MVCL-INV-CANONICAL-STATE:
+    - P2.2
+    - P2.3
+    - P3.1
+    - P12.3
+    MVCL-INV-CLAIM-TRACE:
+    - P5.3
+    - P5.4
+    - P12.3
+    MVCL-INV-NUMBER-REPRO:
+    - P6.1
+    - P6.4
+    - P12.3
+    MVCL-INV-CONTRARY-EVIDENCE:
+    - P5.3
+    - P5.4
+    - P12.3
+    MVCL-INV-METHOD-JUSTIFICATION:
+    - P1.4
+    - P4.2
+    - P4.4
+    - P12.3
+    MVCL-INV-IDEMPOTENCY:
+    - P3.2
+    - P3.3
+    - P12.3
+    MVCL-INV-EXACT-APPROVAL:
+    - P2.3
+    - P3.3
+    - P3.4
+    - P12.3
+    MVCL-INV-RESTART-SAFE:
+    - P3.2
+    - P3.4
+    - P12.3
+    MVCL-INV-INDEPENDENT-QA:
+    - P4.4
+    - P5.4
+    - P6.4
+    - P7.5
+    - P11.3
+    - P12.3
+    MVCL-INV-CROSS-FORMAT:
+    - P7.3
+    - P7.5
+    - P12.3
+    MVCL-INV-REC-TO-BENEFIT:
+    - P2.2
+    - P3.2
+    - P12.3
+    MVCL-INV-AUDIT-HISTORY:
+    - P2.3
+    - P3.2
+    - P11.2
+    - P12.3
+    MVCL-INV-FOUNDER-CONTROL:
+    - P3.3
+    - P3.4
+    - P12.3
+    MVCL-INV-NO-SELF-APPROVAL:
+    - P3.3
+    - P4.4
+    - P11.3
+    - P12.3
+  pcfa05_negative_cases:
+    MVCL-NEG-01:
+    - P5.3
+    - P5.4
+    - P12.2
+    MVCL-NEG-02:
+    - P5.3
+    - P5.4
+    - P12.2
+    MVCL-NEG-03:
+    - P3.2
+    - P3.3
+    - P12.2
+    MVCL-NEG-04:
+    - P2.3
+    - P3.3
+    - P12.2
+    MVCL-NEG-05:
+    - P3.2
+    - P12.2
+    MVCL-NEG-06:
+    - P3.2
+    - P3.3
+    - P12.2
+    MVCL-NEG-07:
+    - P3.2
+    - P3.4
+    - P12.2
+    MVCL-NEG-08:
+    - P7.5
+    - P11.3
+    - P12.2
+    MVCL-NEG-09:
+    - P2.1
+    - P11.3
+    - P12.2
+    MVCL-NEG-10:
+    - P1.2
+    - P5.2
+    - P11.3
+    - P12.2
+    MVCL-NEG-11:
+    - P4.3
+    - P4.4
+    - P12.2
+    MVCL-NEG-12:
+    - P6.4
+    - P12.2
+    MVCL-NEG-13:
+    - P7.5
+    - P12.2
+  pcfa05_founder_interrupts:
+    MVCL-FI-01:
+    - P2.2
+    - P2.4
+    - P3.3
+    - P3.4
+    - P12.3
+    MVCL-FI-02:
+    - P3.3
+    - P4.4
+    - P5.4
+    - P11.3
+    - P12.3
+    MVCL-FI-03:
+    - P2.3
+    - P3.3
+    - P3.4
+    - P12.3
+    MVCL-FI-04:
+    - P3.3
+    - P7.5
+    - P11.3
+    - P12.3
+    MVCL-FI-05:
+    - P3.3
+    - P12.3
+    MVCL-FI-06:
+    - P3.2
+    - P3.3
+    - P3.4
+    - P12.3
+boundaries:
+  founder_accountability_preserved: true
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  phase1_authorized: false
+  merge_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  oauth_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
+  codex_start_authorized: false
