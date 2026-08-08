@@ -473,6 +473,12 @@ The overlay contains exactly 93 `planned_not_implemented` obligations: 29 PCFA-0
 
 No PCFA-07 obligation is assigned to IMP-P0. The Codex launch scope remains only P0.1–P0.4. The PCFA-07 planned tests are not executed evidence; implementation status can change only during the bound later IMP tasks with required evidence and gate acceptance. PCFA-08 final cross-authority acceptance remains required.
 
+## PCFA-08 final pre-Codex acceptance overlay
+
+PCFA-08 adds no IMP phase, task or implementation obligation. It accepts the repository-side cross-authority consistency of PCFA-01 through PCFA-07 and freezes the remaining manual launch contract. The Codex launch scope remains exactly P0.1–P0.4. The 65 governed non-`main` branches must be cleaned only after dependency-order integration with final-SHA evidence for every deleted ref, and live GitHub must show only `main` before the single-use permit can be issued.
+
+`codex_start_authorized=false` until all manual launch gates and the permit pass.
+
 ## Deferred integrations
 
 OpenClaw, Hermes, Buzz, additional model providers, paid CRM tiers, enrichment services and advanced research subscriptions remain deferred until a documented problem justifies them.

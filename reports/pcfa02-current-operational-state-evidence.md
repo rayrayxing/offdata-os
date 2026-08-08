@@ -4,7 +4,7 @@
 
 - Projection: `CURRENT-OPERATIONAL-STATE`
 - Introduced by: `PCFA-02`
-- Current authority entries: `22`
+- Current authority entries: `24`
 - Historical/corrective snapshots: `17`
 - Manual launch gates committed false: `8`
 - Authorization boundaries: `14`
@@ -18,11 +18,14 @@
 - Current Hermes bounded-adoption refresh: `repository/pcfa06-hermes-bounded-adoption-refresh.json`
 - Hermes refresh SHA-256: `b5254b0bef3b282557d3c8e3241d8ac5385811fc8c5729c568e958bd5ccacd9d`
 - Current Codex implementation backlog reconciliation: `requirements/pcfa07-codex-implementation-backlog-reconciliation.json`
-- Backlog reconciliation SHA-256: `ea61dcefaa3343eb2a6ec385492ded272b04395b49a0f9f1606d0ea27ed70c22`
+- Backlog reconciliation SHA-256: `fb8bdd44196f5ead190840e8991e6b936bbe01cc98316e87b4c9946ed945d45e`
+- Current final pre-Codex cross-authority acceptance: `repository/pcfa08-final-pre-codex-cross-authority-acceptance.json`
+- PCFA-08 acceptance SHA-256: `43154f65d2586571ee90b903579321c77bd23732a93985700583247c13f06e99`
 - Current machine handoff: `handoff/codex-phase0-current-handoff.json`
 - Current Issue #1 body: `handoff/codex-phase0-current-issue.md`
 - Current Issue #19 body: `handoff/codex-phase0-current-hosted-controls-issue.md`
 - WS6.2/WS6.3/WS6.4/WS6.13 embedded readiness and licence state remain retained package-time evidence only.
 - Permanent WS6.16 release remains immutable evidence, not the current launch SHA.
-- PCFA-07 reconciles all 93 PCFA-04/05/06 obligations into existing IMP-P1–P12 tasks with planned tests/evidence/dependencies/gates; all remain `planned_not_implemented`; PCFA-08 remains required.
+- PCFA-07 reconciles all 93 PCFA-04/05/06 obligations into existing IMP-P1–P12 tasks with planned tests/evidence/dependencies/gates; all remain `planned_not_implemented`.
+- PCFA-08 repository-side cross-authority acceptance is complete; eight hosted/manual launch gates remain pending.
 - `codex_start_authorized=false`; merge, IMP-P1, runtime and external actions remain denied.

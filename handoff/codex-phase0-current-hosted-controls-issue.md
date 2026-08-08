@@ -1,4 +1,4 @@
-<!-- Current operational Issue #19 body introduced by PCFA-02 and extended by PCFA-03. Synchronize only after integration. -->
+<!-- Current operational Issue #19 body introduced by PCFA-02 and extended through PCFA-08. Synchronize only after integration. -->
 # Verify hosted controls, private repository visibility, branch cleanup and clean macOS before Codex
 
 This issue is the current human evidence record for repository visibility, GitHub-hosted controls, exact-allowlist historical branch cleanup and the clean macOS environment.
@@ -8,7 +8,7 @@ This issue is the current human evidence record for repository visibility, GitHu
 
 ## Current authority
 
-Use `repository/current-operational-state.json` for live machine readiness and authority and `repository/repository-visibility-and-licence-posture.json` for the current visibility/licence posture. The pre-PCFA Workstream 4/5/6 status contracts, the WS6.13 licence placeholder and earlier issue bodies remain package-time evidence only.
+Use `repository/current-operational-state.json` for live machine readiness, `repository/pcfa08-final-pre-codex-cross-authority-acceptance.json` for final repository-side cross-authority acceptance and the exact cleanup plan, and `repository/repository-visibility-and-licence-posture.json` for the current visibility/licence posture. The pre-PCFA Workstream 4/5/6 status contracts, the WS6.13 licence placeholder and earlier issue bodies remain package-time evidence only.
 
 PCFA-03 requires private/internal development with no public licence grant. Public distribution, open-source distribution and external contributions remain unauthorized.
 
@@ -51,7 +51,7 @@ The hosted-controls attestation must bind:
 - the exact current Issue #1 body SHA-256;
 - the exact current Issue #19 body SHA-256;
 - the required status-check name;
-- the final branch inventory.
+- the final branch inventory and its canonical SHA-256 digest.
 
 The launch verifier independently queries live GitHub repository metadata. An attestation cannot override a live public repository state.
 
@@ -61,18 +61,19 @@ The current posture is private/internal development with no public licence grant
 
 ## Historical branch cleanup
 
-Delete only exact branch names explicitly classified for cleanup. Preserve every deleted branch's final SHA as evidence. Never use wildcard or prefix deletion.
+PCFA-08 governs an exact allowlist of **65** non-`main` branches to remove only after dependency-order integration. Delete only exact branch names explicitly classified for cleanup. Preserve every deleted branch's final SHA as evidence. Never use wildcard or prefix deletion.
 
 - [ ] review the governed exact allowlist and retained branch evidence;
 - [ ] verify ancestry where required;
-- [ ] preserve final SHAs before deletion;
+- [ ] preserve final SHAs before deletion and record all 65 entries under `branch_cleanup.deleted_branches`;
 - [ ] delete only approved historical refs;
 - [ ] confirm `codex/phase-0-foundation` is absent before permit issuance;
 - [ ] confirm no IMP-P0 pull request is open;
+- [ ] independently confirm the live GitHub branch inventory contains only `main`;
 - [ ] capture the final branch inventory;
 - [ ] record `branch_cleanup.complete=true` with `remaining_branches=["main"]` in the hosted-controls attestation.
 
-Branch deletion is irreversible at the ref level; retaining exact SHAs is the rollback evidence.
+Each `deleted_branches` item must record the exact branch name, its final 40-hex SHA and a governed disposition (`merged`, `obsolete` or `superseded`). `branch_cleanup.inventory_sha256` must equal the SHA-256 of the canonical sorted live branch-name JSON captured after cleanup. The launch verifier checks exact coverage of all 65 PCFA-08 cleanup refs and independently queries GitHub for the final live inventory. Branch deletion is irreversible at the ref level; retaining exact SHAs is the rollback evidence.
 
 ## Clean macOS environment
 
