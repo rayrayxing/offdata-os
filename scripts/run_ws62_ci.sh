@@ -45,6 +45,7 @@ python scripts/build_pcfa04_product_scope_addendum.py
 python scripts/build_pcfa05_mvcl.py
 python scripts/build_pcfa06_hermes_refresh.py
 python scripts/build_pcfa07_backlog_reconciliation.py
+python scripts/build_pcfa08_final_acceptance.py
 python scripts/build_pcfa02_current_operational_state.py
 
 git diff --exit-code
@@ -98,6 +99,7 @@ python scripts/validate_pcfa04_product_scope_addendum.py
 python scripts/validate_pcfa05_mvcl.py
 python scripts/validate_pcfa06_hermes_refresh.py
 python scripts/validate_pcfa07_backlog_reconciliation.py
+python scripts/validate_pcfa08_final_acceptance.py
 python scripts/prepare_codex_phase0_launch.py --self-test
 python scripts/require_workstream6_final_reconciliation.py --self-test
 

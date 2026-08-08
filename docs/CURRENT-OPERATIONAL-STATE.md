@@ -4,11 +4,13 @@ This document is the human-readable companion to `repository/current-operational
 
 ## Current status
 
-The chat-first specification and reconciliation programme is complete through WS6.16, the permanent Workstream 6 release is valid, PCFA-01 repairs the real Codex Phase 0 launch semantics, PCFA-02 separates retained package-time snapshots from the live operational projection, PCFA-03 resolves repository visibility/licence posture, PCFA-04 defines the missing product-scope implementation addendum, PCFA-05 defines the Minimum Valuable Consulting Loop, PCFA-06 refreshes Hermes bounded-adoption policy against the current public Hermes documentation while retaining the v0.18.2 stable pin, and PCFA-07 reconciles all corrective obligations into the existing Codex implementation backlog.
+The chat-first specification and reconciliation programme is complete through WS6.16, the permanent Workstream 6 release is valid, PCFA-01 repairs the real Codex Phase 0 launch semantics, PCFA-02 separates retained package-time snapshots from the live operational projection, PCFA-03 resolves repository visibility/licence posture, PCFA-04 defines the missing product-scope implementation addendum, PCFA-05 defines the Minimum Valuable Consulting Loop, PCFA-06 refreshes Hermes bounded-adoption policy against the current public Hermes documentation while retaining the v0.18.2 stable pin, PCFA-07 reconciles all corrective obligations into the existing Codex implementation backlog, and PCFA-08 completes the repository-side final cross-authority acceptance while leaving manual launch gates pending.
 
 All 93 PCFA-04/05/06 obligations reconciled by PCFA-07 remain `planned_not_implemented`. PCFA-07 adds no IMP phase, no backlog task and no IMP-P0 obligation; it claims no product/workflow/Hermes runtime implementation.
 
 `codex_start_authorized=false`.
+
+PCFA-08 final repository-side cross-authority acceptance is complete; manual launch gates remain pending.
 
 No Codex branch, IMP-P0 implementation, merge, IMP-P1, runtime/Hermes activation, public distribution, open-source distribution, external contribution, real client data, paid service, OAuth, DNS change, production deployment or external action is authorized by this state.
 
@@ -22,16 +24,18 @@ For current operational decisions, use this order after `AGENTS.md`:
 4. `repository/pcfa05-minimum-valuable-consulting-loop.json` — current PCFA-05 Minimum Valuable Consulting Loop contract;
 5. `repository/pcfa06-hermes-bounded-adoption-refresh.json` — current PCFA-06 Hermes bounded-adoption refresh;
 6. `requirements/pcfa07-codex-implementation-backlog-reconciliation.json` — current PCFA-07 exact implementation-backlog reconciliation;
-7. `docs/71-PCFA-04-PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM.md` — human-readable product-scope addendum;
-8. `docs/72-PCFA-05-MINIMUM-VALUABLE-CONSULTING-LOOP.md` — human-readable MVCL specification;
-9. `docs/73-PCFA-06-HERMES-BOUNDED-ADOPTION-REFRESH.md` — human-readable Hermes bounded-adoption specification;
-10. `docs/74-PCFA-07-CODEX-IMPLEMENTATION-BACKLOG-RECONCILIATION.md` — human-readable backlog reconciliation;
-11. `handoff/codex-phase0-current-handoff.json` — current machine execution handoff;
-12. `contracts/pcfa01-launch-control-repair.json` — corrected release/launch SHA semantics;
-13. `handoff/codex-phase0-current-issue.md` — current Issue #1 body to synchronize after integration;
-14. `handoff/codex-phase0-current-hosted-controls-issue.md` — current Issue #19 body to synchronize after integration;
-15. `releases/pre-codex-final-reconciliation-2026-08-06.json` — immutable WS6.16 release evidence;
-16. `scripts/prepare_codex_phase0_launch.py` — fail-closed launch-permit entrypoint.
+7. `repository/pcfa08-final-pre-codex-cross-authority-acceptance.json` — final repository-side cross-authority acceptance and exact 65-branch cleanup contract;
+8. `docs/71-PCFA-04-PRODUCT-SCOPE-IMPLEMENTATION-ADDENDUM.md` — human-readable product-scope addendum;
+9. `docs/72-PCFA-05-MINIMUM-VALUABLE-CONSULTING-LOOP.md` — human-readable MVCL specification;
+10. `docs/73-PCFA-06-HERMES-BOUNDED-ADOPTION-REFRESH.md` — human-readable Hermes bounded-adoption specification;
+11. `docs/74-PCFA-07-CODEX-IMPLEMENTATION-BACKLOG-RECONCILIATION.md` — human-readable backlog reconciliation;
+12. `docs/75-PCFA-08-FINAL-PRE-CODEX-CROSS-AUTHORITY-ACCEPTANCE.md` — human-readable final repository-side acceptance;
+13. `handoff/codex-phase0-current-handoff.json` — current machine execution handoff;
+14. `contracts/pcfa01-launch-control-repair.json` — corrected release/launch SHA semantics;
+15. `handoff/codex-phase0-current-issue.md` — current Issue #1 body to synchronize after integration;
+16. `handoff/codex-phase0-current-hosted-controls-issue.md` — current Issue #19 body to synchronize after integration;
+17. `releases/pre-codex-final-reconciliation-2026-08-06.json` — immutable WS6.16 release evidence;
+18. `scripts/prepare_codex_phase0_launch.py` — fail-closed launch-permit entrypoint.
 
 The current evidence templates use the neutral `handoff/codex-phase0-current-*` names.
 
@@ -84,7 +88,7 @@ PCFA-05 defines 19 consulting-loop stages, 15 cross-loop invariants, six Founder
 
 The loop is `opportunity → mandate → engagement → decision framing → hypothesis tree → research plan → evidence → claim ledger → method → analysis and value → options → recommendation → Founder decision → storyline → deliverables → independent QA → implementation initiatives → benefits → closeout`.
 
-The future runtime must be restart-safe and idempotent, bind approvals to exact versions, retain contrary evidence, reproduce material numbers, keep independent QA separate from creator context, reconcile formats, trace recommendations through implementation to benefits, and preserve Founder recycle/pause/cancel/stop control. PCFA-07 exact obligation/test registration is complete; PCFA-08 final cross-authority acceptance remains required.
+The future runtime must be restart-safe and idempotent, bind approvals to exact versions, retain contrary evidence, reproduce material numbers, keep independent QA separate from creator context, reconcile formats, trace recommendations through implementation to benefits, and preserve Founder recycle/pause/cancel/stop control. PCFA-07 exact obligation/test registration is complete, and PCFA-08 final repository-side cross-authority acceptance is complete; manual launch evidence remains required.
 
 The current operational state directly binds the SHA-256 of `repository/pcfa05-minimum-valuable-consulting-loop.json`, and the launch entrypoint rejects missing, reordered, falsely implemented or permissive MVCL state.
 
@@ -98,7 +102,7 @@ Hermes skills remain candidates rather than canonical offdata procedures. `/lear
 
 MCP, tool gateway, unrestricted browser/terminal access, messaging, cron/background sessions and optional Codex app-server runtime remain deferred or denied pending their own processor, credential, data, durability and external-action reviews.
 
-The current operational state directly binds the SHA-256 of `repository/pcfa06-hermes-bounded-adoption-refresh.json`, and the launch entrypoint rejects a missing, activated, background-enabled, learning-promoting or model-router-permissive PCFA-06 state. PCFA-07 now carries the exact implementation/test/evidence/dependency/gate reconciliation; PCFA-08 final cross-authority acceptance remains required.
+The current operational state directly binds the SHA-256 of `repository/pcfa06-hermes-bounded-adoption-refresh.json`, and the launch entrypoint rejects a missing, activated, background-enabled, learning-promoting or model-router-permissive PCFA-06 state. PCFA-07 carries the exact implementation/test/evidence/dependency/gate reconciliation; PCFA-08 now supplies the final repository-side cross-authority acceptance and exact branch-cleanup evidence contract.
 
 ## PCFA-07 Codex implementation backlog reconciliation
 
@@ -108,7 +112,7 @@ The machine record preserves every original obligation ID and assigns exact exis
 
 No new IMP phase or task is created. No PCFA-07 obligation is assigned to IMP-P0. The launch target remains exactly P0.1–P0.4. The PCFA-07 planned test registry is implementation-planning evidence only and does not rewrite the historical PCR-02 semantic-test counts.
 
-The current operational state directly binds the SHA-256 of `requirements/pcfa07-codex-implementation-backlog-reconciliation.json`, and the launch entrypoint rejects missing coverage, P0 widening, false implementation/evidence claims, duplicate planned tests, missing task/component/dependency/gate mappings, or PCFA-08 removal.
+The current operational state directly binds the SHA-256 of `requirements/pcfa07-codex-implementation-backlog-reconciliation.json` and `repository/pcfa08-final-pre-codex-cross-authority-acceptance.json`. The launch entrypoint rejects missing PCFA-07 coverage, P0 widening, false implementation/evidence claims, duplicate planned tests, missing task/component/dependency/gate mappings, PCFA-08 drift, incomplete deleted-branch SHA evidence, or a live branch inventory containing anything other than `main`.
 
 ## Historical package snapshots
 
@@ -148,17 +152,16 @@ At permit time:
 
 Before a permit can exist, all of the following must be independently evidenced against the then-current exact `main` SHA:
 
-1. PCFA-08 final cross-authority acceptance is integrated and current authority regenerated;
-2. live GitHub repository visibility is `private`;
-3. GitHub hosted controls in Issue #19;
-4. exact-allowlist historical branch cleanup, ending with only `main` before launch;
-5. clean supported macOS doctor evidence and Founder environment attestation;
-6. explicit Founder authorization for IMP-P0 tasks P0.1–P0.4 only;
-7. live Issue #1 and Issue #19 bodies synchronized to the current files;
-8. a successful real run of `scripts/prepare_codex_phase0_launch.py` producing the local single-use permit.
+1. live GitHub repository visibility is `private`;
+2. GitHub hosted controls in Issue #19;
+3. exact-allowlist cleanup of the 65 PCFA-08-governed non-`main` branches with a final SHA retained for every deleted ref, ending with only `main` before launch;
+4. clean supported macOS doctor evidence and Founder environment attestation;
+5. explicit Founder authorization for IMP-P0 tasks P0.1–P0.4 only against one exact current `main` SHA;
+6. live Issue #1 and Issue #19 bodies synchronized to the current files;
+7. a successful real run of `scripts/prepare_codex_phase0_launch.py` producing the local single-use permit.
 
 The permit becomes stale after any approved-main, permanent-release, current-operational-state, repository-posture, product-scope, MVCL, Hermes bounded-adoption, PCFA-07 backlog-reconciliation, current issue-body, evidence, required-check or scope change.
 
 ## Integration boundary
 
-PCFA-07 is stacked on PCFA-06, which is stacked on PCFA-05, PCFA-04, PCFA-03, PCFA-02 and PCFA-01. The current Issue #1 and Issue #19 files must not be synchronized to GitHub until the repository changes that introduce them are integrated. Until then, live issue-body mismatch and public repository visibility are intentional fail-closed conditions.
+PCFA-08 is stacked on PCFA-07, which is stacked on PCFA-06, PCFA-05, PCFA-04, PCFA-03, PCFA-02 and PCFA-01. The current Issue #1 and Issue #19 files must not be synchronized to GitHub until the repository changes that introduce them are integrated. Until then, live issue-body mismatch and public repository visibility are intentional fail-closed conditions.
