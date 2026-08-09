@@ -25,12 +25,23 @@ def semantic_failures(text: str | None = None, posture: dict[str, object] | None
     errors = list(backlog_semantic_failures(value))
 
     p0_1 = _between(value, "### P0.1 Repository baseline", "### P0.2 Local development environment")
+    p1_source = _between(value, "### P1.1 Source import", "### P1.2 Extraction pipeline")
+    p1_manifest = _between(value, "### P1.3 Canonical manifest and alias resolver", "### P1.4 Method and problem schemas")
     p1_gate = _between(value, "### IMP-P1 gate", "## IMP-P2 — Engagement system of record")
+    pcfa08r_overlay = _between(value, "## PCFA-08 / PCFA-08R final pre-Codex acceptance overlay", "## Deferred integrations")
     licence = current_posture.get("licence_posture", {})
     historical = current_posture.get("historical_predecessor", {})
 
     _need(errors, bool(p0_1), "IMP-P0.1 backlog section is missing or cannot be isolated")
+    _need(errors, bool(p1_source), "IMP-P1.1 source-import section is missing or cannot be isolated")
+    _need(errors, bool(p1_manifest), "IMP-P1.3 canonical-manifest section is missing or cannot be isolated")
     _need(errors, bool(p1_gate), "IMP-P1 gate section is missing or cannot be isolated")
+    _need(errors, bool(pcfa08r_overlay), "PCFA-08R backlog clarification overlay is missing or cannot be isolated")
+    _need(
+        errors,
+        "Successor authority controls current implementation semantics; retained historical package snapshots are evidence only and must not be re-promoted by backlog execution." in value,
+        "backlog does not state that successor authority controls current implementation semantics",
+    )
     _need(
         errors,
         isinstance(licence, dict)
@@ -58,13 +69,55 @@ def semantic_failures(text: str | None = None, posture: dict[str, object] | None
     )
     _need(
         errors,
+        "P0.1 implementation and repository documentation match the current PCFA-03 posture" in p0_1,
+        "IMP-P0.1 completion does not explicitly require implementation/documentation to match current PCFA-03 authority",
+    )
+    _need(
+        errors,
+        "The historical WS6.13 licence placeholder remains historical-only" in p0_1,
+        "IMP-P0.1 completion does not explicitly prevent re-promotion of the WS6.13 placeholder",
+    )
+    _need(
+        errors,
         "Licence decision placeholder" not in p0_1 and "add_licence_decision_placeholder" not in p0_1,
         "IMP-P0.1 regressed to a predecessor licence-decision placeholder",
     )
     _need(
         errors,
+        "explicit Founder-approved canonical source manifest" in p1_source
+        and "unapproved discovered files do not silently expand the required corpus" in p1_source,
+        "IMP-P1.1 does not explicitly bind import scope to the Founder-approved canonical source manifest",
+    )
+    _need(
+        errors,
+        "Assign every approved source a stable source identity before extraction" in p1_source,
+        "IMP-P1.1 does not require stable identity for every approved source before extraction",
+    )
+    _need(
+        errors,
+        "Track one current disposition for every Founder-approved canonical source" in p1_manifest,
+        "IMP-P1.3 does not explicitly track one governed disposition per approved source",
+    )
+    _need(
+        errors,
+        "Reject silent omissions" in p1_manifest and "native locator where available" in p1_manifest,
+        "IMP-P1.3 does not explicitly reject silent omissions while retaining native provenance",
+    )
+    _need(
+        errors,
         "100% of Founder-approved canonical methodology sources are accounted for" in p1_gate,
         "IMP-P1 completion no longer requires complete Founder-approved source accounting",
+    )
+    _need(
+        errors,
+        "The accounting denominator is the explicit current Founder-approved canonical source manifest" in p1_gate
+        and "not a discovered-file count, extracted-chunk count or method-record count" in p1_gate,
+        "IMP-P1 gate does not explicitly define the approved-source accounting denominator",
+    )
+    _need(
+        errors,
+        "Every approved source has exactly one current governed disposition; zero approved sources are silently omitted" in p1_gate,
+        "IMP-P1 gate does not explicitly require complete one-disposition accounting with zero silent omissions",
     )
     _need(
         errors,
@@ -75,6 +128,14 @@ def semantic_failures(text: str | None = None, posture: dict[str, object] | None
         errors,
         "Initial 150-plus method records are structured and searchable" not in p1_gate,
         "IMP-P1 regressed to the historical count-only 150-plus completion gate",
+    )
+    _need(
+        errors,
+        "PCFA-08R only makes the already-governed P0.1 licence-posture and IMP-P1 approved-source-accounting semantics explicit" in pcfa08r_overlay
+        and "add no new IMP phase, task, PCFA-07 obligation or Phase-0 obligation" in pcfa08r_overlay
+        and "do not authorize IMP-P1" in pcfa08r_overlay
+        and "Codex launch scope remains exactly P0.1–P0.4" in pcfa08r_overlay,
+        "PCFA-08R clarification overlay does not preserve no-widening and no-IMP-P1-authorization boundaries",
     )
 
     return list(dict.fromkeys(errors))
@@ -110,6 +171,38 @@ def run_self_test() -> int:
             ),
         ),
         (
+            "P0.1 current-authority completion removed",
+            _replace_required(
+                text,
+                "- P0.1 implementation and repository documentation match the current PCFA-03 posture: private/internal development, no public licence grant and no repository `LICENSE` unless a later explicit Founder licence ADR changes it\n",
+                "",
+            ),
+        ),
+        (
+            "historical placeholder boundary removed",
+            _replace_required(
+                text,
+                "- The historical WS6.13 licence placeholder remains historical-only and is not treated as an unresolved launch or implementation decision\n",
+                "",
+            ),
+        ),
+        (
+            "approved-source manifest removed",
+            _replace_required(
+                text,
+                "- Begin from an explicit Founder-approved canonical source manifest; unapproved discovered files do not silently expand the required corpus\n",
+                "",
+            ),
+        ),
+        (
+            "approved-source disposition tracking removed",
+            _replace_required(
+                text,
+                "- Track one current disposition for every Founder-approved canonical source: ingested/structured, duplicate, superseded, quarantined, or explicitly excluded with a recorded reason\n",
+                "",
+            ),
+        ),
+        (
             "count-only P1 completion gate",
             _replace_required(
                 text,
@@ -118,10 +211,42 @@ def run_self_test() -> int:
             ),
         ),
         (
+            "approved-source denominator removed",
+            _replace_required(
+                text,
+                "- The accounting denominator is the explicit current Founder-approved canonical source manifest, not a discovered-file count, extracted-chunk count or method-record count\n",
+                "",
+            ),
+        ),
+        (
+            "silent omission prohibition removed",
+            _replace_required(
+                text,
+                "- Every approved source has exactly one current governed disposition; zero approved sources are silently omitted\n",
+                "",
+            ),
+        ),
+        (
             "method count made controlling",
             _replace_required(
                 text,
                 "- Method-count coverage is reported as a secondary diagnostic only; it is not a substitute for complete approved-source accounting\n",
+                "",
+            ),
+        ),
+        (
+            "PCFA-08R no-widening overlay removed",
+            _replace_required(
+                text,
+                "PCFA-08R only makes the already-governed P0.1 licence-posture and IMP-P1 approved-source-accounting semantics explicit in their existing tasks and gates; these clarifications add no new IMP phase, task, PCFA-07 obligation or Phase-0 obligation and do not authorize IMP-P1.",
+                "PCFA-08R authorizes IMP-P1.",
+            ),
+        ),
+        (
+            "successor-authority rule removed",
+            _replace_required(
+                text,
+                "- Successor authority controls current implementation semantics; retained historical package snapshots are evidence only and must not be re-promoted by backlog execution.\n",
                 "",
             ),
         ),
@@ -155,9 +280,9 @@ def main() -> None:
     rejected = run_self_test()
     print(
         "PCFA-08R backlog successor-authority semantics validation passed: "
-        f"defect_classes=2, mutation_cases_rejected={rejected}, "
+        f"defect_classes=2, clarification_surfaces=5, mutation_cases_rejected={rejected}, "
         "p0_licence_posture=current_pcfa03, p1_completion=complete_approved_source_accounting, "
-        "codex_start_authorized=false."
+        "phase0_scope=P0.1-P0.4, imp_p1_authorized=false, codex_start_authorized=false."
     )
 
 
