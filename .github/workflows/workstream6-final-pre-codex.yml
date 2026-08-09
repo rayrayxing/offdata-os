@@ -16,6 +16,48 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  regenerate-pcfa08r-derived-authority:
+    if: github.event_name == 'pull_request' && github.event.pull_request.number == 72 && github.event.pull_request.head.ref == 'pcfa/08-final-pre-codex-cross-authority-acceptance'
+    name: Regenerate PCFA-08R derived authority
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out PR head for deterministic regeneration
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+
+      - name: Regenerate and commit the PCFA-08R digest cascade
+        run: |
+          python -m pip install pyyaml
+          python scripts/build_pcfa07_backlog_reconciliation.py
+          python scripts/build_pcfa08_final_acceptance.py
+          python scripts/build_pcfa02_current_operational_state.py
+          if git diff --quiet -- \
+            requirements/pcfa07-codex-implementation-backlog-reconciliation.json \
+            repository/pcfa08-final-pre-codex-cross-authority-acceptance.json \
+            repository/current-operational-state.json \
+            reports/pcfa02-current-operational-state-evidence.md; then
+            echo 'PCFA-08R derived authority already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            requirements/pcfa07-codex-implementation-backlog-reconciliation.json \
+            repository/pcfa08-final-pre-codex-cross-authority-acceptance.json \
+            repository/current-operational-state.json \
+            reports/pcfa02-current-operational-state-evidence.md
+          git commit -m 'PCFA-08R regenerate derived authority bindings'
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+
   validate-final-pre-codex:
     name: Validate final pre-Codex canonical handoff and complete release
     runs-on: ubuntu-latest
