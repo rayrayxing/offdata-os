@@ -21,7 +21,7 @@ Deliver:
 
 - Monorepo structure
 - README and governing documentation
-- Licence decision placeholder
+- Resolved PCFA-03 repository/licence posture: private/internal development, no public licence grant, and no repository `LICENSE` unless a later explicit Founder licence ADR changes that posture
 - Code ownership and pull-request templates
 - `.gitignore` and `.env.example`
 
@@ -116,9 +116,10 @@ Founder receives a local demonstration and completion report. No substantive pro
 
 ### IMP-P1 gate
 
-- Initial 150-plus method records are structured and searchable
-- Every record links to original source
+- 100% of Founder-approved canonical methodology sources are accounted for as ingested/structured, duplicate, superseded, quarantined, or explicitly excluded with a recorded reason
+- Every ingested/structured record links to its original source and native provenance locator where available
 - Re-ingestion is deterministic
+- Method-count coverage is reported as a secondary diagnostic only; it is not a substitute for complete approved-source accounting
 
 ## IMP-P2 — Engagement system of record
 
