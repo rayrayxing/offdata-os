@@ -232,7 +232,8 @@ def run_self_test(state: dict[str, Any]) -> int:
     hosted = {"branch_cleanup": {"complete": True, "remaining_branches": ["main"], "inventory_sha256": _inventory_digest(["main"]), "deleted_branches": [{"branch": name, "final_sha": "a" * 40, "disposition": "obsolete"} for name in record["branch_cleanup_plan"]["delete_after_dependency_order_integration"]]}}
     if hosted_cleanup_failures(record, hosted, ["main"]):
         raise SystemExit("PCFA-08 valid synthetic cleanup evidence was rejected")
-    bad = copy.deepcopy(hosted); bad["branch_cleanup"]["deleted_branches"][0]["final_sha"] = "bad"
+    bad = copy.deepcopy(hosted)
+    bad["branch_cleanup"]["deleted_branches"][0]["final_sha"] = "bad"
     for label, value, live in [("malformed cleanup SHA", bad, ["main"]), ("live branch inventory drift", hosted, ["main", "other"])]:
         if not hosted_cleanup_failures(record, value, live):
             raise SystemExit(f"PCFA-08 {label} was not rejected")
