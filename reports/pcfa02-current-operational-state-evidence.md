@@ -18,9 +18,9 @@
 - Current Hermes bounded-adoption refresh: `repository/pcfa06-hermes-bounded-adoption-refresh.json`
 - Hermes refresh SHA-256: `b5254b0bef3b282557d3c8e3241d8ac5385811fc8c5729c568e958bd5ccacd9d`
 - Current Codex implementation backlog reconciliation: `requirements/pcfa07-codex-implementation-backlog-reconciliation.json`
-- Backlog reconciliation SHA-256: `a0c30153516cc0a10ff50a7b30df811058557280ac205e6e1f78b88dcecc5c05`
+- Backlog reconciliation SHA-256: `c0ad41edb5f89bf2c895f5c42cb709a3b4cef3c1eb59b4b4424d449a9810e6f7`
 - Current final pre-Codex cross-authority acceptance: `repository/pcfa08-final-pre-codex-cross-authority-acceptance.json`
-- PCFA-08 acceptance SHA-256: `11e23dbaaba7aec6ff63ab279fcf168e026069bceec70040bacbc37a5f4a81b7`
+- PCFA-08 acceptance SHA-256: `eff334e5ad92981a048a17863c215c5b83d462cbed54a05cd4ca2445c604c9d3`
 - Current machine handoff: `handoff/codex-phase0-current-handoff.json`
 - Current Issue #1 body: `handoff/codex-phase0-current-issue.md`
 - Current Issue #19 body: `handoff/codex-phase0-current-hosted-controls-issue.md`
