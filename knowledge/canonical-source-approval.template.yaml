@@ -1,0 +1,29 @@
+version: 1.0.0
+status: template_not_approval
+approval_type: methodology_library_canonical_source_manifest
+
+approval_id: null
+approved_by: null
+approved_at: null
+source_manifest_path: knowledge/source-manifest.yaml
+source_manifest_sha256: null
+approved_source_ids: []
+excluded_source_ids: []
+exclusion_reasons: {}
+notes: []
+
+required_semantics:
+  approved_source_ids_define_current_accounting_denominator: true
+  every_excluded_source_requires_recorded_reason: true
+  unlisted_or_discovered_files_do_not_expand_scope: true
+  source_identity_must_exist_before_extraction: true
+  approval_must_bind_exact_source_manifest_sha256: true
+  approval_is_not_retroactive_to_changed_source_bytes: true
+
+boundaries:
+  this_file_is_only_a_template: true
+  founder_approval_recorded: false
+  physical_import_authorized: false
+  imp_p1_authorized: false
+  codex_start_authorized: false
+  external_redistribution_authorized: false
