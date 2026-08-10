@@ -11,10 +11,12 @@ source_authorities:
   knowledge_config: configs/knowledge-ingestion.yaml
   source_manifest: knowledge/source-manifest.yaml
   alias_map: knowledge/alias-map.yaml
+  dependency_cases: knowledge/dependency-resolution-cases.yaml
   method_headings: knowledge/domain-method-headings.yaml
   collision_map: knowledge/method-collision-map.yaml
   method_examples: knowledge/method-record-examples.yaml
   retrieval_evaluation: knowledge/retrieval-evaluation.yaml
+  radar_taxonomy: knowledge/radar-source-taxonomy.yaml
   phase6_baseline: knowledge/knowledge-ingestion-baseline.json
   typed_contracts: packages/offdata-core/src/offdata_core/knowledge.py
   founder_approval_template: knowledge/canonical-source-approval.template.yaml
