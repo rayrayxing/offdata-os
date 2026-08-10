@@ -41,6 +41,12 @@ from pcfa07_backlog_reconciliation import (
     backlog_reconciliation_failures,
     run_self_test as run_backlog_reconciliation_self_test,
 )
+from pcfa08_final_acceptance import (
+    RECORD as PCFA08_RECORD_PATH,
+    final_acceptance_failures,
+    hosted_cleanup_failures,
+    run_self_test as run_final_acceptance_self_test,
+)
 
 PERMIT_SCHEMA_PATH = ROOT / "schemas" / "codex-phase0-launch-permit.schema.json"
 
@@ -56,8 +62,9 @@ def _safe_output(path: Path, state: dict[str, object]) -> Path:
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "Fail-closed PCFA-07 backlog reconciliation, PCFA-06 Hermes bounded-adoption, PCFA-05 MVCL, "
-            "PCFA-04 product-scope, PCFA-03 repository-posture and PCFA-02 current-state-bound Codex Phase 0 launch preparation."
+            "Fail-closed PCFA-08 final cross-authority acceptance, PCFA-07 backlog reconciliation, "
+            "PCFA-06 Hermes bounded-adoption, PCFA-05 MVCL, PCFA-04 product-scope, "
+            "PCFA-03 repository-posture and PCFA-02 current-state-bound Codex Phase 0 launch preparation."
         )
     )
     parser.add_argument("--self-test", action="store_true")
@@ -78,15 +85,17 @@ def main() -> None:
         mvcl_count = run_mvcl_self_test(state)
         hermes_refresh_count = run_hermes_refresh_self_test(state)
         backlog_reconciliation_count = run_backlog_reconciliation_self_test(state)
+        final_acceptance_count = run_final_acceptance_self_test(state)
         print(
-            "PCFA-07 Codex Phase 0 launch verifier self-test passed: "
-            f"{count + posture_count + product_scope_count + mvcl_count + hermes_refresh_count + backlog_reconciliation_count} invalid "
+            "PCFA-08 Codex Phase 0 launch verifier self-test passed: "
+            f"{count + posture_count + product_scope_count + mvcl_count + hermes_refresh_count + backlog_reconciliation_count + final_acceptance_count} invalid "
             "launch, current-state, corrective-contract, repository-posture, product-scope, MVCL, "
-            "Hermes bounded-adoption or backlog-reconciliation mutations rejected; "
+            "Hermes bounded-adoption, backlog-reconciliation or final-acceptance mutations rejected; "
             "historical package readiness was excluded from current launch decisions; public "
             "repository visibility, product-scope drift, MVCL drift, Hermes activation/policy drift and "
-            "backlog-reconciliation drift were rejected; all 93 PCFA-07 obligations remain "
-            "planned_not_implemented with zero Phase 0 widening; no permit emitted and "
+            "backlog-reconciliation drift, incomplete branch-deletion SHA evidence and live branch-inventory drift were rejected; "
+            "all 93 PCFA-07 obligations remain planned_not_implemented with zero Phase 0 widening; "
+            "PCFA-08 repository-side acceptance remains distinct from manual launch evidence; no permit emitted and "
             "no repository or GitHub mutation performed."
         )
         return
@@ -107,10 +116,14 @@ def main() -> None:
     try:
         live = live_repository_state(state)
         repository_metadata = gh_json(f"repos/{state['repository']}")
+        branch_metadata = gh_json(f"repos/{state['repository']}/branches?per_page=100")
     except RuntimeError as error:
         raise SystemExit(str(error)) from error
     repo = repository_state(state)
-    failures = backlog_reconciliation_failures(state)
+    live_branch_names = [item.get("name") for item in branch_metadata if isinstance(item, dict)] if isinstance(branch_metadata, list) else []
+    failures = final_acceptance_failures(state)
+    failures.extend(hosted_cleanup_failures(load_json(PCFA08_RECORD_PATH), hosted, [name for name in live_branch_names if isinstance(name, str)]))
+    failures.extend(backlog_reconciliation_failures(state))
     failures.extend(hermes_refresh_failures(state))
     failures.extend(mvcl_failures(state))
     failures.extend(product_scope_failures(state))
@@ -159,6 +172,8 @@ def main() -> None:
     print("pcfa05_mvcl=validated_planned_not_implemented")
     print("pcfa06_hermes_bounded_adoption=validated_planned_not_implemented_not_activated")
     print("pcfa07_backlog_reconciliation=validated_93_obligations_planned_not_implemented")
+    print("pcfa08_final_cross_authority_acceptance=validated_repository_side_manual_gates_complete_at_runtime")
+    print("live_branch_inventory=main_only")
     print(
         "final_release_parent_main_sha="
         f"{permit['final_workstream6_release_parent_main_sha']}"

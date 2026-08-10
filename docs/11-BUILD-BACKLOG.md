@@ -12,6 +12,7 @@ The canonical implementation namespace is `IMP-P0` through `IMP-P12`.
 - Codex stops at every implementation phase gate.
 - Paid services, OAuth, credentials, DNS and external communications require Founder action.
 - Legacy numeric phase wording and the former Codex display name is a display alias only; it never changes authority.
+- Successor authority controls current implementation semantics; retained historical package snapshots are evidence only and must not be re-promoted by backlog execution.
 
 ## IMP-P0 — Controlled project foundation
 
@@ -21,7 +22,7 @@ Deliver:
 
 - Monorepo structure
 - README and governing documentation
-- Licence decision placeholder
+- Resolved PCFA-03 repository/licence posture: private/internal development, no public licence grant, and no repository `LICENSE` unless a later explicit Founder licence ADR changes that posture
 - Code ownership and pull-request templates
 - `.gitignore` and `.env.example`
 
@@ -30,6 +31,8 @@ Done when:
 - Repository is private and accessible
 - No secret is committed
 - Read order is clear
+- P0.1 implementation and repository documentation match the current PCFA-03 posture: private/internal development, no public licence grant and no repository `LICENSE` unless a later explicit Founder licence ADR changes it
+- The historical WS6.13 licence placeholder remains historical-only and is not treated as an unresolved launch or implementation decision
 
 ### P0.2 Local development environment
 
@@ -82,6 +85,8 @@ Founder receives a local demonstration and completion report. No substantive pro
 
 ### P1.1 Source import
 
+- Begin from an explicit Founder-approved canonical source manifest; unapproved discovered files do not silently expand the required corpus
+- Assign every approved source a stable source identity before extraction
 - Import canonical and domain source files unchanged
 - Calculate checksums
 - Capture metadata
@@ -101,6 +106,8 @@ Founder receives a local demonstration and completion report. No substantive pro
 - Create canonical IDs
 - Preserve original aliases
 - Detect missing dependencies
+- Track one current disposition for every Founder-approved canonical source: ingested/structured, duplicate, superseded, quarantined, or explicitly excluded with a recorded reason
+- Reject silent omissions and retain provenance to the original source and native locator where available
 
 ### P1.4 Method and problem schemas
 
@@ -116,9 +123,12 @@ Founder receives a local demonstration and completion report. No substantive pro
 
 ### IMP-P1 gate
 
-- Initial 150-plus method records are structured and searchable
-- Every record links to original source
+- 100% of Founder-approved canonical methodology sources are accounted for as ingested/structured, duplicate, superseded, quarantined, or explicitly excluded with a recorded reason
+- The accounting denominator is the explicit current Founder-approved canonical source manifest, not a discovered-file count, extracted-chunk count or method-record count
+- Every approved source has exactly one current governed disposition; zero approved sources are silently omitted
+- Every ingested/structured record links to its original source and native provenance locator where available
 - Re-ingestion is deterministic
+- Method-count coverage is reported as a secondary diagnostic only; it is not a substitute for complete approved-source accounting
 
 ## IMP-P2 — Engagement system of record
 
@@ -472,6 +482,12 @@ PCFA-07 does not add a new IMP phase or task. It binds the corrective PCFA-04, P
 The overlay contains exactly 93 `planned_not_implemented` obligations: 29 PCFA-04 product/consulting-craft requirements, 19 MVCL stages, 15 MVCL invariants, 13 MVCL negative-path cases, six Founder interrupt classes and 11 Hermes bounded-adoption capabilities. Each obligation has exact existing task bindings, a primary implementation task, component bindings, dependency tasks, one blocking IMP phase gate, one unique `PCFA07-TST-*` planned test identity and one evidence type.
 
 No PCFA-07 obligation is assigned to IMP-P0. The Codex launch scope remains only P0.1–P0.4. The PCFA-07 planned tests are not executed evidence; implementation status can change only during the bound later IMP tasks with required evidence and gate acceptance. PCFA-08 final cross-authority acceptance remains required.
+
+## PCFA-08 / PCFA-08R final pre-Codex acceptance overlay
+
+PCFA-08 adds no IMP phase, task or implementation obligation. It accepts the repository-side cross-authority consistency of PCFA-01 through PCFA-07 and freezes the remaining manual launch contract. PCFA-08R only makes the already-governed P0.1 licence-posture and IMP-P1 approved-source-accounting semantics explicit in their existing tasks and gates; these clarifications add no new IMP phase, task, PCFA-07 obligation or Phase-0 obligation and do not authorize IMP-P1. The Codex launch scope remains exactly P0.1–P0.4. The 65 governed non-`main` branches must be cleaned only after dependency-order integration with final-SHA evidence for every deleted ref, and live GitHub must show only `main` before the single-use permit can be issued.
+
+`codex_start_authorized=false` until all manual launch gates and the permit pass.
 
 ## Deferred integrations
 

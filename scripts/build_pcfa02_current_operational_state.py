@@ -16,6 +16,7 @@ PRODUCT_SCOPE_PATH = ROOT / "repository" / "pcfa04-product-scope-implementation-
 MVCL_PATH = ROOT / "repository" / "pcfa05-minimum-valuable-consulting-loop.json"
 HERMES_REFRESH_PATH = ROOT / "repository" / "pcfa06-hermes-bounded-adoption-refresh.json"
 BACKLOG_RECONCILIATION_PATH = ROOT / "requirements" / "pcfa07-codex-implementation-backlog-reconciliation.json"
+FINAL_ACCEPTANCE_PATH = ROOT / "repository" / "pcfa08-final-pre-codex-cross-authority-acceptance.json"
 
 
 def _load_source() -> dict[str, Any]:
@@ -49,6 +50,8 @@ def build_records() -> tuple[dict[str, Any], str]:
         raise ValueError("current PCFA-06 Hermes bounded-adoption refresh is missing")
     if not BACKLOG_RECONCILIATION_PATH.is_file():
         raise ValueError("current PCFA-07 Codex implementation backlog reconciliation is missing")
+    if not FINAL_ACCEPTANCE_PATH.is_file():
+        raise ValueError("current PCFA-08 final pre-Codex cross-authority acceptance is missing")
 
     state = dict(source)
     snapshots = []
@@ -70,6 +73,7 @@ def build_records() -> tuple[dict[str, Any], str]:
     authority["mvcl_contract_sha256"] = _digest_file(MVCL_PATH)
     authority["hermes_bounded_adoption_refresh_sha256"] = _digest_file(HERMES_REFRESH_PATH)
     authority["codex_implementation_backlog_reconciliation_sha256"] = _digest_file(BACKLOG_RECONCILIATION_PATH)
+    authority["final_pre_codex_cross_authority_acceptance_sha256"] = _digest_file(FINAL_ACCEPTANCE_PATH)
     state["current_authority"] = authority
 
     manual = state["manual_launch_gates"]
@@ -97,12 +101,15 @@ def build_records() -> tuple[dict[str, Any], str]:
             f"- Hermes refresh SHA-256: `{authority['hermes_bounded_adoption_refresh_sha256']}`",
             "- Current Codex implementation backlog reconciliation: `requirements/pcfa07-codex-implementation-backlog-reconciliation.json`",
             f"- Backlog reconciliation SHA-256: `{authority['codex_implementation_backlog_reconciliation_sha256']}`",
+            "- Current final pre-Codex cross-authority acceptance: `repository/pcfa08-final-pre-codex-cross-authority-acceptance.json`",
+            f"- PCFA-08 acceptance SHA-256: `{authority['final_pre_codex_cross_authority_acceptance_sha256']}`",
             "- Current machine handoff: `handoff/codex-phase0-current-handoff.json`",
             "- Current Issue #1 body: `handoff/codex-phase0-current-issue.md`",
             "- Current Issue #19 body: `handoff/codex-phase0-current-hosted-controls-issue.md`",
             "- WS6.2/WS6.3/WS6.4/WS6.13 embedded readiness and licence state remain retained package-time evidence only.",
             "- Permanent WS6.16 release remains immutable evidence, not the current launch SHA.",
-            "- PCFA-07 reconciles all 93 PCFA-04/05/06 obligations into existing IMP-P1–P12 tasks with planned tests/evidence/dependencies/gates; all remain `planned_not_implemented`; PCFA-08 remains required.",
+            "- PCFA-07 reconciles all 93 PCFA-04/05/06 obligations into existing IMP-P1–P12 tasks with planned tests/evidence/dependencies/gates; all remain `planned_not_implemented`.",
+            "- PCFA-08 repository-side cross-authority acceptance is complete; eight hosted/manual launch gates remain pending.",
             "- `codex_start_authorized=false`; merge, IMP-P1, runtime and external actions remain denied.",
             "",
         ]
@@ -117,7 +124,7 @@ def main() -> None:
     print(
         "Built PCFA-02 current operational state: "
         f"historical_snapshots={len(state['historical_package_snapshots'])}, "
-        "repository_posture_bound=true, product_scope_bound=true, mvcl_bound=true, hermes_refresh_bound=true, backlog_reconciliation_bound=true, manual_gates=false, "
+        "repository_posture_bound=true, product_scope_bound=true, mvcl_bound=true, hermes_refresh_bound=true, backlog_reconciliation_bound=true, final_acceptance_bound=true, manual_gates=false, "
         "codex_start_authorized=false."
     )
 

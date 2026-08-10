@@ -1,0 +1,245 @@
+schema_version: 1.0.0
+work_package_id: PCFA-08
+acceptance_id: FINAL-PRE-CODEX-CROSS-AUTHORITY-ACCEPTANCE
+title: Final pre-Codex cross-authority acceptance
+status: repository_cross_authority_accepted_manual_launch_gates_pending
+repository: rayrayxing/offdata-os
+canonical_branch: main
+authority_inputs:
+- id: AGENTS
+  path: AGENTS.md
+  role: controlling_instruction
+- id: WS6-RELEASE
+  path: releases/pre-codex-final-reconciliation-2026-08-06.json
+  role: immutable_permanent_release_evidence
+- id: PCFA-01
+  path: contracts/pcfa01-launch-control-repair.json
+  role: launch_semantics_repair
+- id: PCFA-03
+  path: repository/repository-visibility-and-licence-posture.json
+  role: repository_visibility_and_licence_posture
+- id: PCFA-04
+  path: repository/pcfa04-product-scope-implementation-addendum.json
+  role: product_scope_addendum
+- id: PCFA-05
+  path: repository/pcfa05-minimum-valuable-consulting-loop.json
+  role: minimum_valuable_consulting_loop
+- id: PCFA-06
+  path: repository/pcfa06-hermes-bounded-adoption-refresh.json
+  role: hermes_bounded_adoption_refresh
+- id: PCFA-07
+  path: requirements/pcfa07-codex-implementation-backlog-reconciliation.json
+  role: codex_implementation_backlog_reconciliation
+- id: IMP-BACKLOG
+  path: docs/11-BUILD-BACKLOG.md
+  role: implementation_phase_and_task_namespace
+cross_authority_invariants:
+- id: XAUTH-01
+  statement: Historical WS/PCR package readiness is retained evidence and never drives
+    current launch readiness.
+- id: XAUTH-02
+  statement: repository/current-operational-state.json is the sole live machine readiness
+    projection.
+- id: XAUTH-03
+  statement: The WS6 permanent release parent and record commit are historical ancestors,
+    not current launch-SHA equality targets.
+- id: XAUTH-04
+  statement: Current repository posture requires private/internal development with
+    no public licence grant.
+- id: XAUTH-05
+  statement: PCFA-04 product scope remains planned_not_implemented until its bound
+    IMP tasks execute.
+- id: XAUTH-06
+  statement: PCFA-05 MVCL remains planned_not_implemented and Founder interrupt controls
+    remain mandatory.
+- id: XAUTH-07
+  statement: PCFA-06 Hermes capabilities remain bounded, suggestion-only where specified,
+    and not activated.
+- id: XAUTH-08
+  statement: PCFA-07 covers exactly 93 obligations with 93 planned tests and zero
+    IMP-P0 widening.
+- id: XAUTH-09
+  statement: The Codex launch target is exactly P0.1-P0.4 on codex/phase-0-foundation
+    with a draft PR.
+- id: XAUTH-10
+  statement: No implementation may begin before a valid local single-use permit binds
+    the exact approved current main SHA.
+- id: XAUTH-11
+  statement: 'Live Issue #1 and Issue #19 bodies must match current repository bodies
+    at permit time.'
+- id: XAUTH-12
+  statement: Repository visibility, hosted controls, branch cleanup and clean macOS
+    evidence are manual launch gates.
+- id: XAUTH-13
+  statement: Historical branch cleanup is exact-name only and every deleted ref requires
+    its final SHA to be retained.
+- id: XAUTH-14
+  statement: The live GitHub branch inventory must contain only main immediately before
+    Codex branch creation.
+- id: XAUTH-15
+  statement: Founder authorization binds one exact current main SHA and exactly P0.1-P0.4;
+    merge and P1 remain unauthorized.
+- id: XAUTH-16
+  statement: The Codex branch and any Codex Phase 0 PR must be absent before permit
+    issuance.
+- id: XAUTH-17
+  statement: Synthetic data only, no runtime/Hermes activation, no real client data,
+    no paid services, no OAuth, no external actions and no production.
+- id: XAUTH-18
+  statement: Any current-authority or launch-evidence drift invalidates prior launch
+    evidence and requires re-acceptance.
+repository_acceptance:
+  prior_pcfa_packages_required:
+  - PCFA-01
+  - PCFA-02
+  - PCFA-03
+  - PCFA-04
+  - PCFA-05
+  - PCFA-06
+  - PCFA-07
+  all_prior_repository_side_requirements_consistent: true
+  implementation_backlog_reconciled: true
+  phase0_scope_unchanged: true
+  repository_side_cross_authority_acceptance_complete: true
+  manual_launch_evidence_complete: false
+  launch_authorization_complete: false
+manual_launch_gates:
+- id: repository_visibility_private_verified
+  required_value: true
+  status: pending_manual_evidence
+- id: github_hosted_controls_verified
+  required_value: true
+  status: pending_manual_evidence
+- id: historical_branch_cleanup_complete
+  required_value: true
+  status: pending_manual_evidence
+- id: clean_macos_environment_verified
+  required_value: true
+  status: pending_manual_evidence
+- id: live_issue_bodies_synchronized
+  required_value: true
+  status: pending_integration_then_sync
+- id: explicit_founder_phase0_approval_received
+  required_value: true
+  status: pending_manual_evidence
+- id: approved_main_sha_bound
+  required_value: true
+  status: pending_manual_evidence
+- id: launch_permit_issued
+  required_value: true
+  status: pending_manual_evidence
+branch_cleanup_plan:
+  policy: exact_allowlist_only
+  observed_repository_branch_count_before_pcfa08_branch: 65
+  observed_non_main_branch_count_before_pcfa08_branch: 64
+  pcfa08_branch_added_after_observation: true
+  expected_cleanup_branch_count_after_pcfa08_integration: 65
+  retain_branches:
+  - main
+  delete_after_dependency_order_integration:
+  - agent/phase2-first-agent-system
+  - ci/phase1-contract-validation-20260804
+  - deliverable/phase4-semantic-model
+  - diagnostic/ws6-actions-runner
+  - diagnostic/ws6-public-actions-runner
+  - fix/phase1-policy-typing
+  - fix/phase1-policy-typing-2
+  - fix/ws66-ws67-workflow-stability
+  - fix/ws67-evidence-manifest-completion
+  - fixtures/phase5-additional-engagements
+  - fixtures/phase5-engagement-suite
+  - fixtures/phase5-strategy-cost
+  - governance/pcr01-canonical-release
+  - governance/pcr02-test-identity
+  - governance/pcr03-repository-hygiene
+  - governance/pcr04-codex-handoff
+  - governance/pcr05-runtime-adapters
+  - governance/pcr06-hermes-adoption
+  - governance/pcr06-hermes-compatibility
+  - governance/pcr07-northstar-integration
+  - governance/pcr08-initial-operating-controls
+  - governance/pcr09-first-codex-issue
+  - governance/pcr09-first-codex-issue-clean
+  - governance/pcr10-integration-reconciliation
+  - governance/pcr10-pre-codex-readiness
+  - governance/workstream4-cleanup-repair
+  - governance/workstream4-hosted-controls-readiness
+  - governance/workstream5-codex-phase0-launch-control
+  - governance/workstream6-baseline-lock
+  - governance/workstream6-canonical-authority-registry
+  - governance/workstream6-current-status-documents
+  - governance/workstream6-final-launch-control
+  - governance/workstream6-handoff-reconciliation
+  - governance/workstream6-phase-namespace-normalization
+  - governance/workstream6-required-workflow-identity
+  - governance/workstream6-required-workflow-identity-temp
+  - governance/workstream6-required-workflow-identity-tree-test
+  - governance/workstream6-required-workflow-identity-tree-test2
+  - governance/ws66-required-workflow-identity-ci-open
+  - governance/ws66-required-workflow-identity-final
+  - governance/ws66-required-workflow-identity-retry
+  - governance/ws67-configuration-contradictions
+  - governance/ws67-configuration-contradictions-ci
+  - governance/ws68-issue-backlog-normalization
+  - governance/ws69-implementation-obligation-map
+  - governance/ws610-developer-experience-specification
+  - governance/ws611-founder-experience-specification
+  - governance/ws612-deliverable-quality-implementation-specification
+  - governance/ws613-operational-quality-specification
+  - governance/ws614-cross-authority-consistency-gate
+  - governance/ws615-final-workflow
+  - governance/ws616-final-authority-reconciliation
+  - governance/ws616-permanent-release-record
+  - knowledge/phase6-ingestion-intelligence
+  - oracle/phase3-ai-audit
+  - pcfa/01-repair-launch-control-path
+  - pcfa/02-current-operational-state
+  - pcfa/03-repository-visibility-licence-posture
+  - pcfa/04-product-scope-implementation-addendum
+  - pcfa/05-minimum-valuable-consulting-loop
+  - pcfa/06-hermes-bounded-adoption-refresh
+  - pcfa/07-codex-implementation-backlog-reconciliation
+  - release/ws616-permanent-release-record
+  - security/phase7-regionalisation
+  - pcfa/08-final-pre-codex-cross-authority-acceptance
+  require_final_sha_for_every_deleted_branch: true
+  require_merged_ancestry_or_explicit_obsolete_classification: true
+  wildcards_prohibited: true
+  codex_phase0_branch_must_be_absent_before_cleanup_completion: true
+  final_live_branch_inventory_must_equal:
+  - main
+  unexpected_branch_requires_explicit_reconciliation: true
+launch_target:
+  permitted_phase: Codex Phase 0 only
+  permitted_tasks:
+  - P0.1
+  - P0.2
+  - P0.3
+  - P0.4
+  required_branch: codex/phase-0-foundation
+  required_pull_request_state: draft
+  required_status_check: Validate final pre-Codex canonical handoff and complete release
+  implementation_may_start_only_after_valid_permit: true
+boundaries:
+  phase0_implementation_authorized: false
+  phase0_merge_authorized: false
+  phase1_authorized: false
+  merge_authorized: false
+  runtime_activation_authorized: false
+  hermes_activation_authorized: false
+  real_client_data_enabled: false
+  external_actions_authorized: false
+  paid_services_authorized: false
+  oauth_authorized: false
+  production_deployment_authorized: false
+  autonomous_merge_authorized: false
+  founder_accountability_preserved: true
+  codex_start_authorized: false
+next_actions_after_integration:
+- synchronize_live_issue_1_and_19_bodies
+- make_repository_private_and_capture_evidence
+- verify_required_github_hosted_controls
+- execute_exact_allowlist_branch_cleanup_with_final_sha_evidence
+- verify_clean_supported_macos_environment
+- obtain_exact_main_sha_founder_p0_only_authorization
+- run_real_launch_preparation_and_issue_single_use_permit
