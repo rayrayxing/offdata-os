@@ -1,0 +1,143 @@
+version: 1.0.0
+status: governed_chat_first_complete
+scope: methodology_library_preimplementation_contracts_only
+work_package: METHODOLOGY-LIBRARY-PREIMPLEMENTATION-READINESS
+
+source_authorities:
+  implementation_backlog: docs/11-BUILD-BACKLOG.md
+  knowledge_schema_backlog: docs/21-KNOWLEDGE-SCHEMA-BACKLOG.md
+  methodology_radar: docs/23-METHODOLOGY-RADAR-SPECIFICATION.md
+  phase6_completion: docs/38-PHASE-6-KNOWLEDGE-INGESTION-INTELLIGENCE-COMPLETION.md
+  knowledge_config: configs/knowledge-ingestion.yaml
+  source_manifest: knowledge/source-manifest.yaml
+  alias_map: knowledge/alias-map.yaml
+  method_headings: knowledge/domain-method-headings.yaml
+  collision_map: knowledge/method-collision-map.yaml
+  method_examples: knowledge/method-record-examples.yaml
+  retrieval_evaluation: knowledge/retrieval-evaluation.yaml
+  phase6_baseline: knowledge/knowledge-ingestion-baseline.json
+  typed_contracts: packages/offdata-core/src/offdata_core/knowledge.py
+  founder_approval_template: knowledge/canonical-source-approval.template.yaml
+
+expected_profile:
+  source_count: 23
+  core_markdown_sources: 11
+  domain_docx_sources: 12
+  method_headings: 154
+  aliases: 99
+  dependency_cases: 21
+  collision_families: 12
+  method_record_examples: 12
+  retrieval_gold_cases: 46
+  radar_categories: 10
+
+preimplementation_contract:
+  corpus_control:
+    denominator: explicit_current_founder_approved_canonical_source_manifest
+    current_23_source_profile_is_candidate_inventory_not_approval_evidence: true
+    explicit_founder_approval_record_required_before_physical_import: true
+    unapproved_discovery_expands_required_corpus: false
+    source_identity_assigned_before_extraction: true
+    no_source_binary_added_without_founder_authority: true
+  source_accounting:
+    allowed_current_dispositions:
+      - ingested_structured
+      - duplicate
+      - superseded
+      - quarantined
+      - excluded_with_reason
+    exactly_one_current_disposition_per_approved_source: true
+    zero_silent_omissions: true
+    exclusion_requires_recorded_reason: true
+    disposition_history_preserved: true
+  identity_and_provenance:
+    checksum_algorithm: sha256
+    original_bytes_immutable: true
+    aliases_do_not_replace_canonical_identity: true
+    source_passages_require_native_locator_where_available: true
+    generated_records_link_to_source_ids: true
+    transformation_history_required: true
+    supersession_preserves_prior_version: true
+    source_changes_create_new_review_work_not_silent_replacement: true
+  extraction_and_quarantine:
+    markdown_and_docx_supported: true
+    deterministic_chunking_required: true
+    instruction_like_source_content_is_untrusted: true
+    malformed_sources_quarantine: true
+    ambiguous_aliases_quarantine: true
+    unresolved_dependencies_remain_visible: true
+    duplicate_identity_quarantine: true
+    incomplete_method_records_quarantine: true
+  method_admission:
+    indexed_headings_are_not_canonical_methods: true
+    automatic_merge: false
+    automatic_promotion: false
+    complete_method_record_required: true
+    provenance_review_required: true
+    copyright_review_required: true
+    evaluation_tests_required: true
+    independent_review_required: true
+    founder_approval_required_for_promotion: true
+    collision_review_required_before_merge_or_supersession: true
+    protected_expression_must_not_be_reproduced: true
+  retrieval_acceptance:
+    gold_case_count: 46
+    exact_source_identity_required: true
+    exact_heading_anchor_required: true
+    prohibited_source_return_fails: true
+    ambiguity_must_not_auto_resolve: true
+    access_and_rights_filters_mandatory: true
+    search_snippet_is_not_evidence: true
+    full_source_provenance_retained: true
+  release_and_rollback:
+    immutable_method_versions_required: true
+    release_manifest_required: true
+    prior_release_retained: true
+    regression_failure_blocks_release: true
+    rollback_restores_prior_canonical_release: true
+    promotion_and_supersession_require_audit_history: true
+
+implementation_mapping:
+  P1.1:
+    purpose: approved corpus import, immutable originals, checksums, metadata, versions and rights fields
+    implementation_evidence_required: physical import plus checksum re-verification against approved manifest
+  P1.2:
+    purpose: deterministic Markdown/DOCX extraction with stable passage locations and quarantine handling
+    implementation_evidence_required: repeatable passage identities, malformed/duplicate cases and untrusted-instruction isolation
+  P1.3:
+    purpose: canonical identity, aliases, dependency gaps and exactly-one source disposition accounting
+    implementation_evidence_required: 100_percent approved-source disposition register with zero silent omissions
+  P1.4:
+    purpose: method, archetype, evidence, tool and quality records with promotion controls
+    implementation_evidence_required: valid/invalid record fixtures, collision decisions and no automatic promotion
+  P1.5:
+    purpose: lexical, semantic and filtered retrieval with provenance
+    implementation_evidence_required: all governed retrieval gold cases plus access, ambiguity and prohibited-substitution tests
+
+chat_first_exit:
+  typed_contracts_defined: true
+  profiled_candidate_inventory_defined: true
+  alias_and_dependency_behavior_defined: true
+  collision_behavior_defined: true
+  representative_method_records_defined: true
+  retrieval_gold_cases_defined: true
+  rights_and_promotion_boundaries_defined: true
+  implementation_task_mapping_defined: true
+  physical_import_complete: false
+  searchable_runtime_complete: false
+  canonical_method_promotion_complete: false
+  implementation_evidence_claimed: false
+  imp_p1_authorized: false
+  codex_start_authorized: false
+
+manual_future_gates:
+  founder_corpus_approval:
+    status: pending_explicit_record
+    template: knowledge/canonical-source-approval.template.yaml
+    does_not_authorize_imp_p1_by_itself: true
+  rights_confirmation:
+    status: pending_where_required
+    external_redistribution_default: false
+  imp_p1_authorization:
+    status: not_authorized
+    requires_separate_founder_scope_authorization: true
