@@ -1,8 +1,0 @@
-{
-  "$id": "https://offdata.com/schemas/context-package.schema.json",
-  "$ref": "offdata-contract-bundle.schema.json#/$defs/ContextPackage",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Offdata Minimum-Sufficient Context Package",
-  "x-offdata-canonical-bundle": "offdata-contract-bundle.schema.json",
-  "x-offdata-model": "ContextPackage"
-}

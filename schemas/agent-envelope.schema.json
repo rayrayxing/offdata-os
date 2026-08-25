@@ -1,8 +1,0 @@
-{
-  "$id": "https://offdata.com/schemas/agent-envelope.schema.json",
-  "$ref": "offdata-contract-bundle.schema.json#/$defs/AgentEnvelope",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Offdata Agent Envelope",
-  "x-offdata-canonical-bundle": "offdata-contract-bundle.schema.json",
-  "x-offdata-model": "AgentEnvelope"
-}

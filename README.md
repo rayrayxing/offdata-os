@@ -1,79 +1,31 @@
-# offdata OS
+# off/data venture
 
-**offdata** is a Founder-governed, AI-native consulting operating system designed to execute most analyst, consultant and engagement-management work while preserving human accountability for material decisions, external commitments, commercial choices and client relationships.
+**Hermes-native autonomous venture company — bootstrap package v0.2**
 
-This repository is the **canonical build repository** for the new offdata consulting platform. The older `rayrayxing/offdata` and `rayrayxing/offdata-clean` repositories are historical references only.
+## Mission
 
-## Current canonical status
+Continuously discover non-obvious opportunities from new technology, regulation, cost curves and behavior; acquire the expertise needed to evaluate them; research deeply; challenge/refine them; design cheap experiments; build functional prototypes; obtain genuine buyer/user reactions; convert evidence into revenue and economics; allocate capital across ventures; kill weak ventures quickly; and recursively learn across cohorts.
 
-**Chat-first development is integrated through CF-P1–7, PCR-01–10, WS-4, WS-5 and WS6.16; the permanent Workstream 6 release/final reconciliation is complete; all manual launch gates remain pending; `codex_start_authorized=false`.**
+## Architecture boundary
 
-- Initial operator: Founder only.
-- Initial hosting and data region: Singapore.
-- Data: synthetic only; real client data remains prohibited.
-- Canonical implementation namespace: `IMP-P0–12`; no implementation phase has started.
-- Current authority registry: `repository/canonical-authority-registry.json`.
-- Current phase namespace: `contracts/workstream6-phase-namespace.json`.
-- Current required workflow identity: `contracts/workstream6-required-workflow-identity.json`.
-- Current canonical issue: `handoff/codex-phase0-issue-final.md`, synchronized to issue #1.
-- Current launch control: `contracts/codex-phase0-launch-control.json`.
-- Current machine handoff: `handoff/codex-phase0-handoff.json`.
-- Active final check identity: `Validate final pre-Codex canonical handoff and complete release`; hosted branch-protection enforcement remains an issue #19 manual gate.
-- Permanent final release: `releases/pre-codex-final-reconciliation-2026-08-06.json`.
+Hermes owns generic agent infrastructure: profiles, models/providers, Skills, Kanban, cron, messaging, MCP, browser/terminal, plugins and dashboard.
 
-Historical PCR and Workstream completion documents remain evidence of their own completed packages. They do not supersede the current status above or authorise Codex.
+off/data owns venture semantics: canonical state, claims/evidence, concerns, decisions, G0–G10 policy, experiments, financial truth, capital, authority, audit, calibration, customer/reputation state, venture cockpit and cross-venture learning.
 
-## Authority and read order
+## Core invariant
 
-1. `AGENTS.md`
-2. `GOVERNANCE.md`
-3. `SECURITY.md`
-4. `CONTRIBUTING.md`
-5. `docs/00-START-HERE.md`
-6. `docs/20-DEVELOPMENT-STATUS.md`
-7. `repository/canonical-authority-registry.json`
-8. `contracts/workstream6-phase-namespace.json`
-9. `contracts/workstream6-required-workflow-identity.json`
-10. `handoff/codex-phase0-handoff.json`
-11. `contracts/codex-phase0-launch-control.json`
-12. `handoff/codex-phase0-issue-final.md`
+LLMs think; specialists argue; Skills teach procedure; deterministic tools establish truth; hooks enforce authority; Kanban carries durable work; Venture Brain is canonical truth.
 
-The phase namespace contract separates chat-first packages from `IMP-P0–12`. The workflow-identity contract defines the exact active final check identity; WS6.15 activated the workflow and WS6.16 bound the permanent release, while hosted enforcement remains an issue #19 manual gate. The authority registry classifies every current read-order item and retained evidence surface. The complete implementation read order and command set remain machine-governed in `handoff/codex-phase0-handoff.json`. Chat history, old pull-request descriptions, superseded issue bodies and historical reports are not current execution authority.
+A model/Skill may recommend a gate, evidence classification or capital action. It may not make authoritative truth by prose.
 
-## Codex entry gate
+## Initial model assumption
 
-Codex may not begin merely because repository validation passes. Every one of the following must first be independently satisfied:
+- Primary: Gemini 3.7 Flash through the owner's EasyCLIProxyAPI-compatible route.
+- Fallback: DeepSeek API.
+- Task-specific build/review: Codex and Claude Code where useful.
 
-1. the permanent final Workstream 6 release exists and passes `scripts/require_workstream6_final_reconciliation.py`;
-2. issue #19 is completed with evidence for hosted controls and exact-allowlist historical branch cleanup;
-3. WS6.15 has activated `.github/workflows/workstream6-final-pre-codex.yml` and hosted branch protection requires exactly `Validate final pre-Codex canonical handoff and complete release`;
-4. a clean macOS doctor report and Founder environment attestation are complete;
-5. the Founder gives explicit approval for IMP-P0 only against the exact current `main` SHA; and
-6. `scripts/prepare_codex_phase0_launch.py` emits a valid local single-use permit.
+Routing is measured and may change later.
 
-Create `codex/phase-0-foundation` only after that permit exists and only from its approved SHA. The first commit must contain the governed launch acknowledgement. The pull request must remain draft; merge and IMP-P1 remain unauthorised.
+## Start
 
-## Retained runtime boundary
-
-The provider-independent runtime contract remains `contracts/runtime-adapter-contracts.json` and must pass `scripts/validate_pcr05_runtime_adapters.py` in every complete gate. Contract existence never activates a runtime: `runtime_activation_authorized=false`.
-
-## Product objective
-
-offdata should support the full consulting lifecycle from qualified opportunity and mandate intake through framing, research, analysis, recommendation, deliverable production, implementation and benefits verification. It should also support controlled origination, CRM continuity, methodology scouting and continuous quality improvement.
-
-## Non-negotiable principles
-
-1. **Operational autonomy, not accountability autonomy.** Material, external, commercial, legal, irreversible or high-risk actions require Founder approval.
-2. **The database is the system of record.** Chat history, model memory and agent sessions are not authoritative engagement truth.
-3. **Evidence before assertion.** Material claims must be traceable to evidence, analysis, assumptions and review state.
-4. **One story, many surfaces.** PPTX, DOCX, XLSX, PDF, SVG and HTML outputs must be rendered from a shared semantic engagement model.
-5. **Deterministic calculations.** Models calculate; language models interpret and communicate.
-6. **Independent quality review.** The creator of material work cannot be its sole approver.
-7. **Client separation.** Cross-engagement retrieval or reuse of confidential client material requires explicit authority.
-8. **Specification-first, test-first, phase-gated.** Implementation must not build ahead of the approved phase.
-9. **No secrets in source control or chat.** Credentials belong only in approved secret-management or OAuth interfaces.
-10. **Copyright-safe methodology development.** External ideas may inform independently reconstructed methods; protected or confidential material must not be copied.
-
-## Initial implementation target
-
-After a valid permit is issued, IMP-P0 may establish only the controlled local project foundation defined by tasks P0.1–P0.4. Application and operating-infrastructure directories are populated only through separately approved implementation phases.
+Open this directory in Hermes and instruct it: **Read `START_HERE.md` and execute the bootstrap. Do not skip preflight, gate-policy import, owner policy, model qualification or independent certification.**

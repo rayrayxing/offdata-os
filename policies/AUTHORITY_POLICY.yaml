@@ -1,0 +1,28 @@
+version: OD-AUTHORITY-1.0
+default_mode: SHADOW
+modes:
+  SHADOW:
+    external_write: false
+    live_spend: false
+  CONTROLLED:
+    external_write: bounded_authorization
+    live_spend: bounded_authorization
+  AUTONOMOUS:
+    external_write: delegated_action_classes
+    live_spend: delegated_action_classes
+zero_tolerance:
+  - authority_violation
+  - fabricated_authoritative_evidence
+  - duplicate_financial_effect
+  - unaudited_capital_action
+  - test_or_simulation_to_authoritative_live_contamination
+action_authorization_requires:
+  - venture_id
+  - actor_profile
+  - action_class
+  - tool_scope
+  - target_scope
+  - environment
+  - validity_window
+  - operation_id
+  - correlation_id

@@ -1,0 +1,16 @@
+version: OD-CONCERN-1.0
+severities:
+  BLOCKING:
+    halts_progression: true
+    description: Cannot responsibly purchase the next unit of learning/action.
+  MATERIAL_EXPERIMENT:
+    halts_progression: false
+    default_action: CREATE_EXPERIMENT
+    description: Important uncertainty best resolved through evidence or experiment.
+  DESIGN_CONSTRAINT:
+    halts_progression: false
+    description: Known limitation that must shape design/operation.
+  MONITOR:
+    halts_progression: false
+    description: Real but currently low-impact risk retained in venture summary.
+statuses: [OPEN, RESOLVED, ACCEPTED_RISK, INVALIDATED, SUPERSEDED]

@@ -1,0 +1,14 @@
+# Validate exact keys against the pinned Hermes release before applying.
+skills:
+  write_approval: true
+memory:
+  memory_enabled: true
+# Venture truth remains in Venture Brain, not memory.
+kanban:
+  dispatch_in_gateway: true
+  failure_limit: 2
+# Start all off/data profiles SHADOW and least-privilege.
+off_data_venture:
+  authority_mode: SHADOW
+  customer_contact_mode: DRAFT_ONLY
+  live_spend_enabled: false

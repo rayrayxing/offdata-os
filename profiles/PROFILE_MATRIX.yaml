@@ -1,0 +1,51 @@
+version: OD-PROFILES-0.2
+default_authority_mode: SHADOW
+# Profiles are cognitive/operational specialization, not a trusted OS security boundary.
+# Enforce tools/credentials/MCP/authority in deterministic policy.
+profiles:
+  portfolio-director: {stage: PORTFOLIO, can: [READ_ALL, PROPOSE_DECISION, PROPOSE_CAPITAL, CREATE_KANBAN], cannot: [EXECUTE_PAYMENT, BYPASS_GATE]}
+  capital-allocator: {stage: PORTFOLIO, can: [READ_FINANCE, PROPOSE_CAPITAL, PROPOSE_DECISION], cannot: [EXECUTE_PAYMENT]}
+  independent-auditor: {stage: ALWAYS, can: [READ_ALL, AUDIT_VETO], cannot: [EXECUTE_PAYMENT, CREATE_AUTHORITATIVE_EVIDENCE]}
+  venture-historian: {stage: PORTFOLIO, can: [READ_ALL, WRITE_LEARNING], cannot: [CHANGE_POLICY_DIRECTLY]}
+  capability-architect: {stage: PRE_CONTRARIAN_1, can: [READ_RESEARCH, PROPOSE_SKILLS, CREATE_KANBAN]}
+  skill-engineer: {stage: PRE_CONTRARIAN_1, can: [BUILD_SKILL_CANDIDATE], cannot: [CERTIFY_OWN_SKILL]}
+  skill-auditor: {stage: PRE_CONTRARIAN_1, can: [READ_SKILLS, PROPOSE_SKILL_CERTIFICATION], cannot: [WRITE_GATE_POLICY]}
+  frontier-scout: {stage: DISCOVERY, can: [READ_RESEARCH, WRITE_RESEARCH, CREATE_SIGNAL]}
+  trend-spotter: {stage: DISCOVERY, can: [READ_RESEARCH, WRITE_RESEARCH, CREATE_SIGNAL]}
+  technology-transfer: {stage: DISCOVERY, can: [READ_RESEARCH, PROPOSE_THESIS]}
+  context-translator: {stage: DISCOVERY, can: [READ_RESEARCH, PROPOSE_THESIS]}
+  venture-imagination: {stage: DISCOVERY, can: [PROPOSE_THESIS], cannot: [DECLARE_VIABILITY]}
+  entrepreneur-in-residence: {stage: DISCOVERY, can: [READ_RESEARCH, PROPOSE_THESIS, CREATE_KANBAN]}
+  deep-research-lead: {stage: RESEARCH, can: [READ_RESEARCH, WRITE_RESEARCH, CREATE_KANBAN]}
+  technology-researcher: {stage: RESEARCH, can: [READ_RESEARCH, WRITE_RESEARCH]}
+  industry-researcher: {stage: RESEARCH, can: [READ_RESEARCH, WRITE_RESEARCH]}
+  customer-anthropologist: {stage: RESEARCH, can: [READ_RESEARCH, WRITE_RESEARCH, PROPOSE_CLAIMS]}
+  competitive-intelligence: {stage: RESEARCH, can: [READ_RESEARCH, WRITE_RESEARCH, PROPOSE_CONCERNS]}
+  regulatory-researcher: {stage: RESEARCH, can: [READ_RESEARCH, WRITE_RESEARCH, PROPOSE_CONCERNS]}
+  economics-researcher: {stage: RESEARCH, can: [READ_RESEARCH, PROPOSE_ECONOMICS]}
+  distribution-researcher: {stage: RESEARCH, can: [READ_RESEARCH, WRITE_RESEARCH, PROPOSE_DISTRIBUTION]}
+  opportunity-architect: {stage: RESEARCH, can: [READ_RESEARCH, PROPOSE_CONCEPT]}
+  contrarian: {stage: MULTI, can: [READ_ALL_VENTURE, PROPOSE_CONCERNS, PROPOSE_KILL, PROPOSE_REFINEMENT], cannot: [KILL_WITHOUT_POLICY_DECISION]}
+  venture-refiner: {stage: PRE_PROTOTYPE, can: [READ_ALL_VENTURE, PROPOSE_CONCEPT]}
+  business-model-architect: {stage: PRE_PROTOTYPE, can: [PROPOSE_BUSINESS_MODEL]}
+  distribution-architect: {stage: PRE_PROTOTYPE, can: [PROPOSE_DISTRIBUTION]}
+  experiment-designer: {stage: PRE_PROTOTYPE, can: [PROPOSE_EXPERIMENT]}
+  narrative-builder: {stage: MULTI, can: [DRAFT_COMMUNICATION], cannot: [UPGRADE_CLAIM_CERTAINTY]}
+  truth-editor: {stage: MULTI, can: [READ_CLAIMS, BLOCK_UNGROUNDED_COMMUNICATION]}
+  product-manager: {stage: PROTOTYPE_PLUS, can: [PROPOSE_PRODUCT, CREATE_KANBAN]}
+  ux-designer: {stage: PROTOTYPE_PLUS, can: [BUILD_SANDBOX]}
+  prototype-builder: {stage: PROTOTYPE_PLUS, can: [BUILD_SANDBOX], cannot: [PRODUCTION_DEPLOY]}
+  engineering: {stage: POST_VALIDATION, can: [BUILD_SANDBOX, PROPOSE_DEPLOY]}
+  qa: {stage: PROTOTYPE_PLUS, can: [READ_BUILD, BLOCK_RELEASE]}
+  security: {stage: PROTOTYPE_PLUS, can: [READ_BUILD, SECURITY_VETO]}
+  customer-validation: {stage: VALIDATION, can: [READ_CONTACTS, DRAFT_OUTREACH, RECORD_INTERACTION], cannot: [SEND_OUTREACH_WITHOUT_AUTH]}
+  prospecting: {stage: VALIDATION, can: [READ_RESEARCH, WRITE_CONTACTS, DRAFT_OUTREACH]}
+  sales: {stage: VALIDATION_PLUS, can: [READ_CONTACTS, DRAFT_OUTREACH, SEND_OUTREACH_WITH_AUTH, PROPOSE_COMMERCIAL_TERMS]}
+  growth: {stage: VALIDATION_PLUS, can: [READ_ANALYTICS, PROPOSE_EXPERIMENT, EXECUTE_BOUNDED_GROWTH_WITH_AUTH]}
+  revops: {stage: OPERATING, can: [READ_CONTACTS, WRITE_CRM_STATE]}
+  customer-success: {stage: OPERATING, can: [READ_CUSTOMERS, RECORD_OPERATING_EVIDENCE, DRAFT_CUSTOMER_COMMS]}
+  finance-controller: {stage: MULTI, can: [READ_FINANCE, POST_VALIDATED_JOURNAL, CLOSE_SNAPSHOT], cannot: [EXECUTE_PAYMENT]}
+  analytics: {stage: MULTI, can: [READ_METRICS, RUN_DETERMINISTIC_ANALYSIS]}
+  operations: {stage: OPERATING, can: [CREATE_KANBAN, EXECUTE_BOUNDED_OPS_WITH_AUTH]}
+  legal-compliance: {stage: MULTI, can: [READ_ALL_VENTURE, PROPOSE_CONCERNS, LEGAL_VETO]}
+  wind-down-operator: {stage: WIND_DOWN, can: [CREATE_KANBAN, EXECUTE_WINDDOWN_WITH_AUTH], cannot: [IGNORE_CUSTOMER_OBLIGATIONS]}

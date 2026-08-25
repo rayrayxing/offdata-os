@@ -1,0 +1,46 @@
+version: OD-KNOWN-GATES-0.2
+status: PARTIAL_UNTIL_SOURCE_IMPORT
+source_rule: >-
+  Exact unseen G0-G10 semantics must be imported from the actual current VentureOS source and independently ratified. These invariants are mandatory floors, not a complete substitute.
+global:
+  require_environment: true
+  require_policy_version: true
+  require_snapshot_identity: true
+  require_current_predecessor: true
+  authority_relevant_input_change_makes_snapshot_stale: true
+  authoritative_mutation_requires_transactional_audit: true
+G3:
+  complete_direct_tuple_required_per_contributing_item:
+    - accountIdentity
+    - actorIdentity
+    - counterpartyRole
+    - interactionType
+    - occurredAt
+    - channel
+    - receiptRef
+  missing_any_field_authoritative_contribution: 0
+  forbid_url_domain_source_fallback: true
+  research_cannot_pass: true
+  last30days_cannot_pass: true
+  business_concept_cannot_pass: true
+  prototype_cannot_pass: true
+  simulation_cannot_pass: true
+G4:
+  approval_may_not_fabricate_pass: true
+  require_current_G3_predecessor: true
+G8:
+  reconcile_from_source:
+    - retention
+    - billing
+    - cash
+G9:
+  require_immutable_financial_snapshot: true
+  audit_known_semantics_to_reconcile:
+    - margin_threshold_at_least_60_percent
+G10:
+  require_immutable_financial_snapshot: true
+  request_creation_concurrency_idempotent: true
+  audit_known_semantics_to_reconcile:
+    - ROI_or_ratio_2_to_1
+scale:
+  may_not_set_live_active_without_required_current_scale_predecessor: true

@@ -1,0 +1,13 @@
+version: OD-MODEL-ROUTING-0.2
+primary:
+  provider_path: easycliproxyapi
+  model: gemini-3.7-flash
+  required_qualification: true
+fallback:
+  provider_path: deepseek-api
+  model: owner-configured
+  required_qualification: true
+task_specific:
+  coding_review: [codex, claude-code]
+routing_policy: measure_before_specializing
+record_per_task: [role, task_class, provider, model, latency, cost, schema_valid, reviewer_score, downstream_outcome]

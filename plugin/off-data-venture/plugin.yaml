@@ -1,0 +1,20 @@
+name: off-data-venture
+version: 0.2.0
+description: Deterministic venture truth, evidence, gate, finance, authority, audit and learning tools for off/data venture.
+entrypoint: __init__:register
+capabilities:
+  - venture_state
+  - venture_research
+  - venture_decisions
+  - venture_experiments
+  - venture_contacts
+  - venture_finance
+  - venture_authority
+  - venture_learning
+security:
+  external_network: false
+  shell: false
+  secrets: false
+  database: required
+notes: >-
+  Bootstrap must validate this manifest/API against the pinned Hermes release before enabling. Plugin tools never grant themselves external-provider credentials.

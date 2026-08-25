@@ -1,8 +1,0 @@
-{
-  "$id": "https://offdata.com/schemas/founder-decision-packet.schema.json",
-  "$ref": "offdata-contract-bundle.schema.json#/$defs/FounderDecisionPacket",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Offdata Founder Decision Packet",
-  "x-offdata-canonical-bundle": "offdata-contract-bundle.schema.json",
-  "x-offdata-model": "FounderDecisionPacket"
-}

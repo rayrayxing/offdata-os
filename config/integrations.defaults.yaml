@@ -1,0 +1,15 @@
+version: OD-INTEGRATIONS-0.2
+research:
+  last30days: required_for_current_intelligence
+  paid_search: optional_incremental
+owner_channel:
+  telegram: required
+commercial_before_live_validation:
+  domain: required
+  business_email: required
+  crm: recommended
+  contact_provider: choose_one
+  email_verification: required_for_scaled_outbound
+  analytics: recommended
+  payments: required_for_real_revenue
+secrets: profile_env_or_approved_secret_manager

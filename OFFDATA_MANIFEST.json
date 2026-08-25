@@ -1,0 +1,27 @@
+{
+  "name": "off/data venture",
+  "version": "0.2",
+  "authority_mode_default": "SHADOW",
+  "environments": ["TEST", "SIMULATION", "LIVE"],
+  "boards": {"portfolio": "portfolio", "venture": "venture-<slug>"},
+  "dynamic_profiles": ["venture-gm-<slug>"],
+  "profiles": [
+    "portfolio-director", "capital-allocator", "independent-auditor", "venture-historian", "capability-architect", "skill-engineer", "skill-auditor",
+    "frontier-scout", "trend-spotter", "technology-transfer", "context-translator", "venture-imagination", "entrepreneur-in-residence", "deep-research-lead",
+    "technology-researcher", "industry-researcher", "customer-anthropologist", "competitive-intelligence", "regulatory-researcher", "economics-researcher", "distribution-researcher",
+    "opportunity-architect", "contrarian", "venture-refiner", "business-model-architect", "distribution-architect", "experiment-designer", "narrative-builder", "truth-editor",
+    "product-manager", "ux-designer", "prototype-builder", "engineering", "qa", "security", "customer-validation", "prospecting",
+    "sales", "growth", "revops", "customer-success", "finance-controller", "analytics", "operations", "legal-compliance", "wind-down-operator"
+  ],
+  "role_authority_categories": ["READ_RESEARCH", "WRITE_RESEARCH", "PROPOSE_DECISION", "BUILD_SANDBOX", "DRAFT_OUTREACH", "SEND_OUTREACH", "READ_FINANCE", "PROPOSE_CAPITAL", "EXECUTE_PAYMENT", "AUDIT_VETO"],
+  "hard_invariants": [
+    "Venture Brain is canonical truth",
+    "only deterministic policy can authoritatively pass gates",
+    "strict G3 complete seven-tuple for every contributing evidence item",
+    "no URL/domain/source fallback for G3",
+    "zero tolerated authority violation",
+    "zero duplicate financial effect",
+    "authoritative mutation has transactional audit",
+    "TEST/SIMULATION cannot create authoritative LIVE descendants"
+  ]
+}

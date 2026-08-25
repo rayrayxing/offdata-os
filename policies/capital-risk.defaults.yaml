@@ -1,0 +1,19 @@
+version: OD-CAPITAL-DEFAULT-1.0
+mode: SHADOW
+base_currency: null
+portfolio:
+  live_capital_ceiling: 0
+venture:
+  per_venture_live_capital_ceiling: 0
+  max_single_experiment_live_spend: 0
+autonomy:
+  autonomous_live_spend_per_action: 0
+  autonomous_live_spend_per_day: 0
+customer_contact:
+  mode: DRAFT_ONLY
+  autonomous_sends_per_day: 0
+payments:
+  live_execution_enabled: false
+legal:
+  binding_commitments_autonomous: false
+# Owner questionnaire must explicitly replace these safe defaults before LIVE authority.
