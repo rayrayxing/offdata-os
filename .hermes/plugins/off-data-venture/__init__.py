@@ -2,9 +2,10 @@
 from __future__ import annotations
 import json, os, uuid
 from pathlib import Path
-from . import schemas, tools, db, policy, orchestrator_v2
+from . import schemas, tools, commercial_schemas, commercial, db, policy, orchestrator_v2
 
-TOOL_NAMES=list(schemas.S.keys())
+CORE_TOOL_NAMES=list(schemas.S.keys())
+COMMERCIAL_TOOL_NAMES=list(commercial_schemas.S.keys())
 
 def _bound(fn, profile_name):
     def handler(args, **kwargs):
@@ -21,16 +22,14 @@ def _guard(ctx):
                     cur.execute("SELECT action_class,effect_class,metadata FROM tool_policies WHERE tool_name=%s AND enabled=true",(tool_name,)); tp=cur.fetchone()
                     if not tp or tp["effect_class"]=="READ": return None
                     cur.execute("SELECT * FROM kanban_task_contexts WHERE task_id=%s",(task_id,)); tc=cur.fetchone()
-                    if not tc: return {"action":"block","message":f"OFF/DATA guard: {tool_name} is a consequential tool but task has no bound venture context."}
+                    if not tc: return {"action":"block","message":f"OFF/DATA guard: {tool_name} is consequential but this task has no bound venture context."}
                     amount_field=((tp.get("metadata") or {}).get("amount_field") or "amount_sgd")
                     amount=float((args or {}).get(amount_field) or 0)
                     ok,reason,auth_id=policy.action_policy_check(conn,profile=ctx.profile_name,venture_id=str(tc["venture_id"]),tool_name=tool_name,environment=str(tc["environment"]),amount_sgd=amount,target=args)
                     if not ok: return {"action":"block","message":f"OFF/DATA guard blocked {tool_name}: {reason}. Request/resolve explicit authorization first."}
                     return None
         except Exception as exc:
-            # A classified consequential tool must fail closed if the authority database cannot be checked.
-            try:
-                guarded=json.loads(os.getenv("OFFDATA_GUARDED_TOOLS_JSON","{}"))
+            try: guarded=json.loads(os.getenv("OFFDATA_GUARDED_TOOLS_JSON","{}"))
             except Exception: guarded={}
             if tool_name in guarded: return {"action":"block","message":f"OFF/DATA guard unavailable; fail closed for consequential tool {tool_name}: {exc}"}
             return None
@@ -53,7 +52,6 @@ def _receipt_hook(ctx):
                                    ON CONFLICT(operation_id,tool_name,request_hash) DO NOTHING""",
                                 (tc["venture_id"],op,tool_name,tp["action_class"],req_hash,resp_hash,int(duration_ms or 0),tc["environment"],task_id))
         except Exception:
-            # Operational monitoring/certification treats missing receipts as P0; do not fabricate success.
             return
     return post_tool_call
 
@@ -65,25 +63,23 @@ def _offdata_command(ctx):
             decision={"approve":"APPROVED","deny":"DENIED","revoke":"REVOKED"}[parts[0]]
             return ctx.dispatch_tool("offdata_action_resolve",{
                 "operation_id":f"telegram:{decision.lower()}:{parts[1]}:{uuid.uuid4()}","correlation_id":f"telegram:{parts[1]}",
-                "authorization_id":parts[1],"decision":decision,"resolver_identity":"telegram-owner","note":"Owner command through authenticated Hermes gateway"
-            })
+                "authorization_id":parts[1],"decision":decision,"resolver_identity":"telegram-owner","note":"Owner command through authenticated Hermes gateway"})
         if parts[0]=="capital-approve" and len(parts)>=3:
             return ctx.dispatch_tool("offdata_capital_authorize",{
                 "operation_id":f"telegram:capital:{parts[1]}:{uuid.uuid4()}","correlation_id":f"telegram:capital:{parts[1]}",
-                "request_id":parts[1],"decision":"APPROVED","authorized_amount_sgd":float(parts[2]),"resolver_identity":"telegram-owner"
-            })
+                "request_id":parts[1],"decision":"APPROVED","authorized_amount_sgd":float(parts[2]),"resolver_identity":"telegram-owner"})
         if parts[0]=="capital-deny" and len(parts)>=2:
             return ctx.dispatch_tool("offdata_capital_authorize",{
                 "operation_id":f"telegram:capital-deny:{parts[1]}:{uuid.uuid4()}","correlation_id":f"telegram:capital:{parts[1]}",
-                "request_id":parts[1],"decision":"DENIED","authorized_amount_sgd":0,"resolver_identity":"telegram-owner"
-            })
+                "request_id":parts[1],"decision":"DENIED","authorized_amount_sgd":0,"resolver_identity":"telegram-owner"})
         return "Usage: /offdata status | approve <authorization_id> | deny <authorization_id> | revoke <authorization_id> | capital-approve <request_id> <SGD> | capital-deny <request_id>"
     return handle
 
 def register(ctx):
-    for name in TOOL_NAMES:
-        fn=getattr(tools,name)
-        ctx.register_tool(name=name,toolset="offdata_venture",schema=schemas.S[name],handler=_bound(fn,ctx.profile_name))
+    for name in CORE_TOOL_NAMES:
+        ctx.register_tool(name=name,toolset="offdata_venture",schema=schemas.S[name],handler=_bound(getattr(tools,name),ctx.profile_name))
+    for name in COMMERCIAL_TOOL_NAMES:
+        ctx.register_tool(name=name,toolset="offdata_commercial",schema=commercial_schemas.S[name],handler=_bound(getattr(commercial,name),ctx.profile_name))
     ctx.register_hook("pre_tool_call",_guard(ctx))
     ctx.register_hook("post_tool_call",_receipt_hook(ctx))
     ctx.register_hook("kanban_task_completed",lambda **kw: orchestrator_v2.on_completed(ctx,**kw))
