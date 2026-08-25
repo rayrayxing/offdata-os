@@ -1,0 +1,1 @@
+{"name":"off-data-venture","label":"OFF/DATA Venture","description":"Portfolio, evidence, gates, finance, approvals and venture cockpit","icon":"BarChart3","version":"0.2.0","tab":{"path":"/offdata","position":"after:skills"},"entry":"dist/index.js","api":"plugin_api.py"}
