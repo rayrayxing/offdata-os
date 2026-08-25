@@ -1,12 +1,15 @@
 name: off-data-venture
 version: 0.2.0-final
 description: Deterministic venture control plane for OFF/DATA VENTURE
+author: OFF/DATA
 provides_tools:
   - offdata_status
   - offdata_venture_create
   - offdata_venture_get
   - offdata_research_mission_create
   - offdata_research_record
+  - offdata_research_query_reserve
+  - offdata_research_query_complete
   - offdata_claim_record
   - offdata_evidence_record
   - offdata_evidence_validate
@@ -27,6 +30,20 @@ provides_tools:
   - offdata_capability_list
   - offdata_learning_record
   - offdata_aar_record
+  - offdata_offer_create
+  - offdata_commitment_record
+  - offdata_delivery_obligation_record
+  - offdata_delivery_obligation_update
+  - offdata_invoice_record
+  - offdata_payment_record
+  - offdata_refund_record
+  - offdata_forecast_record
+  - offdata_forecast_resolve
+  - offdata_owner_policy_apply
+  - offdata_email_send
+  - offdata_stripe_checkout_create
+  - offdata_stripe_invoice_create
+  - offdata_stripe_sync
 provides_hooks:
   - pre_tool_call
   - post_tool_call
@@ -45,3 +62,18 @@ optional_env:
     description: Owner Telegram user ID. Keep this in local .env only.
   - name: OFFDATA_GUARDED_TOOLS_JSON
     description: JSON map of external write tool names to action classes
+  - name: OFFDATA_EMAIL_ADDRESS
+    description: Dedicated Workspace sender address
+  - name: OFFDATA_EMAIL_APP_PASSWORD
+    description: Optional Gmail app-password fallback
+    secret: true
+  - name: GOOGLE_WORKSPACE_CLIENT_ID
+    secret: true
+  - name: GOOGLE_WORKSPACE_CLIENT_SECRET
+    secret: true
+  - name: GOOGLE_WORKSPACE_REFRESH_TOKEN
+    secret: true
+  - name: STRIPE_SECRET_KEY
+    secret: true
+  - name: STRIPE_WEBHOOK_SECRET
+    secret: true
