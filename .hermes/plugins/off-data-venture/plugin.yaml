@@ -1,0 +1,47 @@
+name: off-data-venture
+version: 0.2.0-final
+description: Deterministic venture control plane for OFF/DATA VENTURE
+provides_tools:
+  - offdata_status
+  - offdata_venture_create
+  - offdata_venture_get
+  - offdata_research_mission_create
+  - offdata_research_record
+  - offdata_claim_record
+  - offdata_evidence_record
+  - offdata_evidence_validate
+  - offdata_concern_record
+  - offdata_experiment_create
+  - offdata_prototype_record
+  - offdata_validation_record
+  - offdata_gate_evaluate
+  - offdata_action_request
+  - offdata_action_resolve
+  - offdata_capital_request
+  - offdata_capital_authorize
+  - offdata_financial_post
+  - offdata_financial_snapshot_close
+  - offdata_contact_upsert
+  - offdata_interaction_record
+  - offdata_capability_upsert
+  - offdata_capability_list
+  - offdata_learning_record
+  - offdata_aar_record
+provides_hooks:
+  - pre_tool_call
+  - post_tool_call
+  - kanban_task_completed
+  - kanban_task_blocked
+requires_env:
+  - name: OFFDATA_DATABASE_URL
+    description: PostgreSQL connection string for canonical Venture Brain state
+    secret: true
+optional_env:
+  - name: OFFDATA_PACKAGE_ROOT
+    description: Absolute path to the OFF/DATA VENTURE package
+  - name: OFFDATA_AUTHORITY_MODE
+    description: SHADOW, CONTROLLED, or AUTONOMOUS
+  - name: OFFDATA_TELEGRAM_OWNER_ID
+    description: Owner Telegram user ID. Keep this in local .env only.
+  - name: OFFDATA_GUARDED_TOOLS_JSON
+    description: JSON map of external write tool names to action classes
