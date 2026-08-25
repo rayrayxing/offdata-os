@@ -23,14 +23,25 @@ jobs:
         run: python3 scripts/package_selftest.py
       - name: Generate checksums
         run: python3 scripts/generate_checksums.py
-      - name: Verify checksums
+      - name: Verify source-tree release checksums
         run: sha256sum -c CHECKSUMS.sha256
       - name: Build release ZIP
         run: |
+          rm -rf dist
           mkdir -p dist/OFFDATA-VENTURE-v0.2-FINAL
           rsync -a --exclude '.git' --exclude '.github' --exclude 'dist' --exclude '__pycache__' --exclude '*.pyc' --exclude 'state/*.local.*' ./ dist/OFFDATA-VENTURE-v0.2-FINAL/
           cd dist
           zip -qr OFFDATA-VENTURE-v0.2-FINAL.zip OFFDATA-VENTURE-v0.2-FINAL
+      - name: Smoke-test exact release ZIP after extraction
+        run: |
+          rm -rf /tmp/offdata-release-smoke
+          mkdir -p /tmp/offdata-release-smoke
+          unzip -q dist/OFFDATA-VENTURE-v0.2-FINAL.zip -d /tmp/offdata-release-smoke
+          cd /tmp/offdata-release-smoke/OFFDATA-VENTURE-v0.2-FINAL
+          sha256sum -c CHECKSUMS.sha256
+          python3 scripts/validate_package.py
+          python3 tests/run_all.py
+          python3 scripts/package_selftest.py
       - name: Upload validated distribution
         uses: actions/upload-artifact@v4
         with:
