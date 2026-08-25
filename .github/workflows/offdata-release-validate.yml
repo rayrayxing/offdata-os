@@ -1,0 +1,40 @@
+name: OFFDATA v0.2 Release Validation
+on:
+  push:
+    branches:
+      - 'off-data-venture-hermes-bootstrap-v0.2-validated'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Static package validation
+        run: python3 scripts/validate_package.py
+      - name: Unit and adversarial contract tests
+        run: python3 tests/run_all.py
+      - name: Package self-test
+        run: python3 scripts/package_selftest.py
+      - name: Generate checksums
+        run: python3 scripts/generate_checksums.py
+      - name: Verify checksums
+        run: sha256sum -c CHECKSUMS.sha256
+      - name: Build release ZIP
+        run: |
+          mkdir -p dist/OFFDATA-VENTURE-v0.2-FINAL
+          rsync -a --exclude '.git' --exclude '.github' --exclude 'dist' --exclude '__pycache__' --exclude '*.pyc' --exclude 'state/*.local.*' ./ dist/OFFDATA-VENTURE-v0.2-FINAL/
+          cd dist
+          zip -qr OFFDATA-VENTURE-v0.2-FINAL.zip OFFDATA-VENTURE-v0.2-FINAL
+      - name: Upload validated distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: OFFDATA-VENTURE-v0.2-FINAL
+          path: dist/OFFDATA-VENTURE-v0.2-FINAL.zip
+          if-no-files-found: error
+          retention-days: 30
